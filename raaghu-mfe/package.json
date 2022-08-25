@@ -51,7 +51,7 @@
     "moment": "^2.29.4",
     "ngx-bootstrap": "8.0.0",
     "ngx-build-plus": "13.0.1",
-    "ngx-quill": "^16.0.0",
+    "ngx-quill": "^18.0.0",
     "ngx-shimmer-loading": "^0.0.5",
     "ngx-videogular": "^13.2.4",
     "positioning": "^2.0.1",
