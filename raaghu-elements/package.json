@@ -1,7 +1,7 @@
 {
   "name": "rds-elements-base",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "WAI Technologies Pvt. Ltd. <contactus@waiin.com>",
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.",
   "scripts": {
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.5",
-    "@angular/cli": "13.2.1",
+    "@angular/cli": "14.2.2",
     "@angular/compiler-cli": "13.2.0",
     "@compodoc/compodoc": "^1.1.19",
     "@mdx-js/react": "^2.1.1",
