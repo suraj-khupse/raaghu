@@ -56,6 +56,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/assets/data`,
+        name: `json`
       },
     },
     `gatsby-plugin-sharp`,
