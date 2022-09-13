@@ -136,10 +136,20 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
 }
 
 .menu-list ul {
-  list-style: inside;
+  list-style: disc;
   padding: 0;
   margin: 0;
   cursor: pointer;
+  margin-top: 20px;
+}
+
+.menu-list ul li{
+  unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: start !important;
 }
 
 .menu-list ul li {
@@ -856,7 +866,7 @@ note-light
   left: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 253px;
+  width: 16.66666667%;
 }
 /* position: fixed;
     left: 0;

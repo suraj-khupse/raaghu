@@ -1,12 +1,13 @@
 ---
-slug: "/big-number-widget"
+slug: "/Address-detail"
 date: "2019-05-04"
-title: "big-number-widget"
+title: "Address-detail"
 ---
 
-### Big-number-widget
+### Address-Details
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+
 <section class="py-4">
     <h6>Basic</h6>
     <div class="py-3">
@@ -24,7 +25,7 @@ title: "big-number-widget"
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents bg-light p-5">
               <div class="row">
-            <!-- content for img-->
+            <img src="/images/popular-pages.png" class="img-thumbnail w-50">
      </div>
                        
   </div>
@@ -34,18 +35,12 @@ title: "big-number-widget"
 <div class="row m-0">
 
 ```html
-  <div class="col-sm-3">
-  <rds-big-number-widget
-    [bigNumber]="'$13,20,21'"
-    [subText]="'+$1,203'"
-    [icon]="'triangle_up'"
-    [iconHeigt]="'20px'"
-    [iconWidth]="'20px'"
-    [colorVariant]="colorVariant"
-    [subTitleColorVariant]="subTitleColorVariant"
-    [textAlign]="textAlign"
-  ></rds-big-number-widget>
-</div>
+   <rds-address-detail
+  header="Address Header"
+  addressLine1="Address Line 1"
+  addressLine2="Address Line 2"
+  addressLine3="Address Line 3"
+></rds-address-detail>
 ```
 </div>
 </div>

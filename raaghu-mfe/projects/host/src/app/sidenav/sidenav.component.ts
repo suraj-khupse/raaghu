@@ -1,7 +1,7 @@
 import { Component, Inject, Injector, Input, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ComponentLoaderOptions, MfeBaseComponent, UserAuthService, UserDelegationServiceProxy } from '@libs/shared';
+import { ComponentLoaderOptions, LinkedUserDto, MfeBaseComponent, UserAuthService, UserDelegationServiceProxy } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { changePassword, getLanguages, getProfile, selectAllLanguages, selectDefaultLanguage, selectProfileInfo, setDefaultLanguageForUI } from '@libs/state-management';
 import { deleteDelegations, getDelegations, getUsername, saveDelegations } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
@@ -110,8 +110,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   profilePic: string = '../assets/profile-picture-circle.svg';
   offCanvasId: string = 'profileOffCanvas'
   collapseRequired: any = true;
-  @Input() UserRole: string = 'Admin';
-  @Input() UserName: string = 'Wai Technologies';
+  @Input() tenancy: string = 'Host Admin';
   selectedMenu: string = '';
   selectedMenuDescription: string = '';
   sub: Subscription
@@ -151,7 +150,12 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   permissions: any;
 
   ngOnInit(): void {
-
+    const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
+    if (tenancy) {
+      this.tenancy= tenancy.name;
+    } else {
+      this.tenancy = 'Host Admin';
+    }
     this.store.dispatch(getLanguages());
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
@@ -199,7 +203,8 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         notificationData: this.notifications,
         unreadCount: this.unreadCount,
         receiveNotifications: this.receiveNotifications,
-        notificationTypes: this.notificationTypes
+        notificationTypes: this.notificationTypes,
+        tenancy:this.tenancy
       },
       output: {
         toggleEvent: () => {
@@ -367,7 +372,17 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.store.select(selectTenancyData).subscribe(res => {
       this.linkedAccount.tableData = [];
       if (res && res.items) {
-        this.linkedAccount.tableData = res.items;
+        const data: any = [];
+        res.items.forEach((item: any) => {
+          const _item: any = {
+            id: item.id,
+            username: item.username,
+            tenancyName: item.tenancyName,
+            tenantId: item.tenantId
+          }
+          data.push(_item);
+        });
+        this.linkedAccount.tableData = data;
         const mfe = this.rdsTopNavigationMfeConfig;
         mfe.input.linkedAccount = { ...this.linkedAccount };
         this.rdsTopNavigationMfeConfig = mfe;

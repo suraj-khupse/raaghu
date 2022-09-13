@@ -106,8 +106,10 @@
                     id="action-dropdown" data-bs-toggle="dropdown" aria-expanded="false"></rds-button>
                   <div class="dropdown-menu" aria-labelledby="action-dropdown">
                     <ng-container *ngFor="let action of actions">
-                      <a class="dropdown-item" [attr.aria-label]="'Update'+action.displayName+data?.name"
-                        (click)="onActionSelect(action,data)">{{translate.instant(action.displayName)}}</a>
+                      <li>
+                        <a class="dropdown-item" [attr.aria-label]="'Update'+action.displayName+data?.name"
+                           (click)="onActionSelect(action,data)">{{translate.instant(action.displayName)}}</a>
+                      </li>
                     </ng-container>
                   </div>
                 </div>

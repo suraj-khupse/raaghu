@@ -1,12 +1,14 @@
 ---
-slug: "/big-number-widget"
+slug: "/FAQ"
 date: "2019-05-04"
-title: "big-number-widget"
+title: "FAQ"
 ---
 
-### Big-number-widget
+
+### FAQ
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+
 <section class="py-4">
     <h6>Basic</h6>
     <div class="py-3">
@@ -24,9 +26,9 @@ title: "big-number-widget"
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents bg-light p-5">
               <div class="row">
-            <!-- content for img-->
-     </div>
-                       
+                  <img src="/images/faq.png" class="img-thumbnail w-100">
+            </div>
+          
   </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
@@ -34,18 +36,10 @@ title: "big-number-widget"
 <div class="row m-0">
 
 ```html
-  <div class="col-sm-3">
-  <rds-big-number-widget
-    [bigNumber]="'$13,20,21'"
-    [subText]="'+$1,203'"
-    [icon]="'triangle_up'"
-    [iconHeigt]="'20px'"
-    [iconWidth]="'20px'"
-    [colorVariant]="colorVariant"
-    [subTitleColorVariant]="subTitleColorVariant"
-    [textAlign]="textAlign"
-  ></rds-big-number-widget>
-</div>
+ <app-rds-comp-faq
+  [questionList]="questionList"
+  [QuestionHeading]="QuestionHeading"
+></app-rds-comp-faq>
 ```
 </div>
 </div>

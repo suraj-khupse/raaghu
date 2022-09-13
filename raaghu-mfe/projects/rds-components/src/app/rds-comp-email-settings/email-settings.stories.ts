@@ -31,3 +31,12 @@ const Template: Story<RdsCompEmailSettingsComponent> = (args: RdsCompEmailSettin
 });
 
 export const emailSettings = Template.bind({});
+emailSettings.args={
+    emailSettings:
+    {
+      currentEmail: 'niphy.anto@waiin.com',
+      newEmail: 'abc@waiin.com',
+      confirmEmail: 'abc@waiin.com'
+    },
+    buttonSpinner:true
+}

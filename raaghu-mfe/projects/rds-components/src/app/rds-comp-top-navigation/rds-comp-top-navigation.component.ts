@@ -38,7 +38,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() defaultLanguage: string = '';
   selectedLanguage: any = { language: '', icon: '' };
   @Input() notificationData = [];
-  @Input() UserRole: string = 'Host Admin';
+  @Input() tenancy: string = 'Host Admin';
   @Input() offCanvasId: string = ''
   @Input() profileLink: string = '';
   @Input() UserName: string = 'Wai Technologies';

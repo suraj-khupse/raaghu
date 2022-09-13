@@ -7,7 +7,7 @@
   }
 
 .dropdown-menu {
-  max-width: 30rem;
+  //max-width: 30rem;
   //white-space: unset;
   padding: 0 0;
 }
@@ -26,7 +26,7 @@
   
     .dropdownlist-input + .dropdown-menu {
       display: none;
-      max-width: 30rem;
+      //max-width: 30rem;
     }
   
     .dropdownlist-input:checked + .dropdown-menu {

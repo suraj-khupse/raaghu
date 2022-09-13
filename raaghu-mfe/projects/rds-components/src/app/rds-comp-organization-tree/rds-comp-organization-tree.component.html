@@ -1,9 +1,7 @@
-
-
 <div class="d-flex align-items-center dottedstyle" *ngIf="OrganizationTreeType.checkbox">
   <div class="node-dot position-relative">
     <rds-checkbox [id]="'Selectall'" (onChange)="selectAllFeature($event)" [checked]="SelectAll"
-      class="position-absolute" [disabled]="false" [switch]="false" [inline]="false" ></rds-checkbox>
+      class="position-absolute" [disabled]="false" [switch]="false" [inline]="false"></rds-checkbox>
   </div>
   <span class=" node-label d-flex"><span class="mr-4">{{'Select All' | translate}}</span></span>
 </div>
@@ -11,24 +9,26 @@
 <ng-template #recursiveNodeTemplate let-list="list">
 
   <div *ngFor="let node of list; let i = index" class="position-relative node dottedstyle"
-    [ngStyle]="{'margin-left': list[0].level === 1 ? '6px' : '35px'}" >
-    <div class="vertical-dotted-line"  *ngIf="setStateBasedOnMutable(i === list.length - 1, node)"></div>
+    [ngStyle]="{'margin-left': list[0].level === 1 ? '6px' : '35px'}">
+    <div class="vertical-dotted-line" *ngIf="setStateBasedOnMutable(i === list.length - 1, node)"></div>
     <div class="d-flex align-items-center" *ngIf="node.data?.displayName">
       <div class="node-dot " *ngIf="!OrganizationTreeType.checkbox" [style.backgroundColor]="getNodeColor(node.level)">
         <div *ngIf="node.level !== 1" class="horizontal-dotted-line dottedstyle"></div>
       </div>
       <span #nodeLabel class="mt-1 node-label d-flex ">
-        <span class="mr-5" (click)="onClicknode(node)" [class.text-primary]="node.selected">{{ node.data?.displayName }}</span>
+        <span class="mr-5" (click)="onClicknode(node)" [class.text-primary]="node.selected">{{ node.data?.displayName
+          }}</span>
         <i *ngIf="mutable === true  && OrganizationTreeType.Normal===true||OrganizationTreeType.IconLabel===true"
           data-bs-toggle="offcanvas" data-bs-target="#addNestedNodeModal" (addNestedElement)="addNestedNode(node)"
-          [nestGroup]="nodeLabel" class="pl-3 mx-2  nest-icon bi bi-plus-circle-fill text-secondary font-size-lg pointer"></i>
+          [nestGroup]="nodeLabel"
+          class="pl-3 mx-2  nest-icon bi bi-plus-circle-fill text-secondary font-size-lg pointer"></i>
 
         <i *ngIf="mutable === true && OrganizationTreeType.IconLabel==true||OrganizationTreeType.Normal===true"
           (click)="getNodeByID(node)" data-bs-toggle="offcanvas" data-bs-target="#EditNodeModal"
           class="bi bi-pencil mx-2 pointer" [nestGroup]="nodeLabel"></i>
 
         <i *ngIf="mutable === true && OrganizationTreeType.IconLabel==true||OrganizationTreeType.Normal===true"
-        (click)="deleteConfirmation(node)" class="bi bi-trash mx-2" [nestGroup]="nodeLabel"></i>
+          (click)="deleteConfirmation(node)" class="bi bi-trash mx-2" [nestGroup]="nodeLabel"></i>
 
       </span>
 
@@ -47,65 +47,82 @@
       class="bi bi-plus-circle-fill position-relative text-primary font-size-lg pointer"></i>
   </div>
 
-  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && OrganizationTreeType.IconLabel==true && list[0].data.parentId"
+  <div class="position-relative btn p-0 mt-3"
+    *ngIf="mutable === true && OrganizationTreeType.IconLabel==true && list[0].data.parentId"
     [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}" data-bs-toggle="offcanvas"
     data-bs-target="#addNodeModal" aria-controls="addNodeModal">
-    <rds-button  [colorVariant]="'primary'" class=""  [label]="translate.instant('Sub-Unit')"  [roundedButton]="false"  [size]="'small'" (click)="addNode(list)">
+    <rds-button [colorVariant]="'primary'" class="" [label]="translate.instant('Sub-Unit')" [roundedButton]="false"
+      [size]="'small'" (click)="addNode(list)">
       <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
 
-  </rds-button>
+    </rds-button>
   </div>
-  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && OrganizationTreeType.IconLabel==true && !list[0].data.parentId"
+  <div class="position-relative btn p-0 mt-3"
+    *ngIf="mutable === true && OrganizationTreeType.IconLabel==true && !list[0].data.parentId"
     [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}" data-bs-toggle="offcanvas"
     data-bs-target="#addNodeModal" aria-controls="addNodeModal">
-    <rds-button  [colorVariant]="'primary'" class="" [label]="translate.instant('New-Root-Unit')"    [roundedButton]="false"  [size]="'small'" (click)="addNode(list)">
+    <rds-button [colorVariant]="'primary'" class="" [label]="translate.instant('New-Root-Unit')" [roundedButton]="false"
+      [size]="'small'" (click)="addNode(list)">
       <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
 
-  </rds-button>
+    </rds-button>
   </div>
 </ng-template>
-<rds-offcanvas  [canvasTitle]="translate.instant(offcanvasTitleModel)"  [offId]="'addNodeModal'" [placement]="'end'"
-   [offcanvaswidth]="550">
- <div class="tab-content">
-  <div class="row form-style mt-2">
-    <div class="col-md-12">
-      <form [formGroup]="nodeForm">
-        <div class="form-group mb-3">
-          <rds-input size="default" [Title]="translate.instant('Name')"  [TitleType]="'Top'" inputType="text" [placeholder]="OrganizationTreeLabeles.ParentDescriptionPlaceholder"
-            floatinginputLabel="" [(ngModel)]="ItemDescription" id="txtDescription" formControlName="ItemDescription"
-            (onBlur)='checkDescriptionValidation()' (keyup)='checkDescriptionValidation()' [isRequired]=true ngDefaultControl></rds-input>
-          <small class="text-danger" *ngIf="DescriptionRequiredMessage">Description is Required</small>
-        </div>
-        
-      </form>
-    </div>
-  </div>
- </div>
-  <div class="footer-buttons my-2">
-    <div class="row">
+<rds-offcanvas [canvasTitle]="translate.instant(offcanvasTitleModel)" [offId]="'addNodeModal'" [placement]="'end'"
+  [offcanvaswidth]="550">
+  <div class="tab-content">
+    <div class="row form-style mt-2">
       <div class="col-md-12">
-        <rds-button  [label]="translate.instant('Cancel')" type="button" [colorVariant]="'outline-primary'" [size]="'small'"
-          data-bs-dismiss="offcanvas">
-        </rds-button>
-        <rds-button [disabled]="!nodeForm.valid"  [label]="translate.instant('Save')" type="button" [size]="'small'" class="px-2"
-          [colorVariant]="'primary'" (click)="pushNode()" data-bs-dismiss="offcanvas" data-bs-target="#addNodeModal">
-        </rds-button>
+          <form [formGroup]="nodeForm" novalidate >
+        <div class="form-group mb-3">
+          <rds-input  size="default" [Title]="translate.instant('Name')"  [TitleType]="'Top'"  [placeholder]="OrganizationTreeLabeles.ParentDescriptionPlaceholder"
+            floatinginputLabel="" [(ngModel)]="ItemDescription"  id="txtDescription" formControlName="ItemsDescription"
+            (onBlur)='checkDescriptionValidation()' (keyup)='checkDescriptionValidation()' [isRequired]="true" required ngDefaultControl
+            [ngClass]="{'is-invalid': ItemsDescription.errors && (ItemsDescription.touched || ItemsDescription.dirty), 'is-valid':ItemsDescription.valid}"></rds-input> 
+         
+            <small class="text-danger" *ngIf="ItemsDescription.errors?.required">Name is Required</small>        </div>
+        <div class="footer-buttons my-2">
+          <div class="row">
+            <div class="col-md-12">
+              <rds-button  [label]="translate.instant('Cancel')" type="button" [colorVariant]="'outline-primary'" [size]="'small'"
+                data-bs-dismiss="offcanvas">
+              </rds-button>
+              <rds-button [disabled]="!nodeForm.valid"  [label]="translate.instant('Save')"  type="button" [size]="'small'" class="px-2"
+                [colorVariant]="'primary'" (click)="pushNode()"   data-bs-target="#addNodeModal" data-bs-dismiss="offcanvas">
+              </rds-button>
+            </div>
+          </div>
+        </div> 
+      </form> 
       </div>
     </div>
   </div>
+   <div class="footer-buttons my-2">
+  <div class="row">
+    <div class="col-md-12">
+      <rds-button  [label]="translate.instant('Cancel')" type="button" [colorVariant]="'outline-primary'" [size]="'small'"
+        data-bs-dismiss="offcanvas">
+      </rds-button>
+      <rds-button [disabled]="!nodeForm.invalid"  [label]="translate.instant('Save')" type="button" [size]="'small'" class="px-2"
+        [colorVariant]="'primary'" (click)="pushNode()"   data-bs-target="#addNodeModal" data-bs-dismiss="offcanvas">
+      </rds-button>
+    </div>
+  </div>
+</div>    
 </rds-offcanvas>
 
-<rds-offcanvas [canvasTitle]="translate.instant(offcanvasTitleModel)"  [offId]="'addNestedNodeModal'" [placement]="'end'"
+<rds-offcanvas [canvasTitle]="translate.instant(offcanvasTitleModel)" [offId]="'addNestedNodeModal'" [placement]="'end'"
   [offcanvaswidth]="550">
   <div class="tab-content">
     <div class="row mt-2 form-style">
       <div class="col-md-12">
         <div class="col-md-12 pb-2">
-          <rds-input size="default" [Title]="translate.instant('Name')" [TitleType]="'Top'" [disabled]="false" [readonly]="false" value="" inputType="text"
+          <rds-input size="default" [Title]="translate.instant('Name')" [TitleType]="'Top'" [disabled]="true"
+            [readonly]="false" value="" inputType="text"
             [placeholder]="OrganizationTreeLabeles.ChildDescriptionPlaceholder" floatinginputLabel="" [id]="'childnode'"
             [(ngModel)]="ItemDescription" (onBlur)='checkDescriptionValidation()' (keyup)='checkDescriptionValidation()'
             (mouseup)='checkDescriptionValidation()' [isRequired]=true ngDefaultControl></rds-input>
-          <small class="text-danger" *ngIf="DescriptionRequiredMessage">Description is Required</small>
+          <small class="text-danger" *ngIf="DescriptionRequiredMessage">Name is Required</small>
         </div>
       </div>
     </div>
@@ -113,11 +130,11 @@
   <div class="footer-buttons my-2">
     <div class="row">
       <div class="col-md-12">
-        <rds-button [label]="translate.instant('Cancel')" type="button" [size]="'small'" [colorVariant]="'outline-primary'"
-          data-bs-dismiss="offcanvas">
+        <rds-button [label]="translate.instant('Cancel')" type="button" [size]="'small'"
+          [colorVariant]="'outline-primary'" data-bs-dismiss="offcanvas">
         </rds-button>
-        <rds-button  [label]="translate.instant('Save')" type="button" [disabled]="disableSaveButton" [size]="'small'" class="px-2"
-          [colorVariant]="'primary'" data-bs-dismiss="offcanvas" data-bs-target="#addNestedNodeModal"
+        <rds-button [label]="translate.instant('Save')" type="button" [disabled]="disableSaveButton" [size]="'small'"
+          class="px-2" [colorVariant]="'primary'" data-bs-dismiss="offcanvas" data-bs-target="#addNestedNodeModal"
           (click)="pushNestedNode()">
         </rds-button>
       </div>
@@ -126,26 +143,28 @@
 </rds-offcanvas>
 
 <rds-offcanvas [canvasTitle]="translate.instant(offcanvasTitleModelEdit)" [offId]="'EditNodeModal'" [placement]="'end'"
-   [offcanvaswidth]="550">
+  [offcanvaswidth]="550">
   <div class="tab-content">
     <div class="row mt-3 form-style">
       <div class="col-md-12 pb-2">
-        <rds-input size="default"  [Title]="translate.instant('Organization Unit')"  [TitleType]="'Top'" [disabled]="false" [readonly]="false" value="" [inputType]="'text'"
-          [placeholder]="OrganizationTreeLabeles.ChildDescriptionEditPlaceholder" [(ngModel)]="ItemDescription" [id]="'childnodeEdit'"
-          (onBlur)='checkDescriptionValidation()' [isRequired]=true (keyup)='checkDescriptionValidation()'
-          (mouseup)='checkDescriptionValidation()' ngDefaultControl></rds-input>
-        <small class="text-danger" *ngIf="DescriptionRequiredMessage">Description is Required</small>
-      </div> 
+        <rds-input size="default" [Title]="translate.instant('Organization Unit')" [TitleType]="'Top'"
+          [disabled]="false" value="" [inputType]="'text'"
+          [placeholder]="OrganizationTreeLabeles.ChildDescriptionEditPlaceholder" [(ngModel)]="ItemDescription"
+          [id]="'childnodeEdit'" (onBlur)='checkDescriptionValidation()' [isRequired]=true required
+          (keyup)='checkDescriptionValidation()' (mouseup)='checkDescriptionValidation()' ngDefaultControl></rds-input>
+        <!-- <small class="text-danger" *ngIf="DescriptionRequiredMessage">Description is Required</small>   -->
+
+      </div>
     </div>
   </div>
   <div class="footer-buttons my-2">
     <div class="row">
       <div class="col-md-12">
-        <rds-button [label]="translate.instant('Cancel')" type="button" [size]="'small'" [colorVariant]="'outline-primary'"
-          data-bs-dismiss="offcanvas">
+        <rds-button [label]="translate.instant('Cancel')" type="button" [size]="'small'"
+          [colorVariant]="'outline-primary'" data-bs-dismiss="offcanvas">
         </rds-button>
-        <rds-button [label]="translate.instant('Save')"  type="button" [size]="'small'" class="px-2" [colorVariant]="'primary'"
-          data-bs-dismiss="offcanvas" [disabled]="disableSaveButton" data-bs-target="#EditNodeModal"
+        <rds-button [label]="translate.instant('Save')" type="button" [size]="'small'" class="px-2"
+          [colorVariant]="'primary'" [disabled]="disableSaveButton" data-bs-target="#EditNodeModal"
           (click)="EditnodeModal()">
         </rds-button>
       </div>

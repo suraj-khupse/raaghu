@@ -31,9 +31,9 @@ title: "Address-Detail"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-            <!-- content for img-->
+          <img src="/images/address-details.png">
      </div>
                        
   </div>

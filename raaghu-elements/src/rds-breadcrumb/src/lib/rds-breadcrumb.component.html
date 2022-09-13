@@ -23,7 +23,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb basic">
         <li class="breadcrumb-item space cursor" aria-current="page" *ngFor="let item of customBreadcrumbsItems; index as i">
-          <a class="nav-link breadcrumb-navlink" [class.active]="activepage==i" aria-current="page" (click)="onClick(item,i)"
+          <a class="nav-link breadcrumb-navlink d-inline" [class.active]="activepage==i" aria-current="page" (click)="onClick(item,i)"
             [class.disabled]="item.disabled">
             <rds-icon  [name]="item.iconClass" [fill]="item.iconFill" [stroke]="item.iconStroke"
               [height]="item.iconHeight" [width]="item.iconWidth" [ngClass]="classes">
@@ -43,7 +43,7 @@
         <li class="breadcrumb-item space cursor" [ngClass]="{'active': activepage === i}" aria-current="page"
           *ngFor="let item of customBreadcrumbsItems; index as i" (click)="onClick(item,i)">
           <!-- <i href="#" [ngClass]="item.iconClass" *ngIf="iconShow" class="mx-1"></i> -->
-          <a class="nav-link breadcrumb-navlink" [class.active]="activepage==i" aria-current="page" (click)="onClick(item,i)"
+          <a class="nav-link breadcrumb-navlink d-inline" [class.active]="activepage==i" aria-current="page" (click)="onClick(item,i)"
             [class.disabled]="item.disabled">
             <rds-icon [name]="item.iconClass" [fill]="item.iconFill" [stroke]="item.iconStroke"
               [height]="item.iconHeight" [width]="item.iconWidth" [ngClass]="classes">

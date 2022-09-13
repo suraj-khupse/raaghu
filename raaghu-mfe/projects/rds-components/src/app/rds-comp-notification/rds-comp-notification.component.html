@@ -18,9 +18,9 @@
     </div>
   </div>
   <div body class="scroll-notification align-items-center w-100 m-0">
-    <ul class="list-group list-group-flush">
+    <div >
       <ng-container *ngIf="notifications && notifications.length > 0; else emptyTemplate">
-        <li class="list-group-item p-0" *ngFor="let notification of notifications"
+        <div *ngFor="let notification of notifications"
           (click)="onNotificationSelect(notification,$event)">
           <div class="d-flex py-2 px-3">
             <div class="px-3 d-flex ps-0">
@@ -46,7 +46,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </div>
       </ng-container>
       <ng-template #emptyTemplate>
         <div class="text-muted text-center">
@@ -54,7 +54,7 @@
           <div class="fs-4 mt-4">{{"No new notifications"|translate}}</div>
         </div>
       </ng-template>
-    </ul>
+    </div>
   </div>
 
   <div footer *ngIf="checkUnreadMessage()">

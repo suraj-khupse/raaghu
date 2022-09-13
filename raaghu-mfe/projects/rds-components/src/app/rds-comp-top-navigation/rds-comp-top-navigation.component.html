@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-sm fixed-top p-0">
   <div class="container-fluid mobile-fluid">
     <span class="navbar-brand p-0 m-0" href="#">
@@ -58,7 +57,7 @@
           </div>
         </li>
         <li class="nav-item border-end px-2">
-          <rds-button [size]="'small'" [roundedButton]="true" >
+          <rds-button [size]="'small'" [roundedButton]="true">
             <span>
               <rds-icon name="gear" width="20px" height="20px"></rds-icon>
             </span>
@@ -95,9 +94,9 @@
               <!-- <rds-avatar [WithProfilePic]="true" [profilePic]="profilePic" [Size]="'small'"></rds-avatar> -->
               <img [src]="profilePic" alt="" height="32px" width="32px">
             </div>
-            <div class="pe-auto">
+            <div class="pe-auto" *ngIf="profileData">
               <span class="text-decoration-none" (click)="redirect('profile')">
-                <span>{{ UserRole }}</span>
+                <span>{{ tenancy }}</span>
                 <rds-icon [name]="'chevron_down_arrow'" [height]="'15px'" [width]="'15px'" class="ms-3"></rds-icon>
 
                 <p class="mb-0  text-muted user-role">
@@ -124,4 +123,6 @@
   (onProfileSave)="onProfileSave.emit($event)" (onLoginAttempts)="onLoginAttemptsRefresh.emit($event)"
   (onDownloadLink)="onDownloadLink.emit($event)">
 </app-rds-comp-profile>
-<app-rds-comp-notification-settings [notificationTypes]="notificationTypes" [receiveNotifications]="receiveNotifications" (onUpdateNotificationSettings)="onUpdateNotificationSettings.emit($event)"></app-rds-comp-notification-settings>
+<app-rds-comp-notification-settings [notificationTypes]="notificationTypes"
+  [receiveNotifications]="receiveNotifications"
+  (onUpdateNotificationSettings)="onUpdateNotificationSettings.emit($event)"></app-rds-comp-notification-settings>

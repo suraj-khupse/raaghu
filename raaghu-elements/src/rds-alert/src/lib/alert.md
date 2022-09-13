@@ -31,44 +31,9 @@ title: "alert"
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
               <div class="contents bg-light p-5">
                                           <div class="row">
-                                             <div class="col-md-5">
-                                                <div class="alert alert-primary alert-dismissible" role="alert">
-                                                  <div class="row ">
-                                                      <div class="col-12">
-                                                         An informational toast. 
-                                                      </div>
-                                                  </div>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>   
-                                                <div class="alert alert-success alert-dismissible" role="alert">
-                                                  <div class="row ">
-                                                      <div class="col-12">
-                                                         A successful toast. 
-                                                      </div>
-                                                  </div>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>
-                                             </div>
-                                             <div class="col-md-5">
-                                                <div class="alert alert-danger alert-dismissible" role="alert">
-                                                  <div class="row">
-                                                      <div class="col-12">
-                                                        A destructive toast.
-                                                      </div>
-                                                  </div>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div>
-                                                <div class="alert alert-warning alert-dismissible" role="alert">
-                                                  <div class="row">
-                                                      <div class="col-12">
-                                                         A warning toast. 
-                                                      </div>
-                                                  </div>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </div> 
-                                             </div>
+                                           <img src="/images/alert.png">
                                           </div>
-                                    </div>
+                                       </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">

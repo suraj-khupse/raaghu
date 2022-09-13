@@ -17,7 +17,7 @@ declare let bootstrap: any;
   styleUrls: ['./rds-comp-dynamic-properties.component.scss'],
 })
 export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
-  actions: TableAction[] = [{id:'edit',displayName:'Edit'}, { id: 'delete', displayName: 'Delete' }]
+  actions: TableAction[] = [{ id: 'edit', displayName: 'Edit' }, { id: 'delete', displayName: 'Delete' }]
   @Input()
   DynamicPropertiesTableHeader: any;
   @Input() DynamicPropertiesTableData: any;
@@ -29,7 +29,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
   @Input() IsEdit: boolean = false;
   @Input() selectedPermissionList: any = [];
   @Input() inputTypeList: any;
-
+  @Input() viewCanvas: boolean = false;
   resetFormSubject: Subject<boolean> = new Subject<boolean>();
   selectedPermissions: string = '';
   DynamicProperyInfo: any = undefined;
@@ -51,10 +51,17 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     },
   ];
 
- 
-  constructor( public translate:TranslateService) {}
+
+  constructor(public translate: TranslateService) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.DynamicProperyData = undefined;
+    var myOffcanvas = document.getElementById('AddDynamic');
+    if (myOffcanvas) {
+      myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
+        this.viewCanvas = false;
+      });
+    }
+
   }
   ngOnInit(): void {
     this.activePage = 0;
@@ -84,7 +91,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     this.canvasTitle = this.translate.instant('NEW DYNAMIC PROPERTY');
     this.IsEdit = false;
     this.selectedPermissionList = [];
-   
+
   }
   editTableRow(event): void {
     this.activePage = 0;
@@ -110,18 +117,18 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
         this.closeCanvas();
         this.editShimmer = true;
       } else {
-          const DynamicPropery: any = {
-            displayName: this.DynamicProperyData.displayName,
-            inputType: this.DynamicProperyData.inputType,
-            permission: this.selectedPermissions,
-            propertyName: this.DynamicProperyData.propertyName,
-            tenantId: null,
-            id: this.id,
-          };
-          this.createOrUpdateDynamic.emit(DynamicPropery);
-        }
+        const DynamicPropery: any = {
+          displayName: this.DynamicProperyData.displayName,
+          inputType: this.DynamicProperyData.inputType,
+          permission: this.selectedPermissions,
+          propertyName: this.DynamicProperyData.propertyName,
+          tenantId: null,
+          id: this.id,
+        };
+        this.createOrUpdateDynamic.emit(DynamicPropery);
+      }
     } else {
-      if(this.DynamicProperyInfo.dynamicProperties?.propertyName && this.DynamicProperyInfo.dynamicProperties.inputType[0] != "" && this.selectedPermissions!= "" && this.DynamicProperyInfo.dynamicProperties.propertyName != ""){
+      if (this.DynamicProperyInfo.dynamicProperties?.propertyName && this.DynamicProperyInfo.dynamicProperties.inputType[0] != "" && this.selectedPermissions != "" && this.DynamicProperyInfo.dynamicProperties.propertyName != "") {
         const DynamicPropery: any = {
           displayName: this.DynamicProperyInfo.dynamicProperties.displayName,
           inputType: this.DynamicProperyInfo.dynamicProperties.inputType[0],
@@ -132,14 +139,14 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
         this.createOrUpdateDynamic.emit(DynamicPropery);
         this.closeCanvas();
       }
-      else{
+      else {
         this.resetFormSubject.next(true);
       }
     }
     this.id = undefined;
     this.DynamicProperyData = {};
     this.selectedPermissionList = [];
-  } 
+  }
   getDynamicPropertyInfo(eventData) {
     this.DynamicProperyInfo = eventData;
   }

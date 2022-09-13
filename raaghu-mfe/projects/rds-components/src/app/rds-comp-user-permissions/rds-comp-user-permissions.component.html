@@ -10,8 +10,7 @@
       [label]="translate.instant('Export To Excel')">
     </rds-button>
     <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'" [showLoadingSpinner]="buttonSpinnerForNewUser" [size]="'small'"
-      (click)="newUser($event)">
-      <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
+      (click)="newUser($event)" buttonType="iconLabel" icon="plus" iconWidth="12px" iconHeight="12px"> 
     </rds-button>
   </div>
   <div class="col-md-12">

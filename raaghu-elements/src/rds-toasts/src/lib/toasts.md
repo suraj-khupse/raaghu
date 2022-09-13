@@ -30,19 +30,10 @@ title: "toasts"
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewPosition" role="tabpanel" aria-labelledby="PreviewPosition-tab">
           <div class="contents bg-light p-5">
-                                          <div class="row">
-                                             <div class="col-md-6 mb-2">
-                                                <div class="toast show align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-                                                  <div class="d-flex">
-                                                    <div class="toast-body">
-                                                    Hello, world! This is a toast message.
-                                                   </div>
-                                                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                                                  </div>
-                                                </div>
-                                             </div>
-                                          </div>
-                                    </div>
+             <div class="row">
+                   <img src="images/toast.png" class="w-50">
+                 </div>
+            </div>
         </div>
         <div class="tab-pane fade show" id="AngularPosition" role="tabpanel" aria-labelledby="AngularPosition-tab">
           <div class="contents bg-code">
@@ -90,29 +81,10 @@ title: "toasts"
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewToast" role="tabpanel" aria-labelledby="PreviewToast-tab">
           <div class="contents bg-light p-5">
-                                          <div class="row">
-                                             <div class="col-md-4 mb-2">
-                                                <div class="toast show align-items-center toast-outline-primary" role="alert" aria-live="assertive" aria-atomic="true">
-                                                  <div class="d-flex">
-                                                    <div class="toast-body">
-                                                    Hello, world! This is a toast message.
-                                                   </div>
-                                                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                                                  </div>
-                                                </div>
-                                             </div>  
-                                             <div class="col-md-4 mb-2">
-                                                  <div class="toast show align-items-center toast-outline-warning" role="alert" aria-live="assertive" aria-atomic="true">
-                                                  <div class="d-flex">
-                                                    <div class="toast-body">
-                                                    Hello, world! This is a toast message.
-                                                   </div>
-                                                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                                                  </div>
-                                                </div>
-                                             </div> 
-                                          </div>
-                                    </div>
+              <div class="row">
+                 <img src="images/toast.png" class="w-50">
+                  </div>
+             </div>
         </div>
         <div class="tab-pane fade show" id="AngularToast" role="tabpanel" aria-labelledby="AngularToast-tab">
           <div class="contents bg-code">
@@ -157,29 +129,10 @@ title: "toasts"
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewAction" role="tabpanel" aria-labelledby="PreviewAction-tab">
           <div class="contents bg-light p-5">
-                                          <div class="row">
-                                             <div class="col-md-4 mb-2">
-                                                <div class="toast show align-items-center toast-primary" role="alert" aria-live="assertive" aria-atomic="true">
-                                                  <div class="d-flex">
-                                                    <div class="toast-body">
-                                                    Hello, world! This is a toast message.
-                                                   </div>
-                                                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                                                  </div>
-                                                </div>
-                                             </div>  
-                                             <div class="col-md-4 mb-2">
-                                                  <div class="toast show align-items-center toast-warning" role="alert" aria-live="assertive" aria-atomic="true">
-                                                  <div class="d-flex">
-                                                    <div class="toast-body">
-                                                    Hello, world! This is a toast message.
-                                                   </div>
-                                                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                                                  </div>
-                                                </div>
-                                             </div> 
-                                          </div>
-                                    </div>
+            <div class="row">
+             <img src="images/toast.png" class="w-50">
+               </div>
+           </div>
         </div>
         <div class="tab-pane fade show" id="AngularAction" role="tabpanel" aria-labelledby="AngularAction-tab">
           <div class="contents bg-code">

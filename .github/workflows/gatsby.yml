@@ -26,6 +26,16 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '14'
+    - name: npm install raaghu-elements
+      working-directory: raaghu-elements
+      run: |
+        npm install
+       
+    - name: npm install, build, and test raaghu-mfe
+      working-directory: ./raaghu-mfe
+      run: |
+        npm install
+        npm run sync-elements    
 
     - name: npm install gatsby
       working-directory: ./raaghu-mfe/gatsby      
@@ -36,4 +46,4 @@ jobs:
       working-directory: ./raaghu-mfe/gatsby      
       run: |
         npm run build
-   
+    

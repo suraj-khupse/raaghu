@@ -22,6 +22,24 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsCompEmailComponent> = (args: RdsCompEmailComponent) => ({});
+const Template: Story<RdsCompEmailComponent> = (args: RdsCompEmailComponent) => ({
+  props: {
+    ...args
+  }
+});
 
 export const basic = Template.bind({});
+basic.args = {
+  EmailData: {
+    useSSL: false,
+    useDefaultCredentials: true,
+    defaultFromAddress: '',
+    defaultFromDisplayName: '',
+    smtpHost: '',
+    smtpPort: '',
+    smtpEnableSsl: false,
+    smtpUseDefaultCredentials: false,
+    userLosmtpDomainckout: false
+  },
+  editShimmer:false
+}

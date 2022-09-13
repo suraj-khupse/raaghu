@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DoCheck, EventEmitter, Input , OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, EventEmitter, Input , OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 // import { Tooltip } from 'bootstrap'
 declare var bootstrap: any;
 @Component({
@@ -6,7 +6,7 @@ declare var bootstrap: any;
   templateUrl: './rds-button.component.html',
   styleUrls: ['./rds-button.component.scss']
 })
-export class RdsButtonComponent implements AfterViewInit, OnInit, DoCheck {
+export class RdsButtonComponent implements AfterViewInit, OnInit, DoCheck,OnChanges {
 
   @Input()
   colorVariant?: string;
@@ -71,6 +71,9 @@ export class RdsButtonComponent implements AfterViewInit, OnInit, DoCheck {
 
   constructor() {
     this.id = this.id + RdsButtonComponent.count++;
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.labelTemp = this.label;
   }
   
 
