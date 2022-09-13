@@ -25,7 +25,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: '14'
 
     - name: npm install gatsby
       working-directory: ./raaghu-mfe/gatsby      
