@@ -31,6 +31,19 @@ const Template: Story<RdsCompShippingAddressComponent> = (args: RdsCompShippingA
 export const Template1 = Template.bind({});
 
 Template1.args = {
+
+     EmailID:'',
+     Contact:'',
+     firstName:'',
+     lastName:'',
+     company:'',
+     phone:'',
+     address:'',
+     state:'',
+     country:'',
+     countryList: ["India","China","Canada","Japan","Australia","USA","UK"],
+     postalCode:'',
+    
     
 }
 

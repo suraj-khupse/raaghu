@@ -429,7 +429,7 @@
     <div class="row border p-4 m-2">
       <div class="col-4">
         <h6 class="mb-3">{{"Card - Basic"|translate}}</h6>
-        <rds-card [header]="header" [custClass]="true" [customTopBottom]="false" [borderCard]="true" [body]="body" [footer]="footer" [Data]="Data"
+        <rds-card [header]="header" [custClass]="true" [borderCard]="true" [body]="body" [footer]="footer" [Data]="Data"
                   class="rounded-avatar-basic">
           <ng-template #header>
             <div class="text-center">
@@ -447,7 +447,7 @@
       </div>
       <div class="col-4">
         <h6 class="mb-3">Card - With Avatar</h6>
-        <rds-card [header]="header" [body]="body" [Data]="Data" [customTopBottom]="false" [custClass]="true" [borderCard]="true" [footer]="footer" width="30%" class="rounded-avatar-left">
+        <rds-card [header]="header" [body]="body" [Data]="Data"  [custClass]="true" [borderCard]="true" [footer]="footer" width="30%" class="rounded-avatar-left">
           <ng-template #header>
             <div class="banner-image1">
               <img class="img-responsive" src="https://picsum.photos/seed/picsum/1200/600" />
@@ -465,7 +465,7 @@
       </div>
       <div class="col-4">
         <h6 class="mb-3">{{"Card - With Avatar center"|translate}}</h6>
-        <rds-card [header]="header" [body]="body" [Data]="Data" [customTopBottom]="false" [custClass]="true" [borderCard]="true" [footer]="footer" width="28%"
+        <rds-card [header]="header" [body]="body" [Data]="Data"  [custClass]="true" [borderCard]="true" [footer]="footer" width="28%"
                   class="rounded-avatar-center">
           <ng-template #header>
             <div class="banner-image1">
@@ -608,7 +608,7 @@
         </rds-datepicker>-->
       </div>
       <div class="col-6">
-        <h6 class="mb-4">{{"Date Picker - Advanced"|translate}}</h6>
+        <h6 class="mb-1 ms-3">{{"Date Picker - Advanced"|translate}}</h6>
         <rds-datepicker datePickerType="advanced" Label="Date Range"></rds-datepicker>       
       </div>
 

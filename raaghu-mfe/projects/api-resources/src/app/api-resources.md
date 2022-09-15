@@ -1,7 +1,7 @@
 ---
-slug: "/alert"
+slug: "/api-resources"
 date: "2019-05-04"
-title: "alert"
+title: "api-resources"
 ---
 
 <!-- CSS only -->
@@ -10,4 +10,4 @@ title: "alert"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 
-#### alert
+#### Api Resource 

@@ -1,7 +1,7 @@
 ---
-slug: "/App-Details"
+slug: "/app-details"
 date: "2019-05-04"
-title: "App-Details"
+title: "app-details"
 ---
 
 ### App-Details

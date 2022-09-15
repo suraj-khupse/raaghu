@@ -4,6 +4,7 @@ import { RdsButtonModule, RdsCardModule, RdsCheckboxModule, RdsDatepickerModule,
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsUserDelegationsComponent } from './rds-comp-user-delegations.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { props } from '@ngrx/store';
 
 export default {
   title: 'Components/User Delegations',
@@ -20,6 +21,21 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsUserDelegationsComponent> = (args: RdsUserDelegationsComponent) => ({});
+const Template: Story<RdsUserDelegationsComponent> = (args: RdsUserDelegationsComponent) => ({
+  props: {
+    ...args
+  }
+});
 
 export const basic = Template.bind({});
+basic.args = {
+    userlist: [],
+    rdsDeligateTableHeader: [],
+    rdsDeligateTableData: [],
+    tabClosed: false,
+    recordsPerpage: 10,
+    pagination: false,
+    tableWidth: '',
+    buttonSpinner: true,
+    tableStyle: ''
+}

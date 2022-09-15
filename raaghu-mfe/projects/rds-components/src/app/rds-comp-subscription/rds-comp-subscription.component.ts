@@ -44,8 +44,8 @@ export class RdsCompSubscriptionComponent implements OnInit {
   subscriptionData: SubscriptionItem[]=[{
     name: "test",
     price: "23",
-    duration: "2",
-    iconurl:"assets/Group.jpg",
+    duration: "2 Days",
+    iconurl:"standard_subscription",
     recommended:false,
     features:["Maximum User Count","Test Check feature","Test check feature count 2"]
   }];

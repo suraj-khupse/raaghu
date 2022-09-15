@@ -30,6 +30,10 @@ const Template: Story<RdsCompDeliveryMethodComponent> = (args: RdsCompDeliveryMe
 export const Template1 = Template.bind({});
 
 Template1.args = {
-    
+    sizeDataWithDescription : [
+        {type: 'Standard', days:"4-10 buisness days", cost:"$5.00"},
+        {type: 'Express', days:"2-5 buisness days", cost:"$16.00"}, 
+        {type: 'Free', days:"10-12 buisness days", cost:"$0.00"}
+    ]
 }
 

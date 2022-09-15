@@ -27,7 +27,7 @@ module.exports = {
       },
     },
     {
-      //access Components Markdown file
+      //access Elements Markdown file
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown`,
@@ -43,6 +43,14 @@ module.exports = {
       },
     },
     {
+      //access Pages Markdown file
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown`,
+        path: `../projects`,
+      },
+    },    
+    {
       //access Pages
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -50,15 +58,23 @@ module.exports = {
         path: `../projects`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-json`,
     {
+      //access pages Markdown file
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/assets/data`,
-        name: `json`
+        name: `markdown`,
+        path: `../projects`,
       },
     },
+    `gatsby-transformer-sharp`,
+    // `gatsby-transformer-json`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/src/assets/data`,
+    //     name: `json`
+    //   },
+    // },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -89,13 +105,13 @@ module.exports = {
         excludePattern: /(excluded-link|external)/,
       },
     },
-    `gatsby-plugin-mdx`,
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.mdx`, `.md`],
-      },
-    },
+    // `gatsby-plugin-mdx`,
+    // {
+    //   resolve: `gatsby-plugin-mdx`,
+    //   options: {
+    //     extensions: [`.mdx`, `.md`],
+    //   },
+    // },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

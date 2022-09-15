@@ -30,3 +30,7 @@ const Template: Story<RdsCompsUserClaimsComponent> = (args: RdsCompsUserClaimsCo
 });
 
 export const Default = Template.bind({});
+
+Default.args={
+  userData: [],
+}

@@ -19,6 +19,18 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsNotificationComponent> = (args: RdsNotificationComponent) => ({});
+const Template: Story<RdsNotificationComponent> = (args: RdsNotificationComponent) => ({
+  props: {
+    ...args
+  }
+});
 
 export const basic = Template.bind({});
+basic.args={
+  unreadCount:'',
+  notifications:'',
+  backgroundColor:'',
+  borderRadious:'',
+  Paddig:'',
+  width:''
+}

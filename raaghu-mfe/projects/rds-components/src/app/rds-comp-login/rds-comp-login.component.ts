@@ -42,6 +42,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   @Input() switchTenant: boolean = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   @Input() buttonSpinner: boolean = true;
+  @Input() buttonSpinnerForChangeTenant: boolean = true;
   constructor(private formBuilder: FormBuilder, public translate: TranslateService) {
   }
 

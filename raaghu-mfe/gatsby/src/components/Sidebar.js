@@ -23,13 +23,32 @@ const Sidebar = () => {
     }
   `);
 
-  const elementsList = JSON.parse(JSON.stringify(data.allDirectory.nodes));
 
-  // console.log(elementsList);
+  const elementsList = JSON.parse(JSON.stringify(data.allDirectory.nodes)); 
+  
+  // const componentsExcludesList = ['-shimmer',"nents"];
 
-  const componentsList = elementsList.filter((item) =>
-    item.name.includes("rds-comp")
-  );
+  // const componentsList = elementsList.filter((item) =>
+  //   item.name.includes("rds-comp")
+  // );
+
+  const componentsList = [];
+  const componentsExcludesList = ["-shimmer", "nents"];
+  elementsList.forEach((item) => {
+    if (
+      item.name.includes("rds-comp") &&
+      !componentsExcludesList.some((element) => item.name.includes(element))
+    ) {
+      const _item = {
+        name: item.name,
+        url: item.name.substring(9),
+        displayName: item.name.substring(9).replace(/-/g, " "),
+      };
+      componentsList.push(_item);
+    }
+  });
+
+  // var componentName=JSON.parse(JSON.stringify(componentsList).replace(/-/g,' '));
 
   componentsList.sort((a, b) => {
     let fa = a.name.toLowerCase(),
@@ -43,12 +62,30 @@ const Sidebar = () => {
     return 0;
   });
 
-  const rdsElementList = elementsList.filter(
-    (item) =>
-      item.name.includes("rds-") && !componentsList.find((x) => x === item)
-  );
+  // const rdsElementList = elementsList.filter(
+  //   (item) =>
+  //     item.name.includes("rds-") && !componentsList.find((x) => x === item)
+  // );
 
-  elementsList.sort((a, b) => {
+  // var elementName=JSON.parse(JSON.stringify(rdsElementList).replace(/-/g,' '));
+  var elementsLists = [];
+
+  elementsList.forEach((item) => {
+    if (
+      item.name.includes("rds-") &&
+      !componentsExcludesList.some((element) => item.name.includes(element)) &&
+      !componentsList.find((x) => x.name === item.name)
+    ) {
+      const _item = {
+        name: item.name,
+        url: item.name.substring(4),
+        displayName: item.name.substring(4).replace(/-/g, " "),
+      };
+      elementsLists.push(_item);
+    }
+  });
+
+  elementsLists.sort((a, b) => {
     let fa = a.name.toLowerCase(),
       fb = b.name.toLowerCase();
     if (fa < fb) {
@@ -60,9 +97,9 @@ const Sidebar = () => {
     return 0;
   });
 
-
+  const pageLists = [];
   // find out pages names.
-  const excludes = [
+  const pageexcludesList = [
     "rds-",
     "src",
     "lib",
@@ -85,16 +122,82 @@ const Sidebar = () => {
     "sidenav",
     "selected-product",
     "ele-preview",
-   "webhooks-subscription-shimmer",
-   "cookieconsent"
+    "shimmer",
+    "cookieconsent",
+    "ele-preview",
+    "webhooks-subscription-shimmer",
+    "cookieconsent",
+    "utils",
+    "util",
+    "-shimmer",
+    "rdc-comp-api-scope-basic",
+    "rdc-comp-api-scope-resource",
+    "test",
+    "testing",
+    "mla",
+    "date-fns",
+    "day",
+    "model",
+    "moment",
+    "ng-add",
+    "themes",
+    "event",
+    "home",
+    "date-adapters",
+    "date-adapter",
+    "basicresource",
+    "common",
+    "host",
+    "modules",
+    "month",
+    "i18n",
+    "service",
+    "DownloadData",
+    "product-list",
+    "products",
+    "api-claims",
+    "api-properties",
+    "api-basics",
+    "api-secrets",
+    "authority-delegations",
+    "claim-types",
+    "claims",
+    "edit-language-text",
+    "language-storybook",
+    "login-attempts",
+    "manage-linked-accounts",
+    "modal",
+    "my-settings",
+    "schematics",
+    "visual-settings",
   ];
-  const pageList = elementsList.filter(
-    (item, index, self) =>
-      !excludes.some((element) => item.name.includes(element)) &&
+  elementsList.forEach((item, index, self) => {
+    if (
+      !pageexcludesList.some((element) => item.name.includes(element)) &&
       index === self.findIndex((t) => t.name === item.name)
-  );
+    ) {
+      const _item = {
+        name: item.name,
+        url: item.name,
+        displayName: item.name.replace(/-/g, " "),
+      };
+      pageLists.push(_item);
+    }
+  });
 
-  pageList.sort((a, b) => {
+  // elementsList.forEach((item) => {
+  //   if( (item, index, self) => !pageexcludesList.some((element) => item.name.includes(element)) && index === self.findIndex((t) => t.name === item.name)){
+  //     const _item={
+  //       name:item.name,
+  //       url :item.name,
+  //       displayName: item.name.replace(/-/g,' ')
+  //     }
+  //     pageLists.push(_item);
+  //   }
+
+  // });
+
+  pageLists.sort((a, b) => {
     let fa = a.name.toLowerCase(),
       fb = b.name.toLowerCase();
     if (fa < fb) {
@@ -109,7 +212,10 @@ const Sidebar = () => {
   return (
     <div className="h-100 cust-scroll">
       <div className="menu-list p-0 mt-4">
-        <Accordion defaultActiveKey="0" className="accordion accordion-flush px-2">
+        <Accordion
+          defaultActiveKey="0"
+          className="accordion accordion-flush px-2"
+        >
           <Accordion.Item eventKey="0" className="accordion-item">
             <Accordion.Header className="accordion-header">
               <div className="suheading pb-2 align-middle">
@@ -126,11 +232,9 @@ const Sidebar = () => {
             <Accordion.Body>
               <div className="mb-4">
                 <ul className="">
-                  {rdsElementList.map((node) => (
-                    <li key={node.name}>
-                      <Link href={node.name.substring(4)} >
-                        {node.name.substring(4)}
-                      </Link>
+                  {elementsLists.map((node) => (
+                    <li key={node.url}>
+                      <Link href={node.url}>{node.displayName}</Link>
                     </li>
                   ))}
                 </ul>
@@ -152,10 +256,8 @@ const Sidebar = () => {
             <Accordion.Body>
               <ul className="">
                 {componentsList.map((node) => (
-                  <li key={node.name}>
-                    <Link href={node.name.substring(9)}>
-                      {node.name.substring(9)}
-                    </Link>
+                  <li key={node.url}>
+                    <Link href={node.url}>{node.displayName}</Link>
                   </li>
                 ))}
               </ul>
@@ -175,9 +277,9 @@ const Sidebar = () => {
             </Accordion.Header>
             <Accordion.Body>
               <ul className="">
-                {pageList.map((node) => (
-                  <li key={node.name}>
-                    <Link to={node.name}>{node.name}</Link>
+                {pageLists.map((node) => (
+                  <li key={node.url}>
+                    <Link to={node.url}>{node.displayName}</Link>
                   </li>
                 ))}
               </ul>

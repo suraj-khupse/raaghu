@@ -135,7 +135,7 @@ export class AppComponent implements OnInit {
       ariacontrols: 'payment-history',
     },
     {
-      label: this.translate.instant('Subscription'),
+      label: this.translate.instant('Upgrade Subscription'),
       tablink: '#upgrade-subscription',
       ariacontrols: 'subscription',
     },
@@ -189,7 +189,7 @@ export class AppComponent implements OnInit {
         ariacontrols: 'payment-history',
       },
       {
-        label: this.translate.instant('Subscription'),
+        label: this.translate.instant('Upgrade Subscription'),
         tablink: '#upgrade-subscription',
         ariacontrols: 'subscription',
       },
@@ -200,7 +200,7 @@ export class AppComponent implements OnInit {
         this.translate.use(res);
         this.navtabsItems[0].label=this.translate.instant('Subscription Information');
         this.navtabsItems[0].label=this.translate.instant('Payment History');
-        this.navtabsItems[0].label=this.translate.instant('Subscription');
+        this.navtabsItems[0].label=this.translate.instant('Subscription Information');
       }
     })
     this.rdsDataTableForPaymentHistoryMfeConfig = {
@@ -303,7 +303,7 @@ export class AppComponent implements OnInit {
 getNavTabItems():any{
   this.navtabsItems[0].label=this.translate.instant('Subscription Information');
   this.navtabsItems[0].label=this.translate.instant('Payment History');
-  this.navtabsItems[0].label=this.translate.instant('Subscription');
+  this.navtabsItems[0].label=this.translate.instant('Subscription Information');
   return this.navtabsItems;
 }
 

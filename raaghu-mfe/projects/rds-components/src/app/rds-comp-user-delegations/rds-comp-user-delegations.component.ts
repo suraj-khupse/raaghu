@@ -21,7 +21,7 @@ export class RdsUserDelegationsComponent implements OnInit, OnChanges, OnDestroy
   @Input() pagination: boolean = false;
   @Input() tableWidth: string = '100%';
   @Input() buttonSpinner :boolean =true;
-  @Input() tableStyle: string = 'Light';
+  @Input() tableStyle: string = 'Light'; 
   username: any = '';
   startDate: Date = new Date();
   endDate: Date = new Date();
@@ -69,7 +69,7 @@ export class RdsUserDelegationsComponent implements OnInit, OnChanges, OnDestroy
 
   }
   onCancel(): void {
-    this.onCancelDeligate.emit(true);
+    //this.onCancelDeligate.emit(true);
     this.buttonSpinner=false;
     this.deligateDivFlag = false;
     // this.onCancelDeligate.emit(true);

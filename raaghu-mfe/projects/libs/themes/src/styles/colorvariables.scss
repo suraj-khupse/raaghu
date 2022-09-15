@@ -3,10 +3,10 @@
 @import "./node_modules/bootstrap/scss/mixins";
 @import "./node_modules/bootstrap/scss/_utilities";
 
+
 html {
   $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark ) !default;
   $min-contrast-ratio: 4.5 !default;
-
   $input-focus-border-color: tint-color($primary, 50%) !default;
   $input-bg: $body-bg !default;
 
@@ -623,7 +623,20 @@ html {
           width: 22px;
           height: 22px;
           fill: none;
-          stroke: currentColor;
+          stroke: $gray-700;
+
+          polyline.icon {
+            stroke: $gray-700;
+          }
+
+          polygon.icon {
+            stroke: $gray-700;
+          }
+
+
+          ellipse.icon {
+            stroke: $gray-700;
+          }
 
           path.icon {
             stroke: $gray-700;
@@ -648,7 +661,19 @@ html {
           width: 22px;
           height: 22px;
           fill: none;
-          stroke: currentColor;
+          stroke: $primary;
+
+          polyline.icon {
+            stroke: $primary;
+          }
+
+          polygon.icon {
+            stroke: $primary;
+          }
+
+          ellipse.icon {
+            stroke: $primary;
+          }
 
           path.icon {
             stroke: $primary;
@@ -735,7 +760,19 @@ html {
             width: 22px;
             height: 22px;
             fill: none;
-            stroke: currentColor;
+            stroke: $gray-700;
+
+            polyline.icon {
+              stroke: $gray-700;
+            }
+
+            polygon.icon {
+              stroke: $gray-700;
+            }
+
+            ellipse.icon {
+              stroke: $gray-700;
+            }
 
             path.icon {
               stroke: $gray-700;
@@ -766,7 +803,19 @@ html {
             width: 22px;
             height: 22px;
             fill: none;
-            stroke: currentColor;
+            stroke: $primary;
+
+            polyline.icon {
+              stroke: $primary;
+            }
+
+            polygon.icon {
+              stroke: $primary;
+            }
+
+            ellipse.icon {
+              stroke: $primary;
+            }
 
             path.icon {
               stroke: $primary;
@@ -1023,7 +1072,19 @@ html {
         width: 22px;
         height: 22px;
         fill: none;
-        stroke: currentColor;
+        stroke: $color;
+
+        polygon.icon {
+          stroke: $color;
+        }
+
+        polyline.icon {
+          stroke: $color;
+        }
+
+        ellipse.icon {
+          stroke: $color;
+        }
 
         path.icon {
           stroke: $color;
@@ -1057,7 +1118,19 @@ html {
         width: 22px;
         height: 22px;
         fill: none;
-        stroke: currentColor;
+        stroke: $color;
+
+        polygon.icon {
+          stroke: $color;
+        }
+
+        polyline.icon {
+          stroke: $color;
+        }
+
+        ellipse.icon {
+          stroke: $color;
+        }
 
         path.icon {
           stroke: $color;
@@ -1096,7 +1169,19 @@ html {
         width: 22px;
         height: 22px;
         fill: none;
-        stroke: currentColor;
+        stroke: $alert-color;
+
+        polyline.icon {
+          stroke: $alert-color;
+        }
+
+        polygon.icon {
+          stroke: $alert-color;
+        }
+
+        ellipse.icon {
+          stroke: $alert-color;
+        }
 
         path.icon {
           stroke: $alert-color;
@@ -1172,7 +1257,19 @@ html {
         width: 22px;
         height: 22px;
         fill: none;
-        stroke: currentColor;
+        stroke: $icon-color;
+
+        polyline.icon {
+          stroke: $icon-color;
+        }
+
+        polygon.icon {
+          stroke: $icon-color;
+        }
+
+        ellipse.icon {
+          stroke: $icon-color;
+        }
 
         path.icon {
           stroke: $icon-color;
@@ -1865,7 +1962,19 @@ html[theme=dark] {
       .nav-link {
         svg {
           fill: none;
-          stroke: currentColor;
+          stroke: $gray-700;
+
+          polyline.icon {
+            stroke: $gray-700;
+          }
+
+          polygon.icon {
+            stroke: $gray-700;
+          }
+
+          ellipse.icon {
+            stroke: $gray-700;
+          }
 
           path.icon {
             stroke: $gray-700;
@@ -1891,7 +2000,19 @@ html[theme=dark] {
 
         svg {
           fill: none;
-          stroke: currentColor;
+          stroke: $primary;
+
+          polyline.icon {
+            stroke: $primary;
+          }
+
+          polygon.icon {
+            stroke: $primary;
+          }
+
+          ellipse.icon {
+            stroke: $primary;
+          }
 
           path.icon {
             stroke: $primary;
@@ -1996,7 +2117,19 @@ html[theme=dark] {
 
           svg {
             fill: none;
-            stroke: currentColor;
+            stroke: $gray-700;
+
+            polyline.icon {
+              stroke: $gray-700;
+            }
+
+            polygon.icon {
+              stroke: $gray-700;
+            }
+
+            ellipse.icon {
+              stroke: $gray-700;
+            }
 
             path.icon {
               stroke: $gray-700;
@@ -2030,9 +2163,17 @@ html[theme=dark] {
 
           svg {
             fill: none;
-            stroke: currentColor;
+            stroke: $primary;
 
-            * {
+            polyline.icon {
+              stroke: $primary;
+            }
+
+            polygon.icon {
+              stroke: $primary;
+            }
+
+            ellipse.icon {
               stroke: $primary;
             }
 
@@ -2323,7 +2464,19 @@ html[theme=dark] {
 
       svg {
         fill: none;
-        stroke: currentColor;
+        stroke: $color;
+
+        polyline.icon {
+          stroke: $color;
+        }
+
+        polygon.icon {
+          stroke: $color;
+        }
+
+        ellipse.icon {
+          stroke: $color;
+        }
 
         path.icon {
           stroke: $color;
@@ -2360,7 +2513,19 @@ html[theme=dark] {
     .alert {
       svg {
         fill: none;
-        stroke: currentColor;
+        stroke: $alert-color;
+
+        polyline.icon {
+          stroke: $alert-color;
+        }
+
+        polygon.icon {
+          stroke: $alert-color;
+        }
+
+        ellipse.icon {
+          stroke: $alert-color;
+        }
 
         path.icon {
           stroke: $alert-color;

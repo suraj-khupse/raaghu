@@ -9,25 +9,24 @@
                        [LabelType]="'Top'"
                        #entityname = "ngModel"
                        [(ngModel)]="dynamicEntityData.entityFullName"
-                       [labelText]="translate.instant('Entity')"
-                       [placeholderText]="translate.instant('Select Entity')" required [itemList]="entityNames">
+                       [labelText]="translate.instant(' Entity')"
+                       [LabelType]="'Top'"
+                       
+                  
+                       [placeholderText]="translate.instant('Select Entity')" [isRequired]=true required [itemList]="entityNames">
       </rds-select-list>
       <div class="form-control-feedback" *ngIf="entityname.errors&&(entityname.dirty||entityname.touched)">
         <span class="text-danger" *ngIf="entityname.errors.required">{{'Entity Name is required'| translate}}</span>
       </div>
     </div>
-    <div class="form-group mb-3 border rounded">
-      <!-- <rds-select-list [(ngModel)]="dynamicEntityData.PropertyID"
-                       [value]="dynamicEntityData.PropertyID"
-                       ngDefaultControl
-                       name="Property"
-                       [Label]="translate.instant('Parameter')"
-                       [placeholderText]="translate.instant('Select Property')" required [itemList]="parameterList">
-  
-      </rds-select-list> -->
-
-      <rds-dropdownlist class="text-dark" [resetFormSubject]="resetFormSubject" size="small" [reset]="resetDropdown" [resetPlaceholder]="placeholderReset" [placeholder]="Placeholder" [value]=" " required [multiSelect]="true" 
-        [selectAll]="false" [entity]="true" [listItems]="parameterList" (onSelect)="onPropertySelect($event)"></rds-dropdownlist>
+    <div class="form-group mb-3" *ngIf="isHostLogin">
+      
+      <div class="mb-2 mt-4 pt-2">
+        <rds-label label="Parameter"></rds-label>
+    </div>
+     
+      <rds-dropdownlist [colorVariant]="'btn-outline-light '" [borderDropdown]="true" class="text-dark" [resetFormSubject]="resetFormSubject" size="small" [reset]="resetDropdown" [resetPlaceholder]="placeholderReset" [placeholder]="Placeholder" [value]=" " required [multiSelect]="true" 
+        [selectAll]="false" [entity]="true"  [listItems]="parameterList" (onSelect)="onPropertySelect($event)"></rds-dropdownlist>
       
     </div>
   </div>

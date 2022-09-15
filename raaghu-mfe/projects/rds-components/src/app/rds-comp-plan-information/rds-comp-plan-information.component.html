@@ -1,7 +1,14 @@
  <div class="p-3">
   <div class="d-flex">
     <div class="col-md-1">
-      <rds-icon name="subscription_premium"></rds-icon>
+      <rds-icon
+      [disabled]="false"
+      [fill]="false"
+      [stroke]="true"
+      name="subscription_premium"
+      colorVariant=""
+      opacity=""
+    ></rds-icon>
     </div>
     <div class="col-md-1 ms-4 mt-4">
       <!-- <strong>{{"Edition"|translate}}</strong> -->
@@ -37,11 +44,17 @@
   </div>
 
   <div class="row mt-3">
+    <rds-label
+  label="What's included in your plan"
+  [multiline]="false"
+  [bold]="true"
+  [italic]="false"
+></rds-label>
     <div class="col-12"  *ngFor="let item of EditionData.featureValues">
-      <span>{{"What's included in your plan"|translate}}</span>
-      <ul class="p-0">
+      
+      <ul class="p-0 mb-0">
         <li class="list-group-item border-0 p-1">
-          <rds-icon name="subscription_tickmark2" class="text-success"></rds-icon>
+          <rds-icon name="tick_circle"  height="15px"  width="15px" class="text-success"></rds-icon>
           {{item}}
         </li>
        </ul>
@@ -56,7 +69,7 @@
 
 <div class="row g-0 py-2">
    <div class="col-md-4">
-      <rds-button class="d-grid" [outlineButton]="false" [label]="translate.instant('Upgrade')" type="button" [size]="'medium'"
+      <rds-button class="d-grid" [outlineButton]="false" [label]="translate.instant('Upgrade')" type="button" [size]="'small'"
                   [colorVariant]="'primary'" [block]="false">
       </rds-button>
     </div>

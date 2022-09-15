@@ -25,10 +25,17 @@ export default {
 } as Meta;
 
 const Template: Story<RdsCompUserTableComponent> = (args: RdsCompUserTableComponent) => ({
-    // props: {
-    //     ...args
-    // }
+    props: {
+        ...args
+    }
 });
 
 export const basic = Template.bind({});
-
+basic.args ={
+  userTableHeader: [],
+  userTableData: [],
+  recordsPerpage: 10,
+  tableStyle: '',
+  listuser: [],
+  listcountrycode: []
+}

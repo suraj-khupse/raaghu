@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
   @Input() RoleTableHeader: TableHeader[] = [
     { displayName: 'Role Name', key: 'rolename', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
 
-    { displayName: 'Creation Time', key: 'creationTime', dataType: 'text', dataLength: 30, required: true, sortable: true }
+    { displayName: ' Creation Date & Time', key: 'creationTime', dataType: 'text', dataLength: 30, required: true, sortable: true }
   ]
   @Output() deleteRole = new EventEmitter<{ item: any }>();
   RoleDatatable: any = []

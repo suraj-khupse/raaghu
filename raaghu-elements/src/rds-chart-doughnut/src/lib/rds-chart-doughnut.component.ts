@@ -86,14 +86,14 @@ export class RdsChartDoughnutComponent implements OnInit {
         beforeDraw(chart, args, options) {
           const { ctx, chartArea: { top, right, bottom, left, width, height } } = chart;
           ctx.save();
-          ctx.font = '600 1.2rem Poppins';
+          ctx.font = '600 1.6rem Poppins';
           ctx.textAlign = 'center';
-          ctx.fillText(title, width / 2, top + (height / 2.1));
+          ctx.fillText(title, width / 2, top + (height / 2.0));
           ctx.restore();
 
-          ctx.font = '400 0.7rem Poppins';
+          ctx.font = '400 0.8rem Poppins';
           ctx.textAlign = 'center';
-          ctx.fillText(subTitle, width / 2, (height / 0.85) / 2.1 + top);
+          ctx.fillText(subTitle, width / 2, (height / 0.85) / 2.0 + top);
           ctx.restore();
         }
       };

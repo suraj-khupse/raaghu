@@ -3,6 +3,8 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsAvatarModule, RdsButtonModule, RdsCardModule, RdsDropdownModule, RdsInputModule, RdsNavTabModule, RdsPaginationModule } from '@libs/rds-elements';
 import { RdsCompSubscriptionComponent } from './rds-comp-subscription.component';
 import { NgxTranslateModule } from '@libs/shared';
+import { RdsIconModule } from '@libs/rds-icon';
+
 
 export default {
   title: 'Components/Subscription',
@@ -10,7 +12,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsCardModule, NgxTranslateModule
+        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsCardModule, NgxTranslateModule, RdsIconModule
       ],
       providers: [
         FormBuilder

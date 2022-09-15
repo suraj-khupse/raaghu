@@ -25,7 +25,7 @@
           <div class="d-flex py-2 px-3">
             <div class="px-3 d-flex ps-0">
               <rds-icon class="notificatioInfo" [colorVariant]="getColor(notification,true)"
-                [name]="getIcon(notification)" width="15px" height="15px"></rds-icon>
+                [name]="getIcon(notification)" width="22px" height="22px"></rds-icon>
             </div>
             <div class="text-start ps-0 w-100">
               <div class="fs-6" [class.fw-semibold]="notification.state==0" [class]="getColor(notification)">{{
@@ -38,10 +38,9 @@
                   <small class="text-muted">{{ notification.time }}</small>
                 </div>
                 <div class="col-md-6 text-end" *ngIf="notification.state==0">
-                  <small class="text-muted" (click)="setAsRead(notification); $event.stopPropagation()">
-                    <rds-icon name="circle" width="4px" [fill]="true" height="5px"></rds-icon> {{"Set as
-                    read"|translate}}
-                  </small>
+                  <span class="text-muted" (click)="setAsRead(notification); $event.stopPropagation()">
+                    <small> {{"Set as read"|translate}}  </small>
+                  </span>
                 </div>
               </div>
             </div>
@@ -59,7 +58,7 @@
 
   <div footer *ngIf="checkUnreadMessage()">
     <rds-button class="m-2 float-end" [tooltipPlacement]="'bottom'" [tooltipTitle]="translate.instant('Mark As Read')"
-      [label]="translate.instant('Mark As Read')" type="button" [size]="'medium'" [colorVariant]="'primary'"
+      [label]="translate.instant('Mark As Read')" type="button" [size]="'small'" [colorVariant]="'primary'"
       [outlineButton]="false" (click)="setAllReadOutput.emit(true)"></rds-button>
   </div>
 </rds-card>

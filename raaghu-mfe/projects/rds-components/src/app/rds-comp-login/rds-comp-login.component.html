@@ -93,7 +93,7 @@
     </rds-button>
     <rds-button class="mr-1" [id]="'yes'" [disabled]="switchTenant&&!TenantNameData" [size]="'medium'"
       (click)="ChangeTenant(tenantForm)" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-      [label]="translate.instant('Switch to the tenant')" [showLoadingSpinner]="buttonSpinner">
+      [label]="translate.instant('Switch to the tenant')" [showLoadingSpinner]="buttonSpinnerForChangeTenant">
     </rds-button>
   </div>
 </rds-modal>

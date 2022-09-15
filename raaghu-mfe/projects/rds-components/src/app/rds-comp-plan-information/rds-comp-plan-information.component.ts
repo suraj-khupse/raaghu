@@ -33,7 +33,7 @@ export class RdsCompPlanInformationComponent implements OnInit {
       if (res && res.SubscriptionInformation && res.SubscriptionInformation.tenant && res.SubscriptionInformation.tenant.edition) {
         let features = [];
         const editionDisplayName: string = res.SubscriptionInformation.tenant.edition.displayName;
-        if (editionDisplayName == 'Basic') {
+        if (editionDisplayName == 'new edition') {
           features = ["Maximum User Count", "Test Check feature", "Test check feature count 1"];
         } else if (editionDisplayName == 'Standard') {
           features = ["Maximum User Count", "Test Check feature", "Test check feature count 2"];

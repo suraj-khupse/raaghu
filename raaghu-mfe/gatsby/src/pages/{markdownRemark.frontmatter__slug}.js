@@ -79,17 +79,18 @@ console.log(markdownRemark);
                   <nav aria-label="breadcrumb" className="px-3">
                     <ol className="breadcrumb">
                       <li className="breadcrumb-item">
-                        <a href="/" className="link">
-                          {" "}
-                          Elements{" "}
-                        </a>
+                         <a href="/" className="link">
+                           {" "}
+                          {frontmatter.title.split('>')[0]}{" "}
+                        </a> 
+                       
                       </li>
                       <li
                         className="breadcrumb-item active"
                         aria-current="page"
                       >
                         {" "}
-                        {frontmatter.title}{" "}
+                        {frontmatter.title.split('>')[1]}{" "}
                       </li>
                     </ol>
                   </nav>

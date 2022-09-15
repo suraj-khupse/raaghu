@@ -48,5 +48,6 @@ jobs:
     - name: build gatsby
       working-directory: ./raaghu-mfe/gatsby      
       run: |
+        npm cache clean
         npm run build
     

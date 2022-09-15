@@ -18,14 +18,12 @@ import { Subject } from 'rxjs';
   templateUrl: './rds-comp-new-dynamic-entity-property.component.html',
   styleUrls: ['./rds-comp-new-dynamic-entity-property.component.scss'],
 })
-export class RdsCompNewDynamicEntityPropertyComponent
-  implements OnInit, OnChanges
-{
+export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChanges {
   entityFullName: string = '';
-  Placeholder : string = 'Select Property';
+  Placeholder: string = 'Select Property';
   PropertyID: any = '';
   resetDropdown = false;
-  placeholderReset : string = 'Select Property';
+  placeholderReset: string = 'Select Property';
   @Input() entityNames: any[] = [];
   @Input() reset: boolean = false;
   @Input() parameterList: any[] = [];
@@ -34,21 +32,27 @@ export class RdsCompNewDynamicEntityPropertyComponent
   @ViewChild('dynamicEntityForm') dynamicEntityInfoForm: NgForm;
   resetFormSubject: Subject<boolean> = new Subject<boolean>();
   dynamicEntityDataSelect: any[] = [];
-
-  constructor(public translate:TranslateService) {}
+  isHostLogin: boolean = true;
+  constructor(public translate: TranslateService) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.resetDropdown = this.reset;
     this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
   }
 
   ngOnInit(): void {
+    const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
+    if (tenantInfo !== null && tenantInfo.name) {
+      this.isHostLogin = false;
+    } else {
+      this.isHostLogin = true;
+    }
     this.resetDropdown = this.reset;
     this.Placeholder = "Select Property";
   }
 
   addEntity(dynamicEnityForm) {
     let Data = this.dynamicEntityDataSelect;
-    if(Data.length > 0){
+    if (Data.length > 0) {
       this.createOrUpdateDynamicEntity.emit(Data);
       this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
       this.dynamicEntityDataSelect = [];
@@ -56,28 +60,28 @@ export class RdsCompNewDynamicEntityPropertyComponent
       this.resetDropdownList();
       this.Placeholder = "Select Property";
     }
-    else{
+    else {
       this.dynamicEntityInfoForm.form.markAllAsTouched();
     }
-    
-    
+
+
   }
 
-  onPropertySelect(prop : any) {
-    if(prop  && prop.item){
-      const data : any = {
-        entityFullName : this.dynamicEntityData.entityFullName,
-        PropertyID : prop.item.id
+  onPropertySelect(prop: any) {
+    if (prop && prop.item) {
+      const data: any = {
+        entityFullName: this.dynamicEntityData.entityFullName,
+        PropertyID: prop.item.id
       }
-      if(prop.item.isSelected) {
+      if (prop.item.isSelected) {
         this.dynamicEntityDataSelect.push(data);
       }
-      else{
-        this.dynamicEntityDataSelect.forEach((element,index)=>{
-          if(JSON.stringify(element)==JSON.stringify(data)){
+      else {
+        this.dynamicEntityDataSelect.forEach((element, index) => {
+          if (JSON.stringify(element) == JSON.stringify(data)) {
             this.dynamicEntityDataSelect.splice(index, 1);
-          }  
-       });
+          }
+        });
       }
     }
   }

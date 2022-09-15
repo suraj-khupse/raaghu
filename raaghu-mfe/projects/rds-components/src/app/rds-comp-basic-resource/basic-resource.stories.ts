@@ -32,4 +32,15 @@ const Template: Story<RdsCompBasicResourceComponent> = (args: RdsCompBasicResour
 });
 
 export const Default = Template.bind({});
+Default.args={
+  ResourceData:{
+    Name: '',
+    Displayname: '',
+    Description: '',
+    enables: false,
+    required: false,
+    emphasize: false,
+    showindiscovery: false
+  }
+} 
  
