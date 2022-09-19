@@ -33,8 +33,8 @@ const Template: Story<RdsCollapseComponent> = (args: RdsCollapseComponent) => ({
 
 //});
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   colorVariant: 'primary',
   buttonLabelOne: 'Basic',
   contentSectionOne: 'Content',

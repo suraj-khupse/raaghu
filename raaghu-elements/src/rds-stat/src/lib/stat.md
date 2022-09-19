@@ -1,7 +1,7 @@
 ---
 slug: "/stat"
 date: "2019-05-04"
-title: "stat"
+title: "Elements / Stat"
 ---
 
 <!-- CSS only -->
@@ -30,13 +30,13 @@ title: "stat"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-                                          <div class="row">
-                                            <div class="col-md-12">
-                                            <img src="/images/stats-basic.png" class=" img-fluid w-100">
-                                            </div>
-                                          </div>
-                                    </div>
+         <div class="contents p-5">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/images/stats-basic.png" class=" img-fluid w-100">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">
@@ -68,13 +68,13 @@ title: "stat"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-                                          <div class="row">
-                                            <div class="col-md-12">
-                                            <img src="/images/stats-advanced.png" class="w-25">
-                                            </div>
-                                          </div>
-                                    </div>
+         <div class="contents p-5">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/images/stats-advanced.png" class="img-fluid w-25">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">

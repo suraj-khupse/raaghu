@@ -18,8 +18,8 @@ const Template: Story<RdsChartScatterComponent> = (args: RdsChartScatterComponen
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   ChartDataSets: [
     {
       type: 'scatter',

@@ -88,8 +88,8 @@ const Template: Story<LanguageComponent> = (args: LanguageComponent) => ({
 </ng-container>`
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   languageTableHeader: [
     { displayName: 'Language Name', key: 'languagename', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
     { displayName: 'Code', key: 'countryCode', dataType: 'text', dataLength: 30, required: true, sortable: true },

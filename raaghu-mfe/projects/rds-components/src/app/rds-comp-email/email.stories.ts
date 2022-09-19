@@ -28,8 +28,8 @@ const Template: Story<RdsCompEmailComponent> = (args: RdsCompEmailComponent) => 
   }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   EmailData: {
     useSSL: false,
     useDefaultCredentials: true,

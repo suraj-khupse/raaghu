@@ -16,5 +16,5 @@ const Template: Story<RdsDoubleRangeComponent> = (args: RdsDoubleRangeComponent)
   props: args,
 
 });
-export const Basic = Template.bind({})
-Basic.args = {}
+export const Default = Template.bind({})
+Default.args = {}

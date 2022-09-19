@@ -18,9 +18,9 @@ const Template: Story<RdsRangeComponent> = (args: RdsRangeComponent) => ({
     props: args,
 });
 
-export const basic = Template.bind({})
+export const Default = Template.bind({})
 
-basic.args = {
+Default.args = {
     min: 500,
     max: 1000,
     // disabled: false,

@@ -46,10 +46,10 @@ const Template: Story<CartApp> = (args: CartApp) => ({
   </div>`
   });
 
-  export const Basic = Template.bind({ });
+  export const Default = Template.bind({ });
 
 
-  Basic.args = {
+  Default.args = {
     itemList:[
       {
         id: 1,

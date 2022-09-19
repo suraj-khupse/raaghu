@@ -30,8 +30,8 @@ const Template: Story<RdsCounterComponent> = (args: RdsCounterComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   
   label: '',
   colorVariant: 'primary',

@@ -42,8 +42,10 @@
            </div>
           <div class="col-md-1  m-auto pt-3 px-0">
            
-            <rds-icon name="refresh" width="20px" height="20px" class=" btn btn-primary btn-md btn-icon"  (click)="Search(loginAttempt)" text-primary></rds-icon>
-        
+            <!-- <rds-icon name="refresh" icon="refresh" [iconWidth]="18" [iconHeight]="18" class=" btn btn-primary btn-md btn-icon"  (click)="Search(loginAttempt)" text-primary></rds-icon> -->
+            <rds-button type="button" [roundedButton]="false"
+            icon="refresh" iconHeight="16px" iconWidth="16px" (click)="Search(loginAttempt)" class="me-2 btn btn-primary btn-md btn-icon text-primary">
+           </rds-button>
           </div>
           <div  iv class="form-control-feedback"
           *ngIf="result_name.errors && (result_name.dirty || result_name.touched)">

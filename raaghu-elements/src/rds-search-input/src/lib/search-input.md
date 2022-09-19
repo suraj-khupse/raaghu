@@ -1,7 +1,7 @@
 ---
 slug: "/search-input"
 date: "2019-05-04"
-title: "search-input"
+title: "Elements / Search-input"
 ---
 
 <!-- CSS only -->
@@ -15,7 +15,7 @@ title: "search-input"
 
 <!-- Default State -->
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -29,11 +29,11 @@ title: "search-input"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="Preview-tab">
-          <div class="contents bg-white p-5">
-                                          <div class="row">
-                                            <img src="./search-input.png">
-                                          </div>
-                                    </div>
+          <div class="contents p-5">
+            <div class="row">
+              <img src="./search-input.png" class="img-fluid">
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="Angular" role="tabpanel" aria-labelledby="Angular-tab">
           <div class="contents bg-code">

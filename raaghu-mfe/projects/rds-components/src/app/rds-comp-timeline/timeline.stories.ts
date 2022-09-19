@@ -22,9 +22,9 @@ const Template: Story<RdsCompTimelineComponent> = (
   props: args,
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   displayType: 'Basic',
 
   timelinData: [
@@ -60,9 +60,9 @@ basic.args = {
     },
   ],
 };
-export const advance = Template.bind({});
+export const advanced = Template.bind({});
 
-advance.args = {
+advanced.args = {
   displayType: 'Advance',
   recentData: [
     {

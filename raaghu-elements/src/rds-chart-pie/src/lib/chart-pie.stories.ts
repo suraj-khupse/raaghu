@@ -18,8 +18,8 @@ const Template: Story<RdsChartPieComponent> = (args: RdsChartPieComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   ChartDataSets: [
     {
       label: 'Dataset1',

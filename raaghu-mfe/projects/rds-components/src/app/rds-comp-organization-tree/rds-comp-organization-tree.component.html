@@ -18,19 +18,12 @@
       <span #nodeLabel class="mt-1 node-label d-flex ">
         <span class="mr-5" (click)="onClicknode(node)" [class.text-primary]="node.selected">{{ node.data?.displayName
           }}</span>
-        <i *ngIf="mutable === true  && OrganizationTreeType.Normal===true||OrganizationTreeType.IconLabel===true"
-          data-bs-toggle="offcanvas" data-bs-target="#addNestedNodeModal" (addNestedElement)="addNestedNode(node)"
-          [nestGroup]="nodeLabel"
-          class="pl-3 mx-2  nest-icon bi bi-plus-circle-fill text-secondary font-size-lg pointer"></i>
 
-        <i *ngIf="mutable === true && OrganizationTreeType.IconLabel==true||OrganizationTreeType.Normal===true"
-          (click)="getNodeByID(node)" data-bs-toggle="offcanvas" data-bs-target="#EditNodeModal"
-          class="bi bi-pencil mx-2 pointer" [nestGroup]="nodeLabel"></i>
-
-        <i *ngIf="mutable === true && OrganizationTreeType.IconLabel==true||OrganizationTreeType.Normal===true"
-          (click)="deleteConfirmation(node)" class="bi bi-trash mx-2" [nestGroup]="nodeLabel"></i>
-
-      </span>
+          <rds-icon height="15px" [disabled]="false" [fill]="false" [stroke]="true" width="15px" name="plus" colorVariant="" opacity="" *ngIf=" (mutable === true && OrganizationTreeType.Normal === true) || OrganizationTreeType.IconLabel === true " data-bs-toggle="offcanvas" data-bs-target="#addNestedNodeModal" (addNestedElement)="addNestedNode(node)" [nestGroup]="nodeLabel" class="pl-3 mx-2"></rds-icon>
+          <rds-icon height="15px" [disabled]="false" [fill]="false" [stroke]="true" width="15px" name="pencil" colorVariant="" opacity="" *ngIf=" (mutable === true && OrganizationTreeType.IconLabel == true) || OrganizationTreeType.Normal === true " (click)="getNodeByID(node)" data-bs-toggle="offcanvas" data-bs-target="#EditNodeModal" class="mx-2 pointer" [nestGroup]="nodeLabel" ></rds-icon>
+          <rds-icon height="15px" [disabled]="false" [fill]="false" [stroke]="true" width="15px" name="delete" colorVariant="" opacity="" *ngIf=" (mutable === true && OrganizationTreeType.IconLabel == true) || OrganizationTreeType.Normal === true " (click)="deleteConfirmation(node)" class="mx-2" [nestGroup]="nodeLabel" > </rds-icon>
+       
+         </span>
 
     </div>
     <span *ngIf="node.data.displayName" class="node-count text-muted">({{node.children?.length}} Members)</span>
@@ -81,7 +74,18 @@
             [ngClass]="{'is-invalid': ItemsDescription.errors && (ItemsDescription.touched || ItemsDescription.dirty), 'is-valid':ItemsDescription.valid}"></rds-input> 
          
             <small class="text-danger" *ngIf="ItemsDescription.errors?.required">Name is Required</small>        </div>
-         
+        <div class="footer-buttons my-2">
+          <div class="row">
+            <div class="col-md-12">
+              <rds-button  [label]="translate.instant('Cancel')" type="button" [colorVariant]="'outline-primary'" [size]="'small'"
+                data-bs-dismiss="offcanvas">
+              </rds-button>
+              <rds-button [disabled]="!nodeForm.valid"  [label]="translate.instant('Save')" [submit]="true"  type="submit"[size]="'small'" class="px-2"
+                [colorVariant]="'primary'" (click)="pushNode()"   data-bs-target="#addNodeModal" data-bs-dismiss="offcanvas">
+              </rds-button>
+            </div>
+          </div>
+        </div> 
       </form> 
       </div>
     </div>
@@ -106,7 +110,7 @@
     <div class="row mt-2 form-style">
       <div class="col-md-12">
         <div class="col-md-12 pb-2">
-          <rds-input size="default" [Title]="translate.instant('Name')" [TitleType]="'Top'" [disabled]="true"
+          <rds-input size="default" [Title]="translate.instant('Name')" [TitleType]="'Top'" [disabled]="false"
             [readonly]="false" value="" inputType="text"
             [placeholder]="OrganizationTreeLabeles.ChildDescriptionPlaceholder" floatinginputLabel="" [id]="'childnode'"
             [(ngModel)]="ItemDescription" (onBlur)='checkDescriptionValidation()' (keyup)='checkDescriptionValidation()'

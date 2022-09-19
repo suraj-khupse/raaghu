@@ -59,8 +59,8 @@ const Template: Story<RdsTopNavigationComponent> = (args: RdsTopNavigationCompon
   }
 });
 
-export const Basic = Template.bind({});
-Basic.args={
+export const Default = Template.bind({});
+Default.args={
   selectedMenu:'Dashboard',
   backgroundColor:'rgb(245, 245, 250)',
   navtabItems: [

@@ -20,7 +20,7 @@ const Template: Story<RdsVideoPlayerComponent> = (args: RdsVideoPlayerComponent)
   props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
 videoLink:'http://static.videogular.com/assets/videos/videogular.mp4',
 }

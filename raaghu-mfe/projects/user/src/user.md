@@ -1,15 +1,17 @@
 ---
-slug: "/Address-detail"
+slug: "/user"
 date: "2019-05-04"
-title: "Address-detail"
+title: "Pages / user"
 ---
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="../assets/css/style-elements.css">
 
-### Address-Details
+#### User
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
-
-<section class="py-4">
-    <h6>Basic</h6>
+<section class="py-4">                                                                                             
+    <h6>User</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -23,10 +25,11 @@ title: "Address-detail"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-            <img src="/images/popular-pages.png" class="img-thumbnail w-50">
-     </div>
+              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
+              <img src="/images/user.png" class="">
+           </div>
                        
   </div>
         </div>
@@ -35,12 +38,14 @@ title: "Address-detail"
 <div class="row m-0">
 
 ```html
-   <rds-address-detail
-  header="Address Header"
-  addressLine1="Address Line 1"
-  addressLine2="Address Line 2"
-  addressLine3="Address Line 3"
-></rds-address-detail>
+<app-rds-comp-user-permissions
+  [FilterPermissionList]="FilterPermissionList"
+  [userList]="userList"
+  [roles]="roles"
+  [permissionsList]="permissionsList"
+  [userHeaders]="userHeaders"
+  [orgTreeData]="orgTreeData"
+></app-rds-comp-user-permissions>
 ```
 </div>
 </div>
@@ -49,4 +54,4 @@ title: "Address-detail"
       </div>
     </div>
   </section>
-   
+  

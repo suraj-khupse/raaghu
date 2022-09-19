@@ -1,7 +1,7 @@
 ---
 slug: "/chart-pie"
 date: "2019-05-04"
-title: "chart-pie"
+title: "Elements / Chart-pie"
 ---
 
 <!-- CSS only -->
@@ -11,8 +11,9 @@ title: "chart-pie"
 
 #### Pie Chart
 
+
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -26,12 +27,12 @@ title: "chart-pie"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-                                                <div class="col-md-8 col-12">
-                                                     <img src="/images/pie-chart.png" class="img-fluid">
-                                                </div> 
-                                             </div>
+                <div class="col-md-8 col-12">
+                  <img src="/images/pie-chart.png" class="img-fluid">
+                </div> 
+              </div>
            </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">

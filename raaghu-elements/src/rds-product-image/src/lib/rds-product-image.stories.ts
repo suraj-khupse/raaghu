@@ -17,8 +17,8 @@ const Template: Story<RdsProductImageComponent> = (args: RdsProductImageComponen
   props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args ={
+export const Default = Template.bind({})
+Default.args ={
   display_type: 'Basic',
   itemList:[
       "https://www.waiin.com/wp-content/uploads/2021/07/Framework-Expertise_01.png"

@@ -1,7 +1,7 @@
 ---
 slug: "/video-player"
 date: "2019-05-04"
-title: "video-player"
+title: "Elements / Video-player"
 ---
 
 <!-- CSS only -->
@@ -12,8 +12,10 @@ title: "video-player"
 
 #### Video-player
 
+<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+
 <section class="py-4">
-    <h6>Type-3</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,13 +29,13 @@ title: "video-player"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic3" role="tabpanel" aria-labelledby="PreviewBasic3-tab">
-         <div class="contents bg-light p-5">
-                                          <div class="row">
-                                            <div class="col-md-12">
-                                            <img src="/images/website-metric-3.png" class="img-fuild w-25">
-                                            </div>
-                                          </div>
-                                    </div>
+         <div class="contents p-5">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/images/website-metric-3.png" class="img-fuild w-25">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic3" role="tabpanel" aria-labelledby="AngularBasic3-tab">
           <div class="contents bg-code">

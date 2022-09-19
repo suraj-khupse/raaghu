@@ -31,8 +31,8 @@ export const actionsData = {
   onCheck: action("onCheck")
 };
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
  label:'default checkbox',
  checked:false,
  disabled:false,

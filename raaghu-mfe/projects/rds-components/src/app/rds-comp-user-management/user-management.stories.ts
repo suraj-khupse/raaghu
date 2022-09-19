@@ -30,8 +30,8 @@ const Template: Story<RdsCompUserManagementComponent> = (args: RdsCompUserManage
   }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   Usermanagementsettings: [{
     isEmailConfirmationRequiredForLogin: false,
     useCaptchaOnLogin: false,

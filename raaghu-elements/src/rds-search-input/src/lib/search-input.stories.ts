@@ -26,7 +26,7 @@ const Template: Story<RdsSearchInputComponent> = (args: RdsSearchInputComponent)
   props: args,
 });
 
-export const Basic = Template.bind({})
+export const Default = Template.bind({})
 template:
 `<rds-dropdownlist 
 [size]="size"
@@ -36,7 +36,7 @@ size="default"
 [position]="position"
  [value]="value"
 >`
-Basic.args = {
+Default.args = {
 
   placeholder: 'Search',
   size: 'small',

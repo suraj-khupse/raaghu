@@ -1,7 +1,7 @@
 ---
 slug: "/icon"
 date: "2019-05-04"
-title: "icon"
+title: "Elements / Icon"
 ---
 
 <!-- CSS only -->
@@ -14,7 +14,7 @@ title: "icon"
 <p class="checkbox-def">Icon is a graphic symbol that represents some real, fantasy or abstract motive, entity or action.</p>
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,13 +28,13 @@ title: "icon"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="Preview-tab">
-          <div class="contents bg-light p-5">
-                                          <div class="row">
-                                             <div class="col-2">
-                                                   <img src="/images/icon-basic.png" class="img-thumbnail w-50">
-                                             </div>
-                                          </div>
-                                    </div>
+          <div class="contents p-5">
+            <div class="row">
+              <div class="col-2">
+                <img src="/images/icon-basic.png" class="img-fuild ">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="Angular" role="tabpanel" aria-labelledby="Angular-tab">
           <div class="contents bg-light">

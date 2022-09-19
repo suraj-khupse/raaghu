@@ -22,7 +22,19 @@ export default {
 } as Meta;
 
 const Template: Story<RdsCompSubscriptionComponent> = (args: RdsCompSubscriptionComponent) => ({
-    
+    props:{
+      ...args
+    }
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
+Default.args={
+  subscriptionData:[{
+    name: "test",
+    price: "23",
+    duration: "2",
+    iconurl:"assets/Group.jpg",
+    recommended:false,
+    features:["Maximum User Count","Test Check feature","Test check feature count 2"]
+  }]
+}

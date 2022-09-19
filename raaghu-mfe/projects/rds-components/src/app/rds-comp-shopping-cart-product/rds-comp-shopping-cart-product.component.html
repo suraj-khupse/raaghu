@@ -6,15 +6,17 @@
                <tbody>
                   <tr class="mb-5 border-bottom mt-3 pt-3" [ngClass]="{'active': closedata === i}" *ngFor="let item of itemList; index as i ">
                      <td width="120" class=" bg-light align-content-center text-center">
-                        <img [src]="item.image" height="100px" width="100px">
+                        <img [src]="item.image" width="100px">
                      </td>
                      <td class="ps-3">
                         <rds-label class="fw-bold" [label]="item.prodname"></rds-label>
-                        <br>
-                        <rds-label class="text-muted" [label]="item.prdosubname"></rds-label>
-                        <br>
-                        <span class="fw-bolder">${{item.price}}</span>
-                        <div class="mt-5">
+                        <div class="py-1">
+                           <rds-label class="text-muted" [label]="item.prdosubname"></rds-label>
+                        </div>
+                        <div class="py-1">
+                           <span class="fw-bolder">${{item.price}}</span>
+                        </div>
+                        <div class="mt-4">
                            <rds-icon-label [icon]="item.highlights.icon" [label]="item.highlights.label">
                            </rds-icon-label>
                         </div>

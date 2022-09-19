@@ -20,8 +20,8 @@ const Template: Story<RdsChartDoughnutComponent> = (args: RdsChartDoughnutCompon
 
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   ChartDataSets: [
     {
       label: 'Dataset 1',

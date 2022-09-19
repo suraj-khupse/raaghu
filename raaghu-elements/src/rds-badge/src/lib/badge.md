@@ -1,7 +1,7 @@
 ---
 slug: "/badge"
 date: "2019-05-04"
-title: "badge"
+title: "Elements /Badge"
 ---
 
 
@@ -15,6 +15,52 @@ title: "badge"
 <p class="checkbox-def">Use the Badge Component Symbol to draw attention to another interface element or to display a notification.</p>
 
 <!-- Basic Example -->
+<section class="py-4">
+    <h6>Default</h6>
+    <div class="py-3">
+      <div class="cust-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PreviewBasic-tab" data-bs-toggle="tab" data-bs-target="#PreviewBasic" type="button" role="tab" aria-controls="PreviewBasic" aria-selected="true">Preview </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content card border" id="myTabContent">
+        <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
+          <div class="contents  p-5">
+            <div class="row">
+              <div class="col-12">
+        <img src="/images/badge-basic.png" class="img-fluid">
+          </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
+          <div class="contents ">
+<div class="row text-white m-0 p-4">
+
+```html
+<rds-badge
+  color="#16BE36"
+  BackgroundColor="#C5F8CF"
+  size="small"
+  label="new"
+  [pillBadges]="false"
+  [positioned]="false"
+  [iconBadge]="false"
+  (onClick)="onClick($event)"
+></rds-badge>
+```
+
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 <section class="py-4">
     <h6>Badge Button</h6>
     <div class="py-3">
@@ -33,15 +79,8 @@ title: "badge"
           <div class="contents bg-light p-5">
             <div class="row">
               <div class="col-12">
-                                                <span class="badge badge-primary mx-2 mb-2">Primary</span>
-                                                <span class="badge badge-secondary mx-2 mb-2">Secondary</span>
-                                                <span class="badge badge-success mx-2 mb-2">Success</span>
-                                                <span class="badge badge-danger mx-2 mb-2">Danger</span>
-                                                <span class="badge badge-warning mx-2 mb-2">Warning</span>
-                                                <span class="badge badge-info mx-2 mb-2">Info</span>
-                                                <span class="badge bg-light text-dark mx-2 mb-2">Light</span>
-                                                <span class="badge bg-dark mx-2">Dark</span>
-                                             </div>
+                <img src="/images/badge-as-button.png" class="img-fluid">                               
+                  </div>
             </div>
           </div>
         </div>
@@ -90,21 +129,14 @@ title: "badge"
           <div class="contents bg-light p-5">
             <div class="row">
               <div class="col-12">
-                                                <span class="badge badge-primary mx-2 mb-2">Primary</span>
-                                                <span class="badge badge-secondary mx-2 mb-2">Secondary</span>
-                                                <span class="badge badge-success mx-2 mb-2">Success</span>
-                                                <span class="badge badge-danger mx-2 mb-2">Danger</span>
-                                                <span class="badge badge-warning mx-2 mb-2">Warning</span>
-                                                <span class="badge badge-info mx-2 mb-2">Info</span>
-                                                <span class="badge bg-light text-dark mx-2 mb-2">Light</span>
-                                                <span class="badge bg-dark mx-2">Dark</span>
-                                             </div>
+                      <img src="/images/badge-with-icon.png" class="img-fluid">                          
+                </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade show" id="AngularIcon" role="tabpanel" aria-labelledby="AngularIcon-tab">
           <div class="contents bg-light">
-<div class="row bg-dark text-white m-0 p-4">
+<div class="row  text-white m-0 p-4">
 
 ```html
 <button class="position-relative btn btn-ligh">
@@ -159,21 +191,14 @@ title: "badge"
           <div class="contents bg-light p-5">
             <div class="row">
               <div class="col-12">
-                                                <span class="badge badge-primary mx-2 mb-2">Primary</span>
-                                                <span class="badge badge-secondary mx-2 mb-2">Secondary</span>
-                                                <span class="badge badge-success mx-2 mb-2">Success</span>
-                                                <span class="badge badge-danger mx-2 mb-2">Danger</span>
-                                                <span class="badge badge-warning mx-2 mb-2">Warning</span>
-                                                <span class="badge badge-info mx-2 mb-2">Info</span>
-                                                <span class="badge bg-light text-dark mx-2 mb-2">Light</span>
-                                                <span class="badge bg-dark mx-2">Dark</span>
+                  <img src="/images/badge-with-position.png" class="img-fluid">
                                              </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade show" id="AngularPositioned" role="tabpanel" aria-labelledby="AngularPositioned-tab">
           <div class="contents bg-light">
-<div class="row bg-dark text-white m-0 p-4">
+<div class="row  text-white m-0 p-4">
 
 ```html
 <button type="button" class="btn btn-light position-relative">
@@ -198,59 +223,7 @@ title: "badge"
     </div>
   </section>
 
-<section class="py-4">
-    <h6>Basic</h6>
-    <div class="py-3">
-      <div class="cust-tabs">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="PreviewBasic-tab" data-bs-toggle="tab" data-bs-target="#PreviewBasic" type="button" role="tab" aria-controls="PreviewBasic" aria-selected="true">Preview </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
-          </li>
-        </ul>
-      </div>
-      <div class="tab-content card border" id="myTabContent">
-        <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-          <div class="contents bg-light p-5">
-            <div class="row">
-              <div class="col-12">
-                                                <span class="badge badge-primary mx-2 mb-2">Primary</span>
-                                                <span class="badge badge-secondary mx-2 mb-2">Secondary</span>
-                                                <span class="badge badge-success mx-2 mb-2">Success</span>
-                                                <span class="badge badge-danger mx-2 mb-2">Danger</span>
-                                                <span class="badge badge-warning mx-2 mb-2">Warning</span>
-                                                <span class="badge badge-info mx-2 mb-2">Info</span>
-                                                <span class="badge bg-light text-dark mx-2 mb-2">Light</span>
-                                                <span class="badge bg-dark mx-2">Dark</span>
-                                             </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
-          <div class="contents bg-light">
-<div class="row bg-dark text-white m-0 p-4">
 
-```html
-<rds-badge
-  color="#16BE36"
-  BackgroundColor="#C5F8CF"
-  size="small"
-  label="new"
-  [pillBadges]="false"
-  [positioned]="false"
-  [iconBadge]="false"
-  (onClick)="onClick($event)"
-></rds-badge>
-```
-
-</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 <div class="py-4">
 <!-- Skeleton / Specifications -->

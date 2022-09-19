@@ -22,8 +22,8 @@ const Template: Story<RdsStatComponent> = (args: RdsStatComponent) => ({
   props: args,
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   display_type: 'Basic',
     statItems: [
         { title:'SAM SMITH',

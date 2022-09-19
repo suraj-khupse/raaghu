@@ -1,32 +1,17 @@
-
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
     <a href="https://raaghu.io" target="_blank">
         <img src="./raaghu_icon.png" alt="logo" width="125"/>
     </a>
 <p/>
+</p>
 <p>
-<h1 align="center">Raaghu Elements</h4>
-<p/>
+<h1 align="center">raaghu Elements</h1>
+</p>
 
 <p align="center">
 <a href="https://npmjs.org/rds-elements"><img src="https://img.shields.io/npm/v/rds-elements/latest.svg" alt="npm latest version" ></a>
 <a href="https://npmjs.org/rds-elements"><img src="https://img.shields.io/npm/v/rds-elements/next.svg" alt="npm next version" ></a>
 </br>
-<a href="https://github.com/Wai-Technologies/raaghu/blob/main/LICENSE" target="blank">
-<img alt="GitHub licence" src="https://img.shields.io/github/license/Wai-Technologies/raaghu?style=social" />
-</a>
-<a href="https://github.com/Wai-Technologies/raaghu/stargazers" target="blank">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/Wai-Technologies/raaghu?style=social"/>
-</a>
-<a href="https://github.com/Wai-Technologies/raaghu/issues" target="blank">
-<img alt="GitHub issues" src="https://img.shields.io/github/issues/Wai-Technologies/raaghu?style=social"/>
-</a>
-<a href="https://github.com/Wai-Technologies/raaghu/pulls">
-<img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/Wai-Technologies/raaghu?style=social" />
-</a>
-</p>
 
 <p align="center">
     <a href="https://raaghu.io" target="blank">View Demo</a>
@@ -35,33 +20,47 @@
     ·
     <a href="https://github.com/Wai-Technologies/raaghu/issues/new">Request Feature</a>
 </p>
+<h2 >Content</h2>
+<!-- vscode-markdown-toc -->
 
-# 👋 Introducing `raaghu-elements` 
+* [ Introducing raaghu-elements](#Introducingraaghu-elements)
+*  [Demo](#Demo)
+*  [Features](#Features)
+*  [How to Set up `raaghu-elements` for Development?](#setup)
+*  [Built With](#BuiltWith)
+*  [Upcoming Features](#UpcomingFeatures)
+* 
+<p align="center">
 
-`raaghu-elements` is an opensource Angular library framework built on top of Bootstrap 5 and Storybook offering highly customizable and reusable Angular UI elements.
+##  <a name='Introducingraaghu-elements'></a> Introducing raaghu-elements 
 
-Raaghu elements can be used as a base to build complex components and UI layouts whilst maintaining a high level of reusability.
+raaghu-elements is an opensource Angular library framework built on top of Bootstrap 5 and Storybook having 60+ user interface elements as well as 170+ custom icons that offers highly customizable and reusable Angular UI elements.
+
+raaghu elements can be used as a base to build complex components and UI layouts whilst maintaining a high level of reusability.
 
 
-# 🚀 Demo
-Here is a quick [demo](https://www.raaghu.io) of the elements. We hope you enjoy it.
+
+##  <a name='Demo'></a>Demo
+
+Here is a quick demo of the elements. We hope you enjoy it.
+<img title="imge" alt="gif" src="../static/Demo (1).gif">
 
 Liked it? Please give us a ⭐️ to show your appreciation
 
 Many Thanks to all the `supporters` who have helped this project with stars(⭐)
 
+##   <a name='Features'></a> Features
 
-# 🔥 Features
-
-## 🔢 High reusability
+###  <a name='Highreusability'></a> High reusability
  - Promotes reusability throughout the UI and pages
  - Reduces code duplication and helps in delivering a more consistent and even UI
 
-## 📱 Responsive and mobile-friendly
+### <a name='Responsiveandmobile-friendly'></a> Responsive and mobile-friendly
 - All of the elements are built for a wide variety of screen sizes
 
 
-# 🏗️ How to Set up `raaghu-elements` for Development?
+## <a name='setup'></a> How to Set up `raaghu-elements` for Development?
+
 You can run `raaghu-elements` locally with a few easy steps.
 
 1. Clone the repository
@@ -69,6 +68,9 @@ You can run `raaghu-elements` locally with a few easy steps.
 ```bash
 git clone https://github.com/Wai-Technologies/raaghu.git
 ```
+  
+<img title="imge" alt="gif" src="../static/Screenshot (40).png">
+
 
 2. Change the working directory
 
@@ -76,14 +78,15 @@ git clone https://github.com/Wai-Technologies/raaghu.git
 cd raaghu-elements
 ```
 
+
 3. Install dependencies
 
 ```bash
 npm install
 ```
-
+ <img title="imge" alt="gif" src="../static/Screenshot (39).png">
 4. Build all the libraries
-
+ <img title="imge" alt="gif" src="../static/Screenshot (66).png">
 ```bash
 npm run build-all
 ```
@@ -137,64 +140,25 @@ npm run storybook
 ```
 
 
-# 🍔 Built With
+##  <a name='BuiltWith'></a>Built With
+
 - [Angular Libraries](https://angular.io/guide/libraries): Build bulletproof UI components faster
 - [Bootstrap 5](https://bootstrap.com/): Sleek, intuitive, and powerful framework for faster and easier web development.
 - [Storybook](https://storybook.js.org/): Build bulletproof UI components faster
 
 
-# 🛡️ License
-This project is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
+## <a name='UpcomingFeatures'></a>Upcoming Features
+- Predefined themes for the UI/UX.
+- Heroes, feature sections, newsletter sign up forms for the marketing websites.
+- Checkout forms, shopping carts, product views for the e-commerce websites.
+- Fully capable with Abp.io .
 
 
-# 🦄 Upcoming Features
-`raaghu-elements` has all the potentials to grow further. Here are some of the upcoming features,
-
-- ✔️ Custom plugin to reveal the reusability within your angular project
-- ✔️ Ability to convert existing elements in a project into angular library enabled elements
-- ✔️ Import custom elements into the library
-- ✔️ Better Performance
-- ✔️ Converiting plain angular components to custom elements
-
-If you find something is missing, we are listening. Please create a feature request [from here](https://github.com/Wai-Technologies/raaghu/issues/new).
-
-
-# 🤝 Contributing to `Raaghu`
-Any kind of positive contribution is welcome! Please help us to grow by contributing to the project.
-
-If you wish to contribute, you can work on any features [listed here](https://github.com/Wai-Technologies/raaghu#-upcoming-features) or create one on your own. After adding your code, please send us a Pull Request.  
-
-
-
-
-# 🙏 Support
-
-We all need support and motivation. `Raaghu` is not an exception. Please give this project a ⭐️ to encourage and show that you liked it. Don't forget to leave a star ⭐️ before you move away.
-
-<h3 className="align">
-A ⭐️ to <b>Raaghu</b> is to build its triceps 💪 stronger.
-</h3>
-
-
-
-## WAi Technology Contributors ✨
-
-Thanks goes to these wonderful people and Wai technology.
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-[Omkar Choudhari](https://github.com/omkarchoudhari), [Alok Nakhate](https://github.com/alok-nakhate), [Rohit Pingale](https://github.com/pingroh), [Mohan Bari](https://github.com/mohanbari), [Apoorva Lele](https://github.com/apoorvalele), [Yohul Chitre](https://github.com/yohulchitre),
-[Priyanka Shinkar](https://github.com/Priyanka-Shinkar), [Suraj Khupse](https://github.com/suraj-khupse), [Pratheesh Krishnan](https://github.com/pratheesh-rishnan), [Rahul Patil](https://github.com/rahulp34),
-[Ketan khalate](https://github.com/Ketan-Khalate), [Obaid Ur Rahman](https://github.com/obaid-ur-rahman), [Anupriya Biju](https://github.com/Anupriya-Biju), [Niphy Anto](https://github.com/Niphy-Anto),
-[Neeraj Bhakre](https://github.com/neeraj-bhakre), [Basavraj Chorgasti](https://github.com/basavraj-chorgasti), [Shrikant Birajdar](https://github.com/shrikant-birajdar), [Omkar Rairikar](https://github.com/omkarrairikar),
-[Swapnil Ghormode](https://github.com/DevSwapnil22)
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
+
 

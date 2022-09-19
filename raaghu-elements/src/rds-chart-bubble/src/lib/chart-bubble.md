@@ -1,7 +1,7 @@
 ---
 slug: "/chart-bubble"
 date: "2019-05-04"
-title: "chart-bubble"
+title: "Elements / Chart-bubble"
 ---
 
 <!-- CSS only -->
@@ -13,7 +13,7 @@ title: "chart-bubble"
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,10 +28,11 @@ title: "chart-bubble"
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/bubble-chart.png" class="img-thumbnail w-50">
-           </div>
+            <div class="row">  
+               <div class="col-md-12">
+                   <img src="/images/bubble-chart.png" class="img-fuild w-50">
+               </div>                          
+            </div>
                        
   </div>
         </div>

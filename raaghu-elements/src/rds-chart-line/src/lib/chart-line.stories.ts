@@ -19,8 +19,8 @@ const Template: Story<RdsChartLineComponent> = (args: RdsChartLineComponent) => 
 
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
 
   ChartDataSets: [
     {

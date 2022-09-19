@@ -39,8 +39,8 @@ const Template: Story<RdsInputComponent> = (args: RdsInputComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   size: 'default',
   disabled: false,
   readonly: false,

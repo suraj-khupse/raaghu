@@ -31,8 +31,8 @@ const Template: Story<RdsCompVisualSettingsComponent> = (args: RdsCompVisualSett
     }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
     visualsettingsItem: [{
         footer: { fixedFooter: false }
         , header: { desktopFixedHeader: true, mobileFixedHeader: true, headerSkin: null, minimizeDesktopHeaderType: null }

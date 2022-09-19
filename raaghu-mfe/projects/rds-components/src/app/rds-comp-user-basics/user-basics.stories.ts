@@ -33,8 +33,8 @@ const Template: Story<RdsCompUserBasicsComponent> = (args: RdsCompUserBasicsComp
   }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   userData: [],
   editShimmer: false,
   buttonSpinner: true

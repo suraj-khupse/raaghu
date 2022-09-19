@@ -11,9 +11,9 @@ const Template: Story<RdsSpinnerComponent> = (args: RdsSpinnerComponent) => ({
   props: args,
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   spinnerType: false,
 };
 

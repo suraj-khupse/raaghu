@@ -1,7 +1,7 @@
 ---
 slug: "/Accordion"
 date: "2019-05-04"
-title: "Accordion"
+title: "Elements / Accordion"
 ---
 
 <!-- CSS only -->
@@ -30,9 +30,11 @@ title: "Accordion"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents p-5">
             <div class="row">
-               <img src="/images/accordion-basic.png" >
+              <div class="col-md-12">
+                <img src="/images/accordion-basic.png" class="img-fuild">
+              </div>               
             </div>
           </div>
         </div>
@@ -78,9 +80,11 @@ title: "Accordion"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewOutlined" role="tabpanel" aria-labelledby="PreviewOutlined-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents  p-5">
             <div class="row">
-            <img src="/images/accordion-basic.png" >
+               <div class="col-md-12">
+                  <img src="/images/accordion-basic.png" class="img-fuild">
+               </div>          
               </div>
           </div>
         </div>

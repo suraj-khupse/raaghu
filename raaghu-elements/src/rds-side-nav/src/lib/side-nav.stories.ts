@@ -18,21 +18,21 @@ export default {
 
 const Template: Story<RdsSideNavComponent> = (args: RdsSideNavComponent) => ({
   props: args,
-  template: `<div class="row"><div class="col-lg-2"><rds-side-nav
+  template: `<div class="row"><div class="col-lg-3"><rds-side-nav
     [sidenavItems]="sidenavItems"
     [collapseRequired]="false"
   >
   </rds-side-nav></div></div>`,
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   sidenavItems: [
-    { label: 'Dashboard', id: '', icon: 'dashboard', path: 'dashboard' },
+    { label: 'Dashboard', id: '', icon: 'home', path: 'home' },
     { label: 'Tenant', id: '', icon: 'tenant', path: 'tenant' },
-    { label: 'Administration', id: 'administration', icon: 'administartion', path: '', children: [{ label: 'Role', icon: 'roles', path: 'role' }, { label: 'Users', icon: 'users', path: 'users' }] },
-    { label: 'UI Components', id: '', icon: 'demo_ui_components', path: 'components' },
+    { label: 'Administration', id: 'administration', icon: 'administration', path: 'administration', children: [{ label: 'Role', icon: 'roles', path: 'role' }, { label: 'Users', icon: 'users', path: 'users' }] },
+    { label: 'UI Components', id: '', icon: 'demo_ui', path: 'demo_ui' },
   ],
 
   collapseRequired: true,

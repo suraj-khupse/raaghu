@@ -1,7 +1,7 @@
 ---
 slug: "/chart-area"
 date: "2019-05-04"
-title: "chart-area"
+title: "Elements / Chart-area"
 ---
 
 <!-- CSS only -->
@@ -12,7 +12,7 @@ title: "chart-area"
 #### Area Chart
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -26,13 +26,13 @@ title: "chart-area"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="Preview-tab">
-          <div class="contents bg-light p-5">
-                                             <div class="row">
-                                                <div class="col-md-8 col-12">
-                                                     <img src="/images/area-chart.png" class="img-fluid">
-                                                </div> 
-                                             </div>
-                                    </div>
+          <div class="contents p-5">
+            <div class="row">
+              <div class="col-md-12 ">
+                <img src="/images/area-chart.png" class="img-fluid w-50">
+              </div> 
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="Angular" role="tabpanel" aria-labelledby="Angular-tab">
           <div class="contents bg-code">

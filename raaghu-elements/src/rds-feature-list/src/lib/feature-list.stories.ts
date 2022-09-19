@@ -17,8 +17,8 @@ const Template: Story<RdsFeatureListComponent> = (args: RdsFeatureListComponent)
     props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
     header: 'Features',
     listItems: [
         { id: 1, value: 'Only the best materials', some: 'value' },

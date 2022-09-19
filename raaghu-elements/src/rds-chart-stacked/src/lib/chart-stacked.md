@@ -1,7 +1,7 @@
 ---
 slug: "/chart-stacked"
 date: "2019-05-04"
-title: "chart-stacked"
+title: "Elements / Chart-stacked"
 ---
 
 <!-- CSS only -->
@@ -11,8 +11,10 @@ title: "chart-stacked"
 
 #### Stacked Chart
 
+<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+
 <section class="py-4">
-<h6>Basic</h6>
+<h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -26,13 +28,13 @@ title: "chart-stacked"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-          <div class="contents bg-light p-5">                                            
-                                             <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                     <img src="/images/stacked-chart.png" class="img-fluid">
-                                                </div> 
-                                             </div>
-                                    </div>
+          <div class="contents p-5">                                            
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <img src="/images/stacked-chart.png" class="img-fluid">
+              </div> 
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">

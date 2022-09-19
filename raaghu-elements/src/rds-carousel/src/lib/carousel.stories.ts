@@ -25,8 +25,8 @@ const Template: Story<RdsCarouselComponent> = (args: RdsCarouselComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   display_type: 'basic',
     crossFade: true,
     controls: true,

@@ -37,8 +37,8 @@ const Template: Story<RdsBreadcrumbComponent> = (args: RdsBreadcrumbComponent) =
  
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   role: 'basic',
     iconShow: false,
   disabled: false,

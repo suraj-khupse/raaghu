@@ -27,8 +27,8 @@ const Template: Story<RdsBenefitComponent> = (args: RdsBenefitComponent) => ({
   props: args,
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   display_type: 'Basic',
   item:
   {

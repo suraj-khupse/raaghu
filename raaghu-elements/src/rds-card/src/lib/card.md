@@ -1,7 +1,7 @@
 ---
 slug: "/Card"
 date: "2019-05-04"
-title: "Card"
+title: "Elements /Card"
 ---
 <!-- CSS only -->
 
@@ -12,7 +12,7 @@ title: "Card"
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -26,21 +26,12 @@ title: "Card"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-    <div class="col-lg-3 col-md-4 col-10 offset-1">
-        <div class="card">
-           <img src="https://portal.raaghu.io/images/components/_cards/card-image.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary btn-sm">Button</a>
-               </div>
+               <div class="col-md-12">
+                <img src="/images/card-basic.png" class="img-fluid w-50"></div>
               </div>
-              </div> 
-              </div>
-                       
-  </div>
+             </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">
@@ -95,25 +86,13 @@ title: "Card"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewWithAvtar" role="tabpanel" aria-labelledby="PreviewWithAvtar-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
              <div class="row">
-                                               
- <div class="col-lg-3 col-md-4 col-10 offset-1">
-    <div class="card">
-       <img src="https://portal.raaghu.io/images/components/_cards/card-image.png" class="card-img-top" alt="...">
-           <div class="card-body text-center">
-             <div class="card-subheader">
-                <img src="https://portal.raaghu.io/images/components/_cards/profile1.png" class="card-img-float" alt="...">
-                 </div>
-                <h5 class="card-title">Card Title</h5>
-                <p class="card-text">Some quick example of the card's content.</p>
-                 <a href="#" class="btn btn-primary btn-sm mt-4">Button</a>
-                  </div>
-                  </div>
-                   </div> 
-                 </div>
-                       
-  </div>
+             <div class="col-md-12">
+                  <img src="/images/card-avatar.png"class="img-fluid w-50"> 
+                  </div>                                
+           </div>               
+         </div>
         </div>
         <div class="tab-pane fade show" id="AngularWithAvtar" role="tabpanel" aria-labelledby="AngularWithAvtar-tab">
           <div class="contents bg-code">
@@ -170,22 +149,18 @@ title: "Card"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewWithAvtarCenter" role="tabpanel" aria-labelledby="PreviewWithAvtarCenter-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="tab-pane fade show active" id="PreviewWithAvtarCenter" role="tabpanel" aria-labelledby="preview-tab">
-  
-  <div class="contents bg-light p-5">
-
- <div class="row">
-                                               
- <div class="col-lg-3 col-md-4 col-10 offset-1">
-   
+   <div class="contents  p-5">
+    <div class="row">
+    <div class="col-md-12">
+         <img src="/images/card-avatar.png"class="img-fluid w-50">  
+         </div> 
    </div> 
    </div>
   </div>
   </div>
-                     
-  </div>
-        </div>
+      </div>
         <div class="tab-pane fade show" id="AngularWithAvtarCenter" role="tabpanel" aria-labelledby="AngularWithAvtarCenter-tab">
           <div class="contents bg-code">
 <div class="row m-0">

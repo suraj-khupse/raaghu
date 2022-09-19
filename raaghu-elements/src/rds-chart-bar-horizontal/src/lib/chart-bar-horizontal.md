@@ -1,7 +1,7 @@
 ---
 slug: "/Chart-Bar-Horizontal"
 date: "2019-05-04"
-title: "Chart-Bar-Horizontal"
+title: "Elements / Chart-Bar-Horizontal"
 ---
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -25,12 +25,12 @@ title: "Chart-Bar-Horizontal"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-                                                <div class="col-md-8 col-12">
-                                                     <img src="/images/horizontal-bar-chart.png" class="img-fluid">
-                                                </div> 
-                                             </div>
+                <div class="col-md-8 col-12">
+                  <img src="/images/horizontal-bar-chart.png" class="img-fluid w-50">
+                </div> 
+               </div>
            </div>
                        
   </div>

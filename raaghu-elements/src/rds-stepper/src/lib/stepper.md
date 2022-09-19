@@ -1,7 +1,7 @@
 ---
 slug: "/stepper"
 date: "2019-05-04"
-title: "Stepper"
+title: " Elements / Stepper"
 ---
 
 <!-- CSS only -->
@@ -30,10 +30,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic1-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/stepper-with-bullets.png" class="w-75">
+                 <img src="/images/stepper-with-bullets.png" class="img-fluid w-75">
                 </div>
                 </div>
           </div>
@@ -72,7 +72,7 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic2" role="tabpanel" aria-labelledby="PreviewBasic2-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
                  <img src="/images/stepper-with-bullet-text.png" class="w-75">
@@ -113,10 +113,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic3" role="tabpanel" aria-labelledby="PreviewBasic3-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>
@@ -154,10 +154,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic4" role="tabpanel" aria-labelledby="PreviewBasic4-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>
@@ -195,10 +195,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic5" role="tabpanel" aria-labelledby="PreviewBasic5-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>
@@ -236,10 +236,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic6" role="tabpanel" aria-labelledby="PreviewBasic6-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="imf-fluid w-75">
                 </div>
           </div>
         </div>
@@ -277,10 +277,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic7" role="tabpanel" aria-labelledby="PreviewBasic7-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="imf-fluid w-75">
                 </div>
           </div>
         </div>
@@ -318,10 +318,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic8" role="tabpanel" aria-labelledby="PreviewBasic8-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>
@@ -359,10 +359,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic9" role="tabpanel" aria-labelledby="PreviewBasic9-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>
@@ -400,10 +400,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic10" role="tabpanel" aria-labelledby="PreviewBasic10-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>
@@ -440,10 +440,10 @@ title: "Stepper"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic11" role="tabpanel" aria-labelledby="PreviewBasic11-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                 <img src="/images/text-editor.png" class="w-75">
+                 <img src="/images/text-editor.png" class="img-fluid w-75">
                 </div>
           </div>
         </div>

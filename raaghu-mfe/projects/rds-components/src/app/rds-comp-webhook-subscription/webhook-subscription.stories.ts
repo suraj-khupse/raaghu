@@ -22,4 +22,4 @@ export default {
 
 const Template: Story<RdsCompWebhookSubscriptionComponent> = (args: RdsCompWebhookSubscriptionComponent) => ({});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});

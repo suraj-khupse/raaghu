@@ -19,8 +19,8 @@ const Template: Story<RdsChartAreaComponent> = (args: RdsChartAreaComponent) => 
 
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   ChartDataSets: [
     {
       label: 'Dataset 1',

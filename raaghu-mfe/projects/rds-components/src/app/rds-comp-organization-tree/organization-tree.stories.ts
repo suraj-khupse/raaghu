@@ -5,6 +5,7 @@ import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsOffcanvasModule 
 import { RdsOrganizationTreeComponent } from './rds-comp-organization-tree.component';
 import { OrganizationTreeNode, OrganizationTreeLabeles, OrganizationTreeType } from '../../models/organization-tree.model';
 import { NgxTranslateModule } from '@libs/shared';
+import { RdsIconModule } from '@libs/rds-icon';
 
 export default {
   title: 'Components/Organization Tree',
@@ -12,7 +13,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsCheckboxModule, RdsOffcanvasModule, RdsInputModule, NgxTranslateModule
+        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsCheckboxModule, RdsOffcanvasModule, RdsInputModule, NgxTranslateModule, RdsIconModule
       ],
       providers: [
         FormBuilder
@@ -28,9 +29,9 @@ const Template: Story<RdsOrganizationTreeComponent> = (args: RdsOrganizationTree
   },
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   organizationTreeData: [
     new OrganizationTreeNode("WaiIndia", 'Wai India', 1, '',
       [new OrganizationTreeNode("WaiPune", 'Wai Pune', 2, 'WaiIndia', [], true),

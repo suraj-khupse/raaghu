@@ -20,8 +20,8 @@ const Template: Story<RdsAlertComponent> = (args: RdsAlertComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   // showicon:false,
   dismisable: true,
   alertOpen: true,

@@ -1,7 +1,7 @@
 ---
 slug: "/side-nav"
 date: "2019-05-04"
-title: "side-nav"
+title: "Elements / Side-nav"
 ---
 
 <!-- CSS only -->
@@ -13,7 +13,7 @@ title: "side-nav"
 #### Side-nav
 
  <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,9 +27,9 @@ title: "side-nav"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="\images\side-navigation.png" class="img-thumbnail w-50">
+               <img src="\images\side-navigation.png" class="img-fluid w-25">
               </div>
                        
   </div>

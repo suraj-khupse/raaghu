@@ -1,7 +1,7 @@
 ---
 slug: "/nav-tab"
 date: "2019-05-04"
-title: "nav-tab"
+title: "Elements / Nav-tab"
 ---
 
 <!-- CSS only -->
@@ -14,7 +14,7 @@ title: "nav-tab"
 <p class="checkbox-def">Tabs are a way of navigating between multiple panels, reducing clutter and fitting more into a smaller space.</p>
 <!-- basic -->
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,9 +28,11 @@ title: "nav-tab"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Previewofnavtab" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-              <img src="/images/navtabs-basic.png" class="img-thumbnail w-75">
+                 <div class="col-md-12">
+                    <img src="/images/navtabs-basic.png" class="img-fuild w-75">
+                 </div>              
            </div>
                        
   </div>
@@ -75,9 +77,11 @@ horizontalAlignment="start"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Previewofnavtabpills" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-              <img src="/images/navtabs-pills.png" class="img-thumbnail w-75">
+                 <div class="col-md-12">
+                    <img src="/images/navtabs-pills.png" class="img-fuild w-75">
+                 </div>              
            </div>
                        
   </div>
@@ -122,9 +126,11 @@ horizontalAlignment="start"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Previewofnavtabpillsoftabs" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-              <img src="/images/navtabs-tabs.png" class="img-thumbnail w-75">
+               <div class="col-md-12">
+                  <img src="/images/navtabs-tabs.png" class="img-fuild w-75">
+               </div>              
            </div>
                        
   </div>
@@ -169,7 +175,7 @@ horizontalAlignment="start"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Previewofnavtabpillsofvertical" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
               <!-- <img src="/images/navtabs-tabs.png" class="img-thumbnail w-75"> -->
            </div>

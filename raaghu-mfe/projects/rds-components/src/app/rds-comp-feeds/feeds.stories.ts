@@ -46,8 +46,8 @@ const Template: Story<RdsCompFeedsComponent> = (args: RdsCompFeedsComponent) => 
 //   props: args,
 
 // });
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   displaytype: 'Basic'
 }
 

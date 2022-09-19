@@ -33,4 +33,4 @@ const Template: Story<RdsCompInvoiceComponent> = (args: RdsCompInvoiceComponent)
   }
   });
 
-  export const basic = Template.bind({});
+  export const Default = Template.bind({});

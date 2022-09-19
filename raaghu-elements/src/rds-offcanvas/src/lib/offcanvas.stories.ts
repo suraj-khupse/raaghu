@@ -12,7 +12,7 @@ export default {
 const Template: Story<RdsOffcanvasComponent> = (args: RdsOffcanvasComponent) => ({
   props: args,
 });
-export const basic: Story<RdsOffcanvasComponent> = (args) => ({
+export const Default: Story<RdsOffcanvasComponent> = (args) => ({
   props: args,
   template:
     `
@@ -28,7 +28,7 @@ export const basic: Story<RdsOffcanvasComponent> = (args) => ({
     `,
 
 });
-basic.args = {
+Default.args = {
   offId:'canvasExample',
   canvasTitle:'Offcanvas Title',
   placement:'end',

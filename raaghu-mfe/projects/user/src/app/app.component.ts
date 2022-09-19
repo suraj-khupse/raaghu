@@ -171,7 +171,7 @@ export class AppComponent {
                         this.roleName = e.roleName
                       }
                       else {
-                        this.roleName = this.roleName + ',' + e.roleName;
+                        this.roleName = this.roleName + ' , ' + e.roleName;
                       }
                     });
                     item.roleName = this.roleName
@@ -365,7 +365,7 @@ export class AppComponent {
                 this.roleName = e.roleName
               }
               else {
-                this.roleName = this.roleName + ',' + e.roleName;
+                this.roleName = this.roleName + ', ' + e.roleName;
               }
             });
             item.roleName = this.roleName

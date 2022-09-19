@@ -18,8 +18,8 @@ const Template: Story<RdsLabelComponent> = (args: RdsLabelComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   label: "",
   multiline: false,
   bold: false,

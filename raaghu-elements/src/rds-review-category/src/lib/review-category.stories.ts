@@ -32,8 +32,8 @@ const Template: Story<RdsReviewCategoryComponent> = (args: RdsReviewCategoryComp
   props: args,
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   display_type:'Basic',
   item: {
     name: 'Jems Rock',

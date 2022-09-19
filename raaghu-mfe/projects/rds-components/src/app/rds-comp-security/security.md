@@ -1,7 +1,7 @@
 ---
 slug: "/Security"
 date: "2019-05-04"
-title: "Security"
+title: "Components / Security"
 ---
 
 <!-- CSS only -->
@@ -26,9 +26,11 @@ title: "Security"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="\images\security.png" class="w-75">
+                 <div class="col-md-12">
+                      <img src="\images\security.png" class="img-fluid w-75">
+                 </div>             
               </div>
                        
   </div>

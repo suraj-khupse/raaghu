@@ -29,8 +29,8 @@ const Template: Story<RdsCompEditLanguageTextComponent> = (args: RdsCompEditLang
     }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
     Languagetext:[
         
     ]

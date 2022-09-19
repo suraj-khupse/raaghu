@@ -1,7 +1,7 @@
 ---
 slug: "/chart-doughnut"
 date: "2019-05-04"
-title: "chart-doughnut"
+title: "Elements / Chart-doughnut"
 ---
 
 <!-- CSS only -->
@@ -11,7 +11,10 @@ title: "chart-doughnut"
 
 #### Chart Doughnut
 
+<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+
 <section class="py-4">
+     <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -25,13 +28,13 @@ title: "chart-doughnut"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="Preview-tab">
-          <div class="contents bg-light p-5">
-                                          <div class="row">
-                                             <div class="col-12 col-md-8">
-                                                  <img src="/images/doughnut-chart.png" class="img-fluid">                                             
-                                             </div> 
-                                          </div>
-                                    </div>
+          <div class="contents p-5">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/images/doughnut-chart.png" class="img-fluid">                                             
+              </div> 
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="Angular" role="tabpanel" aria-labelledby="Angular-tab">
           <div class="contents bg-code">

@@ -290,7 +290,7 @@ h4.heading-border-left {
   padding-left: 1%;
 }
 
-footer.footer.mt-auto.py-3.bg-light {
+.footer {
   position: fixed !important;
   bottom: 0 !important;
   width: 100% !important;
@@ -867,6 +867,8 @@ note-light
   overflow-y: scroll;
   overflow-x: hidden;
   width: 16.66666667%;
+  height: 89%;
+  max-height: 100%;
 }
 /* position: fixed;
     left: 0;

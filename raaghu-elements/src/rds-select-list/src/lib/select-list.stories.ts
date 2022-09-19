@@ -71,9 +71,9 @@ const tooltipTemplate: Story<RdsSelectListComponent> = (args: RdsSelectListCompo
   <option value="3">Three</option>
   </rds-select-list>`,
 });
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   rows: '',
   labelText: '',
   // labelType: 'Top',

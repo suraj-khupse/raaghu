@@ -29,7 +29,7 @@
                   <div class="p-1">
                     <div class="row">
                       <rds-icon [name]="item.iconurl" [height]="'100px'" [width]="'92px'" [colorVariant]="'primary'"
-                                [fill]="false" style="stroke-width: 0.3;"></rds-icon>
+                                [fill]="false" style="stroke-width: 0.3;" class="pt-2"></rds-icon>
                       <div class="py-2">
                         <h2 class="p-2 pb-0">${{item.price}}</h2>
                         <p>{{item.duration}}</p>
@@ -42,7 +42,7 @@
                           </li>
                         </ul>
                       </div>
-                      <div class="pt-4">
+                      <div class="pt-4 pb-3">
                         <rds-button (click)="SubscriptionClick($event,item)" [tooltipPlacement]="'bottom'"
                                     [tooltipTitle]="translate.instant('Upgrade')" [label]="translate.instant('Upgrade')"
                                     type="button" class="rounded-pill" [colorVariant]="'primary'" [outlineButton]="true"

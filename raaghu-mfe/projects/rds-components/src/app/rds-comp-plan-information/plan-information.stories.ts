@@ -34,8 +34,8 @@ const Template: Story<RdsCompPlanInformationComponent> = (args: RdsCompPlanInfor
       ...args
   },
   });
-  export const basic = Template.bind({});
-  basic.args ={
+  export const Default = Template.bind({});
+  Default.args ={
     EditionData: {
       displayName: 'basic',
       creationTimeString: '11/16/2021',

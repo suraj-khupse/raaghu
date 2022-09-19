@@ -1,7 +1,7 @@
 ---
 slug: "/Alerts"
 date: "2019-05-04"
-title: "Alerts"
+title: "Components / Alerts"
 ---
 
 <!-- CSS only -->
@@ -13,7 +13,7 @@ title: "Alerts"
 #### Alerts
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,9 +27,11 @@ title: "Alerts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="\images\alert-basic.png" class="img-fluid">
+                 <div class="col-md-12">
+                     <img src="\images\alert-basic.png" class="img-fluid w-100">
+                 </div>              
               </div>
                        
   </div>
@@ -64,9 +66,11 @@ title: "Alerts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic2" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="\images\alert-danger.png" class="img-fluid">
+               <div class="col-md-12">
+                   <img src="\images\alert-danger.png" class="img-fluid w-100">
+               </div>              
               </div>
                        
   </div>
@@ -101,9 +105,11 @@ title: "Alerts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic3" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="\images\alert-info.png" class="img-fluid">
+                 <div class="col-md-12">
+                    <img src="\images\alert-info.png" class="img-fluid w-100">
+                 </div>               
               </div>
                        
   </div>
@@ -138,9 +144,11 @@ title: "Alerts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic4" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="\images\alert-success.png" class="img-fluid">
+                 <div class="col-md-12">
+                    <img src="\images\alert-success.png" class="img-fluid w-100">
+                 </div>               
               </div>
                        
   </div>
@@ -175,9 +183,11 @@ title: "Alerts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic5" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="\images\alert-warning.png" class="img-fluid">
+                 <div class="col-md-12">
+                     <img src="\images\alert-warning.png" class="img-fluid w-100">
+                 </div>              
               </div>
                        
   </div>

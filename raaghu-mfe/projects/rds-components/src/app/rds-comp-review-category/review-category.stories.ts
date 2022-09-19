@@ -33,8 +33,8 @@ const Template: Story<RdsCompReviewCategoryComponent> = (args: RdsCompReviewCate
     }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
     itemList: [{
       display_type: "Basic",
       items: [

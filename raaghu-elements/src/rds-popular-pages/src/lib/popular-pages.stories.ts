@@ -21,12 +21,12 @@ const Template: Story<RdsPopularPagesComponent> = (args: RdsPopularPagesComponen
   props: args,
 });
 
-export const Basic = Template.bind({});
+export const Default = Template.bind({});
  
-Basic.args = {
-  customPopularPageItems:[{ title: 'Documantation',  subtitle: 'Learn how to integrate our tools with your app', icon: 'document',route: '/home'},
-  { title: 'API References',  subtitle: 'A Complete API references of our libraries', icon: 'apiReference' ,route: '/home'},
-  { title: 'Guides', subtitle: 'Installation guides that cover popular setups', icon: 'guide',route: '/home'},
+Default.args = {
+  customPopularPageItems:[{ title: 'Documentation',  subtitle: 'Learn how to integrate our tools with your app', icon: 'folder',route: '/home'},
+  { title: 'API References',  subtitle: 'A Complete API references of our libraries', icon: 'code_computer' ,route: '/home'},
+  { title: 'Guides', subtitle: 'Installation guides that cover popular setups', icon: 'features',route: '/home'},
   { title: 'Blog',  subtitle: 'Read our latest news and articles', icon: 'blog',route: '/home'}]
 
 }

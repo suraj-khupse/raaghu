@@ -1,7 +1,7 @@
 ---
 slug: "/spinner"
 date: "2019-05-04"
-title: "spinner"
+title: "Elements / Spinner"
 ---
 
 <!-- CSS only -->
@@ -14,7 +14,7 @@ title: "spinner"
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,9 +28,11 @@ title: "spinner"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">             
-              <img src="/images/spinner.png" class="img-thumbnail w-50">
+         <div class="contents p-5">
+              <div class="row">
+                 <div class="col-md-12">
+                    <img src="/images/spinner.png" class="img-fluid w-25">
+                 </div>                           
            </div>
                        
   </div>

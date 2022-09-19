@@ -17,13 +17,13 @@ const Template: Story<RdsNavBarComponent> = (args: RdsNavBarComponent) => ({
 
   props: args,
 });
-export const BasicNavbar: Story<RdsNavBarComponent> = (args) => ({
+export const DefaultNavbar: Story<RdsNavBarComponent> = (args) => ({
   props: args,
 
 
 });
 
-BasicNavbar.args = {
+DefaultNavbar.args = {
   size: 'medium',
   navbarItems: [{
     label: "Home",

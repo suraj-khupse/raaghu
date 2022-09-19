@@ -1,7 +1,7 @@
 ---
 slug: "/checkbox"
 date: "2019-05-04"
-title: "checkbox"
+title: "Elements / Checkbox"
 ---
 
 
@@ -16,7 +16,7 @@ title: "checkbox"
 
 <!-- Default State -->
 <section class="py-4">
-    <h6>Default State</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -30,10 +30,10 @@ title: "checkbox"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="Preview-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents p-5">
             <div class="row">
-               <div class="col-md-12 col-6">
-                <img src="/images/checkbox-basic.png">
+               <div class="col-md-12">
+                <img src="/images/checkbox-basic.png" class="img-fuild">
                </div>
             </div>
           </div>

@@ -19,6 +19,21 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsMysettingsComponent> = (args: RdsMysettingsComponent) => ({});
+const Template: Story<RdsMysettingsComponent> = (args: RdsMysettingsComponent) => ({
+  props:{
+    ...args
+  }
+});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
+
+Default.args={
+  ProfileData:  {
+    ProfileName: 'Wai Technologies',
+    EmailAddress: 'contact@waiin.com',
+    UserName: 'admin',
+    CurrentPassword: '',
+    NewPassword: '',
+    ConFNewPassword: ''
+  }
+}

@@ -23,9 +23,9 @@ const Template: Story<RdsCompTeamsComponent> = (args: RdsCompTeamsComponent) => 
   props: args,
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
       displayType: 'Basic',
       teamItem : [
         {
@@ -63,8 +63,8 @@ basic.args = {
       ]
     }
  
-  export const advance = Template.bind({});
-    advance.args = {
+  export const advanced = Template.bind({});
+    advanced.args = {
   displayType: 'Advance',
   teamItem : [
     {

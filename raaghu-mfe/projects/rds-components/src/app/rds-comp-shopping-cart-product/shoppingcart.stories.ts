@@ -27,9 +27,9 @@ const Template: Story<RdsCompShoppingCartProductComponent> = (args: RdsCompShopp
   }
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   role: 'basic',
   isCheckout: true,
   itemList:[

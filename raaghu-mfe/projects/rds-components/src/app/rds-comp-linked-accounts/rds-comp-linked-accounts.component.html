@@ -44,10 +44,16 @@
                 </div>
               </div>
             </div>
+            
             <div class="row">
               <div class="col-sm-12">
-                <mfe-loader [config]="rdsLinkedAccountTableMfeConfig"></mfe-loader>
+                <!-- <mfe-loader [config]="rdsLinkedAccountTableMfeConfig"></mfe-loader> -->
+                 <app-rds-data-table [tableData]="rdslinkedAccountTableData" [pagination]="pagination"
+        (deleteEvent)="deleteLinkedAccountData($event)" [recordsPerPage]="recordsPerpage" 
+        [tableHeaders]="rdsLinkedAccountTableHeader" noDataTitle="Currently you do not have linked Account">
+      </app-rds-data-table> 
               </div>
+
             </div>
           </div>
         </div>
@@ -72,6 +78,13 @@
       </div>
     </div>
   </div>
-
+  <!-- <div class="row" *ngIf="!linkedAccountDivFlag">
+    <div class="col-sm-12">
+      <app-rds-data-table [tableData]="rdslinkedAccountTableData" [pagination]="pagination"
+        (deleteEvent)="deleteLinkedAccountData($event)" [recordsPerPage]="recordsPerpage" 
+        [tableHeaders]="rdsLinkedAccountTableHeader" noDataTitle="Currently you do not have linked Account">
+      </app-rds-data-table>
+    </div> 
+  </div> -->
 
 </form>

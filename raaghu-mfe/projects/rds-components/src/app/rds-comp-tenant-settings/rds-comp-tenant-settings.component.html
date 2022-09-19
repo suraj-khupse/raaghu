@@ -12,27 +12,27 @@
             </div>
         </div>
         <div class="row  mb-3">
-            <div class="col-md-6 sm-p-0">
+            <div class="col-md-6 sm-p-0" >
                 <div class="form-group mb-3">
                     <!-- <rds-input [inputType]="'password'" [Title]="translate.instant('Password')" [TitleType]="'Top'"
                         [placeholder]="translate.instant('Password')" (keyup)="confirmPasswordValidation()"
                         [(ngModel)]="tenantSettingsInfo.password" [isRequired]=true name="password" required>
                     </rds-input> -->
                     <rds-input [inputType]="'password'" [Title]="translate.instant('Password')" [(ngModel)]="tenantSettingsInfo.password" [TitleType]="'Top'" name="password"
-                    required #newpswd="ngModel" [placeholder]="translate.instant('Password')" [isRequired]=true required>
+                    required #newpswd="ngModel" [placeholder]="translate.instant('Password')" [isRequired]="passwordValidation" required>
                   </rds-input>
-                  <div class="form-control-feedback" *ngIf="newpswd.errors&&(newpswd.dirty||newpswd.touched)">
+                  <div class="form-control-feedback" *ngIf="newpswd.errors&&(newpswd.dirty||newpswd.touched)&& passwordValidation">
                     <span class="text-danger" *ngIf="newpswd.errors.required">{{"Password is required"|translate}}</span>
                   </div>
                 </div>
             </div>
-            <div class="col-md-6 sm-p-0">
+            <div class="col-md-6 sm-p-0" >
                 <div class="form-group mb-3">
                     <rds-input [inputType]="'password'" [Title]="translate.instant('Confirm Password')" [TitleType]="'Top'"
                         [placeholder]="translate.instant('Confirm Password')" #confirmpswd="ngModel" (keyup)="confirmPasswordValidation()"
-                        [(ngModel)]="tenantSettingsInfo.confirmPassword" [isRequired]=true name="cpassword" required>
+                        [(ngModel)]="tenantSettingsInfo.confirmPassword" [isRequired]="passwordValidation" name="cpassword" required>
                     </rds-input>
-                    <div class="form-control-feedback" *ngIf="confirmpswd.errors&&(confirmpswd.dirty||confirmpswd.touched)">
+                    <div class="form-control-feedback" *ngIf="confirmpswd.errors&&(confirmpswd.dirty||confirmpswd.touched)&&passwordValidation">
                         <span class="text-danger" *ngIf="confirmpswd.errors.required">{{"Confirm Password is required"|translate}}</span>
                       </div>
                 </div>

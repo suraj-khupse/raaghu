@@ -31,8 +31,8 @@ const Template: Story<RdsTagsComponent> = (args: RdsTagsComponent) => ({
   props: args,
 });
 
-export const basic = Template.bind({})
-basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   roles: 'Basic',
   colorVariant: 'primary',
   tagType: 'square'

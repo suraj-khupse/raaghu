@@ -22,8 +22,8 @@ const Template: Story<RdsTextEditorComponent> = (args: RdsTextEditorComponent) =
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   id: '',
   editorData: '<p>Hello!</p>',
 }

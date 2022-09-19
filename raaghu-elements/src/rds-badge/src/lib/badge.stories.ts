@@ -45,8 +45,8 @@ const Template: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   size: 'mid',
   top: '',
   start: ''
@@ -83,7 +83,7 @@ const BadgeButton: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
 
 
 export const BadgeAsButton = BadgeButton.bind({});
-Basic.args = {
+Default.args = {
   size: 'smallest',
   colorVariant: 'success',
   top: '',

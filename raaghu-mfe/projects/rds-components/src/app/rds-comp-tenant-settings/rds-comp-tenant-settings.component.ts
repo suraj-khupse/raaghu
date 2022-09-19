@@ -24,7 +24,7 @@ export class RdsCompTenantSettingsComponent implements OnInit, OnChanges {
   @Input() showEditData : boolean = false;
   @Input () buttonSpinner : boolean =true;
   @ViewChild('tenantSettingsForm') settingsForm: NgForm;
-
+  @Input() passwordValidation:boolean = true;
   constructor(public translate:TranslateService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -77,7 +77,7 @@ export class RdsCompTenantSettingsComponent implements OnInit, OnChanges {
 
   }
   next(tenantSettingsForm: NgForm): void {
-    tenantSettingsForm.form.markAllAsTouched();
+     tenantSettingsForm.form.markAllAsTouched();
 this.buttonSpinner=true;
 
     if (tenantSettingsForm.invalid || this.isPasswordMismatch) {

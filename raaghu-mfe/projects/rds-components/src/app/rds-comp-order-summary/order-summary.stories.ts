@@ -21,8 +21,8 @@ export default {
 
 const Template: Story<RdsCompOrderSummaryComponent> = (args: RdsCompOrderSummaryComponent) => ({});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   isCheckout: true
 }

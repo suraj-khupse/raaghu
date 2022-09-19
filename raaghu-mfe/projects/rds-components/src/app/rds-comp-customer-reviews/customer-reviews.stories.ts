@@ -25,8 +25,8 @@ const Template: Story<RdsCompCustomerReviewsComponent> = (args: RdsCompCustomerR
     props: args
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
     itemlist: {
         1: 1017,
         2: 313,

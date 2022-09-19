@@ -1,7 +1,7 @@
 ---
 slug: "/Table"
 date: "2019-05-04"
-title: "Table"
+title: "Elements / Table"
 ---
 
 <!-- CSS only -->
@@ -14,7 +14,7 @@ title: "Table"
 <p class="checkbox-def">Tables are a designed for displaying large amounts of data in rows and columns.</p>
 
 <section class="py-4">
-    <h6>Basic Table</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -31,7 +31,7 @@ title: "Table"
           <div class="contents p-5">
           <div class="row">
             <div class="col-md-12">
-                <img src="/images/table.png" class="img-fuild w-100">
+                <img src="/images/table.png" class="img-fluid w-100">
             </div>
           </div>                                
             </div>

@@ -4,6 +4,9 @@ import { ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Account, LinkedAccount } from '../../models/profile.model';
+import { TableAction } from '../../models/table-action.model';
+// import { TableAction } from '../../models/table-action.model';
+import { TableHeader } from '../../models/table-header.model';
 
 @Component({
   selector: 'app-rds-linked-accounts',
@@ -15,6 +18,10 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   Addaccountflag: boolean = true;
   linkaacountDivFlag: boolean = false;
   linckAccount: any;
+  linkedAccountDivFlag: boolean = false;
+  @Input() rdslinkedAccountTableData: any = [];
+  @Input() rdsLinkedAccountTableHeader: TableHeader[] = [];
+
   DatasetLinkedAccount: any = [];
   @Input() recordsPerpage: number = 3;
   @Input() pagination: boolean = false;
@@ -26,7 +33,7 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   @Input()
   linkedAccount: LinkedAccount = {
     TableHeader: [],
-    tableData: []
+    tableData: [],
   };
   userName: '';
   Tenancyname: '';
@@ -42,8 +49,11 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
       tableStyle: 'light',
       width: '100%',
       tableData: this.linkedAccount.tableData,
-      actions: [{ id: 'delete', displayName: 'Delete' }],
-      pagination: true,
+        actions: [{ id: 'delete', displayName: 'Delete' }],
+
+      // actions: TableAction = [{ id: 'delete', displayName: 'Delete' }],
+
+      //pagination: true,
       recordsPerPage: 5,
       noDataTitle: 'Currently you do not have linked acccounts'
     },
@@ -67,6 +77,7 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   constructor(private injector: Injector, public translate: TranslateService) {
     super(injector)
   }
+  @Output() onDeleteDeligate = new EventEmitter<any>()
 
   ngOnInit(): void {
     this.rdsLinkedAccountTableMfeConfig.input.tableHeaders = this.linkedAccount.TableHeader;
@@ -84,6 +95,11 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
     // this.DatasetLinkedAccount = this.LinkedAccountTable;
     // this.rdsLinkedAccountTableMfeConfig.input.tableData = this.LinkedAccountTable.LinkedAccounts;
     // // this.LinkedAccountTable.LinkedAccounts=JSON.parse(JSON.stringify(this.linckAccount));
+  }
+  deleteLinkedAccountData(event: any): void {
+    if (event.actionId === 'delete') {
+      this.onDeleteDeligate.emit(event.selectedData);
+    }
   }
   hideandShowaccountform() {
     this.showNewLinkAccoutButton = false;

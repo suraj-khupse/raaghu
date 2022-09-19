@@ -37,9 +37,9 @@ const Template: Story<RdsCompLanguageTextListComponent> = (args: RdsCompLanguage
   }
   });
 
-  export const basic = Template.bind({});
+  export const Default = Template.bind({});
 
-  basic.args = {
+  Default.args = {
     languagetextTableHeader: [
       { displayName: 'Language Name', key: 'languagename', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
       { displayName: 'Code', key: 'countryCode', dataType: 'text', dataLength: 30, required: true, sortable: true },

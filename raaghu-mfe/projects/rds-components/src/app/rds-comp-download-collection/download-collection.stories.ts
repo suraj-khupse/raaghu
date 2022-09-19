@@ -25,9 +25,9 @@ const Template: Story<RdsCompDownloadCollectionComponent> = (args: RdsCompDownlo
   }
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   DownloadTable:[
     { DateofData: '08/07/2022', NummberofDates: '5 days ago',downloadUrl:'assets/Group.jpg' },
     {DateofData: '08/07/2022', NummberofDates: '5 days ago',downloadUrl:'assets/DeleteIcon.jpg'  },

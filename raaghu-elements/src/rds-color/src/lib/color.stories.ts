@@ -18,10 +18,10 @@ const Template: Story<RdsColorComponent> = (args: RdsColorComponent) => ({
 });
 
 
-export const Basic: Story<RdsColorComponent> = (args) => ({
+export const Default: Story<RdsColorComponent> = (args) => ({
   props: args,
 });
-Basic.args = {
+Default.args = {
   header: 'Color',
   defaultValue: 1,
   itemList: [

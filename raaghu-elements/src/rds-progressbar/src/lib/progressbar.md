@@ -1,7 +1,7 @@
 ---
 slug: "/Progressbar"
 date: "2019-05-04"
-title: "Progressbar"
+title: "Elements / Progressbar"
 ---
 
 <!-- CSS only -->
@@ -13,7 +13,7 @@ title: "Progressbar"
 #### Progressbar
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,9 +27,11 @@ title: "Progressbar"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/progressbar.png" class="img-thumbnail image-fluid">
+                 <div class="col-md-12">
+                    <img src="/images/progressbar.png" class="img-fuild w-100">
+                 </div>               
               </div>
                        
   </div>

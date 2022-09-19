@@ -21,8 +21,8 @@ const Template: Story<RdsTeamMemberComponent> = (args: RdsTeamMemberComponent) =
   props: args,
 });
 
-export const basic = Template.bind({});
-basic.args ={
+export const Default = Template.bind({});
+Default.args ={
   displayType: 'Basic',
   teamItem :[
     {

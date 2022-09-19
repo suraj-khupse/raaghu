@@ -1,7 +1,7 @@
 ---
 slug: "/product-list"
 date: "2019-05-04"
-title: "product-list"
+title: "Components/ Product-list"
 ---
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -26,10 +26,11 @@ title: "product-list"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/product-image-with-title.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">              
+                 <div class="col-md-12">
+                    <img src="/images/product-image-with-title.png" class="img-fluid w-100">
+                 </div>              
            </div>
                        
   </div>
@@ -68,10 +69,11 @@ role="ImageWithTitle"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewCard" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/card-with-full-details.png" class="img-thumbnail w-100">
+                 <div class="col-md-12">
+                    <img src="/images/card-with-full-details.png" class="img-fluid w-100">
+                 </div>                  
            </div>
                        
   </div>
@@ -111,10 +113,11 @@ role="cardWithFullDetails"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewProduct" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/product-with-info.png" class="img-thumbnail w-100">
+         <div class="contents  p-5">
+              <div class="row"> 
+                 <div class="col-md-12">
+                     <img src="/images/product-with-info.png" class="img-fluid w-100">
+                 </div>                          
            </div>
                        
   </div>
@@ -153,10 +156,11 @@ role="ImageWithInfo"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewSimple" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/simple.png" class="img-thumbnail w-100">
+                 <div class="col-md-12">
+                     <img src="/images/simple.png" class="img-fluid w-100">
+                 </div>             
            </div>
                        
   </div>
@@ -197,10 +201,11 @@ role="simple"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBorder" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-border-grid.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">  
+                 <div class="col-md-12">
+                     <img src="/images/with-border-grid.png" class="img-fluid w-100">
+                 </div>                         
            </div>
                        
   </div>
@@ -241,10 +246,11 @@ role="withBorderGrid"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewCTA" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-cta-link.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">               
+                 <div class="col-md-12">
+                     <img src="/images/with-cta-link.png" class="img-fluid w-100">
+                 </div>             
            </div>
                        
   </div>
@@ -283,10 +289,11 @@ role="withCTALink"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewColor" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-color-swatches-and-horizontal-scrolling.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">             
+                 <div class="col-md-12">
+                     <img src="/images/with-color-swatches-and-horizontal-scrolling.png" class="img-fluid w-100">
+                 </div>             
            </div>
                        
   </div>
@@ -327,10 +334,11 @@ role="withColorSwatchesAndHorizontalScrolling"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewImage" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-image-overlay-and-add-button.png" class="img-thumbnail w-100">
+                 <div class="col-md-12">
+                     <img src="/images/with-image-overlay-and-add-button.png" class="img-fluid w-100">
+                 </div>                          
            </div>
                        
   </div>
@@ -370,10 +378,11 @@ role="withImageOverlayAndAddButton"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewInline" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-inline-price.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">           
+                 <div class="col-md-12">
+                     <img src="/images/with-inline-price.png" class="img-fluid w-100">
+                 </div>              
            </div>
                        
   </div>
@@ -413,10 +422,11 @@ role="withInlinePrice"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewSupporting" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-supporting-text.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">   
+                 <div class="col-md-12">
+                    <img src="/images/with-supporting-text.png" class="img-fluid w-100">
+                 </div>                        
            </div>
                        
   </div>
@@ -455,10 +465,11 @@ role="withSupportingText"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewTall" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-tall-image.png" class="img-thumbnail w-100">
+         <div class="contents p-5">
+              <div class="row">  
+                 <div class="col-md-12">
+                     <img src="/images/with-tall-image.png" class="img-fluid w-100">
+                 </div>                        
            </div>
                        
   </div>
@@ -499,8 +510,9 @@ role="withTallImages"
         <div class="tab-pane fade show active" id="PreviewTallCTA" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents bg-light p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/with-tall-image-and-cta-link.png" class="img-thumbnail w-100">
+                 <div class="col-md-12">
+                      <img src="/images/with-tall-image-and-cta-link.png" class="img-fluid w-100">
+                 </div>                         
            </div>
                        
   </div>

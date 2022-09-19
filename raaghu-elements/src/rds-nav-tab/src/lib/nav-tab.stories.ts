@@ -17,7 +17,7 @@ export default {
 const Template: Story<RdsNavTabComponent> = (args: RdsNavTabComponent) => ({
     props: args,
 });
-export const Basic: Story<RdsNavTabComponent> = (args) => ({
+export const Default: Story<RdsNavTabComponent> = (args) => ({
     props: args,
     template:
         `
@@ -35,7 +35,7 @@ export const Basic: Story<RdsNavTabComponent> = (args) => ({
     `,
 
 });
-Basic.args = {
+Default.args = {
     navtabsItems: [
         { label: 'Active', tablink: '#nav-home', ariacontrols: 'nav-home', icon: 'dashboard', subText: 'Active subtext' },
         { label: 'Link', tablink: '#nav-profile', ariacontrols: 'nav-profile' },

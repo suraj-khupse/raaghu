@@ -19,11 +19,11 @@ const Template: Story<RdsIllustrationComponent> = (args: RdsIllustrationComponen
     props: args,
 });
 
-export const Basic = Template.bind({
+export const Default = Template.bind({
 
 })
 
-Basic.args = {
+Default.args = {
     label: 'Currently you do not have Webhook Subscriptions',
     subLabel: 'Click on the button above to add'
 }

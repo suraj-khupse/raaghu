@@ -41,8 +41,8 @@ const Template: Story<RdsCompDynamicPropertiesComponent> = (args: RdsCompDynamic
       }
 });
 
-export const Basic = Template.bind({});
-Basic.args= {
+export const Default = Template.bind({});
+Default.args= {
       DynamicPropertiesTableData:  [
     { id: 1, propertyName: 'Standard',displayName : 'Edit' ,inputType:'CHECKBOX' ,permission:'Pages.Administration.Users'},
     { id: 2, propertyName: 'Basic', displayName : 'Edit',inputType:'MULTIPLECHECKBOX',permission:'Pages.Administration.Roles.Delete'},

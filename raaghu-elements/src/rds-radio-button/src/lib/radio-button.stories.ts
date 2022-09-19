@@ -11,8 +11,8 @@ export default {
 const Template: Story<RdsRadioButtonComponent> = (args: RdsRadioButtonComponent) => ({
   props: args,
 });
-export const basic = Template.bind({})
-basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   itemList : [
     {
       id: 1,

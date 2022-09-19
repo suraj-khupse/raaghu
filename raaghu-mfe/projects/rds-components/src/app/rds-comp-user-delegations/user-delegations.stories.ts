@@ -27,8 +27,8 @@ const Template: Story<RdsUserDelegationsComponent> = (args: RdsUserDelegationsCo
   }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
     userlist: [],
     rdsDeligateTableHeader: [],
     rdsDeligateTableData: [],

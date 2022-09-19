@@ -25,9 +25,9 @@ const Template: Story<RdsDataTableComponent> = (args: RdsDataTableComponent) => 
 }
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   tableHeaders : [{ displayName: 'Edition Name', key: 'editionName', dataType: 'text', dataLength: 30, required: true, sortable: true }, { displayName: 'Price ($)', key: 'price', dataType: 'number', dataLength: 5, required: false, sortable: true }, { displayName: 'Trial Period(Day(s))', key: 'trialPeriod', dataType: 'number', dataLength: 5, required: true }],
   tableData: [
     { id: 1, editionName: 'Standard', price: 60, trialPeriod: 5 },

@@ -31,9 +31,9 @@ const Template: Story<RdsTableComponent> = (args: RdsTableComponent) => ({
 
 
 
-export const BasicTable = Template.bind({})
-BasicTable.args = {
-  colorVariant: 'primary',
+export const DefaultTable = Template.bind({})
+DefaultTable.args = {
+  colorVariant: 'light',
   tableHeader:true,
   tableBorder: false,
   tableHeaderItems: [

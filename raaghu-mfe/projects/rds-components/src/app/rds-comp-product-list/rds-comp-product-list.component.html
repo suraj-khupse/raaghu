@@ -43,9 +43,11 @@
               </div>
             </ng-template>
             <ng-template #body>
-              <h5 class="custom-title">{{item.title}}</h5>
+              <div class="p-3">
+                <h5 class="custom-title">{{item.title}}</h5>
               <h5 class="custom-title">{{item.subTitle}}</h5>
 
+              </div>
             </ng-template>
             <ng-template #footer>
               <div class="d-flex justify-content-between">
@@ -357,7 +359,7 @@
     </div>
     <div *ngSwitchCase="'ImageWithInfo'">
       <div class="row" *ngIf="productListItems">
-        <div class="col-md-4" *ngFor="let item of productListItems">
+        <div class="col-md-4 mb-3" *ngFor="let item of productListItems">
           <rds-card [header]="header" [borderCard]="false" [showBody]="false" [custSidePadding]="true"
             class="rounded-avatar-basic">
             <ng-template #header>

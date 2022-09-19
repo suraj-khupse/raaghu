@@ -18,8 +18,8 @@ const Template: Story<RdsChartMixedComponent> = (args: RdsChartMixedComponent) =
   props: args,
 
 });
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
 
   ChartDataSets: [
     {

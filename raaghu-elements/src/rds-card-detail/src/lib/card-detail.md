@@ -1,7 +1,7 @@
 ---
 slug: "/Card-detail"
 date: "2019-05-04"
-title: "Card-detail"
+title: "Elements / Card-detail"
 ---
 
 
@@ -24,9 +24,11 @@ title: "Card-detail"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-                  <img src="/images/popular-pages.png" class="img-thumbnail w-50">
+                <div class="col-md-12">
+                     <img src="/images/popular-pages.png" class="img-fuild">
+                </div>                
             </div>
           
   </div>

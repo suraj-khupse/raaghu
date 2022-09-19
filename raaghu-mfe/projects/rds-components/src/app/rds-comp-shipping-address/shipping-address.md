@@ -1,7 +1,7 @@
 ---
 slug: "/Shipping-Address"
 date: "2019-05-04"
-title: "Shipping-Address"
+title: "Components / Shipping-Address"
 ---
 
 <!-- CSS only -->
@@ -26,9 +26,11 @@ title: "Shipping-Address"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="\images\shipping-address.png" class="img-fluid">
+                 <div class="col-md-12">
+                     <img src="\images\shipping-address.png" class="img-fluid">
+                 </div>              
               </div>
                        
   </div>

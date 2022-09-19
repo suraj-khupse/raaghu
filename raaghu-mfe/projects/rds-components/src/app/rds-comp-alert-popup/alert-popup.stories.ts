@@ -22,7 +22,7 @@ export default {
 const Template: Story<RdsCompAlertPopupComponent> = (args: RdsCompAlertPopupComponent) => ({
   props: args,
 });
-export const basic: Story<RdsCompAlertPopupComponent> = (args) => ({
+export const Default: Story<RdsCompAlertPopupComponent> = (args) => ({
   props: args,
   template:
     `    <rds-button [label]="'Delete'"
@@ -34,7 +34,7 @@ export const basic: Story<RdsCompAlertPopupComponent> = (args) => ({
     `,
 
 });
-basic.args = {
+Default.args = {
   
   alertData:  {
     iconUrl: "delete",

@@ -20,8 +20,8 @@ const Template: Story<RdsChartStackedComponent> = (args: RdsChartStackedComponen
   props: args,
 
 });
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   ChartDataSets: [
     {
       label: 'My Second dataset',

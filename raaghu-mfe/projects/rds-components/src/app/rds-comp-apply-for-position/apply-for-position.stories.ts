@@ -37,8 +37,8 @@ const Template: Story<RdsCompApplyForPositionComponent> = (args: RdsCompApplyFor
   props: { ...args }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   itemList: [{
     titleHeader: "Apply for a Position",
     titleDescription: "Please complete the form below to apply for a position with us.",

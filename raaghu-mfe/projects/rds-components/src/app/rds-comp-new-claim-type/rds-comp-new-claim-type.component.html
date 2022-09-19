@@ -1,13 +1,13 @@
 <form #ClaimTypeForm="ngForm">
   <div style="display: flex;">
-    <div class="form-group col-sm-6 mb-3">
+    <div class="form-group col-sm-12 mb-3">
       <rds-input size="default" value="" TitleType="'Top'" [Title]="'Name'" inputType="text"
         [(ngModel)]="ClaimTypeData.Name" [disabled]="false" [readonly]="false" name="Name" required [isRequired]=true>
       </rds-input>
     </div>
   </div>
   <div style="display: flex;">
-    <div class="form-group col-sm-6 mb-3 me-2">
+    <div class="form-group col-sm-6 mb-3 pe-3">
       <rds-input size="default" value="" TitleType="'Top'" [Title]="'Regex'" name="Regex " required inputType="text"
         [(ngModel)]="ClaimTypeData.Regex" [disabled]="false" [readonly]="false" [isRequired]=true>
       </rds-input>

@@ -23,7 +23,7 @@ const Template: Story<RdsScrollspyComponent> = (args: RdsScrollspyComponent) => 
     template: `<rds-scrollspy></rds-scrollspy>`,
 });
 
-export const Basic: Story<RdsScrollspyComponent> = (args) =>  ({
+export const Default: Story<RdsScrollspyComponent> = (args) =>  ({
 props: { ...args },
 template: `
 <div class="col-md-10 col-10 offset-1">

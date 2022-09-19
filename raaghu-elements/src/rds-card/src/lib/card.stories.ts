@@ -33,8 +33,8 @@ const Template: Story<RdsCardComponent> = (args: RdsCardComponent) => ({
 });
 
 // const teletext = "some text"
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   //width: '30%',
   //cardWidth: 0,
   colorVariant: '',

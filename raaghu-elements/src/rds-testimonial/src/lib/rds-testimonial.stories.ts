@@ -22,8 +22,8 @@ const Template: Story<RdsTestimonialComponent> = (args: RdsTestimonialComponent)
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   testimonialItems: [
     { img:'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg',
     title:'SAM SMITH',

@@ -22,8 +22,8 @@ export const actionsData = {
   onCheck: action("onCheck")
 };
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
 //  label:'Checkbox Group Label',
 itemList : [
   {

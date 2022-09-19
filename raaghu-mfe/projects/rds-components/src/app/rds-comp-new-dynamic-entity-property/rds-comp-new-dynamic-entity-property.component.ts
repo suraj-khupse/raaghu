@@ -20,10 +20,10 @@ import { Subject } from 'rxjs';
 })
 export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChanges {
   entityFullName: string = '';
-  Placeholder: string = 'Select Property';
+  Placeholder: string = 'Select Property Name';
   PropertyID: any = '';
   resetDropdown = false;
-  placeholderReset: string = 'Select Property';
+  placeholderReset: string = 'Select Property Name';
   @Input() entityNames: any[] = [];
   @Input() reset: boolean = false;
   @Input() parameterList: any[] = [];
@@ -47,7 +47,7 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
       this.isHostLogin = true;
     }
     this.resetDropdown = this.reset;
-    this.Placeholder = "Select Property";
+    this.Placeholder = "Select Property Name";
   }
 
   addEntity(dynamicEnityForm) {
@@ -58,7 +58,7 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
       this.dynamicEntityDataSelect = [];
       dynamicEnityForm.resetForm();
       this.resetDropdownList();
-      this.Placeholder = "Select Property";
+      this.Placeholder = "Select Property Name";
     }
     else {
       this.dynamicEntityInfoForm.form.markAllAsTouched();
@@ -87,7 +87,7 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
   }
 
   closeCanvas(): void {
-    this.Placeholder = "Select Property";
+    this.Placeholder = "Select Property Name";
     this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
     this.resetDropdownList();
   }
@@ -98,7 +98,7 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
       element.isSelected = false;
     })
     this.resetDropdown = true;
-    this.Placeholder = "Select Property";
+    this.Placeholder = "Select Property Name";
 
   }
 }

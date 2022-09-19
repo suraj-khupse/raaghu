@@ -210,7 +210,7 @@ const Sidebar = () => {
   });
 
   return (
-    <div className="h-100 cust-scroll">
+    <div className=" cust-scroll">
       <div className="menu-list p-0 mt-4">
         <Accordion
           defaultActiveKey="0"

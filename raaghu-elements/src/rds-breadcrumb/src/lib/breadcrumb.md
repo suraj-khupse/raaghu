@@ -1,7 +1,7 @@
 ---
 slug: "breadcrumb"
 date: "2019-05-04"
-title: "breadcrumb"
+title: "Elements / Breadcrumb"
 ---
 
 <!-- CSS only -->
@@ -9,120 +9,135 @@ title: "breadcrumb"
 <link rel="stylesheet" href="../assets/css/style-elements.css">
 <link rel="stylesheet" href="../assets/css/main.css">
 
-#### Breadcrumbs
+#### Breadcrumb
 
-Breadcrumbs are a list of links representing the current page and its “ancestors”.
-
-<div class="cust-tabs">
-<ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="preview-tab" data-bs-toggle="tab" data-bs-target="#breadcrumbs" type="button" role="tab" aria-controls="preview" aria-selected="true">Preview</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="code-tab" data-bs-toggle="tab" data-bs-target="#code" type="button" role="tab" aria-controls="preview" aria-selected="true">Code</button>
-  </li>
-</ul>
-
-</div>
-
-<div class="tab-content border mb-5" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="breadcrumbs" role="tabpanel" aria-labelledby="preview-tab">
-<div class="contents bg-light p-5">
-<div class="row">
-                                             <div class="col-12">
-                                                   <nav aria-label="breadcrumb">
-                                                     <ol class="breadcrumb">
-                                                       <li class="breadcrumb-item active" aria-current="page">Home</li>
-                                                     </ol>
-                                                   </nav>
-
-<nav aria-label="breadcrumb">
-                                                     <ol class="breadcrumb">
-                                                       <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                       <li class="breadcrumb-item active" aria-current="page">Library</li>
-                                                     </ol>
-                                                   </nav>
-
- <nav aria-label="breadcrumb">
-<ol class="breadcrumb">
-                                                          <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                          <li class="breadcrumb-item"><a href="#">Library</a></li>
-                                                          <li class="breadcrumb-item active" aria-current="page">Data</li>
-                                                        </ol>
-                                                   </nav>
-                                             </div>
-                                          </div>
-
+<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<section class="py-4">
+    <h6>Default</h6>
+    <div class="py-3">
+      <div class="cust-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PreviewBasic-tab" data-bs-toggle="tab" data-bs-target="#PreviewBasic" type="button" role="tab" aria-controls="PreviewBasic" aria-selected="true">Preview </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content card border" id="myTabContent">
+        <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
+         <div class="contents p-5">
+              <div class="row">
+                 <div class="col-md-12">
+                     <img src="/images/breadcrumb-basic.png" class="img-fuild">
+                 </div>            
+           </div>
+                       
   </div>
- </div>
-  <div class="tab-pane fade" id="code" role="tabpanel" aria-labelledby="code-tab">
-<div class="contents bg-code">
+        </div>
+        <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
+          <div class="contents bg-code">
 <div class="row m-0">
 
 ```html
-<rds-breadcrumb
-  customBreadcrumbsItems="[{ name: 'Home', route: '/home', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled: true}, { name: 'About', route: '/About', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled: true}, { name: 'Contact US', route: '/Contact', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled: true}, { name: 'Services', route: '/Services', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px', disabled: true }, { name: 'Contact US', route: '/Contact', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px', disabled: true }]"
+   <rds-breadcrumb
+  [customBreadcrumbsItems]="customBreadcrumbsItems"
   role="basic"
   [iconShow]="false"
-  [submit]="false"
-  [block]="false"
-  [disabled]="false"
-  [outlineButton]="false"
-  [roundedButton]="false"
-  [toggleButton]="false"
-  (onNavigation)="onNavigation($event)"
-  (onItemClick)="onItemClick($event)"
 ></rds-breadcrumb>
 ```
 </div>
 </div>
-</div>
-</div>
-
-<div style="margin-bottom: 40px"></div>
-
-###### Styled Breadcrumbs
-
-<nav>
-  <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Preview</button>
-
   </div>
-</nav>
+        </div>
+      </div>
+    </div>
+  </section>
+   
 
-<div class="tab-content border bg-light" id="nav-tabContent">
-
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-  
-   <div class="contents bg-light p-5">
-
- <div class="row">
-<div class="col-12">
-<img src="https://portal.raaghu.io/images/components/_breadcrumbs/2.png" class="img-fluid">
-</div>
- </div>
- </div>
-
+   <section class="py-4">
+    <h6>Advanced</h6>
+    <div class="py-3">
+      <div class="cust-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PreviewBasic-tab" data-bs-toggle="tab" data-bs-target="#PreviewBasic" type="button" role="tab" aria-controls="PreviewBasic" aria-selected="true">Preview </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content card border" id="myTabContent">
+        <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
+         <div class="contents p-5">
+              <div class="row">
+                 <div class="col-md-12">
+                     <img src="/images/breadcrumb-advanced.png" class="img-fuild">
+                 </div>            
+           </div>
+                       
   </div>
+        </div>
+        <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
+          <div class="contents bg-code">
+<div class="row m-0">
 
-</div>
-
-<div class="py-4">
-
-###### Skeleton/Specifications
-
-<div class="py-3">
-
-<div class="card border p-5">
-
-<div class="row">
- <div class="col-md-6">
- <img src="https://portal.raaghu.io/images/components/_breadcrumbs/img-1.png" class="img-fluid">
- </div>
-<div class="col-md-6">
- <img src="https://portal.raaghu.io/images/components/_breadcrumbs/img-2.png" class="img-fluid">
+```html
+  <rds-breadcrumb
+  [customBreadcrumbsItems]="customBreadcrumbsItems"
+  role="Advanced"
+  [iconShow]="true"
+></rds-breadcrumb>
+```
 </div>
 </div>
+  </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <section class="py-4">
+    <h6>With Divider</h6>
+    <div class="py-3">
+      <div class="cust-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PreviewBasic-tab" data-bs-toggle="tab" data-bs-target="#PreviewBasic" type="button" role="tab" aria-controls="PreviewBasic" aria-selected="true">Preview </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content card border" id="myTabContent">
+        <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
+         <div class="contents p-5">
+              <div class="row">
+                 <div class="col-md-12">
+                     <img src="/images/breadcrumb-divider.png" class="img-fuild">
+                 </div>            
+           </div>
+                       
+  </div>
+        </div>
+        <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
+          <div class="contents bg-code">
+<div class="row m-0">
+
+```html
+  <rds-breadcrumb
+  [customBreadcrumbsItems]="customBreadcrumbsItems"
+  role="withDivider"
+  [iconShow]="true"
+></rds-breadcrumb>
+```
 </div>
 </div>
-</div>
+  </div>
+        </div>
+      </div>
+    </div>
+  </section>

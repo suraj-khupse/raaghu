@@ -20,4 +20,4 @@ export default {
 
 const Template: Story<RdsCompPageNotFoundComponent> = (args: RdsCompPageNotFoundComponent) => ({});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});

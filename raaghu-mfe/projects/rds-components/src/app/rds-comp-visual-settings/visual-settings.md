@@ -1,7 +1,7 @@
 ---
 slug: "/Visual-Settings"
 date: "2019-05-04"
-title: "Visual-Settings"
+title: "Components / Visual-Settings"
 ---
 
 <!-- CSS only -->
@@ -26,11 +26,12 @@ title: "Visual-Settings"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
+              <div class="col-md-12">
                <img src="\images\visual-settings.png" class="img-fluid">
               </div>
-                       
+              </div>         
   </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic1" role="tabpanel" aria-labelledby="AngularBasic-tab1">

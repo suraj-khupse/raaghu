@@ -24,6 +24,23 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsLoginComponent> = (args: RdsLoginComponent) => ({});
+const Template: Story<RdsLoginComponent> = (args: RdsLoginComponent) => ({
+  props:{
+    ...args
+  }
+});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
+
+Default.args ={
+  userNameData:[],
+ userPasswordData: '',
+ rememeberMe: '',
+ TenantNameData: '',
+ TenancyName: '',
+ TenantName: '',
+ UserName: 'Email/Username',
+ Password: 'Password',
+ userNameInputType:  'email',
+ userPasswordInputType: ''
+}

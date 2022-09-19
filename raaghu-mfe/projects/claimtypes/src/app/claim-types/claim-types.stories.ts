@@ -35,7 +35,8 @@ const Template: Story<RdsCompNewClaimTypeComponent> = (args: RdsCompNewClaimType
   <app-rds-data-table
    [tableHeaders]="claimtypesHeaders" 
    [tableData]="ClaimTypeData" 
-   [actions]="actions"></app-rds-data-table> , `,
+   [actions]="actions"></app-rds-data-table>
+   `
 
    
 

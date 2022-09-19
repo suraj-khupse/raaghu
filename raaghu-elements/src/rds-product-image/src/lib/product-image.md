@@ -1,7 +1,7 @@
 ---
 slug: "/Product-image"
 date: "2019-05-04"
-title: "Product-image"
+title: "Elements / Product-image"
 ---
 
 <!-- CSS only -->
@@ -13,7 +13,7 @@ title: "Product-image"
 #### Product image
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,9 +27,11 @@ title: "Product-image"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-              <img src="\images\product-image-basic.png" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                    <img src="\images\product-image-basic.png" class="img-fuild w-50">
+                 </div>              
            </div>
                        
   </div>
@@ -66,9 +68,11 @@ title: "Product-image"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab1">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-              <img src="\images\product-image-overview-1.png" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                    <img src="\images\product-image-overview-1.png" class="img-fuild w-50">
+                 </div>              
            </div>
                        
   </div>
@@ -108,9 +112,11 @@ title: "Product-image"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic2" role="tabpanel" aria-labelledby="PreviewBasic-tab2">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-              <img src="" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                    <img src="" class="img-fuild w-50">
+                 </div>              
            </div>
                        
   </div>
@@ -148,9 +154,11 @@ title: "Product-image"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic3" role="tabpanel" aria-labelledby="PreviewBasic-tab3">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-              <img src="" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                    <img src="" class="img-fuild w-50">
+                 </div>              
            </div>
                        
   </div>

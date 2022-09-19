@@ -22,8 +22,8 @@ const Template: Story<RdsAppDetailsComponent> = (args: RdsAppDetailsComponent) =
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   item:{ 
      title: 'Zapier', 
      subtitle: 'Build custom automation and intefrations with app', 

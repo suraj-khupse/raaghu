@@ -41,8 +41,8 @@ const Template: Story<RdsCompOrderDetailsComponent> = (args: RdsCompOrderDetails
   props: args
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   displaytype: 'with-progress-bars',
   itemList: [
     {

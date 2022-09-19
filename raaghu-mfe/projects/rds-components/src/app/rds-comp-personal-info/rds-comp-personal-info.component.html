@@ -1,5 +1,5 @@
 <form #personalInfo="ngForm">
-    <div class="row mt-5">
+    <div class="row py-4">
         <div class="col-md-3">
             <div class="form-group mb-3">
                 <rds-input [inputType]="'text'" [Title]="'First name'" [TitleType]="'Top'"
@@ -54,7 +54,7 @@
         </div>
     </div>
     <hr class="bg-code">
-    <div class="row mt-5">
+    <div class="row py-4">
         <div class="col-md-4">
             <rds-avatar [WithProfilePic]="true" [profilePic]="personalData.profileImage"></rds-avatar>
             <div class="mt-1">
@@ -71,7 +71,7 @@
         </div>
     </div>
     <hr>
-    <div class="row mt-5">
+    <div class="row py-4">
         <div class="col-md-4">
             <div class="form-group mb-3">
                 <rds-select-list [(ngModel)]="personalData.jobRole" [labelText]="'Job Role'"
@@ -99,7 +99,7 @@
 
     </div>
     <hr>
-    <div class="row mt-5">
+    <div class="row py-4">
         <div class="col-md-4">
             <rds-label [label]="'Bio'" [bold]="true"></rds-label>
             <div>
@@ -111,7 +111,7 @@
         </div>
     </div>
     <hr>
-    <div class="row mt-5">
+    <div class="row py-4">
         <div class="col-md-4">
             <rds-label [label]="'Portfolio projects and links'" [bold]="true"></rds-label>
             <div>

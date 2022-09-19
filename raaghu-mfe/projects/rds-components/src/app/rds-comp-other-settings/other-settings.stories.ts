@@ -25,8 +25,8 @@ const Template: Story<RdsCompOtherSettingsComponent> = (args: RdsCompOtherSettin
   }
 });
 
-export const basic = Template.bind({});
-basic.args={
+export const Default = Template.bind({});
+Default.args={
   OtherSetting:{
     isQuickThemeSelectEnabled:true
   }

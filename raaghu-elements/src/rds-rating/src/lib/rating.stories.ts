@@ -23,8 +23,8 @@ const Template: Story<RdsRatingComponent> = (args: RdsRatingComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   itemList: [
     {id: 1, value: 1},
     {id: 2, value: 2},

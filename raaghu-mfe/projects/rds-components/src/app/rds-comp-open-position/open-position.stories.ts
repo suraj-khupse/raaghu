@@ -35,8 +35,8 @@ const Template: Story<RdsCompOpenPositionComponent> = (args: RdsCompOpenPosition
   props: { ...args }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   item: {
     titleHeader: "Open Positions",
     navtabsItems: [

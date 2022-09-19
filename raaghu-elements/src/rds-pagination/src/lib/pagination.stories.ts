@@ -18,8 +18,8 @@ const Template: Story<RdsPaginationComponent> = (args: RdsPaginationComponent) =
       props: args,
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
       totalRecords: 10,
       recordsPerPage: 1,
       // role: 'Basic',

@@ -27,13 +27,13 @@
   <div class="row g-0 py-2">
     <div class="col-md-4 bg-light p-2 border-0">
       <div class="h-100 d-flex align-items-center gap-2">
-        <div class="col border-3 border-end">
+        <div class="col border-3 border-end ps-2">
           <div>
             <rds-label [label]="translate.instant('Subscription start date')"></rds-label>
           </div>
           <div class="mt-2">{{EditionData.creationTimeString}}</div>
         </div>
-        <div class="col">
+        <div class="col ps-2">
           <div>
             <rds-label [label]="translate.instant('Subscription end date')"></rds-label>
           </div>
@@ -43,14 +43,14 @@
     </div>
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-3 pb-3">
     <rds-label
   label="What's included in your plan"
   [multiline]="false"
   [bold]="true"
   [italic]="false"
 ></rds-label>
-    <div class="col-12"  *ngFor="let item of EditionData.featureValues">
+    <div class="col-12 pt-2"  *ngFor="let item of EditionData.featureValues">
       
       <ul class="p-0 mb-0">
         <li class="list-group-item border-0 p-1">

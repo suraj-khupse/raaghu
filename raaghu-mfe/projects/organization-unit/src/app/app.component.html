@@ -18,9 +18,10 @@
 
       <div class="col-md-6 gutter-b">
         <div class="card p-2 border-0 rounded-0 vh-88">
-          <!-- <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
-    <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
-  </div> -->
+          <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
+            <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
+          </div>
+          
           <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
             <div class="">
               <div *ngIf="selectedTreeNode != 0">

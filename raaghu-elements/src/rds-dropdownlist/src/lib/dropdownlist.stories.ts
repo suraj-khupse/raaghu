@@ -32,7 +32,7 @@ const Template: Story<RdsDropdownlistComponent> = (args: RdsDropdownlistComponen
 });
 
 
-export const Basic: Story<RdsDropdownlistComponent> = (args) => ({
+export const Default: Story<RdsDropdownlistComponent> = (args) => ({
   props: args,
   template:
     `<rds-dropdownlist 
@@ -46,7 +46,7 @@ export const Basic: Story<RdsDropdownlistComponent> = (args) => ({
   >
     </rds-dropdownlist>`
 });
-Basic.args = {
+Default.args = {
   placeholder: 'Filter',  
   size: 'default',
   multiSelect: false,

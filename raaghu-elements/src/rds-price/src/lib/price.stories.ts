@@ -20,6 +20,6 @@ const Template: Story<RdsPriceComponent> = (args: RdsPriceComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({});
+export const Default = Template.bind({});
 
 

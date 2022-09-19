@@ -49,8 +49,8 @@ const Template: Story<RdsButtonComponent> = (args: RdsButtonComponent) => ({
 //   label: 'Button',
 // };
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   colorVariant: 'primary',
   label: 'button',
   block: false,

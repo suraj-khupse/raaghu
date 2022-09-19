@@ -24,8 +24,8 @@ const Template: Story<RdsFileUploaderComponent> = (args: RdsFileUploaderComponen
   props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   size: 'medium',
   multipleFiles: false,
   role: 'default',

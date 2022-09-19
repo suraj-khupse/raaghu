@@ -1,4 +1,4 @@
-<div class="mfe-outline">
+<div class="mfe-outline p-3">
 
   <div *ngIf="userData$ | async as userData">
     <div><b>User email:</b> {{ userData.userEmail }}</div>
@@ -10,7 +10,7 @@
   <h3 class="pb-3">Address</h3>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation">
     <div class="row g-3">
-      <div class="col-12">
+      <div class="col-6">
         <label for="address" class="form-label">Address</label>
         <input
           type="text"
@@ -23,7 +23,7 @@
         <div class="invalid-feedback">Please enter your shipping address.</div>
       </div>
   
-      <div class="col-12">
+      <div class="col-6">
         <label for="address2" class="form-label"
           >Address 2 <span class="text-muted">(Optional)</span></label>
         <input
@@ -35,7 +35,7 @@
         />
       </div>
   
-      <div class="col-md-5">
+      <div class="col-md-6">
         <label for="country" class="form-label">Country</label>
         <select class="form-select" formControlName="country" id="country" required>
           <option [ngValue]="null" disabled>Select Country</option>
@@ -44,7 +44,7 @@
         <div class="invalid-feedback">Please select a valid country.</div>
       </div>
   
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label for="state" class="form-label">State</label>
         <select class="form-select" formControlName="state" id="state" required>
           <option [ngValue]="null" disabled>Select State</option>
@@ -53,7 +53,7 @@
         <div class="invalid-feedback">Please provide a valid state.</div>
       </div>
   
-      <div class="col-md-4">
+      <div class="col-md-6">
         <label for="state" class="form-label">City</label>
         <select class="form-select" formControlName="city" id="state" required>
           <option [ngValue]="null" disabled>Select city</option>
@@ -62,7 +62,7 @@
         <div class="invalid-feedback">Please provide a valid state.</div>
       </div>
   
-      <div class="col-md-3">
+      <div class="col-md-6">
         <label for="zip" class="form-label">Zip</label>
         <input
           type="text"

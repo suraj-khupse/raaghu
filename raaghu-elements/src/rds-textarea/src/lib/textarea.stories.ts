@@ -30,8 +30,8 @@ const Template: Story<RdsTextareaComponent> = (args: RdsTextareaComponent) => ({
 `
 });
 
-export const basic = Template.bind({})
-basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   disabled: false,
   rows: '3',
   readonly: false,

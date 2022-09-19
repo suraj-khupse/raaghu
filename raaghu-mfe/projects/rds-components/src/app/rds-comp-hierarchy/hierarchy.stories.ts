@@ -28,9 +28,9 @@ const Template: Story<RdsCompHierarchyComponent> = (args: RdsCompHierarchyCompon
     }
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
   
-basic.args = {
+Default.args = {
    treeData: [
     new TreeNode("L1N1",'L1-N1', 1, [
       new TreeNode("L1N2",'L1-N2', 2, [new TreeNode("L1N3",'L1-N3', 2, [new TreeNode("L1N4",'L1-N4', 2, [],true)],false)],true)

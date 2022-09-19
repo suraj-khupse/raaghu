@@ -20,8 +20,8 @@ const Template: Story<RdsBannerComponent> = (args: RdsBannerComponent) => ({
     props: args
 });
 
-export const Basic = Template.bind({})
-Basic.args = { 
+export const Default = Template.bind({})
+Default.args = { 
   alignCenter: false,
   bannerText: 'Big news! We are excited to announce a brand new product.',
   sticky: false,

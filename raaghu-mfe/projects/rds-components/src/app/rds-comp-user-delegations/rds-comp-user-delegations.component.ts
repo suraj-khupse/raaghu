@@ -24,7 +24,7 @@ export class RdsUserDelegationsComponent implements OnInit, OnChanges, OnDestroy
   @Input() tableStyle: string = 'Light'; 
   username: any = '';
   startDate: Date = new Date();
-  endDate: Date = new Date();
+  endDate: any = '';
   @Output() onDeligateSave = new EventEmitter<any>()
   @Output() onCancelDeligate = new EventEmitter<any>()
   @Output() onDeleteDeligate = new EventEmitter<any>()
@@ -45,6 +45,7 @@ export class RdsUserDelegationsComponent implements OnInit, OnChanges, OnDestroy
   }
 
   hideandShowdelegateform() {
+    this.endDate = '';
     this.deligateDivFlag = !this.deligateDivFlag;
   }
 

@@ -35,8 +35,8 @@ const Template: Story<RdsToastsComponent> = (args: RdsToastsComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   withHeader: false,
   headerTitle: 'Bootstrap',
   time: '11 Seconds ago',

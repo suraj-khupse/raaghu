@@ -35,7 +35,7 @@ const Template: Story<RdsCompInformationComponent> = (args: RdsCompInformationCo
   // const Template: Story<RdsCompEditionComponent> = (args: RdsCompEditionComponent) => ({});
 
   // export const basic = Template.bind({});
-  export const basic = Template.bind({});
-  basic.args ={
+  export const Default = Template.bind({});
+  Default.args ={
     dynamicPropertiesData: {propertyName:'string', displayName: 'string', inputType: 'string'}
   }

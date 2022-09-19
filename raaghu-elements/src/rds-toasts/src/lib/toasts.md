@@ -1,7 +1,7 @@
 ---
 slug: "/toasts"
 date: "2019-05-04"
-title: "toasts"
+title: "Elements / Toasts"
 ---
 
 <!-- CSS only -->
@@ -29,10 +29,12 @@ title: "toasts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewPosition" role="tabpanel" aria-labelledby="PreviewPosition-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents p-5">
              <div class="row">
-                   <img src="images/toast.png" class="w-50">
-                 </div>
+                <div class="col-md-12">
+                  <img src="images/toast.png" class="w-50">
+                </div>                 
+              </div>
             </div>
         </div>
         <div class="tab-pane fade show" id="AngularPosition" role="tabpanel" aria-labelledby="AngularPosition-tab">
@@ -80,10 +82,12 @@ title: "toasts"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewToast" role="tabpanel" aria-labelledby="PreviewToast-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents p-5">
               <div class="row">
-                 <img src="images/toast.png" class="w-50">
-                  </div>
+                 <div class="col-md-12">
+                     <img src="images/toast.png" class="img-fluid w-50">
+                 </div>                
+                </div>
              </div>
         </div>
         <div class="tab-pane fade show" id="AngularToast" role="tabpanel" aria-labelledby="AngularToast-tab">

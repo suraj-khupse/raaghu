@@ -20,4 +20,4 @@ export default {
 
 const Template: Story<RdsAddressInputComponent> = (args: RdsAddressInputComponent) => ({});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});

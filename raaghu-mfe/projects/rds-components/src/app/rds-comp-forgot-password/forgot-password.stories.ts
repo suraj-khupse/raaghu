@@ -21,4 +21,4 @@ export default {
 
 const Template: Story<RdsForgotPasswordComponent> = (args: RdsForgotPasswordComponent) => ({});
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});

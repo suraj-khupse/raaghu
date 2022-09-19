@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsDropdownlistModule, RdsInputModule, RdsSelectListModule } from '@libs/rds-elements';
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompNewLanguageComponent } from './rds-comp-new-language.component';
 import { RdsLabelModule } from '@libs/rds-label';
@@ -15,6 +15,7 @@ export default {
         ReactiveFormsModule,
         RdsButtonModule,
         RdsSelectListModule,
+        RdsDropdownlistModule,
         RdsCheckboxModule,
         RdsLabelModule,
         NgxTranslateModule.forRoot()
@@ -32,8 +33,8 @@ const Template: Story<RdsCompNewLanguageComponent> = (args: RdsCompNewLanguageCo
     }
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
     flags:[
         {value: "famfamfam-flags ad", displayText: "ad", isSelected: false}
         ,{value: "famfamfam-flags ae", displayText: "ae", isSelected: false}

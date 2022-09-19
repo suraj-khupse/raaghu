@@ -30,8 +30,8 @@ const Template: Story<RdsIconComponent> = (args: RdsIconComponent) => ({
   props: args,
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   name: 'users',
   width: '20px',
   height: '20px'

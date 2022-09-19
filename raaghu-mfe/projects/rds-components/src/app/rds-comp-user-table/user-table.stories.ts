@@ -30,8 +30,8 @@ const Template: Story<RdsCompUserTableComponent> = (args: RdsCompUserTableCompon
     }
 });
 
-export const basic = Template.bind({});
-basic.args ={
+export const Default = Template.bind({});
+Default.args ={
   userTableHeader: [],
   userTableData: [],
   recordsPerpage: 10,

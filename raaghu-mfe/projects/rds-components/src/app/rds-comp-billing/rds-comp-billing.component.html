@@ -1,10 +1,10 @@
-<div class="d-flex text-center">
+<div class="d-flex text-center justify-content-center">
     <rds-card [borderCard]="true" *ngFor="let item of subscriptionData" class="p-2">
         <div header class="bg-primary py-2">
             <rds-label [label]="item.name.toUpperCase()" [bold]="true" class="fs-5"></rds-label>
         </div>
-        <div body class="$primary-100">
-            <rds-icon [name]="item.iconurl" [height]="'100px'" [width]="'92px'" [fill]="false"></rds-icon>
+        <div body class="$primary-100 pt-3">
+            <rds-icon [name]="item.iconurl" [height]="'100px'" [width]="'92px'" [fill]="false" style="stroke-width: 0.2;"></rds-icon>
             <div class="py-2">
                 <h2 class="p-2 pb-0">${{item.price}}</h2>
                 <p>{{item.duration}} Days</p>
@@ -17,7 +17,7 @@
                 </span>
             </div>
         </div>
-        <div footer class="pb-3">
+        <div footer class="pb-3 pt-3">
             <rds-button [tooltipPlacement]="'bottom'" [tooltipTitle]="'Upgrade'" [label]="'Upgrade'" type="button"
                 [size]="'small'" [colorVariant]="'primary'">
             </rds-button>

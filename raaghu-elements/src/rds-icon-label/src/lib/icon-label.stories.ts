@@ -30,8 +30,8 @@ const Template: Story<RdsIconLabelComponent> = (args: RdsIconLabelComponent) => 
 
 });
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   label: "" ,
   icon : '',
   iconposition : 'left',

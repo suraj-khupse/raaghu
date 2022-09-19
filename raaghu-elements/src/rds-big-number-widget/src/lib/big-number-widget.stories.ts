@@ -38,8 +38,8 @@ const Template: Story<RdsBigNumberWidgetComponent> = (args: RdsBigNumberWidgetCo
   </div>`
 });
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   colorVariant: 'white',
   textAlign: 'text-start',
   subTitleColorVariant: 'danger'

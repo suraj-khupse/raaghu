@@ -1,7 +1,7 @@
 ---
 slug: "/Avatar"
 date: "2019-05-04"
-title: "Avatar"
+title: "Elements /Avatar"
 ---
 
 <!-- CSS only -->
@@ -15,7 +15,7 @@ title: "Avatar"
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -29,26 +29,11 @@ title: "Avatar"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
                                           <div class="row">
-                                             <div class="col-md-2 col-12 -webkit-center">
-                                                <div class="my-2 border-bottom">
-                                                   <p class="text-center">
-                                                      Profile Picture
-                                                   </p>
-                                                </div>
-                                                  <img src="https://portal.raaghu.io/images/components/_avatar/profile1.png" class="avatar img-circle" style="margin-left: 30%;">
-                                             </div> 
-                                             <div class="col-md-2 col-12 -webkit-center">
-                                                <div class="my-2 border-bottom">
-                                                   <p class="text-center">
-                                                      Default Avatar
-                                                   </p>
-                                                </div>
-                                                  <div class="avatar primary-avatar ">
-                                                      AS
-                                                  </div>
-                                             </div> 
+                                            <div class="col-md-12">
+                                            <img src="/images/avatar.png" class="img-fuild">
+                                            </div>
                                           </div>
                                     </div>
         </div>

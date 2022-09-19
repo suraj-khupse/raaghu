@@ -1,7 +1,7 @@
 ---
 slug: "/modal"
 date: "2019-05-04"
-title: "modal"
+title: "Elements / Modal"
 ---
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -15,9 +15,6 @@ title: "modal"
 #### Modal Popups
   
 <p class="">It is a dialog box/popup window that is displayed on top of the current page</p>
-
-
-
 
 <section class="py-4">
     <h6>Form Modal</h6>
@@ -34,9 +31,11 @@ title: "modal"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/modal-basic.png" class="img-thumbnail w-50">
+               <div class="col-md-12">
+                  <img src="/images/modal-basic.png" class="img-fuild w-50">
+               </div>               
               </div>
                        
   </div>
@@ -115,9 +114,11 @@ title: "modal"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab1">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/modal-long-content.png" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                     <img src="/images/modal-long-content.png" class="img-fuild w-50">
+                </div>              
               </div>
                        
   </div>
@@ -198,9 +199,11 @@ title: "modal"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic2" role="tabpanel" aria-labelledby="PreviewBasic-tab2">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/modal-basic.png" class="img-thumbnail w-50">
+               <div class="col-md-12">
+                  <img src="/images/modal-basic.png" class="img-fuild w-50">
+               </div>               
               </div>
                        
   </div>

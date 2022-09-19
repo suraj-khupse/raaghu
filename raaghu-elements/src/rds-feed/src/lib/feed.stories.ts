@@ -33,8 +33,8 @@ export default {
 const Template: Story<RdsFeedComponent> = (args: RdsFeedComponent) => ({
   props: args,
 });
-export const Basic = Template.bind({})
-Basic.args = {
+export const Default = Template.bind({})
+Default.args = {
   itemList: [
     {
       'actor': 'Jijo Fleshman',

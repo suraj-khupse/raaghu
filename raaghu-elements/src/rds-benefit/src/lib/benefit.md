@@ -1,14 +1,14 @@
 ---
 slug: "/Benefit"
 date: "2019-05-04"
-title: "Benefit"
+title: "Elements / Benefit"
 ---
 
 ### Benefit
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -22,9 +22,11 @@ title: "Benefit"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="/images/benefit-basic.png" class="img-thumbnail w-50">
+               <div class="col-md-12">
+                  <img src="/images/benefit-basic.png" class="img-fuild w-75">
+               </div>              
            </div>
                        
   </div>
@@ -59,9 +61,11 @@ title: "Benefit"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic1-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents p-5">
               <div class="row">
-               <img src="/images/benefit-type-1.png" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                     <img src="/images/benefit-type-1.png" class="img-fuild w-75">
+                 </div>              
            </div>
                        
   </div>
@@ -96,9 +100,11 @@ title: "Benefit"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic2" role="tabpanel" aria-labelledby="PreviewBasic2-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/benefit-type-2.png" class="img-thumbnail w-50">
+                <div class="col-md-12">
+                  <img src="/images/benefit-type-2.png" class="img-fuild w-75">
+                </div>               
            </div>
                        
   </div>
@@ -133,9 +139,11 @@ title: "Benefit"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic3" role="tabpanel" aria-labelledby="PreviewBasic3-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/benefit-type-3.png" class="img-thumbnail w-50">
+                 <div class="col-md-12">
+                    <img src="/images/benefit-type-3.png" class="img-fuild w-75">
+                 </div>              
            </div>
                        
   </div>
@@ -169,9 +177,11 @@ title: "Benefit"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic4" role="tabpanel" aria-labelledby="PreviewBasic4-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/benefit-type-4.png" class="img-thumbnail w-50">
+               <div class="col-md-12">
+                   <img src="/images/benefit-type-4.png" class="img-fuild w-75">
+               </div>              
            </div>
                        
   </div>
@@ -206,9 +216,11 @@ title: "Benefit"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic5" role="tabpanel" aria-labelledby="PreviewBasic5-tab">
-         <div class="contents bg-light p-5">
+         <div class="contents  p-5">
               <div class="row">
-               <img src="/images/benefit-type-5" class="img-thumbnail w-50">
+               <div class="col-md-12">
+                   <img src="/images/benefit-type-5" class="img-fuild w-75">
+               </div>             
            </div>
                        
   </div>

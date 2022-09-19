@@ -20,7 +20,7 @@ export default {
     },
 } as Meta;
 
-export const Basic: Story<RdsInputGroupComponent> = (args) => ({
+export const Default: Story<RdsInputGroupComponent> = (args) => ({
     props: args,
     template:   `<rds-input-group>
                     <label>{{label}}</label>
@@ -31,7 +31,7 @@ export const Basic: Story<RdsInputGroupComponent> = (args) => ({
                 </rds-input-group>`
   
 });
-Basic.args = {
+Default.args = {
     
 }
 

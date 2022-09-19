@@ -26,7 +26,7 @@ const Template: Story<RdsAccordionComponent> = (args: RdsAccordionComponent) => 
   props: { ...args },
   template: `<rds-accordian></rds-accordian>`,
 });
-export const Basic: Story<RdsAccordionComponent> = (args) => ({
+export const Default: Story<RdsAccordionComponent> = (args) => ({
   props: args,
   template: `
   <rds-accordian [id]="id" >
@@ -38,7 +38,7 @@ export const Basic: Story<RdsAccordionComponent> = (args) => ({
   </accordion-item>
 </rds-accordian>`,
 });
-Basic.args = {
+Default.args = {
   expanded: true,
   id: "accordionBasic"
 };

@@ -45,9 +45,9 @@ const Template: Story<RdsDropdownComponent> = (args: RdsDropdownComponent) => ({
     </rds-dropdown>`,
 });
 
-export const basic = Template.bind({});
+export const Default = Template.bind({});
 
-basic.args = {
+Default.args = {
   colorVariant: 'primary',
   size: 'default',
   darkDropdown: false,
