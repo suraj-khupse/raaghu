@@ -27,7 +27,7 @@ export class RdsDatepickerComponent implements OnInit, ControlValueAccessor {
   @Input() disabled: boolean = false;
   @Input() datePickerType: 'advanced' | 'basic' = 'basic';
   //Basic Datepicker options
-  @Input() DatePickerConfig: Partial<BsDatepickerConfig> = { dateInputFormat: 'MM/DD/YYYY', showWeekNumbers: false, isAnimated: true, adaptivePosition: true };
+  @Input() datePickerConfig: Partial<BsDatepickerConfig> = { dateInputFormat: 'MM/DD/YYYY', showWeekNumbers: false, isAnimated: true, adaptivePosition: true };
   @Input() value: any;
   @Input() placeholder: string = 'Date';
   @Input() datesDisabled: Date[] = [];

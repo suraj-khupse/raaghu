@@ -1,7 +1,7 @@
 ---
 slug: "/Icon-Label"
 date: "2019-05-04"
-title: "Elements / Icon-Label"
+title: "Elements > Icon-Label"
 ---
 
 <!-- CSS only -->
@@ -31,7 +31,7 @@ title: "Elements / Icon-Label"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="/images/icon-label.png" class="img-fuild w-25">
+                    <img src="/images/icon-label.png" class="img-fluid w-25">
                  </div>              
            </div>
                        

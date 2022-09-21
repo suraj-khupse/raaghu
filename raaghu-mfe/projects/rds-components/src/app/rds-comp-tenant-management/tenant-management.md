@@ -1,7 +1,7 @@
 ---
 slug: "/Tenant-Management"
 date: "2019-05-04"
-title: "Components / Tenant Management"
+title: "Components > Tenant Management"
 ---
 
 

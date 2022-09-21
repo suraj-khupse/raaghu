@@ -1,7 +1,7 @@
 ---
 slug: "/Apply-For-Position"
 date: "2019-05-04"
-title: "Components / Apply-For-Position"
+title: "Components > Apply-For-Position"
 ---
 
 <!-- CSS only -->

@@ -1,7 +1,7 @@
 ---
 slug: "/chart-radar"
 date: "2019-05-04"
-title: "Elements / Chart-radar"
+title: "Elements > Chart-radar"
 ---
 
 <!-- CSS only -->

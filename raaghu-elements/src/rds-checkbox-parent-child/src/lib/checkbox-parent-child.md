@@ -1,7 +1,7 @@
 ---
 slug: "/checkbox-parent-child"
 date: "2019-05-04"
-title: "Elements / Checkbox-parent-child"
+title: "Elements > Checkbox-parent-child"
 ---
 
 #### Checkbox-Parent-Child
@@ -25,7 +25,7 @@ title: "Elements / Checkbox-parent-child"
          <div class="contents p-5">
               <div class="row">  
                  <div class="col-md-12">
-                     <img src="/images/checbox-group-parent-child.png" class="img-fuild w-25">
+                     <img src="/images/checbox-group-parent-child.png" class="img-fluid w-25">
                  </div>                        
            </div>                       
   </div>

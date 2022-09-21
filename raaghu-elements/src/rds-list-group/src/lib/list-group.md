@@ -1,7 +1,7 @@
 ---
 slug: "/list-group"
 date: "2019-05-04"
-title: "Elements/  List-group"
+title: "Elements > List-group"
 ---
 
 <!-- CSS only -->
@@ -31,7 +31,7 @@ title: "Elements/  List-group"
          <div class="contents  p-5">
               <div class="row">
                <div class="col-md-12">
-                  <img src="/images/list-group-basic.png" class="img-fuild w-50">
+                  <img src="/images/list-group-basic.png" class="img-fluid w-50">
                </div>                           
            </div>
                        

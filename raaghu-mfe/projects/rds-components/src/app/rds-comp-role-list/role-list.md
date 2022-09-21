@@ -1,7 +1,7 @@
 ---
 slug: "/Role-List"
 date: "2019-05-04"
-title: "Components / Role-List"
+title: "Components > Role-List"
 ---
 
 <!-- CSS only -->

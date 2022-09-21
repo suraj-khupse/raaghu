@@ -1,7 +1,7 @@
 ---
 slug: "/Input"
 date: "2019-05-04"
-title: "Elements / Input"
+title: "Elements > Input"
 ---
 
 <!-- CSS only -->
@@ -32,7 +32,7 @@ title: "Elements / Input"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                      <img src="/images/input-basic.png" class="img-fuild w-100">
+                      <img src="/images/input-basic.png" class="img-fluid w-100">
                  </div>             
               </div>
                        

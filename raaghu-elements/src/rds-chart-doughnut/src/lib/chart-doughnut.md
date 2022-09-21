@@ -1,7 +1,7 @@
 ---
 slug: "/chart-doughnut"
 date: "2019-05-04"
-title: "Elements / Chart-doughnut"
+title: "Elements > Chart-doughnut"
 ---
 
 <!-- CSS only -->

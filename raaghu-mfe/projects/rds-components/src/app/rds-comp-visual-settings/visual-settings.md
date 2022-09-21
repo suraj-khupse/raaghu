@@ -1,7 +1,7 @@
 ---
 slug: "/Visual-Settings"
 date: "2019-05-04"
-title: "Components / Visual-Settings"
+title: "Components > Visual-Settings"
 ---
 
 <!-- CSS only -->

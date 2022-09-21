@@ -143,7 +143,7 @@
   $accessible-800: #13002E;
 
   $nav-background-color: $accessible-600 !default;
-  $form-select-bg: $accessible-500 !default;
+/*  $form-select-bg: $accessible-500 !default;*/
   $card-dashboard-bg-color: $accessible-700 !default;
   $body-wrapper-bg: $accessible-600 !default;
   $sidbar-border-right-color: #1A0339;
@@ -164,19 +164,11 @@ $card-border-color: $card-bg-color;
 
   $primary: rgb(120, 126, 255);
 
-  $input-border-color: #515484;
-  $form-select-bg: #353755;
-
+/*  $input-border-color: #515484;
+  $form-select-bg: #353755;*/
+$datepicker-bg: $accessible-600 !default;
+$datepicker-head: $accessible-600 !default;
   $link-color: $primary;
-
-
-  #sidebar ul li a.active {
-    background-color: $primary;
-  }
-
-  #sidebar ul li a.active {
-    background-color: $primary;
-  }
 
   #sidebar ul li a.active.child {
     background-color: none;
@@ -187,7 +179,7 @@ $card-border-color: $card-bg-color;
     border: 1px solid $accessible-400;
   }
 
-  svg {
+/*  svg {
     fill: none;
     stroke: currentColor;
 
@@ -211,35 +203,7 @@ $card-border-color: $card-bg-color;
       stroke: $white;
     }
   }
-
-  #sidebar {
-    ul {
-      li {
-        a {
-          svg {
-            fill: none;
-            stroke: currentColor;
-
-            path.icon {
-              stroke: $white;
-            }
-
-            line.icon {
-              stroke: $white;
-            }
-
-            rect.icon {
-              stroke: $white;
-            }
-
-            circle.icon {
-              stroke: $white;
-            }
-          }
-        }
-      }
-    }
-  }
+*/
 
   #sidebar ul li a {
     padding-left: 10px;
@@ -248,8 +212,37 @@ $card-border-color: $card-bg-color;
   }
   //$body-wrapper-bg:;
 
+html[theme=dark] {
+  $dropdown-color: $white;
+  $input-bg: $accessible-300!default;
+  $form-select-bg: $input-bg;
+  $notification-header-bg: $accessible-500!default;
+  $input-group-addon-bg: $input-bg;
+  $input-group-addon-border-color: $accessible-400 !default;
 
-  $input-bg: #353755;
+  .form-control, .form-control:focus {
+    background-color: $input-bg;
+    border: 1px solid $accessible-400;
+    color: $white;
+  }
+
+  .dropdown-menu {
+    --bs-dropdown-color: $dropdown-color;
+  }
+
+  .input-group-text {
+    background-color: $input-group-addon-bg;
+    border-color: $input-group-addon-border-color;
+  }
+
+  .form-select[size]:not([size="1"]) {
+    background-color: $input-bg;
+  }
+
+  .notification-header {
+    background-color: $notification-header-bg;
+  }
+}
 
 @import './custom.scss';
 @import './node_modules/bootstrap/scss/bootstrap';

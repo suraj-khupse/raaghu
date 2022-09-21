@@ -8,13 +8,13 @@
       <button type="button" class="btn-close text-reset closetabs" (click)="onClickCloseTabContent()"
               aria-label="Close"></button>
       <div class="tab-pane active h-100" [ngClass]="{'show active': activePage === 0}" id="nav-LinkAccount" role="tabpanel" aria-labelledby="nav-LinkAccount">
-        <app-rds-linked-accounts [linkedAccount]="linkedAccount" (ondelete)="ondeleteLinkaccount.emit($event)"
+        <app-rds-linked-accounts [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData" (ondelete)="ondeleteLinkaccount.emit($event)"  [manageLinkedAccountsTabOpened]="manageLinkedAccountsTabOpened"
                                  [pagination]="pagination" [recordsPerpage]="recordsPerpage" (deleteEvent)="deleteLinkaccount($event) "
                                  (onUserSave)="linkToUser($event)" (onCancelLinkedAccounts)="onClickCloseTabContent()">
         </app-rds-linked-accounts>
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{'show active': activePage === 1}" id="nav-Deligation" role="tabpanel" aria-labelledby="nav-Deligation">
-        <app-rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader" [pagination]="pagination" [tabClosed]="tabClosed"
+        <app-rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader" [pagination]="pagination" [delegateTabopened]="delegateTabopened"
                                   (onDeligateSave)="onSaveDelegate.emit($event)" [tableWidth]="tableWidth" [tableStyle]="tableStyle"
                                   [recordsPerpage]="recordsPerpage" [userList]="userList" [rdsDeligateTableData]="rdsDeligateTableData"
                                   (onCancelDeligate)="cancelDelegate($event)">
@@ -55,8 +55,8 @@
           <div class="card-body h-100 p-0 d-grid">
             <div class="justify-content-center d-flex align-items-center">
               <div class="d-inline-block position-relative">
-                <rds-avatar [WithProfilePic]="true" [profilePic]="Profileurl" [Size]="'larger'"
-                            [VerticalTitleWithProfilePic]="true"></rds-avatar>
+                <rds-avatar [withProfilePic]="true" [profilePic]="Profileurl" [size]="'large'"
+                            [verticallyAlligned]="true"></rds-avatar>
                 <div class="" *ngIf="ProfileData">
                   {{ProfileData.UserName}}
                   <input type="file" (change)="checkFileSize($event);checkExtension($event)" #file

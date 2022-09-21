@@ -1,7 +1,7 @@
 ---
 slug: "/chart-polar-area"
 date: "2019-05-04"
-title: "Elements / Chart-polar-area"
+title: "Elements > Chart-polar-area"
 ---
 
 <!-- CSS only -->

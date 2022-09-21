@@ -146,9 +146,31 @@ $default-100: #F58220;
   --chartgradient10: rgba(25,70,186,1%);
   
 }
+html[theme=dark] {
+  $dropdown-color: $white;
+  $input-bg: $dark-100!default;
+  $input-border-color: $input-bg;
+  $form-select-bg: $input-bg;
+  $input-group-addon-bg: $input-bg;
 
+  .form-control, .form-control:focus {
+    background-color: $input-bg;
+    border: 1px solid $input-border-color;
+    color: $white;
+  }
 
+  .dropdown-menu {
+    --bs-dropdown-color: $dropdown-color;
+  }
 
+  .input-group-text {
+    background-color: $input-group-addon-bg;
+  }
+
+  .form-select[size]:not([size="1"]) {
+    background-color: $input-bg;
+  }
+}
 
 @import './custom.scss';
 @import './node_modules/bootstrap/scss/bootstrap';
@@ -181,12 +203,12 @@ $default-100: #F58220;
 @import './cookieconsent.scss';
 
 
-html[theme=dark] .border-bottom {
+/*html[theme=dark]{ .border-bottom {
   border-bottom: 1px solid $gray-800 !important;
 }
 html[theme=dark] .form-select {
   background-color: $dark-100;
-}
-rds-dropdownlist .form-select{
+}}*/
+/*rds-dropdownlist .form-select{
   border: 0;
-}
+}*/

@@ -5,6 +5,9 @@
         [ngStyle]="{'width': width}">
         <thead>
           <tr>
+            <th *ngIf="enableCheckboxSelection">
+              <rds-checkbox [checked]="isAllCheckBoxChecked()" (change)="checkAllCheckBox($event)"></rds-checkbox>
+            </th>
             <ng-container *ngFor="let header of tableHeaders">
               <th scope="col" [class.sortable]="header.sortable" [ngStyle]="{'width': header.colWidth}">
                 <div class="header d-flex">
@@ -38,13 +41,16 @@
                 </div>
               </th>
             </ng-container>
-            <th *ngIf="tableHeaders&&tableHeaders.length>0&&actions&&actions.length>0">
+            <th *ngIf="tableHeaders&&tableHeaders.length>0&&actions&&actions.length>0" class="text-center">
               {{translate.instant("Actions")}}
             </th>
           </tr>
         </thead>
         <tbody *ngIf="tableData&&tableData.length>0">
-          <tr *ngFor="let data of dataSource; let i=index">
+          <tr *ngFor="let data of dataSource; let i=index" (click)="onSelectData(data)">
+            <td *ngIf="enableCheckboxSelection">
+              <rds-checkbox [checked]="data.checked" (change)="changeCheckbox(data,$event)"></rds-checkbox>
+            </td>
             <ng-container *ngFor="let column of tableHeaders">
               <ng-container *ngIf="column.dataType.toLowerCase()==='html'&&!data.isEdit; else iconTemplate">
                 <td [innerHTML]="data[column.key]" class="align-middle"></td>
@@ -60,7 +66,7 @@
               </ng-template>
 
               <ng-template #nonTemplateData>
-                <td class="align-middle" (click)="onSelectData(data)">
+                <td class="align-middle" >
                   <ng-container *ngIf="!data.isEdit; else editTemplate">
                     {{data[column.key]}}
                   </ng-container>
@@ -96,8 +102,8 @@
                 </td>
               </ng-template>
             </ng-container>
-            <td *ngIf="actions.length>0" class="align-middle">
-              <div class="d-flex align-items-center">
+            <td *ngIf="actions.length>0" class="align-middle text-center">
+              <!-- <div class="d-flex align-items-center"> -->
                 <div class="dropdown" *ngIf="!data.isEdit; else editActionTemplate">
                   <rds-button [colorVariant]="'default'" [submit]="false" [block]="false" [size]="'small'"
                     [iconFill]="true" [iconStroke]="false" [disabled]="false" [outlineButton]="true"
@@ -123,12 +129,12 @@
                     [icon]="'check_mark'" [iconHeight]="'10px'" [iconWidth]="'20px'" (click)="saveChanges(data)">
                   </rds-button>
 
-                  <rds-button class="ms-2" (click)="closeEdit(data)" [roundedButton]="true" [tooltipPlacement]="'top'"
-                    [colorVariant]="'danger'" [size]="'medium'" [icon]="'cross_mark'" [iconHeight]="'10px'"
-                    [iconWidth]="'20px'">
-                  </rds-button>
-                </ng-template>
-              </div>
+                <rds-button class="ms-2" (click)="closeEdit(data)" [roundedButton]="true" [tooltipPlacement]="'top'"
+                  [colorVariant]="'danger'" [size]="'medium'" [icon]="'cross_mark'" [iconHeight]="'10px'"
+                  [iconWidth]="'20px'">
+                </rds-button>
+              </ng-template>
+              <!-- </div> -->
             </td>
 
           </tr>

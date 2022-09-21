@@ -1,7 +1,7 @@
 ---
 slug: "/Feed"
 date: "2019-05-04"
-title: "Elements / Feed"
+title: "Elements > Feed"
 ---
 
 <!-- CSS only -->
@@ -31,7 +31,7 @@ title: "Elements / Feed"
          <div class="contents  p-5">
               <div class="row">
                <div class="col-md-12">
-                 <img src="/images/feeds.png" class="img-fuild w-100">
+                 <img src="/images/feeds.png" class="img-fluid w-100">
                </div>             
               </div>      
   </div>

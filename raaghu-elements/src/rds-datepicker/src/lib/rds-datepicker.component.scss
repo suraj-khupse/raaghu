@@ -1087,7 +1087,8 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
   z-index: 1;
   position: relative;
   display: inline-block;
-   input {
+
+  input {
     top: 0;
     opacity: 0;
     display: block;
@@ -1097,6 +1098,7 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
     position: absolute;
     height: 100%;
     width: 100%;
+
     &:after {
       content: "";
       width: 100%;
@@ -1112,13 +1114,14 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
       -webkit-transform-origin: bottom left;
       -webkit-transition-duration: 0.2s;
     }
-   &:hover {
+
+    &:hover {
       cursor: pointer;
     }
-}
+  }
+
   .date-picker-c {
     display: block;
-    background: white;
     height: auto;
     transform: scaleY(0);
     transform-origin: top left;
@@ -1127,29 +1130,30 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
     -webkit-transform-origin: top left;
     -webkit-transition-duration: 0.2s;
     border-radius: 4px;
-    border: 1px solid #D0D7DD;
-     ul {
+    border:1px solid;
+    ul {
       margin: 0;
       padding: 0;
       list-style-type: none;
     }
-     li {
+
+    li {
       margin-bottom: 0px;
       word-break: keep-all;
       white-space: nowrap;
       display: block;
       position: relative;
     }
-    
   }
+
   .display-date {
     text-align: left;
-    color: #424A50;
     font-size: 13px;
     margin-top: -10px;
     padding-bottom: 5px;
     padding-left: 10px;
   }
+
   .date-picker-dropdown-item {
     display: block;
     text-decoration: none;
@@ -1160,19 +1164,17 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
     letter-spacing: 0px;
     color: #424A50;
     line-height: 26px;
-   
   }
+
   .dropdown-item.active {
-    background-color: #5C82E31F;
     padding-right: 0px !important;
     padding-top: 5px;
     padding-bottom: 5px;
-      span.hr-line {
-          position:relative;
-          top:-4px;
-      color: #5C82E3;
+
+    span.hr-line {
+      position: relative;
+      top: -4px;
       border: 2px solid;
-      background-color: #5C82E3;
       height: 27px;
       max-width: 5px;
       width: 5px;
@@ -1180,34 +1182,34 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
       float: right;
       border-radius: 20px 0px 0px 20px;
     }
+
     .bs-datepicker-container {
       padding: 15px 6px;
-    
-      
     }
   }
+
   .dropdown-menu1 {
     min-width: 11.2rem;
     padding: 0px;
-    background-color: #fff;
     background-clip: padding-box;
     border-radius: 0.25rem;
   }
-  
-  .dropdown-item.active, .dropdown-item:active {
-    color: #212529;
+
+  .date-picker-c .dropdown-item {
+    padding: 5px;
   }
+
+
+
   .dropdown-item:active, .dropdown-item:hover {
     background-color: #5C82E31F;
   }
-  .dropdown-divider {
-    margin: 0rem 0;
-    border-bottom:1px solid #e1e6e9;
-  }
+
+
+
   .dropdown-toggle::after {
     margin-left: 57px;
   }
-  
 }
 .bs-datepicker {
   display: flex;
@@ -1226,7 +1228,8 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
   box-shadow:none!important;
   .bs-datepicker-container {
    
-    margin-left: 10px;;
+    margin-left: 10px;
+    margin-right:7px;
     
 }
 .bs-media-container {
@@ -1364,13 +1367,13 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
       background-color: #5c82e3;
       transition: 0s;
       color: #fff;
+      padding:0px 5px;
     }
-    .custom-today-class {
-      background-color: #ed585f !important;
-     
+    .custom-today-class {     
       z-index: 1;
       color: #fff;
       width: 30px;
+      padding:0 5px;
     }
     
   }
@@ -1396,11 +1399,10 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
 }
 .theme-dark-blue .bs-datepicker-head {
   background-color: #ffff;
+  text-align:center;
 }
 
-.theme-dark-blue .bs-datepicker-body table td span.selected{
-  background-color: #5C82E3;
-}
+
 .date-picker input:hover ~ .date-picker-a {
 -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
@@ -1415,11 +1417,11 @@ transform: scaleY(1);
 position: absolute;
 z-index: 1081;
 top: 170px;
-left: 217px;
+left: 205px;
 border: 1px solid #D0D7DD;
 align-self: center;
 padding: 4px;
-width: 320px;
+width: 289px;
 text-align: center;
 border-bottom-left-radius: 4px;
 border-bottom-right-radius: 4px;
@@ -1475,3 +1477,42 @@ border-bottom-right-radius: 4px;
 }
 /* .bs-datepicker */
 
+.bs-datepicker-body table td:before, .bs-datepicker-body table td span:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 6px;
+  bottom: 6px;
+  left: -3px;
+  right: -2px;
+  box-sizing: content-box;
+  background: transparent;
+}
+.bs-datepicker-body table td span:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  top: 7px;
+  bottom: 7px;
+  left: -7px;
+  right: -7px;
+  box-sizing: content-box;
+  background: transparent;
+}
+.bs-datepicker-body table td span {
+  display: block;
+  margin: 0 auto;
+  font-size: 13px;
+  border-radius: 50%;
+  /* z-index: 1; */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.bs-datepicker-body table.days span {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}

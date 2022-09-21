@@ -1,7 +1,7 @@
 ---
 slug: "/select-list"
 date: "2019-05-04"
-title: "Elements / Select-list"
+title: "Elements > Select-list"
 ---
 
 <!-- CSS only -->
@@ -81,7 +81,7 @@ title: "Elements / Select-list"
         <div class="tab-pane fade show active" id="PreviewBasic1" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents bg-light p-5">
               <div class="row">
-               <img src="\images\select-list-tooltip.png" class="img-thumbnail w-50">
+               <img src="\images\select-list-tooltip.png" class="img-fluid w-50">
               </div>
                        
   </div>

@@ -1,7 +1,7 @@
 ---
 slug: "/review-category"
 date: "2019-05-04"
-title: "Elements / Review-category"
+title: "Elements > Review-category"
 ---
 
 <!-- CSS only -->
@@ -30,7 +30,7 @@ title: "Elements / Review-category"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="\images\review-category-basic.png" class="img-fuild">
+                    <img src="\images\review-category-basic.png" class="img-fluid">
                  </div>               
               </div>
                        

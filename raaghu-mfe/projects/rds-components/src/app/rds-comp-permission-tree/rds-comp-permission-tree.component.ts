@@ -43,7 +43,7 @@ export class RdsCompPermissionTreeComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnChanges(changes: SimpleChanges): void {
-    
+
     if (this.treeData && this.multiselectTree) {
       this.selectAllPermissions(false);
       if (this.selectedItems.length > 0) {
@@ -51,7 +51,7 @@ export class RdsCompPermissionTreeComponent implements OnInit {
           this.checkSelectedNodes(this.treeData, item);
 
         })
-      }    
+      }
     } else {
       this.selectAllPermissions(false)
       if (this.selectedItems.length > 0) {
@@ -60,38 +60,60 @@ export class RdsCompPermissionTreeComponent implements OnInit {
         })
       }
     }
-    
+
   }
 
 
   checkSelectedNodes(treeData: any, node: any) {
     treeData.forEach((item: any) => {
-      if( item.data.name){
-      if (item.data.name === node.name) {
-        item.selected = (node.value === 'true') ? true : (node.value === 'false') ? false : node.value;
+      if (item.data.name) {
+        if (item.data.name === node.name) {
+          item.selected = (node.value === 'true') ? true : (node.value === 'false') ? false : node.value;
 
-      } else {
-        this.checkSelectedNodes(item.children, node)
+        } else {
+          this.checkSelectedNodes(item.children, node)
+        }
       }
-    }
-    if(item.data.displayName){
-if(  item.data.displayName === node.name){
-  item.selected = (node.value === 'true') ? true : (node.value === 'false') ? false : node.value;
+      if (item.data.displayName) {
+        if (item.data.displayName === node.name) {
+          item.selected = (node.value === 'true') ? true : (node.value === 'false') ? false : node.value;
 
-} else {
-  this.checkSelectedNodes(item.children, node)
+        } else {
+          this.checkSelectedNodes(item.children, node)
 
-}
-    }
+        }
+      }
     })
   }
 
-  checkSelectAll(): boolean {
-    if (this.treeData && this.treeData.length > 0) {
-      const selecteditems = this.treeData.filter(x => x.selected);
-      return selecteditems.length === this.treeData.length;
+  checkSelectAll(treeData: any): boolean {
+
+    let allSelected: boolean = true;
+    if (!this.treeData || this.treeData.length == 0) {
+      allSelected = false;
     }
-    return false;
+    this.treeData.forEach((tree: any) => {
+      if (tree.selected && allSelected) {
+        allSelected = this._checkSelectAll(tree.children);
+      } else {
+        allSelected = false;
+      }
+    });
+    return allSelected;
+
+  }
+
+  _checkSelectAll(treeData: any): boolean {
+    let allSelected: boolean = true;
+    treeData.forEach((tree: any) => {
+      if (tree.selected && allSelected) {
+        allSelected = this._checkSelectAll(tree.children);
+      } else {
+        allSelected = false;
+      }
+    });
+    return allSelected;
+
   }
 
   disableSaveButton: boolean;
@@ -188,7 +210,7 @@ if(  item.data.displayName === node.name){
       }
     })
     this.selectedItems = [...this.selectedPermissions]
-   
+
   }
   getSelectedNodes(treeData: any): PermissionNode[] {
     const selectedNodes: any = [];
@@ -207,12 +229,12 @@ if(  item.data.displayName === node.name){
         value: tree.selected
       }
       this.selectedPermissions.push(itemselected)
-      if(tree.children){
+      if (tree.children) {
         this.getSelectedPermissionNodes(tree.children);
       }
-      
+
     })
-  
+
   }
   checkForParent(treeData: PermissionNode[], node: any, event: boolean): void {
     treeData.forEach((tree: any) => {
@@ -220,6 +242,9 @@ if(  item.data.displayName === node.name){
         const exist: any = tree.children.find((x: any) => x.selected && x.data.name !== node.data.name);
         if (!exist) {
           tree.selected = event;
+        }
+        if (tree.data.parentName) {
+          this.checkForParent(this.treeData, tree, event);
         }
       } else {
         this.checkForParent(tree.children, node, event);

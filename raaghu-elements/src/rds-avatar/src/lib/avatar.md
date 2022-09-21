@@ -1,7 +1,7 @@
 ---
 slug: "/Avatar"
 date: "2019-05-04"
-title: "Elements /Avatar"
+title: "Elements > Avatar"
 ---
 
 <!-- CSS only -->
@@ -30,12 +30,12 @@ title: "Elements /Avatar"
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents  p-5">
-                                          <div class="row">
-                                            <div class="col-md-12">
-                                            <img src="/images/avatar.png" class="img-fuild">
-                                            </div>
-                                          </div>
-                                    </div>
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/images/avatar.png" class="img-fuild">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">

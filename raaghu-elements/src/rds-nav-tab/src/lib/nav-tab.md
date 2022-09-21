@@ -1,7 +1,7 @@
 ---
 slug: "/nav-tab"
 date: "2019-05-04"
-title: "Elements / Nav-tab"
+title: "Elements > Nav-tab"
 ---
 
 <!-- CSS only -->
@@ -31,7 +31,7 @@ title: "Elements / Nav-tab"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="/images/navtabs-basic.png" class="img-fuild w-75">
+                    <img src="/images/navtabs-basic.png" class="img-fluid w-75">
                  </div>              
            </div>
                        
@@ -80,7 +80,7 @@ horizontalAlignment="start"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="/images/navtabs-pills.png" class="img-fuild w-75">
+                    <img src="/images/navtabs-pills.png" class="img-fluid w-75">
                  </div>              
            </div>
                        
@@ -129,7 +129,7 @@ horizontalAlignment="start"
          <div class="contents p-5">
               <div class="row">
                <div class="col-md-12">
-                  <img src="/images/navtabs-tabs.png" class="img-fuild w-75">
+                  <img src="/images/navtabs-tabs.png" class="img-fluid w-75">
                </div>              
            </div>
                        
@@ -177,7 +177,7 @@ horizontalAlignment="start"
         <div class="tab-pane fade show active" id="Previewofnavtabpillsofvertical" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents  p-5">
               <div class="row">
-              <!-- <img src="/images/navtabs-tabs.png" class="img-thumbnail w-75"> -->
+              <!-- <img src="/images/navtabs-tabs.png" class="img-fluid w-75"> -->
            </div>
                        
   </div>

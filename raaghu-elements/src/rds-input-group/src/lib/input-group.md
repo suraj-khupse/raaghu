@@ -1,7 +1,7 @@
 ---
 slug: "/Input-Group"
 date: "2019-05-04"
-title: "Elements / Input-Group"
+title: "Elements > Input-Group"
 ---
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -30,7 +30,7 @@ title: "Elements / Input-Group"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                       <img src="/images/input-group.png" class="img-fuild w-100">
+                       <img src="/images/input-group.png" class="img-fluid w-100">
                  </div>                           
            </div>
                        

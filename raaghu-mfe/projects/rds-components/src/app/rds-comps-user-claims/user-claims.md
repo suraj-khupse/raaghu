@@ -1,7 +1,7 @@
 ---
 slug: "/User-Claims"
 date: "2019-05-04"
-title: "User-Claims"
+title: "Components > User-Claims"
 ---
 
 <!-- CSS only -->

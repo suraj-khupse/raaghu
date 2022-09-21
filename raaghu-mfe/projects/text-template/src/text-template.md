@@ -1,7 +1,7 @@
 ---
 slug: "/Text-Template"
 date: "2019-05-04"
-title: "Pages /Text-Template"
+title: "Pages > Text-Template"
 ---
 
 <!-- CSS only -->

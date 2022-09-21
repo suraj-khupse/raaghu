@@ -1,7 +1,7 @@
 ---
 slug: "/chart-pie"
 date: "2019-05-04"
-title: "Elements / Chart-pie"
+title: "Elements > Chart-pie"
 ---
 
 <!-- CSS only -->
@@ -11,6 +11,7 @@ title: "Elements / Chart-pie"
 
 #### Pie Chart
 
+<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 
 <section class="py-4">
     <h6>Default</h6>

@@ -1,7 +1,7 @@
 ---
 slug: "/Shipping-Address"
 date: "2019-05-04"
-title: "Components / Shipping-Address"
+title: "Components > Shipping-Address"
 ---
 
 <!-- CSS only -->

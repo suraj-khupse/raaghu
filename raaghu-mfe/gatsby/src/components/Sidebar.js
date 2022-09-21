@@ -33,7 +33,7 @@ const Sidebar = () => {
   // );
 
   const componentsList = [];
-  const componentsExcludesList = ["-shimmer", "nents"];
+  const componentsExcludesList = ["-shimmer", "nents","client-basics"];
   elementsList.forEach((item) => {
     if (
       item.name.includes("rds-comp") &&
@@ -70,11 +70,13 @@ const Sidebar = () => {
   // var elementName=JSON.parse(JSON.stringify(rdsElementList).replace(/-/g,' '));
   var elementsLists = [];
 
+  var elementsExcludesList=["elements","calendar"]
   elementsList.forEach((item) => {
     if (
       item.name.includes("rds-") &&
       !componentsExcludesList.some((element) => item.name.includes(element)) &&
-      !componentsList.find((x) => x.name === item.name)
+      !componentsList.find((x) => x.name === item.name) &&
+      !elementsExcludesList.some((element) => item.name.includes(element))
     ) {
       const _item = {
         name: item.name,
@@ -169,7 +171,7 @@ const Sidebar = () => {
     "modal",
     "my-settings",
     "schematics",
-    "visual-settings",
+    "visual-settings",    
   ];
   elementsList.forEach((item, index, self) => {
     if (
@@ -279,7 +281,7 @@ const Sidebar = () => {
               <ul className="">
                 {pageLists.map((node) => (
                   <li key={node.url}>
-                    <Link to={node.url}>{node.displayName}</Link>
+                    <Link href={node.url}>{node.displayName}</Link>
                   </li>
                 ))}
               </ul>

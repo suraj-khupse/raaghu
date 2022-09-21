@@ -1,7 +1,7 @@
 ---
 slug: "/big-number-widget"
 date: "2019-05-04"
-title: "Elements /big-number-widget"
+title: "Elements > Big-number-widget"
 ---
 
 ### Big-number-widget
@@ -25,7 +25,7 @@ title: "Elements /big-number-widget"
          <div class="contents  p-5">
               <div class="row">
             <div class="col-md-12">
-            <img src="/images/big-number-widget.png" class="img-fluid ">
+            <img src="/images/big-number-widget.png" class="img-fluid">
             </div>
             </div>
      </div>

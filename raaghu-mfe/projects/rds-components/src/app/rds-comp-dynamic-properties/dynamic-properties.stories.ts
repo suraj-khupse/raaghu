@@ -18,16 +18,20 @@ export default {
   component: RdsCompDynamicPropertiesComponent,
   decorators: [
     moduleMetadata({
-        declarations:[
-            RdsDataTableComponent,RdsCompInformationComponent,RdsCompPermissionTreeComponent,
-          ],
+      declarations: [
+        RdsDataTableComponent, RdsCompInformationComponent, RdsCompPermissionTreeComponent,
+      ],
       imports: [
-         NgxTranslateModule,RdsOffcanvasModule,RdsNavTabModule,
-        FormsModule, ReactiveFormsModule, RdsButtonModule,StoreModule.forRoot({}),RdsSearchInputModule,RdsOffcanvasModule,RdsInputModule,RdsIconModule,RdsSelectListModule,
+        NgxTranslateModule, RdsOffcanvasModule, RdsNavTabModule,
+        RdsPaginationModule,
+        FormsModule, ReactiveFormsModule,
+        RdsButtonModule, StoreModule.forRoot({}),
+        RdsSearchInputModule,
+        RdsOffcanvasModule, RdsInputModule, RdsIconModule, RdsSelectListModule,
       ],
 
 
-      providers:[
+      providers: [
         FormBuilder
       ],
 
@@ -36,25 +40,25 @@ export default {
 } as Meta;
 
 const Template: Story<RdsCompDynamicPropertiesComponent> = (args: RdsCompDynamicPropertiesComponent) => ({
-    props:{
-        ...args
-      }
+  props: {
+    ...args
+  }
 });
 
 export const Default = Template.bind({});
-Default.args= {
-      DynamicPropertiesTableData:  [
-    { id: 1, propertyName: 'Standard',displayName : 'Edit' ,inputType:'CHECKBOX' ,permission:'Pages.Administration.Users'},
-    { id: 2, propertyName: 'Basic', displayName : 'Edit',inputType:'MULTIPLECHECKBOX',permission:'Pages.Administration.Roles.Delete'},
-    { id: 3, propertyName: 'Premium', displayName : 'Edit',inputType:'CHECKBOX',permission:'Pages.Administration.Languages.Edit'},
-    { id: 4, propertyName: 'Standard',displayName : 'Edit',inputType:'MULTIPLECHECKBOX',permission:'Pages.Administration.Roles.Edit'},
-    { id: 5, propertyName: 'Basic', displayName : 'Edit',inputType:'MULTIPLECHECKBOX',permission:'Pages.Administration.Languages.Edit'},
-    { id: 6, propertyName: 'Standard',displayName : 'Edit',inputType:'CHECKBOX',permission:'Pages.Administration.Languages.Edit'},
-   
+Default.args = {
+  DynamicPropertiesTableData: [
+    { id: 1, propertyName: 'Property1', displayName: 'Property - 1', inputType: 'CHECKBOX', permission: 'Pages.Administration.Users' },
+    { id: 2, propertyName: 'Property2', displayName: 'Property - 2', inputType: 'MULTIPLECHECKBOX', permission: 'Pages.Administration.Roles.Delete' },
+    { id: 3, propertyName: 'Property3', displayName: 'Property - 3', inputType: 'CHECKBOX', permission: 'Pages.Administration.Languages.Edit' },
+    { id: 4, propertyName: 'Property4', displayName: 'Property - 4', inputType: 'MULTIPLECHECKBOX', permission: 'Pages.Administration.Roles.Edit' },
+    { id: 5, propertyName: 'Property5', displayName: 'Property - 5', inputType: 'MULTIPLECHECKBOX', permission: 'Pages.Administration.Languages.Edit' },
+    { id: 6, propertyName: 'Property6', displayName: 'Property - 7', inputType: 'CHECKBOX', permission: 'Pages.Administration.Languages.Edit' },
+
   ],
   DynamicPropertiesTableHeader: [
     {
-      displayName:'Property Name',
+      displayName: 'Property Name',
       key: 'propertyName',
       dataType: 'text',
       dataLength: 30,
@@ -62,7 +66,7 @@ Default.args= {
       sortable: true,
     },
     {
-      displayName:'Display Name',
+      displayName: 'Display Name',
       key: 'displayName',
       dataType: 'text',
       dataLength: 30,
@@ -70,7 +74,7 @@ Default.args= {
       sortable: true,
     },
     {
-      displayName:'Input Type',
+      displayName: 'Input Type',
       key: 'inputType',
       dataType: 'text',
       dataLength: 30,
@@ -78,7 +82,7 @@ Default.args= {
       sortable: true,
     },
     {
-      displayName:'Permission',
+      displayName: 'Permission',
       key: 'permission',
       dataType: 'text',
       dataLength: 30,
@@ -88,12 +92,12 @@ Default.args= {
   ],
   navtabsItems: [
     {
-      label:'Dynamic Properties',
+      label: 'Dynamic Properties',
       tablink: '#dynamic-properties',
       ariacontrols: 'dynamic-properties',
     },
     {
-      label:'Dynamic Entity Properties',
+      label: 'Dynamic Entity Properties',
       tablink: '#dynamic-entity-properties',
       ariacontrols: 'dynamic-entity-properties',
     },
@@ -101,16 +105,16 @@ Default.args= {
   //  DynamicProperyData:{propertyName:'string', displayName: 'string', inputType: 'string'},
   DynamicPropertiesModal: [
     {
-      label:'Information',
+      label: 'Information',
       tablink: '#information',
       ariacontrols: 'information',
     },
     {
-      label:'Permission',
+      label: 'Permission',
       tablink: '#permission',
       ariacontrols: 'permission',
     },
   ]
 
-    
+
 }

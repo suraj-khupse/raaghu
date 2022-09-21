@@ -1,7 +1,7 @@
 ---
 slug: "/Review-Categorys"
 date: "2019-05-04"
-title: "Components/ Review-Categorys"
+title: "Components > Review-Categorys"
 ---
 
 <!-- CSS only -->

@@ -1,7 +1,7 @@
 ---
 slug: "/Language-Text"
 date: "2019-05-04"
-title: "Language-Text"
+title: "Pages > Language-Text"
 ---
 
 <!-- CSS only -->

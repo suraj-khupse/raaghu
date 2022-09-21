@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
-import { ComponentLoaderOptions, EmailSettingsEditDto, HostBillingSettingsEditDto, HostSettingsEditDto, MfeBaseComponent, OtherSettingsEditDto, PasswordComplexitySetting, SecuritySettingsEditDto, TenantManagementSettingsEditDto, TenantSettingsEditDto, UserLockOutSettingsEditDto } from '@libs/shared';
+import { ComponentLoaderOptions, EmailSettingsEditDto, HostBillingSettingsEditDto, HostSettingsEditDto, MfeBaseComponent, OtherSettingsEditDto, PasswordComplexitySetting, SecuritySettingsEditDto, SharedService, TenantManagementSettingsEditDto, TenantSettingsEditDto, UserLockOutSettingsEditDto } from '@libs/shared';
 import { getSettings, getSettingsTenantPageComboboxItems, selectAllSettings, selectDefaultLanguage, selectSettingsTenantPageComboboxItems, sendTestmail, updateSettings } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { AlertService } from '@libs/shared';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { transition,trigger,query,style,  animate,} from '@angular/animations';
+import { transition, trigger, query, style, animate, } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -38,10 +38,10 @@ import { transition,trigger,query,style,  animate,} from '@angular/animations';
     ])
   ]
 })
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit {
   isAnimation: boolean = true;
   currentAlerts: any = [];
-  editShimmer:boolean=false;
+  editShimmer: boolean = false;
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompAlert',
     input: {
@@ -123,15 +123,19 @@ export class AppComponent  implements OnInit {
   externalLoginProviderSettingsEdit: boolean = false;
 
 
-  constructor(private injector: Injector, private store: Store, private alertService: AlertService, public translate: TranslateService) {
-    
+  constructor(private injector: Injector,
+    private store: Store,
+    private alertService: AlertService,
+    private sharedService: SharedService,
+    public translate: TranslateService) {
+
   }
   rdsCompTenantManageMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompTenantManagement',
     input: {
       settings: this.tenantmanagementData,
       settingsTenantEditionList: this.settingsTenantEditionList,
-      editShimmer:true
+      editShimmer: true
     },
 
     output: {
@@ -147,9 +151,9 @@ export class AppComponent  implements OnInit {
   };
   rdsCompUserManagementsMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompUserManagement',
-    input: { 
+    input: {
       settingss: this.usermanagementdata,
-      editShimmer:true
+      editShimmer: true
     },
     output: {
       UserManagementData: (event) => {
@@ -168,9 +172,9 @@ export class AppComponent  implements OnInit {
   };
   rdsCompSecurityMfeConfig: ComponentLoaderOptions = {
     name: 'RdsSecurity',
-    input: { 
+    input: {
       setting: this.securityData,
-      editShimmer:true
+      editShimmer: true
     },
     output: {
       securityData: (event) => {
@@ -193,9 +197,9 @@ export class AppComponent  implements OnInit {
   };
   rdsCompEmailMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompEmail',
-    input: { 
+    input: {
       emailData: this.emailData,
-      editShimmer:true
+      editShimmer: true
     },
     output: {
       EmailtData: (event) => {
@@ -218,9 +222,9 @@ export class AppComponent  implements OnInit {
   };
   rdsCompInvoiceMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompInvoice',
-    input: { 
+    input: {
       invoiceData: this.invoiceInfoData,
-      editShimmer:true
+      editShimmer: true
     },
     output: {
       InvoiceData: (event) => {
@@ -233,9 +237,9 @@ export class AppComponent  implements OnInit {
   };
   rdsCompOtherSettingsMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompOtherSettings',
-    input: { 
+    input: {
       setting: this.otherSettingData,
-      editShimmer:true
+      editShimmer: true
     },
     output: {
       OtherSettingData: (event) => {
@@ -274,7 +278,7 @@ export class AppComponent  implements OnInit {
         //this.settingsTenantEditionList = res.editionComboboxItem.filter((x: any) => x.isFree);
         const mfeConfig = this.rdsCompTenantManageMfeConfig
         mfeConfig.input.settingsTenantEditionList = [...this.settingsTenantEditionList];
-        mfeConfig.input.editShimmer=false;
+        mfeConfig.input.editShimmer = false;
         this.rdsCompTenantManageMfeConfig = mfeConfig;
       }
     });
@@ -291,7 +295,7 @@ export class AppComponent  implements OnInit {
           this.invoiceInfoData.address = res.settings.billing.address;
           const mfeConfig = this.rdsCompInvoiceMfeConfig
           mfeConfig.input.InvoiceDataForm = { ... this.invoiceInfoData };
-          mfeConfig.input.editShimmer=false;
+          mfeConfig.input.editShimmer = false;
           this.rdsCompInvoiceMfeConfig = mfeConfig;
         }
         if (res.settings.tenantManagement) {
@@ -302,7 +306,7 @@ export class AppComponent  implements OnInit {
           this.tenantmanagementData.allowSelfRegistration = res.settings.tenantManagement.allowSelfRegistration;
           const mfeConfig = this.rdsCompTenantManageMfeConfig
           mfeConfig.input.settings = { ... this.tenantmanagementData };
-          mfeConfig.input.editShimmer=false;
+          mfeConfig.input.editShimmer = false;
           this.rdsCompTenantManageMfeConfig = mfeConfig;
         }
 
@@ -311,7 +315,7 @@ export class AppComponent  implements OnInit {
           this.otherSettingData.isQuickThemeSelectEnabled = res.settings.otherSettings.isQuickThemeSelectEnabled;
           const mfeConfig = this.rdsCompOtherSettingsMfeConfig
           mfeConfig.input.OtherSetting = { ... this.otherSettingData };
-          mfeConfig.input.editShimmer=false;
+          mfeConfig.input.editShimmer = false;
           this.rdsCompOtherSettingsMfeConfig = mfeConfig;
         }
         if (res.settings.userManagement) {
@@ -326,7 +330,7 @@ export class AppComponent  implements OnInit {
           }
           const mfeConfig = this.rdsCompUserManagementsMfeConfig
           mfeConfig.input.Usermanagementsettings = { ... this.usermanagementdata };
-          mfeConfig.input.editShimmer=false;
+          mfeConfig.input.editShimmer = false;
           this.rdsCompUserManagementsMfeConfig = mfeConfig;
         }
         if (res.settings.security) {
@@ -351,7 +355,7 @@ export class AppComponent  implements OnInit {
           }
           const mfeConfig = this.rdsCompSecurityMfeConfig
           mfeConfig.input.Seccuritysetting = { ... this.securityData };
-          mfeConfig.input.editShimmer=false;
+          mfeConfig.input.editShimmer = false;
           this.rdsCompSecurityMfeConfig = mfeConfig;
         }
         if (res.settings.email) {
@@ -365,7 +369,7 @@ export class AppComponent  implements OnInit {
           this.emailData.smtpDomain = res.settings.email.smtpDomain;
           const mfeConfig = this.rdsCompEmailMfeConfig
           mfeConfig.input.EmailData = { ... this.emailData };
-          mfeConfig.input.editShimmer=false;
+          mfeConfig.input.editShimmer = false;
           this.rdsCompEmailMfeConfig = mfeConfig;
         }
       }
@@ -426,11 +430,20 @@ export class AppComponent  implements OnInit {
   }
 
   // fabmenu mobile
-  onSelectMenu(event:any){
-    if(event.key==='saveall'){
+  onSelectMenu(event: any) {
+    if (event.key === 'saveall') {
       this.onSave();
     }
   }
+
+  public onClicktab(event): void {
+    if (event > 0) {
+      this.sharedService.setTopNavTitle(this.navtabsItems[event].label);
+    } else {
+      this.sharedService.setTopNavTitle('');
+    }
+  }
+
 }
 
 

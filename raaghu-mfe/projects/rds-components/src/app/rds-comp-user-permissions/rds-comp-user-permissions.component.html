@@ -4,13 +4,14 @@
       aria-controls="canvasFilterPermission">
       <rds-button [label]="translate.instant('Filter By Permission')" [size]="'medium'" [colorVariant]="'primary'"
         [size]="'small'" [outlineButton]="true" class="me-3">
-  </rds-button>
+      </rds-button>
     </span>
     <rds-button class="action me-3" [colorVariant]="'outline-primary'" [size]="'small'" (click)="exportToExcel()"
       [label]="translate.instant('Export To Excel')">
     </rds-button>
-    <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'" [showLoadingSpinner]="buttonSpinnerForNewUser" [size]="'small'"
-      (click)="newUser($event)" buttonType="iconLabel" icon="plus" iconWidth="12px" iconHeight="12px"> 
+    <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'"
+      [showLoadingSpinner]="buttonSpinnerForNewUser" [size]="'small'" (click)="newUser($event)" buttonType="iconLabel"
+      icon="plus" iconWidth="12px" iconHeight="12px">
     </rds-button>
   </div>
   <div class="col-md-12">
@@ -75,11 +76,8 @@
         aria-labelledby="nav-home-tab">
         <div class="tab-content">
           <!-- Add Origination Unit  -->
-          <app-rds-comp-permission-tree 
-           [treeData]="OrganizationUnit"
-           [selectedItems]="selectedOrganizations"  
-           (getAllSelectedNodes)="getSelectedorganizationunits($event)"
-          ></app-rds-comp-permission-tree>
+          <app-rds-comp-permission-tree [treeData]="OrganizationUnit" [selectedItems]="selectedOrganizations"
+            (getAllSelectedNodes)="getSelectedorganizationunits($event)"></app-rds-comp-permission-tree>
         </div>
         <div class="footer-buttons my-2">
 
@@ -96,7 +94,7 @@
       <div class="tab-pane fade" [ngClass]="{ 'show active': activePage === 3 }" id="permissions" role="tabpanel"
         *ngIf="selectedId" aria-labelledby="nav-home-tab">
         <div class="tab-content">
-     
+
           <app-rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="selectedPermissions"
             (getAllSelectedNodes)="getSelectedPermissionsList($event)" [selectAllLabel]="'Select All Permissions'">
           </app-rds-comp-permission-tree>

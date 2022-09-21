@@ -1,7 +1,7 @@
 ---
 slug: "/stat"
 date: "2019-05-04"
-title: "Elements / Stat"
+title: "Elements > Stat"
 ---
 
 <!-- CSS only -->

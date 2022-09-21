@@ -1,7 +1,7 @@
 ---
 slug: "/Tenant-Settings"
 date: "2019-05-04"
-title: "Components / Tenant-Settings"
+title: "Components > Tenant-Settings"
 ---
 
 

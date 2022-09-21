@@ -1,7 +1,7 @@
 ---
 slug: "/banner"
 date: "2019-05-04"
-title: "Elements /Banner"
+title: "Elements > Banner"
 ---
 
 #### Banner
@@ -25,12 +25,12 @@ title: "Elements /Banner"
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents  p-5">
-                                          <div class="row">
-                                            <div class="col-md-12">
-                                            <img src="/images/banner.png" class="img-fuild w-100">
-                                            </div>
-                                          </div>
-                                    </div>
+            <div class="row">
+              <div class="col-md-12">
+                <img src="/images/banner.png" class="img-fluid w-100">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">

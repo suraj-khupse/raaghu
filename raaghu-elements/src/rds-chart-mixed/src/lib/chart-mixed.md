@@ -1,7 +1,7 @@
 ---
 slug: "/chart-mixed"
 date: "2019-05-04"
-title: "Elements / Chart-mixed"
+title: "Elements > Chart-mixed"
 ---
 
 <!-- CSS only -->

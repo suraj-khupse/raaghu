@@ -1,7 +1,7 @@
 ---
 slug: "/Webhook-Subscription"
 date: "2019-05-04"
-title: "Components / Webhook-Subscription"
+title: "Components > Webhook-Subscription"
 ---
 
 <!-- CSS only -->

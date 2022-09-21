@@ -1,7 +1,7 @@
 ---
 slug: "/size"
 date: "2019-05-04"
-title: "Elements / Size"
+title: "Elements > Size"
 ---
 
 <!-- CSS only -->

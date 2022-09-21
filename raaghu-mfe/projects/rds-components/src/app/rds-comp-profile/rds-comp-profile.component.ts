@@ -32,7 +32,9 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() languageItems = [];
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() defaultLanguage: string = '';
-  tabClosed: boolean = false;
+  delegateTabopened: boolean = false;
+  manageLinkedAccountsTabOpened: boolean = false;
+
   @Output() onLanguageSelection = new EventEmitter<any>();
   activePage: number;
   public rdsAlertMfeConfig: ComponentLoaderOptions;
@@ -70,32 +72,16 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   ngOnChanges(changes: SimpleChanges): void {
 
   }
-  @Input()
-  Profileurl: string;
-  @Input()
-  MenuItems: any[] = [];
-  @Input()
-  DownloadTable: DownloadData[] = []
-  @Input()
-  linkedAccount: LinkedAccount = {
-    TableHeader: [],
-    tableData: []
-  };
-  @Input()
-  UserDeligateTable: UserDeligates = {
-    TableHeader: [],
-    UserDeligatesData: []
-  };
-  @Input()
-  LoginAttempts: any = {};
-  @Input()
-  backgroundColor: string;
-  @Input()
-  id: string = 'ProfileCanvas';
-  @Output()
-  onLogout = new EventEmitter<{ islogout: any }>()
+  @Input() Profileurl: string;
+  @Input() MenuItems: any[] = [];
+  @Input() DownloadTable: DownloadData[] = []
+  @Input() linkedAccountHeaders: any = [];
+  @Input() linkedAccountData: any = [];
+  @Input() LoginAttempts: any = {};
+  @Input() backgroundColor: string;
+  @Input()id: string = 'ProfileCanvas';
+  @Output() onLogout = new EventEmitter<{ islogout: any }>()
   @Output() onImageupload = new EventEmitter<any>();
-
   @Output() ondeleteLinkaccount = new EventEmitter<any>();
   @Output() onLinkToUser = new EventEmitter<any>();
   @Output() onLoginAttempts = new EventEmitter<any>();
@@ -156,10 +142,16 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
       this.isAnyProfileMenuSelected = true;
 
     }
-    if (this.MenuItems[item].label == 'Manage Authority Delegation') {
-      this.tabClosed = true;
+    if (this.MenuItems[item].translationKey == 'Manage Authority Delegation') {
+      this.delegateTabopened = true;
     } else {
-      this.tabClosed = false;
+      this.delegateTabopened = false;
+    }
+
+    if (this.MenuItems[item].translationKey == 'Manage Authority Delegation') {
+      this.manageLinkedAccountsTabOpened = true;
+    } else {
+      this.manageLinkedAccountsTabOpened = false;
     }
   }
   onClickCloseTabContent() {
@@ -270,13 +262,13 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     this.activePage = 8;
   }
   close(): void {
-    this.onClickCloseTabContent();    
+    this.onClickCloseTabContent();
     this.activePage = 8;
     let myOffCanvas = document.getElementById(this.id);
     let openedCanvas = bootstrap.Offcanvas.getInstance(myOffCanvas);
     openedCanvas.hide();
     this.viewCanvas = false;
-    this.tabClosed = true;
+    this.delegateTabopened = true;
     this.rdsDeligateTableData = [];
   }
 
@@ -294,9 +286,9 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   }
 
 
-   downloadText() {
+  downloadText() {
     let showUserData = JSON.parse(localStorage.getItem('userNameInfo'));
- console.log("Hello");
+    console.log("Hello");
     // this.userEmailOrName = this.showUserData.username;
     const data: any = {
       Tenancy_name: JSON.parse(localStorage.getItem('tenantInfo')),

@@ -1,7 +1,7 @@
 ---
 slug: "/illustrations"
 date: "2019-05-04"
-title: "Elements / Illustrations"
+title: "Elements > Illustrations"
 ---
 
 <!-- CSS only -->
@@ -31,7 +31,7 @@ title: "Elements / Illustrations"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="/images/dropdown-list-basic.png" class="img-fuild w-100">
+                    <img src="/images/dropdown-list-basic.png" class="img-fluid w-100">
                  </div>               
               </div>                       
   </div>

@@ -12,6 +12,8 @@ declare var bootstrap: any;
 export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Input() tableData: any = [];
   @Input() inlineEdit: boolean = true;
+  @Input() enableCheckboxSelection: boolean = false;
+  @Output() getAllCheckedItems = new EventEmitter<any>();
   @Output() onActionSelection = new EventEmitter<{ selectedData: any, actionId: string }>();
   showConfirmationPopup: boolean = false;
   filteredArray: any = [];
@@ -20,7 +22,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   rowData: any;
   @Input() tableHeaders: TableHeader[] = [];
   @Input() width = 400;
-  @Input() isShimmer:boolean=false;
+  @Input() isShimmer: boolean = false;
   @Input() role: any = 'Advanced';
   @Input() tableStyle?: any = 'light';
   @Input() pagination: boolean = false;
@@ -316,6 +318,30 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     } else {
       this.onActionSelection.emit({ actionId: action.id, selectedData: selectedData });
     }
+  }
+
+  checkAllCheckBox(ev: any) {
+    let value: boolean = false;
+    if (ev.target.value === 'true') {
+      value = true;
+    }
+    this.tableData.forEach((x: any) => x.checked = value);
+    const allSelectedItems: any = this.tableData.filter((x: any) => x.checked);
+    this.getAllCheckedItems.emit(allSelectedItems);
+  }
+
+  isAllCheckBoxChecked() {
+    return this.tableData.every((p: any) => p.checked);
+  }
+
+  changeCheckbox(data: any, ev: any): void {
+    let value: boolean = false;
+    if (ev.target.value === 'true') {
+      value = true;
+    }
+    data.checked = value;
+    const allSelectedItems: any = this.tableData.filter((x: any) => x.checked);
+    this.getAllCheckedItems.emit(allSelectedItems);
   }
 }
 

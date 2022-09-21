@@ -1,7 +1,7 @@
 ---
 slug: "/Audit-Logs"
 date: "2019-05-04"
-title: "Components / Audit-Logs"
+title: "Components > Audit-Logs"
 ---
 
 <!-- CSS only -->

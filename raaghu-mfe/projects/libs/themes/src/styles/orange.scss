@@ -144,8 +144,10 @@ $accessible-600: #282A42;
 $accessible-700: rgb(48, 51, 78);
 $accessible-800: #13002E;
 
+$datepicker-bg: $accessible-600 !default;
+$datepicker-head: $accessible-600 !default;
 $nav-background-color: $accessible-600 !default;
-$form-select-bg: $accessible-500 !default;
+/*$form-select-bg: $accessible-500 !default;*/
 $card-dashboard-bg-color: $accessible-700 !default;
 $body-wrapper-bg: $accessible-600 !default;
 $sidbar-border-right-color: #1A0339;
@@ -164,86 +166,10 @@ $trhoverbg-color: $accessible-600;
 $nav-a-color: $white !default;
 $nav-active-color: $white !default;
 
-
-
-$input-bg: #353755;
-$input-border-color: #515484;
-$form-select-bg: #353755;
-
-
-
-
 $link-color: $primary;
-
-#sidebar ul li a.active {
-  background-color: $primary;
-}
-
-#sidebar ul li a.active {
-  background-color: $primary;
-}
 
 #sidebar ul li a.active.child {
   background-color: none;
-}
-
-.form-control {
-  background-color: $accessible-300;
-  border: 1px solid $accessible-400;
-}
-
-svg {
-  fill: none;
-  stroke: currentColor;
-
-  * {
-    stroke: $white;
-  }
-
-  path.icon {
-    stroke: $white;
-  }
-
-  line.icon {
-    stroke: $white;
-  }
-
-  rect.icon {
-    stroke: $white;
-  }
-
-  circle.icon {
-    stroke: $white;
-  }
-}
-
-#sidebar {
-  ul {
-    li {
-      a {
-        svg {
-          fill: none;
-          stroke: currentColor;
-
-          path.icon {
-            stroke: $white;
-          }
-
-          line.icon {
-            stroke: $white;
-          }
-
-          rect.icon {
-            stroke: $white;
-          }
-
-          circle.icon {
-            stroke: $white;
-          }
-        }
-      }
-    }
-  }
 }
 
 #sidebar ul li a {
@@ -251,33 +177,64 @@ svg {
   width: 100%;
   border-radius: 10px;
 }
-//$body-wrapper-bg:;
+html[theme=dark] {
+  $dropdown-color: $white;
+  $input-bg: $accessible-300!default;
+  $form-select-bg: $input-bg;
+  $notification-header-bg: $accessible-500!default;
+  $input-group-addon-bg: $input-bg;
+  $input-group-addon-border-color: $accessible-400 !default;
 
-@import './custom.scss';
-@import './node_modules/bootstrap/scss/bootstrap';
-@import './accordion.scss';
-@import './alert.scss';
-@import './avatar.scss';
-@import './badge.scss';
-@import './breadcrumb.scss';
-@import './button.scss';
-@import './card.scss';
-@import './carousel.scss';
-@import './checkbox.scss';
-@import './counter.scss';
-@import './dropdown.scss';
-@import './file-uploader.scss';
-@import './input.scss';
-@import './list-group.scss';
-@import './nav-tab.scss';
-@import './offcanvas.scss';
-@import './pagination.scss';
-@import './radio-button.scss';
-@import './scrollspy.scss';
-@import './search-input.scss';
-@import './side-nav.scss';
-@import './table.scss';
-@import './tags.scss';
-@import './textarea.scss';
-@import './colorvariables.scss';
-@import './cookieconsent.scss';
+  .form-control, .form-control:focus {
+    background-color: $input-bg;
+    border: 1px solid $accessible-400;
+    color: $white;
+  }
+
+  .dropdown-menu {
+    --bs-dropdown-color: $dropdown-color;
+  }
+
+  .input-group-text {
+    background-color: $input-group-addon-bg;
+    border-color: $input-group-addon-border-color;
+  }
+
+  .form-select[size]:not([size="1"]) {
+    background-color: $input-bg;
+  }
+
+  .notification-header {
+    background-color: $notification-header-bg;
+  }
+}
+  //$body-wrapper-bg:;
+
+  @import './custom.scss';
+  @import './node_modules/bootstrap/scss/bootstrap';
+  @import './accordion.scss';
+  @import './alert.scss';
+  @import './avatar.scss';
+  @import './badge.scss';
+  @import './breadcrumb.scss';
+  @import './button.scss';
+  @import './card.scss';
+  @import './carousel.scss';
+  @import './checkbox.scss';
+  @import './counter.scss';
+  @import './dropdown.scss';
+  @import './file-uploader.scss';
+  @import './input.scss';
+  @import './list-group.scss';
+  @import './nav-tab.scss';
+  @import './offcanvas.scss';
+  @import './pagination.scss';
+  @import './radio-button.scss';
+  @import './scrollspy.scss';
+  @import './search-input.scss';
+  @import './side-nav.scss';
+  @import './table.scss';
+  @import './tags.scss';
+  @import './textarea.scss';
+  @import './colorvariables.scss';
+  @import './cookieconsent.scss';

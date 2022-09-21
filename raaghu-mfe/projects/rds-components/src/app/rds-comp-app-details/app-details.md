@@ -1,7 +1,7 @@
 ---
 slug: "/App-Details"
 date: "2019-05-04"
-title: "Components / App-Details"
+title: "Components > App-Details"
 ---
 
 <!-- CSS only -->

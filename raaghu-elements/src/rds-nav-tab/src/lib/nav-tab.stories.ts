@@ -37,9 +37,9 @@ export const Default: Story<RdsNavTabComponent> = (args) => ({
 });
 Default.args = {
     navtabsItems: [
-        { label: 'Active', tablink: '#nav-home', ariacontrols: 'nav-home', icon: 'dashboard', subText: 'Active subtext' },
+        { label: 'Active', tablink: '#nav-home', ariacontrols: 'nav-home', icon: 'administration', subText: 'Active subtext' },
         { label: 'Link', tablink: '#nav-profile', ariacontrols: 'nav-profile' },
-        { label: 'Link', tablink: '#nav-contact', ariacontrols: 'nav-contact', icon: 'settings', subText: 'Home subtext' },
+        { label: 'Link', tablink: '#nav-contact', ariacontrols: 'nav-contact', icon: 'setting', subText: 'Home subtext' },
         { label: 'Disabled', tablink: '#nav-deabled', disabled: "true", icon: 'users', subText: 'Disble subtext' },
     ]
 }

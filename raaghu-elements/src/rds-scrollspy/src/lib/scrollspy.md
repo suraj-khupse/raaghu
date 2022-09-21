@@ -1,7 +1,7 @@
 ---
 slug: "/scrollspy"
 date: "2019-05-04"
-title: "Elements / Scrollspy"
+title: "Elements > Scrollspy"
 ---
 
 <!-- CSS only -->
@@ -33,7 +33,7 @@ title: "Elements / Scrollspy"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                     <img src="\images\scrollspy-basic.png" class="img-fuild w-75">
+                     <img src="\images\scrollspy-basic.png" class="img-fluid w-75">
                  </div>              
               </div>
                        

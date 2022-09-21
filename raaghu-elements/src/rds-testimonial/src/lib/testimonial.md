@@ -1,7 +1,7 @@
 ---
 slug: "/testimonial"
 date: "2019-05-04"
-title: "Elements / Testimonial"
+title: "Elements > Testimonial"
 ---
 
 <!-- CSS only -->

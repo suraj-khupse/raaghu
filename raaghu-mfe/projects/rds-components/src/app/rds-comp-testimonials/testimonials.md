@@ -1,7 +1,7 @@
 ---
 slug: "/Testimonials"
 date: "2019-05-04"
-title: "Components / Testimonials"
+title: "Components > Testimonials"
 ---
 
 

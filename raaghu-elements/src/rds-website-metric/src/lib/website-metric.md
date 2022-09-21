@@ -1,7 +1,7 @@
 ---
 slug: "/website-metric"
 date: "2019-05-04"
-title: "Elements / Website-Metric"
+title: "Elements > Website-Metric"
 ---
 
 <!-- CSS only -->

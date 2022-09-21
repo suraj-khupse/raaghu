@@ -1,7 +1,7 @@
 ---
 slug: "/Organization-Tree"
 date: "2019-05-04"
-title: "Components / Organization-Tree"
+title: "Components > Organization-Tree"
 ---
 
 

@@ -37,7 +37,7 @@ export class RdsNavBarComponent implements OnInit {
   @Input() navbarcontent!: TemplateRef<any>
   
   public get classes(): string {
-    const mode1 = `${this.size === 'small' ? 'smallSize' : this.size === 'medium' ? 'medium' : 'largeSize' }`;
+    const mode1 = `${this.size === 'small' ? 'small' : this.size === 'medium' ? 'medium' : 'large' }`;
     return mode1;
   }
 }

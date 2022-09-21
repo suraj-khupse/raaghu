@@ -1,7 +1,7 @@
 ---
 slug: "/Settings"
 date: "2019-05-04"
-title: "Pages /Settings"
+title: "Pages > Settings"
 ---
 
 <!-- CSS only -->

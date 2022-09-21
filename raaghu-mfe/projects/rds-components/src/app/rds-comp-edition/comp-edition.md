@@ -1,7 +1,7 @@
 ---
 slug: "/Comp-Edition"
 date: "2019-05-04"
-title: "Components /Edition"
+title: "Components > Edition"
 ---
 
 

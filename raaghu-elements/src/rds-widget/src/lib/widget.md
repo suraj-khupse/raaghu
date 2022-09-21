@@ -1,7 +1,7 @@
 ---
 slug: "/widget"
 date: "2019-05-04"
-title: "Elements / Widget"
+title: "Elements > Widget"
 ---
 
 <!-- CSS only -->

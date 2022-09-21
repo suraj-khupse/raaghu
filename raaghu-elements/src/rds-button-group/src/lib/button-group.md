@@ -1,7 +1,7 @@
 ---
 slug: "/button-group"
 date: "2019-05-04"
-title: "Elements /button-group"
+title: "Elements > Button-group"
 ---
 
 <!-- CSS only -->

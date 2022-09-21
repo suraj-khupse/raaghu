@@ -1,7 +1,7 @@
 ---
 slug: "/alert-popup"
 date: "2019-05-04"
-title: "Components / Alert-Popup"
+title: "Components > Alert-Popup"
 ---
 
 <!-- CSS only -->

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { ComponentLoaderOptions } from '@libs/shared';
+import { ComponentLoaderOptions, SharedService } from '@libs/shared';
 import { clearcache, deletecache, getmaintenances, getWebsitelog } from 'projects/libs/state-management/src/lib/state/maintenance/maintenance.actions';
 import { selectAllmaintenance, selectAllWebsitelog } from 'projects/libs/state-management/src/lib/state/maintenance/maintenance.selector';
 declare var $: any;
@@ -63,7 +63,9 @@ export class AppComponent implements OnInit{
     { value: 'Refresh', some: 'value', key: 'refresh', icon: 'refresh', iconWidth: '20px', iconHeight: '20px' },
     { value: 'Download All', some: 'value', key: 'downloadall', icon: 'funnel', iconWidth: '20px', iconHeight: '20px' },
   ];
-  constructor(private store: Store, public translate: TranslateService) { }
+  constructor(private store: Store,
+    private sharedService:SharedService,
+     public translate: TranslateService) { }
   cashedata: any = []
   websiteLogData: any[];
   isShimmer: boolean = false;
@@ -213,6 +215,12 @@ export class AppComponent implements OnInit{
     } else {
       this.tabcash = false;
       this.tabweb = true;
+    }
+
+    if (e > 0) {
+      this.sharedService.setTopNavTitle(this.navtabItems[e].label);
+    } else {
+      this.sharedService.setTopNavTitle('');
     }
 
   }

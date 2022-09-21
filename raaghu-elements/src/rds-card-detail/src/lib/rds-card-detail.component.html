@@ -19,7 +19,7 @@
                 (onClick)="setAsPaymentMethod(cardData)"></rds-radio-button>
         </div>
     </div>
-    <div *ngIf="IsEditAndDefaultFunctionalityRequired" class="d-flex mt-2" style="margin-left: 2.3rem;">
+    <div *ngIf="IsEditAndDefaultFunctionalityRequired" class="d-flex mt-2 ms-3">
         <a *ngIf="!cardData.isDefault" (click)="setAsDefaultCard(cardData)"
             style="cursor: pointer;text-decoration: none;font-size: 0.80rem;" class="ms-0">Set as default</a>
         <a *ngIf="cardData.isDefault" style="text-decoration: none;font-size: 0.80rem;"

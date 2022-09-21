@@ -1,7 +1,7 @@
 ---
 slug: "/chart-stacked"
 date: "2019-05-04"
-title: "Elements / Chart-stacked"
+title: "Elements > Chart-stacked"
 ---
 
 <!-- CSS only -->

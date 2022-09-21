@@ -1,7 +1,7 @@
 ---
 slug: "/Counter"
 date: "2019-05-04"
-title: "Elements / Counter"
+title: "Elements > Counter"
 ---
 
 <!-- CSS only -->
@@ -32,7 +32,7 @@ title: "Elements / Counter"
          <div class="contents  p-5">
               <div class="row">   
                <div class="col-md-12">
-                  <img src="/images/counter.png" class="img-fuild">
+                  <img src="/images/counter.png" class="img-fluid">
                </div>                           
            </div>
 

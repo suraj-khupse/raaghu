@@ -7,73 +7,71 @@
         </div>
 
         <div class="card-body">
-          <div class="">
-            <div class="row">
-              <div class="col-md-12 ">
-                <div class="form-group mb-3" *ngIf="showNewLinkAccoutButton">
-                  <rds-button [label]="translate.instant('LINK NEW ACCOUNT')" type="button" [size]="'medium'"
-                    [colorVariant]="'primary'" [icon]="'plus'" iconHeight="12px" iconWidth="12px"
-                    (click)="hideandShowaccountform()">
-                  </rds-button>
-                </div>
-              </div>
-              <div class="col-sm-12" *ngIf="linkaacountDivFlag">
+          <ng-container *ngIf="showNewLinkAccoutButton">
+            <rds-button [label]="translate.instant('LINK NEW ACCOUNT')" type="button" [size]="'medium'"
+              [colorVariant]="'primary'" [icon]="'plus'" iconHeight="12px" iconWidth="12px"
+              (click)="hideandShowaccountform()">
+            </rds-button>
+          </ng-container>
+          <form #linkedAccountForm="ngForm">
+            <div class="row" *ngIf="!showNewLinkAccoutButton">
+              <div class="col-sm-12 col-md-12">
                 <div class="form-group mb-3">
                   <rds-input size="default" value="" [Title]="translate.instant('Tenancy Name')"
-                    [placeholder]="translate.instant('Tenancy Name')" [TitleType]="'Top'" name="tenancy_name" inputType="text"
-                    [(ngModel)]="Tenancyname" ngDefaultControl></rds-input>
+                    [placeholder]="translate.instant('Tenancy Name')" [TitleType]="'Top'" name="tenancy_name"
+                    #tenancy="ngModel" inputType="text" [(ngModel)]="tenancyName" ngDefaultControl [isRequired]=true
+                    required></rds-input>
+                  <div class="form-control-feedback" *ngIf="tenancy.errors&&(tenancy.dirty||tenancy.touched)">
+                    <span class="text-danger" *ngIf="tenancy.errors.required">{{"Tenancy name is
+                      required"|translate}}</span>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12" *ngIf="linkaacountDivFlag">
+              <div class="col-md-12 col-sm-12">
                 <div class="form-group mb-3">
-
                   <rds-input size="default" value="" [Title]="translate.instant('User Name')" [TitleType]="'Top'"
-                    inputType="text" [placeholder]="translate.instant('User Name')" [(ngModel)]="userName" name="user_name"
-                    [isRequired]=true ngDefaultControl (keyup)="LinkaccountValidator()"
-                    (mouseup)="LinkaccountValidator()">
+                    #user="ngModel" inputType="text" [placeholder]="translate.instant('User Name')"
+                    [(ngModel)]="userName" name="user_name" [isRequired]=true ngDefaultControl>
                   </rds-input>
+                  <div class="form-control-feedback" *ngIf="user.errors&&(user.dirty||user.touched)">
+                    <span class="text-danger" *ngIf="user.errors.required">{{"User name is required"|translate}}</span>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12" *ngIf="linkaacountDivFlag">
+              <div class="col-md-12 col-sm-12">
                 <div class="form-group mb-3">
-
-                  <rds-input size="default" value="" [Title]="translate.instant('Password')" [placeholder]="'Password'" name="linked_pswd"
-                    [TitleType]="'Top'" inputType="password" [(ngModel)]="Password" [isRequired]=true ngDefaultControl
-                    (keyup)="LinkaccountValidator()" (mouseup)="LinkaccountValidator()">
+                  <rds-input size="default" value="" [Title]="translate.instant('Password')" [placeholder]="'Password'"
+                    name="linked_pswd" [TitleType]="'Top'" inputType="password" [(ngModel)]="password" [isRequired]=true
+                    #linkedPswd="ngModel" ngDefaultControl>
                   </rds-input>
+                  <div class="form-control-feedback" *ngIf="linkedPswd.errors&&(linkedPswd.dirty||linkedPswd.touched)">
+                    <span class="text-danger" *ngIf="linkedPswd.errors.required">{{"Password is
+                      required"|translate}}</span>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <div class="row">
-              <div class="col-sm-12">
-                <!-- <mfe-loader [config]="rdsLinkedAccountTableMfeConfig"></mfe-loader> -->
-                 <app-rds-data-table [tableData]="rdslinkedAccountTableData" [pagination]="pagination"
-        (deleteEvent)="deleteLinkedAccountData($event)" [recordsPerPage]="recordsPerpage" 
-        [tableHeaders]="rdsLinkedAccountTableHeader" noDataTitle="Currently you do not have linked Account">
-      </app-rds-data-table> 
-              </div>
+          </form>
 
+          <div class="row" *ngIf="showNewLinkAccoutButton">
+            <div class="col-sm-12">
+              <app-rds-data-table [tableStyle]="'light'" [actions]="actions" [recordsPerPage]="5"
+                [noDataTitle]="'Currently you do not have linked accounts'" [pagination]="true" [width]="100"
+                [tableData]="linkedAccountData" [tableHeaders]="linkedAccountHeaders"></app-rds-data-table>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-
   <div class="footer-buttons my-2 shadow-none" *ngIf="!showNewLinkAccoutButton">
     <div class="row">
       <div class="col-sm-12">
-        <rds-button [label]="translate.instant('Cancel')"
-                   
-                    [colorVariant]="'outline-primary'"
-                    type="button"
-                    [size]="'medium'"
-                    (click)="onCancel()">  
+        <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'outline-primary'" type="button"
+          [size]="'medium'" (click)="onCancel()">
         </rds-button>
-        <rds-button [label]="translate.instant('Save')" type="button" [size]="'medium'" [colorVariant]="'primary'"
-          (click)="saveAllLinkAccount(linkedAccount)" class="ms-2">
+        <rds-button [label]="translate.instant('Save')" [disabled]="linkedAccountForm.invalid" type="button"
+          [size]="'medium'" [colorVariant]="'primary'" (click)="saveAllLinkAccount(linkedAccountForm)" class="ms-2">
         </rds-button>
       </div>
     </div>

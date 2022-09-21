@@ -132,7 +132,7 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
     var directionClasses = ['btn-group'];
     if (this.direction === 'Drop-down') {
       // var direction = 'dropdown';
-      directionClasses.push('dropdown');
+      directionClasses.push('');
     } else if (this.direction === 'Drop-up') {
       var direction = 'dropup';
       directionClasses.push(direction);

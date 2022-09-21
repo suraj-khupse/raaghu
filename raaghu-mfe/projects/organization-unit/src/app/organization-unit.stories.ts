@@ -47,7 +47,13 @@ const Template: Story<OrganizationUnit> = (args: OrganizationUnit) => ({
   props: {
     ...args
   },
-  template: `
+
+});
+
+
+export const Default = Template.bind({});
+Default.args = {
+   template: `
 <div>
   <div [class.card]="selectedTreeNode==0">
     <div class="row" [class.card-body]="selectedTreeNode==0">
@@ -188,10 +194,4 @@ const Template: Story<OrganizationUnit> = (args: OrganizationUnit) => ({
 </rds-offcanvas>
 
 `
-});
-
-
-export const Default = Template.bind({});
-Default.args = {
- 
 }

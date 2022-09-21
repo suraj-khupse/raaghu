@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { AlertService, AppSessionService, ComponentLoaderOptions } from '@libs/shared';
+import { AlertService, AppSessionService, ComponentLoaderOptions, SharedService } from '@libs/shared';
 import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -217,7 +217,8 @@ export class AppComponent implements OnInit {
     private _arrayToTreeConverterService: ArrayToTreeConverterService,
     private alertService: AlertService,
     public translate: TranslateService,
-    private appSessionService: AppSessionService
+    private appSessionService: AppSessionService,
+    private sharedService: SharedService
   ) { }
   ngOnInit(): void {
     this.isAnimation = true;
@@ -413,8 +414,10 @@ export class AppComponent implements OnInit {
     this.selectedTabIndex = event;
     if (this.selectedTabIndex === 1) {
       this.btnLabel = 'NEW DYNAMIC ENTITY PROPERTY';
+      this.sharedService.setTopNavTitle(this.navtabsItems[this.selectedTabIndex].label)
     } else {
       this.btnLabel = 'NEW DYNAMIC PROPERTY';
+      this.sharedService.setTopNavTitle('');
 
     }
   }

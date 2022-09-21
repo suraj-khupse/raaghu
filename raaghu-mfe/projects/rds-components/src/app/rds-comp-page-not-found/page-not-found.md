@@ -1,7 +1,7 @@
 ---
 slug: "/Page Not Found"
 date: "2019-05-04"
-title: "Page Not Found"
+title: "Components > Page Not Found"
 ---
 
 

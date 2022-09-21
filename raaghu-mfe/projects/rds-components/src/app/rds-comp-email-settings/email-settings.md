@@ -1,7 +1,7 @@
 ---
 slug: "/Email-Settings"
 date: "2019-05-04"
-title: "Components /Email-Settings"
+title: "Components > Email-Settings"
 ---
 
 

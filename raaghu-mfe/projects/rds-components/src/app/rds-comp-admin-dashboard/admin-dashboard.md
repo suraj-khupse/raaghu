@@ -1,7 +1,7 @@
 ---
 slug: "/Admin-dashboard"
 date: "2019-05-04"
-title: "Componets / Admin-Dashboard"
+title: "Componets > Admin-Dashboard"
 ---
 
 <!-- CSS only -->

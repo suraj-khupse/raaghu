@@ -1,7 +1,7 @@
 ---
 slug: "/textarea"
 date: "2019-05-04"
-title: "Elements / Textarea"
+title: "Elements > Textarea"
 ---
 
 <!-- CSS only -->

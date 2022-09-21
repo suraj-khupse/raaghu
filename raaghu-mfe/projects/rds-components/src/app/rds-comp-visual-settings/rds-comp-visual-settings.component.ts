@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SharedService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-rds-comp-visual-settings',
@@ -7,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RdsCompVisualSettingsComponent implements OnInit {
 
-  constructor(public translate:TranslateService) { }
+  constructor(public translate: TranslateService, private sharedService: SharedService) { }
   ngOnInit(): void {
     if (this.visualsettingsItem && this.visualsettingsItem.length) {
       this.theme = JSON.parse(JSON.stringify(this.visualsettingsItem[0].theme));
@@ -27,7 +28,7 @@ export class RdsCompVisualSettingsComponent implements OnInit {
   @Input() visualSettingsHeader: any = {};
   @Input() visualSettingsSubHeader: any = {}
   @Input() visualSettingsMenu: any = {}
-  @Input() isShimmer:boolean=false;
+  @Input() isShimmer: boolean = false;
   @Input() visualSettingsFooter: any = {}
   @Input() visualSettingsLayout: any = {}
   @Input() public visualsettingsItem: any[] = [];
@@ -68,20 +69,18 @@ export class RdsCompVisualSettingsComponent implements OnInit {
     this.visualSettingsSubHeader = JSON.parse(JSON.stringify(this.visualsettingsItem[index].subHeader));
   }
   getNavTabItems(): any {
-
     this.navtabItems[0].label = this.translate.instant('Header Bar');
-
     this.navtabItems[1].label = this.translate.instant('Sub header');
     this.navtabItems[2].label = this.translate.instant('Menu');
     this.navtabItems[3].label = this.translate.instant('Footer');
     return this.navtabItems;
-
   }
-  onSelectnode(){
-    this.navtabItems[0].label = this.translate.instant('Header Bar');
-
-    this.navtabItems[1].label = this.translate.instant('Sub header');
-    this.navtabItems[2].label = this.translate.instant('Menu');
-    this.navtabItems[3].label = this.translate.instant('Footer');
+  
+  onSelectnode(event: any) {
+    if (event > 0) {
+      this.sharedService.setTopNavTitle(this.navtabItems[event].label);
+    } else {
+      this.sharedService.setTopNavTitle('');
+    }
   }
 }

@@ -1,7 +1,7 @@
 ---
 slug: "/FAQ"
 date: "2019-05-04"
-title: "Components /FAQ"
+title: "Components > FAQ"
 ---
 
 

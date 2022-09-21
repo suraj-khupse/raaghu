@@ -13,7 +13,7 @@
       <div>
         <a class="nav-link active p-0" aria-current="page" href="#">{{
           selectedMenu|translate
-          }}</a>
+          }}<span *ngIf="tabName" class="mx-2"><b class="text-primary pt-1">></b> {{tabName}}</span></a>
       </div>
       <div class="mob-description">
         <a class="nav-link text-muted p-0 fs-6" href="#">{{selectedMenuDescription|translate}}</a>
@@ -24,9 +24,9 @@
       <ul class="navbar-nav d-flex align-items-center ms-auto">
         <rds-dropdownlist [placeholder]="'Select theme'" [value]="themes.value" [borderDropdown]="false"
           [listItems]="themes" (onSelect)="onThemeSelect($event.item.value)"></rds-dropdownlist>
-        <rds-dropdownlist class="ms-2" [placeholder]="'Languages'" [value]="selectedLanguage.language" [icon]="selectedLanguage.icon"
-          [borderDropdown]="false" [iconHeight]="'18px'" [iconWidth]="'18px'" [listItems]="languageItems"
-          (onSelect)="onLanguageSelect($event)">
+        <rds-dropdownlist class="ms-2" [placeholder]="'Languages'" [value]="selectedLanguage.language"
+          [icon]="selectedLanguage.icon" [borderDropdown]="false" [iconHeight]="'18px'" [iconWidth]="'18px'"
+          [listItems]="languageItems" (onSelect)="onLanguageSelect($event)">
         </rds-dropdownlist>
         <li class="nav-item dropdown border-end px-2">
           <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
@@ -112,16 +112,16 @@
     </div>
   </div>
 </nav>
-<app-rds-comp-profile [MenuItems]="navtabItems" [linkedAccount]="linkedAccount" [Profileurl]="profilePic"
-  [viewCanvas]="showOffcanvas" [tableWidth]="tableWidth" [id]="offCanvasId" [userList]="userList"
-  [languageItems]="languageItems" [listItemsResult]="listusename" [DownloadTable]="dounloadata"
-  [tableStyle]="tableStyle" [LoginAttempts]="LoginAttempts" [ProfileData]="profileData"
-  [selectedLanguage]="selectedLanguage" [rdsDeligateTableHeader]="rdsDeligateTableHeader"
-  [rdsDeligateTableData]="rdsDeligateTableData" (onSaveDelegate)="saveDeligate.emit($event)"
-  [recordsPerpage]="recordsPerpage" [pagination]="pagination" (onDeleteDeligate)="deleteDeligateuser.emit($event)"
-  (ondeleteLinkaccount)="deleteLinkaccount.emit($event)" (onLinkToUser)="saveLinkUsers($event)"
-  (onProfileSave)="onProfileSave.emit($event)" (onLoginAttempts)="onLoginAttemptsRefresh.emit($event)"
-  (onDownloadLink)="onDownloadLink.emit($event)">
+<app-rds-comp-profile [MenuItems]="navtabItems" [Profileurl]="profilePic" [viewCanvas]="showOffcanvas"
+  [tableWidth]="tableWidth" [id]="offCanvasId" [userList]="userList" [languageItems]="languageItems"
+  [listItemsResult]="listusename" [DownloadTable]="dounloadata" [tableStyle]="tableStyle"
+  [LoginAttempts]="LoginAttempts" [ProfileData]="profileData" [selectedLanguage]="selectedLanguage"
+  [rdsDeligateTableHeader]="rdsDeligateTableHeader" [rdsDeligateTableData]="rdsDeligateTableData"
+  (onSaveDelegate)="saveDeligate.emit($event)" [recordsPerpage]="recordsPerpage" [pagination]="pagination"
+  (onDeleteDeligate)="deleteDeligateuser.emit($event)" (ondeleteLinkaccount)="deleteLinkaccount.emit($event)"
+  (onLinkToUser)="saveLinkUsers($event)" (onProfileSave)="onProfileSave.emit($event)"
+  (onLoginAttempts)="onLoginAttemptsRefresh.emit($event)" (onDownloadLink)="onDownloadLink.emit($event)"
+  [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData">
 </app-rds-comp-profile>
 <app-rds-comp-notification-settings [notificationTypes]="notificationTypes"
   [receiveNotifications]="receiveNotifications"

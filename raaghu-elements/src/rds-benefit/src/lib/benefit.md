@@ -1,7 +1,7 @@
 ---
 slug: "/Benefit"
 date: "2019-05-04"
-title: "Elements / Benefit"
+title: "Elements > Benefit"
 ---
 
 ### Benefit

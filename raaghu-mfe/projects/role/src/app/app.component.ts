@@ -134,16 +134,15 @@ export class AppComponent implements OnInit {
         },
         onEditRole: (event: any) => {
           if (event.id) {
+            this.store.dispatch(getRolByEdit(event));
             this.isEdit = true;
           } else {
-
             this.Roledetails = undefined;
             const mfeConfig = this.rdsNewRoleMfeConfig
             mfeConfig.input.RolesData = { ... this.Roledetails };
             this.rdsNewRoleMfeConfig = mfeConfig;
 
           }
-          this.store.dispatch(getRolByEdit(event));
           this.store.select(selectRoleForEdit).subscribe((res: any) => {
             if (res && res.RoleEditI && res.RoleEditI.role && res.status == 'success') {
               this.Roledetails = {}

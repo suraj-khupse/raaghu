@@ -1,7 +1,7 @@
 ---
 slug: "/app-details"
 date: "2019-05-04"
-title: "Elements / App-Details"
+title: "Elements > App-Details"
 ---
 
 ### App-Details
@@ -25,7 +25,7 @@ title: "Elements / App-Details"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                     <img src="/images/app-details.png" class="img-fuild">
+                     <img src="/images/app-details.png" class="img-fluid">
                  </div>            
            </div>
                        

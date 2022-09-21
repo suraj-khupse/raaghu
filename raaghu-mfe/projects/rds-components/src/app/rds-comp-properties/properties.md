@@ -1,7 +1,7 @@
 ---
 slug: "/Properties"
 date: "2019-05-04"
-title: "Componenets / Properties"
+title: "Componenets > Properties"
 ---
 
 <!-- CSS only -->

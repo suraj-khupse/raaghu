@@ -38,8 +38,8 @@ export class RdsCompRoleListComponent implements OnInit {
   @Input() SelectedPermissionValues: any = [];
   @Input() SelectedPermissionList: any = [];
   @Input() roleHeaders: TableHeader[] = [];
-  @Input() isShimmer:boolean=false;
-  @Input()  EditShimmer: boolean = false;
+  @Input() isShimmer: boolean = false;
+  @Input() EditShimmer: boolean = false;
   @Input() listItems = [
     { value: 'New Role', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
     { value: 'Refresh', some: 'value', key: 'refresh', icon: 'refresh', iconWidth: '20px', iconHeight: '20px' },
@@ -99,7 +99,7 @@ export class RdsCompRoleListComponent implements OnInit {
 
     this.tableData = [...this.roleList];
   }
- 
+
   getNavTabItems(): any {
 
     this.navtabsItems[0].label = this.translate.instant('Role');
@@ -146,7 +146,7 @@ export class RdsCompRoleListComponent implements OnInit {
     this.viewCanvas = true;
     this.onEditRole.emit({ id: undefined });
     this.SelectedPermissionValues = [];
-     if (event) {
+    if (event) {
       this.canvasTitle = 'NEW ROLE';
       this.Roles = { RolesData: undefined, permissionsList: [] };
       this.RolesData = undefined;
@@ -196,7 +196,7 @@ export class RdsCompRoleListComponent implements OnInit {
     this.buttonSpinnerForNewRole = false;
   }
   editTableRowData(event): void {
-    
+
     this.canvasTitle = 'EDIT ROLE';
     this.newRole(undefined);
     this.onEditRole.emit(event.id);
@@ -208,9 +208,9 @@ export class RdsCompRoleListComponent implements OnInit {
     this.selectedFilterId = '';
     this.SelectedPermissionValues = [];
     //if (event) {
-      this.canvasTitle = 'FILTER BY PERMISSIONS';
+    this.canvasTitle = 'FILTER BY PERMISSIONS';
     //  event.stopPropagation();
-      this.RolesData = undefined;
+    this.RolesData = undefined;
     //}
     this.viewCanvas = true;
     setTimeout(() => {
@@ -222,19 +222,22 @@ export class RdsCompRoleListComponent implements OnInit {
     this.activePage = 0;
   }
 
-  onSelectMenu(event:any){
-    if(event.key==='new'){
+  onSelectMenu(event: any) {
+    if (event.key === 'new') {
       this.newRole(event);
     }
-    else if(event.key==='refresh'){
+    else if (event.key === 'refresh') {
       this.getRoles();
     }
-    else if(event.key==='filterByPermission'){
+    else if (event.key === 'filterByPermission') {
       this.filterByPermission(event);
     }
   }
 
   saveFilterPermission(): void {
+    if (!this.selectedFilterPermissionList.find((x: any) => x.selected)) {
+      return;
+    }
     this.onFilterPermission.emit(this.selectedFilterPermissionList);
     this.activePage = 0;
     var offcanvas = document.getElementById('PermissionOffcanvas')
@@ -244,9 +247,14 @@ export class RdsCompRoleListComponent implements OnInit {
   }
 
   getFilterPermissionList(event: any): void {
-    if (event && event.length > 0) {
-      this.selectedFilterPermissionList = event
+    this.selectedFilterPermissionList = event
+  }
+
+  disableButton(): boolean {
+    if (this.selectedFilterPermissionList.find((x: any) => x.value)) {
+      return false;
     }
+    return true
   }
 
   closeFilterPermission(): void {

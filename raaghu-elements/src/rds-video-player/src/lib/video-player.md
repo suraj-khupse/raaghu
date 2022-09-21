@@ -1,7 +1,7 @@
 ---
 slug: "/video-player"
 date: "2019-05-04"
-title: "Elements / Video-player"
+title: "Elements > Video-player"
 ---
 
 <!-- CSS only -->

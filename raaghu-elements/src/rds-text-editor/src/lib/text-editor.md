@@ -1,7 +1,7 @@
 ---
 slug: "/text-editor"
 date: "2019-05-04"
-title: "Elements / Text-editor"
+title: "Elements > Text-editor"
 ---
 
 <!-- CSS only -->

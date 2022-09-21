@@ -1,7 +1,7 @@
 ---
 slug: "/Background-Image"
 date: "2019-05-04"
-title: "Components / Background-Image"
+title: "Components > Background-Image"
 ---
 
 <!-- CSS only -->

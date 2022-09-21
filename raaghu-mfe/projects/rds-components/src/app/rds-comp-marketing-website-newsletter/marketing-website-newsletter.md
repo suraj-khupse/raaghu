@@ -1,17 +1,17 @@
 ---
 slug: "/marketing-website-newsletter"
 date: "2019-05-04"
-title: "marketing-website-newsletter"
+title: "Components > Marketing Website Newsletter"
 ---
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="../assets/css/style-elements.css">
 
-#### Marketing website newsletter
+#### Marketing Website Newsletter
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">                                                                                             
-    <h6>Template 1</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -25,10 +25,11 @@ title: "marketing-website-newsletter"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents  p-5">
+         <div class="contents p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/marketing-website-newsletter1.png" class="">
+            <div class="col-md-12">
+              <img src="/images/marketing-website-newsletter1.png" class="img-fluid">
+            </div>
            </div>
                        
   </div>
@@ -51,7 +52,7 @@ title: "marketing-website-newsletter"
   </section>
   
 <section class="py-4">                                                                                             
-    <h6>Template 2</h6>
+    <h6>Template 1</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab2" role="tablist">
@@ -67,8 +68,9 @@ title: "marketing-website-newsletter"
         <div class="tab-pane fade show active" id="PreviewBasic2" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/marketing-news-letter2.png" class="">
+             <div class="col-md-12">
+                <img src="/images/marketing-news-letter2.png" class="img-fluid">
+             </div>
            </div>
                        
   </div>
@@ -92,7 +94,7 @@ title: "marketing-website-newsletter"
                 
                                                                                                                  
 <section class="py-4">                                                                                             
-    <h6>Template 3</h6>
+    <h6>Template 2</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab3" role="tablist">
@@ -108,8 +110,9 @@ title: "marketing-website-newsletter"
         <div class="tab-pane fade show active" id="PreviewBasic3" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents  p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/marketing-news-letter3.png" class=" w-50">
+             <div class="col-md-12">
+               <img src="/images/marketing-news-letter3.png" class="img-fluid w-50">
+             </div>  
            </div>
                        
   </div>
@@ -133,7 +136,7 @@ title: "marketing-website-newsletter"
 
 
   <section class="py-4">                                                                                             
-    <h6>Template 4</h6>
+    <h6>Template 3</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab4" role="tablist">
@@ -148,9 +151,9 @@ title: "marketing-website-newsletter"
       <div class="tab-content card border" id="myTabContent4">
         <div class="tab-pane fade show active" id="PreviewBasic4" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents  p-5">
-              <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/marketing-news-letter4.png" class="">
+             <div class="col-md-12">
+                <img src="/images/marketing-news-letter4.png" class="img-fluid">
+             </div>    
            </div>
                        
   </div>

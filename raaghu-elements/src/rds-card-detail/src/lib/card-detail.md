@@ -1,7 +1,7 @@
 ---
 slug: "/Card-detail"
 date: "2019-05-04"
-title: "Elements / Card-detail"
+title: "Elements > Card-detail"
 ---
 
 
@@ -27,7 +27,7 @@ title: "Elements / Card-detail"
          <div class="contents p-5">
               <div class="row">
                 <div class="col-md-12">
-                     <img src="/images/popular-pages.png" class="img-fuild">
+                     <img src="/images/popular-pages.png" class="img-fluid">
                 </div>                
             </div>
           

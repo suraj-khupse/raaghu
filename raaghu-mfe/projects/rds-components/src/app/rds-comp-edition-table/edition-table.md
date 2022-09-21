@@ -1,7 +1,7 @@
 ---
 slug: "/Edition-Table"
 date: "2019-05-04"
-title: "Components /Edition-Table"
+title: "Components > Edition-Table"
 ---
 
 

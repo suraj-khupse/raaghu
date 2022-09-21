@@ -1,7 +1,7 @@
 ---
 slug: "/Frequently-Asked-Questions"
 date: "2019-05-04"
-title: "Pages /Frequently-Asked-Questions"
+title: "Pages > Frequently-Asked-Questions"
 ---
 
 <!-- CSS only -->

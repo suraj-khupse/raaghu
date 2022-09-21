@@ -1,7 +1,7 @@
 ---
 slug: "/Store-Front"
 date: "2019-05-04"
-title: "Pages /Store-Front"
+title: "Pages > Store-Front"
 ---
 
 <!-- CSS only -->

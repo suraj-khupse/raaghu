@@ -1,7 +1,7 @@
 ---
 slug: "/checkbox"
 date: "2019-05-04"
-title: "Elements / Checkbox"
+title: "Elements > Checkbox"
 ---
 
 
@@ -33,7 +33,7 @@ title: "Elements / Checkbox"
           <div class="contents p-5">
             <div class="row">
                <div class="col-md-12">
-                <img src="/images/checkbox-basic.png" class="img-fuild">
+                <img src="/images/checkbox-basic.png" class="img-fluid">
                </div>
             </div>
           </div>

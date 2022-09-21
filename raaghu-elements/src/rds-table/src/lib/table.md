@@ -1,7 +1,7 @@
 ---
 slug: "/Table"
 date: "2019-05-04"
-title: "Elements / Table"
+title: "Elements > Table"
 ---
 
 <!-- CSS only -->

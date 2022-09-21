@@ -1,7 +1,7 @@
 ---
 slug: "/search-input"
 date: "2019-05-04"
-title: "Elements / Search-input"
+title: "Elements > Search-input"
 ---
 
 <!-- CSS only -->

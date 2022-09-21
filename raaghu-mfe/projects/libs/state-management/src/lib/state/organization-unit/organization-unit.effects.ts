@@ -195,6 +195,7 @@ this.actions$.pipe(
   mergeMap((data) =>
     this.organizationUnitService.addUsersToOrganizationUnit(data).pipe(map((res: any) => {
       this.store.dispatch(getOrganizationUnitMembers(data.organizationUnitId));
+      this.store.dispatch(getOrganizationUnitTree());
       this.alertService.showAlert('Success', 'Member added successfully', 'success');
 
     }),

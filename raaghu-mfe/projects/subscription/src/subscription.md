@@ -1,7 +1,7 @@
 ---
 slug: "/Subscription"
 date: "2019-05-04"
-title: "Pages /Subscription"
+title: "Pages > Subscription"
 ---
 
 <!-- CSS only -->

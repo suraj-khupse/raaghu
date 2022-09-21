@@ -1,7 +1,7 @@
 ---
 slug: "/Fab Menu"
 date: "2019-05-04"
-title: "Elements / Fab-Menu"
+title: "Elements > Fab-Menu"
 ---
 
 <!-- CSS only -->

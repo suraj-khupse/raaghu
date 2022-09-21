@@ -1,7 +1,7 @@
 ---
 slug: "/Email"
 date: "2019-05-04"
-title: "Components /Email"
+title: "Components > Email"
 ---
 
 

@@ -70,10 +70,12 @@
         <div class="d-flex">
           <div>
             <input class="form-check-input" type="checkbox" [(ngModel)]="item.isSelected" (change)="isAllSelected();" *ngIf="multiSelect" />
-            <label class="form-check-label mx-2">
-              <!--<rds-icon [name]="item.icon" class="pe-2" [height]="item.iconHeight" [width]="item.iconWidth" *ngIf="item.icon"></rds-icon>-->
-              <rds-icon [name]="item.icon" [height]="item.iconHeight" [fill]="item.iconFill"
-                        [stroke]="item.iconStroke" [width]="item.iconWidth" *ngIf="item.icon"></rds-icon> {{item.some}}
+            <label class="form-check-label ">
+              <div class="d-flex justify-content-between gap-2 mb-1 align-items-center">
+                <rds-icon [name]="item.icon" [height]="item.iconHeight" [fill]="item.iconFill"
+                        [stroke]="item.iconStroke" [width]="item.iconWidth" *ngIf="item.icon"></rds-icon>
+              <span>{{item.some}}</span>
+              </div>
             </label>
           </div>
           <div class="text-white">

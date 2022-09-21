@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { TableHeader } from '../../models/table-header.model';
 import { TableAction } from '../../models/table-action.model';
 import { TranslateService } from '@ngx-translate/core';
+import { SharedService } from '@libs/shared';
 
 
 declare var bootstrap: any;
@@ -75,7 +76,9 @@ export class RdsCompAuditLogsComponent implements OnInit {
   auditLogsCanvasTitle: string = this.translate.instant('AUDIT LOG DETAIL');
   changeLogsCanvasTitle: string = this.translate.instant('Change LOG DETAIL');
 
-  constructor(private sanitizer: DomSanitizer, public translate: TranslateService) { }
+  constructor(private sanitizer: DomSanitizer,
+    private sharedService:SharedService,
+    public translate:TranslateService) { }
 
   ngOnInit(): void { }
 
@@ -174,8 +177,11 @@ export class RdsCompAuditLogsComponent implements OnInit {
   }
   onSelectnode(event: any) {
     this.selectedIndex = event;
-    // const div = document.getElementById("operationlog");
-    // div.classList.remove('d-none');
+    if (event > 0) {
+      this.sharedService.setTopNavTitle(this.navtabsItems[event].label);
+    } else {
+      this.sharedService.setTopNavTitle('');
+    }
 
   }
 

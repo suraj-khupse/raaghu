@@ -70,11 +70,11 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   @Input() public userList: any = [];
   @Input() public roles: any = [];
   @Input() public userinfo: any;
-  @Input() isShimmer:boolean=false;
-  @Input() editShimmer:boolean=false;
+  @Input() isShimmer: boolean = false;
+  @Input() editShimmer: boolean = false;
   @Input() public isEdit: boolean = false;
   @Input() public OrganizationUnit: any = [];
-  @Input() organizationTreeList:  [];
+  @Input() organizationTreeList: [];
   @Input() permissionsList: PermissionNode[] = [];
   @Input() selectedPermissions: any = [];
   @Input() selectedOrganizations: any = [];
@@ -94,7 +94,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   @Output() deleteUser = new EventEmitter<{ item: any }>();
   @Output() onClose = new EventEmitter<any>();
   @Input() Selectedata: any = [];
-  Selecteorganizationdata:any=[];
+  Selecteorganizationdata: any = [];
   treeData: [] = [];
   organizationtreeData: [] = [];
   PermissionFiltertreeData: [] = [];
@@ -160,7 +160,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     },
   ];
   selectedTreeNode: number;
-  constructor(public translate:TranslateService) { }
+  constructor(public translate: TranslateService) { }
   @Input() orgTreeData = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
   TreeType: TreeType = {
@@ -255,28 +255,29 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     this.buttonSpinnerForNewUser = true;
     this.selectedId = '';
     this.viewCanvas = true;
-     this.CreateOrEditUser.emit({ id: undefined });
+    this.navtabsItems = [
+      {
+        label: this.translate.instant('User Information'),
+        tablink: '#User Information',
+        ariacontrols: 'basics',
+      },
+      {
+        label: this.translate.instant('Roles'),
+        tablink: '#claims',
+        ariacontrols: 'claims',
+      },
+      {
+        label: this.translate.instant('Organization Units'),
+        tablink: '#organizationUnit',
+        ariacontrols: 'organizationUnit',
+      },
+    ];
+    this.CreateOrEditUser.emit({ id: undefined });
     if (event) {
       this.canvasTitle = 'NEW USER';
       this.userinfo = undefined;
       event.stopPropagation();
-      this.navtabsItems = [
-        {
-          label: this.translate.instant('User Information'),
-          tablink: '#User Information',
-          ariacontrols: 'basics',
-        },
-        {
-          label: this.translate.instant('Roles'),
-          tablink: '#claims',
-          ariacontrols: 'claims',
-        },
-        {
-          label: this.translate.instant('Organization Units'),
-          tablink: '#organizationUnit',
-          ariacontrols: 'organizationUnit',
-        },
-      ];
+
 
     } else {
     }
@@ -300,7 +301,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     this.onClose.emit();
     this.buttonSpinnerForNewUser = false;
   }
-  
+
   editTableRowData(event): void {
     this.canvasTitle = 'EDIT USER';
     this.selectedId = event.id;
@@ -341,7 +342,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     this.activePage = 0;
     // this.newUser(undefined);
     this.CreateOrEditUser.emit({ id: this.selectedId });
- 
+
   }
   getSelectedRoles() {
     this.selectedRoles = [];
@@ -360,8 +361,8 @@ export class RdsCompUserPermissionsComponent implements OnInit {
         permissionlist
       );
     }
-     console.log(permissionlist);
-    
+    console.log(permissionlist);
+
   }
 
   getSelectedorganizationunits(event: any): void {
@@ -386,16 +387,16 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   }
   iterateSelectedOrganizationUnits(arr: any, organizationList): any {
     arr.forEach((item: any) => {
-      if(item.selected){
+      if (item.selected) {
         organizationList.push(item.data.id);
       }
       if (item.children && item.children.length > 0) {
-         this.iterateSelectedOrganizationUnits(item.children, organizationList);
+        this.iterateSelectedOrganizationUnits(item.children, organizationList);
       }
-      });
+    });
     return organizationList;
   }
-  
+
 
   getSelectedUserPermissionFilterList(event: any): void {
     if (event && event.length > 0) {
@@ -485,18 +486,18 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   // fabmenu mobile ts
 
 
-  onSelectMenu(event:any){
-    if(event.key==='new'){
+  onSelectMenu(event: any) {
+    if (event.key === 'new') {
       event = new PointerEvent("click")
       this.newUser(event);
     }
-    else if(event.key==='download'){
+    else if (event.key === 'download') {
       this.exportToExcel();
     }
-    else if(event.key==='filterByPermission'){
-        console.log(this.openFilterByPermission.nativeElement) ;
-        let el: HTMLElement = this.openFilterByPermission.nativeElement as HTMLElement;
-        el.click();
+    else if (event.key === 'filterByPermission') {
+      console.log(this.openFilterByPermission.nativeElement);
+      let el: HTMLElement = this.openFilterByPermission.nativeElement as HTMLElement;
+      el.click();
     }
   }
 

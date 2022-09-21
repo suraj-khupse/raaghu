@@ -1,7 +1,7 @@
 ---
 slug: "/spinner"
 date: "2019-05-04"
-title: "Elements / Spinner"
+title: "Elements > Spinner"
 ---
 
 <!-- CSS only -->

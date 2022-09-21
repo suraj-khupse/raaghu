@@ -1,113 +1,85 @@
 <ng-container *ngIf="item">
   <ng-container [ngSwitch]="display_type">
-    <div  *ngSwitchCase="'Basic'">
+    <div *ngSwitchCase="'Basic'">
       <div class="row">
         <div class="col-2">
           <rds-label [label]="item.name" [multiline]="false" [bold]="true" [italic]="false"></rds-label>
           <p class="mt-2">{{item.date | date:'MMM dd,y'}}</p>
         </div>
         <div class="col-3">
-          <rds-rating
-          [WithNoOfReviews]="false"
-          role="Advanced"
-          [rating]="5"
-          Size="medium"
-          [colorVariant]="'review'"
-         
-        ></rds-rating>
+          <rds-rating [WithNoOfReviews]="false" role="Advanced" [rating]="5" Size="medium" [colorVariant]="'review'">
+          </rds-rating>
         </div>
         <div class="col-7">
           <rds-label [label]="item.reviewTitle" [multiline]="true" [bold]="true" [italic]="false" class="mb-1">
           </rds-label>
-      
-          <rds-label
-            [label]="item.reviewSubTitle" [multiline]="true" [bold]="false" [italic]="false" class="mt-2"></rds-label>
-      
+
+          <rds-label [label]="item.reviewSubTitle" [multiline]="true" [bold]="false" [italic]="false" class="mt-2">
+          </rds-label>
+
           <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"></rds-label>
         </div>
       </div>
-      
+
       <div class="row">
-        <rds-like-dislike [likeCount]="0" [dislikeCount]="0"  [min]="0" (onClick)="onClick($event)"
-      ></rds-like-dislike>
+        <rds-like-dislike [likeCount]="0" [dislikeCount]="0" [min]="0" (onClick)="onClick($event)"></rds-like-dislike>
       </div>
-      
+
     </div>
-    <div  *ngSwitchCase="'ReviewType_1'">
-<div class="row">
-<div  class="d-flex">
-  <rds-avatar
-  colorVariant="light"
-  [WithProfilePic]="true"
-  profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1"
-  Size="large"
-  [VerticalTitleWithProfilePic]="false"
-></rds-avatar>
-<div class="mx-3">
-  <rds-label [label]="item.name" [multiline]="false" [bold]="true" [italic]="false" ></rds-label>
-  <p>
-    <rds-rating
-    [WithNoOfReviews]="false"
-    role="Advanced"
-    [rating]="1"
-    colorVariant="review"
-    [noOfReview]="123"
-    Size="small"
-  ></rds-rating>
-  </p>
-</div>
-</div>
-</div>
-<div class="row">
-  <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"></rds-label>
-</div>
-<div class="row mt-2">
-  <rds-like-dislike [likeCount]="0" [dislikeCount]="0"  [min]="0" (onClick)="onClick($event)"
-></rds-like-dislike>
-</div>
+    <div *ngSwitchCase="'ReviewType_1'">
+      <div class="row">
+        <div class="d-flex">
+          <rds-avatar colorVariant="light" [withProfilePic]="true"
+            profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" size="large"
+            [verticallyAlligned]="false"></rds-avatar>
+          <div class="mx-3">
+            <rds-label [label]="item.name" [multiline]="false" [bold]="true" [italic]="false"></rds-label>
+            <p>
+              <rds-rating [WithNoOfReviews]="false" role="Advanced" [rating]="1" colorVariant="review"
+                [noOfReview]="123" Size="small"></rds-rating>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"></rds-label>
+      </div>
+      <div class="row mt-2">
+        <rds-like-dislike [likeCount]="0" [dislikeCount]="0" [min]="0" (onClick)="onClick($event)"></rds-like-dislike>
+      </div>
     </div>
-    <div  *ngSwitchCase="'ReviewType_2'">
-     <div class="row">
-<div class="col-2">
-  <div class="row">
-    <rds-avatar
-    colorVariant="light"
-    [WithProfilePic]="true"
-    profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1"
-    Size="large"
-    [VerticalTitleWithProfilePic]="false"
-  ></rds-avatar>
-  </div>
-  <div class="row">
-    <rds-label [label]="item.name" [multiline]="false" [bold]="true" [italic]="false"  class="my-1"></rds-label>
-  </div>
- <div>
-  <rds-rating
-  [WithNoOfReviews]="false"
-  role="Advanced"
-  [rating]="4"
-  [noOfReview]="123"
-  Size="small"
-  [colorVariant]="'review'"
-></rds-rating>
- </div>
-<div class="row mt-3">
-  <rds-like-dislike [likeCount]="0" [dislikeCount]="0"[min]="0" (onClick)="onClick($event)" 
-  ></rds-like-dislike>
-</div>
+    <div *ngSwitchCase="'ReviewType_2'">
+      <div class="row">
+        <div class="col-2">
+          <div class="row">
+            <rds-avatar colorVariant="light" [withProfilePic]="true"
+              profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" size="large"
+              [verticallyAlligned]="false"></rds-avatar>
+          </div>
+          <div class="row">
+            <rds-label [label]="item.name" [multiline]="false" [bold]="true" [italic]="false" class="my-1"></rds-label>
+          </div>
+          <div>
+            <rds-rating [WithNoOfReviews]="false" role="Advanced" [rating]="4" [noOfReview]="123" Size="small"
+              [colorVariant]="'review'"></rds-rating>
+          </div>
+          <div class="row mt-3">
+            <rds-like-dislike [likeCount]="0" [dislikeCount]="0" [min]="0" (onClick)="onClick($event)">
+            </rds-like-dislike>
+          </div>
 
 
-</div>
-<div class="col-10 pe-5">
-  <rds-label [label]="item.reviewTitle" [multiline]="true" [bold]="true" [italic]="false" class="mb-1">
-  </rds-label>
+        </div>
+        <div class="col-10 pe-5">
+          <rds-label [label]="item.reviewTitle" [multiline]="true" [bold]="true" [italic]="false" class="mb-1">
+          </rds-label>
 
-  <rds-label
-    [label]="item.reviewSubTitle" [multiline]="true" [bold]="false" [italic]="false" class="mt-2"></rds-label>
+          <rds-label [label]="item.reviewSubTitle" [multiline]="true" [bold]="false" [italic]="false" class="mt-2">
+          </rds-label>
 
-  <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"></rds-label>
-</div>
-     </div> 
+          <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"></rds-label>
+        </div>
+      </div>
     </div>
   </ng-container>
 </ng-container>

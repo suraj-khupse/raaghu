@@ -1,7 +1,7 @@
 ---
 slug: "/Identity-Resources"
 date: "2019-05-04"
-title: "Identity-Resources"
+title: "Pages > Identity-Resources"
 ---
 
 <!-- CSS only -->

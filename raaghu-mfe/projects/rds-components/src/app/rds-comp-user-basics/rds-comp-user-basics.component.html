@@ -65,7 +65,7 @@
           <div class="form-group mb-3">
   
             <rds-input [inputType]="'text'" [Title]="translate.instant('User name')" [TitleType]="'Top'" autocomplete="off"
-              [(ngModel)]="userData.userName" name="userName" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
+              [(ngModel)]="userData.userName" name="uname" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
             </rds-input>
             <div class="form-control-feedback" *ngIf="userName.errors&&(userName.dirty||userName.touched)">
               <span class="text-danger" *ngIf="userName.errors.required">{{"User Name is required"|translate}}</span>
@@ -78,7 +78,7 @@
           <div class="form-group mb-3">
   
             <rds-input [inputType]="'password'" [TitleType]="'Top'" [Title]="translate.instant('Password')" [(ngModel)]="userData.password"
-              name="password" autocomplete="off" required [isRequired]=true (keyup)='confirmPassword()' [placeholder]="'Password'">
+              name="pwd" autocomplete="off" required [isRequired]=true (keyup)='confirmPassword()' [placeholder]="'Password'">
             </rds-input>
           </div>
         </div>

@@ -1,7 +1,7 @@
 ---
 slug: "/Product-image"
 date: "2019-05-04"
-title: "Elements / Product-image"
+title: "Elements > Product-image"
 ---
 
 <!-- CSS only -->
@@ -30,7 +30,7 @@ title: "Elements / Product-image"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="\images\product-image-basic.png" class="img-fuild w-50">
+                    <img src="\images\product-image-basic.png" class="img-fluid w-50">
                  </div>              
            </div>
                        
@@ -71,7 +71,7 @@ title: "Elements / Product-image"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="\images\product-image-overview-1.png" class="img-fuild w-50">
+                    <img src="\images\product-image-overview-1.png" class="img-fluid w-50">
                  </div>              
            </div>
                        
@@ -115,7 +115,7 @@ title: "Elements / Product-image"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="" class="img-fuild w-50">
+                    <img src="" class="img-fluid w-50">
                  </div>              
            </div>
                        
@@ -157,7 +157,7 @@ title: "Elements / Product-image"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="" class="img-fuild w-50">
+                    <img src="" class="img-fluid w-50">
                  </div>              
            </div>
                        

@@ -1,7 +1,7 @@
 ---
 slug: "/Dynamic-Property-Management "
 date: "2019-05-04"
-title: "Pages /Dynamic-Property-Management"
+title: "Pages > Dynamic-Property-Management"
 ---
 
 <!-- CSS only -->

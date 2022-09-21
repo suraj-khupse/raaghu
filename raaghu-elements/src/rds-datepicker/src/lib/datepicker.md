@@ -1,7 +1,7 @@
 ---
 slug: "/datepicker"
 date: "2019-05-04"
-title: "Elements/ Datepicker"
+title: "Elements > Datepicker"
 ---
 
 <!-- CSS only -->

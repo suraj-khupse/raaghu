@@ -1,16 +1,16 @@
 ---
 slug: "/Notification"
 date: "2019-05-04"
-title: "Notification"
+title: "Components > Notification"
 ---
 
 
-### Notification
+#### Notification
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -26,8 +26,9 @@ title: "Notification"
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents  p-5">
               <div class="row">
-                  <img src="/images/notification.png" style="height: 66px;
-    width: auto;">
+              <div class="col-md-12">
+                <img src="/images/notification.png" class="img-fluid" style="height: 66px; width: auto;">
+              </div>  
             </div>
           
   </div>

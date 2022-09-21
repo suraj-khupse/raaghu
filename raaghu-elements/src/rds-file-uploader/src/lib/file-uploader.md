@@ -1,7 +1,7 @@
 ---
 slug: "/file-uploader"
 date: "2019-05-04"
-title: "Elements / File-uploader"
+title: "Elements > File-uploader"
 ---
 
 <!-- CSS only -->
@@ -31,7 +31,7 @@ title: "Elements / File-uploader"
           <div class="contents p-5">
             <div class="row">
                  <div class="col-md-12">
-                    <img src="/images/file-uploader-basic.png" class="img-fuild w-75">
+                    <img src="/images/file-uploader-basic.png" class="img-fluid w-75">
                  </div>                   
             </div>
           </div>

@@ -1,7 +1,7 @@
 ---
 slug: "/Order-Summary"
 date: "2019-05-04"
-title: "Components / Order-Summary"
+title: "Components > Order-Summary"
 ---
 
 

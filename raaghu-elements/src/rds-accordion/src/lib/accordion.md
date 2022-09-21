@@ -1,7 +1,7 @@
 ---
 slug: "/Accordion"
 date: "2019-05-04"
-title: "Elements / Accordion"
+title: "Elements > Accordion"
 ---
 
 <!-- CSS only -->
@@ -33,7 +33,7 @@ title: "Elements / Accordion"
           <div class="contents p-5">
             <div class="row">
               <div class="col-md-12">
-                <img src="/images/accordion-basic.png" class="img-fuild">
+                <img src="/images/accordion-basic.png" class="img-fluid">
               </div>               
             </div>
           </div>
@@ -83,7 +83,7 @@ title: "Elements / Accordion"
           <div class="contents  p-5">
             <div class="row">
                <div class="col-md-12">
-                  <img src="/images/accordion-basic.png" class="img-fuild">
+                  <img src="/images/accordion-basic.png" class="img-fluid">
                </div>          
               </div>
           </div>

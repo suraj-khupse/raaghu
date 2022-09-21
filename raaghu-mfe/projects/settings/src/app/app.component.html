@@ -27,7 +27,7 @@
 
           </div>
           <rds-nav-tab [navtabsItems]="getNavtabItems()" [horizontalAlignment]="'start'" [verticalAlignment]="false"
-            [pills]="false" [tabs]="true" [fill]="false" [justified]="false"></rds-nav-tab>
+            [pills]="false" [tabs]="true" [fill]="false" [justified]="false" (onClicktab)="onClicktab($event)"></rds-nav-tab>
 
           <div naveContent class="row tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="tenant-management" role="tabpanel"

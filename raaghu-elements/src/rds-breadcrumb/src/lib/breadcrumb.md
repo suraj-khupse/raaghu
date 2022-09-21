@@ -1,7 +1,7 @@
 ---
 slug: "breadcrumb"
 date: "2019-05-04"
-title: "Elements / Breadcrumb"
+title: "Elements > Breadcrumb"
 ---
 
 <!-- CSS only -->
@@ -30,7 +30,7 @@ title: "Elements / Breadcrumb"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                     <img src="/images/breadcrumb-basic.png" class="img-fuild">
+                     <img src="/images/breadcrumb-basic.png" class="img-fluid">
                  </div>            
            </div>
                        

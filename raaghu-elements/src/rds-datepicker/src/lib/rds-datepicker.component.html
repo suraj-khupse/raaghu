@@ -1,17 +1,17 @@
 <ng-container *ngIf="datePickerType==='basic'">
   <div [class.disable-pointer]="disabled">
-    <label [ngClass]="labelClass" [ngClass]="Label == '' ? 'd-none' : 'form-label'" for="Errormessage">{{
+    <label *ngIf="Label" [ngClass]="labelClass" for="Errormessage">{{
       Label
       }}<span class="text-danger" *ngIf="isRequired">*</span></label>
-    <div class="input-group">
+    <div class="input-group border">
       <input type="text" autocomplete="off" bsDatepicker [datesDisabled]="datesDisabled"
         [class.disable-pointer]="disabled" [disabled]="disabled" [minDate]="minDate" #datepicker="bsDatepicker"
-        (onHidden)="onHide.emit($event)" [daysDisabled]="daysDisabled" [isOpen]="isOpen" [bsConfig]="DatePickerConfig"
+        (onHidden)="onHide.emit($event)" [daysDisabled]="daysDisabled" [isOpen]="isOpen" [bsConfig]="datePickerConfig"
         id="DateOfBirth" [maxDate]="maxDate" [outsideEsc]="outsideEsc" (onShown)="onShow.emit($event)"
         [placeholder]="placeholder" [bsValue]="value" [dateTooltipTexts]="dateTooltipTexts" [(ngModel)]="value"
         name="date-picker" [minMode]="minMode" (bsValueChange)="onDateChane($event)" [datesEnabled]="datesEnabled"
-        [datesDisabled]="datesDisabled" [outsideClick]="outsideClick" [placement]="placement" class="form-control" />
-      <span class="input-group-text" id="basic-addon1" (click)="datepicker.show()" [class.disable-pointer]="disabled">
+        [datesDisabled]="datesDisabled" [outsideClick]="outsideClick" [placement]="placement" class="form-control border-0" />
+      <span class="input-group-text border" id="basic-addon1" (click)="datepicker.show()" [class.disable-pointer]="disabled">
         <rds-icon name="calendar" height="18px" width="18px" [disabled]="disabled"></rds-icon>
       </span>
 
@@ -22,10 +22,10 @@
   <div class="date-picker">
     <div class="date-picker-a vertical">
       
-       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+       <button class="btn border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
         aria-expanded="false">
          <rds-icon name="calendar" height="18px" width="18px"></rds-icon>
-        <span class="date-range  ms-2"> {{Label }}</span>
+        <span *ngIf="Label" class="date-range  ms-2"> {{Label }}</span>
        </button>
      
      </div>
@@ -57,7 +57,7 @@
         <li><a class="dropdown-item" (click)="yesDate($event)">Yesterday</a></li>
         <li><a class="dropdown-item" (click)="lastSevenDate($event)">Last 7 days</a></li>
         <li><a class="dropdown-item" (click)="lastFourteenDate($event)">Last 14 days</a></li>
-        <li class="menu-item-has-children">
+        <li class="menu-item-has-children position-relative">
           <div class="dropdown-item active input-group date datepicker" [bsValue]="bsInlineRangeValue"
             [bsConfig]="{ containerClass: 'theme-dark-blue light-mode', customTodayClass: 'custom-today-class'}"
             #dp="bsDaterangepicker" bsDaterangepicker placement="right" (bsValueChange)="changeDate($event)"

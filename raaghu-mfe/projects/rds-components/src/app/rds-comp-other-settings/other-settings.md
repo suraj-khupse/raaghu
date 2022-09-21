@@ -1,7 +1,7 @@
 ---
 slug: "/Other-Settings"
 date: "2019-05-04"
-title: "Components / Other-Settings"
+title: "Components > Other-Settings"
 ---
 
 

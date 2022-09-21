@@ -1,7 +1,7 @@
 ---
 slug: "/team-member"
 date: "2019-05-04"
-title: "Elements / Team-member"
+title: "Elements > Team-member"
 ---
 
 <!-- CSS only -->

@@ -80,7 +80,7 @@ IconButtonGroup.args = {
   buttonGroupItem: [
     {
       label: '',
-      icon: 'settings',
+      icon: 'setting',
       iconHeight: '20px',
       iconWidth: '20px',
       iconStroke: true,

@@ -1,7 +1,7 @@
 ---
 slug: "/Progressbar"
 date: "2019-05-04"
-title: "Elements / Progressbar"
+title: "Elements > Progressbar"
 ---
 
 <!-- CSS only -->
@@ -30,7 +30,7 @@ title: "Elements / Progressbar"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="/images/progressbar.png" class="img-fuild w-100">
+                    <img src="/images/progressbar.png" class="img-fluid w-100">
                  </div>               
               </div>
                        

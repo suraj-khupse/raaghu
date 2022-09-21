@@ -1,7 +1,7 @@
 ---
 slug: "/Feed"
 date: "2019-05-04"
-title: "Components / Feed"
+title: "Components > Feed"
 ---
 
 

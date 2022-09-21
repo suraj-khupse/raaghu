@@ -55,7 +55,7 @@ const Elements = () => {
             </h4>
             <div className="row" id="action-components">
               {sub.children.map((child) => (
-                <div className="col-3 mb-5 mt-5">
+                <div className="col-4 col-md-4 mb-5 mt-5">
                   <a href={child?.link || "/button"}>
                     <div
                       className="card hover-shadow cursor-pointer"
@@ -69,11 +69,11 @@ const Elements = () => {
                             <div className="col-4 text-center"></div>
                           </div>
                         </div>
-                        <p className="card-text placeholder-glow">
+                        <p className="card-text placeholder-glow sentence-overflow">
                           {child.text}
                         </p>
                         <div class="read-div">
-                          <a href="/button" class="component-read-more">
+                          <a href="/" class="component-read-more">
                             Read More →
                           </a>
                         </div>

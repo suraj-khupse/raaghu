@@ -13,12 +13,12 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
   @Output() userInfo = new EventEmitter<any>();
   @Output() onCancel = new EventEmitter<any>();
   @Input() userData: any;
-  @Input()  editShimmer: boolean = false;
-  @Input () buttonSpinner: boolean =true;
+  @Input() editShimmer: boolean = false;
+  @Input() buttonSpinner: boolean = true;
   public phonePattern = /^((\\+91-?)|0)?[0-9]{10}$/;
-  isPasswordMismatch:boolean=false;
+  isPasswordMismatch: boolean = false;
   @ViewChild('userCreationForm') userInfoForm: NgForm;
-  constructor(public translate:TranslateService) { }
+  constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
     if (!this.userData) {
@@ -52,36 +52,39 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.userData) {
-      this.userInfoForm.resetForm();
-      this.userData = {};
-      this.userData['name'] = '';
-      this.userData['userName'] = '';
-      this.userData['emailAddress'] = '';
-      this.userData['phoneNumber'] = '';
-      this.userData['password'] = '';
-      this.userData['confirmPass'] = '';
-      this.userData['setRandomPassword'] = true;
-      this.userData['shouldChangePasswordOnNextLogin'] = true;
-      this.userData['isTwoFactorEnabled'] = false;
-      this.userData['isActive'] = false;
-      this.userData['isLockoutEnabled'] = false;
-      this.userData['surname'] = '';
-      this.userData['imageUrl'] = '../assets/edit-profile.png'
+    if (!this.userData || this.userData.id == null || !this.userData.id) {
+      if (this.userInfoForm) {
+        this.userInfoForm.resetForm();
+        this.userData = {};
+        this.userData['name'] = '';
+        this.userData['userName'] = '';
+        this.userData['emailAddress'] = '';
+        this.userData['phoneNumber'] = '';
+        this.userData['password'] = '';
+        this.userData['confirmPass'] = '';
+        this.userData['setRandomPassword'] = true;
+        this.userData['shouldChangePasswordOnNextLogin'] = true;
+        this.userData['isTwoFactorEnabled'] = false;
+        this.userData['isActive'] = false;
+        this.userData['isLockoutEnabled'] = false;
+        this.userData['surname'] = '';
+        this.userData['imageUrl'] = '../assets/edit-profile.png'
+      }
+     
     }
-    else{
+    else {
       this.userData['imageUrl'] = '../assets/edit-profile.png'
     }
   }
 
   next(userCreationForm: NgForm): void {
     userCreationForm.form.markAllAsTouched();
-    this.buttonSpinner=true;
+    this.buttonSpinner = true;
     if (!userCreationForm || userCreationForm.invalid) {
       return;
     }
     this.userInfo.emit({ user: this.userData, next: true });
-    
+
   }
   getCheckboxValue(event: any): void {
     this.userData.unlimitedSubscription = event;
@@ -99,15 +102,19 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
     reader.readAsDataURL(FileImage);
   }
   confirmPassword() {
-    if (this.userData.password === this.userData.confirmPass) {
-      this.isPasswordMismatch = false
+    if (this.userData.password && this.userData.confirmPass) {
+      if (this.userData.password === this.userData.confirmPass) {
+        this.isPasswordMismatch = false;
+      } else {
+        this.isPasswordMismatch = true;
+      }
     } else {
-      this.isPasswordMismatch = true
+      this.isPasswordMismatch = false;
     }
   }
-  onCancelUser(){
-    this.buttonSpinner=false;
-  this.onCancel.emit(true);
+  onCancelUser() {
+    this.buttonSpinner = false;
+    this.onCancel.emit(true);
 
   }
 }

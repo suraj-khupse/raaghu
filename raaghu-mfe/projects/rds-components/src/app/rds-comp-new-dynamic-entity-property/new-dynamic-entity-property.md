@@ -1,17 +1,17 @@
 ---
 slug: "/new-dynamic-entity-property"
 date: "2019-05-04"
-title: "new-dynamic-entity-property"
+title: "Components > New Dynamic Entity Property"
 ---
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="../assets/css/style-elements.css">
 
-#### New dynamic entity property
+#### New Dynamic Entity Property
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">                                                                                             
-    <h6>New dynamic entity property</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,8 +27,9 @@ title: "new-dynamic-entity-property"
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents p-5">
               <div class="row">
-              <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/new-dynamic-entity-property.png" class="">
+             <div class="col-md-12">
+                <img src="/images/new-dynamic-entity-property.png" class="img-fluid">
+             </div>
            </div>
                        
   </div>

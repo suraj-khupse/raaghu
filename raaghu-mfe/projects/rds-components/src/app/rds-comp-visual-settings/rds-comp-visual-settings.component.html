@@ -71,7 +71,7 @@
       </div> -->
       <div class="row ps-3 navsm-p-0">
         <rds-nav-tab [navtabsItems]="getNavTabItems()" horizontalAlignment="start" [verticalAlignment]="false"
-          [pills]="false" [tabs]="true"  (onClicktab)=" onSelectnode()" [justified]="false" [flex]="false">
+          [pills]="false" [tabs]="true"  (onClicktab)=" onSelectnode($event)" [justified]="false" [flex]="false">
         </rds-nav-tab>
       </div>
       <div naveContent class="tab-content" id="headerbar">

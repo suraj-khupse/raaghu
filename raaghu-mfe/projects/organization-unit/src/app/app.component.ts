@@ -49,7 +49,8 @@ declare var bootstrap: any;
 
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;
-
+  selectedRoles: any = [];
+  selectedUsers: any = [];
   selectedTabIndex: any = 0;
   organizationCount: any;
   userUniqueId: any;
@@ -73,18 +74,18 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  tableHeadersForMember: TableHeader[] = [{ displayName: 'Name', key: 'userName', dataType: 'text', dataLength: 30, filterable: true, required: true, sortable: true },
+  tableHeadersForMember: TableHeader[] = [{ displayName: 'Users', key: 'userName', dataType: 'text', dataLength: 30, filterable: true, required: true, sortable: true },
   { displayName: 'Addition Time', key: 'additionTime', dataType: 'text', dataLength: 5, required: true, sortable: true },];
   tableDataForMember = [];
 
-  tableHeadersForRoles: TableHeader[] = [{ displayName: 'Roles', key: 'roles', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true },
+  tableHeadersForRoles: TableHeader[] = [{ displayName: 'Role', key: 'roles', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true },
   { displayName: 'Addition Time', key: 'additionTime', dataType: 'date', dataLength: 5, required: true, sortable: true },];
   tableDataForRoles = [];
 
-  tableHeadersForRolesAdd = [{ displayName: 'Name', key: 'displayName', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true, checkbox: true },];
+  tableHeadersForRolesAdd = [{ displayName: 'Roles', key: 'displayName', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true, checkbox: true },];
   tableDataForRolesAdd = [];
 
-  tableHeadersForUserAdd = [{ displayName: 'Name', key: 'name', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true, checkbox: true },];
+  tableHeadersForUserAdd = [{ displayName: 'Users', key: 'name', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true, checkbox: true },];
   tableDataForUserAdd = [];
 
   rdsDataTableForMemberMfeConfig: ComponentLoaderOptions = {
@@ -137,16 +138,24 @@ export class AppComponent implements OnInit {
       tableData: this.tableDataForUserAdd,
       tableHeaders: this.tableHeadersForUserAdd,
       recordsPerPage: 5,
+      enableCheckboxSelection: true,
       width: '100%',
       pagination: true,
-      actions: [{ id: 'delete', displayName: 'Delete' }],
       noDataTitle: 'Currently you do not have user',
       noDataSubTitle: 'Click on the button above to add'
     },
     output: {
-      onSelectedData: (data) => {
-        this.pushUserData = data;
-      },
+      // onSelectedData: (data) => {
+      //   this.pushUserData = data;
+      // },
+      getAllCheckedItems: (checkedItems: any) => {
+        this.selectedUsers = [];
+        checkedItems.forEach((item: any) => {
+          if (item) {
+            this.selectedUsers.push(+item.id)
+          }
+        });
+      }
     }
   };
 
@@ -158,14 +167,20 @@ export class AppComponent implements OnInit {
       recordsPerPage: 5,
       width: '100%',
       pagination: true,
-      actions: [{ id: 'delete', displayName: 'Delete' }],
+      enableCheckboxSelection: true,
       noDataTitle: 'Currently you do not have role',
       noDataSubTitle: ''
     },
     output: {
-      onSelectedData: (data) => {
-        this.pushRoleData = data;
-      },
+
+      getAllCheckedItems: (checkedItems: any) => {
+        this.selectedRoles = [];
+        checkedItems.forEach((item: any) => {
+          if (item) {
+            this.selectedRoles.push(+item.id)
+          }
+        });
+      }
     }
   };
 
@@ -226,6 +241,7 @@ export class AppComponent implements OnInit {
   ) {
   }
   ngOnInit(): void {
+
     this.isAnimation = true;
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
@@ -435,7 +451,7 @@ export class AppComponent implements OnInit {
 
 
   pushUser() {
-    var AddUsersToOrganizationUnitInput = { userIds: [this.pushUserData.id], organizationUnitId: this.selectedTreeNode }
+    var AddUsersToOrganizationUnitInput = { userIds: this.selectedUsers, organizationUnitId: this.selectedTreeNode }
     this.store.dispatch(addUsersToOrganizationUnit(AddUsersToOrganizationUnitInput));
     const self = this;
     var timesRun = 0;
@@ -448,7 +464,7 @@ export class AppComponent implements OnInit {
     }, 100);
   }
   pushRole() {
-    var AddRolesToOrganizationUnitInput = { roleIds: [this.pushRoleData.id], organizationUnitId: this.selectedTreeNode }
+    var AddRolesToOrganizationUnitInput = { roleIds: this.selectedRoles, organizationUnitId: this.selectedTreeNode }
     this.store.dispatch(addRolesToOrganizationUnit(AddRolesToOrganizationUnitInput));
     const self = this;
     var timesRun = 0;
@@ -470,11 +486,12 @@ export class AppComponent implements OnInit {
     }
     this.activePage = 0;
     this.viewCanvas = true;
+    this.selectedUsers = [];
     setTimeout(() => {
       var offcanvas = document.getElementById('addUserModal');
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
 
-      bsOffcanvas.show()
     }, 100);
   };
   newRole(event: any): void {
@@ -484,6 +501,7 @@ export class AppComponent implements OnInit {
       this.rolecanvasTitle = 'Select Roles';
     }
     this.activePage = 0;
+    this.selectedRoles = [];
     this.viewCanvas = true;
     setTimeout(() => {
       var offcanvas = document.getElementById('addRoleModal');

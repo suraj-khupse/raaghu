@@ -2,18 +2,21 @@
   <div *ngSwitchCase="'with_split'">
     <div [ngClass]="dropdownDirection">
       <button [ngClass]="button1" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false" class="border py-2">
+        aria-expanded="false" class="border">
         {{ label }}
       </button>
-      <button type="button" [ngClass]="classes" data-bs-toggle="dropdown" aria-expanded="false">
+      <button type="button" class="border" [ngClass]="classes" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="visually-hidden">Toggle Dropdown</span>
       </button>
       <ul [ngClass]="menu" aria-labelledby="dropdownMenuButton1">
-        <li (click)="onclick($event,item)" *ngFor="let item of listItems; index as i;">
-          <a class="dropdown-item">{{item.value}}
-            <rds-icon [name]="item.icon" *ngIf="item.icon" [width]="item.iconWidth"
+        <li class="pb-2" (click)="onclick($event,item)" *ngFor="let item of listItems; index as i;">
+          <a class="dropdown-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>{{item.value}}</span>
+              <rds-icon [name]="item.icon" *ngIf="item.icon" [width]="item.iconWidth"
               [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="item.iconHeight"></rds-icon>
-            <!-- <i [ngClass]="item.icon" class="float-end"></i> -->
+            </div>
+            
           </a>
         </li>
       </ul>
@@ -30,9 +33,14 @@
       </button>
       <ul [ngClass]="menu" aria-labelledby="dropdownMenuButton1">
 
-        <li (click)="onclick($event,item)" *ngFor="let item of listItems; index as i;"><a
-            class="dropdown-item">{{item.value}} <rds-icon [name]="item.icon" *ngIf="item.icon" [width]="item.iconWidth"
-              [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="item.iconHeight"></rds-icon></a>
+        <li (click)="onclick($event,item)" *ngFor="let item of listItems; index as i;">
+          <a class="dropdown-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>{{item.value}} </span>
+              <rds-icon [name]="item.icon" *ngIf="item.icon" [width]="item.iconWidth"
+              [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="item.iconHeight"></rds-icon>
+            </div>
+            </a>
         </li>
       </ul>
     </div>

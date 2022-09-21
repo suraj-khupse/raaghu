@@ -291,7 +291,7 @@ svg {
  display: block;
  margin-left: 20px;
  margin-right: auto;
- width: 37%;
+ width: 28%;
  margin-top: -130px;
  border: 3px solid #fff;
 }
@@ -303,7 +303,7 @@ svg {
  display: block;
  margin-left: auto;
  margin-right: auto;
- width: 37%;
+ width: 28%;
  margin-top: -130px;
  border: 3px solid #fff;
 }
@@ -2532,4 +2532,8 @@ $size: 10;
 
 app-rds-comp-product-list .card-body{
   padding: 1rem !important;
+}
+
+.list-group a, .form-check .form-check-label, .form-check .form-check-input{
+  cursor: pointer;
 }

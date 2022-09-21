@@ -1,7 +1,7 @@
 ---
 slug: "/Timeline"
 date: "2019-05-04"
-title: "Components / Timeline"
+title: "Components > Timeline"
 ---
 
 

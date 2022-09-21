@@ -1,7 +1,7 @@
 ---
 slug: "/Edition "
 date: "2019-05-04"
-title: "Pages /Edition"
+title: "Pages > Edition"
 ---
 
 <!-- CSS only -->
