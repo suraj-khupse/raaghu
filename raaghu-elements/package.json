@@ -23,7 +23,7 @@
     "@angular/forms": "13.2.0",
     "@angular/platform-browser": "13.2.0",
     "@angular/platform-browser-dynamic": "13.2.0",
-    "@angular/router": "13.2.0",
+    "@angular/router": "14.2.4",
     "@scarf/scarf": "^1.1.1",
     "@types/bootstrap": "^5.1.10",
     "angular-draggable-droppable": "^6.1.0",
