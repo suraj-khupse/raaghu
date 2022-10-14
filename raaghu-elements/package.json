@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.5",
-    "@angular/cli": "13.2.1",
+    "@angular/cli": "14.2.6",
     "@angular/compiler-cli": "13.2.0",
     "@compodoc/compodoc": "^1.1.19",
     "@mdx-js/react": "^2.1.1",
@@ -59,6 +59,7 @@
     "@storybook/ui": "^6.5.7",
     "@types/jasmine": "3.10.0",
     "@types/node": "^12.11.1",
+    "concurrently": "^7.4.0",
     "jasmine-core": "4.0.0",
     "karma": "6.3.0",
     "karma-chrome-launcher": "3.1.0",
