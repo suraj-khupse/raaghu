@@ -1,4 +1,5 @@
 
+import { RdsIconModule } from '@libs/rds-icon';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsAddressDetailComponent } from './rds-address-detail.component';
 
@@ -8,7 +9,9 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [],
-      imports: [],
+      imports: [
+        RdsIconModule
+      ],
     }),
   ],
   argTypes: {},

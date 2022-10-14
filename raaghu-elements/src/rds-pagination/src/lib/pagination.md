@@ -73,7 +73,7 @@ title: "Elements > Pagination"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="\images\pagination-advanced.png" class="img-fluid w-50">
+                    <img src="\images\pagination-advance.png" class="img-fluid w-50">
                  </div>               
               </div>
                        
@@ -98,4 +98,18 @@ title: "Elements > Pagination"
     </div>
   </section>
 
-  
+  <section class="py-4">
+                        <h6>
+                           Skeleton / Specifications
+                        </h6>
+                        <div class="py-3">
+                              <!-- Tab panes -->
+                              <div class="card border p-5">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <img src="/images/skel-pagination.png" class="img-fluid">
+                                    </div>
+                                 </div>
+                              </div>
+                        </div>
+                     </section>

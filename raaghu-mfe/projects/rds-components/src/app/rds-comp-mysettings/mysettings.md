@@ -1,5 +1,5 @@
 ---
-slug: "/mysettings"
+slug: "/comp-mysettings"
 date: "2019-05-04"
 title: "Components > Mysettings"
 ---

@@ -28,11 +28,10 @@ export class RdsChartPieComponent implements OnInit {
   @Input() chartId:string='pieChart0';
   canvas: any;
   context: any;
-  @Input() chartWidth = 400;
-  @Input() chartStyle?: any;
+  @Input() chartWidth:number = 400;
+  @Input() chartHeight:number = 500;
   @Input() chartLabels?: any
-  @Input() canvasBackgroundColor?: any;
-  @Input() ChartDataSets?: ChartDataSetPie[] | any;
+  @Input() chartDataSets?: ChartDataSetPie[] | any;
   @Input() chartOptions?: any;
   style: CSSStyleDeclaration | undefined;
 
@@ -42,26 +41,48 @@ export class RdsChartPieComponent implements OnInit {
 
   ngOnInit(): void {
 	this.style = getComputedStyle(document.body);
-    this.ChartDataSets[0].backgroundColor[0] = this.style.getPropertyValue('--chartColor1');
-    this.ChartDataSets[0].backgroundColor[1] = this.style.getPropertyValue('--chartColor2');
-    this.ChartDataSets[0].backgroundColor[2] = this.style.getPropertyValue('--chartColor3');
-    this.ChartDataSets[0].backgroundColor[3] = this.style.getPropertyValue('--chartColor4');
-    this.ChartDataSets[0].backgroundColor[4] = this.style.getPropertyValue('--chartColor5');
-    this.ChartDataSets[0].backgroundColor[5] = this.style.getPropertyValue('--chartColor6');
-    this.ChartDataSets[0].backgroundColor[6] = this.style.getPropertyValue('--chartColor7');
-    this.ChartDataSets[0].backgroundColor[7] = this.style.getPropertyValue('--chartColor8');
-    this.ChartDataSets[0].backgroundColor[8] = this.style.getPropertyValue('--chartColor9');
-    this.ChartDataSets[0].backgroundColor[9] = this.style.getPropertyValue('--chartColor10');
+  if(this.style.getPropertyValue('--chartColor1')){
+    this.chartDataSets[0].backgroundColor[0] = this.style.getPropertyValue('--chartColor1');
+  }
+  if(this.style.getPropertyValue('--chartColor2')){
+    this.chartDataSets[0].backgroundColor[1] = this.style.getPropertyValue('--chartColor2');
+  }
+  if(this.style.getPropertyValue('--chartColor3')){
+    this.chartDataSets[0].backgroundColor[2] = this.style.getPropertyValue('--chartColor3');
+  }
+  if(this.style.getPropertyValue('--chartColor4')){
+    this.chartDataSets[0].backgroundColor[3] = this.style.getPropertyValue('--chartColor4');
+  }
+  if(this.style.getPropertyValue('--chartColor5')){
+    this.chartDataSets[0].backgroundColor[4] = this.style.getPropertyValue('--chartColor5');
+  }
+  if(this.style.getPropertyValue('--chartColor6')){
+    this.chartDataSets[0].backgroundColor[5] = this.style.getPropertyValue('--chartColor6');
+  }
+  if(this.style.getPropertyValue('--chartColor7')){
+    this.chartDataSets[0].backgroundColor[6] = this.style.getPropertyValue('--chartColor7');
+  }
+  if(this.style.getPropertyValue('--chartColor8')){
+    this.chartDataSets[0].backgroundColor[7] = this.style.getPropertyValue('--chartColor8');
+  }
+  if(this.style.getPropertyValue('--chartColor9')){
+    this.chartDataSets[0].backgroundColor[8] = this.style.getPropertyValue('--chartColor9');
+  }
+  if(this.style.getPropertyValue('--chartColor10')){
+    this.chartDataSets[0].backgroundColor[9] = this.style.getPropertyValue('--chartColor10');
+  }
+    // this.chartDataSets[0].backgroundColor[1] = this.style.getPropertyValue('--chartColor2');
+    // this.chartDataSets[0].backgroundColor[2] = this.style.getPropertyValue('--chartColor3');
+    // this.chartDataSets[0].backgroundColor[3] = this.style.getPropertyValue('--chartColor4');
+    // this.chartDataSets[0].backgroundColor[4] = this.style.getPropertyValue('--chartColor5');
+    // this.chartDataSets[0].backgroundColor[5] = this.style.getPropertyValue('--chartColor6');
+    // this.chartDataSets[0].backgroundColor[6] = this.style.getPropertyValue('--chartColor7');
+    // this.chartDataSets[0].backgroundColor[7] = this.style.getPropertyValue('--chartColor8');
+    // this.chartDataSets[0].backgroundColor[8] = this.style.getPropertyValue('--chartColor9');
+    // this.chartDataSets[0].backgroundColor[9] = this.style.getPropertyValue('--chartColor10');
   }
 
-  public get classes(): string[] {
-    var classes = ['res-width']
-    if (this.chartStyle === "Dark") {
-      classes.push('dark-mode')
-      return classes
-    }
-    return classes
-  }
+
 
   ngOnChanges() {
     this.pieChartBrowser();
@@ -78,17 +99,21 @@ export class RdsChartPieComponent implements OnInit {
     }
     this.canvas = document.getElementById(this.chartId);
     if (this.canvas !== null) {
-      this.canvas.style.backgroundColor = this.canvasBackgroundColor;
+      // this.canvas.style.backgroundColor = this.canvasBackgroundColor;
       this.context = this.canvas.getContext('2d');
 
-      const myChart = new Chart(this.context, {
+      const pieChart = new Chart(this.context, {
         type: 'pie',
         data: {
           labels: this.chartLabels,
-          datasets: this.ChartDataSets,
+          datasets: this.chartDataSets,
         },
         options: this.chartOptions
       });
+      if(pieChart !== null){
+        pieChart.canvas.style.height = this.chartHeight+'px'; 
+        pieChart.canvas.style.width = this.chartWidth+'px';
+      } 
     }
   }
 

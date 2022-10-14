@@ -1,5 +1,5 @@
 ---
-slug: "/edit-language-text"
+slug: "/comp-edit-language-text"
 date: "2019-05-04"
 title: "Components > edit-language-text"
 ---

@@ -7,11 +7,6 @@ export default {
 
   component: RdsChartBoolComponent,
   argTypes: {
-    canvasBackgroundColor: { control: 'color' },
-    ChartStyle: {
-      options: ['Dark', 'light'],
-      control: 'radio'
-    }
   },
 
 } as Meta;
@@ -23,7 +18,7 @@ const Template: Story<RdsChartBoolComponent> = (args: RdsChartBoolComponent) => 
 
 export const Default = Template.bind({});
 Default.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Dataset 1',
       data: [20, 10],
@@ -47,12 +42,10 @@ Default.args = {
     }
   ],
   chartLabels: ['green', 'grey'],
-  chartType: 'doughnut',
   chartWidth: 300,
   chartOptions: {
-
+    maintainAspectRatio: false,
     elements: {
-
       center: {
         text: '50%'  //set as you wish
       }
@@ -66,7 +59,6 @@ Default.args = {
     plugins: {
 
       series: {
-
         label: {
           position: "inside",
           text: 'total', // or "inside" | "outside"
@@ -88,8 +80,8 @@ Default.args = {
 
       legend: {
         display: false,
-        align: "start",
-        position: 'right',
+        align: "center",
+        position: 'top',
 
       },
 

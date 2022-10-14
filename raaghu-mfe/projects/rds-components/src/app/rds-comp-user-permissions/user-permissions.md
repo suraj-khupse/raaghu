@@ -1,5 +1,5 @@
 ---
-slug: "/user-permission"
+slug: "/comp-user-permission"
 date: "2019-05-04"
 title: "Components > User-permission"
 ---

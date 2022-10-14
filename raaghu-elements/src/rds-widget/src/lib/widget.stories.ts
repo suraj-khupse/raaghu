@@ -29,6 +29,15 @@ export default {
 
 const Template: Story<RdsWidgetComponent> = (args: RdsWidgetComponent) => ({
   props: args,
+ template : `<rds-widget
+headerTitle="Widget"
+ [isRefreshRequired]="true"
+ [colorVariant]="colorVariant"
+ (onRefresh)="onRefresh($event)"
+>
+<div class="my-3"> The Lorem ipum filling text is used by graphic designers, programmers and printers with the aim of
+ occupying the spaces of a website</div>
+</rds-widget>`
 });
 
 export const Widget = Template.bind({})

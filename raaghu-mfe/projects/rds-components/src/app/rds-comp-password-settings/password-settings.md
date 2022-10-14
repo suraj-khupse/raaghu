@@ -1,5 +1,5 @@
 ---
-slug: "/Password-settings"
+slug: "/comp-password-settings"
 date: "2019-05-04"
 title: "Components > Password-settings"
 ---

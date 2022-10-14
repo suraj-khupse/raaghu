@@ -1,38 +1,40 @@
 <ng-container *ngIf="datePickerType==='basic'">
   <div [class.disable-pointer]="disabled">
-    <label *ngIf="Label" [ngClass]="labelClass" for="Errormessage">{{
-      Label
+    <label *ngIf="label" [ngClass]="labelClass" for="Errormessage">{{
+      label
       }}<span class="text-danger" *ngIf="isRequired">*</span></label>
-    <div class="input-group border">
+    <div class="input-group border mt-4 ms-3 default-datepicker">
       <input type="text" autocomplete="off" bsDatepicker [datesDisabled]="datesDisabled"
         [class.disable-pointer]="disabled" [disabled]="disabled" [minDate]="minDate" #datepicker="bsDatepicker"
         (onHidden)="onHide.emit($event)" [daysDisabled]="daysDisabled" [isOpen]="isOpen" [bsConfig]="datePickerConfig"
         id="DateOfBirth" [maxDate]="maxDate" [outsideEsc]="outsideEsc" (onShown)="onShow.emit($event)"
         [placeholder]="placeholder" [bsValue]="value" [dateTooltipTexts]="dateTooltipTexts" [(ngModel)]="value"
         name="date-picker" [minMode]="minMode" (bsValueChange)="onDateChane($event)" [datesEnabled]="datesEnabled"
-        [datesDisabled]="datesDisabled" [outsideClick]="outsideClick" [placement]="placement" class="form-control border-0" />
-      <span class="input-group-text border" id="basic-addon1" (click)="datepicker.show()" [class.disable-pointer]="disabled">
+        [datesDisabled]="datesDisabled" [outsideClick]="outsideClick" [placement]="placement"
+        class="form-control border-0" />
+      <span class="input-group-text border" id="basic-addon1" (click)="datepicker.show()"
+        [class.disable-pointer]="disabled">
         <rds-icon name="calendar" height="18px" width="18px" [disabled]="disabled"></rds-icon>
       </span>
-
     </div>
   </div>
 </ng-container>
 <ng-container *ngIf="datePickerType==='advanced'">
-  <div class="date-picker">
+  <div class="date-picker pt-2 ps-3">
     <div class="date-picker-a vertical">
-      
-       <button class="btn border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+
+      <button class="btn border dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
         aria-expanded="false">
-         <rds-icon name="calendar" height="18px" width="18px"></rds-icon>
-        <span *ngIf="Label" class="date-range  ms-2"> {{Label }}</span>
-       </button>
-     
-     </div>
+        <rds-icon name="calendar" height="18px" width="18px"></rds-icon>
+        <span *ngIf="label" class="date-range  ms-2"> {{label }}</span>
+      </button>
+
+    </div>
     <input type="checkbox" (click)="checked($event)">
     <div [class]="classes">
       <ul class="dropdown-menu1">
-        <li class="display-last-date cus-date"><a class="dropdown-item mb-2 ml-2" href="#"><strong>{{title}}</strong></a></li>
+        <li class="display-last-date cus-date"><a class="dropdown-item mb-2 ml-2"
+            href="#"><strong>{{title}}</strong></a></li>
         <div [ngSwitch]="newDate">
           <li class="display-date" *ngSwitchCase="'currentDate'"><a><small>{{currentDate | date:'MMM d,y'}}</small></a>
           </li>
@@ -63,8 +65,8 @@
             #dp="bsDaterangepicker" bsDaterangepicker placement="right" (bsValueChange)="changeDate($event)"
             bsrangeValue>
             Custom <span class="hr-line">|</span>
+            <div class="footerDatepicker" *ngIf="dp.isOpen">Maximum date range limit is <b>30 days</b></div>
           </div>
-          <div class="footerDatepicker" *ngIf="dp.isOpen">Maximum date range limit is <b>30 days</b></div>
         </li>
 
       </ul>

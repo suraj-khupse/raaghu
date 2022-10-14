@@ -11,7 +11,7 @@ export class RdsCompProductListComponent implements OnInit {
 
   @Input() title: string = '';
   @Input() subTitle: string = '';
-  @Input() role: 'withInlinePrice' | 'simple' = 'withInlinePrice';
+  @Input() role: 'withInlinePrice' | 'simple'|'imageWithInfo' = 'withInlinePrice';
 
   ngOnInit() {
   }

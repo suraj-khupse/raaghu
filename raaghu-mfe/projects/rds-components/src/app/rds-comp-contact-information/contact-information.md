@@ -1,5 +1,5 @@
 ---
-slug: "/Contact-Information"
+slug: "/comp-contact-information"
 date: "2019-05-04"
 title: "Components > Contact-Information"
 ---

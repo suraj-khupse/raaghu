@@ -230,10 +230,6 @@ li:first-of-type .panel-item::after{
     flex-grow: 1;
     flex-basis: 0;
 }
-#panel-border{
-    border-top: 1px solid #B5CEEB;
-    border-bottom: 1px solid #B5CEEB;
-}
 
 .panel-border-item > a{
     all: unset;
@@ -281,9 +277,7 @@ li:first-of-type .panel-border-item::after{
     left: -14px;
     z-index: 1;
 }
-#multi-circles{
-    padding-bottom: 30px;
-}
+
 .multi-circle{
     width: 26px;
     height: 26px;
@@ -453,4 +447,33 @@ svg{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+// updated media queries
+
+@media screen and (max-width:767px){
+    #panel, #panel-border{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    #panel .panel-item{
+        width: 140px;
+        max-width: 200px;
+    }
+    #panel-border .panel-border-item{
+        width: 240px;
+        max-width: 300px;
+    }
+}
+@media screen and (min-width:767px) and (max-width:1023px) {
+    #panel-border{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    #panel-border .panel-border-item{
+        width: 240px;
+        max-width: 300px;
+    }
+
+  
 }

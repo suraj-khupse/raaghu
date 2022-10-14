@@ -5,13 +5,6 @@ import { RdsChartAreaComponent } from './rds-chart-area.component';
 export default {
   title: 'Charts/Area Chart ',
   component: RdsChartAreaComponent,
-  argTypes: {
-    chartStyle: {
-      options: ['Dark', 'light'],
-      control: 'radio'
-    }
-  },
-
 } as Meta;
 
 const Template: Story<RdsChartAreaComponent> = (args: RdsChartAreaComponent) => ({
@@ -21,7 +14,7 @@ const Template: Story<RdsChartAreaComponent> = (args: RdsChartAreaComponent) => 
 
 export const Default = Template.bind({});
 Default.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Dataset 1',
       data: [0.5, 0.8, 0.4, 0.6, 0.7, 0.2, 0.9],
@@ -32,15 +25,17 @@ Default.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'],
   chartWidth: 600,
-
+  chartHeight:400,
   chartOptions: {
     pointStyle: "star",
     radius: 7,
     responsive: true,
+    maintainAspectRatio:false,
+    aspectRatio:1,
     plugins: {
       legend: {
-        position: 'left',
-        align: "start",
+        position: 'top',
+        align: "center",
         pointStyle: "bottom",
         labels: {
           usePointStyle: true

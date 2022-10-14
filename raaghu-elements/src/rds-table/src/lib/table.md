@@ -36,7 +36,7 @@ title: "Elements > Table"
           </div>                                
             </div>
         </div>
-        <div class="tab-pane fade show" id="Preview" role="tabpanel" aria-labelledby="Preview-tab">
+        <div class="tab-pane fade show" id="angular" role="tabpanel" aria-labelledby="Preview-tab">
           <div class="contents bg-code">
 <div class="row  m-0 p-4">
 
@@ -49,3 +49,35 @@ title: "Elements > Table"
   colorVariant="primary"
 ></rds-table>
 ```
+<rds-table
+  [tableBorder]="false"
+  [tableHeader]="true"
+  [tableHeaderItems]="tableHeaderItems"
+  [tableBodyItems]="tableBodyItems"
+  colorVariant="light"
+></rds-table>
+
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- Skeleton / Specifications -->
+<section class="py-4">
+                        <h6>
+                           Skeleton / Specifications
+                        </h6>
+                        <div class="py-3">
+                              <!-- Tab panes -->
+                              <div class="card border p-5">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <img src="/images/skel-Table.png" class="img-fluid">
+                                    </div>
+                                 </div>
+                              </div>
+                        </div>
+                     </section>

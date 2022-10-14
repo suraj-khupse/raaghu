@@ -34,7 +34,7 @@ export class AlertService {
     this._alertEvents.next({
       message,
       title,
-      type,
+      type
     });
   }
 }

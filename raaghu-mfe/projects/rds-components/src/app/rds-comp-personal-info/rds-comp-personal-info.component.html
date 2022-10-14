@@ -74,24 +74,24 @@
     <div class="row py-4">
         <div class="col-md-4">
             <div class="form-group mb-3">
-                <rds-select-list [(ngModel)]="personalData.jobRole" [labelText]="'Job Role'"
-                    [value]="personalData.jobRole" ngDefaultControl LabelType="Top" name="role"
+                <rds-select-list [(ngModel)]="personalData.jobRole" [label]="'Job Role'"
+                    [value]="personalData.jobRole" ngDefaultControl labelPosition="top" name="role"
                     [itemList]="jobRoleList">
                 </rds-select-list>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group mb-3">
-                <rds-select-list [(ngModel)]="personalData.country" [labelText]="'Country'"
-                    [value]="personalData.country" ngDefaultControl LabelType="Top" name="country"
+                <rds-select-list [(ngModel)]="personalData.country" [label]="'Country'"
+                    [value]="personalData.country" ngDefaultControl labelPosition="top" name="country"
                     [itemList]="countryList">
                 </rds-select-list>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group mb-3">
-                <rds-select-list [(ngModel)]="personalData.timezone" [labelText]="'Timezone'"
-                    [value]="personalData.timezone" ngDefaultControl LabelType="Top" name="timezone"
+                <rds-select-list [(ngModel)]="personalData.timezone" [label]="'Timezone'"
+                    [value]="personalData.timezone" ngDefaultControl labelPosition="top" name="timezone"
                     [itemList]="timezones">
                 </rds-select-list>
             </div>
@@ -127,7 +127,7 @@
 </form>
 <hr>
 <div class="mt-5 text-end">
-    <rds-button [label]="'Cancel'" [colorVariant]="'outline-primary'" [size]="'small'" class="">
+    <rds-button [label]="'Cancel'" [colorVariant]="'primary'" [size]="'small'" class="" [outlineButton]="true">
     </rds-button>
     <rds-button [label]="'Save'" [size]="'small'" [colorVariant]="'primary'" class="ms-2">
     </rds-button>

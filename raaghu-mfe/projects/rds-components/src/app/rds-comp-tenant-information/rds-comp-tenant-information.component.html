@@ -1,9 +1,9 @@
 <div *ngIf="!editShimmer">
-  <div class="tab-content py-4">
-    <form #tenantCreationForm="ngForm">
+  <div class="tab-content py-4 mb-4">
+    <form #tenantCreationForm="ngForm" class="px-4">
       <div class="row align-items-center">
-        <div class="col-md-3 text-center cursor-pointer sm-p-0">
-          <img width="100" src="../assets/edit-pic.png" (click)="selectFile.click()">
+        <div class="col-md-3 text-center cursor-pointer sm-p-0 mb-4">
+          <img width="100" src="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" (click)="selectFile.click()">
 
           <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile>
 
@@ -49,8 +49,8 @@
         </div>
         <div class="col-md-6 sm-p-0">
           <div class="form-group mb-3">
-            <rds-select-list [(ngModel)]="tenantData.edition" [labelText]="translate.instant('Edition')" [isRequired]=true
-              [value]="tenantData.edition" ngDefaultControl LabelType="Top" name="edition" [itemList]="editionList" [placeholderText]="'Select Edition'">
+            <rds-select-list [(ngModel)]="tenantData.edition" [label]="translate.instant('Edition')" [isRequired]=true
+              [value]="tenantData.edition" ngDefaultControl labelPosition="top" name="edition" [itemList]="editionList" [placeholder]="'Select Edition'">
             </rds-select-list>
           </div>
         </div>
@@ -68,7 +68,7 @@
       <div class="row" >
         <div class="col-md-6 sm-p-0">
           <div class="form-group mb-3">
-            <rds-datepicker name="date-picker" [disabled]="tenantData.unlimitedSubscription" [Label]="''"
+            <rds-datepicker name="date-picker" [disabled]="tenantData.unlimitedSubscription" [label]="''"
               [(ngModel)]="tenantData.subscriptionEndDate" (change)="onDateChange($event)"
               [value]="tenantData.subscriptionEndDate"></rds-datepicker>
           </div>
@@ -76,8 +76,8 @@
       </div>
     </form>
   </div>
-  <div class="footer-buttons my-2 sm-p-0">
-    <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'outline-primary'" [size]="'small'"
+  <div class="position-fixed bg-white py-3 bottom-0 w-100 px-4">
+    <rds-button [label]="translate.instant('Cancel')" [outlineButton]="true" [colorVariant]="'primary'" [size]="'small'"
       (click)="onCanceled()" data-bs-dismiss="offcanvas">
     </rds-button>
     <rds-button [label]="translate.instant('Next')"

@@ -1,8 +1,8 @@
 <div [ngSwitch]="sizeType">
     <ul *ngSwitchCase="'withDescription'" class="d-flex" id="rds-size">
-        <li *ngFor="let data of sizeDataWithDescription" class="m-2 border flex-evens">
+        <li *ngFor="let data of sizeDataWithDescription" class="me-3 mt-3 border flex-evens">
             <div class="p-3" (click)="onclick(data)">
-                <div class="size">
+                <div class="size text-dark fw-medium">
                     {{data.value}}
                 </div>
                 <div class="description">
@@ -13,9 +13,9 @@
     </ul>
 
     <ul *ngSwitchCase="'withoutDescription'" class="d-flex" id="rds-size">
-        <li *ngFor="let data of sizeData" class="m-2 border flex-even text-center d-flex">
+        <li *ngFor="let data of sizeData" class="me-3 mt-3 border flex-even text-center d-flex">
             <div class="d-flex mx-auto align-self-center" (click)="onclick(data)">
-                <div class="size-small mx-auto">
+                <div class="size-small mx-auto text-dark fw-medium">
                     {{data.value}}
                 </div>
             </div>

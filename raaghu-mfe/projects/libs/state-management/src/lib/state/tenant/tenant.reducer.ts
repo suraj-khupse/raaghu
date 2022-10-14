@@ -4,7 +4,7 @@ import { Tenants } from "./tenant.models";
 
 
 export interface TenantState {
-    tenants: Tenants;
+    tenants: any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }

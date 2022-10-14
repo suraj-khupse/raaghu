@@ -1,0 +1,37 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: "Playwright UI testing stageui.raaghu.io"
+
+on:
+  workflow_run:
+    workflows: ["Build and deploy stageui.raaghu.io"]
+    types: [completed]
+    branches:
+      - 'main'
+
+permissions:
+  contents: read
+
+
+jobs:
+  test:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+    - name: npm install playwright
+      working-directory: ./raaghu-mfe/playwright
+      run: |
+        npm install
+       
+    - name: test raaghu-mfe with playwright
+      working-directory: ./raaghu-mfe/playwright
+      run: |
+        npx playwright test 

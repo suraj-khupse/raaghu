@@ -8,57 +8,42 @@
       <h6>{{'we like to offer to our users.'|translate}}</h6>
     </div>
   </div>
- 
-  <div class="col-md-12">
-    <div class="py-2 px-4">
-  
-      <div class="justify-contents-center">
-        <div class="row mt-2">
-          <div class="col-md-12 text-center">
+</div>
 
-            <div class="d-inline-block px-2 my-4" *ngFor="let item of Dataset">
-              <!-- <div class="col-md-12 " *ngIf="item.recommended">
-                <rds-badge size="small" [colorVariant]="'warning'" [label]="translate.instant('Recommended')">
-                </rds-badge>
-              </div> -->
-              <rds-card [Data]="subscriptionData" [borderCard]="true" [colorVariant]="item.name" class="border-top-0">
-                <div class="p-2 bg-primary" header>
-                  <span class="p-2 text-white">{{item.name}}</span>
-                </div>
-                <div body>
-                  <div class="p-1">
-                    <div class="row">
-                      <rds-icon [name]="item.iconurl" [height]="'100px'" [width]="'92px'" [colorVariant]="'primary'"
-                                [fill]="false" style="stroke-width: 0.3;" class="pt-2"></rds-icon>
-                      <div class="py-2">
-                        <h2 class="p-2 pb-0">${{item.price}}</h2>
-                        <p>{{item.duration}}</p>
-                      </div>
-                      <div class="d-flex justify-content-around">
-                        <ul class="p-0 text-start">
-                          <li class="list-group-item  px-2 py-0 border-0" *ngFor="let items of item.features">
-                            <rds-icon name="tick_circle" [fill]="false" width="12px" height="12px"></rds-icon>
-                            <small class="px-1">{{items}}</small>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="pt-4 pb-3">
-                        <rds-button (click)="SubscriptionClick($event,item)" [tooltipPlacement]="'bottom'"
-                                    [tooltipTitle]="translate.instant('Upgrade')" [label]="translate.instant('Upgrade')"
-                                    type="button" class="rounded-pill" [colorVariant]="'primary'" [outlineButton]="true"
-                                    [roundedButton]="false" label="Upgrade">
-                        </rds-button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </rds-card>
+<div class="row mt-2">
+  <div class="col-md-12 text-center">
+    <div class="px-2 my-4" *ngFor="let item of Dataset">
+      <rds-card [colorVariant]="item.name">
+        <div class="p-2 bg-primary" header>
+          <span class="p-2 text-white">{{item.name}}</span>
+        </div>
+        <div body>
+          <div class="row">
+            <rds-icon [name]="item.iconurl" [height]="'120px'" [width]="'120px'" [colorVariant]="'primary'"
+            [fill]="false" style="stroke-width: 0.3;" class="pt-4 pb2"></rds-icon>
+            <div class="py-2">
+              <h2 class="p-2 pb-0">${{item.price}}</h2>
+              <p>{{item.duration}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <ul class="p-0 text-start">
+                <li class="list-group-item  px-2 py-1 border-0" *ngFor="let items of item.features">
+                  <rds-icon name="tick_circle" [fill]="false" width="12px" height="12px"></rds-icon>
+                  <small class="px-1">{{items}}</small>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 pb-4">
+              <rds-button (click)="SubscriptionClick($event,item)" [tooltipPlacement]="'bottom'"
+                [tooltipTitle]="translate.instant('Upgrade')" [label]="translate.instant('Upgrade')"
+                type="button" [colorVariant]="'primary'" [outlineButton]="true"
+                [roundedButton]="false" [roundedCorner]="true" label="Upgrade">
+              </rds-button>
             </div>
           </div>
         </div>
-      </div>
-
-
+      </rds-card>
     </div>
   </div>
 </div>
+

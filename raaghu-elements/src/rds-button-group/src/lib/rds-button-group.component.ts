@@ -26,6 +26,8 @@ export class RdsButtonGroupComponent implements OnInit {
 
   @Input()
   size: 'small' | 'large' | 'medium' = 'medium';
+
+  @Input() selectedRadio: any = '';
   /**
    * How large should the button be?
    */
@@ -71,7 +73,7 @@ export class RdsButtonGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.activeButton = 0;
+    // this.activeButton = 0;
   }
 
   public get classes(): string {
@@ -80,14 +82,21 @@ export class RdsButtonGroupComponent implements OnInit {
     return mode + mode2;
   }
 
-  public get itemClass(): string {
-    const mode = `${this.outline ? 'btn btn-outline-' + this.colorVariant : 'btn btn-' + this.colorVariant}`;
+  public itemClass(item: any): string {
+    const mode = `${this.outline ? 'btn btn-outline-' + item.colorVariant : 'btn btn-'+ item.colorVariant}`;
     return mode;
   }
 
-  onClickButton(i: any): void {
-    this.activeButton = i++;
-    this.onClick.emit(i);
+  onButtonClick(i: any): void {
+    this.activeButton = i;
+    if (this.role === 'radio') {
+      this.onClick.emit(this.selectedRadio);
+    } else {
+      this.onClick.emit(i);
+
+    }
   }
+
+
 
 }

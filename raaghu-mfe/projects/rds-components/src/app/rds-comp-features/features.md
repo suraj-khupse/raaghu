@@ -1,5 +1,5 @@
 ---
-slug: "/Features"
+slug: "/comp-features"
 date: "2019-05-04"
 title: "Components > Features"
 ---

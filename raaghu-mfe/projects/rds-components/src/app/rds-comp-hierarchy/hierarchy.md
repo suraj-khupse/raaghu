@@ -1,5 +1,5 @@
 ---
-slug: "/hierarchy"
+slug: "/comp-hierarchy"
 date: "2019-05-04"
 title: "Components > Hierarchy"
 ---

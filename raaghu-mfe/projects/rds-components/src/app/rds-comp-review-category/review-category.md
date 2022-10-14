@@ -1,5 +1,5 @@
 ---
-slug: "/Review-Categorys"
+slug: "/comp-review-category"
 date: "2019-05-04"
 title: "Components > Review-Categorys"
 ---

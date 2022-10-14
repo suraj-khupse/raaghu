@@ -30,8 +30,8 @@ Default.args = {
      icon: 'zapier',
      route: '/home',
      selected:true,
-     iconHeight:'18px',
-     iconWidth:'18px',
+     iconHeight:'30px',
+     iconWidth:'30px',
      iconFill:false,
      iconStroke:true
     }

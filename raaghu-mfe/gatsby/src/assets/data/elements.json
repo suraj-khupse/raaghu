@@ -33,14 +33,14 @@
           "image": "images/links.png",
           "title": "Links ",
           "text": "   Links are used as navigational elements. They may appear on their own, within a sentence or paragraph.",
-          "link": "/Links"
+          "link": "/links"
         },
         {
           "id": 5,
           "image": "images/button-dropdown.png",
           "title": "Button Dropdown",
           "text": "  Button Dropdowns present a list of options from which a user can select one option.",
-          "link": "/Button Dropdown"
+          "link": "/button Dropdown"
         }
       ]
     },
@@ -53,14 +53,14 @@
           "image": "images/checkbox.png",
           "title": "Checkbox",
           "text": " Checkboxes are used when there are multiple items to select in a list.",
-          "link": "/Checkbox"
+          "link": "/checkbox"
         },
         {
           "id": 2,
           "image": "images/radio-button.png",
           "title": "Radio",
           "text": "  Radio buttons are group of mutually exclusive choices and only one selection from the group is allowed.",
-          "link": "/Radio"
+          "link": "/radio"
         },
         {
           "id": 3,
@@ -74,42 +74,42 @@
           "image": "images/dropdown-list.png",
           "title": "Dropdown list ",
           "text": " It is list of options for selection. A selected option can represent a value in a form, or can be used as an action",
-          "link": "/Dropdown list"
+          "link": "/dropdown list"
         },
         {
           "id": 5,
           "image": "images/file-uploaders.png",
           "title": "File Uploader",
           "text": "  File uploaders allow users to select one or more files to upload to a specific location.",
-          "link": "/File Uploader"
+          "link": "/file Uploader"
         },
         {
           "id": 6,
           "image": "images/text-input.png",
           "title": "Input",
           "text": "  Text inputs enable the user to interact with and input content and data.  ",
-          "link": "/Input"
+          "link": "/input"
         },
         {
           "id": 7,
           "image": "images/search.png",
           "title": "Search",
           "text": " Search enables users to specify a word or a phrase to find relevant pieces of content without the use of navigation.",
-          "link": "/Search"
+          "link": "/search"
         },
         {
           "id": 8,
           "image": "images/floating-labels.png",
           "title": "Floating Labels",
           "text": " A floating label is a text label which appears inside the input field at full font-size",
-          "link": "/Floating Labels"
+          "link": "/floating Labels"
         },
         {
           "id": 9,
           "image": "images/range-slider.png",
           "title": "Range Slider",
           "text": "It is an input field that merchants can use to select a numeric value within a given range (min and max values).",
-          "link": "/Range Slider"
+          "link": "/range Slider"
         }
       ]
     },
@@ -122,14 +122,14 @@
           "image": "images/Breadcrumb.png",
           "title": "Breadcrumbs",
           "text": " Breadcrumbs are a list of links representing the current page and its “ancestors”.",
-          "link": "/Breadcrumbs"
+          "link": "/breadcrumbs"
         },
         {
           "id": 2,
           "image": "images/pagination.png",
           "title": "Pagination",
           "text": " Pagination allows you to divide large amounts of content into smaller chunks across multiple pages.",
-          "link": "/Pagination"
+          "link": "/pagination"
         },
         {
           "id": 3,
@@ -177,28 +177,28 @@
           "image": "images/chart.png",
           "title": "Chats ",
           "text": "A Chart is an embedded component inserted within a worksheet. use a Chart component to better visualize and present your data",
-          "link": "/Dropdown list"
+          "link": "/dropdown list"
         },
         {
           "id": 5,
           "image": "images/carousel.png",
           "title": "Carousel",
           "text": " It is referred as the 'slider' or 'slides'. Carousel works by rotating a group of images that can house text, static images or video content. ",
-          "link": "/Date-Time Picker"
+          "link": "/date-time picker"
         },
         {
           "id": 6,
           "image": "images/popover.png",
           "title": "Popover",
           "text": "   Popovers are used to provide supplemental, useful, unique information about an element, including one or multiple actionable elements.",
-          "link": "/Date-Time Picker"
+          "link": "/popover"
         },
         {
           "id": 7,
           "image": "images/list-group.png",
           "title": "List Group",
           "text": "  Lists are vertical groupings of related content. List items begin with either a number or a bullet.",
-          "link": "/Date-Time Picker"
+          "link": "/list-group"
         },
         {
           "id": 8,

@@ -12,47 +12,38 @@
           </div>
 
         </div>
-        <div class="row">
-         <div class="col-md-11">
            <div class="row">
              <div class="col-md-4 sm-p-0">
                <div class="form-group mb-3">
-                 <rds-select-list [(ngModel)]="result" [value]="result" [placeholderText]="'Select Result'" ngDefaultControl
-                                  [labelText]="translate.instant('Result')"
-                                  [LabelType]="'Top'" name="edition" #result_name="ngModel" [(ngModel)]="Result" required
+                 <rds-select-list [(ngModel)]="result" [value]="result" [placeholder]="'Select Result'" ngDefaultControl
+                                  [label]="translate.instant('Result')"
+                                  [labelPosition]="'top'" name="edition" #result_name="ngModel" [(ngModel)]="Result" required
                                   [itemList]="listItemsResult">
                  </rds-select-list>
                </div>
              </div>
-             <div class="col-md-4 sm-p-0">
-               <div class="form-group ">
-                 <rds-datepicker name="date-picker" [Label]="translate.instant('Start Date')" [(ngModel)]="startDate"
+             <div class="col-md-3 sm-p-0">
+               <div class="form-group mb-3">
+                 <rds-datepicker name="date-picker" [label]="translate.instant('Start Date')" [(ngModel)]="startDate"
                                  [value]="startDate">
                  </rds-datepicker>
                </div>
              </div>
-             <div class="col-md-4 sm-p-0">
-               <div class="form-group ">
-                 <rds-datepicker name="date-picker" [Label]="translate.instant('End Date')" [(ngModel)]="endDate"
+             <div class="col-md-3 sm-p-0">
+               <div class="form-group mb-3">
+                 <rds-datepicker name="date-picker" [label]="translate.instant('End Date')" [(ngModel)]="endDate"
                                  [value]="endDate">
                  </rds-datepicker>
                </div>
              </div>
+             <div class="col-md-2  m-auto pt-3 sm-p-0">
+              <rds-icon name="refresh" icon="refresh" class=" btn btn-primary btn-md btn-icon"  (click)="Search(loginAttempt)" text-primary></rds-icon>
+            </div>
            </div>
-           </div>
-          <div class="col-md-1  m-auto pt-3 px-0">
-           
-            <!-- <rds-icon name="refresh" icon="refresh" [iconWidth]="18" [iconHeight]="18" class=" btn btn-primary btn-md btn-icon"  (click)="Search(loginAttempt)" text-primary></rds-icon> -->
-            <rds-button type="button" [roundedButton]="false"
-            icon="refresh" iconHeight="16px" iconWidth="16px" (click)="Search(loginAttempt)" class="me-2 btn btn-primary btn-md btn-icon text-primary">
-           </rds-button>
-          </div>
           <div  iv class="form-control-feedback"
-          *ngIf="result_name.errors && (result_name.dirty || result_name.touched)">
-          <span class="text-danger" *ngIf="result_name.errors.required">{{"Result is required"|translate}}</span>
-   </div> 
-        </div>
-      
+            *ngIf="result_name.errors && (result_name.dirty || result_name.touched)">
+            <span class="text-danger" *ngIf="result_name.errors.required">{{"Result is required"|translate}}</span>
+           </div> 
         <div class="row">
           <div class="col-sm-12 sm-p-0">
             <mfe-loader [config]="rdsLoginTableMfeConfig"></mfe-loader>

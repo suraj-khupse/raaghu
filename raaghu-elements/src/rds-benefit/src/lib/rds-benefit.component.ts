@@ -11,7 +11,7 @@ export class RdsBenefitComponent implements OnInit {
   @Input()
   item: any ;
   
-  @Input() display_type?: string = 'Basic';
+  @Input() display_type?: string = 'Default';
 
   @Input() position: 'start' | 'center' | 'end'  = 'start';
   

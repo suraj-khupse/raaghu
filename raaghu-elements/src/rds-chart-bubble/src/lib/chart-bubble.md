@@ -9,7 +9,7 @@ title: "Elements > Chart-bubble"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/style-elements.css">
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
-#### Chart-Bubble
+#### Bubble Chart 
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">
@@ -53,6 +53,5 @@ title: "Elements > Chart-bubble"
   </div>
         </div>
       </div>
-    </div>
   </section>
    

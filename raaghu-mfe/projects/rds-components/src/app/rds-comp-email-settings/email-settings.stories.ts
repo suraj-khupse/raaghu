@@ -30,8 +30,8 @@ const Template: Story<RdsCompEmailSettingsComponent> = (args: RdsCompEmailSettin
     props: args
 });
 
-export const emailSettings = Template.bind({});
-emailSettings.args={
+export const Default = Template.bind({});
+Default.args={
     emailSettings:
     {
       currentEmail: 'niphy.anto@waiin.com',

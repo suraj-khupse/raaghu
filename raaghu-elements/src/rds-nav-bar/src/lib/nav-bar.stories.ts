@@ -1,66 +1,51 @@
-import { Story, Meta } from '@storybook/angular';
+import { CommonModule } from '@angular/common';
+import { RdsIconModule } from '@libs/rds-icon';
+import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsNavBarComponent } from './rds-nav-bar.component';
 
 export default {
 
   title: 'Elements/Navbar',
   component: RdsNavBarComponent,
+  decorators: [
+    moduleMetadata({
+      declarations: [],
+      imports: [CommonModule, RdsIconModule],
+    }),
+  ],
   argTypes: {
     size: {
-      options: ['small', 'medium', 'large'],
+      options: ['small', 'medium', 'large', 'extra-large'],
+      control: { type: 'select' },
+    },
+    colorVariant: {
+      options: ['primary', 'secondary', 'danger', 'success', 'warning', 'info', 'light', 'dark'],
       control: { type: 'select' },
     },
   },
 } as Meta;
 
-const Template: Story<RdsNavBarComponent> = (args: RdsNavBarComponent) => ({
 
+export const Default: Story<RdsNavBarComponent> = (args) => ({
   props: args,
 });
-export const DefaultNavbar: Story<RdsNavBarComponent> = (args) => ({
-  props: args,
-
-
-});
-
-DefaultNavbar.args = {
-  size: 'medium',
+Default.parameters = { controls: { include: ['navbarItems', 'title', 'colorVariant'] } };
+Default.args = {
+  // size: 'medium',
   navbarItems: [{
     label: "Home",
-    isActive: true,
-    navclass: '',
-    href: '',
+    url: ''
   },
   {
     label: "Features",
-    isActive: false,
-    navclass: '',
-    href: '',
+    url: ''
   },
   {
     label: "Pricing",
-    isActive: false,
-    navclass: '',
-    href: '',
-  }]
+    url: ''
+  }],
+  title: 'Navbar',
+  colorVariant: 'light'
 };
 
 
-// template: `<rds-nav-bar
-// navbarId="navbarSupportedContent"
-// [navbarheader]="navbarheader"
-// [navbarcontent]="navbarcontent"
-// [navbarItems]="navbarItems"
-// [size]="medium"
-// >
-// <ng-template #navbarheader>
-
-
-// </ng-template>
-// <ng-template #navbarcontent let-val>
-// <li class="nav-item "  >
-// <a class="nav-link" [ngClass]="classes" [ngClass]="val.navclass" [href]="val.href">{{val.label}}</a>
-// </li>
-// </ng-template>
-// </rds-nav-bar>
-// `

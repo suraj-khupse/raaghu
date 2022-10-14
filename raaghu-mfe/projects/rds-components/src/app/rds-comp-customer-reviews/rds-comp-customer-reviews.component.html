@@ -1,27 +1,32 @@
 <div>
     <rds-label label="Customer Review" [multiline]="false" [bold]="true" [italic]="false" class="fs-2"></rds-label>
-    <div class="row mt-4">
-        <rds-rating [WithNoOfReviews]="true" role="Advanced" [rating]="3" 
-            [noOfReview]="totalReview" Size="small"></rds-rating>
+    <div class="row mt-4 mb-2">
+        <rds-rating [withNoOfReviews]="true" [rating]="3" [noOfReview]="totalReview" Size="small"></rds-rating>
     </div>
 
 </div>
 
 
-<div class="d-flex justify-content-start mt-4" *ngFor="let item of itemlist|keyvalue; let i=index">
-
-    <rds-label [label]="getLabel(i)" [multiline]="false" [bold]="false" [italic]="false" class="fs-4 me-3"></rds-label>
-    <rds-icon height="20" [fill]="true" [stroke]="true" width="20" name="star" colorVariant="review" class="ms-2 me-3" 
-></rds-icon>
-
-    <div class="d-inline-block w-50 mt-1">
-
-        <rds-progressbar height="15" colorVariant="warning" striped="default"
-            [progressWidth]="getReviewRate(item.value)" progressbar_MaxWidth="100" role="single"
-          ></rds-progressbar>
+<div class="row grid-ui  mt-3 " *ngFor="let item of itemlist|keyvalue; let i=index">
+    <div class="col-md-1">
+        <rds-label [label]="getLabel(i)" [multiline]="false" [bold]="false" [italic]="false" class="fs-4 "></rds-label>
     </div>
-
-    <rds-label [label]="getReviewRateString(item.value)" [multiline]="false" [bold]="false" [italic]="false"
-        class="fs-4 ms-3"></rds-label><span class="fs-5 fw-bolder mt-1 mx-1">%</span>
+    <div class="col-md-1">
+        <rds-icon height="20" [fill]="true" [stroke]="true" width="20" name="star" colorVariant="review" >
+        </rds-icon>
+    </div>
+    
+    <div class=" col-md-8">
+        <div class=" mt-1">
+            <rds-progressbar height="15" colorVariant="warning" striped="default"
+                [progressWidth]="getReviewRate(item.value)" progressbar_MaxWidth="100" role="single"></rds-progressbar>
+        </div>
+    </div>
+   
+     <div class="col-md-2">
+        <rds-label [label]="getReviewRateString(item.value)" [multiline]="false" [bold]="false" [italic]="false"
+        class="fs-4"></rds-label><span class="fs-5 fw-bolder mt-1">%</span>
+     </div>
+   
 
 </div>

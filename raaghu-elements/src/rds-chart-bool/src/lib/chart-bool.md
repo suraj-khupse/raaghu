@@ -9,7 +9,7 @@ title: "Elements > Chart-bool"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/style-elements.css">
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
-#### Boolean-Chart
+#### Boolean Chart
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">
@@ -27,19 +27,18 @@ title: "Elements > Chart-bool"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewBasic" role="tabpanel" aria-labelledby="PreviewBasic-tab">
-         <div class="contents p-5">
+         <div class="contents bg-light p-5">
               <div class="row">
                 <div class="col-md-12">
-                  <img src="/images/boolean-chart.png" class="img-fluid">
-                </div> 
+                     <img src="/images/boolean-chart.png"class="img-thumbnail w-50">
+                </div>
               </div>
-           </div>
-                       
-  </div>
+          </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
           <div class="contents bg-code">
 <div class="row m-0">
+
 
 ```html
   <rds-chart-bool
@@ -56,6 +55,5 @@ title: "Elements > Chart-bool"
   </div>
         </div>
       </div>
-    </div>
   </section>
    

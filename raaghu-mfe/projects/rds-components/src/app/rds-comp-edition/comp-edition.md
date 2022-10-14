@@ -1,5 +1,5 @@
 ---
-slug: "/Comp-Edition"
+slug: "/comp-edition"
 date: "2019-05-04"
 title: "Components > Edition"
 ---

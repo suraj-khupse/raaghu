@@ -23,6 +23,7 @@ export class RdsCompContactUsComponent implements OnInit {
       return;
     }
     this.onSendMessage.emit(this.info);
-  
+    console.log(this.info);
+    contactForm.reset();
   }
 }

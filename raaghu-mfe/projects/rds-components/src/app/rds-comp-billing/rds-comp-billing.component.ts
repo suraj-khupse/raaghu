@@ -43,7 +43,12 @@ export class RdsCompBillingComponent implements OnInit {
     recommended: false,
     features: ["Maximum User Count", "Test Check feature", "Test check feature count 2"]
   }];
-  @Input() public billingHeaders: TableHeader[] = [{ key: 'invoice', displayName: 'Invoice', dataType: 'text' }, { key: 'amount', displayName: 'Amount', dataType: 'text' }, { key: 'date', displayName: 'Date', dataType: 'text' }, { key: 'status', displayName: 'Status', dataType: 'html' }];
+  @Input() public billingHeaders: TableHeader[] = [
+    { key: 'invoice', displayName: 'Invoice', dataType: 'text',filterable: true, },
+     { key: 'amount', displayName: 'Amount', dataType: 'text',filterable: true, }, 
+     { key: 'date', displayName: 'Date', dataType: 'text',filterable: true, },
+      { key: 'status', displayName: 'Status', dataType: 'html',filterable: true, }
+    ];
   @Input() public billingData: any = [
     {
       invoice: 'Standard Plan - Jan 2022',

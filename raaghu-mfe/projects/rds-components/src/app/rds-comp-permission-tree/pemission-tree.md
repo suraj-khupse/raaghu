@@ -1,5 +1,5 @@
 ---
-slug: "/permission-tree"
+slug: "/comp-permission-tree"
 date: "2019-05-04"
 title: "Components > Permission-tree"
 ---

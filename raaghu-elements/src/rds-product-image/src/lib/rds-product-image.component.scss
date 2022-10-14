@@ -5,13 +5,16 @@
     height: calc(50% - 0.7rem);
 }
 
-.imgWidth{
-    position: relative;
-    top: 111px;
-    z-index: 9;
-    width: 100%;
-    max-width: 100%;
- }
+// .imgWidth{
+//     position: relative;
+//     top: 111px;
+//     z-index: 9;
+//     width: 100%;
+//     max-width: 100%;
+//  }
+.imgwidth1 img{
+    bottom: 110px !important;
+  }
 
  .imgWidthBorder{
     // position: relative;
@@ -21,3 +24,4 @@
     max-width: 100%;
     border-radius: 50%;
  }
+ 

@@ -1,0 +1,57 @@
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+    <div class="row">
+        <div class="col-md-12 text-end pb-3 desktop-btn">
+            <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
+                [label]="translate.instant('NEW WEBHOOK SUBSCRIPTION')" [showLoadingSpinner]="buttonSpinnerForNewWebhook" (click)="openCanvas()"
+                [attr.data-bs-target]="'#addwebhook'" [attr.aria-controls]="'addwebhook'" icon="plus" iconHeight="12px"
+                iconWidth="12px">
+            </rds-button>
+        </div>
+        <div class="col-md-12">
+            <!-- <rds-banner
+        [alignCenter]="false"
+        [bannerText]="translate.instant('Webhooks allow external services to be notified when certain events happen. When the specified events happen, we’ll send a POST request to each of the URLs you provide.')"
+        [sticky]="false"
+        position="top"
+        colorVariant="primary"
+      ></rds-banner> -->
+        </div>
+        <div class="col-md-12">
+            <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+                <div class="row" *ngIf="!webhookTableData||webhookTableData.length===0">
+                    <div class="col-md-12">
+                        <rds-banner
+                            [bannerText]="translate.instant('Webhooks allow external services to be notified when certain events happen. When the specified events happen, we’ll send a POST request to each of the URLs you provide.')"
+                            [sticky]="false" position="top" colorVariant="primary">
+                            <span class="text-white" left>
+                                <rds-icon name="info" class="pe-1 " [width]="'20px'" [stroke]="true" [height]="'20px'">
+                                </rds-icon>
+                            </span>
+                        </rds-banner>
+                    </div>
+                </div>
+
+                <mfe-loader [config]="rdswebhookTableMfeConfig"></mfe-loader>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-btn position-absolute bottom-0 end-0 my-5 me-5">
+        <!-- <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'" [label]="''"
+            (click)="openCanvas()" [attr.data-bs-target]="'#addwebhook'" [attr.aria-controls]="'addwebhook'"
+            [roundedButton]="true" icon="plus" iconHeight="12px" iconWidth="12px">
+        </rds-button> -->
+        <rds-fab-menu [listItems]="listItems" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'"
+            [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+    </div>
+
+    <rds-offcanvas [canvasTitle]="translate.instant('NEW WEBHOOK SUBSCRIPTION')" [offId]="'addwebhook'" [offcanvaswidth]="600"
+  [placement]="'end'" *ngIf="viewCanvas" (onClose)="closeCanvas()">
+  <app-webhooksubscription (onSubcriptionSave)="Addsubcription($event)"></app-webhooksubscription>
+</rds-offcanvas>
+
+</div>
+<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+    <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+</ng-container>

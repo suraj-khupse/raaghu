@@ -1,0 +1,7 @@
+@media screen and (max-width:767px){
+    .grid-ui{
+        display:grid;
+        grid-template-columns: auto auto 1fr auto;
+    }
+}
+

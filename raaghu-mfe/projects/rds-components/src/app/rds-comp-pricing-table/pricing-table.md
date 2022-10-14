@@ -1,5 +1,5 @@
 ---
-slug: "/pricing-table"
+slug: "/comp-pricing-table"
 date: "2019-05-04"
 title: "Components > Pricing-table"
 ---

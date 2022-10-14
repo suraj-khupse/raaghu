@@ -1,5 +1,5 @@
 ---
-slug: "/personal-info"
+slug: "/comp-personal-info"
 date: "2019-05-04"
 title: "Components > Personal-info"
 ---

@@ -1,5 +1,5 @@
 ---
-slug: "/Secrets"
+slug: "/comp-secrets"
 date: "2019-05-04"
 title: "Components > Secrets"
 ---

@@ -3,6 +3,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsInputModule, RdsNavTabModule, RdsPaginationModule } from '@libs/rds-elements';
 import { RdsCompDownloadCollectionComponent } from './rds-comp-download-collection.component';
 import { NgxTranslateModule } from '@libs/shared';
+import { RdsIconModule } from '@libs/rds-icon';
 
 export default {
   title: 'Components/Download Collection',
@@ -10,7 +11,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsNavTabModule, RdsPaginationModule, NgxTranslateModule
+        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsNavTabModule, RdsPaginationModule, NgxTranslateModule,RdsIconModule
       ],
       providers: [
         FormBuilder

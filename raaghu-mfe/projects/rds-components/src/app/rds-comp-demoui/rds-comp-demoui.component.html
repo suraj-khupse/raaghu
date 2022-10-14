@@ -54,9 +54,9 @@
         <rds-button colorVariant="primary" [block]="false" size="medium" label="Show Alert"
           (click)="onClickShowAlert()"></rds-button>
 
-        <rds-alert [visibility]="false" [alertOpen]="true" size="small" [dismisable]="true" icon="close_circle"
-          [iconHeight]="'20px'" [iconWidth]="'20px'" [label]="translate.instant('A simple primary alert—check it out!')"
-          heading="" type="danger" position="bottom" *ngIf="showAlert"></rds-alert>
+        <rds-alert size="small" [dismissible]="true" icon="close_circle" [iconHeight]="'20px'" [iconWidth]="'20px'"
+          [label]="translate.instant('A simple primary alert—check it out!')" heading="" type="danger" position="bottom"
+          *ngIf="showAlert"></rds-alert>
       </div>
     </div>
   </div>
@@ -73,27 +73,32 @@
   <div class="card-body  pt-0">
     <div class="row border p-4 m-2">
       <div class="col-6">
+        <h6 class="mb-3">{{"Avatar"|translate}}</h6>
+        <rds-avatar firstName="Admin" lastName="Admin" [size]="'medium'" colorVariant="primary">
+          <div class="ms-4 mt-2">Admin</div>
+        </rds-avatar>
+      </div>
+      <div class="col-6">
         <h6 class="mb-3">{{"Avatar - With Profile pic"|translate}}</h6>
         <rds-avatar [withProfilePic]="true"
           profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" [size]="'medium'"
           [verticallyAlligned]="false"></rds-avatar>
       </div>
-      <div class="col-6">
+      <!-- <div class="col-6">
         <h6 class="mb-3">{{"Avatar - With Profile pic and horizontally aligned Info"|translate}}</h6>
         <rds-avatar [withProfilePic]="true"
           profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" [size]="'medium'"
-          [verticallyAlligned]="
-          true">
+          [verticallyAlligned]="false">
           <div class="ms-4 mt-2">Admin</div>
         </rds-avatar>
       </div>
       <div class="col-6">
         <h6 class="mb-3">{{"Avatar - With Profile pic and vertically aligned Info"|translate}}</h6>
         <rds-avatar [withProfilePic]="true"
-          profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" [size]="'medium'">
+          profilePic="https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1" [size]="'medium'"  [verticallyAlligned]="true">
           <div class="mt-2">Admin</div>
         </rds-avatar>
-      </div>
+      </div> -->
       <div class="col-6 mt-2">
         <h6 class="mb-3">{{"Avatar in different Sizes - Without Profile picture"|translate}}</h6>
         <div class="row">
@@ -133,21 +138,25 @@
   <div class="card-body  pt-0">
     <div class="row border p-4 m-2">
       <div class="col-3">
+        <h6 class="mb-3">{{"Badge - Basic"|translate}}</h6>
+        <rds-badge size="small" colorVariant="primary" [label]="translate.instant('New')" [positioned]="false">
+        </rds-badge>
+      </div>
+      <div class="col-3">
         <h6 class="mb-3">{{"Badge as button"|translate}}</h6>
         <rds-button class="m-1" [label]="translate.instant('button')" [colorVariant]="'primary'" [size]="'medium'"
           type="button" position="bottom" role="basic">
           <span right class="ms-2">
-            <rds-badge size="smallest" Types="primary" label="9" [pillBadges]="false"></rds-badge>
+            <rds-badge size="small" colorVariant="primary" label="9"></rds-badge>
           </span>
         </rds-button>
       </div>
       <div class="col-3">
         <h6 class="mb-3">{{"Badge With icon"|translate}}</h6>
-        <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [outlineButton]="false"
+        <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'primary'" [outlineButton]="false"
           [roundedButton]="true" type="button">
           <rds-icon name="youtube" height="22px" width="22px"></rds-icon>
-          <rds-badge right size="smallest" Types="primary" label="9" [pillBadges]="false" [positioned]="true"
-            [iconBadge]="true">
+          <rds-badge right size="small" colorVariant="primary" label="9" [positioned]="true">
           </rds-badge>
         </rds-button>
       </div>
@@ -156,14 +165,10 @@
         <rds-button type="button" class="position-relative" [size]="'medium'" [label]="translate.instant('button')"
           [colorVariant]="'primary'">
           <span right>
-            <rds-badge size="smallest" Types="primary" label="99+" [pillBadges]="true" [positioned]="true"></rds-badge>
+            <rds-badge size="small" colorVariant="primary" label="99+" [badgeType]="'pill'" [positioned]="true">
+            </rds-badge>
           </span>
         </rds-button>
-      </div>
-      <div class="col-3">
-        <h6 class="mb-3">{{"Badge - Basic"|translate}}</h6>
-        <rds-badge size="smallest" Types="primary" [label]="translate.instant('New')" [pillBadges]="false"
-          [positioned]="false" [iconBadge]="false"></rds-badge>
       </div>
     </div>
   </div>
@@ -179,8 +184,8 @@
   <div class="card-body  pt-0">
     <div class="row border p-4 m-2">
       <h6 class="mb-3">{{"Banner"|translate}}</h6>
-      <rds-banner [alignCenter]="false" bannerText="Big news! We are excited to announce a brand new product."
-        [sticky]="false" position="bottom" colorVariant="info"></rds-banner>
+      <rds-banner bannerText="Big news! We are excited to announce a brand new product." [sticky]="false"
+        position="bottom" colorVariant="info"></rds-banner>
     </div>
   </div>
 </div>
@@ -213,7 +218,7 @@
             cardheight='card-stretch-half'>
             <div body>
               <rds-big-number-widget [iconFill]="true" [iconStroke]="true" [iconColor]="'primary'"
-                [bigNumber]="'$13,20,21'" [textAlign]="'text-left'" subTitleColorVariant="warning"
+                [bigNumber]="'$13,20,21'" [textAlign]="'text-start'" subTitleColorVariant="warning"
                 [colorVariant]="'primary'" [subText]="'+$1,203'" [icon]="'triangle_down'" [iconHeight]="'12px'"
                 [iconWidth]="'12px'"></rds-big-number-widget>
             </div>
@@ -243,7 +248,7 @@
             cardheight='card-stretch-half'>
             <div body>
               <rds-big-number-widget [iconFill]="true" [iconStroke]="true" [iconColor]="'success'"
-                [bigNumber]="'$13,20,21'" [textAlign]="'text-center'" subTitleColorVariant="white"
+                [bigNumber]="'$13,20,21'" [textAlign]="'text-center'" subTitleColorVariant="light"
                 [colorVariant]="'success'" [subText]="'+$1,203'" [icon]="'triangle_down'" [iconHeight]="'12px'"
                 [iconWidth]="'12px'"></rds-big-number-widget>
             </div>
@@ -265,15 +270,11 @@
     <div class="row border p-4 m-2">
       <div class="col-6">
         <h6 class="mb-3">{{"BreadCrumbs - Basic"|translate}}</h6>
-        <rds-breadcrumb role="basic" [iconShow]="false"></rds-breadcrumb>
-      </div>
-      <div class="col-6">
-        <h6 class="mb-3">{{"BreadCrumbs - Advanced"|translate}}</h6>
-        <rds-breadcrumb role="Advanced" [iconShow]="true"></rds-breadcrumb>
+        <rds-breadcrumb role="basic"></rds-breadcrumb>
       </div>
       <div class="col-6">
         <h6 class="mb-3">{{"BreadCrumbs - With Divider"|translate}}</h6>
-        <rds-breadcrumb role="withDivider" [iconShow]="true"></rds-breadcrumb>
+        <rds-breadcrumb role="withDivider"></rds-breadcrumb>
       </div>
     </div>
 
@@ -292,31 +293,31 @@
       <div class="row col-8">
         <div class="col-6 pb-3">
           <h6 class="mb-3">{{"ButtonGroup - Basic"|translate}}</h6>
-          <rds-button-group [vertical]="false" colorVariant="primary" [outline]="false" role="button"
-            [buttonGroupItem]="buttonGroupItem"></rds-button-group>
+          <rds-button-group [vertical]="false" [outline]="false" role="button" [buttonGroupItem]="buttonGroupItem">
+          </rds-button-group>
         </div>
         <div class="col-6">
           <h6 class="mb-3">{{"ButtonGroup - Checkbox"|translate}}</h6>
-          <rds-button-group [vertical]="false" colorVariant="warning" [outline]="true" role="checkbox"
-            [buttonGroupItem]="buttonGroupItem"></rds-button-group>
+          <rds-button-group [vertical]="false" [outline]="true" role="checkbox" [buttonGroupItem]="buttonGroupItem">
+          </rds-button-group>
         </div>
         <div class="col-6">
           <h6 class="mb-3">{{"ButtonGroup - Radio"|translate}}</h6>
-          <rds-button-group [vertical]="false" colorVariant="danger" [outline]="true" role="radio"
-            [buttonGroupItem]="buttonGroupItem"></rds-button-group>
+          <rds-button-group [vertical]="false" [outline]="true" role="radio" [buttonGroupItem]="buttonGroupItem">
+          </rds-button-group>
         </div>
         <div class="col-6">
           <h6 class="mb-3">{{"ButtonGroup - Icon"|translate}}</h6>
           <!-- <rds-button-group [vertical]="false" colorVariant="warning" [outline]="false" role="button"
           [buttonGroupItem]="buttonGroupItemWithIcon"></rds-button-group> -->
-          <rds-button-group [vertical]="false" [colorVariant]="'info'" [outline]="false" role="button" size="medium"
+          <rds-button-group [vertical]="false" [outline]="false" role="button" size="medium"
             [buttonGroupItem]="buttonGroupItemWithIcon"></rds-button-group>
         </div>
       </div>
       <div class="col-4">
         <h6 class="mb-3">{{"ButtonGroup - Vertical"|translate}}</h6>
-        <rds-button-group [vertical]="true" colorVariant="success" [outline]="false" role="button"
-          [buttonGroupItem]="buttonGroupItem"></rds-button-group>
+        <rds-button-group [vertical]="true" [outline]="false" role="button" [buttonGroupItem]="buttonGroupItem">
+        </rds-button-group>
       </div>
     </div>
   </div>
@@ -429,62 +430,54 @@
     <div class="row border p-4 m-2">
       <div class="col-4">
         <h6 class="mb-3">{{"Card - Basic"|translate}}</h6>
-
-        <rds-card [header]="header" [custClass]="true" [borderCard]="true" [body]="body" [footer]="footer" [Data]="Data"
-                  class="rounded-avatar-basic" [customTopBottom]="false">
-
-          <ng-template #header>
-            <div class="text-center">
-              <img src="https://picsum.photos/seed/picsum/1200/600" class="card-img-top" alt="" />
-            </div>
-          </ng-template>
-          <ng-template #body>
-            <h5 class="custom-title px-3">{{Data.headerTitle}}</h5>
-            <p class="custom-desc px-3">{{Data.cardDescription}}</p>
-          </ng-template>
-          <ng-template #footer>
-            <a href="#" class="btn btn-primary mt-3 ms-3">{{"Go somewhere"|translate}}</a>
-          </ng-template>
+        <rds-card class="rounded-avatar-basic">
+          <div class="text-center" header>
+            <img src="https://picsum.photos/seed/picsum/1200/600" class="card-img-top" alt="" />
+          </div>
+          <div body>
+            <h5 class="custom-title px-3">{{cardData.headerTitle}}</h5>
+            <p class="custom-desc px-3">{{cardData.cardDescription}}</p>
+          </div>
+          <div footer>
+            <a href="#" class="btn btn-primary m-3">{{"Go somewhere"|translate}}</a>
+          </div>
         </rds-card>
       </div>
       <div class="col-4">
         <h6 class="mb-3">Card - With Avatar</h6>
-        <rds-card [header]="header" [body]="body" [Data]="Data"  [custClass]="true" [borderCard]="true" [footer]="footer" [customTopBottom]="false" width="30%" class="rounded-avatar-left">
-
-          <ng-template #header>
+        <rds-card width="30%" class="rounded-avatar-left">
+          <div header>
             <div class="banner-image1">
               <img class="img-responsive" src="https://picsum.photos/seed/picsum/1200/600" />
             </div>
-            <img src="https://placekitten.com/300/300" alt="" class="profile-image img-avatar-left" />
-          </ng-template>
-          <ng-template #body>
-            <h5 class="custom-title">{{Data.headerTitle}}</h5>
-            <p class="custom-desc">{{Data.cardDescription}}</p>
-          </ng-template>
-          <ng-template #footer>
-            <a href="#" class="btn btn-primary mt-3">{{"Go somewhere"|translate}}</a>
-          </ng-template>
+            <img src="https://placekitten.com/300/300" alt="" class="profile-image img-avatar-left">
+          </div>
+          <div body>
+            <h5 class="custom-title">{{cardData.headerTitle}}</h5>
+            <p class="custom-desc">{{cardData.cardDescription}}</p>
+          </div>
+          <div footer>
+            <a href="#" class="btn btn-primary m-3">{{"Go somewhere"|translate}}</a>
+          </div>
         </rds-card>
       </div>
       <div class="col-4">
         <h6 class="mb-3">{{"Card - With Avatar center"|translate}}</h6>
-
-        <rds-card [header]="header" [customTopBottom]="false" [body]="body" [Data]="Data"  [custClass]="true" [borderCard]="true" [footer]="footer" width="28%"
-                  class="rounded-avatar-center">
-
-          <ng-template #header>
+        <rds-card width="28%" class="rounded-avatar-center">
+          <div header>
             <div class="banner-image1">
               <img class="img-responsive" src="https://picsum.photos/seed/picsum/1200/600" />
             </div>
-            <img src="https://placekitten.com/300/300" alt="" class="profile-image img-avatar" />
-          </ng-template>
-          <ng-template #body>
-            <h5 class="custom-title">{{Data.headerTitle}}</h5>
-            <p class="custom-desc">{{Data.cardDescription}}</p>
-          </ng-template>
-          <ng-template #footer>
-            <a href="#" class="btn btn-primary mt-3">{{"Go somewhere"|translate}}</a>
-          </ng-template>
+            <img src="https://placekitten.com/300/300" alt="" class="profile-image img-avatar-left" />
+          </div>
+
+          <div body>
+            <h5 class="custom-title">{{cardData.headerTitle}}</h5>
+            <p class="custom-desc">{{cardData.cardDescription}}</p>
+          </div>
+          <div footer>
+            <a href="#" class="btn btn-primary m-3">{{"Go somewhere"|translate}}</a>
+          </div>
         </rds-card>
       </div>
     </div>
@@ -600,11 +593,10 @@
       <div class="col-6">
         <h6 class="mb-3">{{"Date Picker - Basic"|translate}}</h6>
 
-        <rds-datepicker datePickerType="basic" name="date-picker" [Label]="''"
-          [placeholder]="translate.instant('End Date')">
+        <rds-datepicker datePickerType="basic" name="date-picker" [placeholder]="translate.instant('End Date')">
         </rds-datepicker>
-   
-       
+
+
         <!-- <rds-datepicker datePickerType="advanced"
           DatePickerConfig="{ dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false, isAnimated: true }"
           placeholder="Date" datesDisabled="[]" datesEnabled="[]" dateTooltipTexts="[]" daysDisabled="[]" [isOpen]="false"
@@ -614,7 +606,7 @@
       <div class="col-6">
 
         <h6 class="mb-3 ms-3">{{"Date Picker - Advanced"|translate}}</h6>
-        <rds-datepicker datePickerType="advanced" Label="Date Range"></rds-datepicker>       
+        <rds-datepicker datePickerType="advanced" label="Date Range"></rds-datepicker>
 
       </div>
 
@@ -938,19 +930,19 @@
         <rds-button [label]="'Form Modal'" [colorVariant]="'primary'" [size]="'small'" type="button"
           data-bs-toggle="modal" data-bs-target="#storybookModal">
         </rds-button>
-        <rds-modal modalId="storybookModal" [modalheader]="modalheader" [Modalbody]="Modalbody"
-          [Modalfooter]="Modalfooter">
+        <rds-modal modalId="storybookModal">
           <div modalheader class="col-md-12">
-            <rds-button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close">
+            <rds-button type="button" class="btn-close float-end" colorVariant="default" data-bs-dismiss="modal"
+              aria-label="Close">
             </rds-button>
             <h5 class="modal-title" id="storybookModal">{{modalData.modalHeader}}</h5>
           </div>
-          <div Modalbody>
+          <div modalbody>
             <p>{{modalData.modalContent}}</p>
           </div>
-          <div Modalfooter>
-            <rds-button class="m-1" [label]="translate.instant('Close')" [colorVariant]="'outline-primary'"
-              [size]="'small'" type="button" data-bs-dismiss="modal"></rds-button>
+          <div modalfooter>
+            <rds-button class="m-1" [label]="translate.instant('Close')" [outlineButton]="true"
+              [colorVariant]="'primary'" [size]="'small'" type="button" data-bs-dismiss="modal"></rds-button>
             <rds-button [label]="translate.instant('Save Changes')" [colorVariant]="'primary'" [size]="'small'"
               type="button" data-bs-dismiss="modal"></rds-button>
           </div>
@@ -1054,21 +1046,20 @@
           type="button" data-bs-toggle="modal" data-bs-target="#storybookLongModal">
         </rds-button>
 
-        <rds-modal modalId="storybookLongModal" [modalClasses]="'scrollable'" [modalheader]="modalheader"
-          [Modalbody]="Modalbody" [Modalfooter]="Modalfooter">
+        <rds-modal modalId="storybookLongModal" [scrollable]="true">
           <div modalheader class="col-md-12">
             <rds-button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close">
             </rds-button>
             <h5 class="modal-title" id="storybookLongModal">{{modalData.modalHeader}}</h5>
           </div>
-          <div Modalbody>
+          <div modalbody>
             <p>
               {{modalData1.modalContent}}
             </p>
           </div>
-          <div Modalfooter>
-            <rds-button class="m-1" [label]="translate.instant('Close')" [colorVariant]="'outline-primary'"
-              [size]="'small'" type="button" data-bs-dismiss="modal"></rds-button>
+          <div modalfooter>
+            <rds-button class="m-1" [label]="translate.instant('Close')" [outlineButton]="true"
+              [colorVariant]="'primary'" [size]="'small'" type="button" data-bs-dismiss="modal"></rds-button>
             <rds-button [label]="translate.instant('Save Changes')" [colorVariant]="'primary'" [size]="'small'"
               type="button" data-bs-dismiss="modal"></rds-button>
           </div>
@@ -1081,19 +1072,18 @@
         </rds-button>
 
 
-        <rds-modal backdropstatic="static" modalId="storybookBackdropModal" [modalheader]="modalheader"
-          [Modalbody]="Modalbody" [Modalfooter]="Modalfooter">
+        <rds-modal backdropstatic="static" modalId="storybookBackdropModal" backdrop="static">
           <div modalheader class="col-md-12">
             <rds-button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close">
             </rds-button>
             <h5 class="modal-title" id="storybookBackdropModal">{{modalData.modalHeader}}</h5>
           </div>
-          <div Modalbody>
+          <div modalbody>
             <p>{{modalData2.modalContent}}</p>
           </div>
-          <div Modalfooter>
-            <rds-button class="m-1" [label]="translate.instant('Close')" [colorVariant]="'outline-primary'"
-              [size]="'small'" type="button" data-bs-dismiss="modal"></rds-button>
+          <div modalfooter>
+            <rds-button class="m-1" [label]="translate.instant('Close')" [outlineButton]="true"
+              [colorVariant]="'primary'" [size]="'small'" type="button" data-bs-dismiss="modal"></rds-button>
             <rds-button [label]="translate.instant('Save Changes')" [colorVariant]="'primary'" [size]="'small'"
               type="button" data-bs-dismiss="modal"></rds-button>
           </div>
@@ -1503,9 +1493,7 @@
       <div class="row col-12">
         <div class="col-4 pb-3">
           <h6 class="mb-3">{{"Select list - Basic"|translate}}</h6>
-          <rds-select-list size="default" selected="SelectName" [disabled]="false" [multiple]="false" customIcon=""
-            [itemList]="options">
-
+          <rds-select-list [disabled]="false" [multiple]="false" [itemList]="options">
           </rds-select-list>
         </div>
         <!--<div class="col-4">
@@ -1581,7 +1569,7 @@
     <div class="row border p-4 m-2">
       <div class="col-12">
         <h6 class="mb-3">{{"Table"|translate}}</h6>
-        <rds-table [tableBorder]="false" [tableHeaderItems]="tableHeaderItems" [tableBodyItems]="tableBodyItems"
+        <rds-table [showTableBorder]="false" [tableHeaders]="tableHeaderItems" [tableData]="tableBodyItems"
           colorVariant="primary"></rds-table>
         <!--<rds-table [thead]="thead" [tbody]="tbody">
           <ng-template #thead>
@@ -1613,12 +1601,12 @@
     <div class="row border p-4 m-2">
       <div class="col-4">
         <h6 class="mb-3">{{"Tag - With scroll"|translate}}</h6>
-        <rds-tags [tagType]="'square'" [colorVariant]="'primary'" [roles]="'TagWithScroll'"></rds-tags>
+        <rds-tags [tagType]="'square'" [colorVariant]="'primary'" [role]="'tagWithScroll'"></rds-tags>
       </div>
 
       <div class="col-4">
         <h6 class="mb-3">{{"Tag - Basic"|translate}}</h6>
-        <rds-tags [tagType]="'square'" [colorVariant]="'primary'" [roles]="'Basic'"></rds-tags>
+        <rds-tags [tagType]="'square'" [colorVariant]="'primary'" [role]="'basic'"></rds-tags>
 
       </div>
     </div>
@@ -1654,28 +1642,27 @@
   <div class="card-body  pt-0">
     <div class="row border p-4 m-2">
       <div class="col-4">
-        <h6 class="mb-3">{{"Toast - position"|translate}}</h6>
-        <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-          <rds-toasts [withHeader]="false" colorVariant="bg-info" headerTitle="Bootstrap" time="11 Seconds ago"
-            [show]="true" [toastId]="'Toast-position'" [data_type]="'basic'"></rds-toasts>
-
-        </div>
-      </div>
-      <div class="col-4">
         <h6 class="mb-3">{{"Toast"|translate}}</h6>
-        <rds-toasts message="Hello, world! This is a toast message." [withHeader]="false" colorVariant=""
-          headerTitle="Bootstrap" time="11 Seconds ago" [show]="true" [toastId]="'Toast'" [data_type]="'basic'">
+        <rds-toasts message="Hello, world! This is a toast message." headerTitle="Bootstrap" time="11 Seconds ago"
+          [show]="true" [toastId]="'Toast'" [role]="'basic'">
         </rds-toasts>
       </div>
       <div class="col-4">
+        <h6 class="mb-3">{{"Toast With Position"|translate}}</h6>
+        <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+          <rds-toasts position="Top-Left" colorVariant="info" headerTitle="Bootstrap" time="11 Seconds ago" [show]="true"
+            [toastId]="'Toast-position'" [role]="'basic'"></rds-toasts>
+        </div>
+      </div>
+      <div class="col-4">
         <h6 class="mb-3">{{"Toast - With Call to Action"|translate}}</h6>
-        <rds-toasts [withHeader]="false" colorVariant="undefined" headerTitle="Bootstrap" time="11 Seconds ago"
-          [show]="true" [toastId]="'Toast-WithCalltoAction'" [data_type]="'basic'">
-          <div class="mt-2 p-2 border-top">
+        <rds-toasts [showHeader]="false" headerTitle="Bootstrap" time="11 Seconds ago" [show]="true"
+          [toastId]="'Toast-WithCalltoAction'" [role]="'basic'">
+          <div class="mt-2 p-2 border-top" body>
             <rds-button [label]="'Take action'" [colorVariant]="'primary'" [size]="'small'" type="button">
             </rds-button>
-            <rds-button class="mx-2" [label]="'Close'" [colorVariant]="'outline-primary'" [size]="'small'" type="button"
-              data-bs-dismiss="toast"></rds-button>
+            <rds-button class="mx-2" [label]="'Close'" [colorVariant]="'primary'" [outlineButton]="true"
+              [size]="'small'" type="button" data-bs-dismiss="toast"></rds-button>
           </div>
         </rds-toasts>
       </div>
@@ -1764,15 +1751,15 @@
     <div class="row p-4 mb-3">
       <div class="col-md-6 ">
         <h5 class="py-3">Area Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center">
-          <rds-chart-area [chartWidth]="400" [chartLabels]="chartLabelsArea" [ChartDataSets]="chartDAtaSetsArea"
+        <div class="border p-2 h-100 align-items-center">
+          <rds-chart-area [chartWidth]="400" [chartLabels]="chartLabelsArea" [chartDataSets]="chartDataSetsArea"
             [chartOptions]="chartOptionsArea" chartId="areaChart"></rds-chart-area>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Bar Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
-          <rds-chart-bar-horizontal [chartWidth]="400" [chartLabels]="chartLables" [ChartDataSets]="ChartDatasSets"
+        <div class="border p-2 h-100  align-items-center justify-content-center">
+          <rds-chart-bar-horizontal [chartWidth]="400" [chartLabels]="chartLables" [chartDataSets]="ChartDatasSets"
             [chartOptions]="chartOptions" chartId="barChart"></rds-chart-bar-horizontal>
         </div>
       </div>
@@ -1781,17 +1768,17 @@
     <div class="row p-4 mb-3">
       <div class="col-md-6 ">
         <h5 class="py-3">Bubble Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
+        <div class="border p-2 h-100  align-items-center justify-content-center">
           <rds-chart-bubble [chartWidth]="400" chartId="ChartBubble" [chartLabels]="chartLabelsBubble"
-            [ChartDataSets]="ChartDataSetsBubble" [chartOptions]="chartOptionsBubble">
+            [chartDataSets]="chartDataSetsBubble" [chartOptions]="chartOptionsBubble">
           </rds-chart-bubble>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Mixed Chart </h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
+        <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-mixed [chartWidth]="400" chartId="mixedChart" [chartLabels]="chartLabelsChartMixed"
-            [ChartDataSets]="ChartDataSetsChartMixed" [chartOptions]="chartOptionsChartMixed"></rds-chart-mixed>
+            [chartDataSets]="chartDataSetsChartMixed" [chartOptions]="chartOptionsChartMixed"></rds-chart-mixed>
         </div>
       </div>
     </div>
@@ -1800,16 +1787,16 @@
     <div class="row p-4 mb-4">
       <div class="col-md-6 ">
         <h5 class="py-3">Doughnut Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
-          <rds-chart-doughnut [chartWidth]="400" [chartLabels]="chartLabelsDoughnut"
-            [ChartDataSets]="ChartDataSetsDoughnut" [chartOptions]="chartOptionsDoughnut" chartId="doughnutChart">
+        <div class="border p-2 h-100 align-items-center justify-content-center">
+          <rds-chart-doughnut [chartWidth]="400" [chartHeight]="300" [chartLabels]="chartLabelsDoughnut"
+            [chartDataSets]="chartDataSetsDoughnut" [chartOptions]="chartOptionsDoughnut" chartId="doughnutChart">
           </rds-chart-doughnut>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Pie Chart </h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
-          <rds-chart-pie [chartWidth]="400" [chartLabels]="chartLabelsPieChat" [ChartDataSets]="ChartDataSetsPieChat"
+        <div class="border p-2 h-100 align-items-center justify-content-center">
+          <rds-chart-pie [chartWidth]="400" [chartHeight]="300" [chartLabels]="chartLabelsPieChat" [chartDataSets]="chartDataSetsPieChat"
             [chartOptions]="chartOptionsPieChat" chartId="pieChart"></rds-chart-pie>
         </div>
       </div>
@@ -1818,35 +1805,32 @@
     <div class="row p-4 mb-4">
       <div class="col-md-6 ">
         <h5 class="py-3">Boolean Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
-          <rds-chart-bool [chartWidth]="400" [chartHeight]="600" [chartLabels]="chartLablesBool"
-            [ChartDataSets]="ChartDatasSetsBool" chartType="doughnut" [chartOptions]="chartOptionsBool"
+        <div class="border p-2 h-100 align-items-center justify-content-center">
+          <rds-chart-bool [chartWidth]="400" [chartHeight]="300" [chartLabels]="chartLablesBool"
+            [chartDataSets]="ChartDatasSetsBool" [chartOptions]="chartOptionsBool"
             chartId="boolChart"></rds-chart-bool>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Multi Series Pie chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
-          <rds-chart-pie [chartWidth]="400" chartId="multiPieChart" [chartLabels]="pieChartMultiLabel"
-            [ChartDataSets]="pieChartMultiDataSets" [chartOptions]="pieChartMultiOptions"></rds-chart-pie>
+        <div class="border p-2 h-100  align-items-center justify-content-center">
+          <rds-chart-pie [chartWidth]="400" [chartHeight]="300" chartId="multiPieChart" [chartLabels]="pieChartMultiLabel"
+            [chartDataSets]="pieChartMultiDataSets" [chartOptions]="pieChartMultiOptions"></rds-chart-pie>
         </div>
-      </div>
+      </div> 
     </div>
-
-
-
     <div class="row p-4 mb-4">
       <div class="col-md-6">
         <h5 class="py-3">Polar Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
-          <rds-chart-polar-area [chartWidth]="400" [chartLabels]="chartLabelsPolar" [ChartDataSets]="ChartDataSetsPolar"
+        <div class="border p-2 h-100 align-items-center justify-content-center">
+          <rds-chart-polar-area [chartWidth]="400" [chartHeight]="400"  [chartLabels]="chartLabelsPolar" [chartDataSets]="chartDataSetsPolar"
             [chartOptions]="chartOptionsPolar" chartId=polarChart></rds-chart-polar-area>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Radar Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center text-center ">
-          <rds-chart-radar [chartWidth]="400" [chartLabels]="chartLabelsRadar" [ChartDataSets]="ChartDataSetsRadar"
+        <div class="border p-2 h-100 align-items-center justify-content-center text-center ">
+          <rds-chart-radar [chartWidth]="400" [chartHeight]="400"  [chartLabels]="chartLabelsRadar" [chartDataSets]="chartDataSetsRadar"
             [chartOptions]="chartOptionsRadar" chartId="radarChart"></rds-chart-radar>
         </div>
       </div>
@@ -1856,17 +1840,17 @@
     <div class="row p-4 mb-4">
       <div class="col-md-6 ">
         <h5 class="py-3">Scatter Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
+        <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-scatter [chartWidth]="400" [chartLabels]="chartLabelsScatter"
-            [ChartDataSets]="ChartDataSetsScatter" [chartOptions]="chartOptionsScatter" chartId="scatterChart">
+            [chartDataSets]="chartDataSetsScatter" [chartOptions]="chartOptionsScatter" chartId="scatterChart">
           </rds-chart-scatter>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Stacked Line Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
+        <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-stacked [chartWidth]="400" [chartLabels]="chartLabelsStacked"
-            [ChartDataSets]="ChartDataSetsStacked" [chartOptions]="chartOptionsStacked"></rds-chart-stacked>
+            [chartDataSets]="chartDataSetsStacked" [chartOptions]="chartOptionsStacked"></rds-chart-stacked>
         </div>
       </div>
     </div>
@@ -1874,17 +1858,17 @@
     <div class="row p-4 mb-4">
       <div class="col-md-6 ">
         <h5 class="py-3">Line Chart</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
+        <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-line [chartWidth]="400" [chartHeight]="230" [chartLabels]="chartLabelsLineChart"
-            [ChartDataSets]="chartDataSetsLinechart" [chartOptions]="chartOptionsLineChart" chartId="lineChartgradient">
+            [chartDataSets]="chartDataSetsLinechart" [chartOptions]="chartOptionsLineChart" chartId="lineChartgradient">
           </rds-chart-line>
         </div>
       </div>
       <div class="col-md-6 ">
         <h5 class="py-3">Bar Chart With Pills</h5>
-        <div class="border p-2 h-100 d-grid align-items-center justify-content-center">
+        <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-bar-horizontal [chartWidth]="400" [chartLabels]="chartLabelsBarChartThick"
-            [ChartDataSets]="chartDataSetsBarChartThick" [chartOptions]="chartOptionsBarChartThick">
+            [chartDataSets]="chartDataSetsBarChartThick" [chartOptions]="chartOptionsBarChartThick">
           </rds-chart-bar-horizontal>
         </div>
       </div>

@@ -1,5 +1,5 @@
 ---
-slug: "/card-detail-list"
+slug: "/comp-card-detail-list"
 date: "2019-05-04"
 title: "Components > Card-detail-list"
 ---

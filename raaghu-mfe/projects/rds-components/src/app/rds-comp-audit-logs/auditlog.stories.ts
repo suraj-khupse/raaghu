@@ -1,10 +1,12 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsLabelModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompAlertComponent } from '../rds-comp-alert/rds-comp-alert.component';
 import { RdsCompAuditLogsComponent } from './rds-comp-audit-logs.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title: 'Components/Audit Log',
@@ -16,7 +18,7 @@ export default {
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,BsDatepickerModule.forRoot(), BrowserAnimationsModule,RdsLabelModule
       ],
       providers: [
         FormBuilder
@@ -30,9 +32,9 @@ const Template: Story<RdsCompAuditLogsComponent> = (args: RdsCompAuditLogsCompon
   }
   });
 
-  export const AuditLog = Template.bind({});
+  export const Default = Template.bind({});
 
-  AuditLog.args = {
+  Default.args = {
     operationLogsHeaders: [{ key: 'userName', displayName:'User Name', dataType: 'text', sortable: true, filterable: true },
     { key: 'serviceName', displayName: 'Service', dataType: 'text', sortable: true, filterable: true },
     { key: 'methodName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},

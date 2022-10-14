@@ -31,7 +31,7 @@ title: "Elements > Chart-pie"
          <div class="contents p-5">
               <div class="row">
                 <div class="col-md-8 col-12">
-                  <img src="/images/pie-chart.png" class="img-fluid">
+                  <img src="/images/pie-chart1.png" class="img-fluid">
                 </div> 
               </div>
            </div>
@@ -74,7 +74,7 @@ title: "Elements > Chart-pie"
          <div class="contents bg-light p-5">
               <div class="row">
                                                 <div class="col-md-8 col-12">
-                                                     <img src="/images/piechart-multiseries.png" class="img-fluid">
+                                                     <img src="/images/pie-multiple.png" class="img-fluid">
                                                 </div> 
                                              </div>
            </div>

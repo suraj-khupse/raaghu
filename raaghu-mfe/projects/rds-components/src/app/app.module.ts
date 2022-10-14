@@ -42,7 +42,8 @@ import {
   RdsSpinnerModule, RdsToastsModule, RdsChartBubbleModule, RdsChartDoughnutModule, RdsChartMixedModule, RdsChartPolarAreaModule, RdsChartScatterModule, RdsChartStackedModule,
   RdsProgressbarModule, RdsBreadcrumbModule, RdsCarouselModule, RdsDoubleRangeModule, RdsScrollspyModule, RdsCounterModule, RdsFabMenuModule, RdsLabelModule, RdsIconLabelModule,
   CalendarModule, adapterFactory, DateAdapter, RdsRatingModule, RdsLikeDislikeModule, RdsColorModule, RdsFeedModule, RdsVideoPlayerModule, RdsAppDetailsModule, RdsBenefitModule,
-  RdsCardDetailModule, RdsSizeModule, RdsPriceModule, RdsFeatureListModule, RdsProductImageModule, RdsReviewCategoryModule, RdsTeamMemberModule,RdsAddressDetailModule,RdsWebsiteMetricModule,RdsTestimonialModule,RdsStepperModule
+  RdsCardDetailModule, RdsSizeModule, RdsPriceModule, RdsFeatureListModule, RdsProductImageModule, RdsReviewCategoryModule, RdsTeamMemberModule,RdsAddressDetailModule,RdsWebsiteMetricModule,RdsTestimonialModule,
+  RdsStepperModule
 } from '@libs/rds-elements';
 import { RdsCompDemouiComponent } from './rds-comp-demoui/rds-comp-demoui.component';
 import { RdsCompTenantManagementComponent } from './rds-comp-tenant-management/rds-comp-tenant-management.component';
@@ -147,6 +148,20 @@ import { RdsCompTimelineComponent } from './rds-comp-timeline/rds-comp-timeline.
 import { RdsCompApplyForPositionComponent } from './rds-comp-apply-for-position/rds-comp-apply-for-position.component';
 import { RdsCompOpenPositionComponent } from './rds-comp-open-position/rds-comp-open-position.component';
 import { RdsCompNotificationSettingsComponent } from './rds-comp-notification-settings/rds-comp-notification-settings.component';
+import { RdsCompTenantBasicProfileRightComponent } from './rds-comp-tenant-basic-profile-right/rds-comp-tenant-basic-profile-right.component';
+import { RdsCompTenantListNewComponent } from './rds-comp-tenant-list-new/rds-comp-tenant-list-new.component';
+import { RdsCompTenantFeaturesComponent } from './rds-comp-tenant-features/rds-comp-tenant-features.component';
+import { RdsCompUserBasicProfileRightComponent } from './rds-comp-user-basic-profile-right/rds-comp-user-basic-profile-right.component';
+import { RdsCompUserPermissionsNewComponent } from './rds-comp-user-permissions-new/rds-comp-user-permissions-new.component';
+import { RdsCompAuditLogsNewComponent } from './rds-comp-audit-logs-new/rds-comp-audit-logs-new.component';
+import { RdsCompFeaturesListNewComponent } from './rds-comp-features-list-new/rds-comp-features-list-new.component';
+import { RdsCompEditionNewBasicComponent } from './rds-comp-edition-new-basic/rds-comp-edition-new-basic.component';
+import { RdsCompEditionNewFeaturesComponent } from './rds-comp-edition-new-features/rds-comp-edition-new-features.component';
+import { RdsCompEmailSettingsNewComponent } from './rds-comp-email-settings-new/rds-comp-email-settings-new.component';
+import { RdsCompIdentityManagementNewComponent } from './rds-comp-identity-management-new/rds-comp-identity-management-new.component';
+import { RdsCompThemeNewComponent } from './rds-comp-theme-new/rds-comp-theme-new.component';
+import { RdsCompAccountNewComponent } from './rds-comp-account-new/rds-comp-account-new.component';
+import { RdsCompSettingsNewComponent } from './rds-comp-settings-new/rds-comp-settings-new.component';
 
 @NgModule({
   declarations: [	
@@ -286,6 +301,23 @@ import { RdsCompNotificationSettingsComponent } from './rds-comp-notification-se
     RdsCompApplyForPositionComponent,
     RdsCompOpenPositionComponent,
     RdsCompNotificationSettingsComponent,
+
+    RdsCompTenantBasicProfileRightComponent,
+    RdsCompTenantListNewComponent,
+    RdsCompTenantFeaturesComponent,
+
+    RdsCompFeaturesListNewComponent,
+    RdsCompEditionNewBasicComponent,
+    RdsCompEditionNewFeaturesComponent,
+    
+    RdsCompUserBasicProfileRightComponent,
+    RdsCompUserPermissionsNewComponent,
+    RdsCompAuditLogsNewComponent,
+    RdsCompEmailSettingsNewComponent,
+    RdsCompIdentityManagementNewComponent,
+    RdsCompThemeNewComponent,
+    RdsCompAccountNewComponent,
+    RdsCompSettingsNewComponent
   
   ],
   imports: [
@@ -380,7 +412,7 @@ import { RdsCompNotificationSettingsComponent } from './rds-comp-notification-se
     RdsReviewCategoryModule,
     RdsTeamMemberModule,
     RdsWebsiteMetricModule,
-    RdsTestimonialModule
+    RdsTestimonialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

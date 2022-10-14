@@ -150,7 +150,7 @@ html[theme=dark] {
   $dropdown-color: $white;
   $input-bg: $dark-100!default;
   $input-border-color: $input-bg;
-  $form-select-bg: $input-bg;
+  $form-select-bg: $input-bg!default;
   $input-group-addon-bg: $input-bg;
 
   .form-control, .form-control:focus {
@@ -167,8 +167,9 @@ html[theme=dark] {
     background-color: $input-group-addon-bg;
   }
 
-  .form-select[size]:not([size="1"]) {
-    background-color: $input-bg;
+  .form-select {
+    background-color: $form-select-bg;
+   // border-color: $form-select-border-color;
   }
 }
 
@@ -201,6 +202,7 @@ html[theme=dark] {
 @import './colorvariables.scss';
 @import './toast.scss';
 @import './cookieconsent.scss';
+@import './calender.scss';
 
 
 /*html[theme=dark]{ .border-bottom {

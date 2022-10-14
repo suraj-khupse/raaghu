@@ -1,5 +1,5 @@
 ---
-slug: "/plan-information"
+slug: "/comp-plan-information"
 date: "2019-05-04"
 title: "Componets > Plan-information"
 ---

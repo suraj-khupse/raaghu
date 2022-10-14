@@ -21,6 +21,7 @@ const Template: Story<RdsTextareaComponent> = (args: RdsTextareaComponent) => ({
   template: `
   <rds-textarea
     [tooltipPlacement]="tooltipPlacement"
+    [tooltipTitle]="tooltipTitle"
     [placeholderText]="placeholderText"
     [label]="label"
     [value]="value"

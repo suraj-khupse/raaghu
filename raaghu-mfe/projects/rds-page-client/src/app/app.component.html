@@ -1,0 +1,52 @@
+<div class="row m-1">
+  <div class="col-md-12 client-btn">
+    <rds-button [label]="translate.instant('New Client')" [colorVariant]="'primary'" (click)="newClient($event)">
+      <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
+
+    </rds-button>
+  </div>
+  <div class="col-md-12 m-1">
+    <mfe-loader [config]="rdsClientMfeConfig"></mfe-loader>
+  </div>
+</div>
+
+<ng-container *ngIf="viewCanvas">
+  <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offcanvaswidth]="500" [offId]="offcanvasId"
+    [placement]="'end'" (onClose)="close()">
+    <div class="section">
+      <rds-nav-tab [navtabsItems]="getNavTabItems()" [activepage]="activePage" [horizontalAlignment]="'start'"
+        [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
+        <div naveContent class="row tab-content m-2" id="nav-tabContent">
+          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
+            aria-labelledby="nav-home-tab">
+            <mfe-loader [config]="rdsClientBasicsMfeConfig"></mfe-loader>
+            <!-- <app-client-basics (clientBasicInfo)="getClientInfo($event)" [clientInfo]="client.basicInfo"></app-client-basics> -->
+          </div>
+          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="secrets" role="tabpanel"
+            aria-labelledby="nav-home-tab">
+            <mfe-loader [config]="rdsClientSecretsMfeConfig"></mfe-loader>
+            <div class="row">
+              <div class="col-md-12">
+                <rds-button [label]="translate.instant('New Secrets')" [colorVariant]="'primary'" (click)="addSecrets()">
+                  <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
+                </rds-button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
+            aria-labelledby="nav-home-tab">
+            <mfe-loader [config]="rdsClientResourcesMfeConfig"></mfe-loader>
+            <!-- <app-client-resources [clientResources]="client.resources" (selectedResources)="getSelectedResources($event)" ></app-client-resources> -->
+          </div>
+
+        </div>
+      </rds-nav-tab>
+    </div>
+    <div class="">
+      <rds-button [label]="translate.instant('Cancel')"  [colorVariant]="'primary'"  [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
+      </rds-button>
+      <rds-button [label]="getBtnName()" [colorVariant]="'primary'" [size]="'small'" [disabled]="!client.basicInfo" (click)="save()">
+      </rds-button>
+    </div>
+  </rds-offcanvas>
+</ng-container>

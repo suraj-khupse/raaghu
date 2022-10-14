@@ -1,0 +1,129 @@
+<form  #accountForm="ngForm">
+    <div class="border-bottom text-muted mt-3 fw-bold">
+        <rds-label [label]="'Password Settings'"></rds-label>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <rds-checkbox [disabled]="false" [label]="'Enable Self Registration'" name="registration" [withLabel]="true"
+                    [switch]="false" [inline]="false"  [(ngModel)]="accountData.registration"
+                    #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <rds-checkbox [disabled]="false" [label]="'Authentication With a Local Account'" name="authentication" [withLabel]="true"
+                    [switch]="false" [inline]="false"  [(ngModel)]="accountData.authentication"
+                    #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
+            </div>
+        </div>
+        <div class="border-bottom text-muted mt-3 fw-bold">
+            <rds-label [label]="'Two Factor Authentication '"></rds-label>
+            </div>
+            <div class="col-md-6 mt-4">
+                <rds-select-list [label]="'Two Factor Authentication'" required [isRequired]=true ngDefaultControl LabelType="Top"
+                    name="twofactorauthentication" [itemList]="AuthentiactionList"  [(ngModel)]="accountData.twofactorauthentication"
+                    #twofactorauthentication="ngModel" [placeholder]="'Select'"
+                   >
+               </rds-select-list>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-4">
+                    <rds-checkbox [disabled]="false" [label]="'Allow User to Change their two factor'" name="allowUser" [withLabel]="true"
+                        [switch]="false" [inline]="false" [(ngModel)]="accountData.allowUser"
+                        #allowUser="ngModel" [id]="'ssl'"></rds-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <rds-checkbox [disabled]="false" [label]="'Remember this browser'" name="browser" [withLabel]="true"
+                        [switch]="false" [inline]="false" [(ngModel)]="accountData.browser"
+                        #browser="ngModel" [id]="'ssl'"></rds-checkbox>
+                </div>
+            </div>
+            <div class="border-bottom text-muted mt-4 fw-bold">
+                <rds-label [label]="'Two Factor Authentication '"></rds-label>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-4">
+                        <rds-checkbox [disabled]="false" [label]="'Use Security Image Questions(Captcha) On Login'" name="imagacaptcha" [withLabel]="true"
+                            [switch]="false" [inline]="false"  [(ngModel)]="accountData.imagacaptcha"
+                            #imagacaptcha="ngModel" [id]="'ssl'"></rds-checkbox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        <rds-checkbox [disabled]="false" [label]="'Use Security Image Questions(Captcha) On Registration'" name="securityauthentication" [withLabel]="true"
+                            [switch]="false" [inline]="false"  [(ngModel)]="accountData.securityauthentication"
+                            #securityauthentication="ngModel" [id]="'ssl'"></rds-checkbox>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-4 mt-3">
+                        <div class="form-group ">
+                          <rds-input size="default"  [Title]="'Verify Base URL'" [TitleType]="'Top'" inputType="text"
+                                     name="baseUrl"  [isRequired]=true required [disabled]="false" [readonly]="false"
+                                     [placeholder]="'Enter URL'"  [(ngModel)]="accountData.baseUrl"
+                                     #baseUrl="ngModel" ngDefaultControl>
+                          </rds-input> 
+                          </div>
+                     </div>
+                     <div class="col-md-4 mt-3">
+                        <rds-select-list [label]="'Version'" required [isRequired]=true ngDefaultControl LabelType="Top"
+                            name="version" [itemList]="VersionList"  [(ngModel)]="accountData.version"
+                            #version="ngModel" [placeholder]="'Select'"
+                           >
+                       </rds-select-list>
+                    </div>
+                     <div class="col-md-4 mt-3">
+                        <div class="form-group ">
+                          <rds-input size="default"  [Title]="'Score'" [TitleType]="'Top'" inputType="text"
+                                     name="score"  [isRequired]=true required [disabled]="false" [readonly]="false"
+                                     [placeholder]="'Enter Score'"  [(ngModel)]="accountData.score"
+                                     #score="ngModel" ngDefaultControl>
+                          </rds-input>
+                          </div>
+                     </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-4 mt-3">
+                        <div class="form-group ">
+                          <rds-input size="default"  [Title]="'Site Key'" [TitleType]="'Top'" inputType="text"
+                                     name="site"  [isRequired]=true required [disabled]="false" [readonly]="false"
+                                     [placeholder]="'Enter URL'"  [(ngModel)]="accountData.site"
+                                     #site="ngModel" ngDefaultControl>
+                          </rds-input>
+                          </div>
+                     </div>
+                     <div class="col-md-4 mt-3">
+                        <rds-input size="default"  [Title]="'Site Secret'" [TitleType]="'Top'" inputType="text"
+                        name="secret"  [isRequired]=true required [disabled]="false" [readonly]="false"
+                        [placeholder]="'Enter Secret'"  [(ngModel)]="accountData.secret"
+                        #secret="ngModel" ngDefaultControl>
+                     </rds-input>
+                    </div>
+                </div>
+                <div class="border-bottom text-muted mt-4 fw-bold">
+                    <rds-label [label]="'External Provider '"></rds-label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                            <rds-checkbox [disabled]="false" [label]="'Google'" name="google" [withLabel]="true"
+                                [switch]="false" [inline]="false"  [(ngModel)]="accountData.google"
+                                #authentication="ngModel"  [id]="'ssl'"></rds-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                            <rds-checkbox [disabled]="false" [label]="'Microsoft'" name="microsoft" [withLabel]="true"
+                                [switch]="false" [inline]="false"  [(ngModel)]="accountData.microsoft"
+                                #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                            <rds-checkbox [disabled]="false" [label]="'Twitter'" name="twitter" [withLabel]="true"
+                                [switch]="false" [inline]="false"  [(ngModel)]="accountData.twitter"
+                                #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
+                        </div>
+                    </div>
+</form>

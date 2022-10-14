@@ -1,5 +1,5 @@
 ---
-slug: "/Tenant-Management"
+slug: "/comp-tenant-management"
 date: "2019-05-04"
 title: "Components > Tenant Management"
 ---

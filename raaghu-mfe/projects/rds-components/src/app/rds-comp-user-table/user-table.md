@@ -1,5 +1,5 @@
 ---
-slug: "/user-table"
+slug: "/comp-user-table"
 date: "2019-05-04"
 title: "Components > User-table"
 ---

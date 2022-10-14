@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="col-md-2">
-      <rds-button [id]="'yes'" [size]="'Medium'" [disabled]="headerForm.invalid" [colorVariant]="'primary'"
+      <rds-button [id]="'yes'" [size]="'medium'" [disabled]="headerForm.invalid" [colorVariant]="'primary'"
         [label]="'add'" (click)="addWebhookHeaders(headerForm)">
       </rds-button>
     </div>
@@ -69,10 +69,10 @@
 <div class="footer-buttons my-2">
   <div class="row">
     <div class="col-md-12">
-      <rds-button [label]="translate.instant('Cancel')" type="button" class="me-2" [colorVariant]="'outline-primary'"
+      <rds-button [label]="translate.instant('Cancel')" type="button" class="me-2" [colorVariant]="'primary'" [outlineButton]="true"
         data-bs-dismiss="offcanvas" [size]="'small'" (click)="close(webhookForm)">
       </rds-button>
-      <rds-button [id]="'yes'" [size]="'Medium'" [size]="'small'"
+      <rds-button [id]="'yes'" [size]="'medium'" [size]="'small'"
         [disabled]="webhookForm.invalid||additionalheaders.length===0" [colorVariant]="'primary'"
         [label]="translate.instant('Save')" (click)="AddWebhooSubscription(webhookForm)" data-bs-dismiss="offcanvas" [showLoadingSpinner]="buttonSpinner">
       </rds-button>

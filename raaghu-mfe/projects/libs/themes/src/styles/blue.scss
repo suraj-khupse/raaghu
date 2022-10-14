@@ -150,7 +150,7 @@
   $wrapper-bg: $accessible-600!default;
 
   $card-bg-color: $accessible-700 !default;
-$card-border-color: $card-bg-color;
+
   $offcanvasbg: $accessible-700 !default;
 
   $footer-bgcolor: $accessible-700 !default;
@@ -215,7 +215,8 @@ $datepicker-head: $accessible-600 !default;
 html[theme=dark] {
   $dropdown-color: $white;
   $input-bg: $accessible-300!default;
-  $form-select-bg: $input-bg;
+  $form-select-border-color: $accessible-200!default;
+  $form-select-bg: $input-bg!default;
   $notification-header-bg: $accessible-500!default;
   $input-group-addon-bg: $input-bg;
   $input-group-addon-border-color: $accessible-400 !default;
@@ -230,19 +231,20 @@ html[theme=dark] {
     --bs-dropdown-color: $dropdown-color;
   }
 
-  .input-group-text {
-    background-color: $input-group-addon-bg;
-    border-color: $input-group-addon-border-color;
-  }
+    .input-group-text {
+      background-color: $input-group-addon-bg;
+      border-color: $input-group-addon-border-color;
+    }
 
-  .form-select[size]:not([size="1"]) {
-    background-color: $input-bg;
-  }
+    .form-select {
+      background-color: $form-select-bg;
+      border-color: $form-select-border-color;
+    }
 
-  .notification-header {
-    background-color: $notification-header-bg;
+    .notification-header {
+      background-color: $notification-header-bg;
+    }
   }
-}
 
 @import './custom.scss';
 @import './node_modules/bootstrap/scss/bootstrap';
@@ -272,4 +274,5 @@ html[theme=dark] {
 @import './textarea.scss';
 @import './colorvariables.scss';
 @import './cookieconsent.scss';
+@import './calender.scss';
 

@@ -57,8 +57,8 @@ export class RdsCompAuditLogsComponent implements OnInit {
   browserInfo: any = '';
   statusList: any = [
     { value: '', displayText: 'All' },
-    { value: true, displayText: 'HasError' },
-    { value: false, displayText: 'Sucsses' }]
+    { value: true, displayText: 'Sucsses' },
+    { value: false, displayText: 'HasError' }]
   browserList: any = [
     { value: '', displayText: 'Select Browser' },
     { value: 'Chrome', displayText: 'Chrome' },

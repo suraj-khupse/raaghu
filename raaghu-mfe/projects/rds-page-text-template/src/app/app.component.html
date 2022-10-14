@@ -1,0 +1,39 @@
+<div class="row m-1">
+  <div class="col-md-12 m-1">
+    <mfe-loader [config]="rdsDataTableForTextTemplateMfeConfig"></mfe-loader>
+  </div>
+</div>
+
+<ng-container *ngIf="viewCanvas">
+  <rds-offcanvas [canvasTitle]="canvasTitle" [offcanvaswidth]="500" [offId]="offcanvasId"
+    [placement]="'end'" (onClose)="close()">
+    <div class="section">
+      <div class="row m-1" *ngIf="selectedData">
+        <div class="col-md-12">
+          <div class="form-group mb-3"> 
+            <rds-label [label]="'Name:'">{{ selectedData.layoutDetails }}</rds-label>
+            </div>
+        </div>
+        <div class="col-md-12 mt-3">
+          <div class="form-group">
+            <rds-textarea #description="ngModel" [placeholderText]="'Enter Content Here'" [label]="'Template Content'"
+              [value]="selectedData.templateContent" [(ngModel)]="selectedData.templateContent" name="desc" required>
+            </rds-textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between m-3">
+      <div>
+        <rds-button class="p-2" [label]="'Cancel'" [size]="'small'" [colorVariant]="'primary'" (click)="close()"
+          data-bs-dismiss="offcanvas" aria-label="Close">
+        </rds-button>
+        <rds-button [label]="'Save'" [size]="'small'" [colorVariant]="'primary'" (click)="save()">
+        </rds-button>
+      </div>
+      <div>
+        <a class="p-2">Restore To Default</a>
+      </div>
+    </div>
+  </rds-offcanvas>
+</ng-container>

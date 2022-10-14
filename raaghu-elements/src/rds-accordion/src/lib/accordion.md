@@ -16,7 +16,7 @@ title: "Elements > Accordion"
 
 <!-- Basic -->
   <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -89,8 +89,8 @@ title: "Elements > Accordion"
           </div>
         </div>
         <div class="tab-pane fade show" id="AngularOutlined" role="tabpanel" aria-labelledby="AngularOutlined-tab">
-          <div class="contents bg-light">
-<div class="row bg-dark text-white m-0 p-4">
+          <div class="contents bg-code">
+    <div class="row m-0">
 
 ```html
 <rds-accordian [flush]="flush">
@@ -111,7 +111,52 @@ title: "Elements > Accordion"
         </div>
       </div>
     </div>
-  </section>
+</section>
+<!-- Accoradtion with product overview -->
+  <section class="py-4">
+    <h6>With Product Overview</h6>
+    <div class="py-3">
+      <div class="cust-tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PreviewOutlined-tab" data-bs-toggle="tab" data-bs-target="#productoverview" type="button" role="tab" aria-controls="PreviewOutlined" aria-selected="true">Preview </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="AngularOutlined-tab" data-bs-toggle="tab" data-bs-target="#productoverviewcode" type="button" role="tab" aria-controls="AngularOutlined" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content card border" id="myTabContent">
+        <div class="tab-pane fade show active" id="productoverview" role="tabpanel" aria-labelledby="productoverview-tab">
+          <div class="contents  p-5">
+            <div class="row">
+               <div class="col-md-12">
+                  <img src="/images/accordion-product-overview.png" class="img-fluid">
+               </div>          
+              </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show" id="productoverviewcode" role="tabpanel" aria-labelledby="productoverviewcode-tab">
+          <div class="contents bg-light">
+    <div class="row m-0">
+
+```html
+<rds-accordian [border]="true" [outline]="false" [id]="id">
+  <accordion-item title="Section 1 title" [accordionId]="id">
+    <h3>Custom</h3>
+  </accordion-item>
+  <accordion-item title="Section 2 title" [accordionId]="id">
+    <h3>Custom</h3>
+  </accordion-item>
+</rds-accordian>
+```
+
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
 
 <!-- Skeleton / Specifications -->
@@ -124,7 +169,7 @@ title: "Elements > Accordion"
                               <div class="card border p-5">
                                  <div class="row">
                                     <div class="col-md-12">
-                                       <img src="https://portal.raaghu.io/images/components/_accordion/img-1.png" class="img-fluid">
+                                       <img src="/images/accoradtion-sketch.png" class="img-fluid">
                                     </div>
                                  </div>
                               </div>

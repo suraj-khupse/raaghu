@@ -6,14 +6,11 @@
                        ngDefaultControl
                        ngModel
                        name="entityname"
-                       [LabelType]="'Top'"
                        #entityname = "ngModel"
                        [(ngModel)]="dynamicEntityData.entityFullName"
-                       [labelText]="translate.instant(' Entity')"
-                       [LabelType]="'Top'"
-                       
-                  
-                       [placeholderText]="translate.instant('Select Entity')" [isRequired]=true required [itemList]="entityNames">
+                       [label]="translate.instant(' Entity')"
+                       [labelPosition]="'top'"
+                       [placeholder]="translate.instant('Select Entity')" [isRequired]=true required [itemList]="entityNames">
       </rds-select-list>
       <div class="form-control-feedback" *ngIf="entityname.errors&&(entityname.dirty||entityname.touched)">
         <span class="text-danger" *ngIf="entityname.errors.required">{{'Entity Name is required'| translate}}</span>
@@ -35,7 +32,8 @@
       <div class="col-md-12">
         <rds-button [label]="translate.instant('Cancel')"
                     type="button"
-                    [colorVariant]="'outline-primary'"
+                    [outlineButton]="true"
+                    [colorVariant]="'primary'"
                     data-bs-dismiss="offcanvas"
                     [size]="'small'"
                     (click)="closeCanvas()">

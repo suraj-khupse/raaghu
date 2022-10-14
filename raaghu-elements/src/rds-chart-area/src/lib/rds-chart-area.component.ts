@@ -22,13 +22,12 @@ export class RdsChartAreaComponent implements OnInit, OnChanges, AfterViewInit {
   static count = 0;
   canvas: any;
   ctx: any;
- // chartId = 'ChartArea' + RdsChartAreaComponent.count;
-  @Input() chartId:string='ChartArea0';
-  @Input() chartWidth = 400;
-
-  @Input() chartStyle?: any;
+  // chartId = 'ChartArea' + RdsChartAreaComponent.count;
+  @Input() chartId: string = 'ChartArea0';
+  @Input() chartWidth: number = 400;
+  @Input() chartHeight: number = 400;
   @Input() chartLabels?: any
-  @Input() ChartDataSets?: ChartDataSetArea[] | any;
+  @Input() chartDataSets?: ChartDataSetArea[] | any;
   @Input() chartOptions?: any;
   style: CSSStyleDeclaration | undefined;
 
@@ -38,16 +37,16 @@ export class RdsChartAreaComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit(): void {
     this.style = getComputedStyle(document.body);
-    this.ChartDataSets[0].backgroundColor[0] = this.style.getPropertyValue('--chartColor1');
-    this.ChartDataSets[0].backgroundColor[1] = this.style.getPropertyValue('--chartColor2');
-    this.ChartDataSets[0].backgroundColor[2] = this.style.getPropertyValue('--chartColor3');
-    this.ChartDataSets[0].backgroundColor[3] = this.style.getPropertyValue('--chartColor4');
-    this.ChartDataSets[0].backgroundColor[4] = this.style.getPropertyValue('--chartColor5');
-    this.ChartDataSets[0].backgroundColor[5] = this.style.getPropertyValue('--chartColor6');
-    this.ChartDataSets[0].backgroundColor[6] = this.style.getPropertyValue('--chartColor7');
-    this.ChartDataSets[0].backgroundColor[7] = this.style.getPropertyValue('--chartColor8');
-    this.ChartDataSets[0].backgroundColor[8] = this.style.getPropertyValue('--chartColor9');
-    this.ChartDataSets[0].backgroundColor[9] = this.style.getPropertyValue('--chartColor10');
+    this.chartDataSets[0].backgroundColor[0] = this.style.getPropertyValue('--chartColor1');
+    this.chartDataSets[0].backgroundColor[1] = this.style.getPropertyValue('--chartColor2');
+    this.chartDataSets[0].backgroundColor[2] = this.style.getPropertyValue('--chartColor3');
+    this.chartDataSets[0].backgroundColor[3] = this.style.getPropertyValue('--chartColor4');
+    this.chartDataSets[0].backgroundColor[4] = this.style.getPropertyValue('--chartColor5');
+    this.chartDataSets[0].backgroundColor[5] = this.style.getPropertyValue('--chartColor6');
+    this.chartDataSets[0].backgroundColor[6] = this.style.getPropertyValue('--chartColor7');
+    this.chartDataSets[0].backgroundColor[7] = this.style.getPropertyValue('--chartColor8');
+    this.chartDataSets[0].backgroundColor[8] = this.style.getPropertyValue('--chartColor9');
+    this.chartDataSets[0].backgroundColor[9] = this.style.getPropertyValue('--chartColor10');
   }
 
   ngOnChanges(): void {
@@ -56,15 +55,6 @@ export class RdsChartAreaComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.ChartAreaBrowser();
-  }
-
-  public get classes(): string[] {
-    var classes = ['res-width']
-    if (this.chartStyle === "Dark") {
-      classes.push('dark-mode')
-      return classes
-    }
-    return classes
   }
 
   ChartAreaBrowser(): void {
@@ -79,10 +69,14 @@ export class RdsChartAreaComponent implements OnInit, OnChanges, AfterViewInit {
         type: 'line',
         data: {
           labels: this.chartLabels,
-          datasets: this.ChartDataSets,
+          datasets: this.chartDataSets,
         },
         options: this.chartOptions
       });
+      if (areaCanvas !== null) {
+        areaCanvas.canvas.style.height = this.chartHeight + 'px';
+        areaCanvas.canvas.style.width = this.chartWidth + 'px';
+      }
     }
   }
 

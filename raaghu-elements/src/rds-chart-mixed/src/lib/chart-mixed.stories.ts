@@ -5,11 +5,11 @@ export default {
   title: 'Charts/Mixed Chart',
   component: RdsChartMixedComponent,
   argTypes: {
-    canvasBackgroundColor: { control: 'color' },
-    chartStyle: {
-      options: ['Dark', 'light'],
-      control: 'radio'
-    }
+    // canvasBackgroundColor: { control: 'color' },
+    // chartStyle: {
+    //   options: ['Dark', 'light'],
+    //   control: 'radio'
+    // }
   },
 
 } as Meta;
@@ -20,34 +20,35 @@ const Template: Story<RdsChartMixedComponent> = (args: RdsChartMixedComponent) =
 });
 export const Default = Template.bind({});
 Default.args = {
-
-  ChartDataSets: [
+  chartDataSets: [
     {
       type: 'bar',
       label: 'Bar Dataset',
-      data: [10, 20, 30, 32],
-      backgroundColor: ['orange'],
-      order: 2
+      data: [0,37, -12, 70, 35,-32,85,-24],
+      backgroundColor: 'rgb(248, 188, 198)',
+      borderColor:'rgb(248, 188, 198)',
+      order: 0
     },
     {
       type: 'line',
       label: 'Line Dataset',
-      data: [10, 20, 30, 32],
-      borderColor: 'rgba(75, 192, 192, 0.8)',
+      data: [-10,18, -60, -90, -44,-91,-83,46],
+      borderColor: 'blue',
+      backgroundColor:'blue',
       order: 1
     }
   ],
 
-  chartLabels: ['January', 'February', 'March', 'April'],
+  chartLabels: ['January', 'February', 'March', 'April','May','June'],
   chartWidth: 500,
-
+  chartHeight: 400,
   chartOptions: {
     radius: 10,
     pointStyle: 'triangle',
     plugins: {
       legend: {
-        position: 'left',
-        align: "start",
+        position: 'top',
+        align: "center",
         pointStyle: "bottom",
         labels: {
           usePointStyle: true
@@ -58,12 +59,6 @@ Default.args = {
       },
     },
     responsive: true,
-
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
+    maintainAspectRatio: false,
   },
-
 };

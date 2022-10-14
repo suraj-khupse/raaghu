@@ -1,5 +1,5 @@
 ---
-slug: "/tenant-list"
+slug: "/comp-tenant-list"
 date: "2019-05-04"
 title: "Components > tenant-list"
 ---

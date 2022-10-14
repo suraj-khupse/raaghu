@@ -1,8 +1,21 @@
-<div [ngClass]="classes" *ngFor="let i of itemList">
-  <input type="radio" class="form-check-input" [name]="i.name" [value]="i.label" [checked]="i.checked" [id]="i.id"
-    [disabled]="i.disabled" (input)="getValue($event)">
-  <label class="form-check-label" [for]="i.id" [ngClass]="{'ms-2': isInputGroup}">
-    {{i.label}}
-  </label>
-</div>
+<div [ngSwitch]="display_type">
+  <div *ngSwitchCase="'Default'">
+    <div [ngClass]="classes" *ngFor="let i of itemList">
+      <input type="radio" class="form-check-input" [name]="i.name" [value]="i.label" [checked]="i.checked" [id]="i.id"
+        [disabled]="i.disabled" (input)="getValue($event)">
+      <label class="form-check-label" [for]="i.id" [ngClass]="{'ms-2': isInputGroup}">
+        {{i.label}}
+      </label>
+    </div>
+  </div>
 
+  <div class="d-flex" *ngSwitchCase="'Horizontal'">
+    <div class="px-4" [ngClass]="classes" *ngFor="let i of itemList">
+      <input type="radio" class="form-check-input" [name]="i.name" [value]="i.label" [checked]="i.checked" [id]="i.id"
+        [disabled]="i.disabled" (input)="getValue($event)">
+      <label class="form-check-label" [for]="i.id" [ngClass]="{'ms-2': isInputGroup}">
+        {{i.label}}
+      </label>
+    </div>
+  </div>
+</div>

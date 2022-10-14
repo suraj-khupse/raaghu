@@ -1,5 +1,5 @@
 ---
-slug: "/Address-Input"
+slug: "/comp-address-input"
 date: "2019-05-04"
 title: "Components > Address-Input"
 ---

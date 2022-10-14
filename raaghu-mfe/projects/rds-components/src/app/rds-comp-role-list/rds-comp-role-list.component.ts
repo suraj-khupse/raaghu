@@ -141,19 +141,16 @@ export class RdsCompRoleListComponent implements OnInit {
   }
 
   newRole(event): void {
-    this.buttonSpinnerForNewRole = true;
     this.selectedId = '';
     this.viewCanvas = true;
-    this.onEditRole.emit({ id: undefined });
     this.SelectedPermissionValues = [];
-    if (event) {
+     if (event) {
+      this.buttonSpinnerForNewRole = true;
       this.canvasTitle = 'NEW ROLE';
       this.Roles = { RolesData: undefined, permissionsList: [] };
       this.RolesData = undefined;
-      this.onnewRole.emit(true)
-      event.stopPropagation();
-    } else {
-    }
+      this.onnewRole.emit(true);
+     }
     setTimeout(() => {
       var offcanvas = document.getElementById('RoleOffcanvas')
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
@@ -178,7 +175,7 @@ export class RdsCompRoleListComponent implements OnInit {
     }
     else {
       this.RoleFromNewRole = eventdata.roledata;
-      this.EnableTreeSave = false
+      this.EnableTreeSave = false;
       if (!eventdata || !eventdata.role) {
         this.EnableTreeSave = false;
       } else {
@@ -196,9 +193,8 @@ export class RdsCompRoleListComponent implements OnInit {
     this.buttonSpinnerForNewRole = false;
   }
   editTableRowData(event): void {
-
-    this.canvasTitle = 'EDIT ROLE';
     this.newRole(undefined);
+    this.canvasTitle = 'EDIT ROLE';
     this.onEditRole.emit(event.id);
     this.selectedId = event.id;
   }

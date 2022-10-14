@@ -16,16 +16,16 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class RdsFabMenuComponent implements OnInit {
 
-  @Input()
-  colorVariant?: string;
+  @Input() colorVariant: 'warning' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined = undefined;
 
   @Input()
-  size?: string;
-  @Input() menuicon!: string;
+  size?:  'small' | 'large' | 'default';
+  @Input() menuicon: string = 'list';
   @Input() menuiconWidth!: string;
   @Input() menuiconHeight!: string;
   @Input()
   DropdownItems!: TemplateRef<any>;
+  show = '';
   @Input()
   listItems = [
     { value: 'New Role', some: 'value', key: 'new', icon: 'users', iconWidth: '20px', iconHeight: '20px' },
@@ -49,8 +49,7 @@ export class RdsFabMenuComponent implements OnInit {
       customClasses.push('btn-sm');
     } else if (this.size === 'large') {
       customClasses.push('btn-lg');
-    }
-    else {
+    } else {
       customClasses.push('');
     }
     if (`${this.colorVariant}`) {
@@ -60,6 +59,10 @@ export class RdsFabMenuComponent implements OnInit {
   }
 
   onClick(item: any) {
+    this.listItems[item]
     this.onSelect.emit(item);
   }
-}
+  onClickshow(){
+    this.show == '' ?  this.show = 'show' : this.show = 'show' ? this.show = '' : '';
+    }
+  }

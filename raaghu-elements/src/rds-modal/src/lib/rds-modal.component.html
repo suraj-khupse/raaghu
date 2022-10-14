@@ -1,15 +1,14 @@
-<div class="modal" [ngClass]="modalAnimationClass" [id]="modalId" tabindex="-1" [attr.data-bs-backdrop]="backdropstatic"
-     data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal" [ngClass]="modalAnimationClass" [attr.id]="modalId" tabindex="-1" data-bs-keyboard="false" [attr.data-bs-backdrop]="modalBackdrop" >
   <div [ngClass]="classes">
     <div class="modal-content">
-      <div class="modal-header" *ngIf="isModalHeader">
+      <div class="modal-header d-block" *ngIf="showModalHeader">
         <ng-content select="[modalheader]"></ng-content>
       </div>
       <div class="modal-body">
-        <ng-content select="[Modalbody]"></ng-content>
+        <ng-content select="[modalbody]"></ng-content>
       </div>
-      <div class="modal-footer" *ngIf="isModalFooter">
-        <ng-content select="[Modalfooter]"></ng-content>
+      <div class="modal-footer" *ngIf="showModalFooter">
+        <ng-content select="[modalfooter]"></ng-content>
       </div>
     </div>
   </div>

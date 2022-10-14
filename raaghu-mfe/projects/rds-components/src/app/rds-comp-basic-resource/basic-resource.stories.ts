@@ -6,7 +6,7 @@ import { RdsCompBasicResourceComponent } from './rds-comp-basic-resource.compone
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsCheckboxModule } from '@libs/rds-checkbox';
 import { RdsButtonModule } from '@libs/rds-button';
-import { RdsInputModule } from '@libs/rds-elements';
+import { RdsInputModule, RdsTextareaModule } from '@libs/rds-elements';
 
 export default {
   title: 'Components/Api Scope Basic Resource',
@@ -16,7 +16,7 @@ export default {
         
       imports: [
         FormsModule, ReactiveFormsModule, HttpClientModule, NgxTranslateModule, RdsInputModule, RdsLabelModule,
-        RdsCheckboxModule,RdsButtonModule
+        RdsCheckboxModule,RdsButtonModule,RdsTextareaModule
       ],
       providers: [
         FormBuilder

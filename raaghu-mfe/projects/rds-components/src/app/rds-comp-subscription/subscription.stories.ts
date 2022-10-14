@@ -30,10 +30,10 @@ const Template: Story<RdsCompSubscriptionComponent> = (args: RdsCompSubscription
 export const Default = Template.bind({});
 Default.args={
   subscriptionData:[{
-    name: "test",
-    price: "23",
-    duration: "2",
-    iconurl:"assets/Group.jpg",
+    name: "BASIC",
+    price: "232",
+    duration: "2 Year",
+    iconurl:"subscription_premium",
     recommended:false,
     features:["Maximum User Count","Test Check feature","Test check feature count 2"]
   }]

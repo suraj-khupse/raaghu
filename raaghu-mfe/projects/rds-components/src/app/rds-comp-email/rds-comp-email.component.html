@@ -1,26 +1,23 @@
-<div class="container pt-5 ps-0" *ngIf="!editShimmer">
+<div class="pt-5 ps-0" *ngIf="!editShimmer">
   <!--<app-rds-comp-open-position [item]="openPositions"></app-rds-comp-open-position>-->
 
   <form #emailForm="ngForm">
     <div class="row">
       <div class="col-md-6 mb-3">
-        <rds-input size="'default'" [Title]="translate.instant('Default From (Sender) Email Address')" name="defaultFromAddress" [placeholder]="'admin@mydomain.com'" id="txtUsername"
+        <rds-input size="'default'" [Title]="translate.instant('Default From (Sender) Email Address')" name="defaultFromAddress" [placeholder]="'Email Address'" id="txtUsername"
                    #defaultFromAddress="ngModel" [pattern]="emailPattern" ngDefaultControl
                    [(ngModel)]="EmailData.defaultFromAddress" required [isRequired]=true floatinginputLabel="" [TitleType]="'Top'">
         </rds-input>
         <div class="form-control-feedback"
              *ngIf="defaultFromAddress.errors&&(defaultFromAddress.dirty||defaultFromAddress.touched)">
           <span class="text-danger" *ngIf="defaultFromAddress.errors.pattern">
-            {{
-"Please enter a valid
-            emailId"|translate
-            }}
+            {{"Please enter a valid emailId"|translate }}
           </span>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <rds-input size="'default'" [Title]="translate.instant('Default From (Sender) Display Name')" [placeholder]="'mydomain.com mailer'" name="defaultFromDisplayName" id="txtUsername"
+          <rds-input size="'default'" [Title]="translate.instant('Default From (Sender) Display Name')" [placeholder]="'Display Name'" name="defaultFromDisplayName" id="txtUsername"
                      #defaultFromDisplayName="ngModel" [(ngModel)]="EmailData.defaultFromDisplayName" [TitleType]="'Top'">
           </rds-input>
         </div>
@@ -33,6 +30,7 @@
                      #smtpHost="ngModel" [(ngModel)]="EmailData.smtpHost" name='smtpHost' [pattern]="hostAddressPattern"
                      [TitleType]="'Top'">
           </rds-input>
+          
         </div>
       </div>
       <div class="col-md-6">
@@ -69,13 +67,22 @@
         <div class="form-group mb-3">
           <rds-input size="'default'" [pattern]="emailPattern" [Title]="translate.instant('Test Email Settings')"
                      [placeholder]="'admin@aspnetzero.com'" id="txtUsername" #smtpDomain="ngModel"
-                     [(ngModel)]="EmailData.smtpDomain" name="smtpDomain" [TitleType]="'Top'"></rds-input>
+                     [(ngModel)]="EmailData.smtpDomain" name="smtpDomain" [TitleType]="'Top'">
+          </rds-input>
+
+          <div class="form-control-feedback"
+             *ngIf="smtpDomain.errors&&(smtpDomain.dirty||smtpDomain.touched)">
+          <span class="text-danger" *ngIf="smtpDomain.errors.pattern">
+            {{"Please enter a valid emailId"|translate }}
+          </span>
+        </div>
+
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group mb-3 mt-1 pt-4">
           <rds-button [tooltipPlacement]="'bottom'" (click)="sendTestmail()" [id]="'sendTestEmail'" [tooltipTitle]="translate.instant('SEND TEST EMAIL')" [label]="translate.instant('SEND TEST EMAIL')"
-                      type="button" [size]="'Small'" [colorVariant]="'primary'" [outlineButton]="false"></rds-button>
+                      type="button" [size]="'small'" [colorVariant]="'primary'" [outlineButton]="false"></rds-button>
         </div>
       </div>
     </div>

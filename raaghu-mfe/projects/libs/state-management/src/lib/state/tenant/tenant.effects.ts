@@ -14,9 +14,9 @@ export class TenantEffects {
   getTenants$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getTenants),
-      switchMap(({maxResultCount}) =>
+      switchMap(() =>
         // Call the getTodos method, convert it to an observable
-        from(this.tenantService.getTenants(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, maxResultCount, undefined)).pipe(
+        from(this.tenantService.getTenants(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,1000,0)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((tenants: any) => {
             return getTenantSuccess({ tenants: tenants })
@@ -46,7 +46,7 @@ export class TenantEffects {
       ofType(saveTenant),
       mergeMap((data,maxresult) =>
         this.tenantService.createTenant(data.tenant).pipe(map((res: any) => {
-          this.store.dispatch(getTenants(maxresult));
+          this.store.dispatch(getTenants());
           this.alertService.showAlert('Success', 'Tenant added successfully', 'success')
 
 
@@ -65,7 +65,7 @@ export class TenantEffects {
       ofType(deleteTenant),
       mergeMap(({ id,maxresult }) =>
         this.tenantService.deleteTenant(id).pipe(map(() => {
-          this.store.dispatch(getTenants(maxresult));
+          this.store.dispatch(getTenants());
           this.alertService.showAlert('Success', 'Tenant deleted successfully', 'success')
 
         }

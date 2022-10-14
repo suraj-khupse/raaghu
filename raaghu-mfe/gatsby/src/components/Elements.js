@@ -73,7 +73,7 @@ const Elements = () => {
                           {child.text}
                         </p>
                         <div class="read-div">
-                          <a href="/" class="component-read-more">
+                          <a href={child?.link || "/button"} class="component-read-more">
                             Read More →
                           </a>
                         </div>

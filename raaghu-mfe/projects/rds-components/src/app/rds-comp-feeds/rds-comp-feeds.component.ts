@@ -21,7 +21,7 @@ export class RdsCompFeedsComponent implements OnInit {
 
   @Input() listItems = [];
 
-  @Input() itemList = [
+  @Input() itemList: any = [
     {
 
       'actor': 'Jijo Fleshman',
@@ -29,11 +29,11 @@ export class RdsCompFeedsComponent implements OnInit {
       date: this.date,
       'username': '@jijolife123',
       'description': 'This bag is of the quality expected for the price. The lining inside the bag seems like satin and it is very strong one It has huge space inside inside as the zipper can be opened in either side.',
-      icon: 'search',
+      icon: 'users',
       fill: true,
-      colorVariant: 'primary',
+      colorVariant: 'default',
       profilePic: 'https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1',
-     rating:5
+      rating: 5
     },
     {
       'actor': 'Bethany Blake',
@@ -41,11 +41,11 @@ export class RdsCompFeedsComponent implements OnInit {
       date: this.date,
       'username': '@bethanyb@99',
       'description': 'Superb quality..!!!!. It is as exactly as the picture..nevy blue color..quality is awesome..I loved it.!',
-      icon: 'plus',
+      icon: 'search',
       fill: true,
-      colorVariant: 'primary',
+      colorVariant: 'default',
       profilePic: 'https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1',
-     rating:2
+      rating: 2
     },
     {
       'actor': 'Martha Gardner',
@@ -53,13 +53,13 @@ export class RdsCompFeedsComponent implements OnInit {
       date: this.date,
       'username': '@gmartha@77',
       'description': 'Product is not at all of good quality..I bought this for travelling abroad. And on very first day i faced problem in foreign country as belt came out of the steel loop',
-      icon: 'plus',
+      icon: 'check',
       fill: true,
-      colorVariant: 'warning',
+      colorVariant: 'default',
       profilePic: 'https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1',
-      rating:3
+      rating: 3
     },
-    
+
   ]
   pDate: any;
 
@@ -67,8 +67,8 @@ export class RdsCompFeedsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   this.date = moment(this.date).fromNow()
-   console.log(this.date);
+    this.date = moment(this.date).fromNow()
+    console.log(this.date);
   }
 
 }

@@ -1,5 +1,5 @@
 ---
-slug: "/Email-Settings"
+slug: "/comp-email-settings"
 date: "2019-05-04"
 title: "Components > Email-Settings"
 ---

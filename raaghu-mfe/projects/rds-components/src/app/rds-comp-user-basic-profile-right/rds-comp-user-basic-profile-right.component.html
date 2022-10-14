@@ -1,0 +1,94 @@
+<div *ngIf="!editShimmer">
+  <div class="tab-content pb-5">
+    <form #userCreationForm="ngForm" autocomplete="off">
+      <div class="row align-items-center sm-d-reverse">
+        <div class="col-md-6 sm-p">
+          <div class="form-group mb-3">
+            <rds-input [inputType]="'text'" [Title]="translate.instant('Name')" [(ngModel)]="userData.name"
+              [TitleType]="'Top'" name="name" required #name="ngModel" [placeholder]="translate.instant('Enter Name')"
+              [isRequired]="true">
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
+              <span class="text-danger" *ngIf="name.errors.required">{{"Name is required" | translate}}</span>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <rds-input [inputType]="'text'" [Title]="translate.instant('User name')" [TitleType]="'Top'"
+              [(ngModel)]="userData.surname" name="surname" required #surname="ngModel" [isRequired]="true"
+              [placeholder]="translate.instant('Enter Surname')">
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="surname.errors && (surname.dirty || surname.touched)">
+              <span class="text-danger" *ngIf="surname.errors.required">{{"Surname is required" | translate }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-center cursor-pointer">
+          <!-- <rds-label [label]="translate.instant('Profile Picture')"></rds-label> -->
+          <!-- <img [src]="userData.imageUrl" width="100" (click)="selectFile.click()" />
+          <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile /> -->
+          <!-- <i class="bi bi-camera"></i> -->
+          <!-- <rds-file-uploader [size]="'small'" [multipleFiles]="true" [role]="'fileUpload'"
+                      [label]="'Upload Files'" [extensions]="'png, jpg'"></rds-file-uploader> -->
+                      <img width="100" src="https://demo.raaghu.io/assets/edit-pic.png" (click)="selectFile.click()">
+
+                      <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 sm-p">
+          <div class="form-group mb-3">
+            <rds-input [inputType]="'email'" [TitleType]="'Top'" [Title]="translate.instant('Email Id')"
+              [(ngModel)]="userData.emailAddress" [pattern]="emailPattern" name="email" #email="ngModel" required
+              [isRequired]="true" [placeholder]="translate.instant('Email Id')">
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+              <span class="text-danger" *ngIf="email.errors.required">{{"Email is required" | translate}}</span>
+              <span class="text-danger" *ngIf="email.errors.pattern">{{"Please enter a valid Email" | translate}}</span>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <rds-input [inputType]="'phoneNumber'" [Title]="translate.instant('Phone Number')" [TitleType]="'Top'"
+              [(ngModel)]="userData.phoneNumber" name="phone" required [isRequired]="true" #phone="ngModel"
+              [pattern]="phonePattern" [placeholder]="translate.instant('Phone Number')">
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="phone.errors && (phone.dirty || phone.touched)">
+              <span class="text-danger" *ngIf="phone.errors.required">{{"Phone Number is required" | translate}}</span>
+              <span class="text-danger" *ngIf="phone.errors.pattern">{{ "Please enter a valid phone number" | translate
+                }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 sm-p">
+          <div class="form-group mb-3">
+            <rds-input [inputType]="'password'" [TitleType]="'Top'" [Title]="translate.instant('Password')"
+              [(ngModel)]="userData.password" name="pwd" autocomplete="off" #password="ngModel" required
+              [isRequired]="true" [placeholder]="'Password'">
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+              <span class="text-danger" *ngIf="password.errors.required">{{"password required" | translate}}</span>
+              <span class="text-danger" *ngIf="password.errors.pattern">{{ "Please enter a valid password" | translate
+                }}</span>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <rds-checkbox [disabled]="false" [label]="translate.instant('Two Factor Authentication')"
+              [checked]="userData.isTwoFactorEnabled" [(ngModel)]="userData.isTwoFactorEnabled"
+              name="isTwoFactorEnabled" [withLabel]="true" [switch]="false" [inline]="false"
+              [id]="'isTwoFactorEnabled'"></rds-checkbox>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="position-fixed bg-white py-3 bottom-0 w-100">
+    <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [outlineButton]="true" (click)="onCancelUser()"
+      data-bs-dismiss="offcanvas" [size]="'small'">
+    </rds-button>
+    <rds-button [label]="translate.instant('Next')" [disabled]="!userCreationForm.valid" [colorVariant]="'primary'"
+      class="ms-2" (click)="next(userCreationForm)" [size]="'small'">
+    </rds-button>
+  </div>
+</div>
+<app-rds-comp-user-basics-shimmer *ngIf="editShimmer"></app-rds-comp-user-basics-shimmer>

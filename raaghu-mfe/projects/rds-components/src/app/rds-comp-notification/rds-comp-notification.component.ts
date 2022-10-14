@@ -35,7 +35,7 @@ export class RdsNotificationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getColor(notification: notificationData, isIcon: boolean = false): string {
+  getColor(notification: notificationData, isIcon: boolean = false): any {
     if (isIcon) {
       if (notification.status == 'info') {
         return 'primary';

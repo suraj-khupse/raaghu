@@ -20,7 +20,7 @@ const Template: Story<RdsChartBarHorizontalComponent> = (args: RdsChartBarHorizo
 var delayed: any;
 export const HorizontalBarChart = Template.bind({});
 HorizontalBarChart.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Dataset 1',
       data: [20, 30, 50, 80, 98, 95, 55],
@@ -39,18 +39,24 @@ HorizontalBarChart.args = {
     }
   ],
   chartLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  chartWidth: 100,
+  chartWidth: 500,
+  chartHeight: 400,
   chartOptions: {
-    maintainAspectRatio: false,    
+    responsive: true,
+    aspectRatio: 2,
+    maintainAspectRatio: false,
     indexAxis: 'y',
     elements: {
       bar: {
-        borderWidth: 0,
+        borderWidth: 2,
       }
+    },
+    layout:{
+      padding:3
     },
     plugins: {
       legend: {
-        position: 'right',
+        position: 'top',
         pointStyle: "line",
 
         labels: {
@@ -70,7 +76,7 @@ HorizontalBarChart.args = {
 };
 export const VerticalBarChart = Template.bind({});
 VerticalBarChart.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Dataset 1',
       data: [20, 30, 50, 80, 98, 95, 55],
@@ -92,7 +98,7 @@ VerticalBarChart.args = {
   chartWidth: 100,
   chartOptions: {
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -106,7 +112,7 @@ VerticalBarChart.args = {
 };
 export const StackedBarChart = Template.bind({});
 StackedBarChart.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Dataset 1',
       data: [20, 30, 50, 80, 98, 95, 55],
@@ -134,7 +140,7 @@ StackedBarChart.args = {
       },
     },
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     scales: {
       x: {
         stacked: true,
@@ -147,7 +153,7 @@ StackedBarChart.args = {
 };
 export const BarChartWithBorderRadius = Template.bind({});
 BarChartWithBorderRadius.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Fully Rounded',
       data: [20, 30, 50, 80, 98, 95, 55],
@@ -171,7 +177,7 @@ BarChartWithBorderRadius.args = {
   chartWidth: 100,
   chartOptions: {
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',

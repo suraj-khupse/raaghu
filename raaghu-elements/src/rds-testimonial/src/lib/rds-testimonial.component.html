@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-3" *ngFor="let item of testimonialItems; let i=index">
+  <div class="col-md-3 mb-3" *ngFor="let item of testimonialItems; let i=index">
     <div class="card text-center p-4">
       <div>
         <rds-icon
@@ -9,7 +9,7 @@
           [height]="item.iconHeight"
           [width]="item.iconWidth"
           colorVariant="primary"
-          class="fs-6 me-2"
+          class="fs-6"
         ></rds-icon>
       </div>
       <div class="card-body p-2">

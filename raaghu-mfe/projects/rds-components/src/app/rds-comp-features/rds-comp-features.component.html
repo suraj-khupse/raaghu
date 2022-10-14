@@ -124,7 +124,7 @@
           <div class="row mt-4" *ngIf="showAssignEditionDropdown">
             <div class="col-md-6">
               <rds-select-list ngDefaultControl name="freeEditions" [(ngModel)]="freeEditon" [value]="freeEditon"
-                [itemList]="freeEditions" [id]="freeEditions" [placeholderText]="'Select Edition'">
+                [itemList]="freeEditions" [id]="freeEditions" [placeholder]="'Select Edition'">
               </rds-select-list>
             </div>
           </div>
@@ -148,7 +148,7 @@
   </div>
   <div class="footer-buttons my-2">
     <div class="col-md-12 ">
-      <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'outline-primary'" [size]="'small'" (click)="closeCanvas()"
+      <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [outlineButton]="true" [size]="'small'" (click)="closeCanvas()"
         data-bs-dismiss="offcanvas">
       </rds-button>
       <rds-button [label]="translate.instant('Save')" [size]="'small'" [disabled]="editionForm.invalid" class="ms-2"
@@ -168,7 +168,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="text-primary mb-2">{{tenantCount}} {{"Tenants will be moved"|translate}}</div>
-        <rds-select-list [labelText]="translate.instant('Edition')" ngDefaultControl 
+        <rds-select-list [label]="translate.instant('Edition')" ngDefaultControl 
                          name="edition" [(ngModel)]="targetEditionId" [itemList]="editionList" [id]="editionList">
       </rds-select-list>
       </div>
@@ -176,7 +176,7 @@
   </div>
 
   <div class="footer-buttons my-2">
-      <rds-button [label]="translate.instant('Close')" [colorVariant]="'outline-primary'" [size]="'small'" (click)="closeMoveTenantCanvas()"
+      <rds-button [label]="translate.instant('Close')" [colorVariant]="'primary'" [outlineButton]="true" [size]="'small'" (click)="closeMoveTenantCanvas()"
                   data-bs-dismiss="offcanvas">
       </rds-button>
       <rds-button [label]="translate.instant('Save')" [size]="'small'" class="ms-2"

@@ -28,26 +28,29 @@ if (appConfig.replaceUrl == "true") {
     mfeConfigJSON = JSON.parse(mfeConfigJSON);
 
     for (const mfeConf of Object.keys(mfeConfigJSON)) {
-        let url = mfeConfigJSON[mfeConf].url;
         let pathConf = '';
-        if (APP_ROUTES.indexOf(mfeConf) != -1) {
-            pathConf = APP_ROUTES.substring(
-                APP_ROUTES.indexOf("'", APP_ROUTES.lastIndexOf("path", APP_ROUTES.indexOf(mfeConf) - 1)) + 1,
-                APP_ROUTES.indexOf("'", APP_ROUTES.indexOf("'", APP_ROUTES.lastIndexOf("path", APP_ROUTES.indexOf(mfeConf) - 1)) + 1)
-            );
-        } else {
-            pathConf = mfeConf;
+        let url = mfeConfigJSON[mfeConf].url;
+        let portIndex = url.indexOf("localhost:");
+        let portConfig = url.substring(portIndex + 10, portIndex + 14);
+
+        for (const project of Object.keys(projects)) {
+
+            if (projects[project]["projectType"] == 'application' && project.indexOf('storybook') == -1) {
+
+                if (portConfig == projects[project]["architect"]["serve"]["options"]["port"]) {
+                    pathConf = projects[project]["architect"]["build"]["options"]["outputPath"].substring(5);
+
+                    if (mfeConf == "host") {
+                        url = url.replace(/((http|https):\/\/localhost:)\d{4}/g, appConfig.appBaseUrl);
+                    } else {
+                        url = url.replace(/((http|https):\/\/localhost:)\d{4}/g, appConfig.appBaseUrl + "/" + pathConf);
+                    }
+
+                    mfeConfigJSON[mfeConf].url = url;
+                    break;
+                }
+            }
         }
-        if (mfeConf == "host") {
-            url = url.replace(/((http|https):\/\/localhost:)\d{4}/g, appConfig.appBaseUrl);
-        } else if (mfeConf == "dashboard") {
-            url = url.replace(/((http|https):\/\/localhost:)\d{4}/g, appConfig.appBaseUrl + "/dashboard");
-        } else if (mfeConf == "rdsComponents") {
-            url = url.replace(/((http|https):\/\/localhost:)\d{4}/g, appConfig.appBaseUrl + "/rds-components");
-        } else {
-            url = url.replace(/((http|https):\/\/localhost:)\d{4}/g, appConfig.appBaseUrl + "/" + pathConf);
-        }
-        mfeConfigJSON[mfeConf].url = url;
     }
     mfeConfig = mfeConfig.substring(0, mfeConfig.indexOf("{")) + JSON.stringify(mfeConfigJSON, null, 2);
     mfeConfig = mfeConfig.replace(/\"url\":/g, "url:");
@@ -58,12 +61,18 @@ if (appConfig.replaceUrl == "true") {
     fs.writeFileSync(mfeFilePath, mfeConfig);
 }
 
-console.log('Building all projects...');
+console.log('Building project \x1b[32m rds-components \x1b[0m...');
+execSync(`ng build rds-components > output.log &`, { cwd: process.cwd(), stdio: 'inherit' });
+// let commandline = 'concurrently ';
 for (const project of Object.keys(projects)) {
-    if (projects[project]["projectType"] === 'application' && project.indexOf('storybook') == -1) {
-        execSync(`ng build ${project}`, { cwd: process.cwd(), stdio: 'inherit' });
+    if (projects[project]["projectType"] === 'application' && (project.indexOf('storybook') == -1 || project.indexOf('rds-components') == -1)) {
+        console.log('Building project \x1b[32m' + project + '\x1b[0m...');
+        execSync(`ng build ${project} > output.log &`, { cwd: process.cwd(), stdio: 'inherit' });
+        // commandline = commandline + ' \"ng build ' + project + '\"';
     }
 }
+// console.log('Building projects \x1b[32mALL\x1b[0m...');
+// execSync(`${commandline} > output.log &`, { cwd: process.cwd(), stdio: 'inherit' });
 
 console.log('Deleting temporary files...');
 if (appConfig.replaceUrl == "true") {

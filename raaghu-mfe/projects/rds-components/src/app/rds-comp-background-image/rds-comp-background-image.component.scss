@@ -1,9 +1,21 @@
-.title{
-    font-size: 70px;
-}
-.subtitle{
-    font-size: 18px;
-}
-.m-50{
-    margin-top: 50px;
+// .title{
+//     font-size: 70px;
+// }
+// .subtitle{
+//     font-size: 18px;
+// }
+// .m-50{
+//     margin-top: 50px;
+// }
+
+@media screen and (max-width:767px){
+    .sm-w-100{
+        width: 100% !important;
+    }
+    .bg-img{
+        height: 400px !important;
+    }
+    .sm-fs{
+        font-size: 14px !important;
+    }
 }

@@ -1,35 +1,39 @@
-<div class="contact-information">
-    <p class="heading">
-        Contact information
-    </p>
-    <div class="my-1">
-        <div class="label mb-1">
-            *Email address
+<form #contactUsForm="ngForm">
+    <div class="contact-information">
+        <h3 class="pb-3">
+            Contact information
+        </h3>
+        <div class="my-1">
+            <rds-input Title="Email Address" [TitleType]="'Top'" [isRequired]=true required size="'default'"
+                name="emailAddress" id="email" #emailAddress="ngModel" [pattern]="emailPattern"
+                [placeholder]="'Enter Email Address'" ngDefaultControl [(ngModel)]="contactData.email" required>
+            </rds-input>
+            <div class="form-control-feedback"
+                 *ngIf="contactData.errors">
+              <span class="text-danger" *ngIf="contactData.errors.required">
+                Email Address is required
+              </span>
+            </div>
         </div>
-        <rds-input size="'default'" name="emailAddress" id="txtUsername" #emailAddress="ngModel" [pattern]="emailPattern"
-            ngDefaultControl [(ngModel)]="EmailID" required>
-        </rds-input>
-    </div>
-    <div class="my-3">
-        <div class="label mb-1">
-            *Contact number
+        <div class="my-3">
+            <rds-input Title="Contact Number" [TitleType]="'Top'" [isRequired]=true required size="'default'"
+                [placeholder]="'Enter Contact Number '" name="contactNumber" id="contactnumber" #emailAddress="ngModel"
+                [pattern]="" ngDefaultControl [(ngModel)]="contactData.contactnumber" required>
+            </rds-input>
         </div>
-        <rds-input size="'default'" name="emailAddress" id="txtUsername" #emailAddress="ngModel" [pattern]="emailPattern"
-            ngDefaultControl [(ngModel)]="EmailID" required>
-        </rds-input>
-    </div>
-    <div class="my-4 pt-1 d-flex">
-        <div class="mr-3">
-            <rds-checkbox [checked]="false" [disabled]="false" [switch]="false"
-                [inline]="false" [isInputGroup]="false" [id]="'checkboxDefault'"></rds-checkbox>
+        <div class="mt-4 pt-1 d-flex">
+            <div class="mr-3">
+                <rds-checkbox [disabled]="false" [label]="'I have read the terms and conditions and agree to the sale of my personal information to the highest bidder.'" name="allowUser" [withLabel]="true"
+                        [switch]="false" [inline]="false"  [(ngModel)]="contactData.agree" 
+                        #allowUser="ngModel" [id]="'ssl'"></rds-checkbox>
+               
+            </div>
+            
         </div>
-        <div class="description w-75">
-            I have read the terms and conditions and agree to the sale of my personal information to the highest bidder.
+        <div class="pt-3">
+            <rds-button [block]="true" [size]="'medium'" [colorVariant]="'primary'"
+                [label]="translate.instant('Continue')" [disabled]="!contactUsForm.valid" (click)="contact()">
+            </rds-button>
         </div>
     </div>
-    <div class="my-4 pt-4">
-        <rds-button [block]="true" [size]="'medium'" [colorVariant]="'primary'"
-            [label]="translate.instant('Continue')" (click)="continue()">
-        </rds-button>
-    </div>
-</div>
+</form>

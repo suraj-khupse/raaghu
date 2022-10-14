@@ -62,7 +62,7 @@ export class RdsDatepickerComponent implements OnInit, ControlValueAccessor {
   public dates!: Date;
   newDate?: 'currentDate' | 'yesterdayDate' | 'lastSevendate' | 'lastFourteendate' | 'custom' = 'currentDate';
 
-  @Input() Label = "Date Range";
+  @Input() label :string= "";
   @Input() format: string = 'MM-dd-YYYY';
   selectedRange: any;
   @Output() change = new EventEmitter<any>();

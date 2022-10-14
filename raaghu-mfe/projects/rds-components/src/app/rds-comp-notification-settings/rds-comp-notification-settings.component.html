@@ -1,9 +1,9 @@
-<rds-modal [modalId]="'notification-settings'" [backdropstatic]="'static'" [modalClasses]="'lg'">
+<rds-modal [modalId]="'notification-settings'" [modalBackdrop]="'static'" [size]="'large'">
     <div modalheader class="d-flex w-100">
         <h5 class="modal-title"><b> {{translate.instant('Notification settings')}}</b></h5>
         <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <div Modalbody >
+    <div modalbody >
         <form #notificationSettingsForm="ngForm">
             <div class="row mb-5">
                 <div class="col-md-12">
@@ -31,8 +31,8 @@
             </div>
         </form>
     </div>
-    <div Modalfooter>
-        <rds-button [tooltipPlacement]="'top'" data-bs-dismiss="modal" [colorVariant]="'outline-primary'"
+    <div modalfooter>
+        <rds-button [tooltipPlacement]="'top'" data-bs-dismiss="modal" [colorVariant]="'primary'" [outlineButton]="true"
             [size]="'medium'" [label]="translate.instant('Cancel')" class="px-2">
         </rds-button>
         <rds-button class="mr-1" [id]="'notificationSave'" [size]="'medium'" iconHeight="15px" iconWidth="15px"

@@ -29,4 +29,4 @@ const Template: Story<RdsCompContactUsComponent> = (args: RdsCompContactUsCompon
     props: args
 });
 
-export const contactUs = Template.bind({});
+export const Default = Template.bind({});

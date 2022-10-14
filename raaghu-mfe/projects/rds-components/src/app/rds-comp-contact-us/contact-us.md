@@ -1,5 +1,5 @@
 ---
-slug: "/contact-us"
+slug: "/comp-contact-us"
 date: "2019-05-04"
 title: "Components > Contact-us"
 ---

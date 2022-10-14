@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { title } from 'process';
 
 @Component({
   selector: 'rds-team-member',
@@ -12,14 +11,12 @@ export class RdsTeamMemberComponent implements OnInit {
 
   ngOnInit(): void {
   }
-   @Input() displayType?: 'Basic' | 'Advance' = 'Basic' ; 
+   @Input() displayType: 'basic' | 'advanced' = 'basic' ; 
   @Input() teamItem =[
     {
       title: 'Tina',
       subTitle: 'Web Developer',
       imgLink:'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png?W=100',
-      twitterIcon: 'twitter',
-      linkdineIcon: 'linkedin',
       description: 'Lorem ipsum dolor sit amet conr adipiscing elit'
     } 
   ]

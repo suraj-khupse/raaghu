@@ -10,20 +10,20 @@
 </div> -->
 
 <div *ngIf="dataSource && dataSource.length > 0; else emptyTemplate">
-    <div class="px-4" *ngFor="let item of dataSource">
-        <div class="row w-100 border-bottom">
-            <div class="col-md-1 col-sm-2 py-2 d-flex align-items-center">
+    <div class="px-3" *ngFor="let item of dataSource">
+        <div class="d-flex align-items-center gap-3 border-bottom py-3">
+            <div>
                 <rds-badge size="small" [label]="'WARN'" [colorVariant]="'warning'"></rds-badge>
             </div>
-            <div class="col-md-11 col-sm-10 py-2">
-                <small>
+            <div>
+                <small class="text-break">
                     {{item}}
                 </small>
             </div>
         </div>
     </div>
     <div class="pt-2">
-        <rds-pagination [reset]="resetPagination" (onPageChange)="onPagination($event)" [recordsPerPage]="+10"
+        <rds-pagination [reset]="resetPagination" (onPageChange)="onPagination($event)" [recordsPerPage]="recordsPerPage"
             [totalRecords]="getTotalRecords()" [alignmentType]="alignmentType" [role]="role"></rds-pagination>
     </div>
 </div>

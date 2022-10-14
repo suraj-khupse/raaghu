@@ -1,5 +1,5 @@
 ---
-slug: "/subscription"
+slug: "/comp-subscription"
 date: "2019-05-04"
 title: "Components > subscription"
 ---

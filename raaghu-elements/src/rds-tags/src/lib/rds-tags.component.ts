@@ -6,13 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./rds-tags.component.scss']
 })
 export class RdsTagsComponent implements OnInit {
-  @Input() tagType?: string;
-
+  @Input() tagType: 'square' | 'round' = 'square';
   inputText!: string;
   tagArray!: any[];
-
-  @Input() roles: 'Basic' | 'TagWithScroll' = 'Basic';
-  @Input() colorVariant?: string;
+  @Input() role: 'basic' | 'tagWithScroll' = 'basic';
+  @Input() colorVariant: 'primary'| 'secondary'| 'danger'| 'success'| 'warning'|'info'| 'light'| 'dark'='light';
 
   constructor() { }
 

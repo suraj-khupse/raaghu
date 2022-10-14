@@ -1,8 +1,10 @@
-<div class="w-100 d-flex justify-content-center align-items-center text-white" *ngIf="imageUrl"
+<div class="w-100 d-flex justify-content-center align-items-center text-white bg-img" *ngIf="imageUrl"
     [ngStyle]="{backgroundImage:getImageUrl(),height:imageHeight+'px',backgroundSize:backgroundSize,backgroundRepeat:backgroundRepeat}"> 
-    <div class="text-center w-50">
-        <rds-label class="fs-1"  *ngIf="title" [label]="title"></rds-label>
-        <rds-label class="fs-5" *ngIf="subtitle" [label]="subtitle"></rds-label>
+    <div class="text-center w-50 sm-w-100 px-2">
+        <div class="pb-3">
+            <rds-label class="fs-1"  *ngIf="title" [label]="title"></rds-label>
+        </div>
+        <rds-label class="fs-5 sm-fs" *ngIf="subtitle" [label]="subtitle"></rds-label>
         <div class="mt-4" *ngIf="btnLabel">
             <rds-button [label]="btnLabel" [colorVariant]="'primary'"></rds-button>
         </div>

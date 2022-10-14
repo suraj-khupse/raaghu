@@ -1,5 +1,5 @@
 ---
-slug: "/demoui"
+slug: "/comp-demoui"
 date: "2019-05-04"
 title: "Components > demoui"
 ---

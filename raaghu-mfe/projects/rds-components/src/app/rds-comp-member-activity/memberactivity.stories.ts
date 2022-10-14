@@ -43,7 +43,7 @@ Default.args = {
         { value: 'Sales Executive', some: 'Sales Executive', status: 'Sales Executive', isSelected: false },
         { value: 'Senior Manager', some: 'Senior Manager', status: 'Senior Manager', isSelected: false },
         { value: 'Manager', some: 'Manager', status: 'Manager', isSelected: false },
-        { value: 'Associate', some: 'Associate', status: 'Associate', isSelected: false }
+        { value: 'Associate', some: 'Associate', status: 'Associate', isSelected: false }      
         ],
         memberActivityTableData: [
             { "cases": 10, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"50px\" ></div><div class=\"ms-2 mt-2\"><b>Brian</b><div>Software Developer </div></div></div>", "active": 38, "closed": 10, "rate": "<div class=\"HighRate\">92</div>" }

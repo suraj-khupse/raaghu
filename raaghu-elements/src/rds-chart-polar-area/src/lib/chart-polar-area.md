@@ -9,7 +9,7 @@ title: "Elements > Chart-polar-area"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/style-elements.css">
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
-#### Chart Polar Area
+#### Polar Area Chart 
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 
@@ -31,7 +31,7 @@ title: "Elements > Chart-polar-area"
           <div class="contents p-5">                                            
             <div class="row">
               <div class="col-md-12">
-                <img src="/images/polar-area-chart.png" class="img-fluid w-75">
+                <img src="/images/polar-area-chart1.png" class="img-fluid w-50">
               </div> 
             </div>
           </div>

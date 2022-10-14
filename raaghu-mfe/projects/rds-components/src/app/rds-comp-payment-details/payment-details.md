@@ -1,5 +1,5 @@
 ---
-slug: "/payment-details"
+slug: "/comp-payment-details"
 date: "2019-05-04"
 title: "Components > Payment-details"
 ---

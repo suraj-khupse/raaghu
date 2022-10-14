@@ -56,9 +56,9 @@ const Template: Story<RdsCompProductOverviewComponent> = (
   props: args,
 });
 
-export const Producroverview1 = Template.bind({});
+export const ProductOverview1 = Template.bind({});
 
-Producroverview1.args = {
+ProductOverview1.args = {
   productType: 'producroverview1',
   itemList: [
     { id: 1, color: '#FFFFFF' },
@@ -77,12 +77,12 @@ Producroverview1.args = {
   ],
 
 
-  sizeData : [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'},{value:'XXS'}]
+  sizeData : [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'}]
 };
 
-export const Producroverview2 = Template.bind({});
+export const ProductOverview2 = Template.bind({});
 
-Producroverview2.args = {
+ProductOverview2.args = {
   productType: 'producroverview2',
   listItems: [
     { id: 1, value: 'Only the best materials', some: 'value' },
@@ -95,7 +95,7 @@ Producroverview2.args = {
     { id: 2, color: '#6F6F6F' },
     { id: 3, color: '#16BE36' },
   ],
-  sizeData : [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'},{value:'XXS'}],
+  sizeData : [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'}],
 
   itemListbenefit: [{
     display_type: "Basic",
@@ -124,9 +124,9 @@ Producroverview2.args = {
   }
 ]
 };
-export const Producroverview3 = Template.bind({});
+export const ProductOverview3 = Template.bind({});
 
-Producroverview3.args = {
+ProductOverview3.args = {
   productType: 'producroverview3',
   listItems: [
     { id: 1, value: 'Multiple strap configurations', some: 'value' },
@@ -143,9 +143,9 @@ Producroverview3.args = {
     { id: 3, color: '#FF9900' },
   ]
 };
-export const Producroverview4 = Template.bind({});
+export const ProductOverview4 = Template.bind({});
 
-Producroverview4.args = {
+ProductOverview4.args = {
   productType: 'producroverview4',
   itemList: [
     { id: 1, color: '#E1CBA4' },

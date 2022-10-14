@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 export class Resource {
   public Name: string;
   public Displayname: string;
@@ -15,7 +16,8 @@ export class Resource {
   styleUrls: ['./rds-comp-basic-resource.component.scss']
 })
 export class RdsCompBasicResourceComponent implements OnInit {
-  constructor() { }
+  scopeBasics: any = {};
+  constructor(public translate:TranslateService) { }
   @Output()
   onBsicResourceSave = new EventEmitter<{BasicResource:any}>()
   @ViewChild('resourceForm') resourceForm: NgForm;

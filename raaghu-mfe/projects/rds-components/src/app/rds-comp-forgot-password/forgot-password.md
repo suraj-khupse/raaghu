@@ -1,5 +1,5 @@
 ---
-slug: "/Forgot-password"
+slug: "/comp-forgot-password"
 date: "2019-05-04"
 title: "Components > Forgot-password"
 ---

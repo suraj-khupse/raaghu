@@ -1,5 +1,5 @@
 ---
-slug: "/download-collection"
+slug: "/comp-download-collection"
 date: "2019-05-04"
 title: "Components > Download-collection"
 ---

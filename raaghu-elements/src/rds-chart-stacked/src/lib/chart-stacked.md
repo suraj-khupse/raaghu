@@ -41,12 +41,12 @@ title: "Elements > Chart-stacked"
 <div class="row  m-0 p-4">
 
 ```html
-<rds-chart-bar-horizontal
-  [chartWidth]="600"
+<rds-chart-stacked
+  [chartWidth]="1000"
   [chartLabels]="chartLabels"
   [ChartDataSets]="ChartDataSets"
   [chartOptions]="chartOptions"
-></rds-chart-bar-horizontal>
+></rds-chart-stacked>
 ```
 
 </div>

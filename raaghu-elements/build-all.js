@@ -4,12 +4,16 @@ const { execSync } = require('child_process');
 const projectRootFolder = 'src';
 
 const buildAllProjects = async (projects) => {
+  // let commandline = 'concurrently ';
   for (const project of Object.keys(projects)) {
     if (project != "storybook") {
       console.log('Building project ' + project + '...');
-      execSync(`ng build ${project}`, { cwd: process.cwd(), stdio: 'inherit' });
+      execSync(`ng build ${project} > output.log`, { cwd: process.cwd(), stdio: 'inherit' });
+      // commandline = commandline + ' \"ng build ' + project + '\"';
     }
   }
+  // console.log('Building projects \x1b[32mALL\x1b[0m...');
+  // execSync(`${commandline} > output.log`, { cwd: process.cwd(), stdio: 'inherit' });
 }
 
 function getProjects() {

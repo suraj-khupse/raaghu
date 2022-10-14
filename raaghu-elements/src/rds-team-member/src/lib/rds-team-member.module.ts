@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RdsAvatarModule } from '@libs/rds-avatar';
 import { RdsIconModule } from '@libs/rds-icon';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsProductImageModule } from '@libs/rds-product-image';
@@ -17,7 +18,8 @@ import { RdsTeamMemberComponent } from './rds-team-member.component';
     CommonModule,
     RdsProductImageModule,
     RdsLabelModule,
-    RdsIconModule
+    RdsIconModule,
+    RdsAvatarModule
   ],
   exports: [
     RdsTeamMemberComponent  ]

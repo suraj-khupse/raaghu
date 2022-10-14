@@ -1,0 +1,89 @@
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+  <div class="row">
+    <div class="col-md-12 pb-3 desktop-btn">
+      <rds-button
+        [label]="translate.instant(btnLabel)"
+        type="button"
+        [size]="'small'"
+        (click)="openCanvas()"
+        style="float: right"
+        [colorVariant]="'primary'"
+        [attr.aria-controls]="'AddDynamic'"
+        [icon]="'plus'" [iconHeight]="'12px'" iconWidth="12px"
+      >
+      </rds-button>
+    </div>
+  </div>
+  <div class="mobile-btn stbk-mobile-btn position-absolute bottom-0 end-0 my-5 me-5" style="z-index: 1;">
+    <!-- <rds-button
+        [label]=""
+        type="button"
+        [roundedButton]="true"
+        [size]="'small'"
+        (click)="openCanvas()"
+        style="float: right"
+        [colorVariant]="'primary'"
+        [attr.aria-controls]="'AddDynamic'"
+        [icon]="'plus'" iconHeight="12px" iconWidth="12px"
+      >
+      </rds-button> -->
+      <!-- <rds-fab-menu [listItems]="listItems1" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'" [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu> -->
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card border-0 p-2 h-100 rounded-0 card-full-stretch">
+         <!-- Main Navbar -->
+      <rds-nav-tab
+      [navtabsItems]="getNavTabItems()"
+      [horizontalAlignment]="'start'"
+      [verticalAlignment]="false"
+      [pills]="false"
+      [tabs]="true"
+      [fill]="false"
+      [activepage]="0"
+      [justified]="false"
+      (onClicktab)="btnClick($event)"
+    >
+    </rds-nav-tab>
+    <!-- Main Navbar tabs -->
+    <div
+      naveContent
+      class="row tab-content p-2 pt-3"
+      id="nav-tabContent"
+    >
+      <!-- Dynamic -->
+      <div
+        class="tab-pane fade show active"
+        id="dynamic-properties"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <div class="row">
+          <mfe-loader
+            id="table1"
+            [config]="rdsDynamicPropertiesMfeConfig"
+          ></mfe-loader>
+        </div>
+      </div>
+      <!-- Entity -->
+      <div
+        class="tab-pane fade"
+        id="dynamic-entity-properties"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <div class="row">
+          <mfe-loader
+            [config]="rdsDynamicEntityPropertiesMfeConfig"
+          ></mfe-loader>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+     
+  </div>
+</div>
+<!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+  <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+</ng-container>-->

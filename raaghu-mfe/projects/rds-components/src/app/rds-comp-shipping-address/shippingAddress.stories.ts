@@ -31,7 +31,7 @@ const Template: Story<RdsCompShippingAddressComponent> = (args: RdsCompShippingA
 export const Template1 = Template.bind({});
 
 Template1.args = {
-
+ 
      EmailID:'',
      Contact:'',
      firstName:'',
@@ -41,7 +41,15 @@ Template1.args = {
      address:'',
      state:'',
      country:'',
-     countryList: ["India","China","Canada","Japan","Australia","USA","UK"],
+     countryList:[
+        {value: "1", displayText: "India", isSelected: false}
+        ,{value: "2", displayText: "China", isSelected: false}
+        ,{value: "3", displayText: "Canada", isSelected: false}
+        ,{value: "4", displayText: "Japan", isSelected: false}
+        ,{value: "5", displayText: "Australia", isSelected: false}
+        ,{value: "6", displayText: "USA", isSelected: false}
+        ,{value: "7", displayText: "UK", isSelected: false}
+        ],
      postalCode:'',
     
     

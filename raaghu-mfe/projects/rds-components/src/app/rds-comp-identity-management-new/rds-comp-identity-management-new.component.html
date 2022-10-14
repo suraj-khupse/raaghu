@@ -1,0 +1,103 @@
+<form #identityDataForm="ngForm">
+    <!--Password Settings-->
+    <div class="border-bottom text-muted mt-3 fw-bold">
+        <rds-label [label]="'Password Settings'"></rds-label>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-4">
+                <!-- <rds-input size="default" [Title]="'Required Length (Min)'" [TitleType]="'Top'" inputType="text"
+                     [isRequired]=true required [disabled]="false"  [readonly]="false"
+                    [placeholder]="'Enter Length'" [(ngModel)]="identityData.requiredlength"
+                    ngDefaultControl>
+                </rds-input> -->
+            </div>
+        </div>
+        <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-4">
+                <rds-input size="default" [Title]="'Required Special Characters (Min)'" [TitleType]="'Top'"
+                    inputType="text" name="defaultAddress" [isRequired]=true required [disabled]="false"
+                    [readonly]="false" [placeholder]="'Enter Number'" [(ngModel)]="identityData.defaultAddress"
+                    #defaultAddress="ngModel" ngDefaultControl>
+                </rds-input>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <rds-checkbox [disabled]="false" [label]="'Required Non Alpha Numeric Characters'" name="nonAlpha"
+                [withLabel]="true" [switch]="false" [inline]="false" [(ngModel)]="identityData.nonAlpha"
+                #nonAlpha="ngModel" [id]="'ssl'"></rds-checkbox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <rds-checkbox [disabled]="false" [label]="'Required Upper Case'" name="uppercaserequired" [withLabel]="true"
+                [switch]="false" [inline]="false" [(ngModel)]="identityData.uppercase"
+                #uppercase="ngModel" [id]="'uppercase'"></rds-checkbox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <rds-checkbox [disabled]="false" [label]="'Required Lower Case'" name="lowercaserequired" [withLabel]="true"
+                [switch]="false" [inline]="false" [(ngModel)]="identityData.lowercase"
+                #lowercase="ngModel" [id]="'ssl'"></rds-checkbox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <rds-checkbox [disabled]="false" [label]="'Required Numbers'" name="numbers" [withLabel]="true"
+                [switch]="false" [inline]="false" [(ngModel)]="identityData.numbers"
+                #numbers="ngModel" [id]="'ssl'"></rds-checkbox>
+        </div>
+    </div>
+    <!--Lockout Settings-->
+    <div class="border-bottom text-muted mt-4 fw-bold">
+        <rds-label [label]="'Lockout Settings'"></rds-label>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <rds-checkbox [disabled]="false" [label]="'Enable For New Users'" name="newusers" [withLabel]="true"
+                    [switch]="false" [inline]="false" [(ngModel)]="identityData.newusers"
+                    #newusers="ngModel" [id]="'ssl'"></rds-checkbox>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6 sm-p-0">
+                <div class="form-group mb-4">
+                    <rds-input size="default" [Title]="'Lockout Duration (Seconds)'" [TitleType]="'Top'" inputType="text"
+                        name="lockoutDuration" [isRequired]=true required [disabled]="false"  [readonly]="false"
+                        [placeholder]="'Enter Length'" [(ngModel)]="identityData.lockoutDuration"
+                        #lockoutDuration="ngModel" ngDefaultControl>
+                    </rds-input>
+                </div>
+            </div>
+            <div class="col-md-6 sm-p-0">
+                <div class="form-group mb-4">
+                    <rds-input size="default" [Title]="'Max Failed Access Attempts'" [TitleType]="'Top'"
+                        inputType="text" name="maxAttmpts" [isRequired]=true required [disabled]="false"
+                        [readonly]="false" [placeholder]="'Enter Name'" [(ngModel)]="identityData.MaxAttmpts"
+                        #maxAttmpts="ngModel" ngDefaultControl>
+                    </rds-input>
+                </div>
+            </div>
+        </div>
+        <!--Signin Settings-->
+        <div class="border-bottom text-muted mt-3 fw-bold">
+            <rds-label [label]="'Signin Settings'"></rds-label>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-4">
+                    <rds-checkbox [disabled]="false" [label]="'Required Upper Case'" name="uppercase" [withLabel]="true"
+                        [switch]="false" [inline]="false" [(ngModel)]="identityData.uppercase"
+                        #uppercase="ngModel" [id]="'ssl'"></rds-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <rds-checkbox [disabled]="false" [label]="'Required Lower Case'" name="lowercase" [withLabel]="true"
+                        [switch]="false" [inline]="false" [(ngModel)]="identityData.lowercase"
+                        #lowercase="ngModel" [id]="'ssl'"></rds-checkbox>
+                </div>
+            </div> 
+</form>

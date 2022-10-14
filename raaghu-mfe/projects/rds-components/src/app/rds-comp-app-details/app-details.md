@@ -1,5 +1,5 @@
 ---
-slug: "/App-Details"
+slug: "/comp-app-details"
 date: "2019-05-04"
 title: "Components > App-Details"
 ---

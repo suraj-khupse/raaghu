@@ -1,5 +1,5 @@
 ---
-slug: "/alert-popup"
+slug: "/comp-alert-popup"
 date: "2019-05-04"
 title: "Components > Alert-Popup"
 ---

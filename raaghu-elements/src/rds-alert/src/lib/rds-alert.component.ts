@@ -7,59 +7,59 @@ declare var bootstrap: any;
 })
 export class RdsAlertComponent implements OnInit {
 
-  title = 'rds-alert';
 
-  // visibility true or false
-  @Input() visibility = false;
-
-  @Input()
-  alertOpen = true
-
-
+  // @Input() size: 'small' | 'medium' | 'large' = 'medium'
   @Input() size: 'small' | 'medium' | 'large' = 'medium'
-  // @Input()
-  // showicon =false
-  // @Input()
-  // showheading =true
-  @Input()
-  dismisable = true
-
-  // added icon in Alert Box
-
-  @Input() icon?: string;
-
-  @Input() align?: string;
-
+  @Input() dismissible: boolean = true
+  @Input() icon: string = '';
   @Input() label = 'A simple primary alert—check it out!';
-  @Input() heading = '';
   @Input() iconHeight: string = '20px';
   @Input() iconWidth: string = '20px';
   @Input() iconStroke: boolean = true;
   @Input() iconFill: boolean = false;
   @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' = 'primary';
   @Input() position: 'top' | 'bottom' = 'top';
-  @Output() onDismiss = new EventEmitter<Event>();
-  @Input() showAlertonLoad: boolean = false;
   @Input() delay: number = 0;
-  // tslint:disable-next-line:no-output-on-prefix
-  @Output() onShow = new EventEmitter<Event>(this.visibility = true);
+  @Output() onDismiss = new EventEmitter<Event>();
 
-  @ViewChild('alertElement', { static: true })
-  alertEl!: ElementRef;
   constructor() { }
 
   ngOnInit(): void {
-    if (this.showAlertonLoad) {
-      this.show();
-    }
+    this.hide();
   }
 
 
   public get classes(): string {
-    const mode = `alert alert-${this.colorVariant} alert-dismissible fade show`;
+    const mode = `alert alert-${this.colorVariant}`;
+    let mode1: string = '';
+    if (this.dismissible) {
+      mode1 = ' alert-dismissible'
+    }
     const mode2 = `${this.position === 'top' ? ' position-fixed top-0 start-0 m-3' : ' position-fixed bottom-0 start-0 m-3'}`;
-    // const mode3 = `${this.align}  `;
-    return mode + mode2;
+    return mode + mode2 + mode1;
+  }
+
+
+  hide(): void {
+    if (this.delay) {
+      setTimeout(() => {
+        this.closeAlert();
+      }, this.delay);
+    }
+  }
+
+
+  closeAlert() {
+    var element = document.getElementById('alert');
+    if(element){
+      var alert = new bootstrap.Alert(element);
+      if(alert){
+        alert.close();
+        this.onDismiss.emit();
+      }
+
+    }
+
   }
 
   public get iconSize(): string {
@@ -90,48 +90,4 @@ export class RdsAlertComponent implements OnInit {
     return mode3;
 
   }
-
-
-  public get withDismiss(): string {
-    let dismiss = 'd-none'
-    if (this.dismisable === true) {
-      dismiss = ''
-    }
-
-
-
-    return dismiss;
-
-  }
-
-  showAlert() {
-    this.alertOpen = true
-  }
-
-  show() {
-    const alert1 = new bootstrap.Alert(
-      this.alertEl.nativeElement,
-    );
-    if (this.colorVariant !== 'danger') {
-      setTimeout(() => {
-        this.closeAlert();
-      }, this.delay);
-    }
-
-  }
-
-
-  closeAlert() {
-    var element = document.getElementById('alert');
-    var alert = new bootstrap.Alert(element);
-    alert.dispose();
-    this.alertOpen = false;
-    this.onDismiss.emit();
-  }
-
-  // tslint:disable-next-line:typedef
-  close() {
-    this.visibility = true;
-  }
-
 }

@@ -7,7 +7,7 @@ title: "Elements > Card"
 
 
 
-#  **Card**
+#### Card
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 
@@ -203,20 +203,18 @@ title: "Elements > Card"
 
 
 <section class="py-4">
-<h6>Skeleton / Specifications</h6>
-<div class="py-3">                              
-<!-- Tab panes -->
+<h6>Skeleton/Specifications</h6>
+<div class="py-3">
  <div class="card border p-5">
   <div class="row">
-   <div class="col-md-6">
-    <img src="https://portal.raaghu.io/images/components/_cards/img-2.png" class="img-fluid">
-      </div>
-    <div class="col-md-6">
-   <img src="https://portal.raaghu.io/images/components/_cards/img-1.png" class="img-fluid">
-      </div>
-    </div>
-      </div>
-</div>
+      <div class="col-md-12">
+        <img src="/images/card-skeleto.png" class="img-fluid">
+     </div>
+   </div>
+   </div>
+ </div>
+</div>	
+
   </section>
   
 <!-- JavaScript Bundle with Popper -->

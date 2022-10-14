@@ -1,7 +1,7 @@
 <div class="" *ngIf="dataSource && dataSource.length > 0; else emptyTemplate">
-  <div class="row w-100 border-bottom" *ngFor="let item of dataSource">
+  <div class="row w-100 border-bottom m-0" *ngFor="let item of dataSource">
     <div class="col-9 py-3">
-      <span>
+      <span class="sm-word-wrap">
         {{ item.name }}
       </span>
     </div>

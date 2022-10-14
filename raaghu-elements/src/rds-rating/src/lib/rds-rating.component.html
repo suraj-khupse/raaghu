@@ -1,29 +1,12 @@
-<div [ngSwitch]="role">
-    <div *ngSwitchCase="'Basic'">
-        <div class="d-flex gap-2" [ngClass]="classes">
-            <div class="mt-1" [ngClass]="colorSelection">{{rating}}</div>
-            <ng-container *ngFor="let item of itemList">
-                <rds-icon [fill]="item.value <= rating.toFixed() ? true : false" [colorVariant]="colorVariant"
-                     [name]="'star'" [height]="height" [stroke]="true"
-                    [width]="width"></rds-icon>
-            </ng-container>
-            <span class="px-4 mt-1" [ngClass]="colorSelection" *ngIf="WithNoOfReviews" class="d-block m-1">See all
-                {{noOfReview}} review</span>
+<div class="d-flex gap-2" [ngClass]="classes">
+    <div class="mt-1" *ngIf="ratingPosition==='left'" [ngClass]="colorSelection">{{rating}}</div>
+    <ng-container *ngFor="let item of itemList">
+        <rds-icon [fill]="item.value <= rating.toFixed() ? true : false" [colorVariant]="colorVariant" [name]="'star'"
+            [height]="height" [stroke]="true" [width]="width"></rds-icon>
+    </ng-container>
+    <div class="mt-1" *ngIf="ratingPosition==='right'" [ngClass]="colorSelection">{{rating}}</div>
+    <span [ngClass]="colorSelection" *ngIf="withNoOfReviews&&noOfReview!==undefined" class="d-block mt-1">See
+        all
+        {{noOfReview}} review</span>
 
-        </div>
-    </div>
-    <div *ngSwitchCase="'Advanced'">
-        <div class="d-flex gap-2" [ngClass]="classes">
-
-            <ng-container *ngFor="let item of itemList">
-                <rds-icon [fill]="item.value <= rating.toFixed()? true: false"  [colorVariant]="colorVariant"
-                   [name]="'star'" [height]="height" [stroke]="true"
-                    [width]="width" ></rds-icon>
-            </ng-container>
-            <div class="mt-1" [ngClass]="colorSelection">{{rating}}</div>
-            <span class="px-4 mt-1" [ngClass]="colorSelection" *ngIf="WithNoOfReviews" class="d-block ">See all
-                {{noOfReview}} review</span>
-
-        </div>
-    </div>
 </div>

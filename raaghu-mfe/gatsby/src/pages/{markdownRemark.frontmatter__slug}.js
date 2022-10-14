@@ -1,17 +1,237 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
 export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
+  data,// this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
 
-  console.log(markdownRemark);
+  // Accissing element list here
+  const elementsList = JSON.parse(JSON.stringify(data.allDirectory.nodes)); 
 
+  const componentsList = [];
+  const componentsExcludesList = ["-shimmer", "nents","client-basics"];
+
+  const elementsLists = [];
+
+  const elementsExcludesList=["elements","calendar"]
+  elementsList.forEach((item) => {
+    if (
+      item.name.includes("rds-") &&
+      !componentsExcludesList.some((element) => item.name.includes(element)) &&
+      !componentsList.find((x) => x.name === item.name) &&
+      !elementsExcludesList.some((element) => item.name.includes(element))
+    ) {
+      const _item = {
+        name: item.name,
+        url: item.name.substring(4),
+        displayName: item.name.substring(4).replace(/-/g, " "),
+      };
+      elementsLists.push(_item);
+    }
+  });
+  
+  elementsLists.sort((a, b) => {
+    let fa = a.displayName.toLowerCase(),
+      fb = b.displayName.toLowerCase();
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+
+  // Adding comp list in markdown file
+
+  // const componentsList = [];
+  // const componentsExcludesList = ["-shimmer", "nents","client-basics"];
+  elementsList.forEach((item) => {
+    if (
+      item.name.includes("rds-comp") &&
+      !componentsExcludesList.some((element) => item.name.includes(element))
+    ) {
+      const _item = {
+        name: item.name,
+        url: item.name.substring(9),
+        displayName: item.name.substring(9).replace(/-/g, " "),
+      };
+      componentsList.push(_item);
+    }
+  });
+
+  componentsList.sort((a, b) => {
+    let fa = a.displayName.toLowerCase(),
+      fb = b.displayName.toLowerCase();
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+
+  // page level access data
+  const pageLists = [];
+  // find out pages names.
+  const pageexcludesList = [
+    "rds-",
+    "src",
+    "lib",
+    "app",
+    "assets",
+    "environments",
+    "root",
+    "e2e",
+    "accordion-item",
+    "scrollspy-item",
+    "projects",
+    "shared",
+    "data",
+    "styles",
+    "state",
+    "multiple-mfe",
+    "projects",
+    ".storybook",
+    "modals",
+    "sidenav",
+    "selected-product",
+    "ele-preview",
+    "shimmer",
+    "cookieconsent",
+    "ele-preview",
+    "webhooks-subscription-shimmer",
+    "cookieconsent",
+    "utils",
+    "util",
+    "-shimmer",
+    "rdc-comp-api-scope-basic",
+    "rdc-comp-api-scope-resource",
+    "test",
+    "testing",
+    "mla",
+    "date-fns",
+    "day",
+    "model",
+    "moment",
+    "ng-add",
+    "themes",
+    "event",
+    "home",
+    "date-adapters",
+    "date-adapter",
+    "basicresource",
+    "common",
+    "host",
+    "modules",
+    "month",
+    "i18n",
+    "service",
+    "DownloadData",
+    "product-list",
+    "products",
+    "api-claims",
+    "api-properties",
+    "api-basics",
+    "api-secrets",
+    "authority-delegations",
+    "claim-types",
+    "claims",
+    "edit-language-text",
+    "language-storybook",
+    "login-attempts",
+    "manage-linked-accounts",
+    "modal",
+    "my-settings",
+    "schematics",
+    "visual-settings",    
+  ];
+  elementsList.forEach((item, index, self) => {
+    if (
+      !pageexcludesList.some((element) => item.name.includes(element)) &&
+      index === self.findIndex((t) => t.name === item.name)
+    ) {
+      const _item = {
+        name: item.name,
+        url: item.name,
+        displayName: item.name.replace(/-/g, " "),
+      };
+      pageLists.push(_item);
+    }
+  });
+
+
+  pageLists.sort((a, b) => {
+    // let fa = a.name.toLowerCase(),
+    //   fb = b.name.toLowerCase();
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    }
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+
+
+
+
+  // function for Next and previous button
+
+  function backToPrev(){
+   let data=[];
+   let type=frontmatter.title.split('>')[0].trim();
+
+  switch(type){
+    case "Components":
+      data=componentsList;
+      break;
+      case "Elements":
+        data=elementsLists;
+        break;
+        case "Pages":
+          data=pageLists;
+          break;
+  }
+    const index=data.findIndex((x)=>x.url.toLowerCase()===(frontmatter.slug.split('/')[1]).toLowerCase());
+    if(index>0){
+      navigate('/'+data[index-1].url)
+    }
+    console.log(index);
+
+
+  }
+  function goToNext(){
+
+    let data=[];
+   let type=frontmatter.title.split('>')[0].trim();
+
+  switch(type){
+    case "Components":
+      data=componentsList;
+      break;
+      case "Elements":
+        data=elementsLists;
+        break;
+        case "Pages":
+          data=pageLists;
+          break;
+  }
+   
+
+    const index=data.findIndex((x)=>x.url.toLowerCase()===(frontmatter.slug.split('/')[1]).toLowerCase());
+    if(index<data.length-1){
+      navigate('/'+data[index+1].url)
+    }
+    console.log(data,frontmatter);
+
+  }
   return (
     <div>
       <Navbar />
@@ -107,7 +327,7 @@ export default function Template({
           <div className="col-md-8 offset-2 justify-content-between bg-white">
               <div>
                 <div className="bg-white bottom-0 d-flex justify-content-between page-navigation position-fixed py-4 px-4 footerbutton">
-                  <a href="/" className="text-decoration-none">
+                  <a onClick={backToPrev} className="text-decoration-none">
                     <ul className="d-flex align-items-center">
                       <li>
                         <img src="images/prev-arrow.png"  alt="next-arrow" className="" width="40px" />
@@ -115,19 +335,19 @@ export default function Template({
                       <li>
                         <nav className="pt-3 px-4">
                           <div>
-                            <small className="text-uppercase">Back to</small>
+                            <small className="text-uppercase" onClick={backToPrev}>Back to</small>
                           </div>
-                          <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
-                              <h6> {frontmatter.title} </h6>
-                            </li>
+                          <ol className="breadcrumb">               
+                              <li className="breadcrumb-item">
+                              {frontmatter.data}
+                            </li> 
                           </ol>
                         </nav>
                       </li>
                     </ul>
                   </a>
                   <div>
-                    <a href="_alert.html" className="text-decoration-none">
+                    <a  onClick={goToNext} className="text-decoration-none">
                       <ul className="d-flex align-items-center">
                         <li>
                           <nav className="pt-3 px-4">
@@ -138,7 +358,8 @@ export default function Template({
                             </div>
                             <ol className="breadcrumb">
                               <li className="breadcrumb-item">
-                                <h6> Alert </h6>{" "}
+                              {frontmatter.data}
+
                               </li>
                             </ol>
                           </nav>
@@ -159,6 +380,12 @@ export default function Template({
 }
 export const pageQuery = graphql`
   query ($id: String!) {
+
+    allDirectory(skip: 4) {
+      nodes {
+        name
+      }
+    }
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {

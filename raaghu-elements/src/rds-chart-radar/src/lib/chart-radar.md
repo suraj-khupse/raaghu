@@ -9,7 +9,7 @@ title: "Elements > Chart-radar"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/style-elements.css">
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
-#### Chart Radar
+#### Radar Chart 
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 

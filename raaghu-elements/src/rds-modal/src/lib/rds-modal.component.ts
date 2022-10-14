@@ -9,6 +9,18 @@ export class RdsModalComponent implements OnInit, AfterViewInit {
 
   onChange!: (value: string) => void;
   onTouched!: () => void
+  @Input() showModalHeader: boolean = true;
+  @Input() showModalFooter: boolean = true;
+  @Input() modalId: string = 'modalId';
+  @Input() modalBackdrop: boolean | 'static' = false;
+  @Output() onShow = new EventEmitter<Event>();
+  @Output() onClose = new EventEmitter<Event>();
+  @Input() size: 'small' | 'large' | 'extra-large' | 'fullscreen' | 'default' = 'default';
+  @Input() scrollable: boolean = false;
+  @Input() verticallyCenterd: boolean = false;
+  @Input() modalAnimation: 'modal fade' | 'modal fade-scale' | 'modal fade-rotate' | 'modal fade-flip' = 'modal fade';
+
+
 
   constructor() { }
 
@@ -18,57 +30,55 @@ export class RdsModalComponent implements OnInit, AfterViewInit {
       var myModalEl = document.getElementById(this.modalId);
       if (myModalEl) {
         const that = this;
-        myModalEl.addEventListener('hidden.bs.modal', function (event) {
-          that.onClose.emit();
-        })
+        // myModalEl.addEventListener('hidden.bs.modal', function (event) {
+        //   that.onClose.emit();
+        // });
+        // myModalEl.addEventListener('show.bs.modal', function (event) {
+        //   that.onShow.emit();
+        // })
       }
     }
   }
 
 
   ngOnInit(): void {
+    if (this.modalId) {
+      var myModalEl = document.getElementById(this.modalId);
+      if (myModalEl) {
+        const that = this;
+        // myModalEl.addEventListener('hidden.bs.modal', function (event) {
+        //   that.onClose.emit();
+        // });
+        // myModalEl.addEventListener('show.bs.modal', function (event) {
+        //   that.onShow.emit();
+        // })
+      }
+    }
   }
 
 
 
-  @Input()
-  isModalHeader: boolean = true;
-
-  @Input()
-  isModalFooter: boolean = true;
-
-  @Input()
-  label?: string;
-
-  @Input() title?: string;
-  @Input() content?: string;
-
-  @Input()
-  modalId?: string;
-  @Input()
-  backdropstatic?: any;
-  @Input() modalData: any;
-  @Output()
-  onShow = new EventEmitter<Event>();
-  @Output()
-  onClose = new EventEmitter<Event>();
-  @Output() onClick = new EventEmitter();
-  @Input()
-  modalClasses: 'centered' | 'scrollable' | 'xl' | 'lg' | 'sm' = 'centered';
-  @Input()
-  modalAnimation: 'modal fade' | 'modal fade-scale' | 'modal fade-rotate' | 'modal fade-flip' = 'modal fade';
-  @Input()
-  modalheader!: TemplateRef<any>;
-  @Input()
-  Modalbody!: TemplateRef<any>
-  @Input()
-  Modalfooter!: TemplateRef<any>
-
-  public get classes(): string {
-    var classes = `modal-dialog modal-${this.modalClasses === 'centered' ? 'dialog-centered' :
-      this.modalClasses === 'scrollable' ? 'dialog-scrollable' : this.modalClasses === 'xl' ? 'xl' :
-        this.modalClasses === 'lg' ? 'lg' : this.modalClasses === 'sm' ? 'sm' : 'centered'}`;
-    return classes;
+  public get classes(): string[] {
+    const styleClasses: string[] = ['modal-dialog'];
+    if (this.scrollable) {
+      styleClasses.push('modal-dialog-scrollable');
+    }
+    if (this.verticallyCenterd) {
+      styleClasses.push('modal-dialog-centered');
+    }
+    if (this.size === 'small') {
+      styleClasses.push('modal-sm');
+    }
+    if (this.size === 'large') {
+      styleClasses.push('modal-lg');
+    }
+    if (this.size === 'extra-large') {
+      styleClasses.push('modal-xl');
+    }
+    if (this.size === 'fullscreen') {
+      styleClasses.push('modal-fullscreen');
+    }
+    return styleClasses;
   }
 
   registerOnChange(fn: any): void {

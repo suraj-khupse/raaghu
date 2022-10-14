@@ -7,30 +7,17 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 })
 export class RdsCardComponent implements OnInit {
 
-  //@Input() width?: string = "100%";
-  //@Input() height?: string = "100%";
   @Input() custClass: boolean = true;
   @Input() custSidePadding: boolean = true;
   @Input() customTopBottom: boolean = true;
   @Input() showHeader: boolean = true;
   @Input() showBody: boolean = true;
   @Input() showFooter: boolean = true;
+  @Input() borderColor: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'light' | 'dark' | undefined = undefined;
+  @Input() colorVariant: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'light' | 'dark' | undefined = undefined;
 
-  @Input() borderCard!: boolean;
-  //@Input() Recommended!:boolean;
-  @Input()
-  header!: TemplateRef<any>
-  @Input()
-  footer!: TemplateRef<any>
-  @Input()
-  body!: TemplateRef<any>
   //@Input() cardWidth?: number;
-  @Input() colorVariant?: string='light';
-  @Input()
-  Data: any = {
-    headerTitle: "Header Title",
-    cardDescription: "Some quick example text to build on the card title and make up the bulk of the card\'s content"
-  }
+
 
   constructor() { }
 
@@ -38,62 +25,47 @@ export class RdsCardComponent implements OnInit {
   }
 
   public get cardClasses(): string[] {
-    let custClasses = ['card ']
-    const bgColor = `${this.colorVariant}`;
-    if (bgColor === 'Standard' && this.borderCard === true) {
-      custClasses.push(' subscription-border-blue');
-    } else if (bgColor === 'Premium' && this.borderCard === true) {
-      custClasses.push(' subscription-border-purple');
-    } else if (bgColor === 'Basic' && this.borderCard === true) {
-      custClasses.push(' subscription-border-green');
-    } else if (bgColor === 'Professional' && this.borderCard === true) {
-      custClasses.push(' subscription-border-orangered');
-    } else if (this.borderCard === false) {
-      custClasses.push(' border-0');
+    let custClasses:string[] = []
+    if (this.colorVariant) {
+      custClasses.push('text-bg-' + `${this.colorVariant}`);
     }
-    else{
-      custClasses.push('');
+    if (this.borderColor) {
+      custClasses.push('border-' + `${this.borderColor}`);
+
     }
     return custClasses
   }
+
+
   public get cardBody(): string[] {
-    let custClass = ['card-body']
-    if (this.custClass === true) {
-      custClass = ['p-0', 'body-border']
-    }
-    else{
-      custClass = ['']
-    }
-    if (this.custSidePadding === true) {
-      custClass = ['px-0', 'body-border']
-    }
-    else{
-      custClass = ['']
-    }
-    
-    if(this.customTopBottom === true){
-      custClass = ['py-0','px-0']
-    }
-    else{
-      custClass = ['']
-    }
+    let custClass: string[] = []
+    // if (this.custClass === true) {
+    //   custClass = ['p-0', 'body-border']
+    // }
+    // if (this.custSidePadding === true) {
+    //   custClass = ['px-0', 'body-border']
+    // }
+
+    // if (this.customTopBottom === true) {
+    //   custClass = ['py-0', 'px-0']
+    // }
     return custClass
   }
 
-  public get title(): string[] {
-    let custClasses = ['card-title']
+  // public get title(): string[] {
+  //   let custClasses = ['card-title']
 
-    return custClasses
-  }
+  //   return custClasses
+  // }
 
-  
-  public get classes(): string[] {
-    let classes: string[] = [];
-    const bgColor = `${this.colorVariant}`;
-    classes.push(bgColor);
-    
-    return classes;
-  }
+
+  // public get classes(): string[] {
+  //   let classes: string[] = [];
+  //   const bgColor = `${this.colorVariant}`;
+  //   classes.push(bgColor);
+
+  //   return classes;
+  // }
 
 
 }

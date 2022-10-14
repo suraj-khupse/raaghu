@@ -1,5 +1,5 @@
 ---
-slug: "/Audit-Logs"
+slug: "/comp-audit-logs"
 date: "2019-05-04"
 title: "Components > Audit-Logs"
 ---

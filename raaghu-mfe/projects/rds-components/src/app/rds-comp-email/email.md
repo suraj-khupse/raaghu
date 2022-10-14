@@ -1,5 +1,5 @@
 ---
-slug: "/Email"
+slug: "/comp-email"
 date: "2019-05-04"
 title: "Components > Email"
 ---

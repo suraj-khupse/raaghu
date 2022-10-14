@@ -57,7 +57,19 @@ export class RdsDoubleRangeComponent implements OnInit {
     }
     this.rangeValueOne.emit(this.val1)
     this.fillColor();
-    if(this.val1 >= this.val2){
+    if (this.val1 == 0 && this.val2 == 0) {
+      this.valueDisabled1 = true;
+      this.valueDisabled2 = false;
+      this.rangeZIndex1 = 0;
+      this.rangeZIndex2 = 1;
+    } 
+    else if (this.val1 == 100 && this.val2 == 100) {
+      this.valueDisabled1 = false;
+      this.valueDisabled2 = true;
+      this.rangeZIndex1 = 1;
+      this.rangeZIndex2 = 0;
+    } 
+    else if(this.val1 >= this.val2){
       this.val1 <= this.val2;
       this.valueDisabled1 = true;
       this.valueDisabled2 = false;
@@ -77,6 +89,18 @@ export class RdsDoubleRangeComponent implements OnInit {
     }
     this.rangeValueTwo.emit(this.val2)
     this.fillColor();
+    if (this.val1 == 0 && this.val2 == 0) {
+      this.valueDisabled1 = true;
+      this.valueDisabled2 = false;
+      this.rangeZIndex1 = 0;
+      this.rangeZIndex2 = 1;
+    } 
+    else if (this.val1 == 100 && this.val2 == 100) {
+      this.valueDisabled1 = false;
+      this.valueDisabled2 = true;
+      this.rangeZIndex1 = 1;
+      this.rangeZIndex2 = 0;
+    } else
     if(this.val2 <= this.val1){
       this.val1 <= this.val2;
       this.valueDisabled2 = true;

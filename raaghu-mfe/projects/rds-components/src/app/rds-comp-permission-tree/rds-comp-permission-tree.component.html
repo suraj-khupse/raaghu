@@ -21,7 +21,7 @@
             <div class="d-flex align-items-center position-relative"
                 [ngClass]="{ 'active' : activepage===i, 'child' :  !collapsed }"
                 (click)="onMenuWithChildrenClick(i,node.children[0])" [id]="'menuWithChildren'+i">
-                <rds-icon [stroke]="true" class="mt-3 me-2"  [name]="node.expanded?'chevron_down_arrow':'chevron_right_arrow' "
+                <rds-icon [stroke]="true" class="mt-3 me-2"  [name]="node.expanded?'chevron_down':'chevron_right'"
                     [height]="'13px'" [width]="'13px'" (click)="node.expanded=!node.expanded"
                     *ngIf="node.children.length>0"></rds-icon>
                 <div class="node-dot position-relative" *ngIf="TreeType.checkbox">

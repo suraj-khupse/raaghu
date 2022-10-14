@@ -65,3 +65,7 @@ Thumbs.db
 # gatbsy
 .cache/
 public
+
+# Output file
+$null
+output*.log

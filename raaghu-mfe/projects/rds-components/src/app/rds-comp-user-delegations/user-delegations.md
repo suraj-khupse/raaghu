@@ -1,5 +1,5 @@
 ---
-slug: "/user-delegations"
+slug: "/comp-user-delegations"
 date: "2019-05-04"
 title: "Components > User-delegations"
 ---

@@ -1,5 +1,5 @@
 ---
-slug: "/billing-address"
+slug: "/comp-billing-address"
 date: "2019-05-04"
 title: "Componets > Billing-address"
 ---

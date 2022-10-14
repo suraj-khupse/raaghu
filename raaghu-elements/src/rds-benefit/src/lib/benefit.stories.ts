@@ -19,8 +19,14 @@ export default {
       providers: [
         FormBuilder
       ],
-    })
-  ] 
+     })
+  ] ,
+  argTypes: {
+    display_type: {
+      options: ['Basic', 'benefit_type1', 'benefit_type2', 'benefit_type3', 'benefit_type4', 'benefit_type5'],
+      control: { type: 'select' }
+    },
+  }
 } as Meta;
 
 const Template: Story<RdsBenefitComponent> = (args: RdsBenefitComponent) => ({
@@ -29,54 +35,54 @@ const Template: Story<RdsBenefitComponent> = (args: RdsBenefitComponent) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  display_type: 'Basic',
+  display_type: 'Default',
   item:
   {
     id: 1,
-    icon: 'roles',
-    iconHeight: "25px",
-    iconWidth: "25px",
+    icon: 'currency_dollar_circle',
+    iconHeight: "35px",
+    iconWidth: "35px",
     title: "International delivery",
     description: "Get your order in 2 years"
   }
 }
 
-export const benefit_type1 = Template.bind({});
-benefit_type1.args = {
-  display_type: 'benefit_type1',
+export const LeftAligned = Template.bind({});
+LeftAligned.args = {
+  display_type: 'Left Aligned',
   item:
   {
     id: 3,
-    icon: 'users',
-    iconHeight: "25px",
-    iconWidth: "25px",
+    icon:"../assets/benefit_type1.svg",
+    iconHeight: "40px",
+    iconWidth: "40px",
     position: "start",
     title: "Free delivery all year long",
     description: "Name another place that offers year long free delivery? We'll be waiting. Order now and you'll get delivery absolutely free."
   }
 }
 
-export const benefit_type2 = Template.bind({});
-benefit_type2.args = {
-  display_type: 'benefit_type2',
+export const CentreAligned = Template.bind({});
+CentreAligned.args = {
+  display_type: 'Centre Aligned',
   item:
   {
     id: 6,
     iconHeight: "40px",
     iconWidth: "40px",
-    icon: 'users',
+    icon: 'truck',
     title: "Free shipping",
     description: "Free delivery is our main part of company we just price it into the products. Someone's paying for it, and it's not us."
   }
 }
 
-export const benefit_type3 = Template.bind({});
-benefit_type3.args = {
-  display_type: 'benefit_type3',
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  display_type: 'With Label',
   item:
   {
     id: 7,
-    icon: 'users',
+    icon: "../assets/benefit_type1.svg",
     status: 'Active',
     iconHeight: "40px",
     iconWidth: "40px",
@@ -85,13 +91,13 @@ benefit_type3.args = {
   }
 }
 
-export const benefit_type4 = Template.bind({});
-benefit_type4.args = {
-  display_type: 'benefit_type4',
+export const WithoutLabel = Template.bind({});
+WithoutLabel.args = {
+  display_type: 'Without Label',
   item:
   {
     id: 7,
-    icon: 'users',
+    icon: 'truck',
     iconHeight: "40px",
     iconWidth: "40px",
     title: 'Free shipping world wide',
@@ -99,13 +105,13 @@ benefit_type4.args = {
   }
 }
 
-export const benefit_type5 = Template.bind({});
-benefit_type5.args = {
-  display_type: 'benefit_type5',
+export const HeadingWithIcon = Template.bind({});
+HeadingWithIcon.args = {
+  display_type: 'Heading With Icon',
   item:
   {
     id: 7,
-    icon: 'users',
+    icon: 'truck',
     iconHeight: "40px",
     iconWidth: "40px",
     title: 'Free delivery all year long',

@@ -1,5 +1,5 @@
 ---
-slug: "/Page Not Found"
+slug: "/comp-page-not-found"
 date: "2019-05-04"
 title: "Components > Page Not Found"
 ---

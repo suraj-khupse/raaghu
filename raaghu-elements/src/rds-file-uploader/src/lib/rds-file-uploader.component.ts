@@ -108,7 +108,7 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
 
   public get changeSize(): string[] {
 
-    var classList = ['form-group m-2']
+    var classList = ['form-group my-2']
 
     if (this.size === 'small') {
       var selectSize = 'small'

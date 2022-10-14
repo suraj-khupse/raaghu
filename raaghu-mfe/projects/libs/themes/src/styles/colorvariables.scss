@@ -220,6 +220,7 @@ html {
 
   .dropdown-item.active {
     background-color: tint-color($primary, 90%);
+    color:$primary;
 
     span.hr-line {
       color: $primary;
@@ -1506,7 +1507,7 @@ html[theme=dark] {
   /*input search properrties*/
   $input-bg: $dark-100;
   $input-border-color: $input-bg;
-  $form-select-bg: $input-bg;
+  $form-select-bg: $input-bg !default;
   $form-select-border-color: $input-bg;
 
   $form-group-bg-color: $gray-200 !default;

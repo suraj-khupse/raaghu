@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy stageui.raaghu.io
+name: "Build and deploy stageui.raaghu.io"
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ env:
   AZURE_WEBAPP_NAME: raaghumfestageuiapp   # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.15.0'                # set this to the node version to use
-  NODE_OPTIONS: "--max_old_space_size=5120"
+  NODE_OPTIONS: "--max_old_space_size=6144"
 
 permissions:
   contents: read

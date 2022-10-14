@@ -1,26 +1,11 @@
-<!-- <div [ngClass]="cardClasses" [ngStyle]="{'background-color':backgroundColor , 'color': color ,'width':width,'border-radius': borderRadious +'px'}">
-  <ng-container [ngTemplateOutlet]="header"></ng-container>
-   <div [ngClass]="cardBody" [ngStyle]="{'background-color':bodybackGroundColor,'padding':Paddig+'px'}">
-    <ng-container [ngTemplateOutlet]="body"></ng-container>
-      <ng-container [ngTemplateOutlet]="footer"></ng-container>
-   </div>
- </div>
-  -->
-
-  <!-- <div class="text-center" *ngIf="Recommended">
-    <span class="small badge badge-warning" size="small">Recommended</span>
-  </div> -->
-  <div [ngClass]="cardClasses">
-    <div [ngClass]="classes" *ngIf="showHeader">
-      <ng-container [ngTemplateOutlet]="header" [ngTemplateOutletContext]="{$implicit: Data}"></ng-container>
-      <ng-content select="[header]"></ng-content>
-    </div>
-    <div class="card-body" [ngClass]="cardBody" *ngIf="showBody">
-      <ng-container [ngTemplateOutlet]="body" [ngTemplateOutletContext]="{$implicit: Data}"></ng-container>
-      <ng-container [ngTemplateOutlet]="footer" [ngTemplateOutletContext]="{$implicit: Data}"></ng-container>
-      <ng-content select="[body]"></ng-content>
-    </div>
-    <div *ngIf="showFooter">
-      <ng-content select="[footer]"></ng-content>
-    </div>
+<div [ngClass]="cardClasses" class="card">
+  <div *ngIf="showHeader" >
+    <ng-content select="[header]"></ng-content>
   </div>
+  <div class="card-body" [ngClass]="cardBody" *ngIf="showBody">
+    <ng-content select="[body]"></ng-content>
+  </div>
+  <div *ngIf="showFooter" >
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

@@ -20,7 +20,7 @@ const Template: Story<RdsChartRadarComponent> = (args: RdsChartRadarComponent) =
 export const Default = Template.bind({});
 Default.args = {
 
-    ChartDataSets: [
+    chartDataSets: [
         {
             label: 'Dataset 1',
             data: [0.5, 0.8, 0.4, 0.6, 0.7, 0.2, 0.9],
@@ -53,9 +53,10 @@ Default.args = {
     ],
     chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'],
     chartWidth: 400,
-
+    chartHeight: 400,
     chartOptions: {
-        responsive: false,
+        responsive: true,
+        maintainAspectRatio: false,
         chartArea: {
             backgroundColor: 'rgba(251, 85, 85, 0.4)'
         },
@@ -66,8 +67,8 @@ Default.args = {
                 text: 'Radar Chart'
             },
             legend: {
-                position: 'left',
-                align: "start",
+                position: 'top',
+                align: "center",
 
                 pointStyle: 'rectRot',
                 pointRadius: 5,

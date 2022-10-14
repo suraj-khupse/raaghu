@@ -20,9 +20,9 @@ export default {
 const Template1: Story<RdsDatepickerComponent> = (args: RdsDatepickerComponent) => ({
   props: args,
 });
-export const Advanced = Template1.bind({});
-Advanced.args = {
-  Label: 'Date Range',
+export const advanced = Template1.bind({});
+advanced.args = {
+  label: 'Date Range',
   datePickerType: 'advanced'
 }
 

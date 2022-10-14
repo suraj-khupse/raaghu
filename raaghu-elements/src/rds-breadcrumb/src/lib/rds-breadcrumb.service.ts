@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 export interface BreadcrumbsItems {
   name: string;
   route: string;
-  iconClass: string;
+  icon: string;
   iconFill?: boolean,
   iconStroke?: boolean,
   iconHeight: string;

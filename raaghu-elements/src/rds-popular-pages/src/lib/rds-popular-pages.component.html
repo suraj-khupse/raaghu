@@ -1,44 +1,40 @@
 
     <label class="text-muted">
-        POPULAR PAGES
-    </label>
-    <table class="table w-50 mt-3" >
-        <tbody>
-          <tr class=" border-top" *ngFor="let item of customPopularPageItems ;index as i">
-            <td class="widthTdIcon p-3"> 
-                <rds-icon
-                height="23"
-                [fill]="false"
-                [stroke]="true"
-                width="23"
-                type=""
-                [name]="item.icon"
-                colorVariant="">
-            </rds-icon>
-          </td>
-          <td class="w-100">
-        <div class="fw-bold">
+      POPULAR PAGES
+  </label>
+  <div>
+      <div class="border-bottom d-flex align-items-center py-2 gap-2" *ngFor="let item of customPopularPageItems ;index as i">
+        <div class="p-3"> 
+            <rds-icon
+            height="23"
+            [fill]="false"
+            [stroke]="true"
+            width="23"
+            type=""
+            [name]="item.icon">
+        </rds-icon>
+      </div>
+      <div class="w-100">
+        <div class="fw-bold text-muted">
         {{item.title}}
         </div>
-        <div>
+        <div class="text-muted">
         {{item.subtitle}}
         </div>
-            </td>
-            <td>
-              <a [href]="item.route"> 
-              <rds-icon
-              height="47"
-              [fill]="false"
-              [stroke]=""
-              width="7"
-              type=""
-              name="rightArrow"
-              colorVariant=""
-              class="pointerStyle"
-            >
-          </rds-icon>
-        </a>
-        </td>
-          </tr>
-        </tbody>
-    </table>
+      </div>
+      <div>
+        <a [href]="item.route"> 
+        <rds-icon
+          height="47"
+          [fill]="false"
+          [stroke]=""
+          width="7"
+          type=""
+          name="chevron_right"
+          class="pointerStyle"
+        >
+      </rds-icon>
+      </a>
+    </div>
+  </div>
+  </div>

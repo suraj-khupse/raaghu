@@ -6,7 +6,7 @@
         [size]="'small'" [outlineButton]="true" class="me-3">
       </rds-button>
     </span>
-    <rds-button class="action me-3" [colorVariant]="'outline-primary'" [size]="'small'" (click)="exportToExcel()"
+    <rds-button class="action me-3" [colorVariant]="'primary'" [outlineButton]="true" [size]="'small'" (click)="exportToExcel()"
       [label]="translate.instant('Export To Excel')">
     </rds-button>
     <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'"
@@ -62,7 +62,7 @@
 
           <div class="footer-buttons my-2">
 
-            <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'outline-primary'"
+            <rds-button [label]="translate.instant('Cancel')" [outlineButton]="true" (click)="close()" [colorVariant]="'primary'"
               [size]="'small'" data-bs-dismiss="offcanvas">
             </rds-button>
             <rds-button [label]="translate.instant('Save')" [disabled]="!user||!user.userInfo" [size]="'small'"
@@ -81,7 +81,7 @@
         </div>
         <div class="footer-buttons my-2">
 
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'outline-primary'"
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [outlineButton]="true" [colorVariant]="'primary'"
             [size]="'small'" data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="ms-2" [size]="'small'" [colorVariant]="'primary'"
@@ -101,7 +101,7 @@
         </div>
         <div class="footer-buttons my-2">
 
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'outline-primary'"
+          <rds-button [label]="translate.instant('Cancel')" [outlineButton]="true" (click)="close()" [colorVariant]="'primary'"
             [size]="'small'" data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
@@ -120,7 +120,7 @@
     (getAllSelectedNodes)="getSelectedUserPermissionFilterList($event)" [selectAllLabel]="'Select All Permissions'">
   </app-rds-comp-permission-tree>
   <div class="footer-buttons my-2">
-    <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'outline-primary'"
+    <rds-button [label]="translate.instant('Cancel')" [outlineButton]="true" (click)="close()" [colorVariant]="'primary'"
       [size]="'small'" data-bs-dismiss="offcanvas">
     </rds-button>
     <rds-button [label]="translate.instant('Select')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"

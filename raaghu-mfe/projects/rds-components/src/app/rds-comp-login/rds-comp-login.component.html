@@ -4,8 +4,8 @@
   <h6>
     <rds-label [label]="translate.instant('Please Login for an account')"></rds-label>
   </h6>
-  <small class="pb-5">{{"Current Tenant"|translate}} : {{TenancyName}} (<a href="#" data-bs-toggle="modal"
-      class="link-primary" (click)="openTenantModal()">{{"Change"|translate}}</a>)</small>
+  <small class="pb-5">{{translate.instant("Current Tenant")}} : {{TenancyName}} (<a href="#" data-bs-toggle="modal"
+      class="link-primary" (click)="openTenantModal()">{{translate.instant("Change")}}</a>)</small>
   <div class="pt-5">
     <form #loginForm="ngForm">
       <div class="form-group mb-3 text-start">
@@ -37,13 +37,13 @@
             </div>
           </div>
           <div class="col-md-6">
-            <a class="text-decoration-none float-end" routerLink="/forgot-password">{{"Forgot password?"|translate}}</a>
+            <a class="text-decoration-none float-end" routerLink="/forgot-password">{{translate.instant("Forgot password?")}}</a>
           </div>
         </div>
         <br />
       </div>
       <div class="pb-3">
-        <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" size="'medium'" [submit]="true"
+        <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'" [submit]="true"
           [showLoadingSpinner]="buttonSpinner" [label]="translate.instant(buttonLabel)" (click)="submit(loginForm)">
         </rds-button>
         <!-- <rds-button class="d-grid border" [colorVariant]="buttonColorTypeUp" [block]="false" size="'medium'"
@@ -54,12 +54,12 @@
   </div>
 </div>
 
-<rds-modal [modalId]="'ChangeTenant'" [backdropstatic]="'static'" (onClose)="onModalClose(tenantForm)">
+<rds-modal [modalId]="'ChangeTenant'" [modalBackdrop]="'static'" (onClose)="onModalClose(tenantForm)">
   <div modalheader class="d-flex w-100">
     <h5 class="modal-title"><b> {{"Switch Tenant"|translate}}</b></h5>
     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
-  <div Modalbody class="p-2">
+  <div modalbody class="p-2">
     <form #tenantForm="ngForm">
       <div class="row mb-3">
         <div class="col-md-12">
@@ -87,8 +87,8 @@
       </div>
     </form>
   </div>
-  <div Modalfooter>
-    <rds-button [tooltipPlacement]="'top'" data-bs-dismiss="modal" [colorVariant]="'outline-primary'" [size]="'medium'"
+  <div modalfooter>
+    <rds-button [tooltipPlacement]="'top'"  [outlineButton]="true"data-bs-dismiss="modal" [colorVariant]="'primary'" [size]="'medium'"
       (click)="back()" [label]="translate.instant('Cancel')" class="px-2">
     </rds-button>
     <rds-button class="mr-1" [id]="'yes'" [disabled]="switchTenant&&!TenantNameData" [size]="'medium'"

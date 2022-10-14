@@ -35,8 +35,8 @@
               <rds-button class="position-relative" [size]="'small'" [id]="'notification'" [roundedButton]="true"
                 [colorVariant]="'default'" type="button">
                 <rds-icon name="notification" width="20px" height="20px"></rds-icon>
-                <rds-badge class="notification-li" right size="smallest" Types="primary" [label]="unreadCount"
-                  [pillBadges]="false" [positioned]="true" [iconBadge]="true">
+                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary" [label]="unreadCount"
+                  [positioned]="true" >
                 </rds-badge>
               </rds-button>
               <!-- <rds-icon name="notifications" width="20px"></rds-icon> -->
@@ -57,11 +57,7 @@
           </div>
         </li>
         <li class="nav-item border-end px-2">
-          <rds-button [size]="'small'" [roundedButton]="true">
-            <span>
-              <rds-icon name="gear" width="20px" height="20px"></rds-icon>
-            </span>
-          </rds-button>
+          <rds-icon width="20px" height="20px" name="chevron_down_arrow"></rds-icon>
         </li>
       </ul>
     </div>
@@ -95,13 +91,15 @@
               <img [src]="profilePic" alt="" height="32px" width="32px">
             </div>
             <div class="pe-auto" *ngIf="profileData">
-              <span class="text-decoration-none" (click)="redirect('profile')">
-                <span>{{ tenancy }}</span>
-                <rds-icon [name]="'chevron_down_arrow'" [height]="'15px'" [width]="'15px'" class="ms-3"></rds-icon>
-
-                <p class="mb-0  text-muted user-role">
-                  {{ profileData.userName }}
-                </p>
+              <span class="text-decoration-none d-flex" (click)="redirect('profile')">
+                <div>
+                  <span>{{ tenancy }}</span>
+                  <p class="mb-0  text-muted user-role">
+                    {{ profileData.userName }}
+                  </p>
+                </div>
+                <rds-icon name="chevron_down" [height]="'11px'" [width]="'11px'" class="ms-3 mt-2"></rds-icon>
+                
 
               </span>
             </div>

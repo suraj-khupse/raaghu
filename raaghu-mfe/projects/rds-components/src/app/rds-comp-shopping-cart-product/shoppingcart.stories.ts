@@ -54,7 +54,7 @@ Default.args = {
 
       ,
       highlights: {
-        icon: 'check_mark',
+        icon: 'check',
         label: 'In Stock'
       },
 
@@ -103,7 +103,7 @@ Default.args = {
         { value: 10, displayText: 'Qty 10' }
       ],
       highlights: {
-        icon: 'check_mark',
+        icon: 'check',
         label: 'In Stock'
       },
 

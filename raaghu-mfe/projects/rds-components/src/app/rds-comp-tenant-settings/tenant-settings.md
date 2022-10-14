@@ -1,5 +1,5 @@
 ---
-slug: "/Tenant-Settings"
+slug: "/comp-tenant-settings"
 date: "2019-05-04"
 title: "Components > Tenant-Settings"
 ---

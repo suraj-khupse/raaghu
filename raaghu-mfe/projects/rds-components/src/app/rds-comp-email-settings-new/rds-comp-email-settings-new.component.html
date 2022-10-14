@@ -1,0 +1,54 @@
+<form #emailsettingsForm="ngForm">
+    <div class="row mt-2">
+        <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-4">
+                <rds-input size="default" [Title]="'Default From Display Name'" [TitleType]="'Top'" inputType="text"
+                    name="defaultDisplayName" [isRequired]=true required [disabled]="false"  [readonly]="false"
+                    [placeholder]="'Enter Name'" [(ngModel)]="emailSettingsData.defaultDisplayName"
+                    #defaultDisplayName="ngModel" ngDefaultControl>
+                </rds-input>
+            </div>
+        </div>
+        <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-4">
+                <rds-input size="default" [Title]="'Default From Address'" [TitleType]="'Top'" inputType="text"
+                    name="defaultAddress" [isRequired]=true required [disabled]="false" [readonly]="false"
+                    [placeholder]="'Enter Name'" [(ngModel)]="emailSettingsData.defaultAddress"
+                    #defaultAddress="ngModel" ngDefaultControl>
+                </rds-input>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-4">
+                <rds-input size="default" [Title]="'Host'" [TitleType]="'Top'" inputType="text" name="host"
+                    [isRequired]=true required [disabled]="false"  [readonly]="false" [placeholder]="'Enter Name'"
+                    [(ngModel)]="emailSettingsData.host" #host="ngModel" ngDefaultControl>
+                </rds-input>
+            </div>
+        </div>
+        <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-4">
+                <rds-input size="default" [Title]="'Port'" [TitleType]="'Top'" inputType="text" name="port"
+                    [isRequired]=true required [disabled]="false"  [readonly]="false" [placeholder]="'Enter Name'"
+                    [(ngModel)]="emailSettingsData.port" #port="ngModel" ngDefaultControl>
+                </rds-input>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <rds-checkbox [disabled]="false" [label]="'Enable Ssl'" name="useSecurityImage" [withLabel]="true"
+                [switch]="false" [inline]="false" [(ngModel)]="emailSettingsData.ssl"
+                #ssl="ngModel" [id]="'ssl'"></rds-checkbox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <rds-checkbox [disabled]="false" [label]="'Use Default Credentials'" name="useSecurityImage"
+                [withLabel]="true" [switch]="false" [inline]="false" [(ngModel)]="emailSettingsData.defaultcredentials"
+                #defaultcredentials="ngModel" [id]="'defaultcredentials'"></rds-checkbox>
+        </div>
+    </div>
+</form>

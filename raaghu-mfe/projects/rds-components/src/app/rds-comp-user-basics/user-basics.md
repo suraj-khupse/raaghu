@@ -1,5 +1,5 @@
 ---
-slug: "/user-basics"
+slug: "/comp-user-basics"
 date: "2019-05-04"
 title: "Components > User-basics"
 ---

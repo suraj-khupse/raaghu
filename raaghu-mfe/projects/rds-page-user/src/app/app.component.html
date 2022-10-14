@@ -1,0 +1,7 @@
+<!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+    <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+</ng-container>-->
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+  <mfe-loader [config]="rdsUserMfeConfig"></mfe-loader>
+</div>
+

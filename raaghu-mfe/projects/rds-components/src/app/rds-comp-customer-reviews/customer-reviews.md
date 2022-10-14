@@ -1,5 +1,5 @@
 ---
-slug: "/customer-reviews"
+slug: "/comp-customer-reviews"
 date: "2019-05-04"
 title: "Components > Customer-reviews"
 ---

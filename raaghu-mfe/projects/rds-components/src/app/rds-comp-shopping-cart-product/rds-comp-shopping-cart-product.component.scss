@@ -7,3 +7,9 @@ width: 15%;
 table td {
     padding: 0.75rem;
 }
+@media only screen and (max-width: 600px){
+    .sm-position-relative{
+        position: relative;
+        bottom: 100px;
+    }
+}

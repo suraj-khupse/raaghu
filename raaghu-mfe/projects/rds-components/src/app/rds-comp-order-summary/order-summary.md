@@ -1,5 +1,5 @@
 ---
-slug: "/Order-Summary"
+slug: "/comp-order-summary"
 date: "2019-05-04"
 title: "Components > Order-Summary"
 ---

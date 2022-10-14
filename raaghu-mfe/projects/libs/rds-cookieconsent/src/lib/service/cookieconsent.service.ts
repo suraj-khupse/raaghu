@@ -8,7 +8,7 @@ import { RdsInitializingEvent } from '../event/initializing.event';
 import { RdsInitializationErrorEvent } from '../event/public-api';
 import { RdsCookieConsentConfig } from './cookieconsent-config';
 import { WindowService } from './window.service';
-
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 /**
  * Basic interface to represent `cookieconsent` object.
@@ -17,8 +17,11 @@ export interface RdsCookieConsent {
   hasTransition: boolean;
   status: RdsCookieConsentStatus;
   getStatus(): RdsCookieConsentStatus;
-  initialise(config: RdsCookieConsentConfig, successCallback?: (popup: RdsCookieConsentPopup) => void, errorCallback?: (error: Error, popup: RdsCookieConsentPopup) => void): void;
-
+  initialise(
+    config: RdsCookieConsentConfig,
+    successCallback?: (popup: RdsCookieConsentPopup) => void,
+    errorCallback?: (error: Error, popup: RdsCookieConsentPopup) => void
+  ): void;
 }
 
 /**
@@ -39,7 +42,6 @@ export interface RdsCookieConsentPopup {
   hasConsented(): boolean;
 }
 
-
 /**
  * Marker interface to indicate that an object (typically `window`) has `cookieconsent` property.
  */
@@ -47,13 +49,11 @@ export interface RdsHasCookieConsent {
   cookieconsent: RdsCookieConsent;
 }
 
-
 /**
  * Service to interact with Cookie Consent API.
  */
 @Injectable()
 export class RdsCookieConsentService {
-
   // the Magic Maker !
   // this objet is added to window scope when linking the cookieconsent.js library
   private cookieconsent!: RdsCookieConsent;
@@ -97,16 +97,16 @@ export class RdsCookieConsentService {
    */
   initializationError$: Observable<RdsInitializationErrorEvent>;
   /**
-  * Observable to subscribe to and get notified when Cookie Consent status changes.
-  */
+   * Observable to subscribe to and get notified when Cookie Consent status changes.
+   */
   statusChange$: Observable<RdsStatusChangeEvent>;
   /**
    * Observable to subscribe to and get notified when Cookie is revoked.
    */
   revokeChoice$: Observable<void>;
   /**
-  * Observable to subscribe to and get notified when no Cookie Law is applicable.
-  */
+   * Observable to subscribe to and get notified when no Cookie Law is applicable.
+   */
   noCookieLaw$: Observable<RdsNoCookieLawEvent>;
 
   constructor(windowService: WindowService, config: RdsCookieConsentConfig) {
@@ -136,54 +136,64 @@ export class RdsCookieConsentService {
 
   private checkPopupInstantiated(method: string) {
     if (this.popupInstance == null) {
-      throw new Error(`Cookie popup has not yet been instantiated. Cannot invoke ${method}()`);
+      throw new Error(
+        `Cookie popup has not yet been instantiated. Cannot invoke ${method}()`
+      );
     }
   }
- 
+
   /**
    * Initializes Cookie Consent with the provided configuration.
    * @param config the configuration object
    */
   init(config: RdsCookieConsentConfig): void {
-
-    if (this.window && this.window.cookieconsent) { // For Angular Universal suport
+    if (this.window && this.window.cookieconsent) {
+      // For Angular Universal suport
       this.cookieconsent = this.window.cookieconsent;
 
       this.config = config;
       // Set callbacks hooks:
-      this.config.onPopupOpen =
-        () => this.popupOpenSource.next();
+      this.config.onPopupOpen = () => this.popupOpenSource.next();
 
-      this.config.onPopupClose =
-        () => this.popupCloseSource.next();
+      this.config.onPopupClose = () => this.popupCloseSource.next();
 
-      this.config.onInitialise =
-        (status: 'allow' | 'deny' | 'dismiss') => this.initializingSource.next({ status: status });
+      this.config.onInitialise = (status: 'allow' | 'deny' | 'dismiss') => {
+        this.initializingSource.next({ status: status });
+      };
 
       this.config.onStatusChange =
-        (status: 'allow' | 'deny' | 'dismiss', chosenBefore: boolean) => {
-          this.statusChangeSource.next({ status: status, chosenBefore: chosenBefore });
-        };
+       (status: 'allow' | 'deny' | 'dismiss',chosenBefore: boolean) => {
+        this.statusChangeSource.next({status: status,chosenBefore: chosenBefore });
+      };
 
-      this.config.onRevokeChoice =
-        () => this.revokeChoiceSource.next();
+      this.config.onRevokeChoice = () => this.revokeChoiceSource.next();
 
-      this.config.onNoCookieLaw =
-        (countryCode: string, country: string) => {
-          this.noCookieLawSource.next({ countryCode: countryCode, country: country });
-        };
-            
+      this.config.onNoCookieLaw = (countryCode: string, country: string) => {
+        this.noCookieLawSource.next({
+          countryCode: countryCode,
+          country: country,
+        });
+      };
+
       // Init the cookieconsent library with injected config
-      this.cookieconsent.initialise(this.config,
+      this.cookieconsent.initialise(
+        this.config,
         (popup: RdsCookieConsentPopup) => {
           this.popupInstance = popup;
-          this.initializedSource.next();//notify of successful initialization
+          this.initializedSource.next(); //notify of successful initialization
+        
+        
         },
+        
         (error: Error, popup: RdsCookieConsentPopup) => {
-          this.initializationErrorSource.next({error: error});//notify of failed initialization
+          this.initializationErrorSource.next({ error: error }); //notify of failed initialization
         }
+        
       );
     }
+    // else if (){
+    //   this.destroy(); 
+    // }
   }
 
   /**
@@ -206,8 +216,6 @@ export class RdsCookieConsentService {
   getTransition(): boolean {
     return this.cookieconsent.hasTransition;
   }
-
-  
 
   /**
    * Clears the current cookie status.
@@ -262,4 +270,3 @@ export class RdsCookieConsentService {
     return this.popupInstance.hasConsented();
   }
 }
-

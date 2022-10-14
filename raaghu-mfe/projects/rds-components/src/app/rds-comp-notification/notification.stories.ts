@@ -27,7 +27,7 @@ const Template: Story<RdsNotificationComponent> = (args: RdsNotificationComponen
 
 export const Default = Template.bind({});
 Default.args={
-  unreadCount:'',
+  unreadCount:'12',
   notifications:'',
   backgroundColor:'',
   borderRadious:'',

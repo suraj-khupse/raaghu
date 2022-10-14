@@ -45,8 +45,8 @@ const Template: Story<RdsCompBillingComponent> = (args: RdsCompBillingComponent)
     }
 });
 
-export const billing = Template.bind({});
-billing.args = {
+export const Default = Template.bind({});
+Default.args = {
     emailId: 'admin@aspnetzero.com',
     alternativeEmail: '',
     cardList: [],
@@ -82,8 +82,14 @@ billing.args = {
         recommended: false,
         features: ["Maximum User Count", "Test Check feature", "Test check feature count 2"]
     }],
-    billingHeaders: [{ key: 'invoice', displayName: 'Invoice', dataType: 'text' }, { key: 'amount', displayName: 'Amount', dataType: 'text' }, { key: 'date', displayName: 'Date', dataType: 'text' }, { key: 'status', displayName: 'Status', dataType: 'html' }],
+    billingHeaders: [
+        { key: 'invoice', displayName: 'Invoice', dataType: 'text' ,filterable: true,},
+     { key: 'amount', displayName: 'Amount', dataType: 'text',filterable: true, },
+      { key: 'date', displayName: 'Date', dataType: 'text',filterable: true, }, 
+      { key: 'status', displayName: 'Status', dataType: 'html',filterable: true, }],
     billingData: [
+
+
         {
             invoice: 'Standard Plan - Jan 2022',
             amount: 'USD $ 250.00',

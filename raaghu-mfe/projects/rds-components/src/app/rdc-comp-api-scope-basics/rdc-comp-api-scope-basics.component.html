@@ -1,19 +1,23 @@
+<h3>
+  Api Scope Basics
+</h3>
+
 <form #scopeBasicsForm="ngForm">
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row pt-3">
+    <div class="col-md-6 mb-3">
       <div class="form-group">
         <rds-input [inputType]="'text'" [Title]="translate.instant('Name')" #scope_name="ngModel"
-          [(ngModel)]="scopeBasics.name" name="scopeName" [isRequired]=true required [placeholder]="translate.instant('Enter Name')">
+          [(ngModel)]="scopeBasics.name" [TitleType]="'Top'" name="scopeName" [isRequired]=true required [placeholder]="translate.instant('Enter Name')">
         </rds-input>
         <div class="form-control-feedback" *ngIf="scope_name.errors && (scope_name.dirty || scope_name.touched)">
           <span class="text-danger" *ngIf="scope_name.errors.required">{{"Name is required"|translate}}</span>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 mb-3">
       <div class="form-group">
         <rds-input [inputType]="'text'" [Title]="translate.instant('Display Name')" #displayname="ngModel"
-          [(ngModel)]="scopeBasics.displayName" name="displayName" [isRequired]=true  required
+          [(ngModel)]="scopeBasics.displayName" name="displayName" [TitleType]="'Top'" [isRequired]=true  required
           [placeholder]="translate.instant('Enter Display Name')">
         </rds-input>
         <div class="form-control-feedback" *ngIf="displayname.errors && (displayname.dirty || displayname.touched)">
@@ -21,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12 mt-3">
+    <div class="col-md-12 mb-3">
       <div class="form-group">
         <rds-textarea #description="ngModel" [placeholderText]="translate.instant('Enter Description')"
           [label]="translate.instant('Description')" [value]="scopeBasics.description"
@@ -32,22 +36,30 @@
         </div>
       </div>
     </div>
-    <div class="col-md-12 mt-3">
+    <div class="col-md-12 mb-3">
       <div class="form-group">
         <rds-label [label]="translate.instant('Other')"></rds-label>
-        <rds-checkbox [disabled]="false" [label]="translate.instant('Enables')" [checked]="scopeBasics.enables"
+        <div class="mb-2 pt-2">
+          <rds-checkbox [disabled]="false" [label]="translate.instant('Enables')" [checked]="scopeBasics.enables"
           [(ngModel)]="scopeBasics.enables" name="enables" [withLabel]="true" [switch]="false" [inline]="false"
           [id]="'enables'"></rds-checkbox>
-        <rds-checkbox [disabled]="false" [label]="translate.instant('Required')" [checked]="scopeBasics.required"
+        </div>
+        <div class="mb-2">
+          <rds-checkbox [disabled]="false" [label]="translate.instant('Required')" [checked]="scopeBasics.required"
           [(ngModel)]="scopeBasics.required" name="chk-required" [withLabel]="true" [switch]="false" [inline]="false"
           [id]="'required'"></rds-checkbox>
+        </div>
+       <div class="mb-2">
         <rds-checkbox [disabled]="false" [label]="translate.instant('Emphasize')" [checked]="scopeBasics.emphasize"
-          [(ngModel)]="scopeBasics.emphasize" name="emphasize" [withLabel]="true" [switch]="false" [inline]="false"
-          [id]="'emphasize'"></rds-checkbox>
-        <rds-checkbox [disabled]="false" [label]="translate.instant('Show in Discovery Documents')"
+        [(ngModel)]="scopeBasics.emphasize" name="emphasize" [withLabel]="true" [switch]="false" [inline]="false"
+        [id]="'emphasize'"></rds-checkbox>
+       </div>
+        <div class="mb-2">
+          <rds-checkbox [disabled]="false" [label]="translate.instant('Show in Discovery Documents')"
           [checked]="scopeBasics.discoveryDocuments" [(ngModel)]="scopeBasics.discoveryDocuments"
           name="discoveryDocuments" [withLabel]="true" [switch]="false" [inline]="false" [id]="'discoveryDocuments'">
         </rds-checkbox>
+        </div>
       </div>
     </div>
   </div>

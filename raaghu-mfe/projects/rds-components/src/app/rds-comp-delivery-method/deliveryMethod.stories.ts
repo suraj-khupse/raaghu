@@ -27,9 +27,9 @@ const Template: Story<RdsCompDeliveryMethodComponent> = (args: RdsCompDeliveryMe
         ...args
     }
 });
-export const Template1 = Template.bind({});
+export const Default = Template.bind({});
 
-Template1.args = {
+Default.args = {
     sizeDataWithDescription : [
         {type: 'Standard', days:"4-10 buisness days", cost:"$5.00"},
         {type: 'Express', days:"2-5 buisness days", cost:"$16.00"}, 

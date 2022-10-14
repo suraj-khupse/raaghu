@@ -26,8 +26,8 @@
         </div>
         <div class="col-md-12 mt-3">
             <div class="form-group">
-                 <label>Description</label>
-                <rds-textarea #description="ngModel" [placeholderText]="'Enter Description'"
+                 <label class="mb-2">Description</label>
+                <rds-textarea #description="ngModel" title="Description" [placeholderText]="'Enter Description'"
                     [value]="clientBasics.description" [(ngModel)]="clientBasics.description" name="desc" required>
                 </rds-textarea>
                 <div class="form-control-feedback"

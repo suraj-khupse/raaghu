@@ -1,8 +1,9 @@
 import { RdsLoginComponent } from './rds-comp-login.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsInputModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsModalModule } from '@libs/rds-elements';
 import { NgxTranslateModule } from '@libs/shared';
+import { RdsLabelModule } from '@libs/rds-label';
 
 export default {
   title: 'Components/Login',
@@ -15,7 +16,9 @@ export default {
         RdsButtonModule,
         RdsInputModule,
         RdsCheckboxModule,
-        NgxTranslateModule.forRoot()
+        NgxTranslateModule.forRoot(),
+        RdsModalModule,
+        RdsLabelModule
       ],
       providers: [
         FormBuilder

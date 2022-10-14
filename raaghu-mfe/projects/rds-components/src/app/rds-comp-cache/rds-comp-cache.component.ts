@@ -60,10 +60,10 @@ export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
       this.tempData = JSON.parse(JSON.stringify(this.cashedata));
       this.totalRecords = this.cashedata.length;
     }
-    if(this.counter < 20){
-      this.dataSource = this.cashedata;
-      this.counter++;
-    }
+    // if(this.counter < 20){
+    //   this.dataSource = this.cashedata;
+    //   this.counter++;
+    // }
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (this.cashedata) {

@@ -1,0 +1,316 @@
+<div class="card p-2 h-100 border-0 rounded-0 vh-88">
+    <div class="row">
+        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
+            <rds-datepicker name="date-picker" [placeholder]="translate.instant('Start Date')"
+                (change)="startDateModify($event)" [(ngModel)]="startDate" [value]="startDate"
+                floatinginputLabel="">
+            </rds-datepicker>
+        </div>
+        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
+            <rds-datepicker name="date-picker" [placeholder]="translate.instant('End Date')"
+                (change)="endDateModify($event)" [(ngModel)]="endDate" [value]="endDate"
+                floatinginputLabel="">
+            </rds-datepicker>
+        </div>
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+            <rds-input size="default" [inputType]="" [Title]="" [(ngModel)]="user"
+                [placeholder]="translate.instant('User')" id="txtUsername" (change)="userModify($event)"
+                floatinginputLabel="" ngDefaultControl name="userName"></rds-input>
+        </div>
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+            <rds-input size="default" [inputType]="" [Title]="" [(ngModel)]="urlFilter"
+                [placeholder]="translate.instant('Url Filter')" id="txtUrlFilter" (change)="urlFilterModify($event)"
+                floatinginputLabel="" ngDefaultControl name="urlFilter"></rds-input>
+        </div>
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+            <rds-input size="default" [inputType]="" [Title]="" [(ngModel)]="minDuration"
+                [placeholder]="translate.instant('Min Duration')" id="minDuration" (change)="minDurationModify($event)"
+                floatinginputLabel="" ngDefaultControl name="minDuration"></rds-input>
+        </div>
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+            <rds-input size="default" [inputType]="" [Title]="" [(ngModel)]="maxDuration"
+                [placeholder]="translate.instant('Max Duration')" id="maxDuration" (change)="maxDurationModify($event)"
+                floatinginputLabel="" ngDefaultControl name="maxDuration"></rds-input>
+        </div>    
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
+                <rds-select-list (selectListChange)="httpMethodModify($event)" class="w-100"
+                [itemList]="httpMethodList"  id="httpMethod"  [placeholder]="translate.instant('Http Method')"
+                [label]="" name="httpMethod">
+             </rds-select-list>
+        </div>
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
+            <rds-select-list (selectListChange)="httpStatusModify($event)" class="w-100" [(ngModel)]="httpStatus" [value]="httpStatus"
+            [itemList]="httpStatusList" id="httpStatus" [placeholder]="translate.instant('Http Status Code')"
+            [label]="" name="httpStatus">
+         </rds-select-list>
+        </div>
+        
+        <div class="col-md-2 mb-4 sm-p-0 mt-1 d-flex align-items-center sm-block">  
+            <rds-input size="default" [inputType]="" [Title]="" [(ngModel)]="appName"
+                [placeholder]="translate.instant('Application Name')" id="appName" (change)="appNameModify($event)"
+                floatinginputLabel="" ngDefaultControl name="appName"></rds-input>
+        </div> 
+        
+        <div class="col-md-2 mb-4 sm-p-0 mt-1 d-flex align-items-center sm-block">  
+            <rds-input size="default"  [inputType]="" [Title]="" [(ngModel)]="appName"
+                [placeholder]="translate.instant('Correlation ID')" id="correlationID" (change)="correlationIDModify($event)"
+                floatinginputLabel="" ngDefaultControl name="correlationID"></rds-input>
+        </div> 
+        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
+            <rds-select-list (selectListChange)="hasExceptionModify($event)" class="w-100" [(ngModel)]="hasException" [value]="hasException"
+            [itemList]="hasExceptionList" id="hasException" [placeholder]="translate.instant('Has Exception')"
+            [label]="" name="hasException">
+         </rds-select-list>
+        </div>
+    </div>
+        <div class="row">
+            <app-rds-data-table [tableData]="operationLogs" (deleteEvent)="delete($event)" [pagination]="true"
+                [noDataTitle]="translate.instant('Currently you do not have operation log')" [recordsPerPage]="10"
+                (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"
+                [refresh]="true" [tableHeaders]="operationLogsHeaders" [isShimmer]="isShimmer"></app-rds-data-table>
+        </div>
+    </div>
+
+    <rds-offcanvas [canvasTitle]="translate.instant(auditLogsCanvasTitle)" [offId]="'auditLogCanvas'" [offcanvaswidth]="550"
+    [placement]="'end'" *ngIf="viewAuditLogsCanvas" (onClose)="onClose()">
+  <rds-nav-tab [navtabsItems]="getNavTabItems()" (onClicktab)="getSelectedNavTab($event)" [activepage]="activePage"
+    [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
+    [justified]="false">
+    <div naveContent class="row tab-content py-4 px-3 navsm-p-0" id="nav-tabContent">
+        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="overall" role="tabpanel"
+          aria-labelledby="nav-home-tab">
+          <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Http Status code'| translate}}: </span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <rds-badge *ngIf="!selectedRowData.exception" [label]="'200'" size="small" Types="SUCCESS"
+                    label="9" [colorVariant]="'dark'" ></rds-badge>
+                      <!-- <span>{{selectedRowData.httpStatus}}</span> -->
+                  </div>
+              </div>
+          </div>
+           <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Http Method' | translate}}:</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <rds-badge *ngIf="!selectedRowData.exception" [label]="'POST'" size="small" Types="SUCCESS"
+                    label="9" [colorVariant]="'success'" ></rds-badge>
+                      <span>{{selectedRowData.httpMethod}}</span>
+                  </div>
+              </div>
+          </div>
+        <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Url' | translate}}:</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.client}}</span>
+                  </div>
+              </div>
+          </div>
+            <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Client Ip Address' | translate}}:</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.clientIpAddress}}</span>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Client Name' | translate}}:</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.clientName}}</span>
+                  </div>
+              </div>
+          </div>
+      
+          <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Exceptions' | translate}}:</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.hasException}}</span>
+                  </div>
+              </div>
+          </div>
+       <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'User Name' | translate}}:</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.user}}</span>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+      
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Time' |translate}}: </span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.executionTime}}</span>
+                  </div>
+              </div>
+          </div>
+           <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{'Duration' |translate}}</span>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group mb-3">
+                      <span>{{selectedRowData.executionDuration}}</span>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+      
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{'Browser Info'| translate}}: </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{selectedRowData.browserInfo}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+  
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{'Application Name'| translate}}: </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{selectedRowData.appName}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+  
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{'Correlation Id'| translate}}: </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{selectedRowData.correlationID}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+  
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{'Comments'| translate}}: </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{selectedRowData.Comments}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+  
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{'Extra properties'| translate}}: </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <span>{{'{{}}'}}</span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="action" role="tabpanel"
+          aria-labelledby="nav-home-tab">
+          <div class="tab-content">
+            <h5><span class="fw-medium">{{'Http Status Code' | translate}}</span></h5>
+            <div class="row">
+      
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <span>{{'Duration'| translate}}: </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <span>{{selectedRowData.executionDuration}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+      
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <span>{{'Parameters'| translate}}: </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <span>{{selectedRowData.parameters}}</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
+  </rds-nav-tab>
+   
+  <div class="footer-buttons my-2">
+    <rds-button [label]="translate.instant('Cancel')" (click)="onClose()" [colorVariant]="'primary'"
+      [size]="'small'" data-bs-dismiss="offcanvas">
+    </rds-button>
+  </div>
+</rds-offcanvas>
+
+
+

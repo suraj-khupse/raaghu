@@ -9,7 +9,7 @@ title: "Elements > Alert"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/style-elements.css">
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
-### Alert
+#### Alert
 
 <p class="checkbox-def">An alert helps to keeps people informed of the status of the system and may or may not require the user to respond.</p>
 

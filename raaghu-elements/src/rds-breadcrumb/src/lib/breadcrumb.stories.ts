@@ -10,12 +10,12 @@ export default {
 
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, FormsModule,RdsIconModule],
+      imports: [CommonModule, FormsModule, RdsIconModule],
     }),
   ],
   component: RdsBreadcrumbComponent,
   argTypes: {
-   
+
     //click: { action: 'clicked' },
     //colorType: {
     //  options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'],
@@ -34,38 +34,25 @@ export default {
 
 const Template: Story<RdsBreadcrumbComponent> = (args: RdsBreadcrumbComponent) => ({
   props: args,
- 
+
 });
 
 export const Default = Template.bind({});
 Default.args = {
   role: 'basic',
-    iconShow: false,
-  disabled: false,
-  customBreadcrumbsItems:[{ name: 'Home', route: '/home', iconClass: 'delete' , iconWidth: '15px' , iconHeight:'15px' , disabled:true }, 
-   { name: 'About', route: '/About', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled:true }, 
-   { name: 'Contact', route: '/Contact', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled:false },
-   ]
+  breadcrumbsItems: [{ name: 'Home', route: '/home', icon: 'home', iconWidth: '15px', iconHeight: '15px', disabled: true },
+  { name: 'About', route: '/About', icon: 'information', iconWidth: '15px', iconHeight: '15px', disabled: true },
+  { name: 'Contact', route: '/Contact', icon: 'phone', iconWidth: '15px', iconHeight: '15px', disabled: false },
+  ]
 }
 
-export const Advanced = Template.bind({});
-Advanced.args = {
-  role: 'Advanced',
-  iconShow: true,
-  disabled: false,
-  customBreadcrumbsItems: [{ name: 'Home', route: '/home', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px'  , disabled: false}, 
-  { name: 'About', route: '/About', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px'  , disabled: false}, 
-  { name: 'Contact', route: '/Contact', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px'  , disabled: true},
-   ]
-}
+
 
 export const withDivider = Template.bind({});
 withDivider.args = {
   role: 'withDivider',
-  iconShow: true,
-  disabled: false,
-  customBreadcrumbsItems: [{ name: 'Home', route: '/home', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled: true}, 
-  { name: 'About', route: '/About', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled: true }, 
-  { name: 'Contact', route: '/Contact', iconClass: 'dashboard' , iconWidth: '15px' , iconHeight:'15px' , disabled: false},
-   ]
+  breadcrumbsItems: [{ name: 'Home', route: '/home', icon: 'home', iconWidth: '15px', iconHeight: '15px', disabled: true },
+  { name: 'About', route: '/About', icon: 'information', iconWidth: '15px', iconHeight: '15px', disabled: true },
+  { name: 'Contact', route: '/Contact', icon: 'phone', iconWidth: '15px', iconHeight: '15px', disabled: false },
+  ]
 }

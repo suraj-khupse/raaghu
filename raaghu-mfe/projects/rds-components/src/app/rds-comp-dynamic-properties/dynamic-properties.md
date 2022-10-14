@@ -1,5 +1,5 @@
 ---
-slug: "/dynamic-properties"
+slug: "/comp-dynamic-properties"
 date: "2019-05-04"
 title: "Components > dynamic-properties"
 ---

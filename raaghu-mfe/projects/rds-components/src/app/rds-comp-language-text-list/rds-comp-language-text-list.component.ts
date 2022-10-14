@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
-import { LanguageText } from 'projects/language-text/src/modal/language-text';
+import { LanguageText } from 'projects/rds-page-language-text/src/modal/language-text';
 import { selectAllLanguageTexts } from 'projects/libs/state-management/src/lib/state/language-text/language-text.selector';
 import { TableHeader } from '../../models/table-header.model';
 declare let bootstrap: any;
@@ -33,12 +33,9 @@ export class RdsCompLanguageTextListComponent implements OnInit {
   { languagename: 'India', countryCode: 'IND', statusTemplate: 'false', creationTime: '12-10-1992' },
   { languagename: 'India', countryCode: 'IND', statusTemplate: 'true', creationTime: '12-10-1992' }]
   @Input() listbaseLanguage: any[] = [];
-  listTargetCulturename: any[] = []
+  @Input() listTargetCulturename: any[] = [];
   @Input() listsource: any[] = []
-  listTargetValue: any[] = [
-    { value: 'ALL', displayText: 'All' },
-    { value: 'EMPTY', displayText: 'Empty Ones' }
-  ]
+  @Input() listTargetValue: any[] = []
   constructor(private http: HttpClient, private store: Store) {}
   ngOnInit(): void {
     const languageTextDataParams: any = {

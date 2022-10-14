@@ -4,20 +4,20 @@
       <h5 class="card-title">{{"DOWNLOAD COLLECTED DATA"|translate}}</h5>
     </div>
     <div class="card-body pt-2">
-      <div class="container-fluid">
-        <div class="row mb-3" *ngFor="let item of dataSource">
-          <div class="col-1 d-flex justify-content-center align-items-center fs-5">
-            <rds-icon name="info" height="20px" width="20px"></rds-icon>
+      <div>
+        <div class="row mb-4 align-items-center sm-grid" *ngFor="let item of dataSource">
+          <div class="col-md-1 d-flex justify-content-center align-items-center fs-5">
+            <rds-icon name="information" height="25" width="25"></rds-icon>
           </div>
-          <div class="col-10">
+          <div class="col-md-10">
             <p style="margin-bottom: 0px;">{{"your Data is Prepared,Click here to download"|translate}}</p>
             <p style="margin-bottom: 0px;">{{item.DateofData}}</p>
             <small class="text-muted" style="margin-bottom: 0px;">{{item.NummberofDates}}</small>
           </div>
-          <div class="col-1 d-flex justify-content-center align-items-center">
+          <div class="col-md-1 d-flex justify-content-center align-items-center">
             <a (click)="downloadFiles(item.downloadUrl)" rel="noopener noreferrer" class="fs-4">
               <!-- <i class="bi bi-box-arrow-down"></i> -->
-              <rds-icon name="data_download" height="18px" width="18px"></rds-icon>
+              <rds-icon name="download" height="25" width="25"></rds-icon>
             </a>
 
           </div>

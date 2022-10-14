@@ -1,6 +1,8 @@
 <div class="alert d-flex align-items-center fade show" role="alert" 
   [ngClass]="classes">
   <span class="ps-2">
+    <rds-icon *ngIf="icon" [name]="icon" [ngClass]="iconSize" [fill]="iconFill" [stroke]="iconStroke" [height]="iconHeight"
+    [width]="iconWidth" class="fs-6 me-2"></rds-icon>
     {{bannerText}}
   </span>
 </div>

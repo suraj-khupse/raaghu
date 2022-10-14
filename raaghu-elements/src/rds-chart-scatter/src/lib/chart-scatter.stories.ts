@@ -5,11 +5,11 @@ export default {
   title: 'Charts/Scatter Chart',
   component: RdsChartScatterComponent,
   argTypes: {
-    canvasBackgroundColor: { control: 'color' },
-    chartStyle: {
-      options: ['Dark', 'light'],
-      control: 'radio'
-    }
+    // canvasBackgroundColor: { control: 'color' },
+    // chartStyle: {
+    //   options: ['Dark', 'light'],
+    //   control: 'radio'
+    // }
   },
 
 } as Meta;
@@ -20,7 +20,7 @@ const Template: Story<RdsChartScatterComponent> = (args: RdsChartScatterComponen
 
 export const Default = Template.bind({});
 Default.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       type: 'scatter',
       label: 'Scatter Dataset',
@@ -30,11 +30,23 @@ Default.args = {
           y: 0
         },
         {
-          x: 0,
-          y: 10
+          x: -8,
+          y: 3
         },
         {
-          x: 10,
+          x: -5,
+          y: 5
+        },
+        {
+          x: 0,
+          y: 9
+        },
+        {
+          x: 4,
+          y: 3
+        },
+        {
+          x: 9,
           y: 5
         },
         {
@@ -47,13 +59,15 @@ Default.args = {
   ],
   chartLabels: ['January', 'February', 'March', 'April'],
   chartWidth: 500,
+  chartHeight: 400,
   chartOptions: {
-    pointStyle: "triangle",
+    responsive: true,
+    maintainAspectRatio: false, pointStyle: "triangle",
     radius: 10,
     plugins: {
       legend: {
-        position: 'bottom',
-        align: "start",
+        position: 'top',
+        align: "center",
         pointStyle: "line",
         labels: {
           usePointStyle: true
@@ -73,7 +87,7 @@ Default.args = {
 };
 export const ScatterChartWithMultiAxis = Template.bind({});
 ScatterChartWithMultiAxis.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Scatter Dataset 1',
       data: [
@@ -86,7 +100,7 @@ ScatterChartWithMultiAxis.args = {
           y: 10
         },
         {
-          x: 10,
+          x: 9,
           y: 5
         },
         {
@@ -102,7 +116,7 @@ ScatterChartWithMultiAxis.args = {
       data: [
         {
           x: -20,
-          y: 10
+          y: 9
         },
         {
           x: 10,
@@ -123,8 +137,10 @@ ScatterChartWithMultiAxis.args = {
   ],
   chartLabels: ['January', 'February', 'March', 'April'],
   chartWidth: 500,
+  chartHeight: 400,
   chartOptions: {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',

@@ -1,19 +1,20 @@
-
 <div class="table-responsive">
   <table [ngClass]="bodyColorClasses" id="table">
-    <thead [ngClass]="hideHeader">
+    <thead *ngIf="showTableHeader">
       <tr>
-        <th *ngFor="let header of tableHeaderItems">{{header.displayName}}</th>
+        <th *ngFor="let header of tableHeaders">{{header.displayName}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of tableBodyItems">
-        <ng-container *ngFor="let header of tableHeaderItems">
+      <tr *ngFor="let item of tableData">
+        <ng-container *ngFor="let header of tableHeaders">
           <ng-container *ngIf="header.dataType=='text'">
             <td width="40%">{{item[header.key]}}</td>
           </ng-container>
           <ng-container *ngIf="header.dataType=='icon'">
-            <td width="20%"><rds-icon [name]="item.icon" height="12px" width="12px"></rds-icon></td>
+            <td width="20%">
+              <rds-icon [name]="item.icon" height="12px" width="12px"></rds-icon>
+            </td>
           </ng-container>
           <ng-container *ngIf="header.dataType=='textNumber'">
             <td width="20%">{{item[header.key]}}</td>
@@ -26,4 +27,3 @@
     </tbody>
   </table>
 </div>
-

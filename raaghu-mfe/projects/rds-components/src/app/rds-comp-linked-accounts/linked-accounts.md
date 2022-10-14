@@ -1,5 +1,5 @@
 ---
-slug: "/linked accounts"
+slug: "/comp-linked accounts"
 date: "2019-05-04"
 title: "Components > Linked Accounts"
 ---

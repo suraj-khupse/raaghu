@@ -31,7 +31,9 @@ export class RdsPopoverComponent implements OnInit, AfterViewInit {
       var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
        return new bootstrap.Popover(popoverTriggerEl)
       })
-                  `;
+       `;
+       
+       
     this._renderer2.appendChild(this._document.body, script);
   }
 

@@ -1,5 +1,5 @@
 ---
-slug: "/Alerts"
+slug: "/comp-alert"
 date: "2019-05-04"
 title: "Components > Alerts"
 ---

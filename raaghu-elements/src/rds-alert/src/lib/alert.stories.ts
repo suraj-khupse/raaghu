@@ -22,13 +22,14 @@ const Template: Story<RdsAlertComponent> = (args: RdsAlertComponent) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  // showicon:false,
-  dismisable: true,
-  alertOpen: true,
-  heading: '',
-  icon: 'info',
-  position: 'bottom',
-  size: 'small'
-
+  dismissible: true,
+  icon: 'information',
+  position: 'top',
+  delay: 0,
+  colorVariant:'danger',
+  iconFill:false,
+  iconStroke:true,
+  iconHeight:'15px',
+  iconWidth:'15px'
 }
 

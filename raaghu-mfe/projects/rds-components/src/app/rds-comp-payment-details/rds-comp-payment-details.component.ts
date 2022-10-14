@@ -17,6 +17,7 @@ export class RdsCompPaymentDetailsComponent implements OnInit {
   @Input() expirationDate:string;  
   @Input() buttonSpinner: boolean = true;
  
+  paymentModeList = [];
 
   
   

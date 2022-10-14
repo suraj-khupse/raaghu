@@ -1,4 +1,4 @@
-<div class="scroll-notification">
+<div>
   <div class="table">
     <div class="table-body">
       <div class="table-row">
@@ -20,10 +20,10 @@
           <rds-radio-button class="position-relative radioButtonSpace" [switch]="false"
                             [inline]="false"
                             [isInputGroup]="false"
-                            [itemList]="planList" (onClick)="onRadioButtonSelect($event)"></rds-radio-button>
+                            [itemList]="planList" (onClick)="onRadioButtonSelect($event)">
+                          </rds-radio-button>
         </div>
         <ng-container *ngIf="selectedPlanInfo&&selectedPlanInfo.planInfo">
-
           <div class="table-body-cell" *ngFor="let item of selectedPlanInfo.planInfo">
             <div *ngFor="let plan of item|keyvalue">
               <rds-label class="position-relative labelSpace" [ngClass]="plan.key==='price'?'fw-bold':'fw-light'" [label]="planList['label']"></rds-label>
@@ -35,9 +35,7 @@
                         label="Buy Now"></rds-button>
 
           </div>
-
         </ng-container>
-
       </div>
     </div>
   </div>
@@ -45,42 +43,43 @@
     <rds-label class="fw-bold" [label]="'Features'"></rds-label>
   </div>
   <hr />
-  <div class="row mt-4" *ngFor="let item of itemList">
-    <div class="col-md-12">
+  <div class="row mt-4" >
+    <div class="col-md-12" *ngFor="let item of itemList">
       <rds-label class="mb-3" [label]="item.label" [bold]="true"></rds-label>
-      <rds-table [tableBorder]="false"
-                 [tableHeader]="true"
-                 [tableHeaderItems]="item.pricingTableHeaderItems"
-                 [tableBodyItems]="item.pricingTableBodyItems"
+      <rds-table [showTableBorder]="false"
+                 [showTableHeader]="true"
+                 [tableHeaders]="item.pricingTableHeaderItems"
+                 [tableData]="item.pricingTableBodyItems"
                  colorVariant="primary"></rds-table>
     </div>
-  </div>
-
-  <div class="table">
-    <div class="table-body">
-      <div class="table-row">
-        <div class="table-body-cell w-40">
-        </div>
-        <div class="table-body-cell w-20">
-          <rds-button colorVariant="info"
-                      [block]="false"
-                      size="medium"
-                      label="Buy Now"></rds-button>
-        </div>
-        <div class="table-body-cell w-20">
-          <rds-button colorVariant="info"
-                      [block]="false"
-                      size="medium"
-                      label="Buy Now"></rds-button>
-        </div>
-        <div class="table-body-cell w-20">
-          <rds-button colorVariant="info"
-                      [block]="false"
-                      size="medium"
-                      label="Buy Now"></rds-button>
+    <div class="table">
+      <div class="table-body">
+        <div class="table-row">
+          <div class="table-body-cell w-40">
+          </div>
+          <div class="table-body-cell w-20">
+            <rds-button colorVariant="info"
+                        [block]="false"
+                        size="medium"
+                        label="Buy Now"></rds-button>
+          </div>
+          <div class="table-body-cell w-20">
+            <rds-button colorVariant="info"
+                        [block]="false"
+                        size="medium"
+                        label="Buy Now"></rds-button>
+          </div>
+          <div class="table-body-cell w-20">
+            <rds-button colorVariant="info"
+                        [block]="false"
+                        size="medium"
+                        label="Buy Now"></rds-button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>  
+    </div> 
+  </div>
+
+   
 </div>
 

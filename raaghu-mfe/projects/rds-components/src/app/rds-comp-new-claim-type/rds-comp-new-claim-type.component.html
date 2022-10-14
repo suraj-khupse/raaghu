@@ -1,35 +1,35 @@
 <form #ClaimTypeForm="ngForm">
-  <div style="display: flex;">
+  <div>
     <div class="form-group col-sm-12 mb-3">
-      <rds-input size="default" value="" TitleType="'Top'" [Title]="'Name'" inputType="text"
+      <rds-input size="default" value="" [TitleType]="'Top'" [Title]="'Name'" inputType="text"
         [(ngModel)]="ClaimTypeData.Name" [disabled]="false" [readonly]="false" name="Name" required [isRequired]=true>
       </rds-input>
     </div>
   </div>
-  <div style="display: flex;">
+  <div class="row">
     <div class="form-group col-sm-6 mb-3 pe-3">
-      <rds-input size="default" value="" TitleType="'Top'" [Title]="'Regex'" name="Regex " required inputType="text"
+      <rds-input size="default" value="" [TitleType]="'Top'" [Title]="'Regex'" name="Regex " required inputType="text"
         [(ngModel)]="ClaimTypeData.Regex" [disabled]="false" [readonly]="false" [isRequired]=true>
       </rds-input>
     </div>
     <div class="form-group col-sm-6 mb-3">
-      <rds-input size="default" value="" TitleType="'Top'" [Title]="'Value Type'" inputType="text"
+      <rds-input size="default" value="" [TitleType]="'Top'" [Title]="'Value Type'" inputType="text"
         [(ngModel)]="ClaimTypeData.ValueType" [disabled]="false" [readonly]="false" name="ValueType">
       </rds-input>
     </div>
   </div>
   <div class="form-group col-sm-12 mb-3">
-    <rds-input size="default" value="" [Title]="'Regex Description'" TitleType="'Top'" inputType="text"
+    <rds-input size="default" value="" [Title]="'Regex Description'" [TitleType]="'Top'" inputType="text"
       [(ngModel)]="ClaimTypeData.regexdescription" [disabled]="false" [readonly]="false" name="regexdescription">
     </rds-input>
   </div>
   <div class="form-group col-sm-12 mb-3">
-    <rds-input size="default" value="" TitleType="'Top'" [Title]="'Description'" inputType="text"
+    <rds-input size="default" value="" [TitleType]="'Top'" [Title]="'Description'" inputType="text"
       [(ngModel)]="ClaimTypeData.Description" [disabled]="false" [readonly]="false" name="Description">
     </rds-input>
   </div>
   <div class="col-md-12">
-    <rds-button [label]="'Cancel'" type="button" class="me-2" [colorVariant]="'outline-primary'" data-bs-dismiss="offcanvas"
+    <rds-button [label]="'Cancel'" type="button" class="me-2" [outlineButton]="true" [colorVariant]="'primary'" data-bs-dismiss="offcanvas"
       [size]="'small'" (click)="clearclaimtypeData()">
     </rds-button>
     <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"

@@ -6,114 +6,121 @@ export default {
   title: 'Elements/Modal',
   component: RdsModalComponent,
   argTypes: {
-    onShow: { click: "clicked" },
+    modalBackdrop: {
+      options: [false, 'static'],
+      control: 'radio'
+    },
   },
 } as Meta;
-
-const Template: Story<RdsModalComponent> = (args: RdsModalComponent) => ({
-  props: args,
-});
-export const FormModal: Story<RdsModalComponent> = (args) => ({
+export const Default: Story<RdsModalComponent> = (args) => ({
   props: args,
   template:
-    `
-      <button type="button" (click)="onClick($event)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#storybookModal">
-      {{label}}
-    </button>
-   <rds-modal modalId="storybookModal" (onShow) = "onShow($event)" [modalClasses]="modalClasses" [modalAnimation]="modalAnimation">
-    <div modalheader class="col-md-12" *ngIf="isModalHeader">
-          <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onClose($event)"></button>
-          <h5 class="modal-title" id="storybookModal">{{modalData.modalHeader}}</h5>
-   </div>
-   <div Modalbody>
-          <p>{{modalData.modalContent}}</p>
+    `<button type="button"  class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#modalId">
+  show  Modal
+</button>
+  <rds-modal  [showModalHeader]="showModalHeader" [showModalFooter]="showModalFooter" [modalBackdrop]="modalBackdrop">
+    <div modalheader class="d-flex align-items-center">
+      <h5 class="modal-title" id="storybookModal">Title</h5>
+      <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
     </div>
-    <div Modalfooter *ngIf="isModalFooter">
-          <button type="button" (click)="onClose($event)" class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
-          <button type="button" (click)="showAlert()" class="btn btn-primary" >Save changes</button>
+    <div modalbody>
+      <p>Modal Body
+      </p>
+    </div>
+    <div modalfooter >
+      <button type="button"  class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </rds-modal>
-    `,
-
+`,
 });
-FormModal.args = {
-  label: 'Launch demo modal',
-  modalId: "storybookModal",
-  isModalHeader: true,
-  isModalFooter: true,
-  modalData: {
-    modalHeader: "Header",
-    modalContent: "Content",
-    modalFooter: "Footer"
-  },
-  backdropstatic: true,
+Default.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'modalBackdrop'] } };
+Default.args = {
+  showModalFooter: true,
+  showModalHeader: true,
+  modalBackdrop: false
 };
-export const StaticBackdropModal: Story<RdsModalComponent> = (args) => ({
+export const verticallyCenterd: Story<RdsModalComponent> = (args) => ({
   props: args,
   template:
-    `
-        <button type="button" (click)="onClick($event)"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#storybookModal">
-          {{label}}
+    `<button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalId">
+          Show Centered Modal
         </button>
-          <rds-modal backdropstatic="static" modalId="storybookModal" [modalClasses]="modalClasses" [modalheader]="modalheader" [Modalbody]="Modalbody" [Modalfooter]="Modalfooter">
-            <div modalheader class="col-md-12" *ngIf="isModalHeader">
-              <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onClose($event)"></button>
-              <h5 class="modal-title" id="storybookModal">{{modalData.modalHeader}}</h5>
+          <rds-modal  [showModalHeader]="showModalHeader" [verticallyCenterd]="verticallyCenterd" [modalBackdrop]="'static'" [showModalFooter]="showModalFooter">
+            <div modalheader class="d-flex align-items-center">
+              <h5 class="modal-title" id="storybookModal">Title</h5>
+              <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
             </div>
-            <div Modalbody>
-              <p>{{modalData.modalContent}}</p>
+            <div modalbody>
+              <p>Modal Content</p>
             </div>
-            <div Modalfooter *ngIf="isModalFooter">
-              <button type="button" (click)="onClose($event)" class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
+            <div modalfooter >
+              <button type="button"  class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
               <button type="button" (click)="showAlert()" class="btn btn-primary">Save changes</button>
             </div>
           </rds-modal>
       `,
 });
-StaticBackdropModal.args = {
-  label: 'Launch static backdrop modal',
-  backdropstatic: 'static',
-  modalId: "storybookModal",
-  isModalHeader: true,
-  isModalFooter: true,
-  modalData: {
-    modalHeader: "Header",
-    modalContent: "I will not close if you click outside me. Don't even try to press escape key.",
-    modalFooter: "Footer"
-  },
+verticallyCenterd.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'verticallyCenterd'] } };
+verticallyCenterd.args = {
+  showModalFooter: true,
+  showModalHeader: true,
+  verticallyCenterd: true
 };
-export const LongContentModal: Story<RdsModalComponent> = (args) => ({
+export const staticBackdropModal: Story<RdsModalComponent> = (args) => ({
   props: args,
   template:
-    `
-      <button type="button"  (click)="onClick($event)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#storybookModal">
-      {{label}}
-    </button>
-    <rds-modal modalId="storybookModal" [modalheader]="modalheader" [modalClasses]="modalClasses" [Modalbody]="Modalbody" [Modalfooter]="Modalfooter" [modalAnimation]="modalAnimation">
-          <div modalheader class="col-md-12" *ngIf="isModalHeader">
-            <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onClose($event)"></button>
-            <h5 class="modal-title" id="storybookModal">{{modalData.modalHeader}}</h5>
-          </div>
-          <div Modalbody>
-            <p>{{modalData.modalContent}}
-            </p>
-          </div>
-          <div Modalfooter *ngIf="isModalFooter">
-            <button type="button" (click)="onClose($event)" class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
-            <button type="button" (click)="showAlert()" class="btn btn-primary" >Save changes</button>
-          </div>
-    </rds-modal>
-    `,
+    `<button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalId">
+          Backdrop Modal
+        </button>
+          <rds-modal [showModalHeader]="showModalHeader" [modalBackdrop]="modalBackdrop" [showModalFooter]="showModalFooter">
+            <div modalheader class="d-flex align-items-center">
+              <h5 class="modal-title" id="storybookModal">Title</h5>
+              <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+            <div modalbody>
+              <p>Modal Content</p>
+            </div>
+            <div modalfooter >
+              <button type="button"  class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
+              <button type="button" (click)="showAlert()" class="btn btn-primary">Save changes</button>
+            </div>
+          </rds-modal>
+      `,
 });
-LongContentModal.args = {
-  label: 'Launch long content modal',
-  modalId: "storybookModal",
-  isModalHeader: true,
-  isModalFooter: true,
-  modalClasses: 'scrollable',
-  modalData: {
-    modalHeader: "Header",
-    modalContent: "This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.",
-    modalFooter: "Footer"
-  },
+staticBackdropModal.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'modalBackdrop'] } };
+staticBackdropModal.args = {
+  showModalFooter: true,
+  showModalHeader: true,
+  modalBackdrop: 'static',
+};
+export const longContentModal: Story<RdsModalComponent> = (args) => ({
+  props: args,
+  template:
+    `<button type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalId">
+Long Content Modal
+</button>
+<rds-modal [showModalHeader]="showModalHeader" [modalBackdrop]="modalBackdrop" [showModalFooter]="showModalFooter" [scrollable]="scrollable">
+  <div modalheader class="d-flex align-items-center">
+    
+    <h5 class="modal-title" id="storybookModal">Title</h5>
+    <button style="float:right" type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+  </div>
+  <div modalbody>
+  <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal
+  </p>  </div>
+  <div modalfooter >
+    <button type="button"  class="btn btn-secondary m-1" data-bs-dismiss="modal">Close</button>
+    <button type="button" (click)="showAlert()" class="btn btn-primary">Save changes</button>
+  </div>
+</rds-modal>
+`,
+});
+longContentModal.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'scrollable', 'modalBackdrop'] } };
+longContentModal.args = {
+  showModalFooter: true,
+  showModalHeader: true,
+  scrollable: true,
+  modalBackdrop: 'static',
+
 };

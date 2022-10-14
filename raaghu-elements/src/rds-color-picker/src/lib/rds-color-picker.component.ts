@@ -62,7 +62,7 @@ export class RdsColorPickerComponent implements OnInit {
 
     var classes = ['position-absolute']
     if (this.position === 'start') {     
-      classes.push('start-0');     
+      classes.push('');     
     }
     else if(this.position === 'end') {
       classes.push('end-0')

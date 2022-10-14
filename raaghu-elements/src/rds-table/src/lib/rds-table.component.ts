@@ -1,5 +1,10 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
+export interface TableHeader {
+  displayName: string;
+  key: string;
+  dataType: string;
+}
 @Component({
   selector: 'rds-table',
   templateUrl: './rds-table.component.html',
@@ -7,26 +12,12 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 })
 export class RdsTableComponent implements OnInit {
 
-  @Input()
-  tableBorder?: boolean;
-
-  @Input()
-  tableHeader?: boolean;
-
-  @Input()
-  tableHeaderItems: any[] = [
-      { displayName: 'Name', dataType: 'text' },
-      { displayName: 'Place', dataType: 'icon' },
-      { displayName: 'Price', dataType: 'price' }
-  ];
-
-  @Input()
-  tableBodyItems: any[] =
-    [{ id: 1, name: 'Standard', icon: 'tickmark' },
-    ];
-
-  @Input()
-  colorVariant?: string;
+  @Input() showTableBorder: boolean = true;
+  @Input() showTableHeader: boolean = true;
+  @Input() tableHeaders: TableHeader[] = [];
+  @Input() tableData: any[] = [];
+  @Input() colorVariant: 'success' | 'danger' | 'dark' | 'warning' | 'info' | 'light' | 'primary' | 'secondary' | undefined = undefined;
+  @Input() borderColorVariant: 'success' | 'danger' | 'dark' | 'warning' | 'info' | 'light' | 'primary' | 'secondary' | undefined = undefined;
 
 
   constructor() { }
@@ -35,20 +26,20 @@ export class RdsTableComponent implements OnInit {
   }
 
   public get bodyColorClasses(): string[] {
-    var bodyClass = ['table table-responsive table-' + `${this.colorVariant}`]
-    if (this.tableBorder === true) {
+    var bodyClass = ['table table-responsive']
+    if (this.showTableBorder === true) {
       bodyClass.push('table-bordered')
+    }
+    if (this.borderColorVariant) {
+      bodyClass.push('border-' + this.borderColorVariant)
+    }
+    if (this.colorVariant) {
+      bodyClass.push('table-' + this.colorVariant)
+
     }
     return bodyClass;
   }
 
-  public get hideHeader(): string[] {
-    var bodyClass = ['']
-    if (this.tableHeader === true) {
-      bodyClass.push('d-none')
-    }
-    return bodyClass;
-  }
 
 
   //public get classes(): string[] {

@@ -10,7 +10,7 @@ export class RdsCompBackgroundImageComponent implements OnInit {
   constructor() { }
 
   @Input() imageUrl: string = ''
-  @Input() imageHeight: number = 500;
+  @Input() imageHeight: number = 690;
   @Input() title: string = '';
   @Input() btnLabel: string = '';
   @Input() subtitle: string = '';

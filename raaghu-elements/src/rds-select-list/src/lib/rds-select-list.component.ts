@@ -1,7 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-// import { Tooltip } from 'bootstrap'
+import { Tooltip } from 'bootstrap'
 declare var bootstrap: any;
+export interface selectListItem {
+  displayText: string;
+  value: any;
+}
 
 @Component({
   selector: 'rds-select-list',
@@ -16,55 +20,24 @@ declare var bootstrap: any;
 })
 export class RdsSelectListComponent implements AfterViewInit, OnChanges {
 
-  selectedValue = ''
   onChange!: (value: string) => void;
   onTouched!: () => void
-  // @Input() size?: 'default'| 'small'| 'large' = 'default';
-  @Input() size?:string;
-  // @Input()
-  // selectSize: string = '';
-
-  @Input() labelText?: string;
-  @Input() LabelType?: 'Top' | 'Bottom' | 'Left' | 'Right' = 'Bottom';
-  // @Input() LabelType = '';
-  @Input()
-  rows: string = '';
-  @Input()
-  multiple: boolean = false;
-
-  defaultSelect: boolean = true;
-
-  @Input() itemList: any = [];
-  @Input()
-  showSizeAttribute?: boolean
-
-  @Input()
-  disabled: boolean = false;
-  @Input()
-  customIcon = '';
+  @Input() size: 'small' | 'medium' | 'large' = 'large';
+  @Input() label: string = '';
+  @Input() labelPosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
+  @Input() rows: string = '';
+  @Input() multiple: boolean = false;
+  @Input() itemList: selectListItem[] = [];
+  @Input() disabled: boolean = false;
   @Input() value: any = '';
-  @Input()
-  placeholderText?: string
-
-  // floatingcontent =false;
-  @Input()
-  isRequired: boolean = false;
-
-  @Input()
-  listItems = [{ value: 'India', some: 'value' }, { value: 'USA' }, { value: 'Canada' }];
-
-  // @Output() select = new EventEmitter();
-
+  @Input() placeholder: string = '';
+  @Input() isRequired: boolean = false;
   @Output() selectListChange = new EventEmitter<any>();
-
   static count: number = 0;
-
   @Input() tooltipTitle: string = '';
+  @Input() tooltipPlacement: 'top' | 'bottom' | 'left' | 'right' = 'top';
+  @Input() id: string = 'selectList';
 
-  @Input() tooltipPlacement!: string;
-
-  id: string = 'selectList';
-  
   constructor() {
     this.id = this.id + RdsSelectListComponent.count++
   }
@@ -74,22 +47,24 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges {
     if (this.value === undefined) {
       this.value = '';
     }
+    if (this.tooltipTitle) {
+      const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      if (tooltipTriggerList) {
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
+      }
+    }
   }
   ngAfterViewInit(): void {
-    if (this.tooltipPlacement && this.tooltipTitle) {
-      const tooltipElement: any = document.getElementById(this.id)
-      // update
-      if (tooltipElement) {
-        let bsTooltip = new bootstrap.Tooltip(tooltipElement)
-        tooltipElement.title = this.tooltipTitle
-        bsTooltip = new bootstrap.Tooltip(tooltipElement)
-
+    if (this.tooltipTitle) {
+      const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      if (tooltipTriggerList) {
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
       }
     }
   }
 
   writeValue(obj: any): void {
-    this.selectedValue = obj;
+    this.value = obj;
 
   }
   registerOnChange(fn: any): void {
@@ -100,79 +75,35 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges {
     this.onTouched = fn;
   }
 
-  public get ClassesForShowSelect(): string {
-    var show = this.showSizeAttribute ? '' : 'd-none'
-    return show
-  }
-
-  public get classesForSelect(): string{
-if(this.multiple===false){
-  this.rows='';
-}
-  var selectClass = ['form-select '];
-  var selectSize=` form-select-${this.size==='small'?'sm':this.size==='large'?'lg':'md'}`       
-    return selectClass + selectSize;    
-  }
-
-  public get bootstrapIcon(): string {
-    var icon = this.customIcon
-    return icon
-  }
-
-  public get icon(): string[] {
-    var classList = [''];
-    if (this.customIcon === '') {
-
-      return classList
+  public get classesForSelect(): string {
+    if (this.multiple === false) {
+      this.rows = '';
     }
-    else {
-      classList.push('icon')
-      return classList
-    }
-  }
-
-  public get labelTextHide() {
-    var classList = ['form-label'];
-    if (this.labelText === '') {
-      return ['d-none']
-    }
-    else {
-      classList.push('d-block')
-      return classList
-    }
+    var selectClass = ['form-select '];
+    var selectSize = ` form-select-${this.size === 'small' ? 'sm' : this.size === 'large' ? 'lg' : 'md'}`
+    return selectClass + selectSize;
   }
 
   public get divclasses(): string[] {
     var classes = ['form-label']
-   if (this.LabelType === 'Top') {
-   classes.push('top-0');
- }
-  else if (this.LabelType === 'Bottom') {
-   classes.push(' d-flex flex-column-reverse')
-  }
-    else if (this.LabelType === 'Left') {
+    if (this.labelPosition === 'top') {
+      classes.push('top-0');
+    }
+    else if (this.labelPosition === 'bottom') {
+      classes.push(' d-flex flex-column-reverse')
+    }
+    else if (this.labelPosition === 'left') {
       classes.push('d-flex align-items-baseline justify-content-end gap-3')
     }
-    else if (this.LabelType === 'Right') {
+    else if (this.labelPosition === 'right') {
       classes.push('d-flex align-items-baseline flex-row-reverse gap-3')
     }
     return classes;
   }
 
-
-  public get iconPosition(): string {
-    if (this.customIcon === '') {
-      return ''
-    }
-    else {
-      return 'icon-position'
-    }
-  }
-
   onSelect(event: any) {
     this.value = event;
     this.selectListChange.emit(event);
-    this.defaultSelect = false;
     this.onChange(event)
     this.onTouched()
   }

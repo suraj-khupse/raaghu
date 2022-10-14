@@ -1,5 +1,5 @@
 ---
-slug: "/client resources"
+slug: "/comp-client resources"
 date: "2019-05-04"
 title: "Components > Client resources"
 ---

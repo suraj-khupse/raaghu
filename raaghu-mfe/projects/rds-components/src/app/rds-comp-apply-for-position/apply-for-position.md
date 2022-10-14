@@ -1,5 +1,5 @@
 ---
-slug: "/Apply-For-Position"
+slug: "/comp-apply-for-position"
 date: "2019-05-04"
 title: "Components > Apply-For-Position"
 ---

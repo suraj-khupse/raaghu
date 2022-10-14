@@ -1,5 +1,5 @@
 ---
-slug: "/product-overview"
+slug: "/comp-product-overview"
 date: "2019-05-04"
 title: "Components > Product-overview"
 ---

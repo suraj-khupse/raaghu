@@ -1,5 +1,5 @@
 ---
-slug: "/Top Navigation"
+slug: "/comp-top-navigation"
 date: "2019-05-04"
 title: "Components > Top Navigation"
 ---

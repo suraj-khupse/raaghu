@@ -25,19 +25,19 @@ const Template: Story<RdsCompAppDetailsComponent> = (args: RdsCompAppDetailsComp
   props: args
 });
 
-export const basic = Template.bind({});
-basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   appDetailList: [{
 
     title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'zapier', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: true
   },
   {
-    title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'avatar', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: true
+    title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'zapier', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: true
   },
   {
-    title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'avatar', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: false
+    title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'zapier', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: false
   },
   {
-    title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'avatar', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: false
+    title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'zapier', route: '/home', iconHeight: '18px', iconWidth: '18px', selected: false
   }]
 }

@@ -1,4 +1,16 @@
-<span class="d-inline-block" tabindex="0" data-bs-toggle="popover"  [attr.data-bs-content]="popoverContent"
-      [title]="popoverTitle" [attr.data-bs-placement]="popoverPosition" [attr.data-bs-trigger]="onHover">
-  <ng-content></ng-content>
-</span>
+
+  <div class="d-flex justify-content-center align-items-center mt-5 pt-5 h-100">
+
+ 
+  <span
+    class="d-inline-block"
+    tabindex="0"
+    data-bs-toggle="popover"
+    [attr.data-bs-content]="popoverContent"
+    [title]="popoverTitle"
+    [attr.data-bs-placement]="popoverPosition"
+    [attr.data-bs-trigger]="onHover"
+  >
+    <ng-content></ng-content>
+  </span>
+</div>

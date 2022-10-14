@@ -20,11 +20,15 @@
   @media (max-width: 767px){
     .mobile-btn{
         display: block;
+        z-index: 99;
     }
     .desktop-btn{
         display: none;
     }
     .card.h-100 {
         height: calc(100vh - 90px) !important;
+    }
+    .sm-block{
+        display: block !important;
     }
   }

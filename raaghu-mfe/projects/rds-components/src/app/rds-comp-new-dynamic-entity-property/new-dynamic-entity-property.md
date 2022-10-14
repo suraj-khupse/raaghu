@@ -1,5 +1,5 @@
 ---
-slug: "/new-dynamic-entity-property"
+slug: "/comp-new-dynamic-entity-property"
 date: "2019-05-04"
 title: "Components > New Dynamic Entity Property"
 ---

@@ -1,5 +1,5 @@
 ---
-slug: "/Visual-Settings"
+slug: "/comp-visual-settings"
 date: "2019-05-04"
 title: "Components > Visual-Settings"
 ---

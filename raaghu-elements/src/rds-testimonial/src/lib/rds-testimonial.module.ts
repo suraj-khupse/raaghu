@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RdsIconModule } from '@libs/rds-icon';
 import { RdsTestimonialComponent } from './rds-testimonial.component';
@@ -8,7 +9,7 @@ import { RdsTestimonialComponent } from './rds-testimonial.component';
   declarations: [
     RdsTestimonialComponent
   ],
-  imports: [ RdsIconModule
+  imports: [ RdsIconModule,CommonModule
   ],
   exports: [
     RdsTestimonialComponent

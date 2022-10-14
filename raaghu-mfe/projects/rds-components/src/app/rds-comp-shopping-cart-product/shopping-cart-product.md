@@ -1,5 +1,5 @@
 ---
-slug: "/Shopping-Cart-Product"
+slug: "/comp-shopping-cart-product"
 date: "2019-05-04"
 title: "Componets > Shopping-Cart-Product"
 ---

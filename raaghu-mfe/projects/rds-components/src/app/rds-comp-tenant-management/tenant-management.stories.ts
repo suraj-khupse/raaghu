@@ -5,6 +5,7 @@ import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModu
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { StoreModule } from '@ngrx/store';
 import { RdsCompTenantManagementComponent } from './rds-comp-tenant-management.component';
+import { RdsLabelModule } from '@libs/rds-label';
 
 
 
@@ -19,6 +20,7 @@ export default {
         RdsCheckboxModule,
         SharedModule,
         NgxTranslateModule,
+        RdsLabelModule,
        
         
         StoreModule.forRoot({})

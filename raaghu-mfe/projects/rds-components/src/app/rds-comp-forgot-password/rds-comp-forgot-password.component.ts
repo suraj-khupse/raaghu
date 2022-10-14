@@ -11,68 +11,67 @@ import { TranslateService } from '@ngx-translate/core';
 export class RdsForgotPasswordComponent extends MfeBaseComponent implements OnInit {
 
   constructor(private injector: Injector,
-    public translate:TranslateService,
-    private formBuilder: FormBuilder ) 
-  { super(injector)}
+    public translate: TranslateService,
+    private formBuilder: FormBuilder) { super(injector) }
 
-  @Input() mailID:string;
-   @Input() Email:string = 'Email';
-   @Input() buttonColorType:string = 'primary';
-   @Input() buttonLabel:string = 'Submit';
-   @Input() loginRouterLink?:string;
-   @Input() resendLink?:string;
-   @Input() showMailSuccess = false;
-   @Output() onClick = new EventEmitter<any>();
-   @Output() onShimmerLoad = new EventEmitter<any>();
+  @Input() mailID: string;
+  @Input() Email: string = 'Email';
+  @Input() buttonColorType: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'default' = 'primary';
+  @Input() buttonLabel: string = 'Submit';
+  @Input() loginRouterLink?: string;
+  @Input() resendLink?: string;
+  @Input() showMailSuccess = false;
+  @Output() onClick = new EventEmitter<any>();
+  @Output() onShimmerLoad = new EventEmitter<any>();
   showMailValidityMessage = false;
-  showMailRequiredMessage =false;
+  showMailRequiredMessage = false;
 
-  public forgotPasswordForm:FormGroup;
+  public forgotPasswordForm: FormGroup;
 
   ngOnInit(): void {
     this.onShimmerLoad.emit(false)
-     this.forgotPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, 
-            Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+    this.forgotPasswordForm = this.formBuilder.group({
+      email: ['', [Validators.required,
+      Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
     })
   }
   get f() { return this.forgotPasswordForm.controls; }
 
 
-  emailValidator(data:string) {
+  emailValidator(data: string) {
     var EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!EMAIL_REGEXP.test(data)) {
-      this.showMailValidityMessage=true;
+      this.showMailValidityMessage = true;
     }
     else
-    this.showMailValidityMessage=false;
-    this.showMailRequiredMessage=false;
+      this.showMailValidityMessage = false;
+    this.showMailRequiredMessage = false;
 
   }
 
-  checkIsEmailEmpty(){
-    if(this.showMailValidityMessage === false){
-      if(this.mailID === '' || this.mailID === undefined){
-        this.showMailRequiredMessage=true;
+  checkIsEmailEmpty() {
+    if (this.showMailValidityMessage === false) {
+      if (this.mailID === '' || this.mailID === undefined) {
+        this.showMailRequiredMessage = true;
       }
-      else{
-        this.showMailRequiredMessage=false;
+      else {
+        this.showMailRequiredMessage = false;
       }
     }
   }
 
-  submit(){
+  submit() {
     this.checkIsEmailEmpty();
-    if(this.forgotPasswordForm.status === 'VALID')
-    {      
-      
-     this.emitEvent('forgetpassword',{
+    if (this.forgotPasswordForm.status === 'VALID') {
 
-     emailAddress:this.mailID}); 
+      this.emitEvent('forgetpassword', {
+
+        emailAddress: this.mailID
+      });
       // this.onClick.emit({emailID:this.mailID});
       // this.showMailSuccess = true;
-   }
+    }
   }
 }
 

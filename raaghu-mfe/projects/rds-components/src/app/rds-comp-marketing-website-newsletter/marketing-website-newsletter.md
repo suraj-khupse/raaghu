@@ -1,5 +1,5 @@
 ---
-slug: "/marketing-website-newsletter"
+slug: "/comp-marketing-website-newsletter"
 date: "2019-05-04"
 title: "Components > Marketing Website Newsletter"
 ---

@@ -56,6 +56,10 @@
         "rds-elements/rds-card-detail/public-api",
         "rds-elements/rds-card-detail"
       ],
+      "@libs/rds-card": [
+        "rds-elements/rds-card/public-api",
+        "rds-elements/rds-card"
+      ],
       "@libs/rds-radio-button": [
         "rds-elements/rds-radio-button/public-api",
         "rds-elements/rds-radio-button"
@@ -75,6 +79,23 @@
       "@libs/rds-product-image": [
         "rds-elements/rds-product-image/public-api",
         "rds-elements/rds-product-image"
+      ],
+     
+      "@libs/rds-team-member": [
+        "rds-elements/rds-team-member/public-api",
+        "rds-elements/rds-team-member"
+      ],
+      "@libs/rds-nav-bar": [
+        "rds-elements/rds-nav-bar/public-api",
+        "rds-elements/rds-nav-bar"
+      ],
+      "@libs/rds-chart-bar-horizontal": [
+        "rds-elements/rds-chart-bar-horizontal/public-api",
+        "rds-elements/rds-chart-bar-horizontal"
+      ],
+      "@libs/rds-chart-line": [
+        "rds-elements/rds-chart-line/public-api",
+        "rds-elements/rds-chart-line"
       ]
     },
     "skipLibCheck": true,

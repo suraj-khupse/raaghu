@@ -2,7 +2,7 @@
     <!-- <mfe-loader [config]="rdsresourceTableMfeConfig"></mfe-loader> -->
     <app-rds-data-table [tableData]="PropertyTableData" [inlineEdit]="false" [pagination]="true" [recordsPerPage]="10"
             [tableHeaders]="PropertyTableHeader"></app-rds-data-table>
-    <div class="mt-4 row">
+    <div class="mt-4 row pb-5 mb-4">
         <div class="col-md-5 mb-3">
             <rds-input size="default" value="" TitleType="'Top'" [Title]="'Key'" inputType="text" [(ngModel)]="PropertiesData.key"
                 [disabled]="false" [readonly]="false">
@@ -19,10 +19,9 @@
             </rds-button>
         </div>    
     </div>
-    <div class="footer">
-        <div class="d-flex">
+        <div class="d-flex position-fixed bottom-0 py-2 bg-white w-100">
             <div class="m-2">
-                <rds-button [label]="'Cancel'" [colorVariant]="'outline-primary'" data-bs-dismiss="offcanvas"
+                <rds-button [label]="'Cancel'" [outlineButton]="true" [colorVariant]="'primary'"  data-bs-dismiss="offcanvas"
                     [size]="'small'">
                 </rds-button>
             </div>
@@ -31,6 +30,5 @@
                     [label]="'CREATE'" (click)="SavePropertyData()">
                 </rds-button>
             </div>
-        </div>
-    </div>
+        </div> 
 </div>

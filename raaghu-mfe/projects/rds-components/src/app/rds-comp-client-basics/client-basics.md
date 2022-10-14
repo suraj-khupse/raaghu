@@ -1,5 +1,5 @@
 ---
-slug: "/client-basics"
+slug: "/comp-client-basics"
 date: "2019-05-04"
 title: "Components > Client-Basics"
 ---

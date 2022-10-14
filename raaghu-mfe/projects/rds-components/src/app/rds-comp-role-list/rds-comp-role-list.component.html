@@ -47,12 +47,12 @@
         </app-rds-comp-permission-tree>
 
         <div class="pt-4 pb-4">
-          <rds-banner [alignCenter]="false"
+          <rds-banner 
             [bannerText]="translate.instant('If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!')"
             [sticky]="false" position="bottom" colorVariant="primary"></rds-banner>
         </div>
         <div class="footer-buttons my-2">
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'outline-primary'"
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'primary'"
             [size]="'small'" data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
@@ -72,7 +72,7 @@
   </app-rds-comp-permission-tree>
   <div class="footer-buttons my-2">
     <rds-button [label]="translate.instant('Cancel')" (click)="closeFilterPermission()"
-      [colorVariant]="'outline-primary'" [size]="'small'" data-bs-dismiss="offcanvas">
+      [colorVariant]="'primary'" [size]="'small'" [outlineButton]="true" data-bs-dismiss="offcanvas">
     </rds-button>
     <rds-button [label]="translate.instant('Select')" [class.disabled]="disableButton()" class="ms-2" [colorVariant]="'primary'" [size]="'small'" [id]="'savePermission'"
       [disabled]="disableButton()"

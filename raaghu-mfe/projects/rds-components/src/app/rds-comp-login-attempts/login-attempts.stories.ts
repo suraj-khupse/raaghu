@@ -12,7 +12,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, NgxTranslateModule, RdsDatepickerModule, RdsSelectListModule,BrowserAnimationsModule,RdsIconModule
+        FormsModule, ReactiveFormsModule, RdsButtonModule, NgxTranslateModule, RdsDatepickerModule, RdsSelectListModule,BrowserAnimationsModule,RdsIconModule,BsDatepickerModule.forRoot()
       ],
       providers: [
         FormBuilder

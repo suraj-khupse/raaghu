@@ -31,7 +31,7 @@ export class RdsProductImageComponent implements OnInit {
 
     var classes = ['']
     if (this.positionClass == true) {     
-      classes.push('imgWidth');     
+      classes.push('');     
     }
     else if(this.borderRadius == true){
       classes.push('imgWidthBorder');     

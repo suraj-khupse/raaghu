@@ -1,5 +1,5 @@
 ---
-slug: "/invoice"
+slug: "/comp-invoice"
 date: "2019-05-04"
 title: "Components > Invoice"
 ---

@@ -2,16 +2,16 @@ import { createAction, props } from "@ngrx/store";
 import { CreateTenantInput, TenantEditDto, UpdateTenantFeaturesInput } from "projects/libs/shared/src/lib/service-proxies";
 import { Tenants } from "./tenant.models";
 
-export const getTenants = createAction('[Tenant Page] Get Languages',
-(maxResultCount?:number) => ({ maxResultCount }));
+export const getTenants = createAction('[Tenant Page] Get Tenants',
+);
 
 export const getTenantSuccess = createAction(
-    '[Tenant Page] Get Languages Success',
-    props<{ tenants: Tenants }>()
+    '[Tenant Page] Get Tenants Success',
+    props<{ tenants: any }>()
 );
 
 export const getTenantFailure = createAction(
-    '[Tenant Page] Get Languages Failure',
+    '[Tenant Page] Get Tenants Failure',
     props<{ error: string }>()
 );
 

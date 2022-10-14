@@ -1,6 +1,6 @@
 <div [ngClass]="classes">
   <ul class="list-unstyled">
-    <li class="input-group-item" *ngFor="let item of data.ParentChildchecklist">
+    <li class="input-group-item mb-3" *ngFor="let item of data.ParentChildchecklist">
       <input class="form-check-input mt-1" type="checkbox" [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}"
         [checked]="checked" [id]="id" [disabled]="disabled" (ngModelChange)="parentCheck(item, $event)"
         (input)="getValueParent($event)" />

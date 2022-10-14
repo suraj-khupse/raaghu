@@ -6,11 +6,11 @@ export default {
   title: 'Charts/Pie Chart',
   component: RdsChartPieComponent,
   argTypes: {
-    canvasBackgroundColor: { control: 'color' },
-    chartStyle: {
-      options: ['Dark', 'light'],
-      control: 'radio'
-    }
+    // canvasBackgroundColor: { control: 'color' },
+    // chartStyle: {
+    //   options: ['Dark', 'light'],
+    //   control: 'radio'
+    // }
   },
 } as Meta;
 
@@ -20,7 +20,7 @@ const Template: Story<RdsChartPieComponent> = (args: RdsChartPieComponent) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Dataset1',
       data: [20, 10, 20, 40, 10],
@@ -39,9 +39,11 @@ Default.args = {
   ],
   chartLabels: ['red', 'Orange', 'Yellow', 'Green', 'Blue'],
   chartWidth: 300,
+  chartHeight:500,
   chartOptions: {
     circumference: 360,
     radius: 100,
+    maintainAspectRatio:false,
     animation: {
       animateRotate: false,
       animateScale: true
@@ -66,7 +68,7 @@ Default.args = {
 };
 export const MultiSeriesPieChart = Template.bind({});
 MultiSeriesPieChart.args = {
-  ChartDataSets: [
+  chartDataSets: [
     {
       backgroundColor: ['#AAA', '#777'],
       data: [21, 79]
@@ -86,7 +88,9 @@ MultiSeriesPieChart.args = {
   ],
   chartLabels: ['Overall Yay', 'Overall Nay', 'Group A Yay', 'Group A Nay', 'Group B Yay', 'Group B Nay', 'Group C Yay', 'Group C Nay'],
   chartWidth: 300,
+  chartHeight:400,
   chartOptions: {
+    maintainAspectRatio:false,
     responsive: true,
     plugins: {
       legend: {

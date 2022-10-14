@@ -1,24 +1,10 @@
-<!-- <div id="alert" [class]="classes" #alertElement role="alert" class="d-flex justify-content-between align-items-center">
-  <h2 *ngIf=" heading !== '' "> {{ heading }}</h2>
-  <span class="wordbreak d-flex align-items-center ">
-    <rds-icon *ngIf="icon" [name]="icon" [fill]="iconFill" [stroke]="iconStroke" [height]="iconHeight"
-      [width]="iconWidth" [ngClass]="iconSize" class="fs-6 me-2"></rds-icon>
-    {{ label }}
-  </span>
-  <ng-content></ng-content>
-  <button (click)="closeAlert()" type="button" class="btn-close  " [ngClass]="withDismiss" data-bs-dismiss="alert"
-    aria-label="Close"></button>
-</div> -->
-
-
 <div id="alert" [class]="classes" #alertElement role="alert" class="d-flex justify-content-between align-items-center">
-  <h2 *ngIf=" heading !== '' "> {{ heading }}</h2>
-  <span class="wordbreak d-flex align-items-center" [class]="alertSize">
-    <rds-icon *ngIf="icon" [name]="icon" [fill]="iconFill" [stroke]="iconStroke" [height]="iconHeight"
-      [width]="iconWidth" [ngClass]="iconSize" class="fs-6 me-2"></rds-icon>
+  <span class="wordbreak d-flex align-items-center">
+    <rds-icon *ngIf="icon" [name]="icon" [ngClass]="iconSize" [fill]="iconFill" [stroke]="iconStroke" [height]="iconHeight"
+      [width]="iconWidth" class="fs-6 me-2"></rds-icon>
     {{ label }}
   </span>
   <ng-content></ng-content>
-  <button (click)="closeAlert()" type="button" class="btn-close" [class]="alertSize" [ngClass]="withDismiss" data-bs-dismiss="alert"
+  <button (click)="closeAlert()" type="button" class="btn-close" *ngIf="dismissible" data-bs-dismiss="alert"
     aria-label="Close"></button>
 </div>

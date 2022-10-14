@@ -98,7 +98,7 @@ export const APP_ROUTES: Routes = [
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
         data: { permission: 'Pages.Administration.AuditLogs' },
-      },
+      }, 
       {
         path: 'organization-unit',
         loadChildren: () =>
@@ -175,18 +175,7 @@ export const APP_ROUTES: Routes = [
             type: 'module',
             remoteEntry: MfeConfig.settings.url,
             exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.Host.Settings' },
-      },
-      {
-        path: 'setting',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: MfeConfig.settings.url,
-            exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.Tenant.Settings' },
+          }).then((m) => m.AppModule)
       },
       {
         path: 'tenant',
@@ -234,16 +223,6 @@ export const APP_ROUTES: Routes = [
           loadRemoteModule({
             type: 'module',
             remoteEntry: MfeConfig.profilesettings.url,
-            exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Editions', animation: 'edition' },
-      },
-      {
-        path: 'contact-us',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: MfeConfig.contactus.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
         data: { permission: 'Pages.Editions', animation: 'edition' },
@@ -364,6 +343,16 @@ export const APP_ROUTES: Routes = [
           }).then((m) => m.AppModule),
 
       },
+      // {
+      //   path: 'editionnew',
+      //   loadChildren: () =>
+      //     loadRemoteModule({
+      //       type: 'module',
+      //       remoteEntry: MfeConfig.editionnew.url,
+      //       exposedModule: './AppModule',
+      //     }).then((m) => m.AppModule),
+
+      // },
      
       // {
       //  path: 'orderdetails',
@@ -375,6 +364,17 @@ export const APP_ROUTES: Routes = [
       //    }).then((m) => m.AppModule),
       //  data: { permission: '' },
       // },
+
+      //{
+      //  path: 'careers',
+      //  loadChildren: () =>
+      //    loadRemoteModule({
+      //      type: 'module',
+      //      remoteEntry: MfeConfig.careers.url,
+      //      exposedModule: './AppModule',
+      //    }).then((m) => m.AppModule),
+
+      //},
       {
         path: '**',
         redirectTo: 'pagenotfound',

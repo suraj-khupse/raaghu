@@ -1,5 +1,5 @@
 ---
-slug: "/Background-Image"
+slug: "/comp-background-image"
 date: "2019-05-04"
 title: "Components > Background-Image"
 ---

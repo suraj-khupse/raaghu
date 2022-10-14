@@ -17,17 +17,14 @@ export default {
     })
   ],
   argTypes: {
-    // backgroundColor: { control: 'color' },
-    // borderColor: { control: 'color' },
-    // Color: { control: 'color' },
     colorVariant: {
-      options: ['info', 'warning', 'success', 'danger', 'primary', 'secondary'],
+      options: ['info', 'warning', 'success', 'danger', 'primary', 'secondary', 'light', 'dark'],
       control: { type: 'select' }
     },
-    toastMessageColorVariant: {
-      options: ['info', 'warning', 'success', 'danger', 'primary', 'secondary'],
+    position: {
+      options: ['Top-Left', 'Top-Center', 'Top-Right', 'Middle-Left', 'Middle-Center', 'Middle-Right', 'Bottom-Left', 'Bottom-Center', 'Bottom-Right'],
       control: { type: 'select' }
-    },
+    }
   },
 } as Meta;
 
@@ -35,30 +32,70 @@ const Template: Story<RdsToastsComponent> = (args: RdsToastsComponent) => ({
   props: args,
 });
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
+Default.parameters = { controls: { include: ['colorVariant', 'headerTitle', 'message', 'show'] } };
 Default.args = {
-  withHeader: false,
-  headerTitle: 'Bootstrap',
-  time: '11 Seconds ago',
-  data_type: 'basic',
-  show: true
+  headerTitle: 'Toast',
+  show: true,
+  colorVariant: 'light',
+  message: 'This is a sample toast'
+};
+export const toastWithAutohide = Template.bind({});
+toastWithAutohide.parameters = { controls: { include: ['colorVariant', 'headerTitle', 'message', 'show', 'autohide'] } };
+toastWithAutohide.args = {
+  headerTitle: 'Toast',
+  show: true,
+  colorVariant: 'light',
+  message: 'This is a sample toast',
+  autohide: true
 };
 
-export const Type1 = Template.bind({})
-Type1.args = {
-  data_type: 'type1',
+export const toastWithDelay = Template.bind({});
+toastWithDelay.parameters = { controls: { include: ['colorVariant', 'headerTitle', 'message', 'show', 'delay', 'autohide'] } };
+toastWithDelay.args = {
+  headerTitle: 'Toast',
   show: true,
-  autoHide: false,
-  delay: undefined,
-  headerTitle: 'File uploaded',
-  iconName:'check',
-  iconColorVariant:'success',
-  iconHeight:'14px',
-  iconWidth:'20px',
-  iconFill:false,
-  iconStroke:true,
-  message: 'Your file has been successfully downloaded'
-}
+  colorVariant: 'light',
+  autohide: true,
+  message: 'This is a sample toast',
+  delay: 5000
+};
+
+export const toastWithPosition = Template.bind({});
+toastWithPosition.parameters = { controls: { include: ['colorVariant', 'headerTitle', 'message', 'show', 'position'] } };
+toastWithPosition.args = {
+  headerTitle: 'Toast',
+  show: true,
+  colorVariant: 'light',
+  message: 'This is a sample toast',
+  position: 'Top-Left'
+};
+
+export const toastWithoutHeader = Template.bind({});
+toastWithoutHeader.parameters = { controls: { include: ['colorVariant', 'headerTitle', 'message', 'show', 'showHeader'] } };
+toastWithoutHeader.args = {
+  headerTitle: 'Toast',
+  show: true,
+  colorVariant: 'light',
+  showHeader: false,
+  message: 'This is a sample toast',
+};
+
+// export const Type1 = Template.bind({})
+// Type1.args = {
+//   data_type: 'type1',
+//   show: true,
+//   autoHide: false,
+//   delay: undefined,
+//   headerTitle: 'File uploaded',
+//   iconName:'check',
+//   iconColorVariant:'success',
+//   iconHeight:'14px',
+//   iconWidth:'20px',
+//   iconFill:false,
+//   iconStroke:true,
+//   message: 'Your file has been successfully downloaded'
+// }
 
 
 // const Content: Story<RdsToastsComponent> = (args: RdsToastsComponent) => ({

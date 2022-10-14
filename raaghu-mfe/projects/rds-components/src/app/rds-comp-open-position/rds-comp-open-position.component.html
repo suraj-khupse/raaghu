@@ -1,71 +1,45 @@
-<div *ngIf="item">
-  <div class="my-4">
-    <h5><rds-label [label]="item.titleHeader"></rds-label></h5>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <rds-nav-tab [navtabsItems]="item.navtabsItems" (onClicktab)="getSelectedNavTab($event)" [horizontalAlignment]="'start'" [verticalAlignment]="false"
-                   [pills]="false" [tabs]="true" [fill]="false" [justified]="false"></rds-nav-tab>
-      <div naveContent class="row tab-content" id="nav-tabContent">
-        <ng-container *ngFor="let navItem of item.navTabItems;let i=index">
-          {{ activePage === i}}{{getJobList(navItem.id)|json}}
-          <div class="tab-panel fade" [ngClass]="{'show active': activePage === i}" [attr.id]="navItem.id" role="tabpanel"
-               aria-labelledby="nav-home-tab">
-            kjnkjkjjh
-            <ng-container *ngFor="let x of getJobList(navItem.id)">
-              <div class="row mt-4">
-                <div class="col-md-12">
-                  <rds-label [label]="x.roleName" [bold]="true"></rds-label>
+<div *ngIf="applyPositionContent">
+  <div class="card border-0">
+    <div class="card-body">
+      <div *ngIf="item">
+        <div class="my-4">
+          <h5><rds-label [label]="item.titleHeader" [bold]="true" class="h1"></rds-label></h5>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <rds-nav-tab [navtabsItems]="item.navtabsItems" (onClicktab)="getSelectedNavTab($event)" [horizontalAlignment]="'start'" [verticalAlignment]="false"
+                         [pills]="false" [tabs]="true" [fill]="false" [justified]="false"></rds-nav-tab>
+            <div naveContent class="row tab-content" id="nav-tabContent">
+              <ng-container *ngFor="let navItem of item.navtabsItems;let i=index">
+                <div class="tab-panel" [ngClass]="{'active': activePage === i}" *ngIf="activePage===i" [attr.id]="navItem.id" role="tabpanel"
+                     [attr.aria-labelledby]="navItem.ariacontrols">
+                  <ng-container *ngFor="let x of getJobList(navItem.id)">
+                    <div class="row mt-4">
+                      <div class="col-md-12">
+                        <rds-label [label]="x.roleName" [bold]="true"></rds-label>
+                      </div>
+                    </div>
+                    <div class="row mt-4">
+                      <div class="col-md-8">
+                        <rds-label class="text-muted" [label]="x.roleDescription"></rds-label>
+                      </div>
+                      <div class="col-md-4">
+                        <rds-button colorVariant="primary" [block]="false"
+                                    [size]="'medium'" [submit]="true"
+                                    [label]="x.buttonLabel" (click)="openForm()"></rds-button>
+                      </div>
+                    </div>
+                  </ng-container>
                 </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-md-8">
-                  <rds-label class="text-muted" [label]="x.roleDescription"></rds-label>
-                </div>
-                <div class="col-md-4">
-                  <rds-button colorVariant="primary" [block]="false"
-                              size="'medium'" [submit]="true"
-                              [label]="x.buttonLabel"></rds-button>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-        </ng-container>
-        <!--<div class="tab-pane fade show active" id="Developer" role="tabpanel"
-             aria-labelledby="nav-home-tab">
-          <div *ngFor="let x of item.descriptions">
-            <div class="row mt-4" >
-              <div class="col-md-12">
-                <rds-label [label]="x.roleName" [bold]="true"></rds-label>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col-md-8">
-                <rds-label class="text-muted" [label]="x.roleDescription"></rds-label>
-              </div>
-              <div class="col-md-4">
-                <rds-button colorVariant="primary" [block]="false"
-                            size="'medium'" [submit]="true"
-                            [label]="x.buttonLabel"></rds-button>
-              </div>
+              </ng-container>
             </div>
           </div>
-         
         </div>
-        <div class="tab-pane fade" id="marketing" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="row">
-            
-          </div>
-        </div>
-        <div class="tab-pane fade" id="designer" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="row">
-          </div>
-        </div>
-        <div class="tab-pane fade" id="researcher" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="row">
-          </div>
-        </div>-->        
       </div>
     </div>
-  </div>
+  </div>  
+</div>
+  
+<div *ngIf="openFormContent">  
+  <app-rds-comp-apply-for-position></app-rds-comp-apply-for-position>
 </div>

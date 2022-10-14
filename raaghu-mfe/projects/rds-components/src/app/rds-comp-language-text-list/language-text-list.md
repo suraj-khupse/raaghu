@@ -1,5 +1,5 @@
 ---
-slug: "/language-text-list"
+slug: "/comp-language-text-list"
 date: "2019-05-04"
 title: "Components > Language Text List"
 ---

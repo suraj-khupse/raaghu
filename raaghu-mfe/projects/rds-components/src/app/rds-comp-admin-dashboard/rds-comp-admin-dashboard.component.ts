@@ -253,7 +253,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
         position: 'right',
         labels: {
           boxWidth: 15,
-          padding: 20
+          padding: 15
         },
       },
     }

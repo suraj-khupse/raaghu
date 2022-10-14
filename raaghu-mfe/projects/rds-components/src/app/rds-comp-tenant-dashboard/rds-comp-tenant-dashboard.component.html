@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <rds-widget [isRefreshRequired]="true" [headerTitle]="translate.instant('Monthly Summary')" (onRefresh)="LoadMonthlySummary()">
         <div body>
-          <rds-chart-line [chartLabels]="monthlySummaryLabels" [ChartDataSets]="monthlySummaryDataSets"
+          <rds-chart-line [chartLabels]="monthlySummaryLabels" [chartDataSets]="monthlySummaryDataSets"
             [chartOptions]="monthlySummarychartOptions"></rds-chart-line>
         </div>
       </rds-widget>
@@ -33,7 +33,7 @@
             <div body>
               <rds-big-number-widget [bigNumber]="'$' +ProfitSharePrice"></rds-big-number-widget>
               <div class="col col-sm-12">
-                <rds-chart-doughnut [ChartDataSets]="pschartDatasets" chartId="psChart" [chartWidth]="200"
+                <rds-chart-doughnut [chartDataSets]="pschartDatasets" chartId="psChart" [chartWidth]="200"
                   [chartLabels]="pschartLabels" [chartOptions]="pschartOptions" chartType="doughnut">
                 </rds-chart-doughnut>
               </div>
@@ -52,7 +52,7 @@
               <div body>
                 <div class="row">
                   <div class="col col-sm-5">
-                    <rds-chart-bool chartId="ConnectedCallschart" [ChartDataSets]="ConnectedCallschartDatasets"
+                    <rds-chart-bool chartId="ConnectedCallschart" [chartDataSets]="ConnectedCallschartDatasets"
                       [chartLabels]="ConnectedCallschartLabels" [chartWidth]="100"
                       [chartOptions]="ConnectedCallschartOptions" chartType="doughnut"></rds-chart-bool>
                   </div>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="row">
                   <div class="col col-sm-5">
-                    <rds-chart-bool chartId="ClientCallschart" [ChartDataSets]="ClientCallschartDatasets"
+                    <rds-chart-bool chartId="ClientCallschart" [chartDataSets]="ClientCallschartDatasets"
                       [chartLabels]="ClientCallschartLabels" [chartWidth]="100" [chartOptions]="ClientCallschartOptions"
                       chartType="doughnut"></rds-chart-bool>
                   </div>
@@ -90,7 +90,7 @@
             <div body>
               <rds-big-number-widget [bigNumber]="'$' +DailySalesGrowth" [subText]="'-$' +SalesGrowthLoss"
                 [icon]="'triangle_down'" iconHeight="12px" iconWidth="12px"></rds-big-number-widget>
-              <rds-chart-bar-horizontal [chartLabels]="barHrChartLabels" [ChartDataSets]="barHrChartDatasets"
+              <rds-chart-bar-horizontal [chartLabels]="barHrChartLabels" [chartDataSets]="barHrChartDatasets"
                 [chartOptions]="barHrChartOptions" [chartWidth]="300">
               </rds-chart-bar-horizontal>
             </div>

@@ -1,5 +1,5 @@
 ---
-slug: "/member-activity"
+slug: "/comp-member-activity"
 date: "2019-05-04"
 title: "Components > Member Activity"
 ---

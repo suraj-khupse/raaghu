@@ -282,3 +282,22 @@ li.page-item.default-liitem {
 //  border-radius: 4px;
  
 // }
+
+@media screen and (max-width:767px){
+  .pagination li a{
+    padding: 3px 8px;
+  }
+  .pagination{
+    justify-content: space-around !important;
+  }
+  .page-counter .custom-select{
+    padding: 5px 20px !important;
+  }
+  .pagination-prev, .pagination-next{
+    display: none;
+  }
+  .custom-select{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+}

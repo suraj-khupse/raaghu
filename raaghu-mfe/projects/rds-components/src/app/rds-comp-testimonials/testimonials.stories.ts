@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RdsCarouselModule, RdsIconModule } from '@libs/rds-elements';
+import { BrowserModule } from '@angular/platform-browser';
+import { RdsCarouselModule, RdsIconModule, RdsTestimonialModule } from '@libs/rds-elements';
 import { RdsLabelModule } from '@libs/rds-label';
+import { SharedModule } from '@libs/shared';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsTestimonialModule } from 'projects/libs/rds-elements/src/rds-testimonial/src/public-api';
 import { RdsCompTestimonialsComponent } from './rds-comp-testimonials.component';
 
 export default {
@@ -12,7 +14,7 @@ export default {
     moduleMetadata({
       declarations: [RdsCompTestimonialsComponent],
       imports: [
-        FormsModule, ReactiveFormsModule,RdsCarouselModule,RdsLabelModule,RdsIconModule, RdsTestimonialModule
+        FormsModule,CommonModule,BrowserModule, SharedModule, ReactiveFormsModule,RdsCarouselModule,RdsLabelModule,RdsIconModule, RdsTestimonialModule, RdsCarouselModule
       ],
       providers: [
         FormBuilder
@@ -97,7 +99,7 @@ Advanced.args = {
     iconStroke:true,
   },
   ]
-   
+  
 }
 
 

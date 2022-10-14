@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input, OnInit, Renderer2, TemplateRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-rds-comp-demoui',
@@ -8,68 +9,76 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./rds-comp-demoui.component.scss']
 })
 export class RdsCompDemouiComponent implements OnInit {
- video = "http://static.videogular.com/assets/videos/videogular.mp4";
- showAlert:boolean=false;
+  video = "http://static.videogular.com/assets/videos/videogular.mp4";
+  showAlert: boolean = false;
 
 
   progressBarList = [{
     "width": "50",
-    "widthMax":"25"
+    "widthMax": "25"
   }];
 
- hundred :number =100;
- fourty:number =40;
-tableHeaderItems=[
-  {
-    "headerName": "Name"
-  },
-  {
-    "headerName": "Age"
-  },
-  {
-    "headerName": "State"
-  }
-];
+  hundred: number = 100;
+  fourty: number = 40;
+  tableHeaderItems = [
+    {
+      "displayName": "Name",
+      key: 'name',
+      dataType: 'text'
+    },
+    {
+      "displayName": "Age",
+      key: 'age',
+      dataType: 'text'
+    },
+    {
+      "displayName": "State",
+      key: 'state',
+      dataType: 'text'
+    }
+  ];
 
-tableBodyItems=[
-  {
-    "name": "xyz",
-    "age": 25,
-    "state": "Maharashtra"
-  },
-  {
-    "name": "yz",
-    "age": 21,
-    "state": "Hariyana"
-  },
-  {
-    "name": "op",
-    "age": 41,
-    "state": "Surat"
-  }
-];
+  tableBodyItems = [
+    {
+      "name": "xyz",
+      "age": 25,
+      "state": "Maharashtra"
+    },
+    {
+      "name": "yz",
+      "age": 21,
+      "state": "Hariyana"
+    },
+    {
+      "name": "op",
+      "age": 41,
+      "state": "Surat"
+    }
+  ];
 
   buttonGroupItem = [
     {
-      "label": "Left",
-      "iconClass": "",
-      "id": "",
-      "name": ""
+      label: 'Left',
+      id: '',
+      name: '',
+      colorVariant: 'primary'
     },
     {
-      "label": "middle",
-      "iconClass": "",
-      "id": "",
-      "name": ""
+      label: 'Middle',
+      id: '',
+      name: '',
+      colorVariant: 'primary'
+
     },
     {
-      "label": "right",
-      "iconClass": "",
-      "id": "",
-      "name": ""
-    }
-  ];
-  options = [   
+      label: 'Right',
+      id: '',
+      name: '',
+      colorVariant: 'primary'
+
+    },
+  ]
+  options = [
     { value: 'option 1', displayText: 'option 1' },
     { value: 'option 2', displayText: 'option 2' },
     { value: 'option 3', displayText: 'option 3' },
@@ -80,6 +89,7 @@ tableBodyItems=[
       "icon": 'plus',
       "id": '',
       "name": '',
+      colorVariant: 'info',
       iconWidth: '18px',
       iconHeight: '18px',
       stroke: true,
@@ -90,6 +100,7 @@ tableBodyItems=[
       "icon": 'pencil',
       "id": '',
       "name": '',
+      colorVariant: 'info',
       iconWidth: '18px',
       iconHeight: '18px',
       stroke: true,
@@ -100,13 +111,14 @@ tableBodyItems=[
       "icon": 'delete',
       "id": '',
       "name": '',
+      colorVariant: 'info',
       iconWidth: '18px',
       iconHeight: '18px',
       stroke: true,
       fill: false
     }
   ];
-  Data = {
+  cardData = {
     "headerTitle": "Header Title",
     "loginTitle": "Login Title",
     "cardDescription": "Some quick example text to build on the card title and make up the bulk of the card's content"
@@ -131,24 +143,24 @@ tableBodyItems=[
     // }
   ];
 
-  listItems = [    
+  listItems = [
     {
       "value": "India",
       "some": "India",
       "id": 0,
-      "href": "",           
+      "href": "",
       "color": "primary"
     },
     {
       "value": "South Africa",
       "some": "South Africa",
       "id": 1,
-      "href": "",          
+      "href": "",
       "color": "primary"
     }
   ];
 
-  listItemsCountryCode = [    
+  listItemsCountryCode = [
     {
       "value": "UK",
       "some": "UK",
@@ -341,17 +353,18 @@ tableBodyItems=[
     "July"
   ];
 
-  chartOptions = { 
+  chartOptions = {
     "pointStyle": "star",
     "radius": 7,
     "responsive": true,
+    maintainAspectRatio: false,
     "backgroundColor": [
       "#EDB371"
     ],
     "plugins": {
       "legend": {
-        "position": "left",
-        "align": "start",
+        "position": "top",
+        "align": "center",
         "pointStyle": "bottom",
         "labels": {
           "usePointStyle": true
@@ -487,9 +500,9 @@ tableBodyItems=[
 
 
   // area chart start
-  
 
-  chartDAtaSetsArea = [
+
+  chartDataSetsArea = [
     {
       "label": "Dataset 1",
       "data": [
@@ -503,7 +516,7 @@ tableBodyItems=[
       ],
       "borderColor": "rgba(75, 192, 192, 0.8)",
       "fill": true,
-      "fillColor":"rgba(75, 192, 192, 0.8)",
+      "fillColor": "rgba(75, 192, 192, 0.8)",
       "tension": 0.1,
     }
   ];
@@ -520,18 +533,19 @@ tableBodyItems=[
 
   chartOptionsArea = {
     "pointStyle": "star",
+    maintainAspectRatio: false,
     "radius": 7,
-    chartWidth :650,
+    chartWidth: 650,
     chartHeight: 350,
-    "responsive": true,
+    responsive: true,
     "backgroundColor": [
       "#01AE9D",
       // "#E1E1E1"
     ],
     "plugins": {
       "legend": {
-        "position": "left",
-        "align": "start",
+        "position": "top",
+        "align": "center",
         "pointStyle": "bottom",
         "labels": {
           "usePointStyle": true
@@ -722,7 +736,7 @@ tableBodyItems=[
   ];
 
   chartOptionsBool = {
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     "elements": {
       "center": {
         "text": "50%"
@@ -733,7 +747,6 @@ tableBodyItems=[
       "display": false
     },
     "responsive": true,
-    
     "plugins": {
       "series": {
         "label": {
@@ -758,20 +771,20 @@ tableBodyItems=[
       },
       "legend": {
         "display": false,
-        "align": "start",
-        "position": "right"
+        "align": "center",
+        "position": "top"
       }
     },
     "scales": {
       yAxes: [{
         ticks: {
-            beginAtZero:true
+          beginAtZero: true
         }
-    }]
+      }]
     }
   }
 
-  ChartDataSetsBubble = [
+  chartDataSetsBubble = [
     {
       "label": "Dataset 1",
       "data": [
@@ -790,7 +803,7 @@ tableBodyItems=[
       "backgroundColor": [
         "rgba(255, 99, 132)"
       ],
-      chartWidth:450,
+      chartWidth: 450,
     },
     {
       "label": "Dataset 2",
@@ -811,7 +824,7 @@ tableBodyItems=[
       "backgroundColor": [
         "rgba(255, 206, 86)"
       ],
-      chartWidth:450,
+      chartWidth: 450,
     }
   ];
 
@@ -835,6 +848,7 @@ tableBodyItems=[
     "plugins": {
       "legend": {
         "position": "top",
+        align: 'center',
         "pointStyle": "line",
         "labels": {
           "usePointStyle": true
@@ -962,28 +976,51 @@ tableBodyItems=[
     }
   }
 
-  ChartDataSetsDoughnut = [
+  // chartDataSetsDoughnut = [
+  //   {
+  //     "label": "Dataset 1",
+  //     "data": [
+  //       20,
+  //       10,
+  //       30,
+  //       40,
+  //       45
+  //     ],
+  //     "backgroundColor": [
+  //       "#ff6384",
+  //       "#ff9f40",
+  //       "#ffcd56",
+  //       "#4bc0c0"
+  //     ],
+  //     "borderColor": [
+  //       "#fff"
+  //     ],
+  //     borderWidth: 1,
+  //     cutout: '80%',
+
+  //   }
+  // ];
+
+  // chartLabelsDoughnut = [
+  //   "Persian Green",
+  //   "Portage",
+  //   "Carrot Orange",
+  //   "Shamrock",
+  //   "Blue"
+  // ];
+  chartDataSetsDoughnut = [
     {
-      "label": "Dataset 1",
-      "data": [
-        20,
-        10,
-        30,
-        40,
-        45
+      label: 'Dataset 1',
+      data: [20, 10, 30, 15, 25],
+      backgroundColor: [
+        '#ff6384',
+        '#ff9f40',
+        '#ffcd56',
+        '#4bc0c0'
       ],
-      "backgroundColor": [
-        "#ff6384",
-        "#ff9f40",
-        "#ffcd56",
-        "#4bc0c0"
+      borderColor: [
+        '#fff',
       ],
-      "borderColor": [
-        "#fff"
-      ],
-      borderWidth: 1,
-      cutout: '80%',
-      
     }
   ];
 
@@ -994,59 +1031,72 @@ tableBodyItems=[
     "Shamrock",
     "Blue"
   ];
-
   chartOptionsDoughnut = {
-    "type": "doughnut",
-    maintainAspectRatio:true,
-    responsive:true,
-    chartWidth:120,
-    "options": {
-      "responsive": true,
-      "plugins": {
-        "legend": {
-          "position": "top"
-        },
-        "title": {
-          "display": true,
-          // "text": "Chart.js Doughnut Chart"
-        }
-      }
-    },
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-
-      series: {
-        label: {
-          position: "inside",
-          text: 'total', // or "inside" | "outside"
-          display: false
-        }
-      },
-      doughnutlabel: {
-        labels: [{
-          text: '550',
-          font: {
-            size: 20,
-            weight: 'bold'
-          }
-        }, {
-          text: 'total'
-        }
-        ]
-      },
       legend: {
-        display: true,
-        align: "middle",
-        position: 'right',
-        labels: {
-          boxWidth: 15,
-          padding: 20
-        },
+        position: 'top',
+        align: 'center'
       },
-    },
-    "scales": {}
+      title: {
+        display: true,
+        text: 'Chart.js Doughnut Chart'
+      }
+    }
   };
+  // chartOptionsDoughnut = {
+  //   "type": "doughnut",
+  //   maintainAspectRatio: true,
+  //   responsive: true,
+  //   chartWidth: 120,
+  //   "options": {
+  //     "responsive": true,
+  //     "plugins": {
+  //       "legend": {
+  //         "position": "top"
+  //       },
+  //       "title": {
+  //         "display": true,
+  //         // "text": "Chart.js Doughnut Chart"
+  //       }
+  //     }
+  //   },
+  //   plugins: {
 
-  ChartDataSetsLine = [
+  //     series: {
+  //       label: {
+  //         position: "inside",
+  //         text: 'total', // or "inside" | "outside"
+  //         display: false
+  //       }
+  //     },
+  //     doughnutlabel: {
+  //       labels: [{
+  //         text: '550',
+  //         font: {
+  //           size: 20,
+  //           weight: 'bold'
+  //         }
+  //       }, {
+  //         text: 'total'
+  //       }
+  //       ]
+  //     },
+  //     legend: {
+  //       display: true,
+  //       align: "middle",
+  //       position: 'right',
+  //       labels: {
+  //         boxWidth: 15,
+  //         padding: 20
+  //       },
+  //     },
+  //   },
+  //   "scales": {}
+  // };
+
+  chartDataSetsLine = [
     {
       "label": "My First Dataset",
       "data": [
@@ -1075,8 +1125,8 @@ tableBodyItems=[
   chartOptionsLine = {
     "plugins": {
       "legend": {
-        "position": "right",
-        "align": "start",
+        "position": "top",
+        "align": "center",
         "pointStyle": "line",
         "labels": {
           "usePointStyle": true
@@ -1209,7 +1259,7 @@ tableBodyItems=[
 
   // line chart start
 
-  chartDataSetsLinechart =[
+  chartDataSetsLinechart = [
     {
       label: 'Sales',
       data: [101, 122, 133, 231, 112, 125, 135, 135.7, 136, 124, 122, 125],
@@ -1219,7 +1269,7 @@ tableBodyItems=[
       fill: true,
       pointRadius: 3,
       fillColor: "rgba(195, 40, 96, 0.1)",
-       tension: 0.4,
+      tension: 0.4,
     },
     {
       label: 'Revenue',
@@ -1241,8 +1291,8 @@ tableBodyItems=[
     radius: 0,
     pointStyle: 'circle',
     responsive: true,
-    borderWidth:1.5,
-    chartWidth :650,
+    borderWidth: 1.5,
+    chartWidth: 650,
     chartHeight: 350,
     maintainAspectRatio: false,
     plugins: {
@@ -1251,7 +1301,7 @@ tableBodyItems=[
       },
       legend: {
         position: 'top',
-        align: "end",
+        align: "center",
         pointStyle: "circle",
         labels: {
           usePointStyle: true,
@@ -1263,9 +1313,9 @@ tableBodyItems=[
     scales:
     {
       y: {
-        beginAtZero:true,   
+        beginAtZero: true,
       },
-  },
+    },
     tooltip: {
       display: true,
       usePointStyle: true,
@@ -1285,13 +1335,13 @@ tableBodyItems=[
       borderColor: 'rgba(54, 162, 245, 1)',
       borderWidth: 1,
       borderRadius: 10,
-      barThickness : 7,
+      barThickness: 7,
       borderSkipped: false,
     }
   ]
 
-  chartLabelsBarChartThick =[
-    '10k', '20k','25k', '30k', '40k', '50k', '60k', '70k', '75k', '80k', '90k', '95k'
+  chartLabelsBarChartThick = [
+    '10k', '20k', '25k', '30k', '40k', '50k', '60k', '70k', '75k', '80k', '90k', '95k'
   ]
 
   chartOptionsBarChartThick = {
@@ -1303,10 +1353,11 @@ tableBodyItems=[
       }
     },
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: '',
+        position: 'top',
+        align: 'center',
         pointStyle: "line",
         labels: {
           usePointStyle: true
@@ -1315,9 +1366,9 @@ tableBodyItems=[
       scales:
       {
         y: {
-          beginAtZero:true,    
+          beginAtZero: true,
         }
-    },
+      },
       tooltip: {
         usePointStyle: true,
       },
@@ -1330,7 +1381,7 @@ tableBodyItems=[
 
   // barchart thickline end
 
-  ChartDataSetsChartMixed = [
+  chartDataSetsChartMixed = [
     {
       "type": "bar",
       "label": "Bar Dataset",
@@ -1371,8 +1422,8 @@ tableBodyItems=[
     "pointStyle": "triangle",
     "plugins": {
       "legend": {
-        "position": "left",
-        "align": "start",
+        "position": "top",
+        "align": "center",
         "pointStyle": "bottom",
         "labels": {
           "usePointStyle": true
@@ -1505,7 +1556,7 @@ tableBodyItems=[
     "Blue"
   ];
 
-  ChartDataSetsPieChat = [
+  chartDataSetsPieChat = [
     {
       "label": "Dataset1",
       "data": [
@@ -1530,6 +1581,7 @@ tableBodyItems=[
   ];
 
   chartOptionsPieChat = {
+    maintainAspectRatio: false,
     "circumference": 360,
     "radius": 100,
     "animation": {
@@ -1540,6 +1592,7 @@ tableBodyItems=[
     "plugins": {
       "legend": {
         "position": "top",
+        align: 'center',
         "pointStyle": "line",
         "labels": {
           "usePointStyle": true
@@ -1552,73 +1605,145 @@ tableBodyItems=[
     },
     "scales": {}
   };
-
-  pieChartMultiLabel = [
-    "Overall Yay",
-    "Overall Nay",
-    "Group A Yay",
-    "Group A Nay",
-    "Group B Yay",
-    "Group B Nay",
-    "Group C Yay",
-    "Group C Nay"
-  ];
-
   pieChartMultiDataSets = [
     {
-      "backgroundColor": [
-        "#AAA",
-        "#777"
-      ],
-      "data": [
-        21,
-        79
-      ]
+      backgroundColor: ['#AAA', '#777'],
+      data: [21, 79]
     },
     {
-      "backgroundColor": [
-        "hsl(0, 100%, 60%)",
-        "hsl(0, 100%, 35%)"
-      ],
-      "data": [
-        33,
-        67
-      ]
+      backgroundColor: ['hsl(0, 100%, 60%)', 'hsl(0, 100%, 35%)'],
+      data: [33, 67]
     },
     {
-      "backgroundColor": [
-        "hsl(100, 100%, 60%)",
-        "hsl(100, 100%, 35%)"
-      ],
-      "data": [
-        20,
-        80
-      ]
+      backgroundColor: ['hsl(100, 100%, 60%)', 'hsl(100, 100%, 35%)'],
+      data: [20, 80]
     },
     {
-      "backgroundColor": [
-        "hsl(180, 100%, 60%)",
-        "hsl(180, 100%, 35%)"
-      ],
-      "data": [
-        10,
-        90
-      ]
+      backgroundColor: ['hsl(180, 100%, 60%)', 'hsl(180, 100%, 35%)'],
+      data: [10, 90]
     }
   ];
+  pieChartMultiLabel = ['Overall Yay', 'Overall Nay', 'Group A Yay', 'Group A Nay', 'Group B Yay', 'Group B Nay', 'Group C Yay', 'Group C Nay'];
 
   pieChartMultiOptions = {
-    "responsive": true,
-    "plugins": {
-      "legend": {
-        "labels": {}
+    maintainAspectRatio: false,
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          generateLabels: function (chart: any) {
+            // Get the default label list
+            const original = Chart.overrides.pie.plugins.legend.labels.generateLabels;
+            const labelsOriginal = original.call(this, chart);
+
+            // Build an array of colors used in the datasets of the chart
+            var datasetColors = chart.data.datasets.map(function (e: any) {
+              return e.backgroundColor;
+            });
+            datasetColors = datasetColors.flat();
+
+            // Modify the color and hide state of each label
+            labelsOriginal.forEach((label: any) => {
+              // There are twice as many labels as there are datasets. This converts the label index into the corresponding dataset index
+              label.datasetIndex = (label.index - label.index % 2) / 2;
+
+              // The hidden state must match the dataset's hidden state
+              label.hidden = !chart.isDatasetVisible(label.datasetIndex);
+
+              // Change the color to match the dataset
+              label.fillStyle = datasetColors[label.index];
+            });
+
+            return labelsOriginal;
+          }
+        },
+        onClick: function (mouseEvent: any, legendItem: any, legend: any) {
+          // toggle the visibility of the dataset from what it currently is
+          legend.chart.getDatasetMeta(
+            legendItem.datasetIndex
+          ).hidden = legend.chart.isDatasetVisible(legendItem.datasetIndex);
+          legend.chart.update();
+        }
       },
-      "tooltip": {
-        "callbacks": {}
+      tooltip: {
+        callbacks: {
+          label: function (context: any) {
+            const labelIndex = (context.datasetIndex * 2) + context.dataIndex;
+            return context.chart.data.labels[labelIndex] + ': ' + context.formattedValue;
+          }
+        }
       }
-    },
-    "scales": {}
+    }
   };
+
+  // pieChartMultiLabel = [
+  //   "Overall Yay",
+  //   "Overall Nay",
+  //   "Group A Yay",
+  //   "Group A Nay",
+  //   "Group B Yay",
+  //   "Group B Nay",
+  //   "Group C Yay",
+  //   "Group C Nay"
+  // ];
+
+  // pieChartMultiDataSets = [
+  //   {
+  //     "backgroundColor": [
+  //       "#AAAAAA",
+  //       "#777777"
+  //     ],
+  //     "data": [
+  //       21,
+  //       79
+  //     ]
+  //   },
+  //   {
+  //     "backgroundColor": [
+  //       "#ff3333",
+  //       "#b30000"
+  //     ],
+  //     "data": [
+  //       33,
+  //       67
+  //     ]
+  //   },
+  //   {
+  //     "backgroundColor": [
+  //       "#77ff33",
+  //       "#3bb300"
+  //     ],
+  //     "data": [
+  //       20,
+  //       80
+  //     ]
+  //   },
+  //   {
+  //     "backgroundColor": [
+  //       "#33ffff",
+  //       "#00b2b3"
+  //     ],
+  //     "data": [
+  //       10,
+  //       90
+  //     ]
+  //   }
+  // ];
+
+  // pieChartMultiOptions = {
+  //   "responsive": true,
+  //   "plugins": {
+  //     "legend": {
+  //       position: 'top',
+  //       align: 'center',
+  //       "labels": {}
+  //     },
+  //     "tooltip": {
+  //       "callbacks": {}
+  //     }
+  //   },
+  //   "scales": {}
+  // };
 
   chartLabelsPolar = [
     "Persian Green",
@@ -1628,7 +1753,7 @@ tableBodyItems=[
     "Blue"
   ];
 
-  ChartDataSetsPolar = [
+  chartDataSetsPolar = [
     {
       "label": "Dataset 1",
       "data": [
@@ -1658,11 +1783,12 @@ tableBodyItems=[
       "animateScale": false
     },
     "responsive": true,
+    maintainAspectRatio: false,
     "plugins": {
       "legend": {
-        "position": "right",
+        "position": "top",
         "pointStyle": "line",
-        "align":"middle",
+        "align": "center",
         "labels": {
           "usePointStyle": true,
           boxWidth: 15,
@@ -1767,7 +1893,7 @@ tableBodyItems=[
     "July"
   ];
 
-  ChartDataSetsRadar = [
+  chartDataSetsRadar = [
     {
       "label": "Dataset 1",
       "data": [
@@ -1788,7 +1914,7 @@ tableBodyItems=[
       "fill": false,
       "pointStyle": "circle",
       "pointRadius": 2,
-      
+
     },
     {
       "label": "Dataset 2",
@@ -1835,8 +1961,9 @@ tableBodyItems=[
   ];
 
   chartOptionsRadar = {
-    "responsive": false,
-    chartWidth:350,
+    "responsive": true,
+    maintainAspectRatio: false,
+    chartWidth: 350,
     "chartArea": {
       "backgroundColor": "rgba(251, 85, 85, 0.4)"
     },
@@ -1846,8 +1973,8 @@ tableBodyItems=[
         // "text": "Radar Chart"
       },
       "legend": {
-        "position": "left",
-        "align": "start",
+        "position": "top",
+        "align": "center",
         "pointStyle": "rectRot",
         "pointRadius": 5,
         "labels": {
@@ -1950,7 +2077,7 @@ tableBodyItems=[
     "April"
   ];
 
-  ChartDataSetsScatter = [
+  chartDataSetsScatter = [
     {
       "type": "scatter",
       "label": "Scatter Dataset",
@@ -1981,8 +2108,8 @@ tableBodyItems=[
     "radius": 10,
     "plugins": {
       "legend": {
-        "position": "bottom",
-        "align": "start",
+        "position": "top",
+        "align": "center",
         "pointStyle": "line",
         "labels": {
           "usePointStyle": true
@@ -2109,7 +2236,7 @@ tableBodyItems=[
 
   chartLabelsScatterMulti = ['January', 'February', 'March', 'April'];
 
-  ChartDataSetsScatterMulti = [
+  chartDataSetsScatterMulti = [
     {
       label: 'Scatter Dataset 1',
       data: [
@@ -2174,7 +2301,7 @@ tableBodyItems=[
     "Dec"
   ];
 
-  ChartDataSetsStacked = [
+  chartDataSetsStacked = [
     {
       "label": "My Second dataset",
       "data": [
@@ -2239,6 +2366,8 @@ tableBodyItems=[
 
   chartOptionsStacked = {
     "radius": 3,
+    responsive: true,
+    maintainAspectRatio: false,
     "pointStyle": "triangle",
     "plugins": {
       "title": {
@@ -2249,6 +2378,8 @@ tableBodyItems=[
         "mode": "index"
       },
       "legend": {
+        position: 'top',
+        align: 'center',
         "pointStyle": "circle",
         "labels": {
           "usePointStyle": true
@@ -2386,26 +2517,26 @@ tableBodyItems=[
       "name": "Home",
       "route": "/home",
       iconClass: "bi bi-house-door",
-      iconWidth: '15px' ,
-      iconHeight:'15px' ,
-      'disabled':false
+      iconWidth: '15px',
+      iconHeight: '15px',
+      'disabled': false
     },
     {
       "name": "About",
       "route": "/About",
       iconClass: "bi bi-house-door",
-      iconWidth: '15px' ,
-      iconHeight:'15px' ,
-      'disabled':true
+      iconWidth: '15px',
+      iconHeight: '15px',
+      'disabled': true
     },
     {
       "name": "Contact US",
       "route": "/Contact",
       iconClass: "bi bi-house-door",
-      iconWidth: '15px' ,
-      iconHeight:'15px' ,
-      'disabled':true
-    },    
+      iconWidth: '15px',
+      iconHeight: '15px',
+      'disabled': true
+    },
   ];
 
   imageItem = [
@@ -2426,14 +2557,14 @@ tableBodyItems=[
     modalContent: "Content",
     modalFooter: "Footer"
   }
-  
-modalData1= {
-  modalContent: "This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.",
-}
-modalData2= {
-  modalContent: "I will not close if you click outside me. Don't even try to press escape key.",
-}
-  
+
+  modalData1 = {
+    modalContent: "This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modalThis is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.",
+  }
+  modalData2 = {
+    modalContent: "I will not close if you click outside me. Don't even try to press escape key.",
+  }
+
   @Input()
   modalheader!: TemplateRef<any>;
   @Input()
@@ -2451,7 +2582,7 @@ modalData2= {
   ngOnInit(): void {
 
   }
-   
+
 
 
   ngAfterViewInit(): void {
@@ -2481,8 +2612,8 @@ modalData2= {
   }, { progressWidth: "20%", background: 'bg-danger' }];
 
 
- onClickShowAlert()  {
-   this.showAlert=!this.showAlert;
- }
-      
+  onClickShowAlert() {
+    this.showAlert = !this.showAlert;
+  }
+
 }

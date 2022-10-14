@@ -1,0 +1,44 @@
+<div class="row" >
+  <rds-breadcrumb [breadcrumbsItems]="breadCrumbItems" [] [role]="'withDivider'">
+  </rds-breadcrumb>
+ </div>
+ <div class="row">
+   <div class="col-md-6">
+    <div class="row">
+      <div class="col-lg-12">
+        <rds-product-image [display_type]="'Product_overview2'" [itemList]="itemList">
+        </rds-product-image>
+      </div>
+    </div>
+   </div>
+   <div class="col-md-6">
+    <div class="row">
+      <div class="col-lg-12">
+        <mfe-loader [config]="RdsCompProductOverview"></mfe-loader>
+      </div>
+    </div>
+   </div>
+ </div>
+ 
+ <div class="px-5 mt-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <mfe-loader [config]="rdsbenefitMfeConfig"></mfe-loader>
+    </div>
+  </div>
+ </div>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-12">
+      <mfe-loader [config]="RdsCompReviewCategory"></mfe-loader>
+    </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-lg-12">
+    <mfe-loader [config]="rdsprodlistMfeConfig"></mfe-loader>
+  </div>
+  </div>
+

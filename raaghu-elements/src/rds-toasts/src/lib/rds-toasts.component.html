@@ -1,18 +1,19 @@
-<ng-container [ngSwitch]="data_type">
+<ng-container [ngSwitch]="role">
   <div class="toast-container position-absolute p-3" [ngClass]="positionClass" *ngSwitchCase="'basic'">
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" [attr.id]="toastId"
-      [attr.data-bs-autohide]="autoHide" [attr.data-bs-delay]="delay">
-      <div class="toast-header">
+    <div class="toast" [ngClass]="backgroudClass" role="alert" aria-live="assertive" aria-atomic="true"
+      [attr.id]="toastId" [attr.data-bs-autohide]="autohide" [attr.data-bs-delay]="delay">
+      <div class="toast-header" *ngIf="showHeader">
         <strong class="me-auto">{{headerTitle}}</strong>
-        <small>{{time}}</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <ng-content select="[header]"> </ng-content>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" (click)="close()" aria-label="Close"></button>
       </div>
-      <div [ngClass]="classes">
+      <div class="toast-body">
         {{message}}
-        <ng-content></ng-content>
+        <ng-content select="[body]"></ng-content>
       </div>
     </div>
   </div>
+
   <!-- <div class="toast-container position-absolute p-3" [ngClass]="positionClass" *ngSwitchCase="'type1'">
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" [attr.id]="toastId"
       [attr.data-bs-autohide]="autoHide" [attr.data-bs-delay]="delay">

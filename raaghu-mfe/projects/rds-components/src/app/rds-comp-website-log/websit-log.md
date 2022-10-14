@@ -1,5 +1,5 @@
 ---
-slug: "/Website-Log"
+slug: "/comp-website-log"
 date: "2019-05-04"
 title: "Components > Website-Log"
 ---

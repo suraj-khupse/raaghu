@@ -30,7 +30,7 @@ export const Default: Story<RdsAccordionComponent> = (args) => ({
   props: args,
   template: `
   <rds-accordian [id]="id" >
-  <accordion-item title="Section 1 title" [accordionId]="id" [expanded]="true" >
+  <accordion-item title="Section 1 title" [accordionId]="id" [expanded]="false" >
   <h3>Custom </h3>
   </accordion-item>
   <accordion-item title="Section 2 title" [accordionId]="id" >
@@ -39,7 +39,7 @@ export const Default: Story<RdsAccordionComponent> = (args) => ({
 </rds-accordian>`,
 });
 Default.args = {
-  expanded: true,
+  expanded: false,
   id: "accordionBasic"
 };
 export const withFlush: Story<RdsAccordionComponent> = (args) => ({

@@ -10,7 +10,7 @@ title: "Elements > Input"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 
-#### Input-Group
+#### Input
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 
@@ -92,7 +92,7 @@ tooltipPlacement="bottom">
         <div class="tab-pane fade show active" id="Previewtooltip" role="tabpanel" aria-labelledby="PreviewBasic-tab">
          <div class="contents bg-light p-5">
               <div class="row">
-               <!-- <img src="/images/input-basic.png" class="img-thumbnail w-100"> -->
+               <img src="/images/input-tooltip.png" class="img-thumbnail w-100">
               </div>
                        
   </div>

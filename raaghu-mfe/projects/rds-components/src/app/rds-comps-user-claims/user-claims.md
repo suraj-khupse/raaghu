@@ -1,5 +1,5 @@
 ---
-slug: "/User-Claims"
+slug: "/comps-user-claims"
 date: "2019-05-04"
 title: "Components > User-Claims"
 ---

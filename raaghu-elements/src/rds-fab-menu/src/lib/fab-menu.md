@@ -22,7 +22,7 @@ title: "Elements > Fab-Menu"
             <button class="nav-link active" id="PreviewBasic-tab" data-bs-toggle="tab" data-bs-target="#PreviewBasic" type="button" role="tab" aria-controls="PreviewBasic" aria-selected="true">Preview </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selec0ted="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
+            <button class="nav-link" id="AngularBasic-tab" data-bs-toggle="tab" data-bs-target="#AngularBasic" type="button" role="tab" aria-controls="AngularBasic" aria-selected="false"><i class="bi bi-code-slash" style="font-size:1.0rem"></i>Angular</button>
           </li>
         </ul>
       </div>
@@ -31,7 +31,7 @@ title: "Elements > Fab-Menu"
          <div class="contents p-5">
               <div class="row">
                 <div class="col-md-12">
-                   <!-- <img src="/images/dropdown-list-basic.png" class="img-thumbnail w-100"> -->
+                   <img src="/images/fab-menu.png" class="img-fluid w-100">
                 </div>              
               </div>                     
   </div>
@@ -60,6 +60,7 @@ size="default"
 
 
  
+ <!-- Skeleton / Specifications -->
 <section class="py-4">
                         <h6>
                            Skeleton / Specifications
@@ -68,17 +69,13 @@ size="default"
                               <!-- Tab panes -->
                               <div class="card border p-5">
                                  <div class="row">
-                                    <div class="col-md-6">
-                                       <img src="https://portal.raaghu.io/images/components/_dropdown-list/img-1.png" class="img-fluid">
-                                    </div>
-                                    <div class="col-md-6 ">
-                                       <img src="https://portal.raaghu.io/images/components/_dropdown-list/img-2.png" class="img-fluid">
+                                    <div class="col-md-12">
+                                       <img src="fab-men.png" class="img-fluid">
                                     </div>
                                  </div>
                               </div>
                         </div>
                      </section>
-
 
 
 

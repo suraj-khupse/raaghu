@@ -4,7 +4,7 @@ import { RdsDoubleRangeComponent } from './rds-double-range.component';
 
 
 export default {
-  title: 'Elements/Double Range',
+  title: 'Elements/Range',
   component: RdsDoubleRangeComponent,
   argTypes: {
 
@@ -16,5 +16,5 @@ const Template: Story<RdsDoubleRangeComponent> = (args: RdsDoubleRangeComponent)
   props: args,
 
 });
-export const Default = Template.bind({})
-Default.args = {}
+export const DoubleRange = Template.bind({})
+DoubleRange.args = {}

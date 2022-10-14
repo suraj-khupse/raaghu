@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 // import * as bootstrap from 'bootstrap';
-declare var bootstrap : any;
+import { Toast } from 'bootstrap'
+
+declare var bootstrap: any;
 
 @Component({
   selector: 'rds-toasts',
@@ -9,43 +11,23 @@ declare var bootstrap : any;
 })
 export class RdsToastsComponent implements OnInit, AfterViewInit, OnChanges {
 
-  // messages: any[] = [];
-  // subscription!: Subscription;
-
-  @Input()
-  message = 'Hello, world! This is a toast message.';
-
-  @Input() data_type: string = 'basic';
-  delay: number | undefined = undefined;
-  @Input() autoHide: boolean = false;
+  @Input() message = 'Hello, world! This is a toast message.';
+  @Input() role: string = 'basic';
+  @Input() delay: number = 1000;
+  @Input() autohide: boolean = false;
   @Input() toastId: string = 'toastId';
-  @Input() colorVariant: string = 'success';
-  @Input() iconName: string = 'check';
-  @Input() iconHeight: string = '16px'
-  @Input() iconWidth: string = '18px'
-  @Input() iconColorVariant: string = '';
+  @Input() colorVariant: 'primary' | 'success' | 'secondary' | 'light' | 'dark' | 'danger' | 'warning' | 'info' | undefined = undefined;
+  @Input() showHeader: boolean = true
+  @Input() headerTitle: string = ''
+  @Input() position: 'Top-Left' | 'Top-Center' | 'Top-Right' | 'Middle-Left' | 'Middle-Center' | 'Middle-Right' | 'Bottom-Left' | 'Bottom-Center' | 'Bottom-Right' = 'Top-Left';
   @Input() show: boolean = false;
-  @Input() iconFill: boolean = false;
-  @Input() iconStroke: boolean = true;
 
-
-  @Input()
-  withHeader = false
-
-  @Input()
-  toastMessageColorVariant?: string;
-
-  @Input()
-  headerTitle = '#000000'
-
-  @Input()
-  time = '11 seconds  ago'
-
-  @Input()
-  position: 'Top-Left' | 'Top-Center' | 'Top-Right' | 'Middle-Left' | 'Middle-Center' | 'Middle-Right' | 'Bottom-Left' | 'Bottom-Center' | 'Bottom-Right' = 'Top-Left';
-
-  clicked = false;
-
+  // @Input() iconName: string = 'check';
+  // @Input() iconHeight: string = '16px'
+  // @Input() iconWidth: string = '18px'
+  // @Input() iconColorVariant: string = '';
+  // @Input() iconFill: boolean = false;
+  // @Input() iconStroke: boolean = true;
 
   constructor() { }
 
@@ -53,28 +35,50 @@ export class RdsToastsComponent implements OnInit, AfterViewInit, OnChanges {
     if (this.show) {
       var toastEl: any = document.getElementById(this.toastId);
       if (toastEl) {
-        var toast = new bootstrap.Toast(toastEl);
+        var toast = new Toast(toastEl);
         toast.show();
+        this.show = false;
       }
-
     }
   }
 
   ngOnInit(): void {
+    if (this.show) {
+      var toastEl: any = document.getElementById(this.toastId);
+      if (toastEl) {
+        var toast = new Toast(toastEl);
+        toast.show();
+        this.show = false;
+      }
+    }
   }
 
   ngAfterViewInit(): void {
     if (this.show) {
       var toastEl: any = document.getElementById(this.toastId);
       if (toastEl) {
-        var toast = new bootstrap.Toast(toastEl);
+        var toast = new Toast(toastEl);
         toast.show();
+        this.show = false;
       }
-
     }
   }
 
+  close(): void {
+    var toastEl: any = document.getElementById(this.toastId);
+    if (toastEl) {
+      var toast = new Toast(toastEl);
+      toast.hide();
+      this.show = false;
+    }
+  }
 
+  public get backgroudClass(): any {
+    if (this.colorVariant) {
+      return 'text-bg-' + `${this.colorVariant}`
+    }
+    return '';
+  }
 
   public get positionClass(): any[] {
     var positionClasses = ['']
@@ -105,22 +109,6 @@ export class RdsToastsComponent implements OnInit, AfterViewInit, OnChanges {
     else if (this.position === "Bottom-Right") {
       positionClasses.push('bottom-0 end-0')
     }
-
     return positionClasses;
   }
-
-  public get classes(): any[] {
-    var colorClasses = ['toast-body bg-' + `${this.toastMessageColorVariant}`];
-    return colorClasses;
-  }
-
-  public get buttonClasses(): any[] {
-    var colorClasses = ['btn btn-' + `${this.colorVariant}`];
-    return colorClasses;
-  }
-
-
-
-
-
 }

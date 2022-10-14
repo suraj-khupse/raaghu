@@ -1,5 +1,5 @@
 ---
-slug: "/new-language"
+slug: "/comp-new-language"
 date: "2019-05-04"
 title: "Components > New Language"
 ---

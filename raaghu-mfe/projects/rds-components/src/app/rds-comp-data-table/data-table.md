@@ -1,5 +1,5 @@
 ---
-slug: "/data-table"
+slug: "/comp-data-table"
 date: "2019-05-04"
 title: "Components > data-table"
 ---

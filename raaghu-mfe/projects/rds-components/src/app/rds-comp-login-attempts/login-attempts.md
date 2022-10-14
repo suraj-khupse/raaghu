@@ -1,5 +1,5 @@
 ---
-slug: "/login-attempts"
+slug: "/comp-login-attempts"
 date: "2019-05-04"
 title: "Components > Login Attempts"
 ---

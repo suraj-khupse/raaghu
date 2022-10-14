@@ -14,24 +14,16 @@ export default {
     }),
   ],
   argTypes: {
-    // size: {
-    //   options: ['default', 'small', 'large'],
-    //   control: { type: 'radio' },
-    // },
-    disabled: { control: { type: 'boolean' } },
-    multiple: { control: { type: 'boolean' } },
-    customIcon: { control: { type: 'text' } },
-    rows: { control: { type: 'text' } },
-    // LabelType: {
-    //   options: ['Top', 'Bottom', 'Left', 'Right'],
-    //   control: { type: 'select' },
-    // },
     tooltipPlacement: {
       options: ['top', 'bottom', 'right', 'left'],
       control: { type: 'radio' }
     },
+    labelPosition: {
+      options: ['top', 'bottom', 'right', 'left'],
+      control: { type: 'radio' }
+    },
     size: {
-      options: ['small', 'large', 'default'],
+      options: ['small', 'medium', 'large'],
       control: { type: 'radio' }
     },
   },
@@ -40,59 +32,118 @@ export default {
 const Template: Story<RdsSelectListComponent> = (args: RdsSelectListComponent) => ({
   props: args,
   template: `<rds-select-list
-    [rows]="rows"
     [size]="size"
-    [disabled]="disabled"
-    [multiple]="multiple"
-    [labelText]="labelText"
-    [LabelType]="LabelType"
-    customIcon="">
-    <option selected hidden>{{placeholderText}}</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    [itemList]="itemList"
+    [placeholder]="placeholder"
+    [label]="label">
   </rds-select-list>`,
 });
+
+export const Default = Template.bind({});
+Default.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder'] } };
+Default.args = {
+  label:'select list',
+  size:'small',
+  itemList:[
+    {
+    displayName:'Item 1',
+    value:1
+  },
+  {
+    displayName:'Item 2',
+  value:2}],
+  placeholder: 'Select item'
+};
+const muliselectTemplate: Story<RdsSelectListComponent> = (args: RdsSelectListComponent) => ({
+  props: args,
+  template: `<rds-select-list
+    [size]="size"
+    [itemList]="itemList"
+    [multiple]="multiple"
+    [placeholder]="placeholder"
+    [label]="label">
+  </rds-select-list>`,
+});
+export const multiSelect = muliselectTemplate.bind({});
+multiSelect.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','multiple'] } };
+multiSelect.args = {
+  label:'select list',
+  size:'small',
+  itemList:[
+    {
+    displayName:'Item 1',
+    value:1
+  },
+  {
+    displayName:'Item 2',
+  value:2}],
+  placeholder: 'Select item',
+  multiple:true
+};
+const labelPositionTemplate: Story<RdsSelectListComponent> = (args: RdsSelectListComponent) => ({
+  props: args,
+  template: `<rds-select-list
+    [size]="size"
+    [itemList]="itemList"
+    [labelPosition]="labelPosition"
+    [placeholder]="placeholder"
+    [label]="label">
+  </rds-select-list>`,
+});
+export const labelPosition = labelPositionTemplate.bind({});
+labelPosition.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','labelPosition'] } };
+labelPosition.args = {
+  label:'select list',
+  size:'small',
+  itemList:[
+    {
+    displayName:'Item 1',
+    value:1
+  },
+  {
+    displayName:'Item 2',
+  value:2}],
+  placeholder: 'Select item',
+  labelPosition:'top'
+};
+
 const tooltipTemplate: Story<RdsSelectListComponent> = (args: RdsSelectListComponent) => ({
   props: args,
-  template: `<rds-select-list 
-  [size]="rows"
-    [disabled]="disabled  "
-    [multiple]="multiple"
-    customIcon=""
-    [labelText]="labelText"
-    [tooltipTitle]="tooltipTitle"
-    [LabelType]="LabelType"
+  template: `<rds-select-list
+    [size]="size"
+    [itemList]="itemList"
     [tooltipPlacement]="tooltipPlacement"
-  >
-  <option selected hidden>{{placeholderText}}</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
+    [tooltipTitle]="tooltipTitle"
+    [placeholder]="placeholder"
+    [label]="label">
   </rds-select-list>`,
 });
-export const Default = Template.bind({});
-
-Default.args = {
-  rows: '',
-  labelText: '',
-  // labelType: 'Top',
-  // size: 'default',
-  placeholderText:'Open this select menu', 
-  disabled: false,
-  multiple: false,
-  customIcon: ''
+export const tooltip = tooltipTemplate.bind({});
+tooltip.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','tooltipTitle','tooltipPlacement'] } };
+tooltip.args = {
+  label:'select list',
+  size:'small',
+  tooltipPlacement:'bottom',
+  tooltipTitle:'select list',
+  itemList:[
+    {
+    displayName:'Item 1',
+    value:1
+  },
+  {
+    displayName:'Item 2',
+  value:2}],
+  placeholder: 'Select item',
 };
-
-export const Tooltip = tooltipTemplate.bind({});
-Tooltip.args = {
-  disabled: false,
-  multiple: false,
-  customIcon: '',
-  placeholderText:'Open this select menu', 
-  tooltipPlacement: '',
-  tooltipTitle: 'This is tooltip'
-};
+// export const Tooltip = tooltipTemplate.bind({});
+// Tooltip.args = {
+//   disabled: false,
+//   multiple: false,
+//   customIcon: '',
+//   placeholderText:'Open this select menu', 
+//   tooltipPlacement: '',
+//   tooltipTitle: 'This is tooltip'
+// };
 
 
 // import { CommonModule } from '@angular/common';

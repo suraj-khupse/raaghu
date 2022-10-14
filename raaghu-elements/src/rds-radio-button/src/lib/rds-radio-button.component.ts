@@ -23,6 +23,7 @@ export class RdsRadioButtonComponent implements OnInit {
   @Input() isInputGroup = false;
   @Output() onClick = new EventEmitter<any>();
   @Input() itemList!:any;
+  @Input() display_type?: string = 'Default';
   constructor() { }
 
   ngOnInit(): void {

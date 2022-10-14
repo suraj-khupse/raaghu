@@ -1,5 +1,5 @@
 ---
-slug: "/Role-List"
+slug: "/comp-role-list"
 date: "2019-05-04"
 title: "Components > Role-List"
 ---

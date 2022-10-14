@@ -1,35 +1,37 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-
+export class billingData {
+  firstName: string;
+  lastName: string;
+  company: string;
+  phone : number;
+  address : string;
+  city : string;
+  country : string;
+  state : string;
+  postalCode: string;
+}
 @Component({
   selector: 'app-rds-comp-billing-address',
   templateUrl: './rds-comp-billing-address.component.html',
   styleUrls: ['./rds-comp-billing-address.component.scss']
 })
+
 export class RdsCompBillingAddressComponent implements OnInit {
 
 
   constructor(public translate: TranslateService) { }
-  @Input() EmailID:string;
-  @Input() Contact:number;
-  @Input() firstName:string;
-  @Input() lastName:string;
-  @Input() company:string;
-  @Input() phone:number;
-  @Input() address:string;
-  @Input() state:string;
-  @Input() country:string;
-  @Input() countryList:string[] = ["India","China","Canada","Japan","Australia","USA","UK"];
-  @Input() postalCode:number;
+  @Output() onContinue = new EventEmitter<any>();
+   @Input() countryList: any[] = []
+   @Input() stateList: any[] = []
+  // @Input() postalCode:number;
   @Input() buttonSpinner: boolean = true;
+
   
-  public emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  model = new billingData() ;
   
   ngOnInit(): void {
-  }
-  
-  continue(){
-    this.buttonSpinner=true;
   }
   
   back(){
@@ -38,5 +40,16 @@ export class RdsCompBillingAddressComponent implements OnInit {
   SelectCountry(event){
     console.log(event);
   }
+  SelectState(event){
+    console.log(event);
+  }
+  onSubmit(billingAddressForm: NgForm) : void{
+    this.buttonSpinner = true;
+    billingAddressForm.form.markAllAsTouched();
+    console.log(billingAddressForm.form.value) 
+
+    this.onContinue.emit(billingAddressForm.form.value)
+    billingAddressForm.reset()
+   }
 
 }

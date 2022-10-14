@@ -7,20 +7,22 @@ import {
 } from 'projects/libs/shared/src/lib/service-proxies';
 import { from, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { addRolesToOrganizationUnit, addUsersToOrganizationUnit, createTreeUnit, createTreeUnitFailure, createTreeUnitSuccess,
+import {
+  addRolesToOrganizationUnit, addUsersToOrganizationUnit, createTreeUnit, createTreeUnitFailure, createTreeUnitSuccess,
   deleteMemberFromOrgUnit,
   deleteMemberFromOrgUnitFailure,
   deleteMemberFromOrgUnitSuccess,
   deleteRoleFromOrgUnit,
   deleteRoleFromOrgUnitFailure,
   deleteRoleFromOrgUnitSuccess,
-  deleteUnitTree, deleteUnitTreeFailure, deleteUnitTreeSuccess, getOrganizationUnitMembers, getOrganizationUnitMembersSuccess, getOrganizationUnitRoles, 
-  getOrganizationUnitRolesFailure, getOrganizationUnitRolesList, getOrganizationUnitRolesListFailure, getOrganizationUnitRolesListSuccess, 
-  getOrganizationUnitRolesSuccess, getOrganizationUnitTree, getOrganizationUnitTreeFailure, getOrganizationUnitTreeSuccess, 
-  getOrganizationUnitUsersList, getOrganizationUnitUsersListFailure, getOrganizationUnitUsersListSuccess, updateUnitTree, 
-  updateUnitTreeFailure, updateUnitTreeSuccess } from './organization-unit.actions';
+  deleteUnitTree, deleteUnitTreeFailure, deleteUnitTreeSuccess, getOrganizationUnitMembers, getOrganizationUnitMembersSuccess, getOrganizationUnitRoles,
+  getOrganizationUnitRolesFailure, getOrganizationUnitRolesList, getOrganizationUnitRolesListFailure, getOrganizationUnitRolesListSuccess,
+  getOrganizationUnitRolesSuccess, getOrganizationUnitTree, getOrganizationUnitTreeFailure, getOrganizationUnitTreeSuccess,
+  getOrganizationUnitUsersList, getOrganizationUnitUsersListFailure, getOrganizationUnitUsersListSuccess, updateUnitTree,
+  updateUnitTreeFailure, updateUnitTreeSuccess
+} from './organization-unit.actions';
 
-
+declare var bootstrap: any;
 @Injectable()
 export class OrganizationUnitEffects {
   constructor(
@@ -122,18 +124,21 @@ export class OrganizationUnitEffects {
       mergeMap((data) =>
         this.organizationUnitService.createOrganizationUnit(data).pipe(map((res) => {
           this.store.dispatch(getOrganizationUnitTree());
-          this.alertService.showAlert('Success', 'Organization unit node created successfully','success' )  
-          }),
+          this.alertService.showAlert('Success', 'Organization unit node created successfully', 'success');
+          var offcanvasEl = document.getElementById('addNodeOffcanvas');
+          var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl)
+          offcanvas.hide();
+        }),
           catchError((error: any) => of(
-            ))
-          )
+          ))
         )
-      ),
-      {
-        dispatch: false
-      }
+      )
+    ),
+    {
+      dispatch: false
+    }
   );
-  
+
   updateUnitTree$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateUnitTree),
@@ -141,25 +146,28 @@ export class OrganizationUnitEffects {
         this.organizationUnitService.updateOrganizationUnit(data.data).pipe(
           map((res) => {
             this.store.dispatch(getOrganizationUnitTree());
-            this.alertService.showAlert('Success', 'Organization unit node updated successfully','success' )
+            var offcanvasEl = document.getElementById('addNodeOffcanvas');
+            var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl)
+            offcanvas.hide();
+            this.alertService.showAlert('Success', 'Organization unit node updated successfully', 'success')
           }),
           catchError((error: any) => of(
-            ))
-          )
+          ))
         )
-      ),
-      {
-        dispatch: false
-      }
+      )
+    ),
+    {
+      dispatch: false
+    }
   );
 
   deleteUnitTree$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteUnitTree),
       mergeMap((data) =>
-      this.organizationUnitService.deleteOrganizationUnit(data.id).pipe(map((res: any) => {
-        this.store.dispatch(getOrganizationUnitTree());
-          this.alertService.showAlert('Success', 'Organization unit node deleted successfully','success' )
+        this.organizationUnitService.deleteOrganizationUnit(data.id).pipe(map((res: any) => {
+          this.store.dispatch(getOrganizationUnitTree());
+          this.alertService.showAlert('Success', 'Organization unit node deleted successfully', 'success')
         }),
           catchError((error: any) => of(
           ))
@@ -172,48 +180,48 @@ export class OrganizationUnitEffects {
   );
 
   addRolesToOrganizationUnit$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(addRolesToOrganizationUnit),
-    mergeMap((data) =>
-      this.organizationUnitService.addRolesToOrganizationUnit(data).pipe(map((res: any) => {
-        this.store.dispatch(getOrganizationUnitRoles(data.organizationUnitId));
-        this.alertService.showAlert('Success', 'Role added successfully', 'success');
-      }),
-        catchError((error: any) => of(
-        ))
+    this.actions$.pipe(
+      ofType(addRolesToOrganizationUnit),
+      mergeMap((data) =>
+        this.organizationUnitService.addRolesToOrganizationUnit(data).pipe(map((res: any) => {
+          this.store.dispatch(getOrganizationUnitRoles(data.organizationUnitId));
+          this.alertService.showAlert('Success', 'Role added successfully', 'success');
+        }),
+          catchError((error: any) => of(
+          ))
+        )
       )
-    )
-  ),
-  {
-    dispatch: false
-  }
-);
+    ),
+    {
+      dispatch: false
+    }
+  );
 
-addUsersToOrganizationUnit$ = createEffect(() =>
-this.actions$.pipe(
-  ofType(addUsersToOrganizationUnit),
-  mergeMap((data) =>
-    this.organizationUnitService.addUsersToOrganizationUnit(data).pipe(map((res: any) => {
-      this.store.dispatch(getOrganizationUnitMembers(data.organizationUnitId));
-      this.store.dispatch(getOrganizationUnitTree());
-      this.alertService.showAlert('Success', 'Member added successfully', 'success');
+  addUsersToOrganizationUnit$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addUsersToOrganizationUnit),
+      mergeMap((data) =>
+        this.organizationUnitService.addUsersToOrganizationUnit(data).pipe(map((res: any) => {
+          this.store.dispatch(getOrganizationUnitMembers(data.organizationUnitId));
+          this.store.dispatch(getOrganizationUnitTree());
+          this.alertService.showAlert('Success', 'Member added successfully', 'success');
 
-    }),
-      catchError((error: any) => of(
-      ))
-    )
-  )
-),
-{
-  dispatch: false
-}
-);
+        }),
+          catchError((error: any) => of(
+          ))
+        )
+      )
+    ),
+    {
+      dispatch: false
+    }
+  );
 
-deleteMemberFromOrgUnit$ = createEffect(() =>
+  deleteMemberFromOrgUnit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteMemberFromOrgUnit),
       mergeMap((data) =>
-        this.organizationUnitService.removeUserFromOrganizationUnit(data.userId,data.organizationUnitId).pipe(
+        this.organizationUnitService.removeUserFromOrganizationUnit(data.userId, data.organizationUnitId).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
             this.store.dispatch(getOrganizationUnitMembers(data.organizationUnitId));
@@ -221,30 +229,30 @@ deleteMemberFromOrgUnit$ = createEffect(() =>
             this.alertService.showAlert('Success', 'Member Deleted successfully', 'success');
           }),
           catchError((error: any) => of(
-            ))
-          )
+          ))
         )
-      ),
-      {
-        dispatch: false
-      }
+      )
+    ),
+    {
+      dispatch: false
+    }
   );
   deleteRoleFromOrgUnit$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteRoleFromOrgUnit),
       mergeMap((data) =>
-        this.organizationUnitService.removeRoleFromOrganizationUnit(data.roleId,data.organizationUnitId).pipe(
+        this.organizationUnitService.removeRoleFromOrganizationUnit(data.roleId, data.organizationUnitId).pipe(
           map(() => {
             this.store.dispatch(getOrganizationUnitRoles(data.organizationUnitId));
             this.alertService.showAlert('Success', 'Role deleted successfully', 'success');
           }),
           catchError((error: any) => of(
-            ))
-          )
+          ))
         )
-      ),
-      {
-        dispatch: false
-      }
+      )
+    ),
+    {
+      dispatch: false
+    }
   );
 }

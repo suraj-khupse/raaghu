@@ -1,5 +1,5 @@
 ---
-slug: "/Notification"
+slug: "/comp-notification"
 date: "2019-05-04"
 title: "Components > Notification"
 ---

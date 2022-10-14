@@ -11,7 +11,7 @@
     ·
     <a href="https://raaghu.io" target="blank">Tutorials </a>
     ·
-    <a href="https://raaghu.io" target="blank">View Demo</a>
+    <a href="https://demo.raaghu.io" target="blank">View Demo</a>
     ·
     <a href="https://github.com/Wai-Technologies/raaghu/issues/new">Report Bug</a>
     ·

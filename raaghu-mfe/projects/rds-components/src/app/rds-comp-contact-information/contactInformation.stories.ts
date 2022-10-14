@@ -28,9 +28,9 @@ const Template: Story<RdsCompContactInformationComponent> = (args: RdsCompContac
         ...args
     }
 });
-export const Template1 = Template.bind({});
+export const Default = Template.bind({});
 
-Template1.args = {
+Default.args = {
     
 }
 

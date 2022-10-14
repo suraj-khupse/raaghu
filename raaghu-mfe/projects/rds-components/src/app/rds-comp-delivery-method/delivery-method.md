@@ -1,5 +1,5 @@
 ---
-slug: "/delivery-method"
+slug: "/comp-delivery-method"
 date: "2019-05-04"
 title: "Components > Delivery-method"
 ---

@@ -1,5 +1,5 @@
 ---
-slug: "/cache"
+slug: "/comp-cache"
 date: "2019-05-04"
 title: "Components > Cache"
 ---

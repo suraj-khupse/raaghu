@@ -1,5 +1,5 @@
 ---
-slug: "/Properties"
+slug: "/comp-properties"
 date: "2019-05-04"
 title: "Componenets > Properties"
 ---

@@ -1,5 +1,5 @@
 ---
-slug: "/Timeline"
+slug: "/comp-timeline"
 date: "2019-05-04"
 title: "Components > Timeline"
 ---

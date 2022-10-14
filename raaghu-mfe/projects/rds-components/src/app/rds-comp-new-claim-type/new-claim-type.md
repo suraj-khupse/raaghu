@@ -1,5 +1,5 @@
 ---
-slug: "/new-claim-type"
+slug: "/comp-new-claim-type"
 date: "2019-05-04"
 title: "Components > New Claim Type"
 ---

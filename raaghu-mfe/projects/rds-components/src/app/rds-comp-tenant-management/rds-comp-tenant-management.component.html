@@ -10,7 +10,7 @@
       [checked]="dataset.allowSelfRegistration" [(ngModel)]="dataset.allowSelfRegistration" name="default"
       [withLabel]="true" [switch]="false" [inline]="false" [id]="'isDefault'"
       (onChange)="selectAllFeature($event,'useDefault')"></rds-checkbox>
-    <h6 class="text-muted pt-2">{{"If You Disable This, Tenants Will Only Be Added By Admin Using Tenant Management Page"|translate}}.</h6>
+    <h6 class="text-muted pt-2">{{translate.instant("If You Disable This, Tenants Will Only Be Added By Admin Using Tenant Management Page")}}.</h6>
     </div>
   </li>
   <li>
@@ -25,7 +25,7 @@
         [(ngModel)]="dataset.isNewRegisteredTenantActiveByDefault" name="allowTenants" [withLabel]="true" [switch]="false"
         [inline]="false" [id]="'isRegister'" (onChange)="selectAllFeature($event,'allowTenants')"></rds-checkbox>
 
-      <h6 class="text-muted pt-2">{{"If You Disable This, New Tenants Will Not Be Active (And Can Not Login) Until Admin Manually Activates The Account"|translate}}.</h6>
+      <h6 class="text-muted pt-2">{{translate.instant("If You Disable This, New Tenants Will Not Be Active (And Can Not Login) Until Admin Manually Activates The Account")}}.</h6>
     </div>
   </li>
   <li class="">
@@ -41,8 +41,8 @@
     <div class="row">
       <div class="col-md-5">
         <div class="form-group mb-2 mt-4">
-          <rds-select-list [(ngModel)]="dataset.defaultEditionId" [labelText]="translate.instant('Edition')" [value]="dataset.defaultEditionId"
-            ngDefaultControl name="defaultEditionId" [LabelType]="'Top'" [itemList]="settingsTenantEditionList"
+          <rds-select-list [(ngModel)]="dataset.defaultEditionId" [label]="translate.instant('Edition')" [value]="dataset.defaultEditionId"
+            ngDefaultControl name="defaultEditionId" [labelPosition]="'top'" [itemList]="settingsTenantEditionList"
             (change)="getAllowTenants($event)">
           </rds-select-list>
         </div>

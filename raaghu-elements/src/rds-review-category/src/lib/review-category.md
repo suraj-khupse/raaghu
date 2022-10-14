@@ -30,7 +30,7 @@ title: "Elements > Review-category"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="\images\review-category-basic.png" class="img-fluid">
+                    <img src="\images\review-category-basic.png" alt="review" class="img-fluid"/>
                  </div>               
               </div>
                        
@@ -69,7 +69,7 @@ title: "Elements > Review-category"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                    <img src="\images\review-category-type-1.png" class="img-fuild">
+                    <img src="\images\review-category-type-1.png" alt="review-type-1" class="img-fluid"/>
                  </div>               
               </div>
                        
@@ -111,7 +111,7 @@ title: "Elements > Review-category"
          <div class="contents p-5">
               <div class="row">
                  <div class="col-md-12">
-                     <img src="\images\review-category-type-2.png" class="img-fuild">
+                     <img src="\images\review-category-type-2.png" alt="review_type_2" class="img-fluid"/>
                  </div>              
               </div>
                        

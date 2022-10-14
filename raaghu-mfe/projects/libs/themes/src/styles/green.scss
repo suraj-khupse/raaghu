@@ -149,7 +149,7 @@ $theme: "green" !default;
   $wrapper-bg: $accessible-600!default;
 
   $card-bg-color: $accessible-700 !default;
-  $card-border-color: $accessible-700 !default;
+
   $offcanvasbg: $accessible-700 !default;
 
   $footer-bgcolor: $accessible-700 !default;
@@ -191,7 +191,8 @@ html[theme=dark] {
   $dropdown-color: $white;
 
   $input-bg: $accessible-300 !default;
-  $form-select-bg: $input-bg;
+  $form-select-bg: $input-bg!default;
+  $form-select-border-color: $accessible-200!default;
   $notification-header-bg: $accessible-500!default;
   $input-group-addon-bg: $input-bg;
   $input-group-addon-border-color: $accessible-400 !default;
@@ -211,8 +212,9 @@ html[theme=dark] {
     border-color: $input-group-addon-border-color;
   }
 
-  .form-select[size]:not([size="1"]) {
-    background-color: $input-bg;
+  .form-select {
+    background-color: $form-select-bg;
+    border-color: $form-select-border-color;
   }
 
   .notification-header {
@@ -247,3 +249,4 @@ html[theme=dark] {
 @import './textarea.scss';
 @import './colorvariables.scss';
 @import './cookieconsent.scss';
+@import './calender.scss';

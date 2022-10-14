@@ -4,7 +4,7 @@ date: "2019-05-04"
 title: "Elements > Benefit"
 ---
 
-### Benefit
+#### Benefit
 
 <p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
 <section class="py-4">
@@ -219,7 +219,7 @@ title: "Elements > Benefit"
          <div class="contents  p-5">
               <div class="row">
                <div class="col-md-12">
-                   <img src="/images/benefit-type-5" class="img-fuild w-75">
+                   <img src="/images/benefit-type-5.png" class="img-fuild w-75">
                </div>             
            </div>
                        

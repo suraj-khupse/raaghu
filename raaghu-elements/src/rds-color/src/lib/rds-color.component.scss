@@ -18,3 +18,19 @@ $primary : #7E2EEf;
     margin: 0 5px 0 5px;
     border-radius: 50%;
 }
+.default-border-square{
+    border: 1px solid $border-color;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    margin: 0 5px 0 5px;
+   
+}
+.selected-border-square{
+    border: 2px solid $primary;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    margin: 0 5px 0 5px;
+   
+}

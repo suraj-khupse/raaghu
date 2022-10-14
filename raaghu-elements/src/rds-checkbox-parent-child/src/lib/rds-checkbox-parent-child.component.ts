@@ -164,7 +164,7 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
 
   changeData(event: boolean): void {
     this.checked = event
-    this.onTouched(); // <-- mark as touched
+    this.onTouched();
     this.onChanged(this.checked);
   }
   

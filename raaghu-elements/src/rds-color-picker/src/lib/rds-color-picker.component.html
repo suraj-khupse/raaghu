@@ -1,14 +1,10 @@
-<div class="row">
-    <div class="col-5">
-        <div class="rds-color-picker position-relative">
-            <div class=" d-flex justify-content-center align-items-center" >
-
-                    <label [ngClass]="labelClasses">{{label}}</label>
-
-             <div  [class]="inputPosition"  [ngStyle]="{'width': width + 'px'}">
-                    <input type="color" class="form-control-color m-auto" [disabled]="disabled" id="exampleColorInput"  [value]="value"  (input)="changedValue($event)">
-                </div>
-            </div>                
-        </div>       
+<div class="row px-3">
+    <div class="col-md-2 mb-5">
+        <label [ngClass]="labelClasses">{{label}}</label>
     </div>
+    <div class="col-md-10 mb-5">
+        <div [class]="inputPosition"  [ngStyle]="{'width': width + 'px'}">
+            <input type="color" class="form-control-color" [disabled]="disabled" id="exampleColorInput"  [value]="value"  (input)="changedValue($event)">
+        </div>
+    </div>      
 </div> 

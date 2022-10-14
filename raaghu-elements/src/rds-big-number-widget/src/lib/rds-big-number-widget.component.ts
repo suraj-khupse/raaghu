@@ -9,26 +9,34 @@ export class RdsBigNumberWidgetComponent implements OnInit {
 
   title = 'rds-big-number';
   @Input() bigNumber: string = '$ 55,000';
-  @Input() subText?: string;
-  @Input() icon?: string;
+  @Input() role: 'basic' | 'advanced' = 'basic';
+  @Input() subText: string = '';
+  @Input() icon: string = '';
   @Input() iconHeight: string = '12px';
   @Input() iconStroke: boolean = true;
   @Input() iconFill: boolean = false;
   @Input() iconWidth: string = '12px';
-  @Input() iconColor: string = '';
-  @Input() colorVariant = '';
-  @Input() textAlign = 'text-center';
-  @Input() subTitleColorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'white' = 'white'
+  @Input() iconColor: 'warning' | 'review' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined = undefined;
+  @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined = undefined;;
+  @Input() textAlign: 'text-start' | 'text-center' | 'text-end' = 'text-center';
+  @Input() subTitleColorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined = 'light';
+  @Input() chartOptions: any;
+  @Input() chartWidth: number = 100;
+  @Input() chartHeight: number = 100;
+  @Input() chartLabels: string[] = [];
+  @Input() chartDatasets:any;
   constructor() { }
 
   ngOnInit(): void {
   }
   public get classes(): any[] {
     let customClasses: string[] = [];
+    if (this.colorVariant) {
+      const bgColor = 'bg-' + `${this.colorVariant}`;
+      customClasses.push(bgColor);
+    }
 
-    const bgColor = 'bg-' + `${this.colorVariant}`;
-    customClasses.push(bgColor);
-    if (`${this.colorVariant}` !== 'light' && `${this.colorVariant}` !== 'warning' && `${this.colorVariant}` !== 'info' && `${this.colorVariant}` !== 'white' && `${this.colorVariant}` !== '') {
+    if (this.colorVariant !== undefined && `${this.colorVariant}` !== 'light' && `${this.colorVariant}` !== 'warning' && `${this.colorVariant}` !== 'info' && `${this.colorVariant}` !== 'white' && `${this.colorVariant}` !== '') {
       customClasses.push('text-white bg-gradient-primary');
     }
     return customClasses

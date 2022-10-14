@@ -1,0 +1,99 @@
+<div *ngIf="!editShimmer">
+    <div class="tab-content py-4">
+      <form #tenantCreationForm="ngForm">
+        <div class="row align-items-center">
+          <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-3">
+              <rds-input [inputType]="'text'" [Title]="translate.instant('Name')" [TitleType]="'Top'"
+                [(ngModel)]="tenantData.tenancyName" name="tenancy_name" required
+                [placeholder]="translate.instant('Enter Tenant Name')" [isRequired]=true #tenancyName="ngModel">
+              </rds-input>
+              <div class="form-control-feedback" *ngIf="tenancyName.errors && (tenancyName.dirty || tenancyName.touched)">
+                <span class="text-danger" *ngIf="tenancyName.errors.required">{{"Tenant Name is required"|translate}}</span>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+                <rds-select-list [(ngModel)]="tenantData.edition" [label]="translate.instant('Edition')" [isRequired]=true
+                  [value]="tenantData.edition" ngDefaultControl LabelType="Top" name="edition" [itemList]="editionList" [placeholder]="'Select Edition'">
+                </rds-select-list>
+              </div>
+          </div>
+          <div class="col-md-3 text-center cursor-pointer sm-p-0">
+            <img width="100" src="../assets/edit-pic.png" (click)="selectFile.click()">
+            <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile>
+          </div>
+        </div>
+        <div class="mt-3 border-bottom text-muted">
+          <rds-label [label]="'Admin Details'"></rds-label>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-md-6 sm-p-0" *ngIf="showEmail">
+            <div class="form-group mb-3">
+              <rds-input [inputType]="'email'" [Title]="translate.instant('Username')" [TitleType]="'Top'"
+                [(ngModel)]="tenantData.adminEmailAddress" [pattern]="emailPattern" name="email"
+                [placeholder]="translate.instant('Enter Username')" #adminEmailAddress="ngModel" [isRequired]=true required>
+              </rds-input>
+              <div class="form-control-feedback"
+                *ngIf="adminEmailAddress.errors && (adminEmailAddress.dirty || adminEmailAddress.touched)">
+                <span class="text-danger" *ngIf="adminEmailAddress.errors.required">{{"Username is required"|translate}}</span>
+                <span class="text-danger" *ngIf="adminEmailAddress.errors.pattern">{{"Please enter valid admin email"|translate}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-3">
+                <rds-input [inputType]="'password'" [Title]="translate.instant('Password')" [TitleType]="'Top'"
+                [(ngModel)]="tenantData.tenantName" name="tenant_name" required
+                [placeholder]="translate.instant('Enter Password')" [isRequired]=true #tenantName="ngModel">
+              </rds-input>
+             
+              <div class="form-control-feedback" *ngIf="tenancyName.errors && (tenancyName.dirty || tenancyName.touched)">
+                <span class="text-danger" *ngIf="tenancyName.errors.required">{{"Password is required"|translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 sm-p-0">
+            <div class="form-group mb-3">
+              <rds-checkbox [disabled]="false" [label]="translate.instant('Shared Database')"
+                name="check-box"  [withLabel]="true" [switch]="false"
+                [inline]="false"></rds-checkbox>
+            </div>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col-md-6 sm-p-0">
+            <div class="form-group mb-3">
+                <rds-checkbox [disabled]="false" [label]="translate.instant('Separated Database')" (click)="onClickShowInput()"
+                name="check-box" (onChange)="getCheckboxValue($event)" [withLabel]="true" [switch]="false"
+                [inline]="false"></rds-checkbox>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" >
+            <div class="col-md-12 sm-p-0">
+              <div class="form-group mb-3">
+                <rds-input [inputType]="'text'" *ngIf="showInput" [Title]="translate.instant('Database URL')" [TitleType]="'Top'"
+                [(ngModel)]="tenantData.tenancyName" name="tenancy_name" required
+                [placeholder]="translate.instant('Enter URL')" [isRequired]=true #tenancyName="ngModel"
+                name="check-box" >
+              </rds-input>
+              </div>
+            </div>
+          </div>
+      </form>
+    </div>
+    <div class="footer-buttons my-2 sm-p-0">
+      <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
+        (click)="onCanceled()" data-bs-dismiss="offcanvas">
+      </rds-button>
+      <rds-button [label]="translate.instant('CREATE')"
+        [disabled]="!tenantCreationForm.valid"
+        [size]="'small'" class="ms-2" [colorVariant]="'primary'" (click)="next(tenantCreationForm)" [showLoadingSpinner]="buttonSpinner">
+      </rds-button>
+    </div>
+  </div>
+  <app-rds-comp-tenant-information-shimmer *ngIf="editShimmer"></app-rds-comp-tenant-information-shimmer>

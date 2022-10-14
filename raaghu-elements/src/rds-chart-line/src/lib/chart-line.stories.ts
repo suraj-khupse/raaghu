@@ -21,8 +21,7 @@ const Template: Story<RdsChartLineComponent> = (args: RdsChartLineComponent) => 
 
 export const Default = Template.bind({});
 Default.args = {
-
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56, 55],
@@ -34,18 +33,17 @@ Default.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   chartWidth: 600,
-  chartHeight:400,
+  chartHeight: 400,
   chartOptions: {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right',
-        align: "start",
+        position: 'top',
+        align: "center",
         pointStyle: "line",
 
         labels: {
-
           usePointStyle: true
         }
       },
@@ -77,7 +75,7 @@ Default.args = {
 export const MultiAxis = Template.bind({});
 MultiAxis.args = {
 
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56, 55],
@@ -96,9 +94,10 @@ MultiAxis.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   chartWidth: 600,
+  chartHeight: 400,
   chartOptions: {
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -132,13 +131,13 @@ MultiAxis.args = {
 export const Stepped = Template.bind({});
 Stepped.args = {
 
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'My First Dataset',
-      data: [65, 59, 80, 81, 56, 55],
+      data: [20, -40, 80, 90, 0, -55],
       fill: false,
       borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1,
+      // tension: 0.1,
       // Change the stepped mode to explore different stepped chart options
       // false: no stepping
       // true: stepped before interpolation
@@ -151,9 +150,10 @@ Stepped.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   chartWidth: 600,
+  chartHeight: 400,
   chartOptions: {
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -164,30 +164,13 @@ Stepped.args = {
         display: true,
         text: 'Line Chart - Stepped'
       }
-    },
-    scales: {
-      y: {
-        type: 'linear',
-        display: true,
-        position: 'left',
-      },
-      y1: {
-        type: 'linear',
-        display: true,
-        position: 'right',
-
-        // grid line settings
-        grid: {
-          drawOnChartArea: false, // only want the grid lines for one axis to show up
-        },
-      },
     }
   },
 };
 export const LineStyling = Template.bind({});
 LineStyling.args = {
 
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'Unfilled',
       data: [65, 59, 80, 81, 56, 55],
@@ -212,9 +195,10 @@ LineStyling.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   chartWidth: 600,
+  chartHeight: 400,
   chartOptions: {
     responsive: true,
-    maintainAspectRatio: false,    
+    maintainAspectRatio: false,
     interaction: {
       mode: 'index',
       intersect: false,
@@ -248,7 +232,7 @@ LineStyling.args = {
 export const LineChartWithAnimation = Template.bind({});
 LineChartWithAnimation.args = {
 
-  ChartDataSets: [
+  chartDataSets: [
     {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56, 55],
@@ -273,8 +257,10 @@ LineChartWithAnimation.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
   chartWidth: 600,
+  chartHeight:400,
   chartOptions: {
-
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'right',

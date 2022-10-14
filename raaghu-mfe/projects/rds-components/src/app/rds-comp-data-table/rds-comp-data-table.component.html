@@ -125,14 +125,16 @@
                   </app-rds-comp-alert-popup>
                 </ng-container>
                 <ng-template #editActionTemplate>
-                  <rds-button class="action" [colorVariant]="'primary'" [roundedButton]="true" [size]="'medium'"
-                    [icon]="'check_mark'" [iconHeight]="'10px'" [iconWidth]="'20px'" (click)="saveChanges(data)">
+                  <div class="d-flex">
+                    <rds-button class="action" [colorVariant]="'primary'" [roundedButton]="true" [size]="'medium'"
+                    [icon]="'check'" [iconHeight]="'13px'" [iconWidth]="'20px'" (click)="saveChanges(data)">
                   </rds-button>
 
-                <rds-button class="ms-2" (click)="closeEdit(data)" [roundedButton]="true" [tooltipPlacement]="'top'"
-                  [colorVariant]="'danger'" [size]="'medium'" [icon]="'cross_mark'" [iconHeight]="'10px'"
-                  [iconWidth]="'20px'">
-                </rds-button>
+                  <rds-button class="ms-2 text-white" (click)="closeEdit(data)" [roundedButton]="true" [tooltipPlacement]="'top'"
+                    [colorVariant]="'danger'" [size]="'medium'" [icon]="'close'" [iconHeight]="'10px'"
+                    [iconWidth]="'15px'">
+                  </rds-button>
+                  </div>
               </ng-template>
               <!-- </div> -->
             </td>
@@ -154,7 +156,8 @@
         <rds-icon name="file_plus" height="100px" width="100px"></rds-icon>
       </div>
       <div>
-        <h5> {{noDataTitle|translate}} </h5>
+        <!-- <h5> {{noDataTitle|translate}} </h5> -->
+        <h5><rds-label [label]="translate.instant(noDataTitle)"></rds-label></h5>
         <div *ngIf="showNodataSubtitle">
           <small class="text-muted">
             {{noDataSubTitle|translate}}

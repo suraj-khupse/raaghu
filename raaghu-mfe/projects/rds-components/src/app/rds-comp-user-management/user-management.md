@@ -1,5 +1,5 @@
 ---
-slug: "/user-management"
+slug: "/comp-user-management"
 date: "2019-05-04"
 title: "Components > User-management"
 ---

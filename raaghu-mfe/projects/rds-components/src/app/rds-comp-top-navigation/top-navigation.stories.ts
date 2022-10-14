@@ -71,4 +71,11 @@ Default.args={
     { label: 'Download Collected Data', translationKey: 'Download Collected Data', tablink: '#nav-DownLoad', ariacontrols: 'nav-DownLoad', icon: 'download_data', subText: 'Download data belongs to your account', subtextTranslationKey: 'Download data belongs to your account', showoffcanvas: false },
   ],
   UserName:'Wai Technologies',
+  languageItems:[
+      {value: "English", some: "English", id: 1}
+      ,{value: "French", some: "French", id: 2}
+      ,{value: "Mexican", some: "Mexican", id: 3}
+      ,{value: "Dutch", some: "Dutch", id: 4}
+      ,{value: "Philippines", some: "Philippines", id: 5}
+    ]
 }

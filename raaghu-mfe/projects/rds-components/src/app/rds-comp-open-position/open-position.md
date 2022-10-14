@@ -1,5 +1,5 @@
 ---
-slug: "/Open Position"
+slug: "/comp-open-position"
 date: "2019-05-04"
 title: "Component > Open Position"
 ---

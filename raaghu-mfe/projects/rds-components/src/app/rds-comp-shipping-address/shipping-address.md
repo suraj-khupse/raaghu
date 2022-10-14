@@ -1,5 +1,5 @@
 ---
-slug: "/Shipping-Address"
+slug: "/comp-shipping-address"
 date: "2019-05-04"
 title: "Components > Shipping-Address"
 ---

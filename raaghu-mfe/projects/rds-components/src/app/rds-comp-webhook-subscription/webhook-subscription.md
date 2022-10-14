@@ -1,5 +1,5 @@
 ---
-slug: "/Webhook-Subscription"
+slug: "/comp-webhook-subscription"
 date: "2019-05-04"
 title: "Components > Webhook-Subscription"
 ---

@@ -39,7 +39,7 @@ title: "Elements > Badge"
           </div>
         </div>
         <div class="tab-pane fade show" id="AngularBasic" role="tabpanel" aria-labelledby="AngularBasic-tab">
-          <div class="contents ">
+          <div class="contents bg-code ">
 <div class="row text-white m-0 p-4">
 
 ```html
@@ -76,7 +76,7 @@ title: "Elements > Badge"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewButton" role="tabpanel" aria-labelledby="PreviewButton-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents p-5">
             <div class="row">
               <div class="col-12">
                 <img src="/images/badge-as-button.png" class="img-fluid">                               
@@ -126,7 +126,7 @@ title: "Elements > Badge"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewIcon" role="tabpanel" aria-labelledby="PreviewIcon-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents p-5">
             <div class="row">
               <div class="col-12">
                       <img src="/images/badge-with-icon.png" class="img-fluid">                          
@@ -188,7 +188,7 @@ title: "Elements > Badge"
       </div>
       <div class="tab-content card border" id="myTabContent">
         <div class="tab-pane fade show active" id="PreviewPositioned" role="tabpanel" aria-labelledby="PreviewPositioned-tab">
-          <div class="contents bg-light p-5">
+          <div class="contents  p-5">
             <div class="row">
               <div class="col-12">
                   <img src="/images/badge-with-position.png" class="img-fluid">
@@ -234,7 +234,7 @@ title: "Elements > Badge"
  <div class="card border p-5">
   <div class="row">
       <div class="col-md-12">
-        <img src="https://portal.raaghu.io/images/components/_badge/img-1.png" class="img-fluid">
+        <img src="/images/badge-skeleto.png" class="img-fluid">
      </div>
    </div>
    </div>

@@ -1,5 +1,5 @@
 ---
-slug: "/Security"
+slug: "/comp-security"
 date: "2019-05-04"
 title: "Components > Security"
 ---

@@ -16,6 +16,14 @@ export default {
       options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark','review'],
       control: { type: 'select' }
     },
+    size: {
+      options: ['small', 'medium', 'large'],
+      control: { type: 'radio' }
+    },
+    ratingPosition: {
+      options: ['left', 'right'],
+      control: { type: 'radio' }
+    },
   },
 } as Meta;
 
@@ -24,6 +32,8 @@ const Template: Story<RdsRatingComponent> = (args: RdsRatingComponent) => ({
 });
 
 export const Default = Template.bind({});
+Default.parameters = { controls: { include: ['itemList',  'rating', 'size','withNoOfReviews','noOfReview','colorVariant','ratingPosition'] } };
+
 Default.args = {
   itemList: [
     {id: 1, value: 1},
@@ -32,27 +42,11 @@ Default.args = {
     {id: 4, value: 4},
     {id: 5, value: 5},
   ],
-  Size: 'medium',
+  size: 'medium',
   rating:2,
-  WithNoOfReviews:true,
+  withNoOfReviews:true,
   noOfReview:123,
   colorVariant: 'review',
-  // role:'Basic',
+  ratingPosition:'left',
 }
 
-// export const Advanced = Template.bind({});
-// Basic.args = {
-//   itemList: [
-//     {id: 1, value: 1},
-//     {id: 2, value: 2},
-//     {id: 3, value: 3},
-//     {id: 4, value: 4},
-//     {id: 5, value: 5},
-//   ],
-//   Size: 'medium',
-//   rating:1,
-//   WithNoOfReviews:false,
-//   noOfReview:123,
-//   colorVariant: 'primary',
-//   role:'Advanced',
-// }

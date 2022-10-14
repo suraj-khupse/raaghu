@@ -51,6 +51,8 @@ export class RdsSideNavComponent implements OnInit {
   isLightMode = true;
   collapsed = false;
   openedMenu = false;
+
+  showHide:boolean=true;
   onClick(event: any, i: number, path: any): void {
     event.preventDefault();
     // this.router.navigateByUrl(path);
@@ -64,9 +66,16 @@ export class RdsSideNavComponent implements OnInit {
     if (x !== null)
       this.openedMenu = x.classList.contains('collapsed');
     if (!this.openedMenu) {
+      this.showHide=true;
       this.activepage = i;
       this.activesubmenu = 0;
       this.emitPath.emit(path);
+    }
+    else{
+      this.showHide=false;
+      this.activepage = i;
+      this.activesubmenu = '';
+      this.activeMenuWithChildren = '';
     }
   }
   onClickSubMenu(event: any, i: number, j: number, path: any): void {
@@ -84,6 +93,16 @@ export class RdsSideNavComponent implements OnInit {
     this.isLightMode = !this.isLightMode
     console.log(this.isLightMode)
     this.selectedMode.emit(this.isLightMode)
+  }
+
+  public get menu(): string[] {
+    var customMenu = ['collapse pt-2'];
+    if(this.activepage===0){
+      customMenu.push('show')
+    }else{
+      customMenu.push('hide');
+    }
+    return customMenu;
   }
 
 }

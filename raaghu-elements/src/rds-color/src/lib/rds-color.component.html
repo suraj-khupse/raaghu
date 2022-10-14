@@ -1,3 +1,5 @@
+<div [ngSwitch]="displaytype">
+    <div *ngSwitchCase="'rounded'">
 <h6>{{header}}</h6>
 <div class="d-flex">
     <ng-container *ngFor="let item of itemList">
@@ -5,4 +7,16 @@
             [ngStyle]="{'background-color': item.color}" (click)="selectColor(item)">
         </div>
     </ng-container>
+</div>
+</div>
+<div *ngSwitchCase="'square'">
+<h6>{{header}}</h6>
+<div class="d-flex">
+    <ng-container *ngFor="let item of itemList">
+        <div [ngClass]="defaultValue === item.id ? 'selected-border-square' : 'default-border-square'" [id]="item.color"
+            [ngStyle]="{'background-color': item.color}" (click)="select(item)">
+        </div>
+    </ng-container>
+</div>
+</div>
 </div>

@@ -39,7 +39,7 @@ Default.args = {
     {
       'actor': 'Jijo Fleshman',
       'username': '@jijolife123',
-      date: '01/03/2022',
+      date: '2022/01/03',
       feedIcon:'avatar',
       profilePic: 'https://th.bing.com/th/id/OIP.3IsXMskZyheEWqtE3Dr7JwHaGe?pid=ImgDet&rs=1',
       'description': 'This bag is of the quality expected for the price. The lining inside the bag seems like satin and it is very strong one It has huge space inside inside as the zipper can be opened in either side.'

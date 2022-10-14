@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/addon-interactions"
   ],
   "framework": "@storybook/angular",
+  "staticDirs": [{"from": './assets', "to": '/assets'}],
   "core": {
     "builder": "webpack5"
   }

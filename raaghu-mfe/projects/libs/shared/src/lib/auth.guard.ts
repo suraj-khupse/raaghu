@@ -25,7 +25,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(   
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean>{
-
       const storedPermission = localStorage.getItem('storedPermissions');                                                                                                              
       const parsedPermission = JSON.parse(storedPermission);
       if(parsedPermission){
@@ -49,10 +48,12 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   } 
 
   canActivateInternal(data: any, state: RouterStateSnapshot): Observable<boolean> {
-
-    if (!data || !data['permission']) {
-        return of(true)
+    if(state.url == '/pages/settings'){
+      if(this.permissions["Pages.Administration.Tenant.Settings"] || this.permissions["Pages.Administration.Host.Settings"])return of(true);
     }
+    else if (!data || !data['permission']) {
+      return of(true);
+  }
 
     if (this.permissions[data['permission']]) {
         return of(true);
@@ -71,8 +72,7 @@ canLoad(route: any): Observable<boolean> | Promise<boolean> | boolean {
   {
     if (!this._sessionService.user) {
         return '/login';                  
-    }                                      
-                                                 
+    }                                                                                  
     return '/pages/dashboard';
   }
 }

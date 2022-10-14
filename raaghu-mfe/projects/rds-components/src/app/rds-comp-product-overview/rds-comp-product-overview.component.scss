@@ -2,3 +2,17 @@
     display: grid;
     grid-auto-columns: max-content;
 }
+@media only screen and (max-width: 600px) {
+   .sm-100{
+       width: 100% !important;
+   }
+   .sm-97{
+       width: 97% !important;
+   }
+   .sm-block{
+       display: block !important;
+   }
+   .sizeWidth{
+    display: block;
+}
+  }

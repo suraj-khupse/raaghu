@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-md-12 text-end pb-3 desktop-btn">
+      <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'"
+        [showLoadingSpinner]="buttonSpinnerForNewUser" [size]="'small'" (click)="newUser($event)" buttonType="iconLabel"
+        icon="plus" iconWidth="12px" iconHeight="12px">
+      </rds-button>
+    </div>
+      <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+        <app-rds-data-table [tableData]="userList" [inlineEdit]="false" (onActionSelection)="onActionSelect($event)"
+          [pagination]="true" [recordsPerPage]="10" [actions]="actions" [isShimmer]="isShimmer"
+          [tableHeaders]="userHeaders" noDataTitle="Currently you do not have user" ></app-rds-data-table>
+
+          </div>
+  </div>
+  <div class="mobile-btn position-absolute bottom-0 end-0 my-5 me-5">
+    <rds-fab-menu [listItems]="listItemsm" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'"
+      [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+  </div>
+  <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'userOffcanvas'" [offcanvaswidth]="700"
+    [placement]="'end'" *ngIf="viewCanvas" (onClose)="close()">
+    <rds-nav-tab [navtabsItems]="getNavTabItems()" (onClicktab)="getSelectedNavTab($event)" [activepage]="activePage"
+      [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
+      [justified]="false">
+      <div naveContent class="row tab-content py-4 px-3 navsm-p-0" id="nav-tabContent">
+        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
+          aria-labelledby="nav-home-tab">
+          <app-rds-comp-user-basic-profile-right (userInfo)="getUserData($event)" [userData]="userinfo" (onCancel)="close()"
+            [editShimmer]="editShimmer">
+          </app-rds-comp-user-basic-profile-right>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="claims" role="tabpanel"
+          aria-labelledby="nav-home-tab">
+          <div class="tab-content">
+            <div class="row">
+              <div class="col-md-12" *ngFor="let item of roles">
+                <div class="form-group mb-3">
+                  <rds-checkbox [disabled]="false" [label]="item.roleDisplayName" name="item.roleDisplayName" [withLabel]="true" [switch]="false"
+                    [inline]="false" [id]="'isAssigned'"></rds-checkbox>                 
+                </div>
+              </div>
+            </div>
+  
+            <div class="footer-buttons my-2">
+  
+              <rds-button [label]="translate.instant('Cancel')" (click)="close()" [outlineButton]="true" [colorVariant]="'primary'"
+                [size]="'small'" data-bs-dismiss="offcanvas">
+              </rds-button>
+              <rds-button [label]="translate.instant('Save')" [disabled]="!user||!user.userInfo" [size]="'small'"
+                class="ms-2" [colorVariant]="'primary'" data-bs-dismiss="offcanvas" (click)="save()">
+              </rds-button>
+  
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{ 'show active': activePage === 2 }" id="organizationUnits" role="tabpanel"
+          aria-labelledby="nav-home-tab">
+          <div class="tab-content">
+           <!-- Add Origination Unit   -->
+          <app-rds-comp-permission-tree [treeData]="OrganizationUnit" [selectedItems]="selectedOrganizations"
+              (getAllSelectedNodes)="getSelectedorganizationunits($event)"></app-rds-comp-permission-tree>
+          </div>
+          <div class="footer-buttons my-2">
+  
+            <rds-button [label]="translate.instant('Cancel')" (click)="close()"[outlineButton]="true" [colorVariant]="'primary'"
+              [size]="'small'" data-bs-dismiss="offcanvas">
+            </rds-button>
+            <rds-button [label]="translate.instant('Save')" class="ms-2" [size]="'small'" [colorVariant]="'primary'"
+              (click)="save()" data-bs-dismiss="offcanvas">
+            </rds-button>
+  
+          </div>
+  
+        </div>
+        <div class="tab-pane fade" [ngClass]="{ 'show active': activePage === 3 }" id="permissions" role="tabpanel"
+          *ngIf="selectedId" aria-labelledby="nav-home-tab">
+          <div class="tab-content">
+  
+            <app-rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="selectedPermissions"
+              (getAllSelectedNodes)="getSelectedPermissionsList($event)" [selectAllLabel]="'Select All Permissions'">
+            </app-rds-comp-permission-tree>
+          </div>
+          <div class="footer-buttons my-2">
+  
+            <rds-button [label]="translate.instant('Cancel')" (click)="close()" [outlineButton]="true" [colorVariant]="'primary'"
+              [size]="'small'" data-bs-dismiss="offcanvas">
+            </rds-button>
+            <rds-button [label]="translate.instant('Save')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
+              (click)="savePermission()" data-bs-dismiss="offcanvas">
+            </rds-button>
+  
+  
+          </div>
+        </div>
+        <div class="tab-pane fade" [ngClass]="{ 'show active': activePage === 4 }" id="claim" role="tabpanel"
+        *ngIf="selectedId" aria-labelledby="nav-home-tab">
+        <div class="tab-content">
+        </div>
+        <div class="footer-buttons my-2">
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [outlineButton]="true" [colorVariant]="'primary'"
+            [size]="'small'" data-bs-dismiss="offcanvas">
+          </rds-button>
+          <rds-button [label]="translate.instant('Save')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
+            (click)="savePermission()" data-bs-dismiss="offcanvas">
+          </rds-button>
+         </div>
+      </div>
+      </div>
+    </rds-nav-tab>
+  </rds-offcanvas>  

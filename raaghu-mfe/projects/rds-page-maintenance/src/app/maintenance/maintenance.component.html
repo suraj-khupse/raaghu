@@ -1,0 +1,61 @@
+<div *ngIf="!isShimmer">
+  <div class="row">
+    <div class="col-md-12 text-end pb-3">
+      <div class="d-flex justify-content-end" *ngIf="tabcash && cashedata && cashedata.length>0">
+        <div class="desktop-btn">
+          <rds-button (click)="deletAllcasheConfirmation()" [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'"
+            [colorVariant]="'primary'" [label]="translate.instant('CLEAR ALL')">
+            <rds-icon left name="delete" width="15px" height="15px"></rds-icon>
+          </rds-button>
+        </div>
+        <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5" style="z-index: 1;">
+          <!-- <rds-button (click)="deletAllcasheConfirmation()" [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'"
+            [colorVariant]="'primary'" [roundedButton]="true" [label]="''">
+            <rds-icon left name="delete" width="22px" height="22px"></rds-icon>
+          </rds-button> -->
+          <rds-fab-menu [listItems]="listItems1" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'" [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end" *ngIf="tabweb && websiteLogData && websiteLogData.length > 0 ">
+        <div class="desktop-btn">
+          <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [roundedButton]="true"
+            icon="refresh" iconHeight="16px" iconWidth="16px" (click)="refreshData()" class="me-2">
+          </rds-button>
+          <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
+            (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [outlineButton]="true">
+            <rds-icon left name="download_collected_data" height="12px" width="12px"></rds-icon>
+          </rds-button>
+        </div>
+        <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5" style="z-index: 1;">
+          <!-- <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [roundedButton]="true"
+            icon="refresh" iconHeight="27px" iconWidth="27px" (click)="refreshData()" class="me-2">
+          </rds-button>
+          <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [roundedButton]="true"
+            [colorVariant]="'primary'" (click)="exportToExcel()" [label]="''" [outlineButton]="true">
+            <rds-icon left name="download-collected-data" height="12px" width="12px"></rds-icon>
+          </rds-button> -->
+          <rds-fab-menu [listItems]="listItems2" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'" [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+        <rds-nav-tab [navtabsItems]="getNavTabItems()" horizontalAlignment="start" [verticalAlignment]="false"
+          [pills]="false" [tabs]="true" [fill]="false" [justified]="false" [flex]="false"
+          (onClicktab)="getnavtabid($event)">
+        </rds-nav-tab>
+        <div naveContent class="tab-content py-4" id="headerbar">
+          <div class="tab-pane fade active show" id="nav-Caches" role="tabpanel" aria-labelledby="nav-Caches">
+            <app-cache [cashedata]="cashedata"></app-cache>
+          </div>
+          <div class="tab-pane fade" id="nav-websiteLogs" role="tabpanel" aria-labelledby="nav-websiteLogs">
+            <app-websitelog [websiteLogData]="websiteLogData"></app-websitelog>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+<app-rds-maintenance-shimmer *ngIf="isShimmer"></app-rds-maintenance-shimmer>

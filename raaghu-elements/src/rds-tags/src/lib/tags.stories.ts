@@ -10,8 +10,7 @@ export default {
   component: RdsTagsComponent,
   decorators: [
     moduleMetadata({
-
-      imports: [CommonModule, FormsModule,RdsIconModule],
+      imports: [CommonModule, FormsModule, RdsIconModule],
     }),
   ],
   argTypes: {
@@ -21,9 +20,12 @@ export default {
     },
     tagType: {
       options: ['square', 'round'],
-      control: { type: 'select' }
+      control: { type: 'radio' }
     },
-
+    role: {
+      options: ['basic', 'tagWithScroll'],
+      control: { type: 'radio' }
+    },
   }
 } as Meta
 
@@ -31,17 +33,20 @@ const Template: Story<RdsTagsComponent> = (args: RdsTagsComponent) => ({
   props: args,
 });
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
+Default.parameters = { controls: { include: ['role', 'colorVariant', 'tagType'] } };
 Default.args = {
-  roles: 'Basic',
+  role: 'basic',
+  colorVariant: 'primary',
+  tagType: 'square'
+}
+export const tagWithScroll = Template.bind({});
+tagWithScroll.parameters = { controls: { include: ['role', 'colorVariant', 'tagType'] } };
+tagWithScroll.args = {
+  role: 'tagWithScroll',
   colorVariant: 'primary',
   tagType: 'square'
 }
 
-export const TagWithScroll = Template.bind({})
-TagWithScroll.args = {
-  roles: 'TagWithScroll',
-  colorVariant: 'primary',
-  tagType: 'square'
 
-}
+
