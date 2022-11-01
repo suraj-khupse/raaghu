@@ -21,7 +21,7 @@ export class RoleEffects {
       ofType(getRoles),
       switchMap(() =>
         // Call the getTodos method, convert it to an observable
-        from(this.roleService.all()).pipe(
+        from(this.roleService.rolesGET3(undefined,undefined,0,1000)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((roles) => {
             return getRoleSuccess({ roles })
