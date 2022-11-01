@@ -1,6 +1,11 @@
 import { Component, TemplateRef } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { getAllApiResources } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.actions';
+import { selectAllApiResource } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.selector';
+import { getAllClients } from 'projects/libs/state-management/src/lib/state/clients/clients.actions';
+import { selectAllClients } from 'projects/libs/state-management/src/lib/state/clients/clients.selector';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 declare var bootstrap: any;
 
@@ -41,33 +46,30 @@ export class AppComponent {
   ];
   content!: TemplateRef<any>;
   clientList: any = [];
-  clientSecretList: any = [
-    { id: 1, type: 'SharedSecrets', value: 1121, description: 'Shared Secret Value', expiration: '21/02/2022' },
-    { id: 2, type: 'SharedSecrets', value: 1121, description: 'Shared Secret Value', expiration: '21/02/2022' },
-    { id: 3, type: 'SharedSecrets', value: 1121, description: 'Shared Secret Value', expiration: '21/02/2022' },
-    { id: 4, type: 'SharedSecrets', value: 1121, description: 'Shared Secret Value', expiration: '21/02/2022' }];
-
+  apiResources: any = [];
+  clientSecretList: any = [{}];
+  secrets: any;
   client: any = {};
-  canvasTitle: string = this.translate.instant('New Client');
+  canvasTitle: string = 'New Client';
   public navtabsItems: any = [
     {
-      label: this.translate.instant('Basics'),
+      label: 'Basics',
       tablink: '#basics',
       ariacontrols: 'basics',
     },
     {
-      label: this.translate.instant('Secrets'),
+      label: 'Secrets',
       tablink: '#secrets',
       ariacontrols: 'secrets',
 
     },
     {
-      label: this.translate.instant('Resources'),
+      label: 'Resources',
       tablink: '#resources',
       ariacontrols: 'resources',
     }];
 
-  constructor(public translate:TranslateService) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
     this.rdsClientMfeConfig = {
@@ -133,13 +135,16 @@ export class AppComponent {
               this.rdsClientSecretsMfeConfig = mfeConfig;
             }
           }
+          if(event.actionId === 'edit'){
+            this.secrets = event.selectedData;
+          }
         }
       }
     };
     this.rdsClientBasicsMfeConfig = {
       name: 'RdsCompClientBasics',
       input: {
-        clientInfo: this.client.basicInfo,
+        clientBasics: {},
       },
       output: {
         clientBasicInfo: (eventData: any) => {
@@ -156,17 +161,58 @@ export class AppComponent {
         selectedResources: (eventData: any) => {
           this.getSelectedResources(eventData)
         }
-      }
+      }     
     };
+
+
+    this.store.dispatch(getAllClients());
+    this.store.select(selectAllClients).subscribe((res) => {
+      this.clientList = [];
+      if (res && res.items.length > 0) {
+        res.items.forEach((element: any) => {
+          const item: any = {
+            clientId: element.clientId,
+            clientName: element.clientName,
+            description: element.description
+          }
+          this.clientList.push(item);
+        });
+      }
+      const mfeConfig = this.rdsClientMfeConfig
+      mfeConfig.input.tableData = [...this.clientList];
+      mfeConfig.input.refresh = true;
+      this.rdsClientMfeConfig = { ...mfeConfig };
+    })
+
+    this.store.dispatch(getAllApiResources());
+    this.store.select(selectAllApiResource).subscribe((res) => {
+      this.apiResources = [];
+      if (res) {
+        res.items.forEach((element: any) => {
+          const item: any = {
+            displayName: element.displayName,
+            name: element.name,
+            left: element.description,
+            id:element.id
+          }
+          this.apiResources.push(item);
+        });
+      }
+
+      const mfeConfig = this.rdsClientMfeConfig
+      mfeConfig.input.apiResources = [...this.apiResources];
+      mfeConfig.input.refresh = true;
+      this.rdsClientMfeConfig = { ...mfeConfig };
+    })
   }
 
   newClient(event: any): void {
     if (event) {
       this.clientUniqueId = undefined;
       event.stopPropagation();
-      this.canvasTitle = this.translate.instant('New Client');
+      this.canvasTitle = 'New Client';
     } else {
-      this.canvasTitle = this.translate.instant('Edit Client');
+      this.canvasTitle = 'Edit Client';
     }
     this.activePage = 0;
     this.viewCanvas = true;
@@ -227,15 +273,15 @@ export class AppComponent {
   };
   getBtnName(): string {
     if (this.clientUniqueId) {
-      return this.translate.instant('Update');
+      return 'Update';
     }
-    return this.translate.instant('Create');
+    return 'Create';
   }
 
   getNavTabItems(): any {
-    this.navtabsItems[0].label = this.translate.instant('Basics');
-    this.navtabsItems[1].label = this.translate.instant('Secrets');
-    this.navtabsItems[2].label = this.translate.instant('Resources');
+    this.navtabsItems[0].label = 'Basics';
+    this.navtabsItems[1].label = 'Secrets';
+    this.navtabsItems[2].label = 'Resources';
     return this.navtabsItems;
   }
 }

@@ -3,27 +3,28 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { AlertService } from "projects/libs/shared/src/lib/alert.service";
-import { GetRolesInput, RoleServiceProxy, PermissionServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
+import { ServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
 import { from, of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
-import { deleteRole, getPermission, getPermissionSuccess, getRolByEdit, getRolByEditFailure, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess, saveRole } from "./role.actions";
+import { deleteRole, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getPermission, getPermissionSuccess, getRolByEdit, getRolByEditFailure, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess, saveClaims, savePermissions, saveRole } from "./role.actions";
 
 
 @Injectable()
 export class RoleEffects {
-  constructor(private actions$: Actions, private permissionService: PermissionServiceProxy,
+  constructor(private actions$: Actions,
     private alertService: AlertService,
-    private roleService: RoleServiceProxy, private store: Store) { }
+    private roleEditservice :ServiceProxy,
+    private roleService: ServiceProxy, private store: Store) { }
   selectedPermissions = []
   getRoles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getRoles),
-      switchMap(({ selectedPermissions }) =>
+      switchMap(() =>
         // Call the getTodos method, convert it to an observable
-        from(this.roleService.getRoles(new GetRolesInput({ permissions: selectedPermissions }))).pipe(
+        from(this.roleService.rolesGET3(undefined,undefined,0,1000)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((roles) => {
-            return getRoleSuccess({ roles: roles })
+            return getRoleSuccess({ roles })
           }),
           // Or... if it errors return a new failure action containing the error
           catchError((error) => of(getRoleFailure({ error })))
@@ -32,15 +33,69 @@ export class RoleEffects {
     )
   );
 
+  getAllClaimTypes$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllClaimTypes),
+      switchMap(() =>
+        // Call the getTodos method, convert it to an observable
+        from(this.roleService.allClaimTypes()).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((allClaimTypes) => {
+            return getAllClaimTypesSuccess({ allClaimTypes })
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(getAllClaimTypesFailure({ error })))
+        )
+      )
+    )
+  );
+
+  getClaimTypes$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getClaimTypes),
+      switchMap(({id}) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.roleService.claimsAll(id)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((claimTypes) => {
+            return getClaimTypesSuccess({ claimTypes })
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(getClaimTypesFailure({ error })))
+        )
+      )
+    )
+  );
+  saveClaims$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveClaims),
+      switchMap(({data}) =>
+        this.roleService.claims(data.id, data.permissions).pipe(map((res: any) => {
+          this.store.dispatch(getRoles());
+          this.alertService.showAlert('Success',  'Role added successfully', 'success')
+        }),
+          catchError((error: any) => of(
+          ))
+        )
+      )
+    ),
+    {
+      dispatch: false
+    }
+  );
+
+  
+  
+
   getPermissions$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getPermission),
-      switchMap(() =>
+      switchMap(({name}) =>
         // Call the getTodos method, convert it to an observable
-        from(this.permissionService.getAllPermissions()).pipe(
+        from(this.roleService.permissionsGET("T",name)).pipe(
           // Take the returned value and return a new success action containing the todos
-          map((Permissions) => {
-            return getPermissionSuccess({ PermissionI: Permissions })
+          map((PermissionI) => {
+            return getPermissionSuccess({ PermissionI })
           }),
           // Or... if it errors return a new failure action containing the error
           catchError((error) => of(getRoleFailure({ error })))
@@ -48,12 +103,31 @@ export class RoleEffects {
       )
     )
   );
+
+  savePermissions$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(savePermissions),
+      switchMap(({data}) =>
+        this.roleService.permissionsPUT("T",data.name, data.permissions).pipe(map((res: any) => {
+          this.store.dispatch(getRoles());
+          this.alertService.showAlert('Success',  'Role added successfully', 'success')
+        }),
+          catchError((error: any) => of(
+          ))
+        )
+      )
+    ),
+    {
+      dispatch: false
+    }
+  );
+
   saveRoles$ = createEffect(() =>
     this.actions$.pipe(
       ofType(saveRole),
       switchMap((data) =>
-        this.roleService.createOrUpdateRole(data.role).pipe(map((res: any) => {
-          this.store.dispatch(getRoles([]));
+        this.roleService.rolesPOST(data.role).pipe(map((res: any) => {
+          this.store.dispatch(getRoles());
           this.alertService.showAlert('Success',  'Role added successfully', 'success')
         }),
           catchError((error: any) => of(
@@ -70,10 +144,9 @@ export class RoleEffects {
     this.actions$.pipe(
       ofType(deleteRole),    
       switchMap(({ id }) =>
-        this.roleService.deleteRole(id).pipe(map(() => {
-          this.store.dispatch(getRoles([]));
+        this.roleService.rolesDELETE2(id).pipe(map(() => {
+          this.store.dispatch(getRoles());
           this.alertService.showAlert('Success', 'Role deleted successfully', 'success');
-
         }
         ),
           catchError((error) => of())
@@ -88,7 +161,7 @@ export class RoleEffects {
       ofType(getRolByEdit),
       switchMap(({ id }) =>
         // Call the getTodos method, convert it to an observable
-        from(this.roleService.getRoleForEdit(id)).pipe(
+        from(this.roleEditservice.rolesPUT(id,undefined)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((RoleEditI) => {
             return getRolByEditSuccess({ EditRoleSateI: RoleEditI })

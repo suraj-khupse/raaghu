@@ -13,6 +13,6 @@ export const selectTenant = createSelector(
  
 export const selectLoginInfo = createSelector(
     selectLoginState,
-    (state: ValidateTenantState) => state.loginInfo
+    (state: ValidateTenantState) => state.applicaiton_information
 );
 

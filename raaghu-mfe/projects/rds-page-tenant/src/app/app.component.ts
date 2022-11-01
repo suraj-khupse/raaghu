@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ArrayToTreeConverterService, ComponentLoaderOptions } from '@libs/shared';
-import { deleteTenant, getEditionComboboxItems, getTenantFeaturesForEdit, getTenantForEdit, getTenants, saveTenant, selectAllTenants, selectDefaultLanguage, selectEditionComboboxItems, selectTenantFeature, selectTenantInfo, updateTenant, updateTenantFeatureValues } from '@libs/state-management';
+import { } from '@libs/state-management';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
@@ -13,6 +13,8 @@ import {
   style,
   animate,
 } from '@angular/animations';
+import { selectAllTenants, selectEditionComboboxItems, selectTenantFeature, selectTenantInfo } from 'projects/libs/state-management/src/lib/state/tenant/tenant.selector';
+import { deleteTenant, getEditionComboboxItems, getTenantFeaturesForEdit, getTenantForEdit, getTenants, saveTenant, updateTenant, updateTenantFeatureValues } from 'projects/libs/state-management/src/lib/state/tenant/tenant.actions';
 
 @Component({
   selector: 'app-root',
@@ -77,11 +79,11 @@ export class AppComponent {
   ngOnInit(): void {
     this.isAnimation = true;
 
-    this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-      if (res) {
-        this.translate.use(res);
-      }
-    });
+    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
+    //   if (res) {
+    //     this.translate.use(res);
+    //   }
+    // });
     this.rdsTenantMfeConfig = {
       name: 'RdsCompTenantList',
       input: {
@@ -131,6 +133,11 @@ export class AppComponent {
         },
         onEditTenant: (selectedTenant: any) => {
           this.store.dispatch(getTenantForEdit(selectedTenant));
+          this.store.select(selectTenantInfo).subscribe(res=>{
+            console.log(res);
+            const mfeConfig = this.rdsTenantMfeConfig
+            mfeConfig.input.tenantData = { ... this.tenantData };
+          })
           this.store.dispatch(getTenantFeaturesForEdit(selectedTenant))
         },
         onReset: (event: any) => {
@@ -153,7 +160,7 @@ export class AppComponent {
 
         },
         deleteEvent: (event: any) => {
-          this.store.dispatch(deleteTenant(event.id, 30))
+          this.store.dispatch(deleteTenant(event.id))
         },
         onSaveFeatures: (feature: any) => {
           this.store.dispatch(updateTenantFeatureValues(feature))

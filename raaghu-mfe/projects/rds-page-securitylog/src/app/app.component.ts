@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

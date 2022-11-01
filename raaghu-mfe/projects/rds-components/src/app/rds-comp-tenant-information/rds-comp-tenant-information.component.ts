@@ -46,12 +46,13 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    debugger
     if (!this.tenantData) {
       this.tenantData = {};
       this.tenantData['tenancyName'] = '';
       this.tenantData['tenantName'] = '';
       this.tenantData['adminEmailAddress'] = '';
-      this.tenantData['edition'] = '';
+      this.tenantData['edition'] = [];
       this.tenantData['unlimitedSubscription'] = true;
       this.tenantData['imageUrl'] = '../assets/edit-pic.png';
       this.tenantData['subscriptionEndDate'] = null;

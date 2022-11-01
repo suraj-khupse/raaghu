@@ -32,7 +32,7 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
   @Input() state: 'checkbox' | 'Indeterminate' | 'errorcheckbox' = 'checkbox';
 
   @Output() onClick = new EventEmitter<{ evnt: any, item: string }>();
-  
+
   listItems!: any;
   constructor() {
     this.isMasterSel = false;
@@ -45,6 +45,7 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
         id: 1,
         label: 'Parent Checkbox 1',
         isSelected: false,
+        isIntermediate: false,
         isClosed: false,
         childList: [
           {
@@ -55,39 +56,41 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
           },
           {
             id: 2,
-            parent_id: 1, 
-            label: 'Child Checkbox 2', 
+            parent_id: 1,
+            label: 'Child Checkbox 2',
             isSelected: false
           },
           {
-            id: 3, 
-            parent_id: 1, 
-            label: 'Child Checkbox 3', 
+            id: 3,
+            parent_id: 1,
+            label: 'Child Checkbox 3',
             isSelected: false
           },
           {
-            id: 4, 
-            parent_id: 1, 
-            label: 'Child Checkbox 4', 
+            id: 4,
+            parent_id: 1,
+            label: 'Child Checkbox 4',
             isSelected: false
           }
         ]
       },
       {
-        id: 2, 
-        label: 'Parent Checkbox 2', 
-        isSelected: false, isClosed: false,
+        id: 2,
+        label: 'Parent Checkbox 2',
+        isSelected: false,
+        isIntermediate: false,
+        isClosed: false,
         childList: [
           {
-            id: 1, 
-            parent_id: 1, 
-            label: 'Child Checkbox 1', 
+            id: 1,
+            parent_id: 1,
+            label: 'Child Checkbox 1',
             isSelected: false
           },
           {
-            id: 2, 
-            parent_id: 1, 
-            label: 'Child Checkbox 2', 
+            id: 2,
+            parent_id: 1,
+            label: 'Child Checkbox 2',
             isSelected: false
           }
         ]
@@ -96,6 +99,7 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
       //  id: 3, 
       //  label: 'Parent Checkbox 3', 
       //  isSelected: false, 
+      //  isIntermediate: false,
       //  isClosed: false,
       //  childList: [
       //    {
@@ -167,8 +171,9 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
     this.onTouched();
     this.onChanged(this.checked);
   }
-  
+
   parentCheck(parentObj: any, event: boolean) {
+    parentObj.isIntermediate = false;
     for (var i = 0; i < parentObj.childList.length; i++) {
       parentObj.childList[i].isSelected = parentObj.isSelected;
     }
@@ -179,25 +184,33 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
 
   //Click event on Child Checkbox checkbox  
   childCheck(parentObj: any, childObj: any, event: boolean) {
+    parentObj.isSelected = false;
     parentObj.isSelected = childObj.every(function (itemChild: any) {
       return itemChild.isSelected == true;
-    })
-    childObj.isSelected = event
-    this.onTouched(); // <-- mark as touched
-    this.onChanged(event);
-  }
-
-  //Click event on master select
-  selectUnselectAll(obj: any) {
-    obj.isAllSelected = !obj.isAllSelected;
-    for (var i = 0; i < obj.ParentChildchecklist.length; i++) {
-      obj.ParentChildchecklist[i].isSelected = obj.isAllSelected;
-      for (var j = 0; j < obj.ParentChildchecklist[i].childList.length; j++) {
-        obj.ParentChildchecklist[i].childList[j].isSelected = obj.isAllSelected;
+    });
+    const childObjLength = childObj.filter((x: any) => x.isSelected).length;
+    if (parentObj.isSelected) {
+      parentObj.isSelected = true;
+      if (childObjLength == childObj.length) {
+        parentObj.isIntermediate = false;
+      } else {
+        parentObj.isIntermediate = true;
       }
     }
+    else if (!parentObj.isSelected) {
+      parentObj.isSelected = false;
+      if (childObjLength >= 1) {
+        parentObj.isSelected = true;
+        parentObj.isIntermediate = true;
+      } else if (childObjLength === 0) {
+        parentObj.isIntermediate = false;
+        parentObj.isSelected = false;
+      }
+    }
+    // childObj.isSelected = event
+    this.onTouched(); // <-- mark as toucheds
+    this.onChanged(event);
   }
-
 
   writeValue(value: boolean): void {
     this.checked = value;

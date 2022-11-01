@@ -13,7 +13,7 @@ export const languageTextInitialState: LanguageTextsState = {
     status: 'pending',
 };
 export const LanguageTextReducer = createReducer(
-    // Supply the initial state
+    // Supply the initial state 
     languageTextInitialState,
     on(getLanguageTexts, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos

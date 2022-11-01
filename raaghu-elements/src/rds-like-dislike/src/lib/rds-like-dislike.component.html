@@ -1,7 +1,7 @@
 <div class="row">
   <div class="d-flex ">
 
-  <div (click)="likeFun($event)">
+  <div class="d-flex align-items-center" (click)="likeFun($event)">
     <rds-icon
     height="25"
     [fill]="false"
@@ -14,7 +14,7 @@
     <label  class="marginclass">{{likeCount}}</label></span>
    </div>
   
-  <div (click)="dislikeFun($event)" class="mt-1">
+  <div class="d-flex align-items-center" (click)="dislikeFun($event)" >
     <rds-icon
     height="25"
     [fill]="false"

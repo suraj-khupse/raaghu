@@ -1,28 +1,14 @@
-// import { Action, createReducer, on } from '@ngrx/store';
-// export function laanguageListReducer(state, action:Action)
-// {
-//     switch (action.type) {
-
-//         case 'ADD_LANGUAGE':
-
-//           return { ...state, languageList: [...state.items, action] };
-
-//       }
-// }
-
 import { createReducer, on } from "@ngrx/store";
-import { getManageLinkedAccountsFailure, getManageLinkedAccounts, getManageLinkedAccountsSuccess } from "./manage-linked-accounts.actions";
-import { ManageLinkedAccounts } from "./manage-linked-accounts.models";
-
+import { getManageLinkedAccountsFailure, getManageLinkedAccounts, getManageLinkedAccountsSuccess, linkAccount, linkAccountSuccess } from "./manage-linked-accounts.actions";
 
 export interface ManageLinkedAccountsState {
-    ManageLinkedAccounts: ManageLinkedAccounts;
+    linkedAccounts: any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const ManageLinkedAccountsInitialState: ManageLinkedAccountsState = {
-    ManageLinkedAccounts: { items: [] },
+    linkedAccounts: null,
     error: null,
     status: 'pending',
 };
@@ -31,9 +17,9 @@ export const ManageLinkedAccountsReducer = createReducer(
     ManageLinkedAccountsInitialState,
     on(getManageLinkedAccounts, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos
-    on(getManageLinkedAccountsSuccess, (state, { ManageLinkedAccounts }) => ({
+    on(getManageLinkedAccountsSuccess, (state, { linkedAccounts }) => ({
         ...state,
-        ManageLinkedAccounts: ManageLinkedAccounts,
+        linkedAccounts: linkedAccounts,
         error: null,
         status: 'success',
     })),
@@ -42,5 +28,13 @@ export const ManageLinkedAccountsReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
+    })),
+    on(linkAccount, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(linkAccountSuccess, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    
 )

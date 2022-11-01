@@ -13,7 +13,7 @@ export class XmlHttpRequestHelper {
             }
         };
 
-        url += (url.indexOf('?') >= 0 ? '&' : '?') + 'd=' + new Date().getTime();
+        //url += (url.indexOf('?') >= 0 ? '&' : '?') + 'd=' + new Date().getTime();
         xhr.open(type, url, true);
 
         for (let property in customHeaders) {

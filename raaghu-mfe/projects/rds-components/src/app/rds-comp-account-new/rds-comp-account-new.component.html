@@ -19,8 +19,9 @@
         <div class="border-bottom text-muted mt-3 fw-bold">
             <rds-label [label]="'Two Factor Authentication '"></rds-label>
             </div>
-            <div class="col-md-6 mt-4">
-                <rds-select-list [label]="'Two Factor Authentication'" required [isRequired]=true ngDefaultControl LabelType="Top"
+            <div class="mt-4">
+                <label for="value" class="mb-2">Two Factor Authentication<span class="text-danger">*</span></label>
+                <rds-select-list required [isRequired]=true ngDefaultControl LabelType="Top"
                     name="twofactorauthentication" [itemList]="AuthentiactionList"  [(ngModel)]="accountData.twofactorauthentication"
                     #twofactorauthentication="ngModel" [placeholder]="'Select'"
                    >
@@ -68,7 +69,8 @@
                           </div>
                      </div>
                      <div class="col-md-4 mt-3">
-                        <rds-select-list [label]="'Version'" required [isRequired]=true ngDefaultControl LabelType="Top"
+                        <label for="value" class="mb-2">Version<span class="text-danger">*</span></label>
+                        <rds-select-list required [isRequired]=true ngDefaultControl LabelType="Top"
                             name="version" [itemList]="VersionList"  [(ngModel)]="accountData.version"
                             #version="ngModel" [placeholder]="'Select'"
                            >
@@ -105,22 +107,22 @@
                 <div class="border-bottom text-muted mt-4 fw-bold">
                     <rds-label [label]="'External Provider '"></rds-label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-4">
+                    <div class="row pt-3">
+                        <div class="col-md-12 mb-2">
                             <rds-checkbox [disabled]="false" [label]="'Google'" name="google" [withLabel]="true"
                                 [switch]="false" [inline]="false"  [(ngModel)]="accountData.google"
                                 #authentication="ngModel"  [id]="'ssl'"></rds-checkbox>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mt-4">
+                        <div class="col-md-12 mb-2">
                             <rds-checkbox [disabled]="false" [label]="'Microsoft'" name="microsoft" [withLabel]="true"
                                 [switch]="false" [inline]="false"  [(ngModel)]="accountData.microsoft"
                                 #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mt-4">
+                        <div class="col-md-12 mb-2">
                             <rds-checkbox [disabled]="false" [label]="'Twitter'" name="twitter" [withLabel]="true"
                                 [switch]="false" [inline]="false"  [(ngModel)]="accountData.twitter"
                                 #authentication="ngModel" [id]="'ssl'"></rds-checkbox>

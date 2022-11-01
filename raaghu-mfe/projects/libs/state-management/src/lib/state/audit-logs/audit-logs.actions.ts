@@ -1,15 +1,28 @@
 import { createAction, props } from "@ngrx/store";
-import { AuditLogs } from "./audit-logs.models";
+//import { AuditLogs } from "./audit-logs.models";
 
 export const getAuditLogs = createAction('[AuditLogs Page] Get AuditLogs',
 (auditLogParams: any) => ({ auditLogParams}));
 
 export const getAuditLogsSuccess = createAction(
   '[AuditLogs Page] Get AuditLogs Success',
-  props<{ auditLogs: AuditLogs }>()
+  props< {auditLogs}>()
 );
 
 export const getAuditLogsFailure = createAction(
+  '[AuditLogs Page] Get AuditLogs Failure',
+  props<{ error: string }>()
+);
+
+export const getAuditLogDetails = createAction('[AuditLogs Page] Get AuditLogs',
+(id: any) => ({ id}));
+
+export const getAuditLogDetailsSuccess = createAction(
+  '[AuditLogs Page] Get AuditLogs Success',
+  props< {logDetails}>()
+);
+
+export const getAuditLogDetailsFailure = createAction(
   '[AuditLogs Page] Get AuditLogs Failure',
   props<{ error: string }>()
 );

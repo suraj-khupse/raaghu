@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AlertService, ComponentLoaderOptions } from '@libs/shared';
 
 import { TranslateService } from '@ngx-translate/core';
-import { getRoles } from 'projects/libs/state-management/src/lib/state/role/role.actions';
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
 import { Role } from '../rds-comp-new-role/rds-comp-new-role.component';
@@ -98,6 +97,7 @@ export class RdsCompRoleListComponent implements OnInit {
   ngDoCheck(): void {
 
     this.tableData = [...this.roleList];
+    console.log(this.roleList)
   }
 
   getNavTabItems(): any {

@@ -69,14 +69,15 @@ Default.args = {
             </div>
           </div>
         </div>
-        
+
       </div>
 
       <div class="col-md-6 gutter-b">
         <div class="card p-2 border-0 rounded-0 vh-88">
-          <!-- <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
-    <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
-  </div> -->
+          <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
+            <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
+          </div>
+          
           <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
             <div class="">
               <div *ngIf="selectedTreeNode != 0">
@@ -85,14 +86,14 @@ Default.args = {
                   <h5 class="card-title text-primary">
                     {{ organizationName }}
                   </h5>
-                  <rds-button [label]="translate.instant('New Member')" *ngIf="selectedTabIndex == 0" [size]="'small'" [colorVariant]="'primary'"
-                              (click)="newUser($event)">
+                  <rds-button [label]="translate.instant('New Member')" *ngIf="selectedTabIndex == 0" [size]="'small'"
+                    [colorVariant]="'primary'" (click)="newUser($event)">
                     <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
 
                   </rds-button>
-                  <rds-button [label]="translate.instant('New Role')" (click)="newRole($event)" type="button" *ngIf="selectedTabIndex == 1"
-                              [size]="'small'" class="px-2" [colorVariant]="'primary'" data-bs-dismiss="offcanvas"
-                              data-bs-target="#addRoleModal">
+                  <rds-button [label]="translate.instant('New Role')" (click)="newRole($event)" type="button"
+                    *ngIf="selectedTabIndex == 1" [size]="'small'" class="px-2" [colorVariant]="'primary'"
+                    data-bs-dismiss="offcanvas" data-bs-target="#addRoleModal">
                     <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
 
                   </rds-button>
@@ -100,9 +101,9 @@ Default.args = {
 
                 <div class="card-body pt-2">
                   <div class="col-md-12 mb-2">
-                    <rds-nav-tab [navtabsItems]="getNavTabItems()" [horizontalAlignment]="'start'" [verticalAlignment]="false"
-                                 [pills]="false" [tabs]="true" [fill]="false" [justified]="false" [flex]="false"
-                                 (onClicktab)="btnClick($event)"></rds-nav-tab>
+                    <rds-nav-tab [navtabsItems]="getNavTabItems()" [horizontalAlignment]="'start'"
+                      [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false"
+                      [flex]="false" (onClicktab)="btnClick($event)"></rds-nav-tab>
                   </div>
                   <div naveContent class="row tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="Members" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -121,7 +122,7 @@ Default.args = {
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

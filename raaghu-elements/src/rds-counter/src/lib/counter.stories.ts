@@ -36,5 +36,5 @@ Default.args = {
   label: '',
   colorVariant: 'primary',
   counterValue: 0,
-  width: 124
+  width: 150
 }

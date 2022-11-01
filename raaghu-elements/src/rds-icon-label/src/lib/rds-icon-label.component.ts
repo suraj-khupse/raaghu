@@ -16,7 +16,7 @@ export class RdsIconLabelComponent implements OnInit {
  width: string = '';
   @Input() fill: boolean = false;
   @Input() stroke: boolean = true;
-  @Input() colorVariant: 'warning' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined = undefined;
+  @Input() colorVariant: 'warning' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' = 'light';
   @Input() size: 'small' | 'large' | 'medium' = 'medium';
   ngOnInit(): void {
   }

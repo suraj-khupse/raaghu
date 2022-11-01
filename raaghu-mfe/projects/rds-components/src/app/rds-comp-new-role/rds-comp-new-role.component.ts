@@ -31,7 +31,6 @@ export class RdsCompNewRoleComponent implements OnInit {
   @Input () buttonSpinner :boolean=true;
   activePage: number = 0;
   treeData: [] = [];
-
   rolenameRequired: boolean = false;
 
 
@@ -71,8 +70,7 @@ export class RdsCompNewRoleComponent implements OnInit {
       this.roleData['displayName'] = '';
       this.roleData['id'] =undefined ;
       this.roleData['isDefault'] = false;
-    
-    
+     
       }
   }
   addRole(Roleform: NgForm): void {
@@ -82,9 +80,7 @@ export class RdsCompNewRoleComponent implements OnInit {
       return;
     }
  this.RoleInfo.emit({ role: this.roleData,isOnSave:true});
-  
-  
-      //  this.roleData={};
+     //  this.roleData={};
       // this.roleData['displayName'] = '';
       // this.roleData['id'] =undefined ;
       // this.roleData['isDefault'] = false;

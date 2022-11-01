@@ -36,13 +36,12 @@
 
     <div class="row">
         <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
-                <rds-select-list (selectListChange)="httpMethodModify($event)" class="w-100"
-                [itemList]="httpMethodList"  id="httpMethod"  [placeholder]="translate.instant('Http Method')"
-                [label]="" name="httpMethod">
+                <rds-select-list (selectListChange)="httpMethodModify($event)" class="w-100" [itemList]="httpMethodList"  id="httpMethod" [value]="httpMethodList" [placeholder]="translate.instant('Http Method')"[label]="" name="httpMethod">
              </rds-select-list>
+           
         </div>
         <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
-            <rds-select-list (selectListChange)="httpStatusModify($event)" class="w-100" [(ngModel)]="httpStatus" [value]="httpStatus"
+            <rds-select-list (selectListChange)="httpStatusModify($event)" class="w-100" [(ngModel)]="httpStatus"[value]="httpStatus"
             [itemList]="httpStatusList" id="httpStatus" [placeholder]="translate.instant('Http Status Code')"
             [label]="" name="httpStatus">
          </rds-select-list>
@@ -64,6 +63,7 @@
             [itemList]="hasExceptionList" id="hasException" [placeholder]="translate.instant('Has Exception')"
             [label]="" name="hasException">
          </rds-select-list>
+       
         </div>
     </div>
         <div class="row">
@@ -93,7 +93,7 @@
                   <div class="form-group mb-3">
                     <rds-badge *ngIf="!selectedRowData.exception" [label]="'200'" size="small" Types="SUCCESS"
                     label="9" [colorVariant]="'dark'" ></rds-badge>
-                      <!-- <span>{{selectedRowData.httpStatus}}</span> -->
+                    <span>{{selectedRowData.httpStatus}}</span>
                   </div>
               </div>
           </div>
@@ -121,7 +121,7 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group mb-3">
-                      <span>{{selectedRowData.client}}</span>
+                      <span>{{selectedRowData.serviceName}}</span>
                   </div>
               </div>
           </div>
@@ -162,7 +162,7 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group mb-3">
-                      <span>{{selectedRowData.hasException}}</span>
+                      <span>{{selectedRowData.exception}}</span>
                   </div>
               </div>
           </div>
@@ -175,7 +175,7 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group mb-3">
-                      <span>{{selectedRowData.user}}</span>
+                      <span>{{selectedRowData.userName}}</span>
                   </div>
               </div>
           </div>
@@ -221,25 +221,12 @@
   
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    <span>{{'Application Name'| translate}}: </span>
+                    <!-- <span>{{'Application Name'| translate}}: </span> -->
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    <span>{{selectedRowData.appName}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-  
-            <div class="col-md-6">
-                <div class="form-group mb-3">
-                    <span>{{'Correlation Id'| translate}}: </span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group mb-3">
-                    <span>{{selectedRowData.correlationID}}</span>
+                    <!-- <span>{{selectedRowData.appName}}</span> -->
                 </div>
             </div>
         </div>
@@ -247,12 +234,25 @@
   
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    <span>{{'Comments'| translate}}: </span>
+                    <!-- <span>{{'Correlation Id'| translate}}: </span> -->
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-3">
-                    <span>{{selectedRowData.Comments}}</span>
+                    <!-- <span>{{selectedRowData.correlationID}}</span> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+  
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <!-- <span>{{'Comments'| translate}}: </span> -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <!-- <span>{{selectedRowData.Comments}}</span> -->
                 </div>
             </div>
         </div>

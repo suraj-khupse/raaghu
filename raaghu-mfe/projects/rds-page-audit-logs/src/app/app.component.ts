@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
-import { getAuditLogs, getEntityChanges, selectAllAuditLogs, selectAllchangeLogs, selectDefaultLanguage } from '../../../libs/state-management/src/public-api';
+// import { getAuditLogs, getEntityChanges, selectAllAuditLogs, selectAllchangeLogs, selectDefaultLanguage } from '../../../libs/state-management/src/public-api';
 import { DateTime } from 'luxon';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -12,6 +12,9 @@ import {
   style,
   animate,
 } from '@angular/animations';
+import { getAuditLogs, getEntityChanges } from 'projects/libs/state-management/src/lib/state/audit-logs/audit-logs.actions';
+import { selectAllAuditLogs, selectAllchangeLogs } from 'projects/libs/state-management/src/lib/state/audit-logs/audit-logs.selector';
+import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
 @Component({
   selector: 'app-root',
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
   public changeLogs: any = [];
   public operationLogsHeaders: TableHeader[] = [{ key: 'userName', displayName:'User Name', dataType: 'text', sortable: true, filterable: true },
     { key: 'serviceName', displayName: 'Service', dataType: 'text', sortable: true, filterable: true },
-    { key: 'methodName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},
+    { key: 'action', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},
     { key: 'executionDuration', displayName: 'Duration', dataType: 'text', sortable: true, filterable: true},
     { key: 'clientIpAddress', displayName: 'IP Address', dataType: 'text', sortable: true, filterable: true},
     // { key: 'clientName', displayName: 'Client', dataType: 'html', sortable: true, filterable: true },
@@ -61,7 +64,8 @@ export class AppComponent implements OnInit {
     
   ];
   
-  public changeLogsHeaders: TableHeader[] = [{ key: 'entityTypeFullName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
+  public changeLogsHeaders: TableHeader[] = [
+  { key: 'entityTypeFullName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTypeName', displayName: 'Object', dataType: 'text', sortable: true, filterable: true },
   { key: 'userName', displayName: 'User Name', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
@@ -75,7 +79,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAnimation = true;
-    this.store.select(selectDefaultLanguage).subscribe((res: any) => {
+    this.store.select(selectAllLanguages).subscribe((res: any) => {
 
       if (res) {
 
@@ -84,9 +88,10 @@ export class AppComponent implements OnInit {
       }
 
     })
+   
   this.rdsauditLogMfeConfig = {
 
-      name: 'RdsCompAuditLogs',
+      name: 'RdsCompAuditLogsNew',
       input: {
         operationLogsHeaders: this.operationLogsHeaders,
         operationLogs: this.operationLogs,
@@ -108,7 +113,8 @@ export class AppComponent implements OnInit {
         },
         
         ChangeLogparameterData:(eventData)=>{
-this.filterChangeLog(eventData);
+       
+          this.filterChangeLog(eventData);
         }
       }
     };
@@ -119,6 +125,7 @@ this.filterChangeLog(eventData);
       endDate:this.formatDate( date, 'yyyy-LL-dd HH:mm:ss'),
       userName:'',
       serviceName:'',
+      action:'',
       MethodName:'',
       BrowserInfo:'',
       HasException:'',
@@ -129,6 +136,7 @@ this.filterChangeLog(eventData);
       skipCount:0
      }
      this.store.dispatch(getAuditLogs(auditLogParamsData));
+
      this.store.select(selectAllAuditLogs).subscribe((res: any) => {
        this.auditLogsTableData = [];
        if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0 && res.status == "success") {
@@ -137,7 +145,8 @@ this.filterChangeLog(eventData);
            const item: any = {
              parameters:element.parameters,
              userName: element.userName,
-             serviceName: element.serviceName,
+             serviceName: element.url,
+             action:element.httpMethod,
              executionDuration: element.executionDuration,
              clientIpAddress: element.clientIpAddress,
              clientName: element.clientName,
@@ -158,7 +167,6 @@ this.filterChangeLog(eventData);
        
      })
   }
-      
   filterChangeLog(eventData){
     const ChangeLogParamsData: any = {
   
@@ -193,7 +201,6 @@ this.filterChangeLog(eventData);
 
   filterAuditLog(eventData){
     let date = new Date();
-   
     const auditLogParamsData: any = {
   
       startDate:this.formatDate( eventData.startDate, 'yyyy-LL-dd HH:mm:ss'),
@@ -241,19 +248,12 @@ this.filterChangeLog(eventData);
   formatDate(date: DateTime | Date, format: string): string {
 
     if (date instanceof Date) {
-  
         return this.formatDate(this.fromJSDate(date), format);
-  
     }
-  
-  
-  
     return date.toFormat(format);
-  
   }
   
   fromJSDate(date: Date): DateTime {
-  
     return DateTime.fromJSDate(date);
   
   }

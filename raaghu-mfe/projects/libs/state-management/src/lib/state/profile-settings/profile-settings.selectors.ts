@@ -1,8 +1,17 @@
+import { createSelector } from '@ngrx/store';
+import { AppState } from '../../app.interface';
+import { ProfileState } from './profile-settings.reducers';
 
 
+export const selectProfile = (state: AppState) => state.profileSettings;
+// export const selectDynamicEntity = (state: AppState) => state.dynamicEntity;
 
-const selectSamples = [] // Declare createFeatureSelector(); instead of array
+export const selectAllScope = createSelector(
+    selectProfile,
+    (state: ProfileState) => state.profile
+);
 
-export const productsSelector = []; // Declare createSelector(); instead of array
-
-export const selectedProductSelector = []; // Declare createSelector(); instead of array
+export const selectApiScope = createSelector(
+    selectProfile,
+    (state: ProfileState) => state.profile
+);

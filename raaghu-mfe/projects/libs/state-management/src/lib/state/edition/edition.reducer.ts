@@ -1,17 +1,23 @@
 import { createReducer, on } from "@ngrx/store";
-import { deleteEditionFailure, deleteEditionSuccess, getEditionFailure, getEditionInfo, getEditionInfoFailure, getEditionInfoSuccess, getEditionPageComboboxItems, getEditionPageComboboxItemsFailure, getEditionPageComboboxItemsSuccess, getEditions, getEditionSuccess, getEditionUpdateSuccess, getTenantCount, getTenantCountFailure, getTenantCountSuccess } from "./edition.action";
+import { deleteEdition, deleteEditionFailure, deleteEditionSuccess, getEditionFailure, getEditionFeature, getEditionFeatureFailure, getEditionFeatureSuccess, getEditionInfo, getEditionInfoFailure, getEditionInfoSuccess,    getEditions, getEditionSuccess,  getPlanLookupFailure, getplanLookupInfo, getPlanLookupSuccess, saveEdition, saveEditionFailure, saveEditionSuccess, updateEdition, updateEditionFailure, updateEditionSuccess } from "./edition.action";
 import { Edition, EditionItem } from "./edition.model";
 
 
 export interface EditionsState {
-    editions: EditionItem[]
+    editions: any,
+    editionInfo: any,
     error: string;
+    planLookup:any;
+    feature:any;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const editionInitialState: EditionsState = {
-    editions: [],
+    editions: null,
+    editionInfo: null,
     error: null,
+    feature:null,
+    planLookup:null,
     status: 'pending',
 };
 
@@ -24,42 +30,25 @@ export const EditionReducer = createReducer(
         error: null,
         status: 'success',
     })),
-
-    on(getEditionUpdateSuccess, (state, { edition }) => {
-        const data = state.editions.map((x) => {
-            return x.id === edition.id ? edition : x
-        })
-        return {
-            ...state,
-            editions:data ,
-            error: null,
-            status: 'success',
-        }
-    }),
     on(getEditionFailure, (state, { error }) => ({
-        ...state,
-        error: error,
-        status: 'error',
+      ...state,
+      error: error,
+      status: 'success',
     })),
-    on(deleteEditionFailure, (state, { error }) => ({
-        ...state,
-        error: error,
-        status: 'error',
-    }))
-)
 
-export interface EditionInfoState {
-    editionInfo: any
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const editInfoInitialState: EditionInfoState = {
-    editionInfo: {},
-    error: null,
-    status: 'pending',
-};
-export const EditionInfoReducer = createReducer(
-    editionInitialState,
+    on(getplanLookupInfo, (state) => ({ ...state, status: 'loading' })),
+    on(getPlanLookupSuccess, (state, { planLookup }) => ({
+        ...state,
+        planLookup: planLookup,
+        error: null,
+        status: 'success',
+    })),
+    on(getPlanLookupFailure, (state, { error }) => ({
+      ...state,
+      error: error,
+      status: 'success',
+    })),
+
     on(getEditionInfo, (state) => ({ ...state, status: 'loading' })),
     on(getEditionInfoSuccess, (state, { editionInfo }) => ({
         ...state,
@@ -71,60 +60,55 @@ export const EditionInfoReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
+    })),
 
-)
+    on(getEditionFeature, (state) => ({ ...state, status: 'loading' })),
+    on(getEditionFeatureSuccess, (state, { feature }) => ({
+        ...state,
+        feature: feature,
+        error: null,
+        status: 'success',
+    })),
+    on(getEditionFeatureFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
 
-export interface EditionsPageComboboxState {
-  editionComboboxItem: any[]
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const editionPageComboboxInitialState: EditionsPageComboboxState = {
-  editionComboboxItem: [],
-  error: null,
-  status: 'pending',
-};
-export const EditionPageComboboxReducer = createReducer(
-  editionPageComboboxInitialState,
-  on(getEditionPageComboboxItems, (state) => ({ ...state, status: 'loading' })),
-  on(getEditionPageComboboxItemsSuccess, (state, { editionComboboxItem }) => ({
-    ...state,
-    editionComboboxItem: editionComboboxItem,
-    error: null,
-    status: 'success',
-  })),
-  on(getEditionPageComboboxItemsFailure, (state, { error }) => ({
-    ...state,
-    error: error,
-    status: 'error',
-  }))
+    on(updateEdition, (state) => ({ ...state, status: 'loading' })),
+    on(updateEditionSuccess, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    on(updateEditionFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
 
-)
+    on(saveEdition, (state) => ({ ...state, status: 'loading' })),
+    on(saveEditionSuccess, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    on(saveEditionFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
 
-export interface TenantCountState {
-  tenantCount: number;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const initialTenatCountState: TenantCountState = {
-  tenantCount:0,
-  error: null,
-  status: 'pending',
-};
-export const TenantCountReducer = createReducer(
-  initialTenatCountState,
-  on(getTenantCount, (state) => ({ ...state, status: 'loading' })),
-  on(getTenantCountSuccess, (state, { tenantCount }) => ({
-    ...state,
-    tenantCount: tenantCount,
-    error: null,
-    status: 'success',
-  })),
-  on(getTenantCountFailure, (state, { error }) => ({
-    ...state,
-    error: error,
-    status: 'error',
-  }))
+    on(deleteEdition, (state) => ({ ...state, status: 'loading' })),
+    on(deleteEditionSuccess, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    on(deleteEditionFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
 
 )

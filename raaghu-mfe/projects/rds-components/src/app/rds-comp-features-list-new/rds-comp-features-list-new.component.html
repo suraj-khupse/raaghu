@@ -1,6 +1,6 @@
 <!-- <rds-label [label]="'Edition List'"></rds-label> -->
 <div class="row mt-5 flex-row flex-code"   >
-    <div class="col-md-6 mb-3" *ngFor="let item of EditionData" >
+    <div class="col-md-2 mb-3 p-0 m-1" *ngFor="let item of editionData" >
        
             <rds-card [showHeader]=""
             [showBody]=""
@@ -9,18 +9,25 @@
              <div showHeader header>
                     <div class="text-center mt-3 ">
                   
-                        <rds-label [bold]="false" [label]="item.EditionName" class="fs-4 fw-bold"></rds-label>
-                        <p class="fw-medium text-muted pt-2">{{item.EditionTitle}}</p>
+                        <rds-label [bold]="false" [label]="item.displayName" class="fs-4 fw-bold"></rds-label>
+                        <p class="fw-medium text-muted pt-2">{{item.EditionTitle}}A simple start for a small business</p>
                     </div>
                     <div class="pt-3">
                         <div class="text-center">
-                            <h1 class="text-primary fw-bold"> <sup>&#x24;</sup>{{item.Price}}</h1>
-                           <span class="text-muted fw-medium">{{item.Plan}}</span>
+                            <h1 class="text-primary fw-bold"> <sup>&#x24;</sup>{{item.Price}} 12</h1>
+                           <span class="text-muted fw-medium text-black-50">{{item.Plan}} per month</span>
                             </div>
                             
                   </div>
                 </div>
-                <div body>
+                <div showBody body>
+                    <ul>
+                        <li class="fw-semibold">Chat support</li>
+                        <li class="fw-semibold">up to 10 users per month</li>
+                        <li class="fw-semibold">Optimized hashtags</li>
+                        <li class="fw-semibold">Unlimited users</li>
+                       
+                      </ul> 
                     <!-- <div class="row ">
                         <ul>
                             <li class="fs-6">{{item.features.label}}</li>
@@ -45,7 +52,7 @@
             </rds-card>
        
       </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-2 mb-3 p-0 m-1">
         <div>
             <rds-card [showHeader]=""
         [showBody]=""
@@ -76,7 +83,7 @@
 
 
 
-<rds-offcanvas [canvasTitle]="canvasTitle" [offId]="'addNewEdition'" [placement]="'end'" [backDrop]="true"
+<rds-offcanvas [canvasTitle]="canvasTitle" [offId]="'addNewEdition'" [placement]="'end'"
     [offcanvaswidth]="600" *ngIf="viewCanvas" (onClose)="closeCanvas() ">
 
     <rds-nav-tab [navtabsItems]="navtabsItems" [horizontalAlignment]="'start'" [activepage]="activePage"
@@ -87,7 +94,7 @@
             aria-labelledby="nav-home-tab">
             <app-rds-comp-edition-new-basic
             [PlanList]="PlanList" (editionBasicInfo)="getTenantData($event)" [PlanList]="PlanList"
-            [editionData]="editionData"
+            [editionData]="editionDataInfo"
           ></app-rds-comp-edition-new-basic>
         </div>
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="features" edition="tabpanel"

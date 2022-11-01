@@ -1,42 +1,40 @@
 import { Inject, Injectable, OnInit, Optional } from '@angular/core';
 import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 'rxjs/operators';
-import { throwError as _observableThrow, of as _observableOf, Observable } from 'rxjs';
-import { SendPasswordResetCodeInput } from './service-proxies';
+import { throwError as _observableThrow, of as _observableOf, Observable, of } from 'rxjs';
+// import { SendPasswordResetCodeInput } from './service-proxies';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
 import { AppSessionService } from './app-session.service';
 import { Store } from '@ngrx/store';
 import { XmlHttpRequestHelper } from './XmlHttpRequestHelper';
-import { API_BASE_URL } from './service-proxies';
+import { ServiceProxy, API_BASE_URL, LanguageInfo } from './service-proxies';
 
 
 @Injectable()
 export class UserAuthService implements OnInit {
-  model: SendPasswordResetCodeInput = new SendPasswordResetCodeInput();
+  // model: SendPasswordResetCodeInput = new SendPasswordResetCodeInput();
   loggedOut: boolean = false;
-  permissions: Observable<{}>;
+  permissions: Observable<{[key: string]: boolean;}>;
   localization: Observable<any>;
   baseUrl: string;
   userAuthenticated: boolean = false;
-  language: Observable<any>;
+  language: Observable<LanguageInfo[]>;
   sources: Observable<any>;
   constructor(
     private localStorage: LocalStorageService,
     private router: Router,
-    private sessionService: AppSessionService,
     private store: Store,
+    private abpserviceProxy: ServiceProxy,
     @Optional() @Inject(API_BASE_URL) baseUrl?: string
   ) {
-    console.log("inside user-auth service")
-    this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
-    this.getUserConfiguration();
-    this.sessionService.init();
+    this.getApplicationConfiguration();
   }
 
   ngOnInit(): void {
-    if (this.sessionService.user) {
-      this.userAuthenticated = true;
-    }
+
+    // if (this.sessionService.user) {
+    //   this.userAuthenticated = true;
+    // }
   }
 
   isUserAuthenticated() {
@@ -45,73 +43,44 @@ export class UserAuthService implements OnInit {
 
   authenticateUser() {
     this.userAuthenticated = true;
-    this.sessionService.init();
+    console.log("user is authenticated");
+  
   }
 
   getPermissions() {
     return _observableOf(this.permissions);
   }
 
+  
+  getApplicationConfiguration(){
+    this.abpserviceProxy.applicationConfiguration().subscribe(result=>{
+      console.log(result);
+        this.permissions = of(result.auth.grantedPolicies);
+        localStorage.setItem('storedPermissions', JSON.stringify(result.auth.grantedPolicies));
+        // this.localization = result.localization;
+        // this.sources=result.localization.sources
+            this.language=of(result.localization.languages);
+      //   if (login == 'login') {
+      //     this.router.navigateByUrl('/pages/dashboard');
+      //   }
+      //   if (login == 'logout') {
+      //     localStorage.removeItem('storedPermissions');
+      //     this.router.navigateByUrl('/login');
+      //   }
+      // }
+    })
 
-
-  requestHeaders() {
-    const credentials = localStorage.getItem('LoginCredential');
-    var tenantInfo = localStorage.getItem('tenantInfo');
-    let requestHeaders = {};
-    if (credentials || tenantInfo) {
-      const parsedCredentials = JSON.parse(credentials);
-      const parsedTenantInfo = JSON.parse(tenantInfo);
-
-      if (parsedCredentials && parsedCredentials.token) {
-        requestHeaders['Authorization'] = 'Bearer ' + parsedCredentials.token;
-      }
-      requestHeaders['Abp.TenantId'] = parsedTenantInfo ? parsedTenantInfo.id : null
-
-    }
-    return requestHeaders;
   }
 
-  getUserConfiguration(login?: string): any {
-    let requestHeaders = this.requestHeaders();
-    XmlHttpRequestHelper.ajax(
-      'GET',
-      this.baseUrl + '/AbpUserConfiguration/GetAll',
-      requestHeaders,
-      null,
-      (response) => {
-        let result = response.result;
-        this.permissions = result.auth.grantedPermissions;
-        localStorage.setItem('storedPermissions', JSON.stringify(this.permissions));
-        this.localization = result.localization;
-        this.sources=result.localization.sources
-            this.language=result.localization.languages
-        if (login == 'login') {
-          this.router.navigateByUrl('/pages/dashboard');
-        }
-        if (login == 'logout') {
-          localStorage.removeItem('storedPermissions');
-          this.router.navigateByUrl('/login');
-        }
-      }
-    );
-  }
+
 
   unauthenticateUser(): void {
     this.userAuthenticated = false;
-    let customHeaders = this.requestHeaders();
     localStorage.removeItem('LoginCredential');
     localStorage.removeItem('tenantInfo');
-    this.sessionService.init();
+    //this.sessionService.init();
 
-    XmlHttpRequestHelper.ajax(
-      'GET',
-      this.baseUrl + '/api/TokenAuth/LogOut',
-      customHeaders,
-      null,
-      () => {
-        this.getUserConfiguration('logout');
-      }
-    );
+    
   }
 
   getLocalization() {

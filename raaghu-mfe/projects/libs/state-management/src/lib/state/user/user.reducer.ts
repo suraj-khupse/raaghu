@@ -1,57 +1,40 @@
 import { createReducer, on } from "@ngrx/store";
-import { getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionFilterList, getUserPermissionListSuccess, getUserPermissionSuccess, getUsers, getUserSuccess } from "./user.actions";
+import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, changePasswordUserSuccess, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionFilterList, getUserPermissionListSuccess, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims } from "./user.actions";
 import { User } from "./user.models";
 
 
 export interface UsersState {
-    users: User;
+    users: any;
+    UserEditI: any;
+    availableOrgUnit: any;
+    assignableRoles:any;
+    claimTypes:any;
+    allClaimTypes:any;
+    UserPermissionStateI: any;
+    UserPermissionFilterI:any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const userInitialState: UsersState = {
-    users: { items: [] },
+    users: null,
+    UserEditI:null,
+    availableOrgUnit: null,
+    assignableRoles:null,
+    claimTypes:null,
+    allClaimTypes:null,
+    UserPermissionStateI: null,
+    UserPermissionFilterI:null,
     error: null,
     status: 'pending',
 };
-export interface EditUserSate {
-    UserEditI: any;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
 
-export const  EdirUserInitialState: EditUserSate = {
-    UserEditI: {  },
-    error: null,
-    status: 'pending',
-};
-export interface EditUserPermissionSate {
-    UserPermissionStateI: any;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export const  EdirUserPermissionInitialState: EditUserPermissionSate = {
-    UserPermissionStateI: { items: [] },
-    error: null,
-    status: 'pending',
-};
-export interface UserPermissionFilterState {
-    UserPermissionFilterI: any;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const UserPermissionFilteritialState: UserPermissionFilterState = {
-    UserPermissionFilterI: { items: [] },
-    error: null,
-    status: 'pending',
-};
 export const UserReducer = createReducer(
     // Supply the initial state
     userInitialState,
     on(getUsers, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos
-    on(getUserSuccess, (state, { users }) => ({
+    on(getUserSuccess, (state, users) => ({
         ...state,
         users: users,
         error: null,
@@ -62,11 +45,81 @@ export const UserReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
-)
-export const GetUserforEdit = createReducer(
-    // Supply the initial state
-    EdirUserInitialState,
+    })),
+    on(availbleOrganizationUnit, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(availbleOrganizationUnitSuccess, (state, { availableOrgUnit }) => ({
+        ...state,
+        availableOrgUnit: availableOrgUnit,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(availbleOrganizationUnitFailure, (state, { error }) => ({
+        ...state,
+        availableOrgUnit: null,
+        error: error,
+        status: 'error',
+    })),
+
+    on(assignableRoles, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(assignableRolesSuccess, (state, { assignableRoles }) => ({
+        ...state,
+        assignableRoles: assignableRoles,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(assignableRolesFailure, (state, { error }) => ({
+        ...state,
+        assignableRoles: null,
+        error: error,
+        status: 'error',
+    })),
+
+    on(getAllClaimTypes, (state) => ({ ...state, status: 'loading' })),
+    on(getAllClaimTypesSuccess, (state, { allClaimTypes }) => ({
+        ...state,
+        allClaimTypes: allClaimTypes,
+        error: null,
+        status: 'success',
+    })),
+    on(getAllClaimTypesFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+
+    on(getClaimTypes, (state) => ({ ...state, status: 'loading' })),
+    on(getClaimTypesSuccess, (state, { claimTypes }) => ({
+        ...state,
+        claimTypes: claimTypes,
+        error: null,
+        status: 'success',
+    })),
+    on(getClaimTypesFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+
+    on(saveClaims, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    on(changePasswordUser, (state) => ({
+        ...state,
+        error: null,
+        status: 'loading',
+    })),
+    on(changePasswordUserSuccess, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+
     on(getUserForEdit, (state) => ({ ...state, status: 'loading' })),
     on(getUserForEditSuccess, (state, { UserEditI }) => ({
         ...state,
@@ -74,23 +127,13 @@ export const GetUserforEdit = createReducer(
         error: null,
         status: 'success',
     })),
-   
-)
-export const GetUserPermissions = createReducer(
-    // Supply the initial state
-    EdirUserPermissionInitialState,
     on(getUserPermission, (state) => ({ ...state, status: 'loading' })),
-    on(getUserPermissionSuccess, (state, { UserPermissionStateI }) => ({
+    on(getUserPermissionSuccess, (state, { UserPermissionI }) => ({
         ...state,
-        UserPermissionI: UserPermissionStateI,
+        UserPermissionI: UserPermissionI,
         error: null,
         status: 'success',
     })),
-   
-)
-export const UserPermissionFilterReducer = createReducer(
-    // Supply the initial state
-    UserPermissionFilteritialState,
     on(getUserPermissionFilterList, (state) => ({ ...state, status: 'loading' })),
     on(getUserPermissionListSuccess, (state, { UserPermissionFilterI }) => ({
         ...state,
@@ -98,5 +141,6 @@ export const UserPermissionFilterReducer = createReducer(
         error: null,
         status: 'success',
     })),
-   
 )
+
+

@@ -3,7 +3,7 @@
     <label *ngIf="label" [ngClass]="labelClass" for="Errormessage">{{
       label
       }}<span class="text-danger" *ngIf="isRequired">*</span></label>
-    <div class="input-group border mt-4 ms-3 default-datepicker">
+    <div class="input-group border default-datepicker">
       <input type="text" autocomplete="off" bsDatepicker [datesDisabled]="datesDisabled"
         [class.disable-pointer]="disabled" [disabled]="disabled" [minDate]="minDate" #datepicker="bsDatepicker"
         (onHidden)="onHide.emit($event)" [daysDisabled]="daysDisabled" [isOpen]="isOpen" [bsConfig]="datePickerConfig"

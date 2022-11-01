@@ -1,16 +1,16 @@
 import { Component, Inject, Injector, Input, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ComponentLoaderOptions, LinkedUserDto, MfeBaseComponent, SharedService, UserAuthService, UserDelegationServiceProxy } from '@libs/shared';
+import { ComponentLoaderOptions, MfeBaseComponent, SharedService, UserAuthService } from '@libs/shared';
 import { Store } from '@ngrx/store';
-import { changePassword, getLanguages, getProfile, selectAllLanguages, selectDefaultLanguage, selectProfileInfo, setDefaultLanguageForUI } from '@libs/state-management';
-import { deleteDelegations, getDelegations, getUsername, saveDelegations } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
-import { selectDelegationsInfo, selectUserFilter } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.selector';
-import { selectAllLoginAttempts } from 'projects/libs/state-management/src/lib/state/login-attempts/login-attempts.selector';
+// import { changePassword, getLanguages, getProfile, selectAllLanguages, selectDefaultLanguage, selectProfileInfo, setDefaultLanguageForUI } from '@libs/state-management';
+// import { deleteDelegations, getDelegations, getUsername, saveDelegations } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
+// import { selectDelegationsInfo, selectUserFilter } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.selector';
+// import { selectAllLoginAttempts } from 'projects/libs/state-management/src/lib/state/login-attempts/login-attempts.selector';
 import { DateTime } from 'luxon';
-import { getLoginAttempts } from 'projects/libs/state-management/src/lib/state/login-attempts/login-attempts.actions';
-import { deleteAccount, getMLATenancyData, getNotificationSettings, getUserNotification, linkToUser, SetAllNotificationsAsRead, SetNotificationRead, updateNotificationSettings } from 'projects/libs/state-management/src/lib/state/mla/mla.actions';
-import { selectAllNotification, selectNotificationSettings, selectTenancyData } from 'projects/libs/state-management/src/lib/state/mla/mla.selector';
+// import { getLoginAttempts } from 'projects/libs/state-management/src/lib/state/login-attempts/login-attempts.actions';
+// import { deleteAccount, getMLATenancyData, getNotificationSettings, getUserNotification, linkToUser, SetAllNotificationsAsRead, SetNotificationRead, updateNotificationSettings } from 'projects/libs/state-management/src/lib/state/mla/mla.actions';
+// import { selectAllNotification, selectNotificationSettings, selectTenancyData } from 'projects/libs/state-management/src/lib/state/mla/mla.selector';
 import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ThemesService } from 'projects/libs/themes/src/public-api';
@@ -19,6 +19,8 @@ import { DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
 import { RouterOutlet } from '@angular/router';
 import * as moment from 'moment';
+import { getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
+  import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -73,19 +75,22 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   receiveNotifications: any;
   notificationTypes: any = [];
   sidenavItemsOriginal: any = [
-    { label: 'Dashboard', labelTranslationKey: 'Dashboard', id: '', permissionName: 'Pages.Administration.Host.Dashboard', icon: 'home', path: '/pages/dashboard', descriptionTranslationKey: 'Statistics and reports', description: 'Statistics and reports' },
-    { label: 'Dashboard', labelTranslationKey: 'Dashboard', id: '', permissionName: 'Pages.Tenant.Dashboard', icon: 'home', path: '/pages/dashboard', description: 'Statistics and reports', descriptionTranslationKey: 'Statistics and reports' },
-    { label: 'Tenants', labelTranslationKey: 'Tenants', id: 'tenants', permissionName: 'Pages.Tenants', icon: 'tenant', path: '/pages/tenant', description: 'Manage your tenants', descriptionTranslationKey: 'Manage your tenants' },
-    { label: 'Editions', labelTranslationKey: 'Editions', id: '', permissionName: 'Pages.Editions', icon: 'editions', path: '/pages/edition', description: 'Manage editions and features of the application', descriptionTranslationKey: 'Manage editions and features of the application' },
-    // { label: 'Api Scopes', id: 'ApiScope', permissionName: '', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },    
+    { label: 'Dashboard', labelTranslationKey: 'Dashboard', id: '', permissionName: 'BookStore.Dashboard.Host', icon: 'home', path: '/pages/dashboard', descriptionTranslationKey: 'Statistics and reports', description: 'Statistics and reports' },
+    { label: 'Dashboard', labelTranslationKey: 'Dashboard', id: '', permissionName: 'BookStore.Dashboard.Tenant', icon: 'home', path: '/pages/dashboard', description: 'Statistics and reports', descriptionTranslationKey: 'Statistics and reports' },
+    { label: 'Tenants', labelTranslationKey: 'Tenants', id: 'tenants', permissionName: 'Saas.Tenants', icon: 'tenant', path: '/pages/tenant', description: 'Manage your tenants', descriptionTranslationKey: 'Manage your tenants' },
+    { label: 'Editions', labelTranslationKey: 'Editions', id: '', permissionName: 'Saas.Editions', icon: 'editions', path: '/pages/edition', description: 'Manage editions and features of the application', descriptionTranslationKey: 'Manage editions and features of the application' },
+    // { label: 'Api Scopes', id: 'ApiScope', permissionName: '', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
+
     {
       label: 'Administration', labelTranslationKey: 'Administration', id: 'admin', permissionName: '', icon: 'administration', path: '',
       children: [
-        { label: 'Organization Units', labelTranslationKey: 'Organization Units', id: '', permissionName: 'Pages.Administration.OrganizationUnits', icon: 'organization', path: '/pages/organization-unit', description: 'Use organization units to organize users and entities', descriptionTranslationKey: 'Use organization units to organize users and entities' },
-        { label: 'Roles', labelTranslationKey: 'Roles', id: '', permissionName: 'Pages.Administration.Roles', icon: 'roles', path: '/pages/role', description: 'Use roles to group permissions', descriptionTranslationKey: 'Use roles to group permissions' },
-        { label: 'Users', labelTranslationKey: 'Users', id: '', permissionName: 'Pages.Administration.Users', icon: 'users', path: '/pages/user', description: 'Manage users and permissions', descriptionTranslationKey: 'Manage users and permissions' },
-        { label: 'Language', labelTranslationKey: 'Language', id: '', permissionName: 'Pages.Administration.Languages', icon: 'languages', path: '/pages/language', description: 'Manage user interface languages', descriptionTranslationKey: 'Statistics and reports' },
-        { label: 'Audit logs', labelTranslationKey: 'Audit logs', id: '', permissionName: 'Pages.Administration.AuditLogs', icon: 'audit_logs', path: '/pages/audit-logs', descriptionTranslationKey: '' },
+        { label: 'Organization Units', labelTranslationKey: 'Organization Units', id: '', permissionName: 'AbpIdentity.OrganizationUnits', icon: 'organization', path: '/pages/organization-unit', description: 'Use organization units to organize users and entities', descriptionTranslationKey: 'Use organization units to organize users and entities' },
+        { label: 'Roles', labelTranslationKey: 'Roles', id: '', permissionName: 'AbpIdentity.Roles', icon: 'roles', path: '/pages/role', description: 'Use roles to group permissions', descriptionTranslationKey: 'Use roles to group permissions' },
+        { label: 'Users', labelTranslationKey: 'Users', id: '', permissionName: 'AbpIdentity.Users', icon: 'users', path: '/pages/user', description: 'Manage users and permissions', descriptionTranslationKey: 'Manage users and permissions' },
+        { label: 'Clinet', labelTranslationKey: 'Client', id: '', permissionName: 'IdentityServer.Client', icon: 'users', path: '/pages/client', description: 'Manage clients and permissions', descriptionTranslationKey: 'Manage users and permissions' },
+        { label: 'Language', labelTranslationKey: 'Language', id: '', permissionName: 'LanguageManagement.Languages', icon: 'languages', path: '/pages/language', description: 'Manage user interface languages', descriptionTranslationKey: 'Statistics and reports' },
+        { label: 'Language-Text', labelTranslationKey: 'Language-Text', id: '', permissionName: 'LanguageManagement.LanguagesTexts', icon: 'languages', path: '/pages/languagetext', description: 'Manage user interface languagesText', descriptionTranslationKey: 'Statistics and reports' },
+        { label: 'Audit logs', labelTranslationKey: 'Audit logs', id: '', permissionName: 'AuditLogging.AuditLogs', icon: 'audit_logs', path: '/pages/audit-logs', descriptionTranslationKey: '' },
         { label: 'subscription', labelTranslationKey: 'subscription', id: '', permissionName: 'Pages.Administration.Tenant.SubscriptionManagement', icon: 'subscription', path: '/pages/subscription', descriptionTranslationKey: '' },
         { label: 'Maintenance', labelTranslationKey: 'Maintenance', id: '', permissionName: 'Pages.Administration.Host.Maintenance', icon: 'maintenance', path: '/pages/maintenance', description: 'Statistics and reports', descriptionTranslationKey: 'Statistics and reports' },
         { label: 'Visual Settings', labelTranslationKey: 'Visual Settings', id: '', permissionName: '', icon: 'visual_settings', path: '/pages/visualsettings', description: 'Change the look of UI', descriptionTranslationKey: 'Change the look of UI' },
@@ -125,6 +130,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   counter: number = 0;
   constructor(private router: Router,
     private store: Store,
+    
     private alertService: AlertService,
     public translate: TranslateService,
     private shared: SharedService,
@@ -139,7 +145,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   ngAfterViewInit() {
   }
   getdata() {
-    this.store.select(selectTenancyData).subscribe(res => console.log(res));
+    //this.store.select(selectTenancyData).subscribe(res => console.log(res));
   }
   tenancyTableData = [];
   sidenavItems = [];
@@ -154,16 +160,16 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.tenancy = 'Host Admin';
     }
     this.store.dispatch(getLanguages());
-    this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-      if (res) {
-        this.translate.use(res);
-        let htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
-        if (htmlTag) {
-          htmlTag.dir = res === 'ar' ? 'rtl' : 'ltr';
-        }
-        this.sidenavItems = this.translateMenu(this.sidenavItems);
-      }
-    });
+    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
+    //   if (res) {
+    //     this.translate.use(res);
+    //     let htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
+    //     if (htmlTag) {
+    //       htmlTag.dir = res === 'ar' ? 'rtl' : 'ltr';
+    //     }
+    //     this.sidenavItems = this.translateMenu(this.sidenavItems);
+    //   }
+    // });
 
 
     this.userAuthService.getPermissions().subscribe(res => {
@@ -211,133 +217,111 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         },
         onLanguageSelection: (lan) => {
           this.translate.use(lan);
-          this.store.dispatch(setDefaultLanguageForUI(lan))
+          //this.store.dispatch(setDefaultLanguageForUI(lan))
 
         },
         deleteDeligateuser: (data: any) => {
           if (data) {
-            this.store.dispatch(deleteDelegations(data.id))
+            //this.store.dispatch(deleteDelegations(data.id))
           }
         },
         saveDeligate: (data: any) => {
           if (data) {
-            this.store.dispatch(saveDelegations(data))
+            //this.store.dispatch(saveDelegations(data))
           }
         },
         onProfileSave: (passwordInfo: any) => {
           if (passwordInfo) {
-            this.store.dispatch(changePassword(passwordInfo));
+            //this.store.dispatch(changePassword(passwordInfo));
           }
         },
         deleteLinkaccount: (data: any) => {
-          this.store.dispatch(deleteAccount(data))
+          //this.store.dispatch(deleteAccount(data))
 
         },
         onDownloadLink: (data: any) => {
           this.store.dispatch(PrepareCollectedData());
         },
         onLoginAttemptsRefresh: (data: any) => {
-          this.store.dispatch(getLoginAttempts(data));
-          this.store.select(selectAllLoginAttempts).subscribe((res: any) => {
-            if (res && res.items) {
-              res.items.forEach((element: any) => {
-                const item: any = {
-                  browserInfo: element.browserInfo,
-                  clientIpAddress: element.clientIpAddress,
-                  clientName: element.clientName,
-                  creationTime: element.creationTime,
-                  result: element.result,
-                  tenancyName: element.tenancyName,
-                  userNameOrEmail: element.userNameOrEmail,
-                }
-                this.LoginAttempts.LoginDatatable.push(item);
-              });
-              const mfeConfig = this.rdsTopNavigationMfeConfig
-              mfeConfig.input.LoginAttempts = { ... this.LoginAttempts };
-              this.rdsTopNavigationMfeConfig = mfeConfig;
-            }
-          });
+          // this.store.dispatch(getLoginAttempts(data));
+          // this.store.select(selectAllLoginAttempts).subscribe((res: any) => {
+          //   if (res && res.items) {
+          //     res.items.forEach((element: any) => {
+          //       const item: any = {
+          //         browserInfo: element.browserInfo,
+          //         clientIpAddress: element.clientIpAddress,
+          //         clientName: element.clientName,
+          //         creationTime: element.creationTime,
+          //         result: element.result,
+          //         tenancyName: element.tenancyName,
+          //         userNameOrEmail: element.userNameOrEmail,
+          //       }
+          //       this.LoginAttempts.LoginDatatable.push(item);
+          //     });
+          //     const mfeConfig = this.rdsTopNavigationMfeConfig
+          //     mfeConfig.input.LoginAttempts = { ... this.LoginAttempts };
+          //     this.rdsTopNavigationMfeConfig = mfeConfig;
+          //   }
+          // });
         },
         linkUser: (data: any) => {
           console.log(data);
-          this.store.dispatch(linkToUser(data))
+          //this.store.dispatch(linkToUser(data))
         },
         setAllNotificationAsRead: () => {
-          this.store.dispatch(SetAllNotificationsAsRead());
+          //this.store.dispatch(SetAllNotificationsAsRead());
         },
         setNotificationAsRead: (data: any) => {
-          this.store.dispatch(SetNotificationRead({ id: data.userNotificationId }));
+          //this.store.dispatch(SetNotificationRead({ id: data.userNotificationId }));
         },
         onUpdateNotificationSettings: (data: any) => {
-          this.store.dispatch(updateNotificationSettings(data));
+          //this.store.dispatch(updateNotificationSettings(data));
         }
       }
     }
-    this.store.dispatch(getNotificationSettings());
-    this.store.select(selectNotificationSettings).subscribe((res: any) => {
-      if (res && res !== null) {
-        this.receiveNotifications = res.receiveNotifications;
-        this.notificationTypes = [];
-        res.notifications.forEach((notification: any) => {
-          const data: any = {
-            name: notification.name,
-            displayName: notification.displayName,
-            isSubscribed: notification.isSubscribed
-          };
-          this.notificationTypes.push(data);
-        })
-        const mfeConfig = this.rdsTopNavigationMfeConfig;
-        mfeConfig.input.receiveNotifications = this.receiveNotifications;
-        mfeConfig.input.notificationTypes = [...this.notificationTypes];
+    //this.store.dispatch(getNotificationSettings());
+    // this.store.select(selectNotificationSettings).subscribe((res: any) => {
+    //   if (res && res !== null) {
+    //     this.receiveNotifications = res.receiveNotifications;
+    //     this.notificationTypes = [];
+    //     res.notifications.forEach((notification: any) => {
+    //       const data: any = {
+    //         name: notification.name,
+    //         displayName: notification.displayName,
+    //         isSubscribed: notification.isSubscribed
+    //       };
+    //       this.notificationTypes.push(data);
+    //     })
+    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
+    //     mfeConfig.input.receiveNotifications = this.receiveNotifications;
+    //     mfeConfig.input.notificationTypes = [...this.notificationTypes];
 
-        this.rdsTopNavigationMfeConfig = mfeConfig;
-      }
-    })
-    this.store.dispatch(getUserNotification());
+    //     this.rdsTopNavigationMfeConfig = mfeConfig;
+    //   }
+    // })
 
-    this.store.select(selectAllNotification).subscribe((res: any) => {
-      if (res && res.items && res.items.length) {
-        this.unreadCount = res.unreadCount;
-        this.notifications = [];
-        res.items.forEach((element: any) => {
-          this.notifications.push(this.format(element));
-        });
-        this.notifications.sort(function (a, b) {
-          return a.state - b.state;
-        });
-        const mfeConfig = this.rdsTopNavigationMfeConfig;
-        mfeConfig.input.notificationData = [...this.notifications];
-        mfeConfig.input.unreadCount = this.unreadCount;
-        this.rdsTopNavigationMfeConfig = mfeConfig;
-      }
-    });
+    //this.store.dispatch(getUserNotification());
+
+    // this.store.select(selectAllNotification).subscribe((res: any) => {
+    //   if (res && res.items && res.items.length) {
+    //     this.unreadCount = res.unreadCount;
+    //     this.notifications = [];
+    //     res.items.forEach((element: any) => {
+    //       this.notifications.push(this.format(element));
+    //     });
+    //     this.notifications.sort(function (a, b) {
+    //       return a.state - b.state;
+    //     });
+    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
+    //     mfeConfig.input.notificationData = [...this.notifications];
+    //     mfeConfig.input.unreadCount = this.unreadCount;
+    //     this.rdsTopNavigationMfeConfig = mfeConfig;
+    //   }
+    // });
 
 
     this.store.select(selectAllLanguages).subscribe((res: any) => {
-      if (res && res.items && res.items.length > 0) {
-        this.languageItems = [];
-        const languages: any = [];
-        res.items.forEach((item: any) => {
-          let icon: string = item.icon.split(' ')[1];
-          icon = icon.replace('-', '_')
-          this.languageItems.push({ value: item.displayName, name: item.name, some: item.displayName, id: item.id, icon: icon, iconWidth: '21px', iconHeight: '14px' });
-          if (res.defaultLanguageName === item.name) {
-            this.selectedLanguage.language = item.displayName;
-            this.selectedLanguage.icon = item.icon.split(' ')[1];
-          }
-          languages.push(item.name);
-        });
-        if (res.defaultLanguageName) {
-          this.store.dispatch(setDefaultLanguageForUI(res.defaultLanguageName))
-          this.translate.use(res.defaultLanguageName);
-        }
-
-        // this.translate.addLangs(languages);
-        const mfe = this.rdsTopNavigationMfeConfig;
-        mfe.input.languageItems = [...this.languageItems];
-        mfe.input.defaultLanguage = this.selectedLanguage;
-        this.rdsTopNavigationMfeConfig = mfe;
-      }
+      console.log(res);
     })
     this.on('tenancyDataAgain').subscribe(res => {
     })
@@ -365,28 +349,29 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = this.selectedMenuDescription;
     }
 
-    this.store.dispatch(getMLATenancyData());
+    //this.store.dispatch(getMLATenancyData());
 
-    this.store.select(selectTenancyData).subscribe(res => {
-      this.linkedAccountData = [];
-      if (res && res.items) {
-        const data: any = [];
-        res.items.forEach((item: any) => {
-          const _item: any = {
-            id: item.id,
-            username: item.username,
-            tenancyName: item.tenancyName,
-            tenantId: item.tenantId
-          }
-          this.linkedAccountData.push(_item);
-        });
-        const mfe = this.rdsTopNavigationMfeConfig;
-        mfe.input.linkedAccountData = [ ...this.linkedAccountData ];
-        this.rdsTopNavigationMfeConfig = mfe;
+    // this.store.select(selectTenancyData).subscribe(res => {
+    //   this.linkedAccountData = [];
+    //   if (res && res.items) {
+    //     const data: any = [];
+    //     res.items.forEach((item: any) => {
+    //       const _item: any = {
+    //         id: item.id,
+    //         username: item.username,
+    //         tenancyName: item.tenancyName,
+    //         tenantId: item.tenantId
+    //       }
+    //       this.linkedAccountData.push(_item);
+    //     });
+    //     const mfe = this.rdsTopNavigationMfeConfig;
+    //     mfe.input.linkedAccountData = [ ...this.linkedAccountData ];
+    //     this.rdsTopNavigationMfeConfig = mfe;
 
-      }
+    //   }
 
-    });
+    // });
+
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
@@ -403,54 +388,56 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     }
 
 
-    this.store.dispatch(getProfile());
-    this.store.select(selectProfileInfo).subscribe((res: any) => {
-      if (res) {
-        this.profileData = res;
-        const mfe = this.rdsTopNavigationMfeConfig;
-        mfe.input.profileData = { ...this.profileData };
-        this.rdsTopNavigationMfeConfig = mfe;
-      }
-    })
-    this.store.dispatch(getDelegations());
-    this.store.select(selectDelegationsInfo).subscribe((res: any) => {
-      if (res && res.items && res.items.length) {
-        res.items.forEach((element: any) => {
-          const item: any = {
-            username: element.username,
-            startTime: element.startTime,
-            endTime: element.endTime,
-            id: element.id,
-          };
-          this.rdsDeligateTableData.push(item);
-        });
-        const mfeConfig = this.rdsTopNavigationMfeConfig;
-        mfeConfig.input.rdsDeligateTableData = [...this.rdsDeligateTableData];
-        this.rdsTopNavigationMfeConfig = mfeConfig;
-      }
+    // this.store.dispatch(getProfile());
+    // this.store.select(selectProfileInfo).subscribe((res: any) => {
+    //   if (res) {
+    //     this.profileData = res;
+    //     const mfe = this.rdsTopNavigationMfeConfig;
+    //     mfe.input.profileData = { ...this.profileData };
+    //     this.rdsTopNavigationMfeConfig = mfe;
+    //   }
+    // })
 
-    });
+
+    // this.store.dispatch(getDelegations());
+    // this.store.select(selectDelegationsInfo).subscribe((res: any) => {
+    //   if (res && res.items && res.items.length) {
+    //     res.items.forEach((element: any) => {
+    //       const item: any = {
+    //         username: element.username,
+    //         startTime: element.startTime,
+    //         endTime: element.endTime,
+    //         id: element.id,
+    //       };
+    //       this.rdsDeligateTableData.push(item);
+    //     });
+    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
+    //     mfeConfig.input.rdsDeligateTableData = [...this.rdsDeligateTableData];
+    //     this.rdsTopNavigationMfeConfig = mfeConfig;
+    //   }
+
+    // });
     const UsernameFilter: any = {
       excludeCurrentUser: true,
       filter: '',
       maxResultCount: 10,
       skipCount: 0
     }
-    this.store.dispatch(getUsername(UsernameFilter));
-    this.store.select(selectUserFilter).subscribe((res: any) => {
-      if (res && res.items && res.items.length) {
-        res.items.forEach((element: any) => {
-          const item: any = {
-            value: element.value,
-            displayText: element.name,
-          };
-          this.usernameList.push(item);
-        });
-        const mfeConfig = this.rdsTopNavigationMfeConfig;
-        mfeConfig.input.userList = [...this.usernameList];
-        this.rdsTopNavigationMfeConfig = mfeConfig;
-      }
-    })
+    // this.store.dispatch(getUsername(UsernameFilter));
+    // this.store.select(selectUserFilter).subscribe((res: any) => {
+    //   if (res && res.items && res.items.length) {
+    //     res.items.forEach((element: any) => {
+    //       const item: any = {
+    //         value: element.value,
+    //         displayText: element.name,
+    //       };
+    //       this.usernameList.push(item);
+    //     });
+    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
+    //     mfeConfig.input.userList = [...this.usernameList];
+    //     this.rdsTopNavigationMfeConfig = mfeConfig;
+    //   }
+    // })
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
@@ -586,7 +573,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
   private filterNavItems(sidenavItemsOriginal, grantedPermissions: any, sidenavItems: any[]) {
     sidenavItemsOriginal.forEach(node => {
-      if (grantedPermissions[node.permissionName] === "true" || node.permissionName == '') {
+      if (grantedPermissions[node.permissionName] === true || node.permissionName == '') {
         let childrenValue = node.children ? [] : undefined;
         var item: any = {
           children: childrenValue,

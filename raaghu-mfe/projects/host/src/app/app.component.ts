@@ -8,6 +8,7 @@ import { RdsInitializationErrorEvent } from 'projects/libs/rds-cookieconsent/src
 import { RdsStatusChangeEvent } from 'projects/libs/rds-cookieconsent/src/lib/event/status-change.event';
 import { RdsNoCookieLawEvent } from 'projects/libs/rds-cookieconsent/src/lib/event/no-cookie-law.event';
 import { RdsCookieConsentConfig } from 'projects/libs/rds-cookieconsent/src/lib/service/cookieconsent-config';
+import { UserAuthService } from '@libs/shared';
  import { CookieService} from 'ngx-cookie-service'
 
  const IS_COOKIE_ALLOWED: string = 'IS_COOKIE_ALLOWED'

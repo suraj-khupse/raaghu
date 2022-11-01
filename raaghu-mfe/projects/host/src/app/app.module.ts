@@ -11,55 +11,47 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MultipleMfeComponent } from './multiple-mfe/multiple-mfe.component';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  SharedModule,
-  UserAuthModule,
-  NgxTranslateModule,
-  API_BASE_URL,
-} from '@libs/shared';
+import { SharedModule, UserAuthModule, NgxTranslateModule, API_BASE_URL, UserAuthService } from '@libs/shared';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DatePipe } from '@angular/common';
-import {
-  LanguageEffects,
-  ProductEffects,
-  productReducer,
-  DynamicEntityEffects,
-  DynamicEntityReducer,
-  DynamicPropertyEffects,
-  DynamicPropertyReducer,
-  ProfileEffects,
-  ProfileReducer,
-  WebhookSubscriptionEffects,
-  LoginEffects,
-  ValidateTenantReducer,
-  OrganizationUnitReducer,
-  OrganizationUnitEffects,
-  MLAReducer,
-  MLAEffects,
-  MaintenanceEffects,
-  ManageLinkedAccountsEffects,
-  LoginAttemptsEffects,
-  DelegationsReducer,
-  DelegationsEffects,
-  GetAllDynamicProperty,
-  GetAllDynamicPropertyEntites,
-  GetInputnameReducer,
-  getDynamicPropertyByEditReducer,
-  DynamicPermissionReducer,
-  GetUsernameFilterReducer,
-  LoginAttemptsReducer,
-  LanguageReducer,
-  CountryListReducer,
-  DefaultLanguageReducer,
-  downloadReducer,
-  DownloadEffects,
-} from '@libs/state-management';
+
+
 import { LanguageTextEffects } from 'projects/libs/state-management/src/lib/state/language-text/language-text.effects';
 import { RdsSideNavModule } from '@libs/rds-elements';
 import { LanguageTextReducer } from 'projects/libs/state-management/src/lib/state/language-text/language-text.reducer';
 import demodata from '../assets/appconfig.json';
 import { RdsCookieConsentConfig } from 'projects/libs/rds-cookieconsent/src/lib/service/cookieconsent-config';
 import { RdsCookieConsentModule } from 'projects/libs/rds-cookieconsent/src/lib/rds-cookieconsent.module';
+import { OAuthModule, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
+import { OrganizationUnitReducer } from 'projects/libs/state-management/src/lib/state/organization-unit/organization-unit.reducer';
+import { OrganizationUnitEffects } from 'projects/libs/state-management/src/lib/state/organization-unit/organization-unit.effects';
+import { RoleReducer } from 'projects/libs/state-management/src/lib/state/role/role.reducer';
+import { RoleEffects } from 'projects/libs/state-management/src/lib/state/role/role.effects';
+import { ProductEffects } from 'projects/libs/state-management/src/lib/state/products/product.effects';
+import { productReducer } from 'projects/libs/state-management/src/lib/state/products/product.reducer';
+import { IdentityResourcesEffects } from 'projects/libs/state-management/src/lib/state/identity-resources/identity-resources.effects';
+import { IdentityResourcesReducer } from 'projects/libs/state-management/src/lib/state/identity-resources/identity-resources.reducer';
+import { ClientsReducer } from 'projects/libs/state-management/src/lib/state/clients/clients.reducer';
+import { ClaimTypesReducer } from 'projects/libs/state-management/src/lib/state/claim-types/claim-types.reducer';
+import { ClientsEffects } from 'projects/libs/state-management/src/lib/state/clients/clients.effects';
+import { ClaimTypesEffects } from 'projects/libs/state-management/src/lib/state/claim-types/claim-types.effects';
+import { ApiResourcesReducer } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.reducer';
+import { ApiResourcesEffects } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.effects';
+import { TextTemplateReducer } from 'projects/libs/state-management/src/lib/state/text-template/text-template.reducer';
+import { TextTemplateEffects } from 'projects/libs/state-management/src/lib/state/text-template/text-template.effects';
+import { ScopesReducer } from 'projects/libs/state-management/src/lib/state/api-scope/api-scope.reducer';
+import { ApiScopeEffects } from 'projects/libs/state-management/src/lib/state/api-scope/api-scope-effects';
+import { ProfileReducer } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.reducers';
+import { ProfileEffects } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.effects';
+import { SecurityLogsReducer } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.reducer';
+import { SecurityLogEffects } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.effects';
+import { DownloadEffects, downloadReducer, LoginEffects, ValidateTenantReducer } from '@libs/state-management';
+// import { LanguageEffects } from 'projects/libs/state-management/src/lib/state/language/language.effects';
+import { ManageLinkedAccountsEffects } from 'projects/libs/state-management/src/lib/state/manage-linked-accounts/manage-linked-accounts.effects';
+import { UserEffects } from 'projects/libs/state-management/src/lib/state/user/user.effects';
+import { UserReducer } from 'projects/libs/state-management/src/lib/state/user/user.reducer';
+import { LanguageEffects } from 'projects/libs/state-management/src/lib/state/language/language.effects';
+import { LanguageReducer } from 'projects/libs/state-management/src/lib/state/language/language.reducer';
 export function getRemoteServiceBaseUrl(): any {
   let URL = demodata.remoteServiceBaseUrl;
   return URL;
@@ -105,25 +97,25 @@ export function getRemoteServiceBaseUrl(): any {
     NgxTranslateModule.forRoot(),
     StoreModule.forRoot({
       products: productReducer,
-      dynamicProperty: DynamicPropertyReducer,
-      dynamicEntity: DynamicEntityReducer,
+      languages:LanguageReducer,
       profile: ProfileReducer,
-      Entities: GetAllDynamicProperty,
-      PropertiesEntitie: GetAllDynamicPropertyEntites,
+      // Entities: GetAllDynamicProperty,
+      // PropertiesEntitie: GetAllDynamicPropertyEntites,
       organizationUnit: OrganizationUnitReducer,
-      Delegation: DelegationsReducer,
-      mla: MLAReducer,
+      roles: RoleReducer,
+      texTemplate:TextTemplateReducer,
+      // mla: MLAReducer,
       validateTenant: ValidateTenantReducer,
-      InputTypeNames: GetInputnameReducer,
-      EditDynamicPropertSateI: getDynamicPropertyByEditReducer,
-      DynanmicPermission: DynamicPermissionReducer,
-      usernames: GetUsernameFilterReducer,
-      loginAttempts: LoginAttemptsReducer,
-      languages: LanguageReducer,
-      countries: CountryListReducer,
+      identityResources: IdentityResourcesReducer,
+      apiResources: ApiResourcesReducer,
+      apiScope: ScopesReducer,
+      securityLog: SecurityLogsReducer,
+      clients: ClientsReducer,
       languageText: LanguageTextReducer,
-      defaultLanguage: DefaultLanguageReducer,
-      downloadData: downloadReducer,
+      // defaultLanguage: DefaultLanguageReducer,
+      user:UserReducer,
+       downloadData: downloadReducer,
+       claimTypes: ClaimTypesReducer
     }),
 
     StoreDevtoolsModule.instrument({
@@ -132,19 +124,27 @@ export function getRemoteServiceBaseUrl(): any {
     }),
     EffectsModule.forRoot([
       ProductEffects,
-      LoginAttemptsEffects,
-      MLAEffects,
-      LanguageEffects,
+      ProfileEffects,
+      ApiScopeEffects,
+      SecurityLogEffects,
+      TextTemplateEffects,
+      IdentityResourcesEffects,
+      ApiResourcesEffects,
+      ClientsEffects,
+      ClaimTypesEffects,
+      OrganizationUnitEffects, 
+      LanguageTextEffects, 
+      RoleEffects,
+      DownloadEffects,
+      LoginEffects,
       ManageLinkedAccountsEffects,
-      DynamicPropertyEffects,
-      DynamicEntityEffects,
       ProfileEffects,
       OrganizationUnitEffects,
-      MaintenanceEffects,
-      DelegationsEffects,
       LoginEffects,
       LanguageTextEffects,
       DownloadEffects,
+      UserEffects,
+      LanguageEffects
     ]),
     SharedModule,
     UserAuthModule,
@@ -160,9 +160,12 @@ export function getRemoteServiceBaseUrl(): any {
   ],
 
   providers: [
-    DatePipe,
+    DatePipe, 
+    OAuthService,
     { provide: API_BASE_URL, useFactory: getRemoteServiceBaseUrl },
-  ],
+    UserAuthService,
+    OAuthModule,
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

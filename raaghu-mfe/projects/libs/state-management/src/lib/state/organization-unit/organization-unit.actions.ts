@@ -1,11 +1,10 @@
-import { FindOrganizationUnitRolesInput, FindOrganizationUnitUsersInput, ListResultDtoOfOrganizationUnitDto, PagedResultDtoOfNameValueDto, PagedResultDtoOfOrganizationUnitRoleListDto, PagedResultDtoOfOrganizationUnitUserListDto } from "@libs/shared";
-import { createAction, props } from "@ngrx/store";
+ import { createAction, props } from "@ngrx/store";
 
 export const getOrganizationUnitTree = createAction('[Organization Unit Page] Get Organization Unit Tree');
 
 export const getOrganizationUnitTreeSuccess = createAction(
     '[Organization Unit Page] Get Organization Unit Tree Success',
-    props<{ organizationUnitTree: ListResultDtoOfOrganizationUnitDto }>()
+    props<{ organizationUnitTree: any }>()
 );
 
 export const getOrganizationUnitTreeFailure = createAction(
@@ -16,12 +15,12 @@ export const getOrganizationUnitTreeFailure = createAction(
 
 export const getOrganizationUnitMembers = createAction(
     '[Organization Unit Page] Get Organization Unit Members',
-    (id: number) => ({ id })
+    (id: any) => ({ id })
     );
 
 export const getOrganizationUnitMembersSuccess = createAction(
     '[Organization Unit Page] Get Organization Unit Members Success',
-    props<{ organizationUnitMembers: PagedResultDtoOfOrganizationUnitUserListDto  }>()
+    props<{ organizationUnitMembers: any  }>()
 );
 
 export const getOrganizationUnitMembersFailure = createAction(
@@ -31,12 +30,12 @@ export const getOrganizationUnitMembersFailure = createAction(
 
 export const getOrganizationUnitRoles = createAction(
     '[Organization Unit Page] Get Organization Unit Roles',
-    (id: number) => ({ id })
+    (id:any) => ({ id })
     );
 
 export const getOrganizationUnitRolesSuccess = createAction(
     '[Organization Unit Page] Get Organization Unit Roles Success',
-    props<{ organizationUnitRoles: PagedResultDtoOfOrganizationUnitRoleListDto  }>()
+    props<{ organizationUnitRoles: any  }>()
 );
 
 export const getOrganizationUnitRolesFailure = createAction(
@@ -54,12 +53,12 @@ export const deleteRoles = createAction(
 
 export const getOrganizationUnitUsersList = createAction(
     '[Organization Unit Page] Get Organization Unit Users list',
-    (input: FindOrganizationUnitUsersInput) => ({ input })
+    (input: any) => ({ input })
     );
 
 export const getOrganizationUnitUsersListSuccess = createAction(
     '[Organization Unit Page] Get Organization Unit Users list Success',
-    props<{ organizationUnitUsersList: PagedResultDtoOfNameValueDto  }>()
+    props<{ organizationUnitUsersList: any  }>()
 );
 
 export const getOrganizationUnitUsersListFailure = createAction(
@@ -68,12 +67,12 @@ export const getOrganizationUnitUsersListFailure = createAction(
 );
 export const getOrganizationUnitRolesList = createAction(
     '[Organization Unit Page] Get Organization Unit Roles List',
-    (input: FindOrganizationUnitRolesInput) => ({ input })
+    (input: any) => ({ input })
     );
 
 export const getOrganizationUnitRolesListSuccess = createAction(
     '[Organization Unit Page] Get Organization Unit Roles List Success',
-    props<{ organizationUnitRolesList: PagedResultDtoOfNameValueDto  }>()
+    props<{ organizationUnitRolesList: any  }>()
 );
 
 export const getOrganizationUnitRolesListFailure = createAction(

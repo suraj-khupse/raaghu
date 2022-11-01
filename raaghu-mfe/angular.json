@@ -1092,7 +1092,7 @@
 							"fileReplacements": [
 								{
 									"replace": "projects/rds-page-language/src/environments/environment.ts",
-									"with": "projects/language/src/environments/environment.prod.ts"
+									"with": "projects/rds-page-language/src/environments/environment.prod.ts"
 								}
 							],
 							"outputHashing": "all",
@@ -2316,7 +2316,7 @@
 						"index": "projects/rds-page-claim-types/src/index.html",
 						"main": "projects/rds-page-claim-types/src/main.ts",
 						"polyfills": "projects/rds-page-claim-types/src/polyfills.ts",
-						"tsConfig": "projects/claimtypes/tsconfig.app.json",
+						"tsConfig": "projects/rds-page-claim-types/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
 							"projects/rds-page-claim-types/src/favicon.ico",
@@ -2346,7 +2346,7 @@
 							"fileReplacements": [
 								{
 									"replace": "projects/rds-page-claim-types/src/environments/environment.ts",
-									"with": "projects/claimtypes/src/environments/environment.prod.ts"
+									"with": "projects/rds-page-claim-types/src/environments/environment.prod.ts"
 								}
 							],
 							"outputHashing": "all",
@@ -3786,7 +3786,7 @@
 					"options": {
 						"outputPath": "dist/rds-page-frequently-asked-questions",
 						"index": "projects/rds-page-frequently-asked-questions/src/index.html",
-						"main": "projects/frequently-asked-questions/src/main.ts",
+						"main": "projects/rds-page-frequently-asked-questions/src/main.ts",
 						"polyfills": "projects/rds-page-frequently-asked-questions/src/polyfills.ts",
 						"tsConfig": "projects/rds-page-frequently-asked-questions/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
@@ -4004,7 +4004,7 @@
 				}
 			},
 			"root": "projects/rds-page-cart",
-			"sourceRoot": "projects/cart/src",
+			"sourceRoot": "projects/rds-page-cart/src",
 			"prefix": "app",
 			"architect": {
 				"build": {

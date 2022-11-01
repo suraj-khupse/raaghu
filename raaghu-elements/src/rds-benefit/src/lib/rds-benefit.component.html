@@ -42,7 +42,7 @@
         <div class="mt-3">
           <rds-label [label]="item.title" [bold]="true" [multiline]=""></rds-label>
         </div>
-        <div class="mt-2 px-5">
+        <div class="mt-2">
           <rds-label [label]="item.description" class=""></rds-label>
         </div>
       </div>
@@ -56,8 +56,8 @@
         </div>
         <div class="ms-3 mt-3">
           <div>
-            <rds-label [label]="item.title" [bold]="true"></rds-label>
-            <span class="m-5" *ngIf="item.status">
+            <span class="pe-3"><rds-label [label]="item.title" [bold]="true"></rds-label></span>
+            <span *ngIf="item.status">
               <rds-badge [label]="item.status"  colorVariant="info"></rds-badge>
             </span>
           </div>

@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { getCurrentLoginInformation, getCurrentLoginInformationFailure, getCurrentLoginInformationSuccess, GetProfilePicture, GetProfilePictureFailure, GetProfilePictureSuccess, ValidateTenantName, ValidateTenantNameFailure, ValidateTenantNameSuccess } from "./login.actions";
+import { getCurrentLoginInformation, getCurrentLoginInformationFailure, getCurrentLoginInformationSuccess, GetProfilePicture, GetProfilePictureFailure, GetProfilePictureSuccess, ValidateTenantNameFailure, ValidateTenantNameSuccess } from "./login.actions";
 
 
 
@@ -11,6 +11,7 @@ export interface ValidateTenantState {
     status: 'pending' | 'loading' | 'error' | 'success';
     profilePic: any;
     loginInfo: any;
+    applicaiton_information: any;
 }
 
 export const ValidateTenantInitialState: ValidateTenantState = {    
@@ -19,7 +20,8 @@ export const ValidateTenantInitialState: ValidateTenantState = {
     error: null,
     status: 'pending',
     profilePic: null,
-    loginInfo: null
+    loginInfo: null,
+    applicaiton_information: null
 };
 
 
@@ -30,15 +32,15 @@ export const ValidateTenantInitialState: ValidateTenantState = {
 export const ValidateTenantReducer = createReducer(
     // Supply the initial state
     ValidateTenantInitialState,
-    on(ValidateTenantName, (state) => ({ ...state, status: 'loading' })),
-    // Handle successfully loaded todos
-    on(ValidateTenantNameSuccess, (state, { ValidatetenantState, tenancyName }) => ({
-        ...state,
-        Tenant: ValidatetenantState,
-        tenancyName: tenancyName,
-        error: null,
-        status: 'success',
-    })),
+    // on(ValidateTenantName, (state) => ({ ...state, status: 'loading' })),
+    // // Handle successfully loaded todos
+    // on(ValidateTenantNameSuccess, (state, { ValidatetenantState, tenancyName }) => ({
+    //     ...state,
+    //     Tenant: ValidatetenantState,
+    //     tenancyName: tenancyName,
+    //     error: null,
+    //     status: 'success',
+    // })),
 
     on(ValidateTenantNameFailure, (state, { error }) => ({
         ...state,
@@ -47,9 +49,9 @@ export const ValidateTenantReducer = createReducer(
     })),
     on(getCurrentLoginInformation, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos
-    on(getCurrentLoginInformationSuccess, (state, { loginInfo }) => ({
+    on(getCurrentLoginInformationSuccess, (state, { getCurrentLoginInformationResult }) => ({
         ...state,
-        loginInfo: loginInfo,
+        applicaiton_information: getCurrentLoginInformationResult,
         error: null,
         status: 'success',
     })),

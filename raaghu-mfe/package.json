@@ -38,6 +38,7 @@
     "@ngx-translate/http-loader": "7.0.0",
     "@popperjs/core": "^2.11.6",
     "angular-draggable-droppable": "^6.1.0",
+    "angular-oauth2-oidc": "^13.0.1",
     "angular-resizable-element": "^5.0.0",
     "autoprefixer": "10.4.5",
     "bootstrap": "5.2.1",

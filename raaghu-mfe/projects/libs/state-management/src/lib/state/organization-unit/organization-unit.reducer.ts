@@ -1,14 +1,13 @@
-import { ListResultDtoOfOrganizationUnitDto, PagedResultDtoOfNameValueDto, PagedResultDtoOfOrganizationUnitRoleListDto, PagedResultDtoOfOrganizationUnitUserListDto } from "@libs/shared";
 import { createReducer, on } from "@ngrx/store";
 import { createTreeUnit, createTreeUnitFailure, createTreeUnitSuccess, deleteMemberFromOrgUnit, deleteMemberFromOrgUnitFailure, deleteMemberFromOrgUnitSuccess, deleteRoleFromOrgUnit, deleteRoleFromOrgUnitFailure, deleteRoleFromOrgUnitSuccess, deleteUnitTree, deleteUnitTreeFailure, deleteUnitTreeSuccess, getOrganizationUnitMembers, getOrganizationUnitMembersSuccess, getOrganizationUnitRoles, getOrganizationUnitRolesFailure, getOrganizationUnitRolesList, getOrganizationUnitRolesListFailure, getOrganizationUnitRolesListSuccess, getOrganizationUnitRolesSuccess, getOrganizationUnitTree, getOrganizationUnitTreeFailure, getOrganizationUnitTreeSuccess, getOrganizationUnitUsersList, getOrganizationUnitUsersListFailure, getOrganizationUnitUsersListSuccess, updateUnitTree, updateUnitTreeFailure, updateUnitTreeSuccess } from "./organization-unit.actions";
 
 
 export interface OrganizationUnitState {
-    organizationUnitTree: ListResultDtoOfOrganizationUnitDto;
-    members: PagedResultDtoOfOrganizationUnitUserListDto;
-    roles: PagedResultDtoOfOrganizationUnitRoleListDto;
-    rolesList: PagedResultDtoOfNameValueDto;
-    usersList: PagedResultDtoOfNameValueDto;
+    organizationUnitTree: any;
+    members: any;
+    roles: any;
+    rolesList: any;
+    usersList: any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }

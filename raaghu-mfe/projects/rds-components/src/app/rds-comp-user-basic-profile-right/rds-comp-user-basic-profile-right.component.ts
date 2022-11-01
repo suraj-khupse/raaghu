@@ -19,20 +19,21 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
   public phonePattern = /^((\\+91-?)|0)?[0-9]{10}$/;
   @ViewChild('userCreationForm') userInfoForm: NgForm;
   constructor(public translate: TranslateService) { }
-
+  
   ngOnInit(): void {
     if (!this.userData) {
       this.userData = {};
       this.userData['name'] = '';
       this.userData['userName'] = '';
-      this.userData['emailAddress'] = '';
+      this.userData['email'] = '';
       this.userData['phoneNumber'] = '';
       this.userData['password'] = '';
-      this.userData['isTwoFactorEnabled'] = false;
+      // this.userData['isTwoFactorEnabled'] = false;
+      this.userData['isActive'] = true;
       this.userData['surname'] = '';
       this.userData['imageUrl'] = '../assets/edit-profile.png';
     }
-    // setTimeout(() => {
+     setTimeout(() => {
     if (this.userData && this.userInfoForm) {
       this.userInfoForm.statusChanges.subscribe(res => {
         if (res === 'VALID') {
@@ -41,7 +42,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
       });
     }
 
-    // }, 100);
+     }, 100);
 
   }
 
@@ -51,13 +52,14 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
         this.userInfoForm.resetForm();
         this.userData = {};
         this.userData['name'] = '';
-        this.userData['userName'] = '';
-        this.userData['emailAddress'] = '';
-        this.userData['phoneNumber'] = '';
-        this.userData['password'] = '';
-        this.userData['isTwoFactorEnabled'] = false;
-        this.userData['surname'] = '';  
-        this.userData['imageUrl'] = '../assets/edit-profile.png'
+      this.userData['userName'] = '';
+      this.userData['email'] = '';
+      this.userData['phoneNumber'] = '';
+      this.userData['password'] = '';
+      // this.userData['isTwoFactorEnabled'] = false;
+      this.userData['isActive'] = true;
+      this.userData['surname'] = '';
+      this.userData['imageUrl'] = '../assets/edit-profile.png';
       }
      
     }

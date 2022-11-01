@@ -636,637 +636,637 @@
           "image": "images/widgets.png",
           "title": "Alert",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-alert"
         },
         {
           "id": 2,
-          "image": "images/visual-settings.png",
+          "image": "images/.png",
           "title": "Alert popup ",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-alert-popup"
         },
         {
           "id": 3,
           "image": "images/authentication.png",
           "title": "Apply for position",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-apply-for-position"
         },
         {
           "id": 4,
           "image": "images/data-table.png",
           "title": "Audit logs",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-audit-logs"
         },
         {
           "id": 5,
           "image": "images/data-table.png",
           "title": "Background images ",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-background-image"
         },
         {
           "id": 6,
           "image": "images/data-table.png",
           "title": "App details",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-app-details"
         },
         {
           "id": 7,
           "image": "images/forms.png",
           "title": "Admin Dashboard",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-admin-dashboard"
         },
         {
           "id": 8,
           "image": "images/tree.png",
           "title": "Address Input",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-address-input"
         },
         {
           "id": 9,
           "image": "images/widgets.png",
           "title": "Basic resources",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-basic-resources"
         },
         {
           "id": 10,
           "image": "images/visual-settings.png",
           "title": "Benefit",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-benefit"
         },
         {
           "id": 11,
           "image": "images/authentication.png",
           "title": "Billing",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-billing"
         },
         {
           "id": 12,
           "image": "images/data-table.png",
           "title": "Billing address",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-billing-address"
         },
         {
           "id": 13,
           "image": "images/data-table.png",
           "title": "Cache ",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-cache"
         },
         {
           "id": 14,
           "image": "images/data-table.png",
           "title": "Calendar",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-calender"
         },
         {
           "id": 15,
           "image": "images/forms.png",
           "title": "Card detail list",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-card-details-list"
         },
         {
           "id": 16,
           "image": "images/tree.png",
           "title": "Claims",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-claims"
         },
         {
           "id": 17,
           "image": "images/widgets.png",
           "title": "Client basic",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-client-basic"
         },
         {
           "id": 18,
           "image": "images/visual-settings.png",
           "title": "Client resources",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-client-resources"
         },
         {
           "id": 19,
           "image": "images/authentication.png",
           "title": "Contact information",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-contact-information"
         },
         {
           "id": 20,
           "image": "images/data-table.png",
           "title": "Contact us",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-contact-us"
         },
         {
           "id": 21,
           "image": "images/data-table.png",
           "title": "Customer review",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-customer-review"
         },
         {
           "id": 22,
           "image": "images/data-table.png",
           "title": "Delivery method",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-delivery-method"
         },
         {
           "id": 23,
           "image": "images/forms.png",
           "title": "Demo ui",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-demoui"
         },
         {
           "id": 24,
           "image": "images/tree.png",
           "title": "Download collection",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-download-collection"
         },
         {
           "id": 25,
           "image": "images/widgets.png",
           "title": "Dynamic entity properties",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-dynamic-entity-properties"
         },
         {
           "id": 26,
           "image": "images/visual-settings.png",
           "title": "Dynamic properties",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-dynamic-properties"
         },
         {
           "id": 27,
           "image": "images/authentication.png",
           "title": "Edit language text",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-edit-language-text"
         },
         {
           "id": 28,
           "image": "images/data-table.png",
           "title": "Edition",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-edition"
         },
         {
           "id": 29,
           "image": "images/data-table.png",
           "title": "Edition table",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-edition-table"
         },
         {
           "id": 30,
           "image": "images/data-table.png",
           "title": "Email",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-email"
         },
         {
           "id": 31,
           "image": "images/forms.png",
           "title": "Email settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-email-settings"
         },
         {
           "id": 32,
           "image": "images/tree.png",
           "title": "Faq",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-faq"
         },
         {
           "id": 33,
           "image": "images/widgets.png",
           "title": "Features",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-features"
         },
         {
           "id": 34,
           "image": "images/visual-settings.png",
           "title": "Feeds",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-feeds"
         },
         {
           "id": 35,
           "image": "images/authentication.png",
           "title": "Forgot Password",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-forgot-password"
         },
         {
           "id": 36,
           "image": "images/data-table.png",
           "title": "Information",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-information"
         },
         {
           "id": 37,
           "image": "images/data-table.png",
           "title": "Integration",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-integration"
         },
         {
           "id": 38,
           "image": "images/data-table.png",
           "title": "Invoice",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-invoice"
         },
         {
           "id": 39,
           "image": "images/forms.png",
           "title": "Language Text List",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-language-text-list"
         },
         {
           "id": 40,
           "image": "images/tree.png",
           "title": "Linked Accounts",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-linked-accounts"
         },
         {
           "id": 41,
           "image": "images/widgets.png",
           "title": "Login",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-login"
         },
         {
           "id": 42,
           "image": "images/visual-settings.png",
           "title": "Login Attempts",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-login-attempts"
         },
         {
           "id": 43,
           "image": "images/authentication.png",
           "title": "Marketing Website Newsletter",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-marketing-website-newsletter"
         },
         {
           "id": 44,
           "image": "images/data-table.png",
           "title": "Member Activity",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-member-activity"
         },
         {
           "id": 45,
           "image": "images/data-table.png",
           "title": "Mysettings",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-mysettings"
         },
         {
           "id": 46,
           "image": "images/data-table.png",
           "title": "New Claim Type",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-new-claim-type"
         },
         {
           "id": 47,
           "image": "images/forms.png",
           "title": "New Dynamic Entity Property",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-new-dynamic-entity-property"
         },
         {
           "id": 48,
           "image": "images/tree.png",
           "title": "New Language",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-new-language"
         },
         {
           "id": 49,
           "image": "images/widgets.png",
           "title": "New Role",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-new-role"
         },
         {
           "id": 50,
           "image": "images/visual-settings.png",
           "title": "Notification",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-notification"
         },
         {
           "id": 51,
           "image": "images/authentication.png",
           "title": "Notification Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-notification-settings"
         },
         {
           "id": 52,
           "image": "images/data-table.png",
           "title": "Open Position",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-open-position"
         },
         {
           "id": 53,
           "image": "images/data-table.png",
           "title": "Order Details",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-order-details"
         },
         {
           "id": 54,
           "image": "images/data-table.png",
           "title": "Order Summary",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-order-summary"
         },
         {
           "id": 55,
           "image": "images/forms.png",
           "title": "Organization Tree",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-organization-tree"
         },
         {
           "id": 56,
           "image": "images/tree.png",
           "title": "Other Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-other-settings"
         },
         {
           "id": 57,
           "image": "images/widgets.png",
           "title": "Page Not Found",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-page-not-found"
         },
         {
           "id": 58,
           "image": "images/visual-settings.png",
           "title": "Password Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-password-settings"
         },
         {
           "id": 59,
           "image": "images/authentication.png",
           "title": "Payment Details",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-payment-details"
         },
         {
           "id": 60,
           "image": "images/data-table.png",
           "title": "Permission Tree",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-permission-tree"
         },
         {
           "id": 61,
           "image": "images/data-table.png",
           "title": "Personal Info",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-personal-info"
         },
         {
           "id": 62,
           "image": "images/data-table.png",
           "title": "Plan Information",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-plan-information"
         },
         {
           "id": 63,
           "image": "images/forms.png",
           "title": "Pricing Table",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-pricing-table"
         },
         {
           "id": 64,
           "image": "images/tree.png",
           "title": "Product List",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-product-list"
         },
         {
           "id": 65,
           "image": "images/widgets.png",
           "title": "Product Overview",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-product-overview"
         },
         {
           "id": 66,
           "image": "images/visual-settings.png",
           "title": "Profile",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-profile"
         },
         {
           "id": 67,
           "image": "images/authentication.png",
           "title": "Properties",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-properties"
         },
         {
           "id": 68,
           "image": "images/data-table.png",
           "title": "Review Category",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-review-category"
         },
         {
           "id": 69,
           "image": "images/data-table.png",
           "title": "Role List",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-role"
         },
         {
           "id": 70,
           "image": "images/data-table.png",
           "title": "Secrets",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-secrets"
         },
         {
           "id": 71,
           "image": "images/forms.png",
           "title": "Security",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-security"
         },
         {
           "id": 72,
           "image": "images/tree.png",
           "title": "Shipping Address",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-shipping-address"
         },
         {
           "id": 73,
           "image": "images/widgets.png",
           "title": "Shopping Cart Product",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-shopping-cart-product"
         },
         {
           "id": 74,
           "image": "images/visual-settings.png",
           "title": "Subscription",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-subscription"
         },
         {
           "id": 75,
           "image": "images/authentication.png",
           "title": "Teams",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-teams"
         },
         {
           "id": 76,
           "image": "images/data-table.png",
           "title": "Tenant Dashboard",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-tenant-dashboard"
         },
         {
           "id": 77,
           "image": "images/data-table.png",
           "title": "Tenant Information",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-tenant-information"
         },
         {
           "id": 78,
           "image": "images/data-table.png",
           "title": "Tenant List",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-tenant-list"
         },
         {
           "id": 79,
           "image": "images/forms.png",
           "title": "Tenant Management",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-tenant-management"
         },
         {
           "id": 80,
           "image": "images/tree.png",
           "title": "Tenant Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-tenant-settings"
         },
         {
           "id": 81,
           "image": "images/widgets.png",
           "title": "Testimonials",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/comp-testimonials"
         },
         {
           "id": 82,
           "image": "images/visual-settings.png",
           "title": "Timeline",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/comp-timeline"
         },
         {
           "id": 83,
           "image": "images/authentication.png",
           "title": "Top Navigation",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-top-navigation"
         },
         {
           "id": 84,
           "image": "images/data-table.png",
           "title": "User Basics",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-user-basics"
         },
         {
           "id": 85,
           "image": "images/data-table.png",
           "title": "User Delegations",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-user-delegations"
         },
         {
           "id": 86,
           "image": "images/data-table.png",
           "title": "User Management",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-user-management"
         },
         {
           "id": 87,
           "image": "images/forms.png",
           "title": "User Permissions",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-user-permissions"
         },
         {
           "id": 88,
           "image": "images/tree.png",
           "title": "User Table",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-user-table"
         },
         {
           "id": 89,
           "image": "images/data-table.png",
           "title": "Webhook Subscription",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-webhook-subscription"
         },
         {
           "id": 90,
           "image": "images/forms.png",
           "title": "Website Log",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-website-log"
         },
         {
           "id": 91,
           "image": "images/tree.png",
           "title": "User Claims",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/comp-user-claims"
         }
 
       ]
@@ -1348,238 +1348,224 @@
           "image": "images/layout-grid-container.png",
           "title": "Api Resources",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/page-api-resources"
         },
         {
           "id": 2,
           "image": "images/layout-grid-container.png",
           "title": "Api Scope",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/page-api-scope"
         },
         {
           "id": 3,
           "image": "images/layout-grid-container.png",
           "title": "Cart",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-cart"
         },
         {
           "id": 4,
           "image": "images/layout-grid-container.png",
           "title": "Claimtypes",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-claimtypes"
         },
         {
           "id": 5,
           "image": "images/layout-grid-container.png",
           "title": "Client",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-client"
         },
         {
           "id": 6,
           "image": "images/layout-grid-container.png",
           "title": "Contact Us",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
-        },
-        {
-          "id": 7,
-          "image": "images/layout-grid-container.png",
-          "title": "Demo Ui",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
-        },
+          "link": "/page-contact-us"
+        },        
         {
           "id": 8,
           "image": "images/layout-grid-container.png",
           "title": "Dynamic Property Management",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/page-dynamic-property-management"
         },
         {
           "id": 9,
           "image": "images/layout-grid-container.png",
           "title": "Edition",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/page-edition"
         },
         {
           "id": 10,
           "image": "images/layout-grid-container.png",
           "title": "Forgot Password",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-forgot-password"
         },
         {
           "id": 11,
           "image": "images/layout-grid-container.png",
           "title": "Frequently Asked Questions",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
-        },
-        {
-          "id": 12,
-          "image": "images/layout-grid-container.png",
-          "title": "Icons",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
-        },
+          "link": "/page-frequently-asked-questions"
+        },        
         {
           "id": 13,
           "image": "images/layout-grid-container.png",
           "title": "Identity Resources",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-identity-resources"
         },
         {
           "id": 14,
           "image": "images/layout-grid-container.png",
           "title": "Language Text",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-language-text"
         },
         {
           "id": 15,
           "image": "images/layout-grid-container.png",
           "title": "Login",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/page-login"
         },
         {
           "id": 16,
           "image": "images/layout-grid-container.png",
           "title": "Maintenance",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/page-maintenance"
         },
         {
           "id": 17,
           "image": "images/layout-grid-container.png",
           "title": "Member Activity",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-member-activity"
         },
         {
           "id": 18,
           "image": "images/layout-grid-container.png",
           "title": "Order Details",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-order-details"
         },
         {
           "id": 19,
           "image": "images/layout-grid-container.png",
           "title": "Order Summary",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-summary"
         },
         {
           "id": 20,
           "image": "images/layout-grid-container.png",
           "title": "Organization Unit",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-organization-unit"
         },
         {
           "id": 21,
           "image": "images/layout-grid-container.png",
           "title": "Page Not Found",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-not-found"
         },
         {
           "id": 22,
           "image": "images/layout-grid-container.png",
           "title": "Product",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/page-product"
         },
         {
           "id": 23,
           "image": "images/layout-grid-container.png",
           "title": "Product Details",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/page-product-details"
         },
         {
           "id": 24,
           "image": "images/layout-grid-container.png",
           "title": "Profile Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-profile-settings"
         },
         {
           "id": 25,
           "image": "images/layout-grid-container.png",
-          "title": "Properties",
+          "title": "Role",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-role"
         },
         {
           "id": 26,
           "image": "images/layout-grid-container.png",
           "title": "Securitylog",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-securitylog"
         },
         {
           "id": 27,
           "image": "images/layout-grid-container.png",
           "title": "Settings",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-settings"
         },
         {
           "id": 28,
           "image": "images/layout-grid-container.png",
           "title": "Store Front",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-store-front"
         },
         {
           "id": 29,
           "image": "images/layout-grid-container.png",
           "title": "Subscription",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/Widgets"
+          "link": "/page-subscription"
         },
         {
           "id": 30,
           "image": "images/layout-grid-container.png",
           "title": "Text Template",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Visual Settings"
+          "link": "/page-text-template"
         },
         {
           "id": 31,
           "image": "images/layout-grid-container.png",
           "title": "Under Construction",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-under-construction"
         },
         {
           "id": 32,
           "image": "images/layout-grid-container.png",
           "title": "Under Maintenance",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-under-maintenance"
         },
         {
           "id": 33,
           "image": "images/layout-grid-container.png",
           "title": "Visual Settings",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-visual-settings"
         },
         {
           "id": 34,
           "image": "images/layout-grid-container.png",
           "title": "Webhook Subscription",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-webhooksubscription"
         }
       
         

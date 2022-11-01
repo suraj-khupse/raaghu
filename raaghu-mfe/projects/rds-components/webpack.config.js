@@ -46,7 +46,7 @@ module.exports = {
         './RdsCompSubscription': './projects/rds-components/src/app/rds-comp-subscription/rds-comp-subscription.component.ts',
         './RdsCompHierarchy': './projects/rds-components/src/app/rds-comp-hierarchy/rds-comp-hierarchy.component.ts',
         './RdsCompAlertPopup': './projects/rds-components/src/app/rds-comp-alert-popup/rds-comp-alert-popup.component.ts',
-        './RdsCompAuditLogs': './projects/rds-components/src/app/rds-comp-audit-logs/rds-comp-audit-logs.component.ts',
+        //'./RdsCompAuditLogs': './projects/rds-components/src/app/rds-comp-audit-logs/rds-comp-audit-logs.component.ts',
         './RdsCompTenantList': './projects/rds-components/src/app/rds-comp-tenant-list/rds-comp-tenant-list.component.ts',
         './RdsOrganizationTree': './projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.component.ts',
         './RdsCompFeatures': './projects/rds-components/src/app/rds-comp-features/rds-comp-features.component.ts',
@@ -112,7 +112,8 @@ module.exports = {
         './RdsCompFeaturesListNew': './projects/rds-components/src/app/rds-comp-features-list-new/rds-comp-features-list-new.component.ts',
         './RdsCompUserPermissionsNew': './projects/rds-components/src/app/rds-comp-user-permissions-new/rds-comp-user-permissions-new.component.ts',
        './RdsCompOpenPosition': './projects/rds-components/src/app/rds-comp-open-position/rds-comp-open-position.component.ts',
-        './RdsCompApplyForPosition': './projects/rds-components/src/app/rds-comp-apply-for-position/rds-comp-apply-for-position.component.ts'
+        './RdsCompApplyForPosition': './projects/rds-components/src/app/rds-comp-apply-for-position/rds-comp-apply-for-position.component.ts',
+        './RdsCompAuditLogsNew' : './projects/rds-components/src/app/rds-comp-audit-logs-new/rds-comp-audit-logs-new.component.ts',
       },
 
 

@@ -1,9 +1,6 @@
 <nav class="navbar navbar-expand-sm fixed-top p-0">
   <div class="container-fluid mobile-fluid">
-    <span class="navbar-brand p-0 m-0" href="#">
-      <img class="image" [src]="logo" width="70" /><span class="title fw-bold text-lowercase"><b>{{ projectName
-          }}</b></span>
-    </span>
+    
     <button (click)="onToggleButton()" class="navbar-toggler px-2" id="humbreger-btn" type="button"
       data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +13,7 @@
           }}<span *ngIf="tabName" class="mx-2"><b class="text-primary pt-1">></b> {{tabName}}</span></a>
       </div>
       <div class="mob-description">
-        <a class="nav-link text-muted p-0 fs-6" href="#">{{selectedMenuDescription|translate}}</a>
+         <a class="nav-link text-muted p-0 fs-6" href="#">{{selectedMenuDescription|translate}}</a>
       </div>
     </div>
 
@@ -67,11 +64,17 @@
           <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span>
-              <rds-icon name="alert_notification" width="20px" height="20px"></rds-icon>
-
+              <rds-button class="position-relative" [size]="'small'" [id]="'notification'" [roundedButton]="true"
+                [colorVariant]="'default'" type="button">
+                <rds-icon name="notification" width="20px" height="20px"></rds-icon>
+                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary" [label]="unreadCount"
+                  [positioned]="true" >
+                </rds-badge>
+              </rds-button>
+              <!-- <rds-icon name="notifications" width="20px"></rds-icon> -->
             </span>
           </a>
-          <div class="
+          <div aria-labelledby="navbarDropdownMenuLink" class="
               dropdown-menu dropdown-menu-right
               notifications-dropdown
               w-md-375px
@@ -79,9 +82,11 @@
               mt-2
               p-0
             ">
+            <app-rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"
+              (setAsReadOutput)="setNotificationAsRead.emit($event)"
+              (setAllReadOutput)="setAllNotificationAsRead.emit($event)"></app-rds-notification>
+            <!-- <mfe-loader [config]="rdsNotoficationMfeConfig"></mfe-loader> -->
           </div>
-          <app-rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"></app-rds-notification>
-
         </li>
         <li class="nav-item cursor-pointer" (click)="viewOffcanvas()">
           <div class="nav-link align-items-center d-flex">
@@ -108,7 +113,7 @@
         </li>
       </ul>
     </div>
-  </div>
+    </div>
 </nav>
 <app-rds-comp-profile [MenuItems]="navtabItems" [Profileurl]="profilePic" [viewCanvas]="showOffcanvas"
   [tableWidth]="tableWidth" [id]="offCanvasId" [userList]="userList" [languageItems]="languageItems"

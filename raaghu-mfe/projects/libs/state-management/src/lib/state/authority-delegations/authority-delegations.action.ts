@@ -1,4 +1,4 @@
-import { CreateUserDelegationDto, DelegatedImpersonateInput, FindUsersInput, PagedResultDtoOfUserDelegationDto } from "@libs/shared";
+// import { CreateUserDelegationDto, DelegatedImpersonateInput, FindUsersInput, PagedResultDtoOfUserDelegationDto } from "@libs/shared";
 import { createAction, props } from "@ngrx/store";
 import { Delegation, UserNames } from "./authority-delegations.model";
 
@@ -17,11 +17,11 @@ export const deleteDelegations = createAction(
 );
 export const saveDelegations = createAction(
   '[User Authority Delegations] Save Delegations',
-  (Delegation: CreateUserDelegationDto) => ({ Delegation })
+  (Delegation: any) => ({ Delegation })
 );
 export const getUsername = createAction(
   '[[User Authority Delegations] Get User names',
-  (usernameFilter: FindUsersInput) => ({ usernameFilter })
+  (usernameFilter: any) => ({ usernameFilter })
 );
 
 export const getUsernameSuccess = createAction(

@@ -3,32 +3,21 @@ import { getCountryList, getCountryListFailure, getCountryListSuccess, getLangua
 import { Countries, Language } from "./language.models";
 
 export interface LanguagesState {
-    languages: Language;
+    languages: any;
+    countries: any;
+    defaultLanguage: any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export interface CountryState {
-    countries: Countries;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export interface DefaultLanguageState {
-    defaultLanguage: string;
 }
 
 export const languageInitialState: LanguagesState = {
-    languages: { items: [] },
+    languages: null,
+    countries: null,
+    defaultLanguage: null,
     error: null,
     status: 'pending',
 };
 
-export const countryInitialState: CountryState = {
-    countries: { languageNames: [], flags: [] },
-    error: null,
-    status: 'pending',
-};
 
 export const LanguageReducer = createReducer(
     // Supply the initial state
@@ -46,12 +35,7 @@ export const LanguageReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
-)
-
-export const CountryListReducer = createReducer(
-    // Supply the initial state
-    countryInitialState,
+    })),
     on(getCountryList, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos
     on(getCountryListSuccess, (state, { countries }) => ({
@@ -64,17 +48,11 @@ export const CountryListReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
-
-
-)
-export const defaultLanguageInitialState: DefaultLanguageState = {
-    defaultLanguage: ''
-};
-export const DefaultLanguageReducer = createReducer(
-    defaultLanguageInitialState,
+    })),
     on(setDefaultLanguageForUI, (state, { name }) => ({
         ...state,
         defaultLanguage: name,
-    })),
+    }))
 )
+
+

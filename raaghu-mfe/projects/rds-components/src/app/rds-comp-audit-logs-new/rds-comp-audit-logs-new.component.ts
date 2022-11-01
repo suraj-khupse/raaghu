@@ -3,6 +3,7 @@ import { SharedService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
+import { Store } from '@ngrx/store';
 
 declare var bootstrap: any;
 
@@ -58,7 +59,8 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
   auditLogsCanvasTitle: string = this.translate.instant('AUDIT LOG DETAIL');
   viewAuditLogsCanvas: boolean = false;
   constructor( private sharedService:SharedService,
-    public translate:TranslateService) { }
+    public translate:TranslateService,
+ ) { }
   
   ngOnInit(): void {
   }
@@ -86,6 +88,7 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
   }
   httpMethodModify(event){
     this.onItemClick.emit(event);
+
     this.sendParameterData();
   }
   httpStatusModify(event){
@@ -104,15 +107,23 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
   sendParameterData() {
     if (this.startDate && this.endDate) {
       this.parameterData.emit({
-        startDate: this.startDate, endDate: this.endDate, userName: this.user, urlFilter : this.urlFilter, MinDuration: this.minDuration,MaxDuration: this.maxDuration,
-        HttpStatus: this.httpStatus,HttpMethod:this.httpMethod,AppName:this.appName,CorrelationID: this.correlationID,HasException:this.hasException,BrowserInfo: this.browserInfo
+        startDate: this.startDate, 
+        endDate: this.endDate, 
+        userName: this.user, 
+        urlFilter : this.urlFilter, 
+        MinDuration: this.minDuration,
+        MaxDuration: this.maxDuration,
+        HttpStatus: this.httpStatus,
+        HttpMethod:this.httpMethod,
+        AppName:this.appName,
+        CorrelationID: this.correlationID,
+        HasException:this.hasException,
+        BrowserInfo: this.browserInfo
       })
-      
-    }
   }
+}
   onActionSelect(event: any): void {
     if (event.actionId === 'details') {
-      console.log(event.selectedData);
       this.selectedRowData = event.selectedData;
       this.showAuditLogDetail();
     }

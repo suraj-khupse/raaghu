@@ -1,11 +1,17 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ConstantPool } from '@angular/compiler';
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertService, AlertTypes, AppSessionService, ComponentLoaderOptions, MfeBaseComponent, UserAuthService } from '@libs/shared';
-import { AuthenticateModel, AuthenticateResultModel, TokenAuthServiceProxy } from '@libs/shared';
+import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 'rxjs/operators';
+import { AlertService, AlertTypes, ComponentLoaderOptions, MfeBaseComponent, UserAuthService, UserLoginInfo } from '@libs/shared';
+//import { AuthenticateModel, AuthenticateResultModel, TokenAuthServiceProxy } from '@libs/shared';
 import { Store } from '@ngrx/store';
-import { getCurrentLoginInformation, GetProfilePicture, GetSubscriptionExpiringData, ValidateTenantName } from 'projects/libs/state-management/src/lib/state/login/login.actions';
+import { getCurrentLoginInformation, GetProfilePicture, GetSubscriptionExpiringData } from 'projects/libs/state-management/src/lib/state/login/login.actions';
 import { selectTenant } from 'projects/libs/state-management/src/lib/state/login/login.selector';
+import { Observable } from 'rxjs/internal/Observable';
+import { AuthConfig, JwksValidationHandler, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
+import { authCodeFlowConfig } from './abp.config';
+import { promise } from 'protractor';
 declare var bootstrap: any;
 
 @Component({
@@ -27,8 +33,8 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     }
   }
   rdsLoginMfeConfig: ComponentLoaderOptions;
-  authenticateModal: AuthenticateModel;
-  authenticateResult: AuthenticateResultModel;
+  authenticateModal: UserLoginInfo;
+  //authenticateResult: AuthenticateResultModel;
   rememberMe: boolean = false;
   loginTokenExpiryDate = 0;
   acessTokenExpiryDate: any;
@@ -39,19 +45,36 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     private injector: Injector,
     private _userAuthService: UserAuthService,
     private _router: Router,
-    private _tokenAuthService: TokenAuthServiceProxy,
     private store: Store,
-    private http: HttpClient,
     private alertService: AlertService,
-    private sessionService: AppSessionService
+    private oauthService: OAuthService
   ) {
     super(injector);
-    this.authenticateModal = new AuthenticateModel();
-    this.authenticateResult = null;
-    this.sessionService.init();
+    this.authenticateModal = new UserLoginInfo();
+    this.configureSingleSignOn();
+    //this.authenticateResult = null;
+    //this.sessionService.init();
   }
-
+  configureSingleSignOn(){
+    this.oauthService.configure(authCodeFlowConfig);
+    this.oauthService.setupAutomaticSilentRefresh();
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  //   this.oauthService.tryLogin({
+  //     onTokenReceived: context => {
+  //         console.debug("logged in");
+  //         console.debug(context);
+  //         this._router.navigateByUrl('/pages/dashboard');
+  //     }
+  // });
+  }
+  // refreshLogin(){
+  //   this.oauthService.refreshToken().catch(()=>{
+  //     document.cookie = 'rememberMe=false; path=/; expires=Fri, 31 Dec 1970 23:59:59 GMT';
+  //   });
+  // }
   ngOnInit(): void {
+    // this.oauthService.initCodeFlow();
     this.subscribeToAlerts();
     const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
     var tenancyName = tenantInfo ? tenantInfo.name : 'Not Selected';
@@ -70,7 +93,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         onLogin: (data: any) => {
           this.authenticateModal.userNameOrEmailAddress = data.userEmail;
           this.authenticateModal.password = data.userPassword;
-          this.authenticateModal.rememberClient = data.rememberme;
+          this.authenticateModal.rememberMe = data.rememberme;
           this.authenticate();
         },
         onShimmerLoad: (event: any) => {
@@ -78,9 +101,11 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         }
       }
     };
-    if (this.sessionService.user) {
-      this._router.navigateByUrl('pages/dashboard');
-    }
+    
+    // if (this.sessionService.user) {
+    //   this._router.navigateByUrl('pages/dashboard');
+    // }
+    //this.refreshLogin();
     this.store.select(selectTenant).subscribe(res => {
       if (res) {
         const mfeConfig = this.rdsLoginMfeConfig;
@@ -102,9 +127,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
           // mfeConfig.input.buttonSpinner = false;
           this.rdsLoginMfeConfig = mfeConfig;
         }
-
       }
-
     })
   }
 
@@ -114,7 +137,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         tenancyName: data,
       }
       this.tenancyName = data;
-      this.store.dispatch(ValidateTenantName(tenantData));
+      //this.store.dispatch(ValidateTenantName(tenantData));
     } else {
       const mfeConfig = this.rdsLoginMfeConfig;
       localStorage.removeItem('tenantInfo');
@@ -144,49 +167,35 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
 
 
 
-  authenticate(redirectUrl?: string): void {
+  authenticate(redirectUrl?: string) {
     const mfeConfig = this.rdsLoginMfeConfig
     mfeConfig.input.buttonSpinner = true;
-    this._tokenAuthService.authenticate(this.authenticateModal).subscribe({
-      next: (result: AuthenticateResultModel) => {
-        this.processAuthenticateResult(result, redirectUrl);
-        localStorage.setItem('userNameInfo', JSON.stringify({
+    this.oauthService.fetchTokenUsingPasswordFlow('admin', '1q2w3E*').then(result=>{
+      console.log(result);
+      console.log("user name and passoword went through oauth and we got some result");
+      //document.cookie = 'rememberMe=true; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+      //this._userAuthService.authenticateUser();
+      this._userAuthService.getApplicationConfiguration();
+      //let token = this.authStorage.getItem('access_token');
+    // let url_ = "" + "/api/abp/application-configuration";
 
-          username: this.authenticateModal.userNameOrEmailAddress
+    //     let options_ : any = {
+    //         observe: "response",
+    //         responseType: "blob",
+    //         headers: new HttpHeaders({
+    //             "Accept": "text/plain",
+    //             "Authorization" : 'Bearer ' 
+    //         })
+    //     };
 
-        }));
-      },
-      error: (err: any) => {
-        mfeConfig.input.buttonSpinner = false;
-        this.alertService.showAlert('title', 'Invalid user name or password', 'error')
-      },
+    //     this.http.request("get", url_ ).subscribe(result=>{
+    //       console.log(result);
+          
+    //     })
+      this._router.navigateByUrl('/pages/dashboard');
     });
-  }
+    
 
-  private processAuthenticateResult(authenticateResult: any, redirectUrl?: string) {
-    this.authenticateResult = authenticateResult;
-    this.store.dispatch(getCurrentLoginInformation());
-
-    let tokenExpireDate = this.authenticateModal.rememberClient ? new Date().getTime() + 1000 * this.authenticateResult?.expireInSeconds : undefined;
-    let refreshTokenExpireDate = this.authenticateModal.rememberClient ? new Date().getTime() + 1000 * this.authenticateResult?.refreshTokenExpireInSeconds : undefined;
-
-    if (authenticateResult?.accessToken != undefined) {
-      localStorage.setItem('LoginCredential', JSON.stringify({
-        token: this.authenticateResult.accessToken,
-        refreshToken: this.authenticateResult.refreshToken,
-        expireDate: tokenExpireDate,
-        refreshTokenExpireDate: refreshTokenExpireDate,
-        date: Date.now() + tokenExpireDate
-      }));
-      this._userAuthService.authenticateUser();
-      this.store.dispatch(GetProfilePicture());
-      this.store.dispatch(GetSubscriptionExpiringData());
-      this._userAuthService.getUserConfiguration('login');
-    } else {
-      // Unexpected result!
-      this._router.navigateByUrl('/pages/login');
-    }
   }
 
 }
-

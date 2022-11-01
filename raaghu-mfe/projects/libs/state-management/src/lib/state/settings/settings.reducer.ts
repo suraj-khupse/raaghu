@@ -1,73 +1,149 @@
-// import { Action, createReducer, on } from '@ngrx/store';
-// export function laanguageListReducer(state, action:Action)
-// {
-//     switch (action.type) {
-
-//         case 'ADD_LANGUAGE':
-
-//           return { ...state, languageList: [...state.items, action] };
-
-//       }
-// }
-
 import { createReducer, on } from "@ngrx/store";
-import { getSettingFailure, getSettings, getSettingsTenantPageComboboxItems, getSettingsTenantPageComboboxItemsFailure, getSettingsTenantPageComboboxItemsSuccess, getSettingSuccess } from "./settings.actions";
-import { Setting } from "./settings.models";
+import { getAccountCaptchaSettings, getAccountCaptchaSettingsFailure, getAccountCaptchaSettingsSuccess, getAccountGenaralSettingsSuccess, getAccountGeneralSettings, getAccountGeneralSettingsFailure, getAccountTwoFactorSettings, getAccountTwoFactorSettingsFailure, getAccountTwoFactorSettingsSuccess, getEmailSettings, getEmailSettingsFailure, getEmailSettingsSuccess, getIdentityManagementSettings, getIdentityManagementSettingsFailure, getIdentityManagementSettingsSuccess, getThemeSettings, getThemeSettingsFailure, getThemeSettingsSuccess, saveAccountCaptchaSettings, saveAccountGeneralSettings, saveAccountTwoFactorSettings, saveEmailSettings, saveIdentityManagementSettings, saveThemeSettings } from "./settings.actions";
 
 
 export interface SettingsState {
-    settings: any, 
+    emailsettings: any;
+    identityManagementSettings:any;
+    themeSettings: any;
+    twoFactorSettings: any;
+    captchaSettings: any;
+    generalSettings:any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
-export const settingInitialState: SettingsState = {
-    settings: {  },
+export const settingsInitialState: SettingsState = {
+    emailsettings: null,
+    identityManagementSettings:null,
+    themeSettings: null,
+    twoFactorSettings: null,
+    captchaSettings: null,
+    generalSettings:null,
     error: null,
     status: 'pending',
 };
 export const settingReducer = createReducer(
     // Supply the initial state
-    settingInitialState,
-    on(getSettings, (state) => ({ ...state, status: 'loading' })),
+    settingsInitialState,
+    on(getEmailSettings, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos
-    on(getSettingSuccess, (state, { settings }) => ({
+    on(getEmailSettingsSuccess, (state, { emailSettings }) => ({
         ...state,
-        settings: settings,
+        emailsettings: emailSettings,
         error: null,
         status: 'success',
     })),
     // Handle todos load failure
-    on(getSettingFailure, (state, { error }) => ({
+    on(getEmailSettingsFailure, (state, { error }) => ({
         ...state,
         error: error,
         status: 'error',
-    }))
+    })),
+    on(saveEmailSettings, (state, { error }) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    
+    on(getIdentityManagementSettings, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(getIdentityManagementSettingsSuccess, (state, { identityManagementSettings }) => ({
+        ...state,
+        identityManagementSettings: identityManagementSettings,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(getIdentityManagementSettingsFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+    on(saveIdentityManagementSettings, (state, { error }) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    
+    on(getThemeSettings, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(getThemeSettingsSuccess, (state, { themeSettings }) => ({
+        ...state,
+        themeSettings: themeSettings,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(getThemeSettingsFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+    on(saveThemeSettings, (state, { error }) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    
+    on(getAccountTwoFactorSettings, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(getAccountTwoFactorSettingsSuccess, (state, { twoFactorSettings }) => ({
+        ...state,
+        twoFactorSettings: twoFactorSettings,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(getAccountTwoFactorSettingsFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+    on(saveAccountTwoFactorSettings, (state, { error }) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    
+    on(getAccountCaptchaSettings, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(getAccountCaptchaSettingsSuccess, (state, { captchaSettings }) => ({
+        ...state,
+        captchaSettings: captchaSettings,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(getAccountCaptchaSettingsFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+    on(saveAccountCaptchaSettings, (state, { error }) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
+    
+    on(getAccountGeneralSettings, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(getAccountGenaralSettingsSuccess, (state, { generalSettings }) => ({
+        ...state,
+        generalSettings: generalSettings,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(getAccountGeneralSettingsFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+    on(saveAccountGeneralSettings, (state, { error }) => ({
+        ...state,
+        error: null,
+        status: 'success',
+    })),
 )
 
-export interface SettingsTenantPageComboboxState {
-  settingsComboboxItem: any[]
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const settingsTenantPageboxInitialState: SettingsTenantPageComboboxState = {
-  settingsComboboxItem: [],
-  error: null,
-  status: 'pending',
-};
-export const SettingsTenantPageboxReducer = createReducer(
-  settingsTenantPageboxInitialState,
-  on(getSettingsTenantPageComboboxItems, (state) => ({ ...state, status: 'loading' })),
-  on(getSettingsTenantPageComboboxItemsSuccess, (state, { settingsComboboxItem }) => ({
-    ...state,
-    settingsComboboxItem: settingsComboboxItem,
-    error: null,
-    status: 'success',
-  })),
-  on(getSettingsTenantPageComboboxItemsFailure, (state, { error }) => ({
-    ...state,
-    error: error,
-    status: 'error',
-  }))
-
-)

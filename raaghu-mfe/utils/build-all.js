@@ -61,11 +61,11 @@ if (appConfig.replaceUrl == "true") {
     fs.writeFileSync(mfeFilePath, mfeConfig);
 }
 
-console.log('Building project \x1b[32m rds-components \x1b[0m...');
-execSync(`ng build rds-components > output.log &`, { cwd: process.cwd(), stdio: 'inherit' });
+// console.log('Building project \x1b[32m rds-components \x1b[0m...');
+// execSync(`ng build rds-components > output.log &`, { cwd: process.cwd(), stdio: 'inherit' });
 // let commandline = 'concurrently ';
 for (const project of Object.keys(projects)) {
-    if (projects[project]["projectType"] === 'application' && (project.indexOf('storybook') == -1 || project.indexOf('rds-components') == -1)) {
+    if (projects[project]["projectType"] === 'application' && project.indexOf('storybook') == -1) {
         console.log('Building project \x1b[32m' + project + '\x1b[0m...');
         execSync(`ng build ${project} > output.log &`, { cwd: process.cwd(), stdio: 'inherit' });
         // commandline = commandline + ' \"ng build ' + project + '\"';

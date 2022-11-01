@@ -27,6 +27,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     userInfo: undefined,
     userSettings: undefined,
     featureList: [],
+    
   };
   rdsOrganizationTreeConfig: ComponentLoaderOptions;
   public navtabsItems: any = [];
@@ -34,14 +35,16 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   @Input() public userList: any = [];
   @Input() public roles: any = [];
   @Input() public userinfo: any;
-  @Input() isShimmer: boolean = false;
-  @Input() editShimmer: boolean = false;
+  // @Input() isShimmer: boolean = false;
+  // @Input() editShimmer: boolean = false;
   @Input() public isEdit: boolean = false;
   @Input() public OrganizationUnit: any = [];
   @Input() organizationTreeList: [];
   @Input() permissionsList: PermissionNode[] = [];
   @Input() selectedPermissions: any = [];
   @Input() selectedOrganizations: any = [];
+  @Input() userTableData:any=[];
+  @Input() orgTreeData:any;
   @Input() listItemsm = [
     { value: 'New User', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' }
   ];
@@ -93,7 +96,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     ]
   selectedTreeNode: number;
   constructor(public translate: TranslateService) { }
-  @Input() orgTreeData = [];
+ // @Input() orgTreeData = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
   TreeType: TreeType = {
     IconLabel: false,
@@ -136,6 +139,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     mfeConfig.input.orgTreeData = [...this.orgTreeData];
     this.rdsOrganizationTreeConfig = mfeConfig;
     this.selectedOrganizationUnit = [];
+    
   }
   getSelectedNavTab(event: any): void {
     this.activePage = event;
@@ -154,9 +158,10 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     const user: any = {
       userInfo: this.user.userInfo,
       roles: this.selectedRoles,
-      organizationUnits: this.Selecteorganizationdata,
+      organizationUnits: this.orgTreeData,
     };
     this.Saveuserinfo.emit({ item: user });
+    this.Saveuserinfo.emit(this.user)
     this.isReset = true;
     this.activePage = 0;
     this.close();
@@ -196,14 +201,15 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
       },
       {
         label: this.translate.instant('Roles'),
-        tablink: '#claims',
-        ariacontrols: 'claims',
+        tablink: '#roles',
+        ariacontrols: 'roles',
       },
       {
         label: this.translate.instant('Organization Units'),
         tablink: '#organizationUnit',
         ariacontrols: 'organizationUnit',
       },
+      
     ];
     this.CreateOrEditUser.emit({ id: undefined });
     if (event) {
@@ -286,7 +292,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     this.selectedRoles = [];
     this.roles.forEach((item: any) => {
       if (item.isAssigned) {
-        this.selectedRoles.push(item.roleName);
+        this.selectedRoles.push(item.name);
       }
     });
   }
@@ -299,7 +305,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
         permissionlist
       );
     }
-    // console.log(permissionlist);
+     //console.log(permissionlist);
 
   }
 

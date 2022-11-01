@@ -1,9 +1,9 @@
-import { CreateOrUpdateRoleInput, IsTenantAvailableInput } from "@libs/shared";
+//import { CreateOrUpdateRoleInput, IsTenantAvailableInput } from "@libs/shared";
 import { createAction, props } from "@ngrx/store";
 
 
-export const ValidateTenantName = createAction('[Login Page] Validate Tenant',
- (tenancyName: IsTenantAvailableInput) => ( {tenancyName} ));
+// export const ValidateTenantName = createAction('[Login Page] Validate Tenant',
+//  (tenancyName: IsTenantAvailableInput) => ( {tenancyName} ));
 
 export const ValidateTenantNameSuccess = createAction(
     '[Login Page] Validate Tenant Success',
@@ -19,7 +19,7 @@ export const getCurrentLoginInformation = createAction('[Login Page] Get Login I
 
 export const getCurrentLoginInformationSuccess = createAction(
     '[Login Page] Get Login Info Success',
-    props<{loginInfo: any}>()
+    props<{getCurrentLoginInformationResult: any}>()
 );
 
 export const getCurrentLoginInformationFailure = createAction(

@@ -1,12 +1,13 @@
 import { createAction, props } from "@ngrx/store";
-import { CreateEditionDto, MoveTenantsToAnotherEditionDto, UpdateEditionDto } from "projects/libs/shared/src/lib/service-proxies";
+import { AnyFn } from "@ngrx/store/src/selector";
+//import { CreateEditionDto, MoveTenantsToAnotherEditionDto, UpdateEditionDto } from "projects/libs/shared/src/lib/service-proxies";
 import { Edition } from "./edition.model";
 
 export const getEditions = createAction('[Edition Page] Get Edition');
 
 export const getEditionSuccess = createAction(
     '[Edition Page] Get Edition Success',
-    props<{ editions: Edition }>()
+    props<{ editions: any }>()
 );
 
 export const getEditionFailure = createAction(
@@ -14,7 +15,19 @@ export const getEditionFailure = createAction(
     props<{ error: string }>()
 );
 
-export const getEditionInfo = createAction('[Edition Page] Get Edition Info', (id: number | undefined) => ({ id }));
+export const getplanLookupInfo = createAction('[Edition Page] Get PlanLookup Info');
+
+export const getPlanLookupSuccess = createAction(
+    '[Edition Page] Get PlanLookup Info Success',
+    props<{ planLookup: any }>()
+);
+
+export const getPlanLookupFailure = createAction(
+    '[Edition Page] Get PlanLookup Info Failure',
+    props<{ error: string }>()
+);
+
+export const getEditionInfo = createAction('[Edition Page] Get Edition Info', (id: any | undefined) => ({ id }));
 
 export const getEditionInfoSuccess = createAction(
     '[Edition Page] Get Edition Info Success',
@@ -25,67 +38,61 @@ export const getEditionInfoFailure = createAction(
     '[Edition Page] Get Edition Info Failure',
     props<{ error: string }>()
 );
+export const getEditionFeature = createAction('[Edition Page] Get Edition Feature', (id: any | undefined) => ({ id }));
 
-
-export const deleteEdition = createAction(
-    '[Edition Page] Delete Edition',
-    (id: number) => ({ id })
+export const getEditionFeatureSuccess = createAction(
+    '[Edition Page] Get Edition Feature Success',
+    props<{ feature: any }>()
 );
 
-export const saveEdition = createAction(
-    '[Edition Page] Save Edition',
-    (edition: CreateEditionDto) => ({ edition })
-);
-
-export const updateEdition = createAction(
-    '[Edition Page] Update Edition',
-    (edition: UpdateEditionDto) => ({ edition })
-);
-
-export const getEditionUpdateSuccess = createAction(
-    '[Edition Page] Get Edition Update Success',
-    props<{ edition: any }>()
-);
-
-export const deleteEditionSuccess = createAction(
-    '[Edition Page] Delete Edition Success',
-    (id: number) => ({ id })
-);
-
-export const deleteEditionFailure = createAction(
-    '[Edition Page] Delete Edition Failure',
+export const getEditionFeatureFailure = createAction(
+    '[Edition Page] Get Edition Feature Failure',
     props<{ error: string }>()
 );
 
-export const getEditionPageComboboxItems = createAction('[Edition Page] Get Edition Combobox Items');
-
-export const getEditionPageComboboxItemsSuccess = createAction(
-  '[Edition Page] Get Edition Combobox Items Success',
-  props<{ editionComboboxItem: any }>()
+export const saveEdition = createAction(
+  '[Edition Page] Save Edition',
+  (edition: any) => ({ edition })
+);
+export const saveEditionSuccess = createAction(
+  '[Edition Page] Save Edition Success'
+);
+export const saveEditionFailure = createAction(
+  '[Edition Page] Save Edition Failure',
+  props<{ error: string }>()
 );
 
-export const getEditionPageComboboxItemsFailure = createAction(
-  '[Edition Page] Get Edition Combobox Items Failure',
+export const deleteEdition = createAction(
+    '[Edition Page] Delete Edition',
+    (id: any) => ({ id })
+);
+
+export const deleteEditionSuccess = createAction(
+  '[Edition Page] Delete Edition Success',
+);
+
+export const deleteEditionFailure = createAction(
+  '[Edition Page] Delete Edition Failure',
   props<{ error: string }>()
 );
 
 
 
-export const getTenantCount = createAction('[Edition Page] Get Tenant Count', (editionId: number|undefined) => ({ editionId }));
 
-export const getTenantCountSuccess = createAction(
-  '[Edition Page] Get Tenant Count Success',
-  props<{ tenantCount: any }>()
+
+export const updateEdition = createAction(
+    '[Edition Page] Update Edition',
+    (edition: any) => ({ edition })
 );
 
-export const getTenantCountFailure = createAction(
-  '[Edition Page] Get Tenant Count Failure',
-  props<{ error: string }>()
+export const updateEditionSuccess = createAction(
+    '[Edition Page] Edition Update Success',
+    props<{ edition: any }>()
+);
+export const updateEditionFailure= createAction(
+  '[Edition Page] Edition Update Success',
+  props<{ error: any }>()
 );
 
-export const moveTenant = createAction(
-  '[Edition Page] Move Tenant',
-  (data: MoveTenantsToAnotherEditionDto) => ({ data })
-);
 
 

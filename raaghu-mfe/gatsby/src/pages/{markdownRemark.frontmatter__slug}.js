@@ -58,7 +58,7 @@ export default function Template({
     ) {
       const _item = {
         name: item.name,
-        url: item.name.substring(9),
+        url: item.name.substring(4),
         displayName: item.name.substring(9).replace(/-/g, " "),
       };
       componentsList.push(_item);
@@ -81,90 +81,35 @@ export default function Template({
   const pageLists = [];
   // find out pages names.
   const pageexcludesList = [
-    "rds-",
-    "src",
-    "lib",
-    "app",
-    "assets",
-    "environments",
-    "root",
-    "e2e",
-    "accordion-item",
-    "scrollspy-item",
-    "projects",
-    "shared",
-    "data",
-    "styles",
-    "state",
-    "multiple-mfe",
-    "projects",
-    ".storybook",
-    "modals",
-    "sidenav",
-    "selected-product",
-    "ele-preview",
-    "shimmer",
-    "cookieconsent",
-    "ele-preview",
-    "webhooks-subscription-shimmer",
-    "cookieconsent",
-    "utils",
-    "util",
-    "-shimmer",
-    "rdc-comp-api-scope-basic",
-    "rdc-comp-api-scope-resource",
-    "test",
-    "testing",
-    "mla",
-    "date-fns",
-    "day",
-    "model",
-    "moment",
-    "ng-add",
-    "themes",
-    "event",
-    "home",
-    "date-adapters",
-    "date-adapter",
-    "basicresource",
-    "common",
-    "host",
-    "modules",
-    "month",
-    "i18n",
-    "service",
-    "DownloadData",
-    "product-list",
-    "products",
-    "api-claims",
-    "api-properties",
-    "api-basics",
-    "api-secrets",
-    "authority-delegations",
-    "claim-types",
-    "claims",
-    "edit-language-text",
-    "language-storybook",
-    "login-attempts",
-    "manage-linked-accounts",
-    "modal",
-    "my-settings",
-    "schematics",
-    "visual-settings",    
+    "demo-ui"  
   ];
-  elementsList.forEach((item, index, self) => {
+  // elementsList.forEach((item, index, self) => {
+  //   if (
+  //     !pageexcludesList.some((element) => item.name.includes(element)) &&
+  //     index === self.findIndex((t) => t.name === item.name)
+  //   ) {
+  //     const _item = {
+  //       name: item.name,
+  //       url: item.name,
+  //       displayName: item.name.replace(/-/g, " "),
+  //     };
+  //     pageLists.push(_item);
+  //   }
+  // });
+
+  elementsList.forEach((item) => {
     if (
-      !pageexcludesList.some((element) => item.name.includes(element)) &&
-      index === self.findIndex((t) => t.name === item.name)
-    ) {
-      const _item = {
-        name: item.name,
-        url: item.name,
-        displayName: item.name.replace(/-/g, " "),
-      };
-      pageLists.push(_item);
-    }
-  });
+      item.name.includes("rds-page-") &&
+      !pageexcludesList.some((element) => item.name.includes(element)))
+      {
+        const _item = {
+          name: item.name,
+          url: item.name.substring(4),
+          displayName: item.name.substring(8).replace(/-/g, " "),
+        };
+        pageLists.push(_item);
+      }
+    });
 
 
   pageLists.sort((a, b) => {

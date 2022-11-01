@@ -223,7 +223,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
       userInfo: this.user.userInfo,
       roles: this.selectedRoles,
       organizationUnits: this.Selecteorganizationdata,
-    };
+    };                                           
     this.Saveuserinfo.emit({ item: user });
     this.isReset = true;
     this.activePage = 0;
@@ -342,8 +342,8 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     this.activePage = 0;
     // this.newUser(undefined);
     this.CreateOrEditUser.emit({ id: this.selectedId });
-
   }
+  
   getSelectedRoles() {
     this.selectedRoles = [];
     this.roles.forEach((item: any) => {

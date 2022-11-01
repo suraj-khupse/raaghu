@@ -1,17 +1,6 @@
-// import { Action, createReducer, on } from '@ngrx/store';
-// export function laanguageListReducer(state, action:Action)
-// {
-//     switch (action.type) {
-
-//         case 'ADD_LANGUAGE':
-
-//           return { ...state, languageList: [...state.items, action] };
-
-//       }
-// }
 
 import { createReducer, on } from "@ngrx/store";
-import { getAuditLogsSuccess, getAuditLogs, getAuditLogsFailure } from "./audit-logs.actions";
+import { getAuditLogsSuccess, getAuditLogs, getAuditLogsFailure, getAuditLogDetails, getAuditLogDetailsSuccess, getAuditLogDetailsFailure } from "./audit-logs.actions";
 import { AuditLogs } from "./audit-logs.models";
 
 
@@ -29,12 +18,16 @@ export const auditLogsInitialState: AuditLogsState = {
 
 export interface ChangeLogsState {
   changeLogs: any;
+  logDetails:any;
+  entitychanges: any;
   error: string;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const ChangeLogInitialState: ChangeLogsState = {
   changeLogs: { items: [] },
+  logDetails: null,
+  entitychanges:null,
   error: null,
   status: 'pending',
 };
@@ -51,6 +44,21 @@ export const AuditLogsReducer = createReducer(
   })),
   // Handle todos load failure
   on(getAuditLogsFailure, (state, { error }) => ({
+    ...state,
+    error: error,
+    status: 'error',
+  })),
+
+  on(getAuditLogDetails, (state) => ({ ...state, status: 'loading' })),
+  // Handle successfully loaded todos
+  on(getAuditLogDetailsSuccess, (state, { logDetails }) => ({
+    ...state,
+    logDetails: logDetails,
+    error: null,
+    status: 'success',
+  })),
+  // Handle todos load failure
+  on(getAuditLogDetailsFailure, (state, { error }) => ({
     ...state,
     error: error,
     status: 'error',

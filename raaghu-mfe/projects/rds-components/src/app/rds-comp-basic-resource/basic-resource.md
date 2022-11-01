@@ -1,7 +1,7 @@
 ---
 slug: "/comp-basic-resource"
 date: "2019-05-04"
-title: "Component > Basic-Resource"
+title: "Components > Basic-Resource"
 ---
 
 <!-- CSS only -->

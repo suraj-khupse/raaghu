@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class RdsBadgeComponent implements OnInit {
 
   title = 'rds-badge';
-  @Input() size: 'small' | 'smaller' | 'smallest' | 'medium' | 'large' = 'smallest'
+  @Input() size: 'smallest' | 'smaller' | 'small' | 'mid' | 'lg'| 'xlg' = 'smallest'
   @Input() label: string = 'New';
   @Input() positioned: boolean = false
   @Input() badgeType: 'rectangle' | 'circle' | 'pill' = 'rectangle'
