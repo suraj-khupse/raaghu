@@ -254,12 +254,6 @@ Thanks goes to these wonderful people and Wai technology.
       </a>
     </td>
     <td align="center" style="border: none">
-      <a href="https://github.com/yohulchitre">
-        <img src="https://avatars.githubusercontent.com/u/100934017?s=100v=4" width="100" title="Yohul Chitre"/>
-        <br /><sub><b></b></sub>
-      </a>
-    </td>
-    <td align="center" style="border: none">
       <a href="https://github.com/Priyanka-Shinkar">
         <img src="https://avatars.githubusercontent.com/u/99782840?s=100&v=4" width="100" title="Priyanka Shinkar"/>
         <br /><sub><b></b></sub>
