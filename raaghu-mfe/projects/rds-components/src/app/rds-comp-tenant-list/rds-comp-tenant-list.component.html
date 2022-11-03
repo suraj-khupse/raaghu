@@ -22,8 +22,8 @@
     </div>
 </div>
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'tenantOffcanvas'" [offcanvaswidth]="650"
-    [placement]="'end'" *ngIf="viewCanvas" [bodySpacing]="true" (onClose)="close()">
-    <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activepage]="activePage"
+    [placement]="'end'" *ngIf="viewCanvas"(onClose)="close()">
+    <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activeTab]="activePage"
         [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
         [justified]="false">
         <div naveContent class="row tab-content m-2" id="nav-tabContent">

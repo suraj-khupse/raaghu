@@ -22,4 +22,9 @@ export const parameters = {
     },
   },
   docs: { inlineStories: true },
+  themes: [
+    { name: 'light', class: 'light-theme', color: '#F8F8F8' ,  default:true  },
+    { name: 'dark', class: 'dark-theme', color: '#333333'},
+  ],  
+  
 }

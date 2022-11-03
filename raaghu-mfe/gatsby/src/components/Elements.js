@@ -34,15 +34,15 @@ const Elements = () => {
     return (
       // Action strips
 
-      <div className="row" id="action-components">
+      <div id="action-components">
         <h3>
-          <div className="row">
-            <div className="col-12">
+          <div className="d-flex">
+           
             <img src={main.image} class="img-fluid" width="30px" alt="main" />
             <span class="px-2">
             {main.name}
                               </span>
-              </div>
+            
           </div>
         </h3>
         <p className="border-bottom pb-2">{main.description}</p>
@@ -53,9 +53,9 @@ const Elements = () => {
                 {sub.name}
               </div>
             </h4>
-            <div className="row" id="action-components">
+            <div className="row  mb-5 mt-5" id="action-components">
               {sub.children.map((child) => (
-                <div className="col-4 col-md-4 mb-5 mt-5">
+                <div className="col-md-4 col-md-4 mt-2 mb-2">
                   <a href={child?.link || "/button"}>
                     <div
                       className="card hover-shadow cursor-pointer"

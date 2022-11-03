@@ -7,7 +7,7 @@ title: "Components > Features"
 
 ### Features
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>provides a table based on requirement and actions needed by the user</p>
 
 <section class="py-4">
     <h6>Default</h6>

@@ -31,15 +31,28 @@ const Template: Story<RdsCompNewClaimTypeComponent> = (args: RdsCompNewClaimType
       ...args
   },
   template: 
-  `<app-claim-types></app-claim-types> 
+  `<div class="row">
+    <div class="d-flex justify-content-end mt-2">
+        <rds-button  [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'"
+            [colorVariant]="'primary'" [label]="'NEW CLAIM TYPES'"  [attr.data-bs-toggle]="'offcanvas'"
+            [attr.data-bs-target]="'#addnewclaimtype'" [attr.aria-controls]="'addnewclaimtype'">
+        </rds-button>
+    </div>
+    <div class="row ">
+    <app-claim-types></app-claim-types> 
   <app-rds-data-table
    [tableHeaders]="claimtypesHeaders" 
    [tableData]="ClaimTypeData" 
    [actions]="actions"></app-rds-data-table>
-   `
+     </div>
+</div>
+<rds-offcanvas [canvasTitle]="'NEW CLAIM TYPE'" [offId]="'addnewclaimtype'"
+[placement]="'end'" [offcanvaswidth]="600" >
+<app-claim-types ></app-claim-types>
 
-   
+</rds-offcanvas>
 
+`
   });
 
 export const Default = Template.bind({});

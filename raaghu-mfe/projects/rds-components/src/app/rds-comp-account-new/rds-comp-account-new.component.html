@@ -19,8 +19,9 @@
         <div class="border-bottom text-muted mt-3 fw-bold">
             <rds-label [label]="'Two Factor Authentication '"></rds-label>
             </div>
-            <div class="col-md-6 mt-4">
-                <rds-select-list [label]="'Two Factor Authentication'" required [isRequired]=true ngDefaultControl LabelType="Top"
+            <div class="mt-4">
+                <label for="value" class="mb-2">Two Factor Authentication<span class="text-danger">*</span></label>
+                <rds-select-list required [isRequired]=true ngDefaultControl LabelType="Top"
                     name="twofactorauthentication" [itemList]="AuthentiactionList"  [(ngModel)]="accountData.twofactorauthentication"
                     #twofactorauthentication="ngModel" [placeholder]="'Select'"
                    >
@@ -60,7 +61,7 @@
                 <div class="row mt-2">
                     <div class="col-md-4 mt-3">
                         <div class="form-group ">
-                          <rds-input size="default"  [Title]="'Verify Base URL'" [TitleType]="'Top'" inputType="text"
+                          <rds-input size="medium"  [label]="'Verify Base URL'" [labelPosition]="'top'" inputType="text"
                                      name="baseUrl"  [isRequired]=true required [disabled]="false" [readonly]="false"
                                      [placeholder]="'Enter URL'"  [(ngModel)]="accountData.baseUrl"
                                      #baseUrl="ngModel" ngDefaultControl>
@@ -68,7 +69,8 @@
                           </div>
                      </div>
                      <div class="col-md-4 mt-3">
-                        <rds-select-list [label]="'Version'" required [isRequired]=true ngDefaultControl LabelType="Top"
+                        <label for="value" class="mb-2">Version<span class="text-danger">*</span></label>
+                        <rds-select-list required [isRequired]=true ngDefaultControl LabelType="Top"
                             name="version" [itemList]="VersionList"  [(ngModel)]="accountData.version"
                             #version="ngModel" [placeholder]="'Select'"
                            >
@@ -76,7 +78,7 @@
                     </div>
                      <div class="col-md-4 mt-3">
                         <div class="form-group ">
-                          <rds-input size="default"  [Title]="'Score'" [TitleType]="'Top'" inputType="text"
+                          <rds-input size="medium"  [label]="'Score'" [labelPosition]="'top'" inputType="text"
                                      name="score"  [isRequired]=true required [disabled]="false" [readonly]="false"
                                      [placeholder]="'Enter Score'"  [(ngModel)]="accountData.score"
                                      #score="ngModel" ngDefaultControl>
@@ -87,7 +89,7 @@
                 <div class="row mt-2">
                     <div class="col-md-4 mt-3">
                         <div class="form-group ">
-                          <rds-input size="default"  [Title]="'Site Key'" [TitleType]="'Top'" inputType="text"
+                          <rds-input size="medium"  [label]="'Site Key'" [labelPosition]="'top'" inputType="text"
                                      name="site"  [isRequired]=true required [disabled]="false" [readonly]="false"
                                      [placeholder]="'Enter URL'"  [(ngModel)]="accountData.site"
                                      #site="ngModel" ngDefaultControl>
@@ -95,7 +97,7 @@
                           </div>
                      </div>
                      <div class="col-md-4 mt-3">
-                        <rds-input size="default"  [Title]="'Site Secret'" [TitleType]="'Top'" inputType="text"
+                        <rds-input size="medium"  [label]="'Site Secret'" [labelPosition]="'top'" inputType="text"
                         name="secret"  [isRequired]=true required [disabled]="false" [readonly]="false"
                         [placeholder]="'Enter Secret'"  [(ngModel)]="accountData.secret"
                         #secret="ngModel" ngDefaultControl>
@@ -105,22 +107,22 @@
                 <div class="border-bottom text-muted mt-4 fw-bold">
                     <rds-label [label]="'External Provider '"></rds-label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-4">
+                    <div class="row pt-3">
+                        <div class="col-md-12 mb-2">
                             <rds-checkbox [disabled]="false" [label]="'Google'" name="google" [withLabel]="true"
                                 [switch]="false" [inline]="false"  [(ngModel)]="accountData.google"
                                 #authentication="ngModel"  [id]="'ssl'"></rds-checkbox>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mt-4">
+                        <div class="col-md-12 mb-2">
                             <rds-checkbox [disabled]="false" [label]="'Microsoft'" name="microsoft" [withLabel]="true"
                                 [switch]="false" [inline]="false"  [(ngModel)]="accountData.microsoft"
                                 #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 mt-4">
+                        <div class="col-md-12 mb-2">
                             <rds-checkbox [disabled]="false" [label]="'Twitter'" name="twitter" [withLabel]="true"
                                 [switch]="false" [inline]="false"  [(ngModel)]="accountData.twitter"
                                 #authentication="ngModel" [id]="'ssl'"></rds-checkbox>

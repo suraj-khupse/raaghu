@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Dropdown } from 'bootstrap'
 
 @Component({
   selector: 'rds-dropdownlist',
@@ -13,33 +14,28 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
   isMasterSel: boolean;
   categoryList: any;
   checkedCategoryList: any;
- 
+  @Input() id: string = 'dropdownMenuLink';
   @Input() value: any;
   @Input()
   multiSelect!: boolean;
-
   @Input()
   selectAll: boolean = true;
 
-  @Input()
-  size?: string;
+  @Input() size: 'small' | 'large' = 'small';
 
-  @Input()  iconHeight: string = '10px';
+  @Input() iconHeight: string = '10px';
   @Input() iconWidth: string = '10px';
-  @Input()  iconStroke: boolean = true;
+  @Input() iconStroke: boolean = true;
   @Input() iconFill: boolean = false;
   @Input() icon: string = '';
+  @Input() placeholder = "Filter by user"
+  @Input() show: boolean = false;
+  @Input() borderDropdown: boolean = false;
 
+  @Input() xOffset: string = '';
+  @Input() yOffset: string = '';
   @Input()
-  colorVariant?: string;
-
-  @Input()
-  placeholder = "Filter by user"
-
-  @Input() borderDropdown : boolean = false;
-
-  @Input()
-   listItems:any =[
+  listItems: any = [
     { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'export_to_excel', iconWidth: '20px', iconHeight: '25px', iconStroke: true, iconFill: false },
     { value: 'Import from excel', some: 'value', id: 2, href: '', icon: 'download_data', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
     { value: 'Click here download sample import file.', some: 'value', id: 3, href: '', icon: 'download_data', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
@@ -59,12 +55,12 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.resetFormSubject.subscribe(response => {
-      if(response){
-      this.checkedCategoryList = [];
-      this.badgeList = [];
-      this.placeholder = this.resetPlaceholder;
-    }
-   })
+      if (response) {
+        this.checkedCategoryList = [];
+        this.badgeList = [];
+        this.placeholder = this.resetPlaceholder;
+      }
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -77,23 +73,20 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
 
   public get button1(): any[] {
 
-    var customClasses = [' btn-'+ `${this.colorVariant}`, ' form-control ', ' form-select ', 'dropdown-toggle', '']
+    var customClasses = [' form-control', ' form-select ', 'dropdown-toggle', '']
 
     if (this.size === 'small') {
-      // var selectSize = 'btn-sm'
-      customClasses.push('btn-sm')
+      customClasses.push('form-control-sm')
     }
     else if (this.size === 'large') {
-      // var selectSize = 'btn-lg'
-      customClasses.push('btn-lg')
+      customClasses.push('form-control-lg')
     }
-    else if(this.borderDropdown === false){
+    if (this.borderDropdown) {
+      customClasses.push('border')
+    } if (!this.borderDropdown) {
       customClasses.push('border-0')
     }
-    else {
-      var selectSize = ''
-      customClasses.push(selectSize)
-    }
+
 
     //if (this.color !== '') {
 
@@ -110,7 +103,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
     this.getCheckedItemList();
   }
 
-  
+
   isAllSelected() {
     this.isMasterSel = this.listItems.every(function (item: any) {
       return item.isSelected == true;
@@ -135,7 +128,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
     this.checkedCategoryList = [];
     this.badgeList = [];
     for (var i = 0; i < this.listItems.length; i++) {
-      if (this.listItems[i].isSelected){
+      if (this.listItems[i].isSelected) {
         this.checkedCategoryList.push(" " + this.listItems[i].value);
         this.badgeList.push(this.listItems[i]);
       }
@@ -149,20 +142,28 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
 
     //this.checkedCategoryList = JSON.stringify(this.checkedCategoryList);
   }
-  public get classes(): string[]{
+  public get classes(): string[] {
 
     var border = ['border']
-   if(this.borderDropdown == true){
-    
-    //  border.push('border');
-     border.push('rounded')
-   }
-   else{
-     border.push('border-0');
-   }
-return border;
-  
+    if (this.borderDropdown == true) {
 
+      //  border.push('border');
+      border.push('rounded')
+    }
+    else {
+      border.push('border-0');
+    }
+    return border;
+
+
+  }
+
+
+  open(): void {
+    this.show = !this.show;
+    var element: any = document.getElementById(this.id);
+    var dropdown = new Dropdown(element);
+    dropdown.show();
   }
 
 }

@@ -13,10 +13,10 @@ export class RdsIconLabelComponent implements OnInit {
   @Input() icon: string = '';
   @Input() iconposition: 'left' | 'right' = 'left';
   height: string = '';
- width: string = '';
+  width: string = '';
   @Input() fill: boolean = false;
   @Input() stroke: boolean = true;
-  @Input() colorVariant: 'warning' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined = undefined;
+  @Input() colorVariant: 'warning' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' = 'light';
   @Input() size: 'small' | 'large' | 'medium' = 'medium';
   ngOnInit(): void {
   }
@@ -41,6 +41,11 @@ export class RdsIconLabelComponent implements OnInit {
     return classes;
   }
 
- 
+  getLabelColor(): string {
+    if (this.colorVariant) {
+      return 'text-' + this.colorVariant;
+    }
+    return '';
+  }
 
 }

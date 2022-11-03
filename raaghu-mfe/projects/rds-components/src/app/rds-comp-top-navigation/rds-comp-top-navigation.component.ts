@@ -22,11 +22,13 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     { value: 'blue', some: 'blue', id: 3 },
     { value: 'green', some: 'green', id: 4 },
     { value: 'orange', some: 'orange', id: 5 }
-  ]
+  ];
+
+  selectedTheme: string = 'default';
   @Input()
   LoginAttempts: any = {};
   @Input() LinkAccounts: []
-  @Input() logo: string = '';
+  @Input() logo: string = '/static/media/.storybook/assets/raaghu-logo.svg';
   @Input() projectName: string = '';
   @Input() sideMenuCollapsed: boolean = false;
   @Input() isPageWrapper: boolean = false;
@@ -42,7 +44,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() offCanvasId: string = ''
   @Input() profileLink: string = '';
   @Input() UserName: string = 'Wai Technologies';
-  @Input() profilePic: string = '../assets/profile-picture-circle.svg';
+  @Input() profilePic: string = 'https://stageui.raaghu.io/assets/profile-picture-circle.svg';
   @Input() notificationLink: string = '';
   @Input() profileData: any;
   @Input() rdsDeligateTableData: any = [];
@@ -191,8 +193,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     this.toggleEvent.emit();
   }
   onThemeSelect(event: any) {
-
-    console.log(event)
+    this.selectedTheme = event;
     const headEl = this.document.getElementsByTagName('head')[0];
     const existingLinkEl = this.document.getElementById('client-theme') as HTMLLinkElement;
     const newLinkEl = this.document.createElement('link');

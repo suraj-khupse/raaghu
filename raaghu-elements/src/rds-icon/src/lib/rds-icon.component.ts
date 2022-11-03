@@ -12,13 +12,14 @@ export class RdsIconComponent implements OnInit, OnChanges {
   private svgIcon!: SVGElement;
   title = 'rds-icon';
   @Input() height: string = '';
-  @Input() disabled: boolean | undefined = false;
+  // @Input() disabled: boolean | undefined = false;
   @Input() fill: boolean | undefined = false;
   @Input() stroke: boolean | undefined = true;
   @Input() width: string = '';
   @Input() name: string = '';
-  @Input() colorVariant: 'warning' | 'review' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined = undefined;
+  @Input() colorVariant: 'warning' | 'review' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined | 'default' = undefined;
   @Input() opacity: string = '';
+  @Input() strokeWidth: string = '';
 
   constructor(private element: ElementRef,
     @Optional() @Inject(DOCUMENT) private document: any) {
@@ -64,12 +65,15 @@ export class RdsIconComponent implements OnInit, OnChanges {
     if (this.height) {
       svg.style.height = this.height;
     }
+    if (this.strokeWidth) {
+      svg.style['stroke-width'] = this.strokeWidth;
+    }
     if (this.width) {
       svg.style.width = this.width;
     }
-    if (this.disabled) {
-      svg.classList.add('disabled');
-    }
+    // if (this.disabled) {
+    //   svg.classList.add('disabled');
+    // }
     if (this.opacity) {
       svg.style.opacity = this.opacity;
     }

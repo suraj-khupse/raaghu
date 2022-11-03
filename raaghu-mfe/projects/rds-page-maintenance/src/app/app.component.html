@@ -5,7 +5,7 @@
         <div class="desktop-btn">
           <rds-button (click)="deletAllcasheConfirmation()" [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'"
                       [colorVariant]="'primary'" [label]="translate.instant('CLEAR ALL')">
-            <rds-icon left name="delete" width="15px" height="15px"></rds-icon>
+            <rds-icon class="me-2" left name="delete" width="15px" height="15px"></rds-icon>
           </rds-button>
         </div>
         <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5" style="z-index: 1;">
@@ -28,7 +28,7 @@
                       icon="refresh" iconHeight="18px" iconWidth="26px" (click)="refreshData()" class="me-2"></rds-button>
           <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
                       (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [outlineButton]="true">
-            <rds-icon left name="download_data" height="12px" width="12px"></rds-icon>
+            <rds-icon left class="me-2" name="download_data" height="12px" width="12px"></rds-icon>
           </rds-button>
         </div>
         <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5" style="z-index: 1;">

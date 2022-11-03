@@ -51,19 +51,24 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     name: Deploy Job
-    steps:
-     - name: Deploy
-       id: builddeploy   
-       uses: Azure/static-web-apps-deploy@v1
-       with:
+    steps:   
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: node-app
+        path: ./raaghu-mfe/gatsby/public
+        
+    - name: Build And Deploy
+      id: builddeploy   
+      uses: Azure/static-web-apps-deploy@v1
+      with:
          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_RED_WAVE_01A34F710 }}
          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
          action: "upload"
          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-         # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig        
-         app_location: "./raaghu-mfe/gatsby" # App source code path
+         # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+         app_location: "./raaghu-mfe/gatsby/public" # App source code path
          api_location: "" # Api source code path - optional
-         app_build_command: "npm run build"
          output_location: "public" # Built app content directory - optional
          ###### End of Repository/Build Configurations ######
 

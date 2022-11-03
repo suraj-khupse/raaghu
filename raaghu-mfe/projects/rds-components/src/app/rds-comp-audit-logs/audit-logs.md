@@ -10,10 +10,9 @@ title: "Components > Audit-Logs"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Audit-Logs
-
+<p>It enables a user to have security relevant set of records that gives a documentary evidence of the sequence of sctivities</p>
  <section class="py-4">
-    <h6>Default</h6>
-    <div class="py-3">
+     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">

@@ -8,6 +8,8 @@ import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-
 import { RdsCompTenantInformationComponent } from 'projects/rds-components/src/app/rds-comp-tenant-information/rds-comp-tenant-information.component';
 import { RdsCompTenantListComponent } from 'projects/rds-components/src/app/rds-comp-tenant-list/rds-comp-tenant-list.component';
 import { RdsCompTenantSettingsComponent } from 'projects/rds-components/src/app/rds-comp-tenant-settings/rds-comp-tenant-settings.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export default {
@@ -21,7 +23,7 @@ export default {
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,BsDatepickerModule.forRoot(), BrowserAnimationsModule, 
       ],
       providers: [
         FormBuilder

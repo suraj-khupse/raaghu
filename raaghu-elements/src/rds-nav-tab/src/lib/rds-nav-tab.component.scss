@@ -9,3 +9,14 @@
         white-space: nowrap;
     }
 }
+@media screen and (min-width:767px) and (max-width:1023px) {
+    .mobile-ul-tabs{
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+        min-height: 2.8rem;
+    }
+    .mobile-nav-item{
+        white-space: nowrap;
+    }
+}

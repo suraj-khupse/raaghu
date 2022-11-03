@@ -1,7 +1,7 @@
 ---
 slug: "/comp-properties"
 date: "2019-05-04"
-title: "Componenets > Properties"
+title: "Components > Properties"
 ---
 
 <!-- CSS only -->
@@ -10,9 +10,8 @@ title: "Componenets > Properties"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Properties
-
+<p>A card having tables of different users with their respective analytics</p>
  <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

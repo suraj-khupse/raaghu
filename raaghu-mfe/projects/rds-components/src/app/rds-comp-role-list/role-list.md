@@ -10,9 +10,8 @@ title: "Components > Role-List"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Role-List
-
+<p>Provides a card with tables and action to edit or delete</p>
  <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

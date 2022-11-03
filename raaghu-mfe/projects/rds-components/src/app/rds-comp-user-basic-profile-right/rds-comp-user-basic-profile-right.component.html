@@ -4,8 +4,8 @@
       <div class="row align-items-center sm-d-reverse">
         <div class="col-md-6 sm-p">
           <div class="form-group mb-3">
-            <rds-input [inputType]="'text'" [Title]="translate.instant('Name')" [(ngModel)]="userData.name"
-              [TitleType]="'Top'" name="name" required #name="ngModel" [placeholder]="translate.instant('Enter Name')"
+            <rds-input [inputType]="'text'" [label]="translate.instant('Name')" [(ngModel)]="userData.name"
+              [labelPosition]="'top'" name="name" required #name="ngModel" [placeholder]="translate.instant('Enter Name')"
               [isRequired]="true">
             </rds-input>
             <div class="form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
@@ -14,7 +14,7 @@
           </div>
 
           <div class="form-group mb-3">
-            <rds-input [inputType]="'text'" [Title]="translate.instant('User name')" [TitleType]="'Top'"
+            <rds-input [inputType]="'text'" [label]="translate.instant('User name')" [labelPosition]="'top'"
               [(ngModel)]="userData.surname" name="surname" required #surname="ngModel" [isRequired]="true"
               [placeholder]="translate.instant('Enter Surname')">
             </rds-input>
@@ -30,16 +30,15 @@
           <!-- <i class="bi bi-camera"></i> -->
           <!-- <rds-file-uploader [size]="'small'" [multipleFiles]="true" [role]="'fileUpload'"
                       [label]="'Upload Files'" [extensions]="'png, jpg'"></rds-file-uploader> -->
-                      <img width="100" src="https://demo.raaghu.io/assets/edit-pic.png" (click)="selectFile.click()">
-
-                      <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile>
-        </div>
+                        <img width="100" src="../assets/edit-pic.png" (click)="selectFile.click()">
+                        <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile>
+            </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 sm-p">
           <div class="form-group mb-3">
-            <rds-input [inputType]="'email'" [TitleType]="'Top'" [Title]="translate.instant('Email Id')"
+            <rds-input [inputType]="'email'" [labelPosition]="'top'" [label]="translate.instant('Email Id')"
               [(ngModel)]="userData.emailAddress" [pattern]="emailPattern" name="email" #email="ngModel" required
               [isRequired]="true" [placeholder]="translate.instant('Email Id')">
             </rds-input>
@@ -49,7 +48,7 @@
             </div>
           </div>
           <div class="form-group mb-3">
-            <rds-input [inputType]="'phoneNumber'" [Title]="translate.instant('Phone Number')" [TitleType]="'Top'"
+            <rds-input [inputType]="'number'" [label]="translate.instant('Phone Number')" [labelPosition]="'top'"
               [(ngModel)]="userData.phoneNumber" name="phone" required [isRequired]="true" #phone="ngModel"
               [pattern]="phonePattern" [placeholder]="translate.instant('Phone Number')">
             </rds-input>
@@ -62,7 +61,7 @@
         </div>
         <div class="col-md-6 sm-p">
           <div class="form-group mb-3">
-            <rds-input [inputType]="'password'" [TitleType]="'Top'" [Title]="translate.instant('Password')"
+            <rds-input [inputType]="'password'" [labelPosition]="'top'" [label]="translate.instant('Password')"
               [(ngModel)]="userData.password" name="pwd" autocomplete="off" #password="ngModel" required
               [isRequired]="true" [placeholder]="'Password'">
             </rds-input>

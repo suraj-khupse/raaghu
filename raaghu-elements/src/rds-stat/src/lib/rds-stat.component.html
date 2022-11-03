@@ -1,5 +1,5 @@
 <div [ngSwitch]="display_type">
-  <div *ngSwitchCase="'Basic'">
+  <div *ngSwitchCase="'basic'">
     <div class="card h-100 w-100 border" *ngFor="let item of statItems; let i = index">
           <div class="card-body align-items-center d-flex justify-content-center">
         <div>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div *ngSwitchCase="'Advanced'">
+  <div *ngSwitchCase="'advanced'">
     <div class="card h-300px w-300px border rounded-circle"
       *ngFor="let item of statItems; let i = index">
       <div

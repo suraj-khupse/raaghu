@@ -34,8 +34,11 @@
   }
   
   .nav-tabs.vertical-tab {
+      border-bottom:0px;
+
     .nav-item {
       padding-left: 0px;
+      margin-bottom:0.5rem;
   
       .nav-link {
         border: 0px;

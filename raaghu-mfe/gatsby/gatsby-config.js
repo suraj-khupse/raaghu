@@ -3,6 +3,9 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
     title: `Raaghu`
   },
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [
     `gatsby-plugin-image`,
     {

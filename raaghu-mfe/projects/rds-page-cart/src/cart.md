@@ -9,9 +9,8 @@ title: "Pages > cart"
 
 #### Cart
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>It provides a medium for a selection of a product and respectable quantity to be selected as well as the total transaction amount of the order</p>
 <section class="py-4">                                                                                             
-    <h6>Cart</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

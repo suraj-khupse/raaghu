@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, forwardRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-// import { Tooltip } from 'bootstrap'
-declare var bootstrap: any;
+import { Tooltip } from 'bootstrap'
 
 @Component({
   selector: 'rds-textarea',
@@ -20,33 +19,18 @@ export class RdsTextareaComponent implements AfterViewInit, ControlValueAccessor
   @Input() value = '';
   private onTouched!: Function;
   private onChanged!: Function;
+
   @Input() isRequired: boolean = false;
-
-  @Input()
-  disabled: boolean = false;
-
-  @Input()
-  rows?: string;
-
-  @Input()
-  readonly?: boolean;
-
-  @Input()
-  label = ''
-
-  floatinglabel: string = 'one';
-
+  @Input() disabled: boolean = false;
+  @Input() rows?: string;
+  @Input() readonly?: boolean = false;
+  @Input() label: string = '';
   @Input() isFloatingInputLabel: boolean = false;
-
-
-  @Input()
-  placeholderText = '';
-
+  @Input() placeholderText: string = '';
   @Input() tooltipTitle: string = '';
-
-  @Input() tooltipPlacement?: string = 'bottom';
-
-  id: string = 'textareaId';
+  @Input() tooltipPlacement: 'top' | 'bottom' | 'right' | 'left' = 'bottom';
+  @Input() labelPosition: 'top' | 'bottom' = 'top';
+  @Input() id: string = 'textareaId';
 
   constructor() {
     this.id = this.id + RdsTextareaComponent.count++;
@@ -54,15 +38,19 @@ export class RdsTextareaComponent implements AfterViewInit, ControlValueAccessor
 
 
   ngAfterViewInit(): void {
-    if (this.tooltipPlacement && this.tooltipTitle) {
-      const tooltipElement: any = document.getElementById(this.id)
-      // update
-      if (tooltipElement) {
-        let bsTooltip = new bootstrap.Tooltip(tooltipElement)
-        tooltipElement.title = this.tooltipTitle
-        bsTooltip = new bootstrap.Tooltip(tooltipElement)
-      }
+    const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    if (this.tooltipTitle && tooltipTriggerList) {
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl));
     }
+    // if (this.tooltipPlacement && this.tooltipTitle) {
+    //   const tooltipElement: any = document.getElementById(this.id)
+    //   // update
+    //   if (tooltipElement) {
+    //     let bsTooltip = new bootstrap.Tooltip(tooltipElement)
+    //     tooltipElement.title = this.tooltipTitle
+    //     bsTooltip = new bootstrap.Tooltip(tooltipElement)
+    //   }
+    // }
   }
 
   setValue(event: any) {

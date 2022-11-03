@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { Claims, Resource } from '../modal/IdentityResourcemodals';
@@ -10,6 +10,11 @@ declare let bootstrap: any;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @Input() ClaimData:Claims={
+    claim_ato_e: undefined,
+    claim_f_to_o: undefined,
+    claim_p_to_z: undefined
+  }
   title = 'identity-resources';
   activePage: any;
   rdsresourceTableMfeConfig: ComponentLoaderOptions;

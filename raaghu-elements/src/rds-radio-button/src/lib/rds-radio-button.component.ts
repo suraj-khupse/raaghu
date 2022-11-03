@@ -58,6 +58,22 @@ export class RdsRadioButtonComponent implements OnInit {
     return classes
   }
 
+  classes1() {
+    const isInputGroupMode = `${this.isInputGroup ? ' input-group-text mb-2 px-4 ' : ''}`;
+    const switchMode = `${this.switch ? ' form-switch px-4 ' : ''}`;
+    const inlineMode = `${this.inline ? ' form-check-inline ' : ''}`;
+    return 'form-check ' + isInputGroupMode + switchMode + inlineMode;
+
+  }
+
+  inlineGroup() {
+    if (this.inline && this.isInputGroup) {
+      return 'd-flex';
+    } else {
+      return '';
+    }
+
+  }
   getValue(event: any) {
     this.itemList.forEach(element => {
      if( element.name!==event.target.value){

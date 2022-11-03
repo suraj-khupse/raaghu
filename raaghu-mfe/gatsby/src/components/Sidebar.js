@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import Accordion from "react-bootstrap/Accordion";
 import elements from "../images/logo/element-icon1.svg";
 import components from "../images/logo/comp-icon.svg";
 import pages from "../images/logo/page.svg";
+
 // import { useLocation } from "react-router-dom";
 
 
@@ -62,14 +62,13 @@ elementsList.forEach((item) => {
       displayName: item.name.substring(4).replace(/-/g, " "),
     };
     chartList.push(_item);
-    console.log(chartList);
 
   }
 });
 
 
   const componentsList = [];
-  const componentsExcludesList = ["-shimmer", "nents","client-basics"];
+  const componentsExcludesList = ["-shimmer", "nents","client-basics","demoui"];
   elementsList.forEach((item) => {
     if (
       item.name.includes("rds-comp") &&
@@ -104,7 +103,7 @@ elementsList.forEach((item) => {
   // var elementName=JSON.parse(JSON.stringify(rdsElementList).replace(/-/g,' '));
   var elementsLists = [];
 
-  var elementsExcludesList=["elements","calendar",'rds-page-']
+  var elementsExcludesList=["elements","calendar","rds-page-","edition","cookieconsent"]
   elementsList.forEach((item) => {
     if (
       item.name.includes("rds-") &&
@@ -134,13 +133,32 @@ elementsList.forEach((item) => {
     return 0;
   });
 
+  function onLinkSelect(array, node) {
+    const isBrowser = typeof window !== "undefined";
+    if (!isBrowser) { return; }
+    let pathSplitted = window.location.pathname.split('/');
+    let path = pathSplitted[pathSplitted.length - 1];
+    if (path) {
+      array.forEach((item) => {
+        if (item.url === path) {
+          console.log(path, item.url);
+
+          console.log(true);
+          item.isActive = true;
+        } else {
+          item.isActive = false;
+
+        }
+      })
+    }
+;
+  }
 
 // pages
   const pageLists = [];
   // find out pages names.
   const pageexcludesList = [
-    "demo-ui"
-    ,    
+    "demo-ui",    
   ];
 
   elementsList.forEach((item) => {
@@ -185,104 +203,87 @@ elementsList.forEach((item) => {
   });
 
   return (
-    <div className=" cust-scroll">
-      <div className="menu-list p-0 mt-4">
-        <Accordion
-                  defaultActiveKey={query}
-          className="accordion accordion-flush px-2"
-        >
-          <Accordion.Item eventKey="0" className="accordion-item">
-            <Accordion.Header className="accordion-header">
-              <div className="suheading pb-2 align-middle">
-                <img
-                  src={elements}
-                  className="img-fluid"
-                  width="20px"
-                  alt="elements"
-                />
-                <span className="px-3"> Elements </span>
-                {/* <h5>{data.allDirectory.nodes.name}</h5> */}
-              </div>
-            </Accordion.Header>
-            <Accordion.Body>
-              <div className="mb-4">
-                <ul className="">
-                  {elementsLists.map((node) => (
-                    <li key={node.url}>
-                      <Link href={node.url + "?eventkey=0"}>{node.displayName}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header>
-              <div className="suheading pb-2">
-                <img
-                  src={pages}
-                  className="img-fluid"
-                  width="20px"
-                  alt="pages"
-                />
-                <span className="px-3"> Charts </span>
-              </div>
-            </Accordion.Header>
-            <Accordion.Body>
-              <ul className="">
+    <div className="mt-3 ">
+      <div className="position-sticky sidebar-sticky">
+        <ul defaultActiveKey={query} className="nav flex-column px-1 my-3 me-2">
+          <li eventKey="0" className="nav-item mb-2">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed w-100 position-relative ps-0 fw-semibold" data-bs-toggle="collapse" data-bs-target="#element-collapse" aria-expanded="true">
+              <img
+                src={elements}
+                className="img-fluid"
+                width="20px"
+                alt="elements"
+              /><span className="px-3"> Elements </span>
+            </button>
+            <div class="collapse show" id="element-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 text-capitalize">
+                {elementsLists.map((node) => (
+                  <li key={node.url} className={node.isActive ? 'active' : ''}>
+                    <Link class="nav-link rounded" click={onLinkSelect(elementsLists, node)} href={node.url + "?eventkey=0"}>{node.displayName}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+          <li eventKey="1" class="nav-item mb-2">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed w-100 position-relative ps-0 fw-semibold" data-bs-toggle="collapse" data-bs-target="#chart-collapse" aria-expanded="false">
+              <img
+                src={pages}
+                className="img-fluid"
+                width="20px"
+                alt="elements"
+              /><span className="px-3"> Charts </span>
+            </button>
+            <div class="collapse" id="chart-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 text-capitalize">
                 {chartList.map((node) => (
-                  <li key={node.url}>
-                    <Link href={node.url + "?eventkey=1" }>{node.displayName}</Link>
+                  <li key={node.url} className={node.isActive ? 'active' : ''}>
+                    <Link class="nav-link rounded" activeClassName="active" click={onLinkSelect(chartList, node)} href={node.url + "?eventkey=1"}>{node.displayName}</Link>
                   </li>
                 ))}
               </ul>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="2">
-            <Accordion.Header>
-              <div className="suheading pb-2">
-                <img
-                  src={components}
-                  className="img-fluid"
-                  width="20px"
-                  alt="components"
-                />
-                <span className="px-3"> Components </span>
-              </div>
-            </Accordion.Header>
-            <Accordion.Body>
-              <ul className="">
+            </div>                        
+          </li>
+          <li eventKey="2" class="nav-item mb-2">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed w-100 position-relative ps-0 fw-semibold" data-bs-toggle="collapse" data-bs-target="#component-collapse" aria-expanded="false">
+              <img
+                src={components}
+                className="img-fluid"
+                width="20px"
+                alt="elements"
+              /><span className="px-3"> Components </span>
+            </button>
+             
+            <div class="collapse" id="component-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 text-capitalize">
                 {componentsList.map((node) => (
-                  <li key={node.url}>
-                    <Link href={node.url + "?eventkey=2"}>{node.displayName}</Link>
+                  <li key={node.url} className={node.isActive ? 'active' : ''} >
+                    <Link className="nav-link rounded" href={node.url + "?eventkey=2"} click={onLinkSelect(componentsList, node)}>{node.displayName}</Link>
                   </li>
                 ))}
               </ul>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="3">
-            <Accordion.Header>
-              <div className="suheading pb-2">
-                <img
-                  src={pages}
-                  className="img-fluid"
-                  width="20px"
-                  alt="pages"
-                />
-                <span className="px-3"> Pages </span>
-              </div>
-            </Accordion.Header>
-            <Accordion.Body>
-              <ul className="">
+            </div>
+          </li>
+          <li eventKey="3" class="nav-item mb-2">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed w-100 position-relative ps-0 fw-semibold" data-bs-toggle="collapse" data-bs-target="#pages-collapse" aria-expanded="false">
+              <img
+                src={pages}
+                className="img-fluid"
+                width="20px"
+                alt="elements"
+              /><span className="px-3"> Pages </span>
+            </button>
+            <div class="collapse" id="pages-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 text-capitalize">
                 {pageLists.map((node) => (
-                  <li key={node.url}>
-                    <Link href={node.url + "?eventkey=3" }>{node.displayName}</Link>
+                  <li key={node.url} className={node.isActive ? 'active' : ''}>
+                    <Link class="nav-link rounded" href={node.url + "?eventkey=3"} click={onLinkSelect(pageLists, node)}>{node.displayName}</Link>
                   </li>
                 ))}
               </ul>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+            </div>
+          </li>
+        </ul>
        
       </div>
     </div>

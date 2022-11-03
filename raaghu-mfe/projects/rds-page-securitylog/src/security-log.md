@@ -10,9 +10,8 @@ title: "Pages > Security Log"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Security Log
-
+<p>A page with table having security details and actions used</p>
  <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

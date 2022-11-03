@@ -30,9 +30,14 @@ const Template: Story<RdsIconComponent> = (args: RdsIconComponent) => ({
   props: args,
 });
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
+Default.parameters = { controls: { include: ['name', 'width', 'height', 'fill', 'stroke', 'colorVariant', 'opacity'] } };
 Default.args = {
   name: 'users',
   width: '20px',
-  height: '20px'
+  height: '20px',
+  fill: false,
+  stroke: true,
+  colorVariant: 'primary',
+  opacity: '1'
 }

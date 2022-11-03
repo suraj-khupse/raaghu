@@ -25,7 +25,7 @@ const Banners = () => {
       <div className="container-fluid py-5">
         <div className="contents">
           <div className="row">
-            <div className="col-4">
+            <div className="col-md-4">
               {/* <img src={ image_components } className="img-fluid" /> */}
               <StaticImage
                 src="../images/logo/image-components.png"
@@ -33,7 +33,7 @@ const Banners = () => {
                 className="img-fluid"
               ></StaticImage>
             </div>
-            <div className="col-7 center mt-5 pt-3">
+            <div className="col-md-7 center d-flex align-items-center">
               <div className="px-4">
                 <div className="suheading">Micro Front-End Design System</div>
                 <div className="heading">Elements &amp; Components</div>

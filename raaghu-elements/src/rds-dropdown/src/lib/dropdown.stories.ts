@@ -23,10 +23,7 @@ export default {
       options: ['Drop-down', 'Drop-up', 'Drop-end', 'Drop-start'],
       control: { type: 'radio' },
     },
-    role: {
-      options: ['dropdown-button', 'with_split'],
-      control: { type: 'radio' },
-    }
+    role: {table: {disable: true,},},
   },
 } as Meta;
 
@@ -46,11 +43,10 @@ const Template: Story<RdsDropdownComponent> = (args: RdsDropdownComponent) => ({
 });
 
 export const Default = Template.bind({});
-
+Default.parameters = { controls: { include: ['colorVariant', 'size', 'listItems', 'label', 'direction', 'role'] } };
 Default.args = {
   colorVariant: 'primary',
   size: 'default',
-  darkDropdown: false,
   listItems: [
     { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'circle', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
     { value: 'Import from excel', some: 'value', id: 2, href: '', icon: 'download_data', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
@@ -58,16 +54,14 @@ Default.args = {
   ],
   label: 'EXCEL OPERATIONS',
   direction: 'Drop-down',
-  dropdownAlignment: [],
   role: 'dropdown-button',
 };
 
 export const Dropdown_with_split = Template.bind({});
-
+Dropdown_with_split.parameters = { controls: { include: ['colorVariant', 'size', 'listItems', 'label', 'direction', 'role'] } };
 Dropdown_with_split.args = {
   colorVariant: 'primary',
   size: 'default',
-  darkDropdown: false,
   listItems :  [
     { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'circle', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
     { value: 'Import from excel', some: 'value', id: 2, href: '', icon: 'download_data', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
@@ -75,6 +69,5 @@ Dropdown_with_split.args = {
   ],
   label: 'EXCEL OPERATIONS',
   direction: 'Drop-down',
-  dropdownAlignment: [],
   role: 'with_split',
 };

@@ -24,7 +24,7 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges {
   onTouched!: () => void
   @Input() size: 'small' | 'medium' | 'large' = 'large';
   @Input() label: string = '';
-  @Input() labelPosition: 'top' | 'bottom' | 'left' | 'right' = 'top';
+  @Input() labelPosition: 'top' | 'bottom'  = 'top';
   @Input() rows: string = '';
   @Input() multiple: boolean = false;
   @Input() itemList: selectListItem[] = [];
@@ -92,12 +92,12 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges {
     else if (this.labelPosition === 'bottom') {
       classes.push(' d-flex flex-column-reverse')
     }
-    else if (this.labelPosition === 'left') {
-      classes.push('d-flex align-items-baseline justify-content-end gap-3')
-    }
-    else if (this.labelPosition === 'right') {
-      classes.push('d-flex align-items-baseline flex-row-reverse gap-3')
-    }
+    // else if (this.labelPosition === 'left') {
+    //   classes.push('d-flex align-items-baseline justify-content-end gap-3')
+    // }
+    // else if (this.labelPosition === 'right') {
+    //   classes.push('d-flex align-items-baseline flex-row-reverse gap-3')
+    // }
     return classes;
   }
 

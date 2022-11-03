@@ -10,7 +10,7 @@ title: "Components > Webhook-Subscription"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Webhook-Subscription
-
+<p>Provides a card with necessary details to be filled </p>
  <section class="py-4">
     <h6>Default</h6>
     <div class="py-3">

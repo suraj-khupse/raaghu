@@ -9,9 +9,8 @@ title: "Components > User-delegations"
 
 #### User Delegations
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>A card having a details in a form of dropdown along with the duration available in a calendar form</p>
 <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

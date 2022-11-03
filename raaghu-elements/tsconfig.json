@@ -96,6 +96,14 @@
       "@libs/rds-chart-line": [
         "rds-elements/rds-chart-line/public-api",
         "rds-elements/rds-chart-line"
+      ],
+      "@libs/rds-chart-bool": [
+        "rds-elements/rds-chart-bool/public-api",
+        "rds-elements/rds-chart-bool"
+      ],
+      "@libs/rds-chart-doughnut": [
+        "rds-elements/rds-chart-doughnut/public-api",
+        "rds-elements/rds-chart-doughnut"
       ]
     },
     "skipLibCheck": true,

@@ -16,7 +16,7 @@ export class TenantEffects {
       ofType(getTenants),
       switchMap(() =>
         // Call the getTodos method, convert it to an observable
-        from(this.tenantService.getTenants(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,1000,0)).pipe(
+        from(this.tenantService.getTenants(undefined,undefined,undefined,undefined,undefined,undefined,undefined,'id desc',1000,0)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((tenants: any) => {
             return getTenantSuccess({ tenants: tenants })

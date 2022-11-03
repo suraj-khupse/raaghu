@@ -18,13 +18,14 @@
 								"output": "./assets"
 							}
 						],
-						"styles": [
-							"projects/libs/themes/src/styles/quillEditor.scss",
-							"projects/libs/themes/src/styles/responsive.scss",
-							"projects/host/src/styles.css",
-							"projects/libs/themes/src/styles/default.scss",
-							"./node_modules/ngx-videogular/fonts/videogular.css"
-						],
+            "styles": [
+
+              "projects/libs/themes/src/styles/quillEditor.scss",
+              "projects/libs/themes/src/styles/responsive.scss",
+              "projects/host/src/styles.css",
+              "projects/libs/themes/src/styles/default.scss",
+              "./node_modules/ngx-videogular/fonts/videogular.css"
+            ],
 						"scripts": [
 							"./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
 							"./node_modules/cookieconsent/build/cookieconsent.min.js"
@@ -227,7 +228,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -381,7 +382,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -504,7 +505,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -621,7 +622,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -735,7 +736,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -852,7 +853,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -966,7 +967,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1080,7 +1081,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1092,7 +1093,7 @@
 							"fileReplacements": [
 								{
 									"replace": "projects/rds-page-language/src/environments/environment.ts",
-									"with": "projects/language/src/environments/environment.prod.ts"
+									"with": "projects/rds-page-language/src/environments/environment.prod.ts"
 								}
 							],
 							"outputHashing": "all",
@@ -1194,7 +1195,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1308,7 +1309,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1422,7 +1423,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1536,7 +1537,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1650,7 +1651,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1764,7 +1765,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1878,7 +1879,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -1992,7 +1993,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2106,7 +2107,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2220,7 +2221,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2316,7 +2317,7 @@
 						"index": "projects/rds-page-claim-types/src/index.html",
 						"main": "projects/rds-page-claim-types/src/main.ts",
 						"polyfills": "projects/rds-page-claim-types/src/polyfills.ts",
-						"tsConfig": "projects/claimtypes/tsconfig.app.json",
+						"tsConfig": "projects/rds-page-claim-types/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
 							"projects/rds-page-claim-types/src/favicon.ico",
@@ -2334,7 +2335,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2346,7 +2347,7 @@
 							"fileReplacements": [
 								{
 									"replace": "projects/rds-page-claim-types/src/environments/environment.ts",
-									"with": "projects/claimtypes/src/environments/environment.prod.ts"
+									"with": "projects/rds-page-claim-types/src/environments/environment.prod.ts"
 								}
 							],
 							"outputHashing": "all",
@@ -2448,7 +2449,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2562,7 +2563,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2676,7 +2677,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2789,7 +2790,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -2902,7 +2903,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3015,7 +3016,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3128,7 +3129,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3241,7 +3242,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3354,7 +3355,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3467,7 +3468,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3580,7 +3581,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3693,7 +3694,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3786,7 +3787,7 @@
 					"options": {
 						"outputPath": "dist/rds-page-frequently-asked-questions",
 						"index": "projects/rds-page-frequently-asked-questions/src/index.html",
-						"main": "projects/frequently-asked-questions/src/main.ts",
+						"main": "projects/rds-page-frequently-asked-questions/src/main.ts",
 						"polyfills": "projects/rds-page-frequently-asked-questions/src/polyfills.ts",
 						"tsConfig": "projects/rds-page-frequently-asked-questions/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
@@ -3806,7 +3807,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -3919,7 +3920,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4004,7 +4005,7 @@
 				}
 			},
 			"root": "projects/rds-page-cart",
-			"sourceRoot": "projects/cart/src",
+			"sourceRoot": "projects/rds-page-cart/src",
 			"prefix": "app",
 			"architect": {
 				"build": {
@@ -4032,7 +4033,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4145,7 +4146,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4258,7 +4259,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4300,8 +4301,8 @@
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 5033,
-						"publicHost": "http://localhost:5033",
+						"port": 5034,
+						"publicHost": "http://localhost:5034",
 						"extraWebpackConfig": "projects/rds-page-order-summary/webpack.config.js"
 					}
 				},
@@ -4371,7 +4372,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4484,7 +4485,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4597,7 +4598,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4710,7 +4711,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4823,7 +4824,7 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
+									"maximumWarning": "1000kb",
 									"maximumError": "1mb"
 								},
 								{
@@ -4891,6 +4892,119 @@
 						],
 						"styles": [
 							"projects/rds-page-careers/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"rds-page-infinite-product-list": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				},
+				"@schematics/angular:application": {
+					"strict": true
+				}
+			},
+			"root": "projects/rds-page-infinite-product-list",
+			"sourceRoot": "projects/rds-page-infinite-product-list/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/rds-page-infinite-product-list",
+						"index": "projects/rds-page-infinite-product-list/src/index.html",
+						"main": "projects/rds-page-infinite-product-list/src/main.ts",
+						"polyfills": "projects/rds-page-infinite-product-list/src/polyfills.ts",
+						"tsConfig": "projects/rds-page-infinite-product-list/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/rds-page-infinite-product-list/src/favicon.ico",
+							"projects/rds-page-infinite-product-list/src/assets"
+						],
+						"styles": [
+							"projects/rds-page-infinite-product-list/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "projects/rds-page-infinite-product-list/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "1000kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"fileReplacements": [
+								{
+									"replace": "projects/rds-page-infinite-product-list/src/environments/environment.ts",
+									"with": "projects/rds-page-infinite-product-list/src/environments/environment.prod.ts"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/rds-page-infinite-product-list/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "rds-page-infinite-product-list:build:production",
+							"extraWebpackConfig": "projects/rds-page-infinite-product-list/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "rds-page-infinite-product-list:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 5063,
+						"publicHost": "http://localhost:5063",
+						"extraWebpackConfig": "projects/rds-page-infinite-product-list/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "rds-page-infinite-product-list:build",
+						"extraWebpackConfig": "projects/rds-page-infinite-product-list/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/rds-page-infinite-product-list/src/test.ts",
+						"polyfills": "projects/rds-page-infinite-product-list/src/polyfills.ts",
+						"tsConfig": "projects/rds-page-infinite-product-list/tsconfig.spec.json",
+						"karmaConfig": "projects/rds-page-infinite-product-list/karma.conf.js",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/rds-page-infinite-product-list/src/favicon.ico",
+							"projects/rds-page-infinite-product-list/src/assets"
+						],
+						"styles": [
+							"projects/rds-page-infinite-product-list/src/styles.scss"
 						],
 						"scripts": []
 					}

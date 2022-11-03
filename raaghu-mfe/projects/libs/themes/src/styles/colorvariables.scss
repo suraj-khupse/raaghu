@@ -4,7 +4,7 @@
 @import "./node_modules/bootstrap/scss/_utilities";
 
 
-html {
+html[theme=light] {
   $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark ) !default;
   $min-contrast-ratio: 4.5 !default;
   $input-focus-border-color: tint-color($primary, 50%) !default;
@@ -194,7 +194,7 @@ html {
   $topnav-link-color: $gray-800;
   $card-bg-color: $white !default;
   $card-border-color: $gray-200 !default;
-  --bs-body-color: gray;
+  --bs-body-color: black;
   $datepicker-bg: $white !default;
   $datepicker-head: $white !default;
   $notification-header-bg: $light !default;
@@ -202,6 +202,10 @@ html {
 
   .notification-header {
     background-color: $notification-header-bg;
+  }
+
+  navbar {
+    background-color: white;
   }
 
   .bs-datepicker-head {
@@ -220,7 +224,7 @@ html {
 
   .dropdown-item.active {
     background-color: tint-color($primary, 90%);
-    color:$primary;
+    color: $primary;
 
     span.hr-line {
       color: $primary;
@@ -817,8 +821,8 @@ html {
   }
   /*card color styles*/
   .card {
-    /*    background-color: $card-bg-color;
-    border-color: $card-border-color;*/
+    background-color: $card-bg-color;
+    border-color: $card-border-color;
 
     .card-header {
       background-color: transparent;
@@ -1378,6 +1382,20 @@ html {
       }
     }
   }
+
+  .card {
+    background-color: $card-bg-color;
+    border-color: $card-border-color;
+
+    .card-header {
+      background-color: transparent;
+    }
+
+    .card-footer {
+      background-color: $white;
+      border-top-color: $gray-300;
+    }
+  }
 }
 
 html[theme=dark] {
@@ -1595,6 +1613,20 @@ html[theme=dark] {
   $nav-li-border: $white !default;
   $datepicker-bg: $gray-800 !default;
   $datepicker-head: $gray-800 !default;
+
+  .card {
+    background-color: $card-bg-color;
+    border-color: $card-border-color;
+
+    .card-header {
+      background-color: transparent;
+    }
+
+    .card-footer {
+      background-color: $card-bg-color;
+      border-top-color: $card-border-color;
+    }
+  }
 
   .sidenav-footer {
     background-color: $body-wrapper-bg;
@@ -2207,22 +2239,6 @@ html[theme=dark] {
       border-top-color: $gray-700;
     }
   }
-
-  .dark {
-    .card {
-      background-color: $card-dashboard-bg-color;
-      border-color: $card-dashboard-border-color;
-
-      .card-header {
-        background-color: transparent;
-      }
-    }
-
-    .card-footer {
-      background-color: $white;
-      border-top-color: #EBEDF3;
-    }
-  }
   /*top nav bar variables*/
   .navbar {
     background-color: $nav-background-color;
@@ -2792,4 +2808,8 @@ html[theme=dark] {
   .bd-links .child::after {
     content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e ");
   }
+}
+a {
+    text-decoration:none;
+    color:$primary;
 }

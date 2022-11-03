@@ -50,14 +50,6 @@ export class RdsCheckboxComponent implements OnInit, ControlValueAccessor {
       classes.push('form-check-inline')
       return classes
     }
-    if (this.state === 'Indeterminate') {
-      classes.push('inder')
-      return classes
-    }
-    if (this.state === 'errorcheckbox') {
-      classes.push('errorche')
-      return classes
-    }
     return classes
   }
 
@@ -66,6 +58,14 @@ export class RdsCheckboxComponent implements OnInit, ControlValueAccessor {
   //   this.onChange(event.target.click)
   //   this.onTouched();
   // }
+
+  formState(){
+    const checkboxState = `${this.state === 'checkbox' ? 'form-check-input' : 
+      this.state === 'Indeterminate' ? 'form-check-input-intermediate' : 
+      this.state === 'errorcheckbox' ? 'form-check-input-error' : ''}`;
+    
+    return checkboxState;
+  }
 
   changeData(event: boolean): void {
     this.onChange.emit(event)

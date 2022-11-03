@@ -116,3 +116,17 @@ const Template: Story<LanguageTextComponent> = (args: LanguageTextComponent) => 
 });
 
 export const Default = Template.bind({});
+Default.args = {
+  listbaseLanguage: [
+    { isFree: true, value: '1', displayText: 'Value 1', isSelected: false },
+    { isFree: false, value: '2', displayText: 'Value 2', isSelected: false },
+  ],
+  listsource: [
+    { isFree: true, value: '1', displayText: 'Value 1', isSelected: false },
+    { isFree: false, value: '2', displayText: 'Value 2', isSelected: false },
+  ],
+  listTargetValue: [
+    { isFree: true, value: '1', displayText: 'Value 1', isSelected: false },
+    { isFree: false, value: '2', displayText: 'Value 2', isSelected: false },
+  ],
+}

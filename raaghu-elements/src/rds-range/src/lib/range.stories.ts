@@ -11,7 +11,7 @@ export default {
     parameters: {
         layout: 'padded'
     },
-    decorators: [componentWrapperDecorator((story: any) => `<div style="margin: 3em">${story}</div>`)]
+    decorators: [componentWrapperDecorator((story: any) => `<div class="px-2">${story}</div>`)]
 } as Meta
 
 const Template: Story<RdsRangeComponent> = (args: RdsRangeComponent) => ({
@@ -21,8 +21,25 @@ const Template: Story<RdsRangeComponent> = (args: RdsRangeComponent) => ({
 export const Default = Template.bind({})
 
 Default.args = {
-    min: 500,
-    max: 1000,
+    role: 'Default',
+    min: 0,
+    max: 100,
     // disabled: false,
     // step:'0.5'
+}
+
+export const RangeType1 = Template.bind({})
+
+RangeType1.args = {
+    role: 'Range Type 1',
+    min: 0,
+    max: 100,
+}
+
+export const RangeType2 = Template.bind({})
+
+RangeType2.args = {
+    role: 'Range Type 2',
+    min: 0,
+    max: 100,
 }

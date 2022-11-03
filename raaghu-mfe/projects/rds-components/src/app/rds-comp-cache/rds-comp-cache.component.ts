@@ -50,26 +50,26 @@ export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
     }
     if (this.cashedata) {
       this.totalRecords = this.cashedata.length;
-      this.dataSource = this.cashedata;
+      // this.dataSource = this.cashedata;
       this.tempData = this.cashedata;
     }
 
   }
   ngDoCheck(): void {
-    if (this.cashedata) {
-      this.tempData = JSON.parse(JSON.stringify(this.cashedata));
-      this.totalRecords = this.cashedata.length;
-    }
+    // if (this.cashedata) {
+    //   this.tempData = JSON.parse(JSON.stringify(this.cashedata));
+    //   this.totalRecords = this.cashedata.length;
+    // }
     // if(this.counter < 20){
     //   this.dataSource = this.cashedata;
     //   this.counter++;
     // }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.cashedata) {
-      this.tempData = this.cashedata;
-      this.totalRecords = this.cashedata.length;
-    }
+    // if (this.cashedata) {
+    //   this.tempData = this.cashedata;
+    //   this.totalRecords = this.cashedata.length;
+    // }
   }
 
   getTotalRecords() {
@@ -88,6 +88,7 @@ export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
     for (let i = startingIndex; i < endingindex; i++) {
       if (i < data.length) {
         this.dataSource.push(data[i]);
+
       }
     }
     setTimeout(() => {

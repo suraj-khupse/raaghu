@@ -1,17 +1,16 @@
 ---
 slug: "/comp-open-position"
 date: "2019-05-04"
-title: "Component > Open Position"
+title: "Components > Open Position"
 ---
 
 
 #### Open Position
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>A card with different select menu and a select button </p>
 
 <section class="py-4">
-    <h6>Default</h6>
-    <div class="py-3">
+   <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -27,7 +26,7 @@ title: "Component > Open Position"
          <div class="contents p-5">
               <div class="row">
               <div class="col-md-12">
-                <img src="/images/edition-list.png" class="img-fluid w-100">
+                <img src="/images/open-position.png" class="img-fluid w-100">
               </div>     
             </div>
           

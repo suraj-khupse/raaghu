@@ -9,7 +9,7 @@ export class RdsRangeComponent implements OnInit {
 @Input() value: number = 0;
 
   @Input() min = 0
-
+  @Input() role :'Range Type 2'| 'Default' | 'Range Type 1' ='Default';
   @Input() max = 100
 
   @Output() rangeValueOne = new EventEmitter()
@@ -54,4 +54,19 @@ export class RdsRangeComponent implements OnInit {
      this.range1.style.left = `calc(${percent1}% + (${-5 - percent1 * 0.15}px))`
   }
 
-}
+  public get classes(): string[] {
+    
+  var rangeClass=['']
+  if(this.role==="Default"){
+    rangeClass.push('sliderTooltipRangeOne ')
+  }
+  else if(this.role==="Range Type 2"){
+    rangeClass.push('sliderTooltipRangeType2')
+  }
+  else if(this.role=== "Range Type 1"){
+    rangeClass.push(' slider_Type11 sliderTooltipRangeType1')
+  }
+  return rangeClass
+      
+    }
+  }

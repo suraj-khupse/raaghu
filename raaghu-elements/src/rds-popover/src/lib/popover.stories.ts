@@ -11,6 +11,9 @@ export default {
       imports: [CommonModule],
     }),
   ],
+  argTypes: {
+    hover: {table: {disable: true,},},
+  }
 } as Meta;
 
 const Template: Story<RdsPopoverComponent> = (args: RdsPopoverComponent) => ({
@@ -26,6 +29,7 @@ const Template: Story<RdsPopoverComponent> = (args: RdsPopoverComponent) => ({
 });
 
 export const PopoverWithButton = Template.bind({});
+PopoverWithButton.parameters = { controls: { include: ['popoverPosition', 'popoverTitle', 'popoverContent'] } };
 PopoverWithButton.args = {
   popoverPosition: 'left',
   popoverTitle: 'popover title',
@@ -53,6 +57,7 @@ export const PopoverWithLink: Story<RdsPopoverComponent> = (args) => ({
       </rds-popover>
       `,
 });
+PopoverWithLink.parameters = { controls: { include: ['popoverPosition', 'popoverTitle', 'popoverContent', 'hover'] } };
 PopoverWithLink.args = {
   popoverPosition: 'right',
   popoverTitle: 'popover title',

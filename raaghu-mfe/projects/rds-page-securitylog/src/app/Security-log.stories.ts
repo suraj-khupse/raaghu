@@ -16,7 +16,7 @@ export default {
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,
       ],
       providers: [
         FormBuilder
@@ -32,12 +32,15 @@ const Template: Story<SecurityLogs> = (args: SecurityLogs) => ({
   template:`<app-rds-data-table
   [tableHeaders]="securityLogsHeaders" 
   [tableData]="securityLogs" 
+  [pagination]="true" [recordsPerPage]="'5'"
  ></app-rds-data-table>`
 
   });
 
 export const Default = Template.bind({});
 Default.args={
+  recordsPerPage: 10,
+  pagination: true,
   securityLogsHeaders: [
   { key: 'time', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
   { key: 'action', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
@@ -51,38 +54,58 @@ Default.args={
     {
       id: 1, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png"  class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', 
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', 
       time: '11/15/2021 2:44:52 PM'
     },
     {
       id: 2, username: 'rr', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
     },
     {
       id: 3, username: 'lk', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
     },
     {
-      id: 4, username: 'nj', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      id: 8, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
     },
     {
-      id: 5, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      id: 9, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
     },
     {
-      id: 6, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      id: 10, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
     },
     {
-      id: 7, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      id: 10, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
       duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
-      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+    },
+    {
+      id: 8, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+    },
+    {
+      id: 9, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+    },
+    {
+      id: 10, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
+    },
+    {
+      id: 10, username: 'admin', identity: 'Kol324i', action: 'GetActiveUserDelegations',
+      duration: '1351ms', ipAddress: '103.151.184.6', application: 'Software 1.0',
+      browser: '<div class="row"><div class="col-md-2 mt-2"><img src="assets/firefox.png" width=\"32px\" class="image"></div> <div class="col-md-8 title" ><b>Firefox</b><p class="subtitle">Windows NT 10</p></div></div>', time: '11/15/2021 2:44:52 PM'
     }
   ]
 }

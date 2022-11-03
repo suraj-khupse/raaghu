@@ -7,6 +7,7 @@ import {
   RdsFabMenuModule,
   RdsIconModule,
   RdsInputModule,
+  RdsLabelModule,
   RdsModalModule,
   RdsNavTabModule,
   RdsOffcanvasModule,
@@ -19,13 +20,15 @@ import { StoreModule } from '@ngrx/store';
 import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompBasicResourceComponent } from 'projects/rds-components/src/app/rds-comp-basic-resource/rds-comp-basic-resource.component';
+import { RdsCompClaimsComponent } from 'projects/rds-components/src/app/rds-comp-claims/rds-comp-claims.component';
+import { HttpClientModule } from '@angular/common/http';
 
 export default {
   title: 'Pages/Identity Resources',
   component: IdentityResources,
   decorators: [
     moduleMetadata({
-      declarations: [RdsDataTableComponent, RdsCompBasicResourceComponent],
+      declarations: [RdsDataTableComponent, RdsCompBasicResourceComponent,RdsCompClaimsComponent],
       imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -43,6 +46,8 @@ export default {
         RdsCheckboxModule,
         RdsDatepickerModule,
         StoreModule.forRoot({}),
+        HttpClientModule,
+        RdsLabelModule
       ],
       providers: [FormBuilder],
     }),
@@ -58,7 +63,7 @@ const Template: Story<IdentityResources> = (args: IdentityResources) => ({
         [attr.data-bs-toggle]="'offcanvas'" [attr.data-bs-target]="'#addnewIdentityresource'"
         [attr.aria-controls]="'addnewIdentityresource'">
       </rds-button>
-    </div>
+    </div> 
     <div class="row  mt-2">
     <app-rds-data-table
     [tableData]="ResourceTableData"
@@ -73,11 +78,11 @@ const Template: Story<IdentityResources> = (args: IdentityResources) => ({
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <basicresource (onBsicResourceSave)="SaveBasicResource($event)"></basicresource>
+          <app-rds-comp-basic-resource (onBsicResourceSave)="SaveBasicResource($event)"></app-rds-comp-basic-resource>
         </div>
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Claim" role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <app-claims [ClaimData]="claimData" (onClaimResourceSave)="SaveClaimResource($event)"></app-claims>
+          <app-rds-comp-claims [ClaimData]="claimData" (onClaimResourceSave)="SaveClaimResource($event)"></app-rds-comp-claims>
         </div>
 
       </div>
@@ -174,4 +179,39 @@ Default.args = {
     { id: 'edit', displayName: 'Edit' },
     { id: 'delete', displayName: 'Delete' },
   ],
+  navtabsItems: [
+    {
+      label: 'Basics',
+      tablink: '#Basics',
+      ariacontrols: 'Basics',
+    },
+    {
+      label: 'Claim',
+      tablink: '#Claim',
+      ariacontrols: 'Claim',
+    },
+  ],
+  navtabsItemsEdit: [
+    {
+      label: 'Basics',
+      tablink: '#Basicsedit',
+      ariacontrols: 'Basics',
+    },
+    {
+      label: 'Claim',
+      tablink: '#ClaimEdit',
+      ariacontrols: 'Claim',
+    },
+    {
+      label: 'Properties',
+      tablink: '#Properties',
+      ariacontrols: 'Properties',
+    },
+  ],
+  claimData:{
+    claim_ato_e: 'undefined',
+    claim_f_to_o: 'undefined',
+    claim_p_to_z: 'undefined'
+  },
+  activePage: 0,
 };

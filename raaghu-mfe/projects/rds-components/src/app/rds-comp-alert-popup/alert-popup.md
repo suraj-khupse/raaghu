@@ -10,7 +10,7 @@ title: "Components > Alert-Popup"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Alert-Popup
-
+<p>Pops out whether a user wants to keep the relevant information or delete it</p>
  <section class="py-4">
     <h6>Default</h6>
     <div class="py-3">

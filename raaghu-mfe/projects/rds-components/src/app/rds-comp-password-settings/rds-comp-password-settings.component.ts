@@ -9,12 +9,12 @@ export class RdsCompPasswordSettingsComponent implements OnInit {
   @Input() public passwordSettings: any = { currentPassword: '', newPassword: '', confirmPassword: '' };
   mismatch: boolean = false;
   @Input() loggedinInfo: any = [{
-    display_type: "benefit_type3",
+    display_type: "With_Label",
     colSize: 12,
     items: [
       {
         id: 1,
-        display_type: "benefit_type3",
+        display_type: "With_Label",
         status:'Active',
         icon: 'computer',
         iconHeight: "18px",
@@ -24,7 +24,7 @@ export class RdsCompPasswordSettingsComponent implements OnInit {
       },
       {
         id: 2,
-        display_type: "benefit_type3",
+        display_type: "With_Label",
         icon: 'computer',
         iconHeight: "18px",
         iconWidth: "18px",

@@ -9,8 +9,8 @@ title: "Components > Background-Image"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/style-elements.css">
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
-#### Background-Image
-
+#### Background Image
+<p>Gives an available caption that can be edited along with the button and a background image</p>
  <section class="py-4">
     <h6>Default</h6>
     <div class="py-3">
@@ -29,7 +29,7 @@ title: "Components > Background-Image"
          <div class="contents  p-5">
               <div class="row">
                  <div class="col-md-12">
-                     <img src="\images\background-image.png" class="img-fluid w-75">
+                     <img src="\images\background-image1.png" class="img-fluid">
                  </div>              
               </div>
                        

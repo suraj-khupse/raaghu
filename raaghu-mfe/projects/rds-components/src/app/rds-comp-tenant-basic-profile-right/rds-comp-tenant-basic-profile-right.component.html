@@ -1,10 +1,10 @@
 <div *ngIf="!editShimmer">
     <div class="tab-content py-4">
       <form #tenantCreationForm="ngForm">
-        <div class="row align-items-center">
+        <div class="row align-items-center sm-d-reverse">
           <div class="col-md-6 sm-p-0">
             <div class="form-group mb-3">
-              <rds-input [inputType]="'text'" [Title]="translate.instant('Name')" [TitleType]="'Top'"
+              <rds-input [inputType]="'text'" [label]="translate.instant('Name')" [labelPosition]="'top'"
                 [(ngModel)]="tenantData.tenancyName" name="tenancy_name" required
                 [placeholder]="translate.instant('Enter Tenant Name')" [isRequired]=true #tenancyName="ngModel">
               </rds-input>
@@ -30,7 +30,7 @@
         <div class="row mt-4">
           <div class="col-md-6 sm-p-0" *ngIf="showEmail">
             <div class="form-group mb-3">
-              <rds-input [inputType]="'email'" [Title]="translate.instant('Username')" [TitleType]="'Top'"
+              <rds-input [inputType]="'email'" [label]="translate.instant('Username')" [labelPosition]="'top'"
                 [(ngModel)]="tenantData.adminEmailAddress" [pattern]="emailPattern" name="email"
                 [placeholder]="translate.instant('Enter Username')" #adminEmailAddress="ngModel" [isRequired]=true required>
               </rds-input>
@@ -43,7 +43,7 @@
           </div>
           <div class="col-md-6 sm-p-0">
             <div class="form-group mb-3">
-                <rds-input [inputType]="'password'" [Title]="translate.instant('Password')" [TitleType]="'Top'"
+                <rds-input [inputType]="'password'" [label]="translate.instant('Password')" [labelPosition]="'top'"
                 [(ngModel)]="tenantData.tenantName" name="tenant_name" required
                 [placeholder]="translate.instant('Enter Password')" [isRequired]=true #tenantName="ngModel">
               </rds-input>
@@ -76,7 +76,7 @@
         <div class="row" >
             <div class="col-md-12 sm-p-0">
               <div class="form-group mb-3">
-                <rds-input [inputType]="'text'" *ngIf="showInput" [Title]="translate.instant('Database URL')" [TitleType]="'Top'"
+                <rds-input [inputType]="'text'" *ngIf="showInput" [label]="translate.instant('Database URL')" [labelPosition]="'top'"
                 [(ngModel)]="tenantData.tenancyName" name="tenancy_name" required
                 [placeholder]="translate.instant('Enter URL')" [isRequired]=true #tenancyName="ngModel"
                 name="check-box" >
@@ -86,7 +86,7 @@
           </div>
       </form>
     </div>
-    <div class="footer-buttons my-2 sm-p-0">
+    <div class="position-fixed bottom-0 bg-white w-100 my-2 sm-p-0">
       <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
         (click)="onCanceled()" data-bs-dismiss="offcanvas">
       </rds-button>

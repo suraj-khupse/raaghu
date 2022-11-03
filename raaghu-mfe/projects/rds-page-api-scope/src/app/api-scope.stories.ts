@@ -60,46 +60,33 @@ const Template: Story<ApiScope> = (args: ApiScope) => ({
   props: {
     ...args,
   },
-  template: `
-
-  <div class="card border-0">
-    <h5
-      class="card-header border-0 bg-transparent d-flex justify-content-between"
-    >
-      <div class="card-title fs-3">Api Scope</div>
-      <div class="card-toolbar">
-        <rds-button
-          [id]="'yes'"
-          [size]="'small'"
-          [tooltipPlacement]="'top'"
-          [colorVariant]="'primary'"
-          [label]="'NEW SCOPE'"
-          [attr.data-bs-toggle]="'offcanvas'"
-          [attr.data-bs-target]="'#addnewapiresource'"
-          [attr.aria-controls]="'addnewapiresource'"
-        >
-        </rds-button>
-      </div>
-    </h5> 
-  
-    <div class="card-body">
-    <app-rds-data-table
+  template: `<div class="d-flex justify-content-end mt-2">
+<rds-button
+[id]="'yes'"
+[size]="'small'"
+[tooltipPlacement]="'top'"
+[colorVariant]="'primary'"
+[label]="'NEW SCOPE'"
+[attr.data-bs-toggle]="'offcanvas'"
+[attr.data-bs-target]="'#addnewapiresource'"
+[attr.aria-controls]="'addnewapiresource'"
+>
+</rds-button>
+</div>
+<div class="row  mt-2">
+ <app-rds-data-table
   [tableData]="scopeList"
   [tableHeaders]=" scopeTableHeaders"
   [actions]="actions"
   ></app-rds-data-table>
-    </div>
-  </div>
+</div>
 
-  
-
-<ng-container *ngIf="viewCanvas">
-  <rds-offcanvas [canvasTitle]="'canvasTitle'" [offcanvaswidth]="550" [offId]="offcanvasId" [placement]="'end'" (onClose)="close()">
-    <div class="section">
-      <rds-nav-tab [navtabsItems]="navtabsItems" [activepage]="activePage" [horizontalAlignment]="'start'"
-                   [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
-        <div naveContent class="row tab-content m-2" id="nav-tabContent">
-          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
+<rds-offcanvas [canvasTitle]="'NEW API SCOPE'" [offId]="'addnewapiresource'" [offcanvaswidth]="550"
+[placement]="'end'" >
+<rds-nav-tab [navtabsItems]="navtabsItems" [activepage]="activePage" [horizontalAlignment]="'start'"
+[verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
+<div naveContent class="row tab-content m-2" id="nav-tabContent">
+  <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
                aria-labelledby="nav-home-tab">
                <app-rdc-comp-api-scope-basics></app-rdc-comp-api-scope-basics>
           </div>
@@ -107,16 +94,9 @@ const Template: Story<ApiScope> = (args: ApiScope) => ({
                aria-labelledby="nav-home-tab">
                <app-rdc-comp-api-scope-resources></app-rdc-comp-api-scope-resources>
           </div>
-        </div>
-      </rds-nav-tab>
-    </div>
-    <div class="">
-      <rds-button [label]="'Cancel'" [colorVariant]="'outline-primary'"  [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
-      </rds-button>
-      <rds-button [label]="getBtnName()" [colorVariant]="'primary'"   [size]="'small'" [disabled]="!scope.basicInfo" (click)="save()"></rds-button>
-    </div>
-  </rds-offcanvas>
-</ng-container>
+</div>
+</rds-nav-tab>
+</rds-offcanvas>
 
   `,
 });
@@ -177,4 +157,17 @@ Default.args = {
     { id: 'edit', displayName: 'Edit' },
     { id: 'delete', displayName: 'Delete' },
   ],
+  navtabsItems: [
+    {
+      label: 'Basics',
+      tablink: '#basics',
+      ariacontrols: 'basics',
+    },
+    {
+      label: 'Resources',
+      tablink: '#resources',
+      ariacontrols: 'resources',
+    },
+  ],
+  activePage: 0,
 };

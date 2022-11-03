@@ -138,7 +138,7 @@ $theme: "green" !default;
   $accessible-400: #474c74;
   $accessible-500: #4400A4;
   $accessible-600: #282A42;
-  $accessible-700: rgb(48, 51, 78);
+$accessible-700: #30334e;
   $accessible-800: #13002E;
 
   $nav-background-color: $accessible-600 !default;
@@ -148,7 +148,7 @@ $theme: "green" !default;
   $sidbar-border-right-color: #1A0339;
   $wrapper-bg: $accessible-600!default;
 
-  $card-bg-color: $accessible-700 !default;
+
 
   $offcanvasbg: $accessible-700 !default;
 
@@ -189,7 +189,7 @@ $theme: "green" !default;
 
 html[theme=dark] {
   $dropdown-color: $white;
-
+  $card-bg-color: $accessible-700 !default;
   $input-bg: $accessible-300 !default;
   $form-select-bg: $input-bg!default;
   $form-select-border-color: $accessible-200!default;

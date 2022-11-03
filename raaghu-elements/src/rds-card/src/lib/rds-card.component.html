@@ -5,7 +5,7 @@
   <div class="card-body" [ngClass]="cardBody" *ngIf="showBody">
     <ng-content select="[body]"></ng-content>
   </div>
-  <div *ngIf="showFooter" >
+  <div class="card-footer" *ngIf="showFooter" >
     <ng-content select="[footer]"></ng-content>
   </div>
 </div>

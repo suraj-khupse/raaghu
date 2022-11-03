@@ -82,10 +82,8 @@ These components come together to create the same wireframe design and form a pa
 - [Setup raaghu](https://github.com/shubham-waii/raaghu/tree/development/raaghu-mfe#-how-to-set-up-raaghu-mfe-for-development): For development
 - [Development Support](https://github.com/shubham-waii/raaghu/tree/development/raaghu-mfe#development-support): Create a common Library, Component, Screen / MFE etc
 - [Storybook](https://storybook.raaghu.io/): Build bulletproof UI components faster
-- [Elements & Components](http://portal.raaghu.io/): Preview of all raaghu elements, components & pages.
-- [Demo](http://raaghu.io/): Dashboard Demo (Light & Dark theme) 
-- [Figma](http:#): Preview & download Figma gesigns
-- [XD](http://raaghu.io/): Preview & download xd Designs
+- [Elements & Components on Gatsby](http://portal.raaghu.io/): Preview of all raaghu elements, components & pages.
+- [Demo](https://anzdemoui.raaghu.io/): Dashboard Demo (Light & Dark theme) 
 
 <h2 align="" style="border-bottom:0;color:#964BFF;"> 
  
@@ -206,7 +204,7 @@ Built on a robust tech stack and platform
 
 
 ##  <a name='license'></a> License
-This project is licensed under the Apache License - see the [`LICENSE`](/LICENSE) file for details.
+This project is licensed under the MIT License - see the [`LICENSE`](/LICENSE) file for details.
 
 ##  <a name='contribute'></a> How to Contribute 🤝
 </h2>

@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <!-- <label>Client ID</label> -->
-                <rds-input [inputType]="'text'" [Title]="translate.instant('Client ID')" #client_id="ngModel" [TitleType]="'Top'"  [isRequired]=true  [pattern]="numberPattern" [(ngModel)]="clientBasics.clientId" name="clientId"
+                <rds-input [inputType]="'text'" [label]="translate.instant('Client ID')" #client_id="ngModel" [labelPosition]="'top'"  [isRequired]=true  [pattern]="numberPattern" [(ngModel)]="clientBasics.clientId" name="clientId"
                     required [placeholder]="'Enter ID'">
                 </rds-input>
                 <div class="form-control-feedback" *ngIf="client_id.errors && (client_id.dirty || client_id.touched)">
@@ -15,7 +15,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <!-- <label>Client Name</label> -->
-                <rds-input [inputType]="'text'" [Title]="translate.instant('Client name')" #client_name="ngModel" [TitleType]="'Top'" [(ngModel)]="clientBasics.clientName"
+                <rds-input [inputType]="'text'" [label]="translate.instant('Client name')" #client_name="ngModel" [labelPosition]="'top'" [(ngModel)]="clientBasics.clientName"
                     name="clientName" [isRequired]=true  required [placeholder]="'Enter Client Name'">
                 </rds-input>
                 <div class="form-control-feedback"
@@ -39,7 +39,7 @@
         <div class="col-md-6 mt-3">
             <div class="form-group">
                 <!-- <label>Client URL</label> -->
-                <rds-input [inputType]="'text'" [Title]="translate.instant('Client URL')" #client_url="ngModel" [TitleType]="'Top'" [(ngModel)]="clientBasics.clientUrl"
+                <rds-input [inputType]="'text'" [label]="translate.instant('Client URL')" #client_url="ngModel" [labelPosition]="'top'" [(ngModel)]="clientBasics.clientUrl"
                     name="clientUrl"  [isRequired]=true  required [placeholder]="'Enter URL'">
                 </rds-input>
                 <div class="form-control-feedback"
@@ -51,7 +51,7 @@
         <div class="col-md-6 mt-3">
             <div class="form-group">
                 <!-- <label>Logo URL</label> -->
-                 <rds-input [inputType]="'text'" [Title]="translate.instant('Logo URL')" #logo_url="ngModel" [TitleType]="'Top'" [(ngModel)]="clientBasics.logoUrl" name="logoUrl" [isRequired]=true 
+                 <rds-input [inputType]="'text'" [label]="translate.instant('Logo URL')" #logo_url="ngModel" [labelPosition]="'top'" [(ngModel)]="clientBasics.logoUrl" name="logoUrl" [isRequired]=true 
                     required [placeholder]="'Enter URL'">
                 </rds-input>
                 <div class="form-control-feedback" *ngIf="logo_url.errors && (logo_url.dirty || logo_url.touched)">

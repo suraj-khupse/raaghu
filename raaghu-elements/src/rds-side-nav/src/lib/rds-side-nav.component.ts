@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Collapse } from 'bootstrap'
+
 export interface SideNavItem {
   label: string,
   id?: string,
@@ -52,7 +54,7 @@ export class RdsSideNavComponent implements OnInit {
   collapsed = false;
   openedMenu = false;
 
-  showHide:boolean=true;
+  showHide: boolean = false;
   onClick(event: any, i: number, path: any): void {
     event.preventDefault();
     // this.router.navigateByUrl(path);
@@ -62,17 +64,23 @@ export class RdsSideNavComponent implements OnInit {
     this.activeMenuWithChildren = '';
   }
   onMenuWithChildrenClick(i: number, path: any) {
+    this.showHide=!this.showHide
     const x = document.getElementById('menuWithChildren' + i);
+    if (x) {
+      var dropdown = new Collapse(x);
+      dropdown.show();
+    }
+
     if (x !== null)
-      this.openedMenu = x.classList.contains('collapsed');
+      // this.openedMenu = x.classList.contains('collapsed');
     if (!this.openedMenu) {
-      this.showHide=true;
+      // this.showHide = true;
       this.activepage = i;
       this.activesubmenu = 0;
       this.emitPath.emit(path);
     }
-    else{
-      this.showHide=false;
+    else {
+      // this.showHide = false;
       this.activepage = i;
       this.activesubmenu = '';
       this.activeMenuWithChildren = '';
@@ -97,9 +105,9 @@ export class RdsSideNavComponent implements OnInit {
 
   public get menu(): string[] {
     var customMenu = ['collapse pt-2'];
-    if(this.activepage===0){
+    if (this.activepage === 0) {
       customMenu.push('show')
-    }else{
+    } else {
       customMenu.push('hide');
     }
     return customMenu;

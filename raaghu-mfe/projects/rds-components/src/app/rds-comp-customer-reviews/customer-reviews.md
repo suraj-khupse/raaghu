@@ -9,9 +9,8 @@ title: "Components > Customer-reviews"
 
 #### Customer reviews
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>Provides a card with different ratings and it's percentage of different level of reviews</p>
 <section class="py-4">
-    <h6>Customer reviews</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

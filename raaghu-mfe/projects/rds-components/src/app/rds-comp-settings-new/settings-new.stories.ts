@@ -48,7 +48,7 @@ export default {
 } as Meta;
 
 const Template: Story<RdsCompSettingsNewComponent> = (args: RdsCompSettingsNewComponent) => ({
-    props: { ...args }
+    props: { ...args },
 
 });
 

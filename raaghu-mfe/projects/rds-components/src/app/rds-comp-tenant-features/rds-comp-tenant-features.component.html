@@ -1,11 +1,11 @@
 <div *ngIf="!editShimmer">
-    <div class="tab-content py-4">
+    <div class="tab-content py-4 mb-3">
         <form #tenantCreationForm="ngForm">
             <div class="row align-items-center">
                 <div class="col-md-12 border-bottom">
                     <rds-label [label]="'Identity'"></rds-label>
                 </div>
-                <div class="col-md-8 sm-p-0">
+                <div class="col-md-12 sm-p-0">
                     <div class="form-group mb-3 mt-3">
                         <rds-select-list [(ngModel)]="tenantData.edition" [label]="translate.instant('Edition')"
                             [value]="tenantData.edition" ngDefaultControl LabelType="Top" name="edition"
@@ -108,7 +108,7 @@
             </div>
         </form>
     </div>
-    <div class="footer-buttons my-2 sm-p-0">
+    <div class="position-fixed bottom-0 bg-white w-100 sm-p-0 py-3">
         <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
             (click)="onCanceled()" data-bs-dismiss="offcanvas">
         </rds-button>

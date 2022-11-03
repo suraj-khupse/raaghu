@@ -12,7 +12,7 @@ title: "Pages > Identity-Resources"
 
 #### Identity-Resources
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>Gives an important details about a user with other necessary tabular details and actions </p>
 
 <!-- Basic -->
 <section class="py-4">

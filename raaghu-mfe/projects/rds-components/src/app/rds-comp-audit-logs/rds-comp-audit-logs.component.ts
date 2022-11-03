@@ -34,10 +34,10 @@ export class RdsCompAuditLogsComponent implements OnInit {
     }];
   @Input() public operationLogsHeaders: TableHeader[] = [];
   @Input() listItem1 = [
-    { value: 'Export To Excel', some: 'value', key: 'operation-log', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
+    { value: 'Export To Excel', some: 'value', key: 'operation-log', icon: 'export_data', iconWidth: '20px', iconHeight: '20px' },
   ];
   @Input() listItem2 = [
-    { value: 'Export To Excel', some: 'value', key: 'change-log', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
+    { value: 'Export To Excel', some: 'value', key: 'change-log', icon: 'export_data', iconWidth: '20px', iconHeight: '20px' },
   ];
   public changeLogsHeaders: TableHeader[] = [];
   @Input() public operationLogs: any = [];
@@ -140,7 +140,6 @@ export class RdsCompAuditLogsComponent implements OnInit {
 
   onActionSelect(event: any): void {
     if (event.actionId === 'view') {
-      console.log(event.selectedData);
       this.selectedRowData = event.selectedData;
       // this.deleteEdition.emit(event.selectedData);
       this.showAuditLogDetail();

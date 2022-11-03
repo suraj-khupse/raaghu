@@ -25,7 +25,7 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
   title = "rds-file-uploader";
   onChange!: (value: string[]) => void;
   onTouched!: () => void;
-  message: success[] = [];
+  message: any = [];
 
   value: any;
   @Input() size?: string;
@@ -45,7 +45,6 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
   fileSize?: number;
 
   errorSizeInKb?: number;
-  @Input() sizeType: string = '';
 
   @Input() role: 'default' | 'fileUpload' = 'fileUpload';
 
@@ -55,7 +54,7 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
 
   closeFile: boolean = false;
 
-  fileArray: any[] = [];
+  fileArray: any = [];
 
   @Input() extensions!: string;
 
@@ -66,6 +65,7 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
   constructor() { }
 
   ngOnInit(): void {
+    this.message = [];
   }
 
   writeValue(obj: any): void {
@@ -82,8 +82,14 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
 
   getValue(event: any) {
     this.closeFile = true;
-    console.log(event.target.files);
-    this.fileArray.push(event.target.files.name);
+    const fileArray: any = []
+    if (event.target && event.target.files) {
+      const files: any = [...event.target.files];
+      files.forEach(element => {
+        fileArray.push(element.name);
+      });
+    }
+    this.fileArray = fileArray;
     console.log(this.fileArray);
   }
 
@@ -131,7 +137,10 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
   }
 
   checkFileSize(event: any): void {
-    this.message = [];
+    if (this.message === '[]') {
+      this.message = [];
+
+    }
 
     var data = event.target.files;
 
@@ -179,7 +188,6 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
 
   removeFileFromList(index: any) {
     this.fileArray.splice(index, 1);
-    console.log(this.fileArray.splice(index, 1));
   }
 
   clearFileUploaded(event: any) {

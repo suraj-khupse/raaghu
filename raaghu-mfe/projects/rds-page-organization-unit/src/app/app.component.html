@@ -1,9 +1,9 @@
 <div>
-  <div [class.card]="selectedTreeNode==0">
+  <div [class]="selectedTreeNode==0">
     <div class="row" [class.card-body]="selectedTreeNode==0">
       <div class="col-md-6 gutter-b">
         <div>
-          <div class="card p-2 border-0 rounded-0 vh-88" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+          <div class="card p-2 vh-88" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
 
             <div class="card-header bg-transparent">
               <h5 class="card-title">{{'Organization Tree'| translate}}</h5>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-md-6 gutter-b">
-        <div class="card p-2 border-0 rounded-0 vh-88">
+        <div class="card p-2  vh-88">
           <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
             <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
           </div>
@@ -47,7 +47,7 @@
                   <div class="col-md-12 mb-2">
                     <rds-nav-tab [navtabsItems]="getNavTabItems()" [horizontalAlignment]="'start'"
                       [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false"
-                      [flex]="false" (onClicktab)="btnClick($event)"></rds-nav-tab>
+                      (onClicktab)="btnClick($event)"></rds-nav-tab>
                   </div>
                   <div naveContent class="row tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="Members" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -147,7 +147,7 @@
       <div class="col-md-12">
         <form #nodeForm="ngForm" novalidate>
           <div class="form-group mb-3">
-            <rds-input size="default" [Title]="translate.instant('Name')" [TitleType]="'Top'" [placeholder]="'Name'"
+            <rds-input size="medium" [label]="translate.instant('Name')" [labelPosition]="'top'" [placeholder]="'Name'"
               [(ngModel)]="node" id="txtDescription" name="node_name" [isRequired]="true" required ngDefaultControl
               #nodeName="ngModel">
             </rds-input>
@@ -163,7 +163,8 @@
     <div class="row">
       <div class="col-md-12">
         <rds-button [label]="translate.instant('Cancel')" (click)="onCancelOrganisation()" [outlineButton]="true"
-          type="button" [colorVariant]="'primary'" [size]="'small'" data-bs-target="#addNodeOffcanvas" data-bs-dismiss="offcanvas">
+          type="button" [colorVariant]="'primary'" [size]="'small'" data-bs-target="#addNodeOffcanvas"
+          data-bs-dismiss="offcanvas">
         </rds-button>
         <rds-button [disabled]="!nodeForm.valid" [label]="translate.instant('Save')" [submit]="true" type="submit"
           [size]="'small'" class="px-2" [colorVariant]="'primary'" (click)="saveNode(nodeForm)">

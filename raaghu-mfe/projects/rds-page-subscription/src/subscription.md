@@ -12,7 +12,7 @@ title: "Pages > Subscription"
 
 #### Subscription
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>A page with differet table sections having active status </p>
 
 <!-- Basic -->
 <section class="py-4">

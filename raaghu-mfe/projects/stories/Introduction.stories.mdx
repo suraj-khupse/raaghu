@@ -7,11 +7,30 @@ import Flow from './assets/flow.svg';
 import Plugin from './assets/plugin.svg';
 import Repo from './assets/repo.svg';
 import StackAlt from './assets/stackalt.svg';
+import image from './assets/how.png';
+import demo from './assets/Demo.gif';
 
-<Meta title="Introduction/Introduction" />
+<Meta title="Introduction" />
 
 <style>
   {`
+  .demo{
+     width:600px;
+      height:auto;
+      margin-left:100px;
+      margin-bottom:20px;
+  }
+  .content{
+    margin-top:20px;
+    line-height:28px;
+    font-size:14px;
+    margin-bottom:25px;
+  }
+    .how{
+      width:600px;
+      height:400px;
+      margin-left:100px;
+    }
     .subheading {
       --mediumdark: '#999999';
       font-weight: 900;
@@ -25,6 +44,7 @@ import StackAlt from './assets/stackalt.svg';
     }
 
     .link-list {
+      margin-top:20px;
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
@@ -114,98 +134,91 @@ import StackAlt from './assets/stackalt.svg';
   `}
 </style>
 
-# Welcome to Storybook
+### Welcome to raaghu design system
+<div className="content">
+ <strong>raaghu</strong> is an open-source Angular based micro front-end design system. raaghu employs Bootstrap5 and Storybook 
+ features to develop highly customizable UI components and built-in pages. raaghu provides as a online repository for the developers
+ containing the elements,components, pages and charts.
 
-Storybook helps you build UI components in isolation from your app's business logic, data, and context.
-That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
+<img className="demo" src={demo} alt="flow" />
 
-Browse example stories now by navigating to them in the sidebar.
-View their code in the `stories` directory to learn how they work.
-We recommend building UIs with a [**component-driven**](https://componentdriven.org) process starting with atomic components and ending with pages.
+ Through the storybook you can visualize and navigate around the features of the raaghu. Snippets for the elements allow you to test
+  and design your UI faster and efficiently. 
+</div>
 
-<div className="subheading">Configure</div>
+### Why raaghu?
+
+<div className="content"> raaghu design system bridges the gaps between design and development while maintaining a great degree of standardization.</div>
+<ul className="content">
+<li><strong>Seamless UI:</strong>  raaghu contains ready to use templates for the ASP net and ABP framework. Fully customizable with 
+the help of our Adobe XD and figma design kits.</li>
+<li><strong>Charts, Layouts and Grids:</strong>:With more than 60+ angular based elements, components , pages and charts , raaghu
+ offers a wide array catering to the needs for your UI components.</li>
+</ul> 
+
+### How raaghu Works?
+<div className="content">
+raaghu leverages micro-front-end capabilities by breaking the page design into the components. Based on the wireframe and
+theme design, raaghu applies the same CSS to elements, components and pages available in the raaghu.
+</div>
+<img className="how" src={image} alt="flow" />
+<div className="content">
+Thought the Ci/Cd pipelines the components are deployed to the wireframe design and form a page
+</div>
+
+### Features 
+<ul className="content">
+<li><strong>Fast: </strong>Achieve up to 3X acceleration with front end development through modular creation and component composition.</li>
+<li><strong>Consistent : </strong>Get a unified experience via smooth integration, code maintenance and consistency in UI.</li>
+<li><strong>Scalable : </strong>Provides better scalability as each codebase is much simpler to build, test and maintain due to clarity of work allocation.</li>
+<li><strong>Maintainable : </strong>Replace and rewrite and update components easily even when maintaining large applications. Components allow for easier user testing.</li>
+<li><strong>Flexible : </strong>Components are inherently independent of the tech stack allowing multiple components and features to be deployed rapidly.</li>
+<li><strong>Pixel-perfect : </strong> Designed with pixel perfect precision and accessibility in mind, with multiple well designed and scalable User Interfaces.</li>    
+</ul>
+
+### Learn more about raaghu
 
 <div className="link-list">
   <a
     className="link-item"
-    href="https://storybook.js.org/docs/react/addons/addon-types"
+    href="https://storybook.raaghu.io/?path=/story/elements"
     target="_blank"
-  >
+   >
     <img src={Plugin} alt="plugin" />
     <span>
-      <strong>Presets for popular tools</strong>
-      Easy setup for TypeScript, SCSS and more.
+      <strong>Elements</strong>
     </span>
   </a>
   <a
     className="link-item"
-    href="https://storybook.js.org/docs/react/configure/webpack"
+    href="https://storybook.raaghu.io/?path=/story/components"
     target="_blank"
   >
     <img src={StackAlt} alt="Build" />
     <span>
-      <strong>Build configuration</strong>
-      How to customize webpack and Babel
+      <strong>Components</strong>
+     
     </span>
   </a>
   <a
     className="link-item"
-    href="https://storybook.js.org/docs/react/configure/styling-and-css"
+    href="https://storybook.raaghu.io/?path=/story/charts"
     target="_blank"
   >
     <img src={Colors} alt="colors" />
     <span>
-      <strong>Styling</strong>
-      How to load and configure CSS libraries
+      <strong>Charts</strong>
     </span>
   </a>
   <a
     className="link-item"
-    href="https://storybook.js.org/docs/react/get-started/setup#configure-storybook-for-your-stack"
+    href="https://storybook.raaghu.io/?path=/story/pages"
     target="_blank"
   >
     <img src={Flow} alt="flow" />
     <span>
-      <strong>Data</strong>
-      Providers and mocking for data libraries
+      <strong>Pages</strong>
     </span>
   </a>
 </div>
 
-<div className="subheading">Learn</div>
-
-<div className="link-list">
-  <a className="link-item" href="https://storybook.js.org/docs" target="_blank">
-    <img src={Repo} alt="repo" />
-    <span>
-      <strong>Storybook documentation</strong>
-      Configure, customize, and extend
-    </span>
-  </a>
-  <a className="link-item" href="https://storybook.js.org/tutorials/" target="_blank">
-    <img src={Direction} alt="direction" />
-    <span>
-      <strong>In-depth guides</strong>
-      Best practices from leading teams
-    </span>
-  </a>
-  <a className="link-item" href="https://github.com/storybookjs/storybook" target="_blank">
-    <img src={Code} alt="code" />
-    <span>
-      <strong>GitHub project</strong>
-      View the source and add issues
-    </span>
-  </a>
-  <a className="link-item" href="https://discord.gg/storybook" target="_blank">
-    <img src={Comments} alt="comments" />
-    <span>
-      <strong>Discord chat</strong>
-      Chat with maintainers and the community
-    </span>
-  </a>
-</div>
-
-<div className="tip-wrapper">
-  <span className="tip">Tip</span>Edit the Markdown in{' '}
-  <code>stories/Introduction.stories.mdx</code>
-</div>

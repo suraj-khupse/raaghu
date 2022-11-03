@@ -26,7 +26,7 @@
     </div>
     <div class="card-footer">
       <div class="col-sm-12" *ngIf="this.DownloadTable.length > 10">
-        <rds-pagination [reset]="resetPagination" (onPageChange)="onPagination($event)"
+        <rds-pagination  (onPageChange)="onPagination($event)"
                         [recordsPerPage]="+recordsPerPage" [totalRecords]="getTotalRecords()" role="Basic"></rds-pagination>
       </div>
     </div>

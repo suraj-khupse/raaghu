@@ -20,6 +20,6 @@ export class RdsTeamMemberComponent implements OnInit {
       description: 'Lorem ipsum dolor sit amet conr adipiscing elit'
     } 
   ]
-
+  @Input() colorVariant: 'primary'| 'secondary'| 'danger'| 'success'| 'warning'|'info'| 'light'| 'dark' ='primary';
 
 }

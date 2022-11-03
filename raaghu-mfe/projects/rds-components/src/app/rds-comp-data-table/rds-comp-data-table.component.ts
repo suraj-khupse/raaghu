@@ -52,9 +52,13 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   selectedData: any;
   RecordPerPage: any;
 
+  static count: number = 0;
+  public id: any = 'table'
 
+  constructor(public translate: TranslateService) {
+    this.id = this.id + RdsDataTableComponent.count++;
 
-  constructor(public translate: TranslateService) { }
+  }
   ngDoCheck(): void {
     if (this.tableData) {
       this.tempData = JSON.parse(JSON.stringify(this.tableData));
@@ -298,14 +302,14 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
       return this.tableData.length;
     }
   }
-  openSearchModal(): void {
-    var element: any = document.getElementById('search-dropdown');
+  openSearchModal(index: number): void {
+    var element: any = document.getElementById('search-dropdown' + index + this.id);
     var bsOffcanvas = new bootstrap.Dropdown(element);
     bsOffcanvas.show();
   }
 
-  openAction(): void {
-    var element: any = document.getElementById('action-dropdown');
+  openAction(index: number): void {
+    var element: any = document.getElementById('action-dropdown' + index + this.id);
     var dropdown = new bootstrap.Dropdown(element);
     dropdown.show();
   }

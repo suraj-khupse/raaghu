@@ -9,9 +9,8 @@ title: "Components > Marketing Website Newsletter"
 
 #### Marketing Website Newsletter
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>Provides a card with different buttons as an option selector </p>
 <section class="py-4">                                                                                             
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

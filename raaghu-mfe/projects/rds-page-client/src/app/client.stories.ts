@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata,Story } from '@storybook/angular';
-import { RdsButtonModule, RdsIconModule, RdsNavTabModule, RdsOffcanvasModule,} from '@libs/rds-elements';
+import { RdsAccordionModule, RdsButtonModule, RdsCheckboxModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsTextareaModule,} from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { AppComponent as Client } from './app.component';
 import { RdsCompClientBasicsComponent } from 'projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component';
@@ -13,10 +13,10 @@ export default {
   component: Client,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompClientBasicsComponent, RdsDataTableComponent, RdsCompClientBasicsComponent, RdsCompClientResourcesComponent],
+      declarations: [RdsCompClientBasicsComponent, RdsDataTableComponent, RdsCompClientResourcesComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsLabelModule, RdsNavTabModule, RdsOffcanvasModule, RdsIconModule,
-        SharedModule, NgxTranslateModule
+        SharedModule, NgxTranslateModule, RdsCheckboxModule, RdsAccordionModule, RdsInputModule,RdsTextareaModule
       ],
       providers: [
         FormBuilder,
@@ -53,13 +53,11 @@ const Template: Story<Client> = (args: Client) => ({
    </div>
   </div>
 
-<ng-container *ngIf="viewCanvas">
- <rds-offcanvas [canvasTitle]="canvasTitle" [offcanvaswidth]="500" [offId]="offcanvasId"
-   [placement]="'end'" (onClose)="close()">
-   <div class="section">
-     <rds-nav-tab [navtabsItems]="getNavTabItems()" [activepage]="activePage" [horizontalAlignment]="'start'"
-       [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
-       <div naveContent class="row tab-content m-2" id="nav-tabContent">
+  <rds-offcanvas [canvasTitle]="'New Client'" [offId]="'addnewapiresource'" [offcanvaswidth]="550"
+    [placement]="'end'" >
+    <rds-nav-tab [navtabsItems]="navtabsItems" [activepage]="activePage" [horizontalAlignment]="'start'"
+      [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
+      <div naveContent class="row tab-content m-2" id="nav-tabContent">
          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
            aria-labelledby="nav-home-tab">
           <app-rds-comp-client-basics></app-rds-comp-client-basics>
@@ -78,17 +76,12 @@ const Template: Story<Client> = (args: Client) => ({
            aria-labelledby="nav-home-tab">
             <app-rds-comp-client-resources></app-rds-comp-client-resources>
          </div>
-       </div>
-     </rds-nav-tab>
-   </div>
-   <div class="">
-     <rds-button [label]="'Cancel'"  [colorVariant]="'outline-primary'"  [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
-     </rds-button>
-     <rds-button [label]="getBtnName()" [colorVariant]="'primary'" [size]="'small'" [disabled]="!client.basicInfo" (click)="save()">
-     </rds-button>
-   </div>
- </rds-offcanvas>
-</ng-container>`
+      </div>
+    </rds-nav-tab>
+
+  </rds-offcanvas>
+
+`
 
 });
 export const Default = Template.bind({});
@@ -138,4 +131,23 @@ Default.args = {
 
   ],
   actions: [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }],
+  navtabsItems: [
+    {
+      label: 'Basics',
+      tablink: '#basics',
+      ariacontrols: 'basics',
+    },
+    {
+      label: 'Secrets',
+      tablink: '#secrets',
+      ariacontrols: 'secrets',
+    },
+    {
+      label: 'Resources',
+      tablink: '#resources',
+      ariacontrols: 'resources',
+    },
+  ],
+  activePage: 0,
+
 }

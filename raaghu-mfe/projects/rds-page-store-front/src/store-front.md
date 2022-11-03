@@ -12,11 +12,10 @@ title: "Pages > Store-Front"
 
 #### Store-Front
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>A page having different select menu and an Sign in option</p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

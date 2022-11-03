@@ -1,5 +1,5 @@
 ---
-slug: "/page-edition "
+slug: "/page-edition"
 date: "2019-05-04"
 title: "Pages > Edition"
 ---
@@ -12,11 +12,10 @@ title: "Pages > Edition"
 
 #### Edition
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>It gives a user an option to take necessary action on edit,delete and moving the tenants to another version</p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -12,10 +12,12 @@ yarn.lock
 npm
 
 # Node
+node_modules
 /node_modules
 /node_modules*
 npm-debug.log
 yarn-error.log
+daemon
 
 # SDK output
 /.vs

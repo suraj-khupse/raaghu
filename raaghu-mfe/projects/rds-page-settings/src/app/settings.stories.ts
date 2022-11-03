@@ -33,7 +33,7 @@ export default {
         RdsCompOtherSettingsComponent,
         AppComponent
       ],
-      imports: [
+      imports: [ 
         FormsModule,
         ReactiveFormsModule,
         RdsIconModule,
@@ -57,6 +57,7 @@ export default {
         EffectsModule.forRoot([SettingEffects]),
         RdsTextareaModule,
         RdsCounterModule
+        
       ],
       providers: [
         {
@@ -105,7 +106,7 @@ const Template: Story<AppComponent> = (args: AppComponent) => ({
             <div class="tab-pane fade show active" id="tenant-management" role="tabpanel"
               aria-labelledby="nav-home-tab">
               <div class="row">
-                <app-rds-comp-tenant-management></app-rds-comp-tenant-management>
+                <app-rds-comp-tenant-management [settingsTenantEditionList]="settingsTenantEditionList"></app-rds-comp-tenant-management>
               </div>
             </div>
             <div class="tab-pane fade" id="user-management" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -175,5 +176,9 @@ Default.args = {
       tablink: '#other-settings',
       ariacontrols: 'other-settings',
     },
-  ]
+  ],
+
+  settingsTenantEditionList:[{isFree: null, value: '', displayText: 'Not assigned', isSelected: true},
+    {isFree: true, value: '1', displayText: 'Standard', isSelected: false}
+    ],
 }

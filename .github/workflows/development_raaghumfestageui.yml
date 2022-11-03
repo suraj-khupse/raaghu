@@ -34,13 +34,12 @@ jobs:
         cache: 'npm'
         cache-dependency-path: './raaghu-mfe'  
    
-    - uses: microsoft/variable-substitution@v1 
-      with:
-        files: '**/appconfig.json'
-      env:
-        appBaseUrl: ${{ secrets.APPBASEURL_STAGING }}
-        remoteServiceBaseUrl: ${{ secrets.REMOTESERVICEBASEURL_STAGING }}
-
+#    - uses: microsoft/variable-substitution@v1 
+#      with:
+#        files: '**/appconfig.json'
+#      env:
+#        appBaseUrl: ${{ secrets.APPBASEURL_STAGING }}
+#        remoteServiceBaseUrl: ${{ secrets.REMOTESERVICEBASEURL_STAGING }}
    
     - name: npm install raaghu-elements
       working-directory: raaghu-elements
@@ -63,12 +62,12 @@ jobs:
         name: node-app
         path: ./raaghu-mfe/dist
     
-    - uses: microsoft/variable-substitution@v1 
-      with:
-        files: '**/appconfig.json'
-      env:
-        appBaseUrl: ${{ secrets.APPBASEURL }}
-        remoteServiceBaseUrl: ${{ secrets.REMOTESERVICEBASEURL }}
+#    - uses: microsoft/variable-substitution@v1 
+#      with:
+#        files: '**/appconfig.json'
+#      env:
+#        appBaseUrl: ${{ secrets.APPBASEURL }}
+#        remoteServiceBaseUrl: ${{ secrets.REMOTESERVICEBASEURL }}
             
   deploy:
     permissions:
@@ -90,6 +89,6 @@ jobs:
       id: deploy-to-webapp
       with:
         app-name: 'raaghumfestageuiapp'
-        slot-name: 'Production'
+        slot-name: 'production'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_392363CA3B8C4905BC10144A553C3367 }}
         package: .

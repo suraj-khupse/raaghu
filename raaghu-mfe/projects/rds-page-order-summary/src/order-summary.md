@@ -9,9 +9,8 @@ title: "Pages > order-summary"
 
 #### Order Summary
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p></p>
 <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,7 +27,7 @@ title: "Pages > order-summary"
          <div class="contents p-5">
               <div class="row">
              <div class="col-md-12">
-               <img src="/images/forgot-password-page.png" class="w-100">
+               <img src="/images/order-summary1.png" class="w-100">
              </div>
            </div>
                        

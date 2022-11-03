@@ -11,10 +11,6 @@ export default {
       options: ['static', true, false],
       control: { type: 'select' },
     },
-    colorVariant: {
-      options: ['primary', 'secondary', 'danger', 'success', 'warning', 'info', 'light', 'dark'],
-      control: { type: 'select' },
-    },
     placement: {
       options: ['start', 'end', 'top', 'bottom'],
       control: { type: 'select' },
@@ -33,27 +29,32 @@ export const Default: Story<RdsOffcanvasComponent> = (args) => ({
    Button
   </button>
   <rds-offcanvas
-  [colorVariant]=[colorVariant]
   [placement]=[placement]
   [canvasTitle]="canvasTitle"
   [backDrop]="backDrop"
   [offId]="offId"
   [offcanvaswidth]="offcanvaswidth"
   [bodySpacing]="bodySpacing"
+  [preventEscapeKey]="preventEscapeKey"
   >
   </rds-offcanvas> `,
 
 });
-Default.parameters = { controls: { include: ['canvasTitle', 'placement', 'colorVariant', 'backDrop', 'offId','offcanvaswidth','bodySpacing'] } };
+Default.parameters = { controls: { include: ['canvasTitle', 'placement', 'backDrop', 'offId','offcanvaswidth', 'buttonTitle',
+'scrolling','preventEscapeKey','bodySpacing'] } };
+
 
 Default.args = {
   offId: 'canvasExample',
   canvasTitle: 'Offcanvas Title',
-  placement: 'end',
-  colorVariant: 'light',
+
+  // buttonTitle: 'Button',
+  scrolling: false,
+  bodySpacing: true,
+  placement: 'top',
   backDrop: 'static',
   offcanvaswidth:650,
-  bodySpacing:true
+  // preventEscapeKey: true
 };
 
 // export const basic = Template.bind({});

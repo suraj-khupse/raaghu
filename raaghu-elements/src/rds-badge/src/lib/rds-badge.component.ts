@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class RdsBadgeComponent implements OnInit {
 
   title = 'rds-badge';
-  @Input() size: 'small' | 'smaller' | 'smallest' | 'medium' | 'large' = 'smallest'
+  @Input() size: 'small' | 'smaller' | 'smallest' | 'medium' | 'large' | 'xlg' = 'smallest'
   @Input() label: string = 'New';
   @Input() positioned: boolean = false
   @Input() badgeType: 'rectangle' | 'circle' | 'pill' = 'rectangle'
@@ -31,6 +31,9 @@ export class RdsBadgeComponent implements OnInit {
 
     if (this.positioned === true) {
       clsList.push('position-absolute start-100 top-0 translate-middle')
+    }
+    if (this.badgeType === 'rectangle') {
+      clsList.push('rounded')
     }
     if (this.badgeType === 'circle') {
       clsList.push('rounded-circle')

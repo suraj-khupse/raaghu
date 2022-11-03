@@ -8,10 +8,10 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 })
 export class RdsLabelComponent implements OnInit {
-  @Input() label?: string
-  @Input() multiline?: boolean
-  @Input() bold?: boolean
-  @Input() italic?: boolean
+  @Input() label?: any;
+  @Input() multiline: boolean = false;
+  @Input() bold: boolean = false;
+  @Input() italic: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

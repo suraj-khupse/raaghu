@@ -7,10 +7,9 @@ title: "Components > Organization-Tree"
 
 ### Organization-Tree
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>Organization trees are used to create a list of organizations for use in some of the mass change flows</p>
 
 <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -36,17 +35,12 @@ title: "Components > Organization-Tree"
 <div class="row m-0">
 
 ```html
-  <rds-comp-features
-  [EditionsTableHeader]="EditionsTableHeader"
-  [EditionsTableData]="EditionsTableData"
-  [recordsPerpage]="10"
-  EditionName=""
-  [AnnualPrice]="200"
-  [TrailPeriod]="10"
-  [ExpiryInterval]="10"
-  freeEditon="Edition"
-  [featureList]="featureList"
-></rds-comp-features>
+ 
+<app-rds-organization-tree
+  [organizationTreeData]="organizationTreeData"
+  [mutable]="true"
+  [nodeColor]="nodeColor"
+></app-rds-organization-tree>
 ```
 </div>
 </div>

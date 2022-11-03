@@ -24,8 +24,6 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   @Input() TenantName: string;
   @Input() UserName: string = 'Email/Username';
   @Input() Password: string = 'Password';
-  @Input() userNameInputType: string = 'email';
-  @Input() userPasswordInputType: string = 'password';
   buttonLabel: string = 'Login';
   buttonLabelUp: string = 'Signup'
   @Input() buttonColorType: string = 'secondary';

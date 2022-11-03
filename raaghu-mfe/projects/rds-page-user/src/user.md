@@ -9,9 +9,8 @@ title: "Pages > user"
 
 #### User
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>It gives a card having different tables options with status and necessary actions required</p>
 <section class="py-4">                                                                                             
-    <h6>User</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

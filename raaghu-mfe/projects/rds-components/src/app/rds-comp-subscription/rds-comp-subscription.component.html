@@ -13,7 +13,7 @@
 <div class="row mt-2">
   <div class="col-md-12 text-center">
     <div class="px-2 my-4" *ngFor="let item of Dataset">
-      <rds-card [colorVariant]="item.name">
+      <rds-card>
         <div class="p-2 bg-primary" header>
           <span class="p-2 text-white">{{item.name}}</span>
         </div>
@@ -23,13 +23,13 @@
             [fill]="false" style="stroke-width: 0.3;" class="pt-4 pb2"></rds-icon>
             <div class="py-2">
               <h2 class="p-2 pb-0">${{item.price}}</h2>
-              <p>{{item.duration}}</p>
+              <p class="fs-5">{{item.duration}}</p>
             </div>
             <div class="d-flex justify-content-around">
               <ul class="p-0 text-start">
                 <li class="list-group-item  px-2 py-1 border-0" *ngFor="let items of item.features">
-                  <rds-icon name="tick_circle" [fill]="false" width="12px" height="12px"></rds-icon>
-                  <small class="px-1">{{items}}</small>
+                  <rds-icon name="tick_circle" [fill]="false" width="14px" height="14px"></rds-icon>
+                  <small class="ps-2 fw-medium">{{items}}</small>
                 </li>
               </ul>
             </div>

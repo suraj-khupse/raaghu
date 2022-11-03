@@ -2,8 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
-import { LanguageText } from 'projects/rds-page-language-text/src/modal/language-text';
+// import { LanguageText } from 'projects/language-text/src/modal/language-text';
 import { selectAllLanguageTexts } from 'projects/libs/state-management/src/lib/state/language-text/language-text.selector';
+import { LanguageText } from 'projects/rds-page-language-text/src/modal/language-text';
 import { TableHeader } from '../../models/table-header.model';
 declare let bootstrap: any;
 
@@ -18,6 +19,7 @@ export class RdsCompLanguageTextListComponent implements OnInit {
   baselanguage: string;
   TargetCulturename: string
   source: string
+  viewCanvas:boolean;
   targetValue: string;
   languagetextTableHeader: TableHeader[] = [
     { displayName: 'Key', key: 'Key', dataType: 'text', dataLength: 30, sortable: true, required: true },

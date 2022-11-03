@@ -1,10 +1,11 @@
 <div>
     <div class="row">
         <div class="col-md-12 text-end pb-3 desktop-btn">
-            <a class="px-4" (click)="newTenantHost($event)" style="cursor: pointer;">{{manageHost}}</a>
-            <rds-button  [label]="translate.instant('New Tenant')" [size]="'small'" [colorVariant]="'primary'"
-                (click)="newTenant($event, true)" [showLoadingSpinner]="buttonSpinnerForNewUser"
-                buttonType="iconLabel" icon="plus" iconWidth="12px" iconHeight="12px">
+            <a class="px-4 text-decoration-none" (click)="newTenantHost($event)"
+                style="cursor: pointer;">{{manageHost}}</a>
+            <rds-button [label]="translate.instant('New Tenant')" [size]="'small'" [colorVariant]="'primary'"
+                (click)="newTenant($event, true)" [showLoadingSpinner]="buttonSpinnerForNewUser" buttonType="iconLabel"
+                icon="plus" iconWidth="12px" iconHeight="12px">
             </rds-button>
         </div>
         <div class="col-md-12">
@@ -23,22 +24,22 @@
     </div>
 </div>
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'tenantOffcanvas'" [offcanvaswidth]="650"
-    [placement]="'end'" *ngIf="viewCanvas" [bodySpacing]="true" (onClose)="close()">
-    <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activepage]="activePage"
+    [placement]="'end'" *ngIf="viewCanvas" (onClose)="close()">
+    <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activeTab]="activePage"
         [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
         [justified]="false">
         <div naveContent class="row tab-content m-2" id="nav-tabContent">
             <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 0}" id="tenant-information"
                 role="tabpanel" aria-labelledby="nav-home-tab">
-                <app-rds-comp-tenant-basic-profile-right (tenantInfo)="getTenantData($event)" [editionList]="editionList"
-                    [tenantData]="tenantData" (onCancel)="close()" [editShimmer]="editShimmer"
-                    [showEmail]="showEmailList">
+                <app-rds-comp-tenant-basic-profile-right (tenantInfo)="getTenantData($event)"
+                    [editionList]="editionList" [tenantData]="tenantData" (onCancel)="close()"
+                    [editShimmer]="editShimmer" [showEmail]="showEmailList">
                 </app-rds-comp-tenant-basic-profile-right>
             </div>
             <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 1}" id="settings" role="tabpanel"
                 aria-labelledby="nav-home-tab">
-                <app-rds-comp-tenant-features (tenantInfo)="getTenantData($event)" 
-                    [tenantData]="tenantData" (onCancel)="close()" [editShimmer]="editShimmer" [editionList]="editionList"
+                <app-rds-comp-tenant-features (tenantInfo)="getTenantData($event)" [tenantData]="tenantData"
+                    (onCancel)="close()" [editShimmer]="editShimmer" [editionList]="editionList"
                     [showEmail]="showEmailList">
                 </app-rds-comp-tenant-features>
             </div>
@@ -46,12 +47,12 @@
                 role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="footer-buttons">
                     <div class="col-md-12 ">
-                        <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'"
-                            [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas">
+                        <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
+                            (click)="close()" data-bs-dismiss="offcanvas">
                         </rds-button>
                         <rds-button [label]="translate.instant('CREATE')" [size]="'small'"
-                            [showLoadingSpinner]="buttonSpinnerForSave" class="ms-2"
-                            [colorVariant]="'primary'" (click)="save()">
+                            [showLoadingSpinner]="buttonSpinnerForSave" class="ms-2" [colorVariant]="'primary'"
+                            (click)="save()">
                         </rds-button>
                     </div>
                 </div>
@@ -60,10 +61,9 @@
     </rds-nav-tab>
 </rds-offcanvas>
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="offCanvasId" [offcanvaswidth]="650"
-    [placement]="'end'" *ngIf="viewCanvas" [bodySpacing]="true" (onClose)="close()">
-    <app-rds-comp-tenant-features (tenantInfo)="getTenantData($event)"
-                    [tenantData]="tenantData" (onCancel)="close()" [offCanvasId]="offCanvasId" [editShimmer]="editShimmer" [editionList]="editionList"
-                    [showEmail]="showEmailList">
-                </app-rds-comp-tenant-features>
+    [placement]="'end'" *ngIf="viewCanvas" (onClose)="close()">
+    <app-rds-comp-tenant-features (tenantInfo)="getTenantData($event)" [tenantData]="tenantData" (onCancel)="close()"
+        [offCanvasId]="offCanvasId" [editShimmer]="editShimmer" [editionList]="editionList" [showEmail]="showEmailList">
+    </app-rds-comp-tenant-features>
 </rds-offcanvas>
 <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>

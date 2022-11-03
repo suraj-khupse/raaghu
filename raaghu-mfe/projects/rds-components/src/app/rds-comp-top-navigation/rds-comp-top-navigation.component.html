@@ -22,13 +22,13 @@
 
     <div class="collapse navbar-collapse ps-5 ms-4 py-0 m-0" id="navbarSupportedContent1">
       <ul class="navbar-nav d-flex align-items-center ms-auto">
-        <rds-dropdownlist [placeholder]="'Select theme'" [value]="themes.value" [borderDropdown]="false"
+        <rds-dropdownlist [placeholder]="'Select theme'" [value]="selectedTheme" [id]="'theme-dropdown'" [borderDropdown]="false"
           [listItems]="themes" (onSelect)="onThemeSelect($event.item.value)"></rds-dropdownlist>
-        <rds-dropdownlist class="ms-2" [placeholder]="'Languages'" [value]="selectedLanguage.language"
+        <rds-dropdownlist class="ms-2" [id]="'language-dropdown'" [placeholder]="'Languages'" [value]="selectedLanguage.language" [xOffset]="'-90'" [yOffset]="'0'"
           [icon]="selectedLanguage.icon" [borderDropdown]="false" [iconHeight]="'18px'" [iconWidth]="'18px'"
           [listItems]="languageItems" (onSelect)="onLanguageSelect($event)">
         </rds-dropdownlist>
-        <li class="nav-item dropdown border-end px-2">
+        <li class="nav-item dropdown pe-3 ps-2 me-1">
           <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span>
@@ -56,8 +56,11 @@
             <!-- <mfe-loader [config]="rdsNotoficationMfeConfig"></mfe-loader> -->
           </div>
         </li>
-        <li class="nav-item border-end px-2">
-          <rds-icon width="20px" height="20px" name="chevron_down_arrow"></rds-icon>
+        <li class="nav-item border-end border-start px-3">
+          <!-- <a href="#" this.router.navigate(['/link']);><rds-icon width="20px" height="20px" name="gear"></rds-icon></a> -->
+          <a [routerLink]="['/pages/settings']" >
+            <rds-icon width="20px" height="20px" name="gear"></rds-icon>
+          </a>
         </li>
       </ul>
     </div>
@@ -67,11 +70,17 @@
           <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span>
-              <rds-icon name="alert_notification" width="20px" height="20px"></rds-icon>
-
+              <rds-button class="position-relative" [size]="'small'" [id]="'notification'" [roundedButton]="true"
+                [colorVariant]="'default'" type="button">
+                <rds-icon name="notification" width="20px" height="20px"></rds-icon>
+                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary" [label]="unreadCount"
+                  [positioned]="true" >
+                </rds-badge>
+              </rds-button>
+              <!-- <rds-icon name="notifications" width="20px"></rds-icon> -->
             </span>
           </a>
-          <div class="
+          <div aria-labelledby="navbarDropdownMenuLink" class="
               dropdown-menu dropdown-menu-right
               notifications-dropdown
               w-md-375px
@@ -79,9 +88,11 @@
               mt-2
               p-0
             ">
+            <app-rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"
+              (setAsReadOutput)="setNotificationAsRead.emit($event)"
+              (setAllReadOutput)="setAllNotificationAsRead.emit($event)"></app-rds-notification>
+            <!-- <mfe-loader [config]="rdsNotoficationMfeConfig"></mfe-loader> -->
           </div>
-          <app-rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"></app-rds-notification>
-
         </li>
         <li class="nav-item cursor-pointer" (click)="viewOffcanvas()">
           <div class="nav-link align-items-center d-flex">
@@ -99,8 +110,6 @@
                   </p>
                 </div>
                 <rds-icon name="chevron_down" [height]="'11px'" [width]="'11px'" class="ms-3 mt-2"></rds-icon>
-                
-
               </span>
             </div>
 

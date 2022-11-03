@@ -10,9 +10,8 @@ title: "Components > Review-Categorys"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Review-Categorys
-
+<p>Provides a card with the details of differnet user and their rating and remark regarding a product</p>
  <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

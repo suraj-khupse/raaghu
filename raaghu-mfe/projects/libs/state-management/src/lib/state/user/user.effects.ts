@@ -24,7 +24,7 @@ export class UserEffects {
           permissions: selectedPermissions,
           role: null,
           onlyLockedUsers: false,
-          sorting: "",
+          sorting: "id desc",
           maxResultCount: 10,
           skipCount: 0
         }))).pipe(

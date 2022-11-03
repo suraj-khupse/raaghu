@@ -23,7 +23,7 @@
             </rds-widget>
           </div>
           <div>
-            <rds-widget [isRefreshRequired]="false" [headerTitle]="translate.instant('Revenue')" [colorVariant]="'primary'" cardheight = 'card-stretch-half'>
+            <rds-widget [isRefreshRequired]="false" [headerTitle]="translate.instant('Revenue')" [colorVariant]="'gradient-primary'" cardheight = 'card-stretch-half'>
               <div body>
                 <rds-big-number-widget  [iconFill]="true" [iconStroke]="true" [bigNumber]="'$' +RevenuePrice" [textAlign]="'text-start'" subTitleColorVariant="warning" [colorVariant]="'primary'"
                   [subText]="'-$' +RevenueProfit" [icon]="'triangle_down'" [iconHeight]="'12px'" [iconWidth]="'12px'" 
@@ -107,11 +107,10 @@
     </div>
     <div class="col-md-6 member-activity-col">
       <rds-widget [isRefreshRequired]="true" cardheight = 'card-stretch' [headerTitle]="translate.instant('Member Activity')" (onRefresh)="LoadMemberActivityTable()">
-        <div body>
           <!-- <mfe-loader [config]="rdsMemberActivityTableMfeConfig"></mfe-loader> -->
           <app-rds-data-table [tableData]="memberActivityTableData" [inlineEdit]="false" [pagination]="true" [recordsPerPage]="10"
             [tableHeaders]="memberActivityTableHeader"  ></app-rds-data-table>
-        </div>
+       
       </rds-widget>
     </div>
   </div>

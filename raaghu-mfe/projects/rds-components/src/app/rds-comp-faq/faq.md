@@ -7,7 +7,7 @@ title: "Components > FAQ"
 
 ### FAQ
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>Gives a card on frequently asked questions</p>
 
 <section class="py-4">
     <h6>Default</h6>

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { Login, LoginAttempts } from '../../models/profile.model';
+import { TableHeader } from '../../models/table-header.model';
 
 @Component({
   selector: 'app-rds-comp-login-attempts',
@@ -18,6 +19,10 @@ export class RdsCompLoginAttemptsComponent implements OnInit {
   @Input()
   LoginAttempts: any = {};
   @Input() Result: string;
+  @Input() public operationLogs: any = [];
+  @Input() public operationLogsHeaders: TableHeader[] = [];
+   showInput:boolean=false;
+
    
 
   result:string
@@ -77,5 +82,10 @@ let endDate = this.endDate.toISOString()
     filter:undefined
   }
 this.RefreshLoginAttemts.emit(FilterData)
+}
+
+onClickShowInput()  {
+  this.showInput=!this.showInput;
+
 }
 }

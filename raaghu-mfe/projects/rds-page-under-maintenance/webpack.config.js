@@ -6,7 +6,7 @@ const share = mf.share;
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
     path.join(__dirname, '../../tsconfig.json'),
-    ['@libs/rds-elements','@libs/shared','@libs/state-management','@libs/rds-icon','@libs/rds-badge','@libs/rds-icon-label','@libs/rds-select-list','@libs/rds-label','@libs/rds-avatar','@libs/rds-like-dislike','@libs/rds-rating','@libs/rds-checkbox','@libs/rds-radio-button','@libs/rds-button']);
+    ['@libs/rds-elements','@libs/shared','@libs/state-management']);
 
 module.exports = {
     output: {

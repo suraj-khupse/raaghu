@@ -10,10 +10,18 @@ export class RdsAddressDetailComponent implements OnInit {
   @Input() addressLine1!: string;
   @Input() addressLine2!: string;
   @Input() addressLine3!: string;
+  @Input() withIcon: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+  public get classes(): string[] {
+    let classes: string[] = [];
+    if (this.withIcon) {
+      classes.push('block');
+    }
 
+    return classes;
+  }
 }

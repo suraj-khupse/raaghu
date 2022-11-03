@@ -6,16 +6,16 @@
     <div class="row mt-4">
         <div class="col-md-6 sm-p-0">
             <div class="form-group mb-4">
-                <!-- <rds-input size="default" [Title]="'Required Length (Min)'" [TitleType]="'Top'" inputType="text"
+                <rds-input size="medium" [label]="'Required Length (Min)'" [labelPosition]="'top'" inputType="text"
                      [isRequired]=true required [disabled]="false"  [readonly]="false"
-                    [placeholder]="'Enter Length'" [(ngModel)]="identityData.requiredlength"
+                    [placeholder]="'Enter Length'" name="requiredlength" [(ngModel)]="identityData.requiredlength"
                     ngDefaultControl>
-                </rds-input> -->
+                </rds-input>
             </div>
         </div>
         <div class="col-md-6 sm-p-0">
             <div class="form-group mb-4">
-                <rds-input size="default" [Title]="'Required Special Characters (Min)'" [TitleType]="'Top'"
+                <rds-input size="medium" [label]="'Required Special Characters (Min)'" [labelPosition]="'top'"
                     inputType="text" name="defaultAddress" [isRequired]=true required [disabled]="false"
                     [readonly]="false" [placeholder]="'Enter Number'" [(ngModel)]="identityData.defaultAddress"
                     #defaultAddress="ngModel" ngDefaultControl>
@@ -65,7 +65,7 @@
         <div class="row mt-4">
             <div class="col-md-6 sm-p-0">
                 <div class="form-group mb-4">
-                    <rds-input size="default" [Title]="'Lockout Duration (Seconds)'" [TitleType]="'Top'" inputType="text"
+                    <rds-input size="medium" [label]="'Lockout Duration (Seconds)'" [labelPosition]="'top'" inputType="text"
                         name="lockoutDuration" [isRequired]=true required [disabled]="false"  [readonly]="false"
                         [placeholder]="'Enter Length'" [(ngModel)]="identityData.lockoutDuration"
                         #lockoutDuration="ngModel" ngDefaultControl>
@@ -74,7 +74,7 @@
             </div>
             <div class="col-md-6 sm-p-0">
                 <div class="form-group mb-4">
-                    <rds-input size="default" [Title]="'Max Failed Access Attempts'" [TitleType]="'Top'"
+                    <rds-input size="medium" [label]="'Max Failed Access Attempts'" [labelPosition]="'top'"
                         inputType="text" name="maxAttmpts" [isRequired]=true required [disabled]="false"
                         [readonly]="false" [placeholder]="'Enter Name'" [(ngModel)]="identityData.MaxAttmpts"
                         #maxAttmpts="ngModel" ngDefaultControl>

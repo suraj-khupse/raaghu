@@ -1,5 +1,5 @@
 ---
-slug: "/page-dynamic-property-management "
+slug: "/page-dynamic-property-management"
 date: "2019-05-04"
 title: "Pages > Dynamic-Property-Management"
 ---
@@ -12,11 +12,10 @@ title: "Pages > Dynamic-Property-Management"
 
 #### Dynamic-Property-Management
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>A representation of a table with different dynamic properties and dynamic entity properties with necessary actions</p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

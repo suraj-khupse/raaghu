@@ -1,5 +1,5 @@
 ---
-slug: "/page-language "
+slug: "/page-language"
 date: "2019-05-04"
 title: "Pages > Language"
 ---
@@ -12,7 +12,7 @@ title: "Pages > Language"
 
 #### Language
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>gives a description on different languages along with their code and action on edit or delete</p>
 
 <!-- Basic -->
 <section class="py-4">

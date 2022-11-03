@@ -108,7 +108,7 @@ cd <project_name>/node_modules
 
 ```bash
 # Import it in your app.module.ts file, include the library
-import { RdsButtonModule } from "rds-elements/rds-button"
+import { RdsButtonModule } from "@libs/rds-button"
 
 # import the above module
 imports: [

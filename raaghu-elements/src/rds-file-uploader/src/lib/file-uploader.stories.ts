@@ -17,6 +17,7 @@ export default {
       control: { type: 'radio' }
     },
     multipleFiles: { control: { type: 'boolean' } },
+    role: {table: {disable: true,},},
   }
 } as Meta
 
@@ -25,6 +26,7 @@ const Template: Story<RdsFileUploaderComponent> = (args: RdsFileUploaderComponen
 });
 
 export const Default = Template.bind({})
+Default.parameters = { controls: { include: ['size', 'multipleFiles', 'role', 'label'] } };
 Default.args = {
   size: 'medium',
   multipleFiles: false,
@@ -34,6 +36,7 @@ Default.args = {
 
 
 export const multiple_file_uploader = Template.bind({})
+multiple_file_uploader.parameters = { controls: { include: ['size', 'multipleFiles', 'role', 'label', 'extensions'] } };
 multiple_file_uploader.args = {
   size: 'medium',
   multipleFiles: true,

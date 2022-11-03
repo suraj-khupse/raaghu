@@ -4,9 +4,9 @@
   <form #emailForm="ngForm">
     <div class="row">
       <div class="col-md-6 mb-3">
-        <rds-input size="'default'" [Title]="translate.instant('Default From (Sender) Email Address')" name="defaultFromAddress" [placeholder]="'Email Address'" id="txtUsername"
+        <rds-input [size]="'medium'" [label]="translate.instant('Default From (Sender) Email Address')" name="defaultFromAddress" [placeholder]="'Email Address'" id="txtUsername"
                    #defaultFromAddress="ngModel" [pattern]="emailPattern" ngDefaultControl
-                   [(ngModel)]="EmailData.defaultFromAddress" required [isRequired]=true floatinginputLabel="" [TitleType]="'Top'">
+                   [(ngModel)]="EmailData.defaultFromAddress" required [isRequired]=true floatinginputLabel="" [labelPosition]="'top'">
         </rds-input>
         <div class="form-control-feedback"
              *ngIf="defaultFromAddress.errors&&(defaultFromAddress.dirty||defaultFromAddress.touched)">
@@ -17,8 +17,8 @@
       </div>
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <rds-input size="'default'" [Title]="translate.instant('Default From (Sender) Display Name')" [placeholder]="'Display Name'" name="defaultFromDisplayName" id="txtUsername"
-                     #defaultFromDisplayName="ngModel" [(ngModel)]="EmailData.defaultFromDisplayName" [TitleType]="'Top'">
+          <rds-input [size]="'medium'" [label]="translate.instant('Default From (Sender) Display Name')" [placeholder]="'Display Name'" name="defaultFromDisplayName" id="txtUsername"
+                     #defaultFromDisplayName="ngModel" [(ngModel)]="EmailData.defaultFromDisplayName" [labelPosition]="'top'">
           </rds-input>
         </div>
       </div>
@@ -26,17 +26,17 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <rds-input size="'default'" [Title]="translate.instant('SMTP Host')" [placeholder]="'127.0.0.1'" id="smtpHost"
+          <rds-input [size]="'medium'" [label]="translate.instant('SMTP Host')" [placeholder]="'127.0.0.1'" id="smtpHost"
                      #smtpHost="ngModel" [(ngModel)]="EmailData.smtpHost" name='smtpHost' [pattern]="hostAddressPattern"
-                     [TitleType]="'Top'">
+                     [labelPosition]="'top'">
           </rds-input>
           
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <rds-input size="'default'" [placeholder]="'25'" [Title]="translate.instant('SMTP Port')" id="smtpPort"
-                     name="smtpPort" [(ngModel)]="EmailData.smtpPort" #smtpPort="ngModel" [TitleType]="'Top'"></rds-input>
+          <rds-input [size]="'medium'" [placeholder]="'25'" [label]="translate.instant('SMTP Port')" id="smtpPort"
+                     name="smtpPort" [(ngModel)]="EmailData.smtpPort" #smtpPort="ngModel" [labelPosition]="'top'"></rds-input>
         </div>
       </div>
     </div>
@@ -65,9 +65,9 @@
     <div class="row pt-4">
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <rds-input size="'default'" [pattern]="emailPattern" [Title]="translate.instant('Test Email Settings')"
+          <rds-input [size]="'medium'" [pattern]="emailPattern" [label]="translate.instant('Test Email Settings')"
                      [placeholder]="'admin@aspnetzero.com'" id="txtUsername" #smtpDomain="ngModel"
-                     [(ngModel)]="EmailData.smtpDomain" name="smtpDomain" [TitleType]="'Top'">
+                     [(ngModel)]="EmailData.smtpDomain" name="smtpDomain" [labelPosition]="'top'">
           </rds-input>
 
           <div class="form-control-feedback"
@@ -82,7 +82,7 @@
       <div class="col-md-6">
         <div class="form-group mb-3 mt-1 pt-4">
           <rds-button [tooltipPlacement]="'bottom'" (click)="sendTestmail()" [id]="'sendTestEmail'" [tooltipTitle]="translate.instant('SEND TEST EMAIL')" [label]="translate.instant('SEND TEST EMAIL')"
-                      type="button" [size]="'small'" [colorVariant]="'primary'" [outlineButton]="false"></rds-button>
+                      type="button" [size]="'medium'" [colorVariant]="'primary'" [outlineButton]="false"></rds-button>
         </div>
       </div>
     </div>

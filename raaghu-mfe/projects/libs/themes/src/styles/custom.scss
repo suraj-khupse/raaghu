@@ -146,7 +146,6 @@ input::-webkit-input-placeholder {
   font-size: $font-size-sm;
   line-height: 1.8;
 }
-
 .navbar {
   font-size: $font-size-base rem;
 }
@@ -233,7 +232,7 @@ html[theme=light] {
   grid-template-columns: 15px auto;
 
   .edition {
-    margin-top: $tenant-margin-x;
+    margin-top: $tenant-margin-x; 
     height: $tenant-edition-height;
     width: $tenant-edition-width;
     border: $tenant-edition-border-width;
@@ -426,9 +425,10 @@ html[theme=light] {
 .rds-scrollable-wrapper {
   width: 100%;
   padding-right: 20px;
-  height: calc(100vh - 57px) !important;
+  height: 100vh !important;
   overflow: auto;
   overflow-x: hidden;
+  padding-bottom:70px !important;
 }
 
 /* btn-icon */
@@ -1142,4 +1142,39 @@ rds-product-image .imgWidth {
 
 .fs-8 {
   font-size: .50rem !important;
+}
+.btn-md.spinner {
+  height: 2.1875rem;
+  position:relative;
+}
+.btn-md.spinner:before {
+  top: 6px;
+}
+.btn-sm.spinner {
+  height: 1.774rem;
+  position: relative;
+}
+
+.btn-sm.spinner:before {
+  top: 4px;
+  left:45%;
+}
+.btn-lg.spinner {
+  height: 2.766rem;
+  position: relative;
+}
+
+.btn-lg.spinner:before {
+  top: 10px;
+  left: 45%;
+}
+.w-225px {
+  width: 225px !important;
+}
+
+.min-w-200px {
+  min-width: 200px !important;
+}
+.w-20 {
+  width: 20%;
 }

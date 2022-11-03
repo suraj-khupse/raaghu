@@ -12,11 +12,10 @@ title: "Pages > Language-Text"
 
 #### Language-Text
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>A card with multiple dropdowns and table with different actions </p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Basic</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

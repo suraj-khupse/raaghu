@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group mb-3">
-                        <rds-input [inputType]="'text'" [Title]="translate.instant('Role Name')" [(ngModel)]="roleData.displayName" [TitleType]="'Top'" name="Role_name"
+                        <rds-input [inputType]="'text'" [label]="translate.instant('Role Name')" [(ngModel)]="roleData.displayName" [labelPosition]="'top'" name="Role_name"
                         required #name="ngModel" [placeholder]="translate.instant('Role Name')" [isRequired]=true required>
                       </rds-input>
                       <div class="form-control-feedback" *ngIf="name.errors&&(name.dirty||name.touched)">

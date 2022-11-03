@@ -10,9 +10,9 @@ title: "Components > App-Details"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### App-Details
+<p>Supercharge your workflow and connect the tool you use every day</p>
 
  <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

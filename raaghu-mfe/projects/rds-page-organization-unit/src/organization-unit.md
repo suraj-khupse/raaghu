@@ -10,9 +10,8 @@ title: "Pages > Organization Unit"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 #### Organization Unit
-
+<p>Provides an organizational description in tree form with available action </p>
  <section class="py-4">
-    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -1,7 +1,7 @@
 ---
 slug: "/page-forgot-password"
 date: "2019-05-04"
-title: "Pages > Forgot Password"
+title: "Pages > Forgot-Password"
 ---
 
 <!-- CSS only -->
@@ -12,7 +12,7 @@ title: "Pages > Forgot Password"
 
 #### Forgot Password
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>Visual representation of a resetting password by email</p>
 
 <!-- Basic -->
 <section class="py-4">

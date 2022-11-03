@@ -29,7 +29,9 @@ const dependentElements = [
     'rds-nav-tab',
     'rds-big-number-widget',
     'rds-chart-bar-horizontal',
-    'rds-chart-line'
+    'rds-chart-line',
+    'rds-chart-bool',
+    'rds-chart-doughnut'
 ];
 
 function replaceFiles() {
@@ -246,6 +248,26 @@ function mergeTSConfigJson() {
             "@libs/rds-chart-bar-horizontal": [
                 "rds-elements/rds-chart-bar-horizontal/public-api",
                 "rds-elements/rds-chart-bar-horizontal"
+            ]
+        };
+        changesDone = true;
+    };
+    if (ngElementsFile.compilerOptions.paths["@libs/rds-chart-bool"] == undefined) {
+        ngElementsFile.compilerOptions.paths = {
+            ...ngElementsFile.compilerOptions.paths,
+            "@libs/rds-chart-bool": [
+                "rds-elements/rds-chart-bool/public-api",
+                "rds-elements/rds-chart-bool"
+            ]
+        };
+        changesDone = true;
+    };
+    if (ngElementsFile.compilerOptions.paths["@libs/rds-chart-doughnut"] == undefined) {
+        ngElementsFile.compilerOptions.paths = {
+            ...ngElementsFile.compilerOptions.paths,
+            "@libs/rds-chart-doughnut": [
+                "rds-elements/rds-chart-doughnut/public-api",
+                "rds-elements/rds-chart-doughnut"
             ]
         };
         changesDone = true;

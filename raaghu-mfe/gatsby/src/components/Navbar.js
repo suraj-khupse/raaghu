@@ -6,16 +6,19 @@ import { Link } from "gatsby";
 const Navbar = () => {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
+    <nav className="navbar py-0 navbar-expand-lg navbar-dark bg-dark">
+      <div className="container-fluid px-0">
         <div className="row w-100">
           <div className="col-md-2">
             <Link to="/" className="navbar-brand">
             <img src={icon} alt="logo" width="80" height="auto" className="d-inline-block align-text-top" />
             </Link>
-
+            <button class="navbar-toggler mt-3 float-end d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
           </div>
           <div className="col-md-7">
+           
             <div
               className="collapse navbar-collapse  pt-3"
               id="navbarTogglerDemo02"

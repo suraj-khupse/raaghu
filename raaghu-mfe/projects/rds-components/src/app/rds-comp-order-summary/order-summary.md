@@ -7,7 +7,7 @@ title: "Components > Order-Summary"
 
 ### Order-Summary
 
-<p class="">A card is a small rectangular module with images and text. It is an entry point for users to learn more details</p>
+<p>Provides a description on the amount calculated in different process of final shipment</p>
 
 <section class="py-4">
     <h6>Default</h6>

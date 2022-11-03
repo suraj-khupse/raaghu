@@ -8,7 +8,7 @@
           <div class="d-inline-block p-3 pb-0" [ngClass]="{ 'selected' : selectedThemeIndex === '2' }">
             <!--<rds-card class="rounded-avatar-basic" style="cursor:pointer">-->
             <div class="p-0" body (click)="getThemeSettings('2')" style="cursor:pointer">
-              <img src="https://stageui.raaghu.io/assets/Dashboard.png" class="w-100">
+              <img src="assets/LightTheme.png" class="w-100">
             </div>
             <div class="col-md-12">
               <h6 class="text-center"></h6>
@@ -23,7 +23,7 @@
           <div class="d-inline-block p-3 pb-0" [ngClass]="{ 'selected' : selectedThemeIndex === '0' }">
             <!--<rds-card class="rounded-avatar-basic" style="cursor:pointer">-->
             <div class="p-0" body (click)="getThemeSettings('0')" style="cursor:pointer">
-              <img src="https://stageui.raaghu.io/assets/LightTheme.png" class="w-100">
+              <img src="assets/LightTheme.png" class="w-100">
             </div>
             <!--/rds-card>-->
             <div class="p-3">
@@ -35,7 +35,7 @@
           <div class="d-inline-block p-3 pb-0" [ngClass]="{ 'selected' : selectedThemeIndex === '1' }">
             <!--<rds-card class="rounded-avatar-basic" style="cursor:pointer">-->
             <div class="p-0" body (click)="getThemeSettings('1')" style="cursor:pointer">
-              <img src="https://stageui.raaghu.io/assets/Dashboard.png" class="w-100">
+              <img src="assets/Dashboard.png" class="w-100">
             </div>
 
             <!--</rds-card>-->
@@ -72,7 +72,7 @@
       </div> -->
       <div class="row ps-3 navsm-p-0">
         <rds-nav-tab [navtabsItems]="getNavTabItems()" horizontalAlignment="start" [verticalAlignment]="false"
-          [pills]="false" [tabs]="true"  (onClicktab)=" onSelectnode($event)" [justified]="false" [flex]="false">
+          [pills]="false" [tabs]="true"  (onClicktab)=" onSelectnode($event)" [justified]="false" >
         </rds-nav-tab>
       </div>
       <div naveContent class="tab-content" id="headerbar">

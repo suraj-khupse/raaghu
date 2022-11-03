@@ -12,11 +12,10 @@ title: "Pages > Tenant"
 
 #### Tenant
 
-<p class="checkbox-def">Avatar is known as a visual form representing a user oneself and one's identity wished.</p>
+<p>A page having multiple dropdown options and necessary action required for tenant </p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Basic</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -16,136 +16,40 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
   private onTouched!: Function;
   private onChanged!: Function;
   title = 'rds-checkbox-parent-child';
-  data: any;
   onChange!: (value: string) => void;
-  isMasterSel: boolean;
-  categoryList: any;
-  checkedCategoryList: any;
-  @Input() checked!: boolean;
-  @Input() disabled!: boolean;
-  @Input() id?: string
-  @Input() label?: string;
+  @Input() itemList: any;
   @Input() switch?: boolean;
   @Input() inline?: boolean;
-  @Input() withLabel?: boolean;
   @Input() isInputGroup?: boolean;
-  @Input() state: 'checkbox' | 'Indeterminate' | 'errorcheckbox' = 'checkbox';
+  @Input() state: 'checkbox' | 'errorcheckbox' = 'checkbox';
+  checked!: boolean;
 
   @Output() onClick = new EventEmitter<{ evnt: any, item: string }>();
-  
-  listItems!: any;
-  constructor() {
-    this.isMasterSel = false;
-    this.data = {};
-    this.data.isAllSelected = false;
-    this.data.isAllCollapsed = false;
 
-    this.data.ParentChildchecklist = [
-      {
-        id: 1,
-        label: 'Parent Checkbox 1',
-        isSelected: false,
-        isClosed: false,
-        childList: [
-          {
-            id: 1,
-            parent_id: 1,
-            label: 'Child Checkbox 1',
-            isSelected: false
-          },
-          {
-            id: 2,
-            parent_id: 1, 
-            label: 'Child Checkbox 2', 
-            isSelected: false
-          },
-          {
-            id: 3, 
-            parent_id: 1, 
-            label: 'Child Checkbox 3', 
-            isSelected: false
-          },
-          {
-            id: 4, 
-            parent_id: 1, 
-            label: 'Child Checkbox 4', 
-            isSelected: false
-          }
-        ]
-      },
-      {
-        id: 2, 
-        label: 'Parent Checkbox 2', 
-        isSelected: false, isClosed: false,
-        childList: [
-          {
-            id: 1, 
-            parent_id: 1, 
-            label: 'Child Checkbox 1', 
-            isSelected: false
-          },
-          {
-            id: 2, 
-            parent_id: 1, 
-            label: 'Child Checkbox 2', 
-            isSelected: false
-          }
-        ]
-      },
-      //{
-      //  id: 3, 
-      //  label: 'Parent Checkbox 3', 
-      //  isSelected: false, 
-      //  isClosed: false,
-      //  childList: [
-      //    {
-      //      id: 1, 
-      //      parent_id: 1, 
-      //      label: 'Child Checkbox 1', 
-      //      isSelected: false
-      //    },
-      //    {
-      //      id: 2, 
-      //      parent_id: 1, 
-      //      label: 'Child Checkbox 2', 
-      //      isSelected: false
-      //    },
-      //    {
-      //      id: 3, 
-      //      parent_id: 1, 
-      //      label: 'Child Checkbox 3', 
-      //      isSelected: false
-      //    }
-      //  ]
-      //}
-    ];
-  }
-
+  constructor() {}
 
   ngOnInit(): void {
-
   }
 
   public get classes(): string[] {
     var classes = ['form-check']
-    if (this.isInputGroup === true) {
-      classes = ['input-group-text px-5'];
+    if (this.isInputGroup) {
+      classes = ['input-group-text'];
     }
-    if (this.switch === true) {
-      classes.push('form-switch')
+    if (this.switch) {
+      classes.push('form-switch ps-5')
       return classes
     }
-    if (this.inline === true) {
+    if (this.inline) {
       classes.push('form-check-inline')
       return classes
     }
-    if (this.state === 'Indeterminate') {
-      classes.push('inder')
-      return classes
-    }
-    if (this.state === 'errorcheckbox') {
+    if (this.state == 'errorcheckbox') {
       classes.push('errorche')
       return classes
+    }
+    if (this.isInputGroup && this.switch && this.inline) {
+      classes = ['input-group-text form-switch ps-5 form-check-inline'];
     }
     return classes
   }
@@ -162,13 +66,8 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
     this.onTouched();
   }
 
-  changeData(event: boolean): void {
-    this.checked = event
-    this.onTouched();
-    this.onChanged(this.checked);
-  }
-  
   parentCheck(parentObj: any, event: boolean) {
+    parentObj.isIntermediate = false;
     for (var i = 0; i < parentObj.childList.length; i++) {
       parentObj.childList[i].isSelected = parentObj.isSelected;
     }
@@ -179,25 +78,33 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
 
   //Click event on Child Checkbox checkbox  
   childCheck(parentObj: any, childObj: any, event: boolean) {
+    parentObj.isSelected = false;
     parentObj.isSelected = childObj.every(function (itemChild: any) {
       return itemChild.isSelected == true;
-    })
-    childObj.isSelected = event
-    this.onTouched(); // <-- mark as touched
-    this.onChanged(event);
-  }
-
-  //Click event on master select
-  selectUnselectAll(obj: any) {
-    obj.isAllSelected = !obj.isAllSelected;
-    for (var i = 0; i < obj.ParentChildchecklist.length; i++) {
-      obj.ParentChildchecklist[i].isSelected = obj.isAllSelected;
-      for (var j = 0; j < obj.ParentChildchecklist[i].childList.length; j++) {
-        obj.ParentChildchecklist[i].childList[j].isSelected = obj.isAllSelected;
+    });
+    const childObjLength = childObj.filter((x: any) => x.isSelected).length;
+    if (parentObj.isSelected) {
+      parentObj.isSelected = true;
+      if (childObjLength == childObj.length) {
+        parentObj.isIntermediate = false;
+      } else {
+        parentObj.isIntermediate = true;
       }
     }
+    else if (!parentObj.isSelected) {
+      parentObj.isSelected = false;
+      if (childObjLength >= 1) {
+        parentObj.isSelected = true;
+        parentObj.isIntermediate = true;
+      } else if (childObjLength === 0) {
+        parentObj.isIntermediate = false;
+        parentObj.isSelected = false;
+      }
+    }
+    // childObj.isSelected = event
+    this.onTouched(); // <-- mark as toucheds
+    this.onChanged(event);
   }
-
 
   writeValue(value: boolean): void {
     this.checked = value;

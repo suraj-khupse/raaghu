@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
-// import { Tooltip } from 'bootstrap'
 import { Tooltip } from 'bootstrap'
-declare var bootstrap: any;
 @Component({
   selector: 'rds-button',
   templateUrl: './rds-button.component.html',
@@ -9,16 +7,16 @@ declare var bootstrap: any;
 })
 export class RdsButtonComponent implements AfterViewInit, OnInit, DoCheck {
 
-  @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'default' = 'default';
+  @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'default' | 'review' = 'default';
   @Input() submit = false;
   static count: number = 0;
   @Input() block: boolean = false;
-  @Input() size: 'small' | 'medium' | 'large' = 'small';
+  @Input() size: 'small' | 'medium' | 'large' | undefined = 'small';
   @Input() disabled = false;
   @Input() outlineButton = false;
   @Input() roundedButton = false;
   @Input() roundedCorner = false;
-  @Input() tooltipTitle: string = '';
+  @Input() tooltipTitle: string='';
   @Input() tooltipPlacement: 'top' | 'bottom' | 'right' | 'left' = 'bottom';
   @Input() id: string = 'buttonId';
   @Input() isLoading: boolean = false;
@@ -67,10 +65,10 @@ export class RdsButtonComponent implements AfterViewInit, OnInit, DoCheck {
 
 
   ngAfterViewInit(): void {
-    const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    if (this.tooltipTitle && tooltipTriggerList) {
-      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
-    }
+    // const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    // if (this.tooltipTitle && tooltipTriggerList) {
+    //   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl)) || '';
+    // }
     // if (this.tooltipPlacement && this.tooltipTitle) {
     //   const tooltipElement: any = document.getElementById(this.id)
     //   // update
@@ -84,7 +82,7 @@ export class RdsButtonComponent implements AfterViewInit, OnInit, DoCheck {
 
   public get classes(): string {
     const outline = `${this.outlineButton ? ' btn btn-outline-' + this.colorVariant : ' btn btn-' + this.colorVariant}`;
-    const mode = ` btn-${this.size === 'small' ? 'sm ' : this.size === 'large' ? 'lg ' : 'md '}`;
+    const mode = this.size ? ` btn-${this.size === 'small' ? 'sm ' : this.size === 'large' ? 'lg ' : 'md '}` : '';
     const icon = `${this.roundedButton ? ' btn-icon rounded-pill ' : ''}`;
     const icon1 = `${this.roundedCorner ? ' rounded-pill ' : ''}`;
     const disabledGrey = `${this.disabled === true ? 'btn ' : ''}`

@@ -6,7 +6,7 @@
         <rds-price [discount]="5" [actualPrice]="1000"></rds-price>
       </div>
       <div>
-        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small"></rds-rating>
+        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small" [withNoOfReviews]="true"></rds-rating>
       </div>
       <div class="mt-3">
         <rds-label label="Color" [bold]="true"></rds-label>
@@ -15,7 +15,7 @@
       <div class="mt-3">
         <rds-label label="Size"></rds-label>
         <span class="float-end">
-          <rds-label label="Size guide"></rds-label>
+          <rds-label class="text-primary" label="Size guide"></rds-label>
         </span>
         <div>
           <rds-size [sizeData]="sizeData" [sizeType]="'withoutDescription'"></rds-size>
@@ -23,7 +23,11 @@
       </div>
       <div class="mt-3 align-items-center d-flex justify-content-between ms-0">
         <div class="p-1">
-          <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart"></rds-icon>
+          <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart" [colorVariant]="'dark'"></rds-icon>
+          <!-- <rds-icon class="position-absolute icon-positionheart" [id]="item.id" [colorVariant]="item.iconColor"
+                   [name]="item.icon" width="20px" height="20px" [stroke]="true" 
+                  [fill]="item.fill"
+                  ></rds-icon> -->
         </div>
         <div class="p-1 w-50 sm-100">
           <rds-button colorVariant="primary" [outlineButton]="true" [block]="true" size="medium" label="Add To BAG">
@@ -49,11 +53,13 @@
           </rds-button>
         </span>
         <span class="float-end pt-1">
-          <rds-price [discount]="5" [actualPrice]="1000"></rds-price>
+          <!-- <rds-price [discount]="5" [actualPrice]="1000"></rds-price> -->
+          <!-- <rds-icon class="text-light" name="question" height="18px" width="18px" [fill]="false" [stroke]="true" [colorVariant]="'warning'"></rds-icon> -->
+          <rds-price [discount]="60" [actualPrice]="100" role="Basic"></rds-price>
         </span>
       </div>
       <div class="mt-3">
-        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small"></rds-rating>
+        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small" [withNoOfReviews]="true"></rds-rating>
       </div>
       <div class="mt-3">
         <rds-label label="Color"></rds-label>
@@ -62,7 +68,7 @@
       <div class="mt-3">
         <rds-label label="Size"></rds-label>
         <span class="float-end">
-          <rds-label label="Size guide"></rds-label>
+          <rds-label class="text-primary" label="Size guide"></rds-label>
         </span>
         <div>
           <rds-size [sizeData]="sizeData" [sizeType]="'withoutDescription'"></rds-size>
@@ -100,9 +106,22 @@
       </div>
       <div class="d-flex mt-3 sm-block">
         <rds-icon-label [iconposition]="'left'" [icon]="'refresh_sync'" [label]="'14 Days return policy'"
-          [size]="'medium'"></rds-icon-label>
+          [size]="'medium'" [colorVariant]="'primary'"></rds-icon-label>
+        <div>
+          <rds-icon-label [iconposition]="'left'" [icon]="'refresh_sync'" [label]="'14 Days return policy'"
+          [size]="'medium'" [colorVariant]="'primary'" ></rds-icon-label>
+        </div>
+       
+        <!-- <div>
+          <rds-icon [height]="'20px'" [fill]="true" [stroke]="true" [width]="'20px'" [name]="'question'" [colorVariant]="'secondary'">
+          </rds-icon>
+        </div> -->
         <rds-icon-label class="mx-3" [iconposition]="'left'" [icon]="'money'" [label]="'Cash on delivery available'"
-          [size]="'medium'"></rds-icon-label>
+          [size]="'medium'" [colorVariant]="'primary'"></rds-icon-label>
+          <!-- [size]="'medium'" [colorVariant]="'primary'"></rds-icon-label> -->
+          <!-- <div>
+            lafoiahoi
+          </div> -->
       </div>
       <div class="mt-3">
         <app-rds-comp-benefit [itemList]="itemListbenefit"></app-rds-comp-benefit>
@@ -123,11 +142,12 @@
           </rds-button>
         </span>
         <span class="float-end pt-1">
-          <rds-price [discount]="5" [actualPrice]="1000"></rds-price>
+          <!-- <rds-price [discount]="5" [actualPrice]="1000"></rds-price> -->
+          <rds-price role="withoutDiscount" [numberPricetwo]="120"></rds-price>
         </span>
       </div>
       <div class="mt-3">
-        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small"></rds-rating>
+        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small" [withNoOfReviews]="true"></rds-rating>
       </div>
       <div class="mt-3">
         <rds-label label="Color"></rds-label>
@@ -159,16 +179,16 @@
       </div>
       <div class="d-flex mt-3 pb-3 sm-block">
         <rds-icon-label [iconposition]="'left'" [icon]="'refresh_sync'" [label]="'14 Days return policy'"
-          [size]="'small'"></rds-icon-label>
+          [size]="'small'" [colorVariant]="'primary'"></rds-icon-label>
         <rds-icon-label class="mx-3" [iconposition]="'left'" [icon]="'money'" [label]="'Cash on delivery available'"
-          [size]="'small'"></rds-icon-label>
+          [size]="'small'" [colorVariant]="'primary'"></rds-icon-label>
       </div>
       <div>
         <rds-accordian [border]="true" [outline]="false">
-          <accordion-item title="Section 1 title" [accordionIcon]="true">
+          <accordion-item title="Care" [accordionIcon]="true">
             <h3>Custom</h3>
           </accordion-item>
-          <accordion-item title="Section 2 title" [accordionIcon]="true">
+          <accordion-item title="Shipping" [accordionIcon]="true">
             <h3>Custom</h3>
           </accordion-item>
         </rds-accordian>
@@ -189,11 +209,12 @@
           </rds-button>
         </span>
         <span class="float-end pt-1">
-          <rds-price [discount]="5" [actualPrice]="1000"></rds-price>
+          <!-- <rds-price [discount]="5" [actualPrice]="1000"></rds-price> -->
+          <rds-price [discount]="60" [actualPrice]="100" role="Basic"></rds-price>
         </span>
       </div>
       <div class="mt-3">
-        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" size="small"></rds-rating>
+        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" size="small" [withNoOfReviews]="true"></rds-rating>
       </div>
       <div class="mt-3">
         <rds-label label="Color"></rds-label>
@@ -209,7 +230,9 @@
         </small>
       </div>
       <div class="mt-3">
-        <rds-label label="In stock and ready to shop"></rds-label>
+        <!-- <rds-label label="In stock and ready to shop"></rds-label> --> 
+        <rds-icon-label class="text-muted fw-medium" [colorVariant]="'success'" [stroke]="true"  [icon]="'check'" [label]="'In stock and ready to shop'">
+        </rds-icon-label>
       </div>
       <div class="mt-3">
         <h6>
@@ -220,7 +243,7 @@
         </div>
       </div>
       <div>
-        <rds-icon-label [iconposition]="'right'" [icon]="'Delete'" [label]="'What size should I buy?'" [size]="'small'">
+        <rds-icon-label [iconposition]="'right'" [fill]="false" [stroke]="true" [colorVariant]="'success'" [label]="'What size should I buy?'" [size]="'small'">
         </rds-icon-label>
       </div>
       <div class="mt-3 pb-3 align-items-center d-flex justify-content-between ms-0">
@@ -237,12 +260,12 @@
       </div>
       <div class="d-flex sm-block mt-3">
         <rds-icon-label [iconposition]="'left'" [icon]="'refresh_sync'" [label]="'14 Days return policy'"
-          [size]="'small'"></rds-icon-label>
+          [size]="'small'" [colorVariant]="'primary'"></rds-icon-label>
         <rds-icon-label class="mx-3" [iconposition]="'left'" [icon]="'money'" [label]="'Cash on delivery available'"
-          [size]="'small'"></rds-icon-label>
+          [size]="'small'" [colorVariant]="'primary'"></rds-icon-label>
       </div>
     </div>
-    <div *ngSwitchCase="'producroverviewdescription'">
+    <div *ngSwitchCase="'productoverviewdescription'">
       <div>
         <h3 class="fw-bold">
           <rds-label label="Basic Tee 6-Pack"></rds-label>
@@ -268,7 +291,7 @@
           <rds-feature-list header="Highlights" [listItems]="listItems" [columns]="1"></rds-feature-list>
         </div>
         <div>
-          <rds-label label="Deatils" [bold]="true"></rds-label>
+          <rds-label label="Details" [bold]="true"></rds-label>
           <small class="text-muted">
             <rds-label label=" The 6-Pack includes two black, two white, and two heather gray
                   Basic Tees. Sign up for our subscription service and be the first
@@ -278,9 +301,9 @@
         </div>
         <div class="d-flex sm-block">
           <rds-icon-label [iconposition]="'left'" [icon]="'refresh_sync'" [label]="'14 Days return policy'"
-            [size]="'small'"></rds-icon-label>
+            [size]="'small'" [colorVariant]="'primary'"></rds-icon-label>
           <rds-icon-label class="mx-3" [iconposition]="'left'" [icon]="'money'" [label]="'Cash on delivery available'"
-            [size]="'small'"></rds-icon-label>
+            [size]="'small'" [colorVariant]="'primary'"></rds-icon-label>
         </div>
       </div>
     </div>

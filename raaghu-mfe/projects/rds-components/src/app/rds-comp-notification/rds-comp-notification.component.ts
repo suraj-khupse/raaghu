@@ -22,7 +22,7 @@ export interface notificationData {
 })
 export class RdsNotificationComponent implements OnInit {
   @Input() unreadCount: any = 0;
-  @Input() notifications: notificationData[];
+  @Input() notifications: notificationData[] = [];
   @Input() backgroundColor?: string;
   @Input() borderRadious?: number;
   @Input() Paddig?: number;
@@ -33,7 +33,7 @@ export class RdsNotificationComponent implements OnInit {
 
 
   ngOnInit(): void {
-  }
+   }
 
   getColor(notification: notificationData, isIcon: boolean = false): any {
     if (isIcon) {
@@ -63,16 +63,16 @@ export class RdsNotificationComponent implements OnInit {
 
 
   getIcon(notification: notificationData): string {
-    if (notification.status === 'success') {
+    if (notification.status == 'success') {
       return 'tick_circle';
     }
-    if (notification.status === 'warn') {
+    if (notification.status == 'warn') {
       return 'exclamation_circle';
     }
-    if (notification.status === 'error') {
+    if (notification.status == 'error') {
       return 'close_circle';
     }
-    if (notification.status === 'info') {
+    if (notification.status == 'info') {
       return 'information';
     }
     return '';
