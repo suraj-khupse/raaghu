@@ -122,7 +122,7 @@
           <div class="col-md-6 mb-3 pe-0">
             <div class="from-group">
               <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'" [submit]="true"
-                [label]="'Apply Now'" (click)="openConfirmationPopup()" [disabled]="!applicantDetailsForm.valid">
+                [label]="'Apply Now'" (click)="openConfirmationPopup()" [isDisabled]="!applicantDetailsForm.valid">
               </rds-button>
             </div>
           </div>
@@ -130,8 +130,8 @@
       </div>
     </form>
     <div *ngIf="showConfirmationPopup">
-      <app-rds-comp-alert-popup [alertID]="'confirmationId'" [alertData]="alertData">
-      </app-rds-comp-alert-popup>
+      <rds-comp-alert-popup [alertID]="'confirmationId'" [alertData]="alertData">
+      </rds-comp-alert-popup>
     </div>
   </div>
 </div>

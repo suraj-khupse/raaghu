@@ -12,7 +12,7 @@ export default {
   ],
   argTypes: {
     colorVariant: {
-      options: ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark', 'light', 'review'],
+      options: ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark', 'light', 'review', 'basic', 'standard', 'premium', 'professional'],
       control: { type: 'select' }
     },
     fill: {

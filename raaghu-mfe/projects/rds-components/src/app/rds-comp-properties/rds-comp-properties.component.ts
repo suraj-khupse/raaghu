@@ -9,7 +9,7 @@ export class Properties {
  
 }
 @Component({
-  selector: 'app-rds-comp-properties',
+  selector: 'rds-comp-properties',
   templateUrl: './rds-comp-properties.component.html',
   styleUrls: ['./rds-comp-properties.component.scss']
 })

@@ -7,7 +7,7 @@ export class DownloadData{
   }
 
 @Component({
-  selector: 'app-rds-comp-download-collection',
+  selector: 'rds-comp-download-collection',
   templateUrl: './rds-comp-download-collection.component.html',
   styleUrls: ['./rds-comp-download-collection.component.scss']
 })

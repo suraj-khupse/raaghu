@@ -27,9 +27,9 @@ export const VisualsettingsReducersMap = {
     RdsCheckboxModule,
     RdsButtonModule,
     NgxTranslateModule.forRoot(),
-    StoreModule.forFeature('visualsettings', VisualsettingsReducersMap
-    ),
-    EffectsModule.forRoot([visualsettingEffects]),
+    // StoreModule.forFeature('visualsettings', VisualsettingsReducersMap
+    // ),
+    // EffectsModule.forRoot([visualsettingEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

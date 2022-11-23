@@ -1,12 +1,9 @@
 <div class="checkedstyle flush-border treeview-flush ">
-    <!--<rds-search-input placeholder="Search" icon="search" size="small">
-    </rds-search-input>-->
-
+  
     <div *ngIf="multiselectTree" class="d-flex align-items-center checkedstyle mt-3">
 
-
         <div class="node-dot position-relative">
-            <rds-checkbox [attr.id]="'Selectall'" (onChange)="selectAllFeature($event)"
+            <rds-checkbox  [attr.id]="'Selectall'" (onChange)="selectAllFeature($event)"
                 [checked]="checkSelectAll(treeData)" class="position-absolute" [disabled]="false" [switch]="false"
                 [inline]="false" [id]="'checkSelectAll'">
             </rds-checkbox>
@@ -25,7 +22,7 @@
                 <rds-icon [stroke]="true" class="mt-3 me-2" [name]="node.expanded?'chevron_down':'chevron_right'"
                     [height]="'13px'" [width]="'13px'" (click)="node.expanded=!node.expanded"
                     *ngIf="node.children.length>0"></rds-icon>
-                <div class="node-dot position-relative" *ngIf="TreeType.checkbox">
+                <div class="node-dot position-relative ms-2" *ngIf="TreeType.checkbox">
                     <rds-checkbox [checked]="node.selected" [disabled]="false" [switch]="false" [inline]="false"
                         (onChange)="selectNode(node,$event)" [id]="'selectNode'"></rds-checkbox>
                     <div *ngIf="node.level !== 1" class="horizontal-dotted-line"></div>

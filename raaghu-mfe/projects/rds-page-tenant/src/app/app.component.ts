@@ -164,9 +164,26 @@ export class AppComponent {
     this.store.dispatch(getEditionComboboxItems())
     this.store.select(selectEditionComboboxItems).subscribe((res: any) => {
       if (res && res.editions) {
-        this.editionList = res.editions;
+        this.editionList  = []
+        res.editions.forEach(element => {
+          const data = {
+            value:element.value,
+            some:element.displayText,
+            isSelected:element.isSelected,
+            icon:'',
+            iconWidth:0,
+            iconHeight:0,
+            iconFill:false,
+            iconStroke: true,
+            isFree: element.isFree
+          }
+          this.editionList.push(data);
+          // console.log('data' , data);
+          
+        }); 
+       
         const mfeConfig = this.rdsTenantMfeConfig
-        mfeConfig.input.editionList = [... this.editionList];
+        mfeConfig.input.editionList = [...this.editionList];
         this.rdsTenantMfeConfig = mfeConfig;
       }
     })
@@ -222,7 +239,7 @@ export class AppComponent {
         this.tenantData['tenancyName'] = res.tenantInfo.tenancyName;
         this.tenantData['tenantName'] = res.tenantInfo.name;
         this.tenantData['adminEmailAddress'] = res.tenantInfo.adminEmailAddress;
-        this.tenantData['edition'] = (res.tenantInfo.editionId && res.tenantInfo.editionId !== null) ? [res.tenantInfo.editionId.toString()] : res.tenantInfo.editionId;
+        this.tenantData['displayText'] = (res.tenantInfo.editionId && res.tenantInfo.editionId !== null) ? [res.tenantInfo.editionId.toString()] : res.tenantInfo.editionId;
         this.tenantData['unlimitedSubscription'] = (res.tenantInfo.subscriptionEndDateUtc !== null) ? false : true;
         this.tenantData['id'] = res.tenantInfo.id;
         this.tenantData['subscriptionEndDate'] = (res.tenantInfo.subscriptionEndDateUtc) ? new Date(res.tenantInfo.subscriptionEndDateUtc) : null;

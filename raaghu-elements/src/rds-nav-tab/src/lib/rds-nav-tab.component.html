@@ -1,18 +1,21 @@
 <div class="row">
   <div [ngClass]="flexClass">
     <ul class="nav mobile-ul-tabs" [ngClass]="classes">
-      <li class="nav-item mobile-nav-item p-0" *ngFor="let item of navtabsItems; index as i">
-        <a class="nav-link" [class.active]="activeTab==i" aria-current="page" href="#" (click)="onClick(i)"
-          [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols"
-          [class.disabled]="item.disabled">
-          <rds-icon class="me-2" *ngIf="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke" [name]="item.icon" [height]="item.iconHeight" [fill]="item.iconFill"
-            [stroke]="item.stroke" [width]="item.iconWidth"></rds-icon>
-          <span class="" [ngClass]="{'fw-semibold': item.subText || !item.icon}">
-            {{item.label}}
-          </span>
-          <div class="text-muted fw-light ms-2" [ngClass]="{'ps-4': item.icon}">{{item.subText}}</div>
-        </a>
-      </li>
+      <ng-container *ngFor="let item of navtabsItems; index as i">
+        <li class="nav-item mobile-nav-item p-0" *ngIf="!item.hide" >
+          <a class="nav-link" [class.active]="activeTab==i" aria-current="page" href="#" (click)="onClick(i)"
+            [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols"
+            [class.disabled]="item.disabled">
+            <rds-icon class="me-2" *ngIf="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke" [name]="item.icon" [height]="item.iconHeight" [fill]="item.iconFill"
+              [stroke]="item.stroke" [width]="item.iconWidth"></rds-icon>
+            <span class="" [ngClass]="{'fw-semibold': item.subText || !item.icon}">
+              {{item.label}}
+            </span>
+            <div class="text-muted fw-light ms-2" [ngClass]="{'ps-4': item.icon}">{{item.subText}}</div>
+          </a>
+        </li>
+      </ng-container>
+
     </ul>
     <ng-content select="[naveContent]" class="vertical-class"></ng-content>
   </div>

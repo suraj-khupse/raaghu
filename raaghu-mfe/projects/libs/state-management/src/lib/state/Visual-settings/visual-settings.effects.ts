@@ -5,7 +5,7 @@ import { Store } from "@ngrx/store";
 import { UiCustomizationSettingsServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
 import { from, of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
-import { getVisualsettings, getVisualsettingsFailure, getVisualsettingsSuccess, UpdateDefaultUiManagementSettings } from "./visual-settings.actions";
+import { getVisualsettings, getVisualsettingsFailure, getVisualsettingsSuccess, UpdateUiManagementSettings } from "./visual-settings.actions";
 
 
 @Injectable()
@@ -27,11 +27,11 @@ export class visualsettingEffects {
       )
     )
   );
-  updateDefaultUiManagementSettings$ = createEffect(() =>
+  updateUiManagementSettings$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UpdateDefaultUiManagementSettings),
+      ofType(UpdateUiManagementSettings),
       mergeMap((data) =>
-        this.Visualsettingservice.updateDefaultUiManagementSettings(data.visualsettings).pipe(map((res: any) => {
+        this.Visualsettingservice.updateUiManagementSettings(data.visualsettings).pipe(map((res: any) => {
           this.store.dispatch(getVisualsettings());
           this.alertService.showAlert('Success', 'Visual settings updated successfully','success' )
         }),

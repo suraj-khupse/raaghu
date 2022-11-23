@@ -10,7 +10,7 @@ export class Secrets {
 }
 
 @Component({
-  selector: 'app-rds-comp-secrets',
+  selector: 'rds-comp-secrets',
   templateUrl: './rds-comp-secrets.component.html',
   styleUrls: ['./rds-comp-secrets.component.scss']
 })

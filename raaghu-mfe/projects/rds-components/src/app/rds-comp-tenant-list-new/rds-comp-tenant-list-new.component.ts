@@ -6,7 +6,7 @@ import { TableHeader } from '../../models/table-header.model';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-tenant-list-new',
+  selector: 'rds-comp-tenant-list-new',
   templateUrl: './rds-comp-tenant-list-new.component.html',
   styleUrls: ['./rds-comp-tenant-list-new.component.scss']
 })

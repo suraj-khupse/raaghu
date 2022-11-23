@@ -1450,19 +1450,21 @@ border-bottom-right-radius: 4px;
   }
   .bs-datepicker {
     position: relative;
-    left: 0px;
+    left: 18px;
     top: 305px;
   }
   .footerDatepicker {
-    top: 379px;
+    top: 342px;
     left: -1px;
     width: 290px;
+    background: white;
   }
   bs-daterangepicker-container {
     transform: none !important;
+    z-index: 99;
   }
   .date-picker {
-    z-index: 999999;
+    z-index: 9;
     position: relative;
     display: inline-block;
     left: -20px;

@@ -17,7 +17,7 @@ export class RdsIconComponent implements OnInit, OnChanges {
   @Input() stroke: boolean | undefined = true;
   @Input() width: string = '';
   @Input() name: string = '';
-  @Input() colorVariant: 'warning' | 'review' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined | 'default' = undefined;
+  @Input() colorVariant!: string;
   @Input() opacity: string = '';
   @Input() strokeWidth: string = '';
 
@@ -96,6 +96,14 @@ export class RdsIconComponent implements OnInit, OnChanges {
       fillColor = '#F8F9FA';
     } else if (this.colorVariant == 'review') {
       fillColor = '#E3A300';
+    } else if (this.colorVariant == 'basic') {
+      fillColor = '#00A443';
+    } else if (this.colorVariant == 'standard') {
+      fillColor = '#005FA4';
+    } else if (this.colorVariant == 'premium') {
+      fillColor = '#660064';
+    } else if (this.colorVariant == 'professional') {
+      fillColor = '#F76161';
     }
 
     if (this.fill) {

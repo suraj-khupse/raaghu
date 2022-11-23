@@ -11,7 +11,7 @@ export class claimtype {
 }
 
 @Component({
-  selector: 'app-rds-comp-new-claim-type',
+  selector: 'rds-comp-new-claim-type',
   templateUrl: './rds-comp-new-claim-type.component.html',
   styleUrls: ['./rds-comp-new-claim-type.component.scss']
 })

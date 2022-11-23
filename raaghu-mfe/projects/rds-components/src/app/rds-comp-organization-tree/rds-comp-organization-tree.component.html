@@ -27,18 +27,18 @@
   </div>
   <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true &&  list[0].data.parentId"
     [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}">
-    <rds-button [colorVariant]="'primary'" class="" [label]="translate.instant('Sub-Unit')" [roundedButton]="false"
-      [size]="'small'" (click)="addNode(list)">
-      <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
+    <rds-button [colorVariant]="'primary'" type="button" class="" [label]="translate.instant('Sub-Unit')" [isFabIcon]="false"
+      [size]="'small'" (click)="addNode(list)"  [icon]="'plus'" iconHeight="12px" iconWidth="12px">
     </rds-button>
+
+ 
   </div>
   <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true &&  !list[0].data.parentId"
     [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}">
-    <rds-button [colorVariant]="'primary'" class="" [label]="translate.instant('New-Root-Unit')" [roundedButton]="false"
-      [size]="'small'" (click)="addNode(list)">
-      <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
-    </rds-button>
+    <rds-button [colorVariant]="'primary'" type="button" class="" [label]="translate.instant('New-Root-Unit')" [isFabIcon]="false"
+      [size]="'small'" (click)="addNode(list)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
+     </rds-button>
   </div>
 </ng-template>
-<app-rds-comp-alert-popup *ngIf="showDeleteModal" alertID="deleteTreeNode" (onDelete)="deleteNode()"
-  (onCancel)="cancelDelete()" [alertData]="alertData"></app-rds-comp-alert-popup>
+<rds-comp-alert-popup *ngIf="showDeleteModal" alertID="deleteTreeNode" (onDelete)="deleteNode()"
+  (onCancel)="cancelDelete()" [alertData]="alertData"></rds-comp-alert-popup>

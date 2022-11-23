@@ -25,7 +25,7 @@ export class UserEffects {
           role: null,
           onlyLockedUsers: false,
           sorting: "id desc",
-          maxResultCount: 10,
+          maxResultCount: 100,
           skipCount: 0
         }))).pipe(
           // Take the returned value and return a new success action containing the todos

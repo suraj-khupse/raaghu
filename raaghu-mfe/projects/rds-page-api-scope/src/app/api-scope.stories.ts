@@ -74,11 +74,11 @@ const Template: Story<ApiScope> = (args: ApiScope) => ({
 </rds-button>
 </div>
 <div class="row  mt-2">
- <app-rds-data-table
+ <rds-data-table
   [tableData]="scopeList"
   [tableHeaders]=" scopeTableHeaders"
   [actions]="actions"
-  ></app-rds-data-table>
+  ></rds-data-table>
 </div>
 
 <rds-offcanvas [canvasTitle]="'NEW API SCOPE'" [offId]="'addnewapiresource'" [offcanvaswidth]="550"
@@ -92,7 +92,7 @@ const Template: Story<ApiScope> = (args: ApiScope) => ({
           </div>
           <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
                aria-labelledby="nav-home-tab">
-               <app-rdc-comp-api-scope-resources></app-rdc-comp-api-scope-resources>
+               <rdc-comp-api-scope-resources></rdc-comp-api-scope-resources>
           </div>
 </div>
 </rds-nav-tab>

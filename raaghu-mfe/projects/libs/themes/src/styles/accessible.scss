@@ -21,7 +21,8 @@
   $gray-100: #f8f9fa !default;
 
 
-  /*Variables*/ /*Success - Green*/
+  /*Variables*/
+  /*Success - Green*/
   $success-0: #DEFFE4;
   $success-100: #BEFECA;
   $success-200: #9EFCB0;
@@ -112,18 +113,18 @@
   $default-100: #F58220;
 
   /*Chart color variables*/
-:root {
-  --chartColor1: #01AE9D;
-  --chartColor2: #EBEEFB;
-  --chartColor3: #EDB371;
-  --chartColor4: #CA2882;
-  --chartColor5: #5151D3;
-  --chartColor6: #928AE0;
-  --chartColor7: #323B47;
-  --chartColor8: #F58220;
-  --chartColor9: #EA2745;
-  --chartColor10: #00FFE6;
-  /*    --chartgradient1: rgba(63,28, 255, 100%);
+  :root {
+    --chartColor1: #01AE9D;
+    --chartColor2: #EBEEFB;
+    --chartColor3: #EDB371;
+    --chartColor4: #CA2882;
+    --chartColor5: #5151D3;
+    --chartColor6: #928AE0;
+    --chartColor7: #323B47;
+    --chartColor8: #F58220;
+    --chartColor9: #EA2745;
+    --chartColor10: #00FFE6;
+    /*    --chartgradient1: rgba(63,28, 255, 100%);
     --chartgradient2: rgba(59,26,240,94%);
     --chartgradient3: rgba(56,25,226,89%);
     --chartgradient4: rgba(48,22,194,76%);
@@ -133,27 +134,41 @@
     --chartgradient8: rgba(12,5,47,18%);
     --chartgradient9: rgba(4,2,16,6%);
     --chartgradient10: rgba(0,0,0,0%);*/
-  --chartgradient1: rgba(63,28, 255, 100%);
-  --chartgradient2: #863bff94;
-  --chartgradient3: rgba(56,25,226,89%);
-  --chartgradient4: rgba(48,22,194,76%);
-  --chartgradient5: rgba(25,70,186,36%);
-  --chartgradient6: rgba(25,70,186,26%);
-  --chartgradient7: rgba(25,70,186,22%);
-  --chartgradient8: rgba(25,70,186,16%);
-  --chartgradient9: rgba(25,70,186,8%);
-  --chartgradient10: rgba(25,70,186,1%);
-}
+    --chartgradient1: rgba(63, 28, 255, 100%);
+    --chartgradient2: #863bff94;
+    --chartgradient3: rgba(56, 25, 226, 89%);
+    --chartgradient4: rgba(48, 22, 194, 76%);
+    --chartgradient5: rgba(25, 70, 186, 36%);
+    --chartgradient6: rgba(25, 70, 186, 26%);
+    --chartgradient7: rgba(25, 70, 186, 22%);
+    --chartgradient8: rgba(25, 70, 186, 16%);
+    --chartgradient9: rgba(25, 70, 186, 8%);
+    --chartgradient10: rgba(25, 70, 186, 1%);
+  }
 
 
 
   $accessible-200: #322d4a;
-$accessible-300: #3a3d5a;
-$accessible-400: #474c74;
+  $accessible-300: #3a3d5a;
+  $accessible-400: #474c74;
   $accessible-500: #4400A4;
   $accessible-600: #23054E;
   $accessible-700: #13022E;
   $accessible-800: #13002E;
+
+$input-select-bg: $accessible-300!default;
+$form-select-bg: $input-select-bg!default;
+$card-bg-color: $accessible-700 !default;
+//$offcanvas-border-color: $accessible-300 !default;
+$offcanvas-bottom-border-color: $accessible-300!default;
+$nav-tabs-bottom-border-color: $accessible-300!default;
+
+$nav-tabs-border-color: $accessible-300 !default;
+$dropdown-border-bottom: $accessible-500 !default;
+$dropdown-bg-color: $accessible-400 !default;
+$dropdown-border-bottom-hover: $accessible-200 !default;
+$dropdown-bghover-color: $accessible-300 !default;
+$dropdown-link-active-bg: $accessible-500 !default;
 
 $datepicker-bg: $accessible-600 !default;
 $datepicker-head: $accessible-600 !default;
@@ -162,50 +177,55 @@ $nav-background-color: $accessible-500 !default;
   $card-dashboard-bg-color: $accessible-700 !default;
   $body-wrapper-bg: $accessible-800 !default;
   $sidbar-border-right-color: #1A0339;
-  $wrapper-bg: $accessible-600!default;
+  $wrapper-bg: $accessible-600 !default;
 
-  $card-bg-color: $accessible-700 !default;
-  $card-border-color: $card-bg-color !default;
+
   $offcanvasbg: $accessible-700 !default;
-   
+
   $footer-bgcolor: $accessible-700 !default;
 
-  $nav-tab-bg-active: $accessible-600!default;
+  $nav-tab-bg-active: $accessible-600 !default;
   $profileMenuBgColor: $nav-tab-bg-active !default;
   $trhoverbg-color: $accessible-600;
 
 //$body-wrapper-bg:;
 html[theme=dark] {
+
+  $card-border-color: $card-bg-color !default;
   $dropdown-color: $white;
-  $input-bg: $accessible-300 !default;
-  $form-select-bg: $input-bg;
+  $input-bg: $accessible-300!default;
+
+  $input-bg-border: $accessible-400 !default;
+  $form-select-border-color: $input-bg-border !default;
+
   $notification-header-bg: $accessible-500 !default;
   $input-group-addon-bg: $input-bg;
   $input-group-addon-border-color: $accessible-400 !default;
 
-  .form-control, .form-control:focus {
-    background-color: $input-bg;
-    border: 1px solid $accessible-400;
-    color: $white;
-  }
+    .form-control,
+    .form-control:focus {
+      background-color: $input-bg;
+      border: 1px solid $accessible-400;
+      color: $white;
+    }
 
-  .dropdown-menu {
-    --bs-dropdown-color: $dropdown-color;
-  }
+    .dropdown-menu {
+      --bs-dropdown-color: $dropdown-color;
+    }
 
-  .input-group-text {
-    background-color: $input-group-addon-bg;
-    border-color: $input-group-addon-border-color;
-  }
+    .input-group-text {
+      background-color: $input-group-addon-bg;
+      border-color: $input-group-addon-border-color;
+    }
 
-  .form-select[size]:not([size="1"]) {
-    background-color: $input-bg;
-  }
+    .form-select[size]:not([size="1"]) {
+      background-color: $input-bg;
+    }
 
-  .notification-header {
-    background-color: $notification-header-bg;
+    .notification-header {
+      background-color: $notification-header-bg;
+    }
   }
-}
 
   @import './custom.scss';
   @import './node_modules/bootstrap/scss/bootstrap';
@@ -236,4 +256,3 @@ html[theme=dark] {
   @import './colorvariables.scss';
   @import './cookieconsent.scss';
   @import './calender.scss';
-

@@ -186,12 +186,12 @@
 
         <div class="pt-4 row">
             <div class="col-md-6 mb-3">
-                <rds-button [block]="true" [size]="'medium'" [outlineButton]="true" [colorVariant]="'primary'"
+                <rds-button [block]="true" [size]="'medium'" [isOutline]="true" [colorVariant]="'primary'"
                     [label]="translate.instant('back')" (click)="back()">
                 </rds-button>
             </div>
             <div class="col-md-6 mb-3">
-                <rds-button [block]="true" [size]="'medium'" [disabled]="billingAddressForm.invalid" [submit]="true"
+                <rds-button [block]="true" [size]="'medium'" [isDisabled]="billingAddressForm.invalid" [submit]="true"
                     [colorVariant]="'primary'" [label]="translate.instant('Continue')">
                     <!--   -->
                 </rds-button>

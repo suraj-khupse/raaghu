@@ -8,7 +8,7 @@ declare let bootstrap: any;
   styleUrls: ['./rds-comp-dynamic-enity-properties.component.scss'],
 })
 export class RdsCompDynamicEnityPropertiesComponent implements OnInit, OnChanges {
-  actions: TableAction[] = [{ id: 'delete', displayName: 'Delete' }]
+  actions: TableAction[] = [{ id: 'delete', displayName: 'Delete' }];
 
   @Input()
   DynamicEntityPropertiesTableHeader: any;

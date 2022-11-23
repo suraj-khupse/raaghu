@@ -64,10 +64,10 @@
         </div>
     </div>
     <div class="row">
-        <app-rds-data-table [tableData]="operationLogs" (deleteEvent)="delete($event)" [pagination]="true"
+        <rds-data-table [tableData]="operationLogs" (deleteEvent)="delete($event)" [pagination]="true"
             [noDataTitle]="translate.instant('Currently you do not have operation log')" [recordsPerPage]="10"
             (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"
-            [refresh]="true" [tableHeaders]="operationLogsHeaders" [isShimmer]="isShimmer"></app-rds-data-table>
+            [refresh]="true" [tableHeaders]="operationLogsHeaders" [isShimmer]="isShimmer"></rds-data-table>
     </div>
 </div>
 

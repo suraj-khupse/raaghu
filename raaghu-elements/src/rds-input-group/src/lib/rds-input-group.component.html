@@ -1,7 +1,7 @@
 <!-- <div class="input-group ">
   <ng-content></ng-content>
 </div> -->
-<label *ngIf="label&&position==='top'">{{label}}</label>
+<label *ngIf="label&&position==='top'" class="form-label">{{label}}</label>
 <div class="input-group mb-2 " [ngClass]="{'input-group-sm': size === 'small', 'input-group-lg': size === 'large'}">
   <input type="text" class="form-control" [(ngModel)]="value" name="text-input" aria-label="Sizing example input"
     aria-describedby="button-addon1" [attr.placeholder]="placeholder">

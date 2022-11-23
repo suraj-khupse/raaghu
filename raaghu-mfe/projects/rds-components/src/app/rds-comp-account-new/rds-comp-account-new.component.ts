@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-rds-comp-account-new',
+  selector: 'rds-comp-account-new',
   templateUrl: './rds-comp-account-new.component.html',
   styleUrls: ['./rds-comp-account-new.component.scss']
 })

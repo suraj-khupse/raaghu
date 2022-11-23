@@ -4,7 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RdsIconComponent } from '@libs/rds-icon';
 
 @Component({
-  selector: 'app-rds-comp-product-list',
+  selector: 'rds-comp-product-list',
   templateUrl: './rds-comp-product-list.component.html',
   styleUrls: ['./rds-comp-product-list.component.scss']
 })

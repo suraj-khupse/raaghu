@@ -90,7 +90,7 @@ export class AppComponent {
     private store: Store,
     private alertService: AlertService,
     private _arrayToTreeConverterService: ArrayToTreeConverterService,
-    public translate:TranslateService
+    public translate: TranslateService
   ) { }
   public rdsUserMfeConfig: ComponentLoaderOptions;
   UserPermissionFiltertreeData: any = [];
@@ -103,7 +103,7 @@ export class AppComponent {
   selectedPermissions: any = [];
   selectedFilterPermissions: any = [];
   OrganizationUnit: any = [];
-  resOrganizationUnit:any=[];
+  resOrganizationUnit: any = [];
   SelectedOrganizationUnit: any = [];
   ngOnInit(): void {
     // this.store.dispatch(getRoles([]));
@@ -125,7 +125,7 @@ export class AppComponent {
     //       }
     //       this.roles.push(item);
     //     });
-    this.isAnimation=true;
+    this.isAnimation = true;
 
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
@@ -141,8 +141,8 @@ export class AppComponent {
         roles: this.roles,
         isEdit: false,
         orgTreeData: this.orgTreeData,
-        isShimmer:true,
-        editShimmer:true
+        isShimmer: true,
+        editShimmer: true
       },
       output: {
         Saveuserinfo: (eventData: any) => {
@@ -156,10 +156,10 @@ export class AppComponent {
           this.store.dispatch(saveUser(data));
         },
         onClose: (event: any) => {
-        this.userinfo = undefined;  
+          this.userinfo = undefined;
           const mfeConfigedit = this.rdsUserMfeConfig;
           mfeConfigedit.input.userinfo = { ...this.userinfo };
-          mfeConfigedit.input.editShimmer=true;
+          mfeConfigedit.input.editShimmer = true;
           this.rdsUserMfeConfig = mfeConfigedit;
         },
         deleteUser: (eventData: any) => {
@@ -211,18 +211,17 @@ export class AppComponent {
           if (eventData.id) {
             this.isEdit = true;
           } else {
-            
+
             this.isEdit = false;
             const mfeConfigedit = this.rdsUserMfeConfig;
-            mfeConfigedit.input.editShimmer =false;
-            this.userinfo = undefined;  
-          mfeConfigedit.input.userinfo = { ...this.userinfo };
+            mfeConfigedit.input.editShimmer = false;
+            this.userinfo = undefined;
+            mfeConfigedit.input.userinfo = { ...this.userinfo };
             this.rdsUserMfeConfig = { ...mfeConfigedit };
 
           }
           this.store.dispatch(getUserForEdit(eventData.id));
           this.store.select(selectUserForEdit).subscribe((res: any) => {
-            debugger
             if (res && res.UserEditI && res.UserEditI.roles && res.UserEditI.roles.length) {
               this.roles = [];
               res.UserEditI.roles.forEach((element: any) => {
@@ -237,7 +236,7 @@ export class AppComponent {
                 this.roles.push(item);
               });
             }
-            if (res && res.UserEditI &&  res.UserEditI.user ) {
+            if (res && res.UserEditI && res.UserEditI.user) {
               const item: any = {
                 name: res.UserEditI.user.name,
                 emailAddress: res.UserEditI.user.emailAddress,
@@ -256,12 +255,12 @@ export class AppComponent {
                 imageUrl: '../assets/edit-profile.png',
               };
               this.userinfo = item;
-            } 
-            if (res && res.UserEditI && res.UserEditI.allOrganizationUnits && res.status=="success") {
-              this.resOrganizationUnit=res.UserEditI.allOrganizationUnits
+            }
+            if (res && res.UserEditI && res.UserEditI.allOrganizationUnits && res.status == "success") {
+              this.resOrganizationUnit = res.UserEditI.allOrganizationUnits
               this.OrganizationUnit = [];
-              this.SelectedOrganizationUnit=[];
-              this.OrganizationUnit= this._arrayToTreeConverterService.createTree(
+              this.SelectedOrganizationUnit = [];
+              this.OrganizationUnit = this._arrayToTreeConverterService.createTree(
                 res.UserEditI.allOrganizationUnits,
                 'parentId',
                 'id',
@@ -288,8 +287,8 @@ export class AppComponent {
                 1
               );
               if (this.isEdit) {
-                this.SelectedOrganizationUnit=[];
-                if (res && res.UserEditI && res.UserEditI.memberedOrganizationUnits && res.UserEditI.memberedOrganizationUnits.length && res.status=="success") {
+                this.SelectedOrganizationUnit = [];
+                if (res && res.UserEditI && res.UserEditI.memberedOrganizationUnits && res.UserEditI.memberedOrganizationUnits.length && res.status == "success") {
                   res.UserEditI.memberedOrganizationUnits.forEach((element: any) => {
                     this.CheckSelectedOrganizationUnit(element)
                   })
@@ -300,14 +299,14 @@ export class AppComponent {
               mfeConfigedit.input.selectedOrganizations = [...this.SelectedOrganizationUnit];
             }
             const mfeConfigedit = this.rdsUserMfeConfig;
-            if(!this.isEdit){
-              this.roles.forEach(node=>{
+            if (!this.isEdit) {
+              this.roles.forEach(node => {
                 node.isAssigned = false;
               })
             }
             mfeConfigedit.input.roles = [...this.roles];
             if (this.userinfo) {
-           mfeConfigedit.input.userinfo = { ...this.userinfo };
+              mfeConfigedit.input.userinfo = { ...this.userinfo };
             }
             mfeConfigedit.input.isEdit = this.isEdit;
             this.rdsUserMfeConfig = { ...mfeConfigedit };
@@ -335,13 +334,13 @@ export class AppComponent {
                       }
                     );
                   }
-                const mfeConfigedit = this.rdsUserMfeConfig;
-                mfeConfigedit.input.permissionsList = [...this.Permission];
-                mfeConfigedit.input.selectedPermissions = [...this.selectedPermissions];
-                mfeConfigedit.input.editShimmer=false;
-                this.rdsUserMfeConfig = { ...mfeConfigedit };
+                  const mfeConfigedit = this.rdsUserMfeConfig;
+                  mfeConfigedit.input.permissionsList = [...this.Permission];
+                  mfeConfigedit.input.selectedPermissions = [...this.selectedPermissions];
+                  mfeConfigedit.input.editShimmer = false;
+                  this.rdsUserMfeConfig = { ...mfeConfigedit };
                 }
-                
+
               });
           }
         },
@@ -402,7 +401,7 @@ export class AppComponent {
 
         const mfeConfig = this.rdsUserMfeConfig;
         mfeConfig.input.userList = [...this.userList];
-        mfeConfig.input.isShimmer=false;
+        mfeConfig.input.isShimmer = false;
         this.rdsUserMfeConfig = mfeConfig;
       }
     });
@@ -509,6 +508,9 @@ export class AppComponent {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
+      const mfeConfigedit = this.rdsUserMfeConfig;
+      mfeConfigedit.input.showLoadingSpinner = false;
+      this.rdsUserMfeConfig = mfeConfigedit;
       const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
       rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
       this.rdsAlertMfeConfig = rdsAlertMfeConfig;
@@ -532,24 +534,24 @@ export class AppComponent {
     if (this.resOrganizationUnit && this.resOrganizationUnit.length > 0) {
       this.resOrganizationUnit.forEach((element: any) => {
         if (element.code == SelectedCode) {
-       
-            const selecteditem: any = {
-              name: element.displayName,
-              value: 'true',
-              // displayName: element.displayName,
-              //     isAssignedUnit: false,
-              //     code: element.id,
-              //     uniteCode: element.code
-            };
-      
+
+          const selecteditem: any = {
+            name: element.displayName,
+            value: 'true',
+            // displayName: element.displayName,
+            //     isAssignedUnit: false,
+            //     code: element.id,
+            //     uniteCode: element.code
+          };
+
           this.SelectedOrganizationUnit.push(selecteditem)
           // console.log( this.SelectedOrganizationUnit)
         }
-      
+
       })
     }
-   
+
   }
 
-   
+
 }

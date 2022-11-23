@@ -48,13 +48,13 @@ const Template: Story<DashboardComponent> = (args: DashboardComponent) => ({
   props: args,
 
   template:`<div *ngIf="istenant">
-                <app-rds-comp-tenant-dashboard></app-rds-comp-tenant-dashboard>
+                <rds-comp-tenant-dashboard></rds-comp-tenant-dashboard>
             </div>
           <div *ngIf="!istenant">
-            <app-rds-admin-dashboard [tableHeaders]="memberActivityTableHeader"
+            <rds-admin-dashboard [tableHeaders]="memberActivityTableHeader"
                 [tableStyle]="'light'" [tableData]="memberActivityTableData"
                 [recordsPerPage]="10" [pagination]="true" [inlineEdit]="false" >              
-            </app-rds-admin-dashboard>
+            </rds-admin-dashboard>
           </div>`
 });
 

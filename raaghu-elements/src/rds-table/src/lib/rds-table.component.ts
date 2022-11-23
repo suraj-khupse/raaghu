@@ -4,7 +4,7 @@ export interface TableHeader {
   displayName: string;
   key: string;
   dataType: string;
-  class?:string;
+  class?: string;
 }
 @Component({
   selector: 'rds-table',

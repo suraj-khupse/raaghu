@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit,Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-rds-comp-settings-new',
+  selector: 'rds-comp-settings-new',
   templateUrl: './rds-comp-settings-new.component.html',
   styleUrls: ['./rds-comp-settings-new.component.scss']
 })

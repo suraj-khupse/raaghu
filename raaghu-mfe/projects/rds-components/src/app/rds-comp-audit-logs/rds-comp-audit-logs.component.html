@@ -3,11 +3,11 @@
         <div class="col-md-12  text-end position-relative">
             <div class="position-absolute  end-0 desktop-btn">
                 <rds-button #operationlog class="action mb-0" *ngIf="selectedIndex==0" [colorVariant]="'primary'"
-                    [outlineButton]="true" [size]="'small'" (click)="exportToExcel('operation-logs')"
+                    [isOutline]="true" [size]="'small'" (click)="exportToExcel('operation-logs')"
                     [label]="translate.instant('Export To Excel')">
                     <rds-icon left name="export_data" height="18px" width="15px" class="me-2"></rds-icon>
                 </rds-button>
-                <rds-button #changelog class="action" [outlineButton]="true" *ngIf="selectedIndex==1"
+                <rds-button #changelog class="action" [isOutline]="true" *ngIf="selectedIndex==1"
                     [colorVariant]="'primary'" [size]="'small'" (click)="exportToExcel('change-logs')"
                     [label]="translate.instant('Export To Excel')">
                     <rds-icon left name="export_data" width="15px" class="me-2" height="18px"></rds-icon>
@@ -93,10 +93,10 @@
                 </div>
             </div>
             <div class="row">
-                <app-rds-data-table [tableData]="operationLogs" (deleteEvent)="delete($event)" [pagination]="true"
+                <rds-data-table [tableData]="operationLogs" (deleteEvent)="delete($event)" [pagination]="true"
                     [noDataTitle]="translate.instant('Currently you do not have operation log')" [recordsPerPage]="10"
                     (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"
-                    [refresh]="true" [tableHeaders]="operationLogsHeaders" [isShimmer]="isShimmer"></app-rds-data-table>
+                    [refresh]="true" [tableHeaders]="operationLogsHeaders" [isShimmer]="isShimmer"></rds-data-table>
             </div>
         </div>
 
@@ -133,11 +133,11 @@
                     </rds-fab-menu>
                 </div>
                 <div class="row">
-                    <app-rds-data-table [tableData]="changeLogs" [actions]="actionForChangeLogs"
+                    <rds-data-table [tableData]="changeLogs" [actions]="actionForChangeLogs"
                         (onActionSelection)="onChangeActionSelect($event)" [pagination]="true" [recordsPerPage]="10"
                         [noDataTitle]="'Currently you do not have change log'" [showNodataSubtitle]="false"
                         [tableHeaders]="changeLogsHeaders">
-                    </app-rds-data-table>
+                    </rds-data-table>
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 
 
-<div>
+<!-- <div>
   <span class="fw-bold fs-4">${{numberPrice}}</span>
   <span class="text-muted m-2 text-decoration-line-through fs-5" *ngIf="withDiscount"> ${{actualPrice}}</span>
   <span class="fs-6 text-primary" *ngIf="withDiscount">{{discount}}% off</span>
   <rds-icon class="px-2" [name]="'question'" [width]="'16px'"></rds-icon>
-</div>
+</div> -->
     <div [ngSwitch]="role">
       <div *ngSwitchCase="'Basic'">
         <!-- <span class="fw-bold fs-4">${{numberPrice}}</span>
@@ -24,12 +24,12 @@
       </div>
     </div>
 
-
+<!-- 
 <span class="fw-bold fs-4">${{numberPrice}}</span>
 
 <span class="fw-bold fs-4">${{originalPrice}}</span>
 
 <span class="text-muted m-2 text-decoration-line-through fs-5" *ngIf="withDiscount"> ${{actualPrice}}</span>
 <span class="fs-6 text-primary" *ngIf="withDiscount">{{discount}}% off</span>
-<rds-icon class="px-2" [name]="'question'" [width]="'16px'"></rds-icon>
+<rds-icon class="px-2" [name]="'question'" [width]="'16px'"></rds-icon> -->
 

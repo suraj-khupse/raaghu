@@ -3,15 +3,15 @@
 
 <button [type]="submitButton" [class]="classes" (click)="buttonClick($event)" data-bs-toggle="tooltip"
   [attr.data-bs-placement]="tooltipPlacement" [attr.data-bs-title]="tooltipTitle" [attr.id]="id"
-  [disabled]="showLoadingSpinner||disabled" [class.spinner]="showLoadingSpinner" [ngClass]="blockWidth"
+  [disabled]="showLoadingSpinner||isDisabled" [class.spinner]="showLoadingSpinner" [ngClass]="blockWidth"
   [attr.aria-label]="label">
 
   <ng-content select="[left]"></ng-content>
-  <span *ngIf="icon" [ngClass]="icon&&label ? 'me-2' :  ''">
-    <rds-icon *ngIf="icon" [name]="icon" [width]="iconWidth" [height]="iconHeight" [fill]="iconFill"
-      [stroke]="iconStroke"></rds-icon>
+  <span *ngIf="icon" [ngClass]="icon&&label ? 'me-2' :  ''" [class.invisible]="showLoadingSpinner">
+    <rds-icon *ngIf="icon" [name]="icon" [width]="iconWidth" [height]="iconHeight" [fill]="isIconFill"
+      [stroke]="isIconStroke"></rds-icon>
   </span>
-  <span *ngIf="label" class="btn-text">{{label}}</span>
+  <span *ngIf="label"  [class.invisible]="showLoadingSpinner" class="btn-text">{{label}}</span>
   <ng-content></ng-content>
   <ng-content select="[right]"></ng-content>
 </button>

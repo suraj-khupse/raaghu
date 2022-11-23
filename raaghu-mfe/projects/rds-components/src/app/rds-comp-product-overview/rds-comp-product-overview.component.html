@@ -30,7 +30,7 @@
                   ></rds-icon> -->
         </div>
         <div class="p-1 w-50 sm-100">
-          <rds-button colorVariant="primary" [outlineButton]="true" [block]="true" size="medium" label="Add To BAG">
+          <rds-button colorVariant="primary" [isOutline]="true" [block]="true" size="medium" label="Add To BAG">
           </rds-button>
         </div>
         <div class="p-1 w-50 sm-97">
@@ -44,8 +44,8 @@
         <span class="d-flex align-items-center sm-block"><span class="h3 fw-bold mb-0">
             <rds-label label="Basic Tee"></rds-label>
           </span>
-          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [outlineButton]="false"
-            [roundedButton]="false" type="button">
+          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [isOutline]="false"
+            [isFabIcon]="false" type="button">
             <rds-icon name="featured" height="18px" colorVariant="warning" width="18px"></rds-icon>
             <rds-badge right size="smallest" colorVariant="warning" label="Assured" [badgeType]="'pill'"
               [positioned]="false">
@@ -79,7 +79,7 @@
           <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart"></rds-icon>
         </div>
         <div class="p-1 w-50 sm-100">
-          <rds-button colorVariant="primary" [outlineButton]="true" [block]="true" size="medium" label="Add To BAG">
+          <rds-button colorVariant="primary" [isOutline]="true" [block]="true" size="medium" label="Add To BAG">
           </rds-button>
         </div>
         <div class="p-1 w-50 sm-97">
@@ -124,7 +124,7 @@
           </div> -->
       </div>
       <div class="mt-3">
-        <app-rds-comp-benefit [itemList]="itemListbenefit"></app-rds-comp-benefit>
+        <rds-comp-benefit [itemList]="itemListbenefit"></rds-comp-benefit>
       </div>
     </div>
     <div *ngSwitchCase="'producroverview3'">
@@ -133,8 +133,8 @@
           <span class="h3 fw-bold">
             <rds-label label="Girls' Sling Bag"></rds-label>
           </span>
-          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [outlineButton]="false"
-            [roundedButton]="false" type="button">
+          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [isOutline]="false"
+            [isFabIcon]="false" type="button">
             <rds-icon name="featured" height="18px" width="18px" colorVariant="warning"></rds-icon>
             <rds-badge right size="smallest" colorVariant="warning" label="Assured" [badgeType]="'pill'"
               [positioned]="false">
@@ -167,7 +167,7 @@
           <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart"></rds-icon>
         </div>
         <div class="p-1 w-50 sm-100">
-          <rds-button colorVariant="primary" [outlineButton]="true" [block]="true" size="medium" label="Add To BAG">
+          <rds-button colorVariant="primary" [isOutline]="true" [block]="true" size="medium" label="Add To BAG">
           </rds-button>
         </div>
         <div class="p-1 w-50 sm-97">
@@ -200,8 +200,8 @@
           <span class="h3 fw-bold">
             <rds-label label="Girls' Sling Bag"></rds-label>
           </span>
-          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [outlineButton]="false"
-            [roundedButton]="false" type="button">
+          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [isOutline]="false"
+            [isFabIcon]="false" type="button">
             <rds-icon name="featured" height="18px" colorVariant="warning" width="18px"></rds-icon>
             <rds-badge right size="smallest" colorVariant="warning" label="Assured" [badgeType]="'pill'"
               [positioned]="false">
@@ -251,7 +251,7 @@
           <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart"></rds-icon>
         </div>
         <div class="p-1 w-50 sm-100">
-          <rds-button colorVariant="primary" [outlineButton]="true" [block]="true" size="medium" label="Add To BAG">
+          <rds-button colorVariant="primary" [isOutline]="true" [block]="true" size="medium" label="Add To BAG">
           </rds-button>
         </div>
         <div class="p-1 w-50 sm-97">
@@ -269,8 +269,8 @@
       <div>
         <h3 class="fw-bold">
           <rds-label label="Basic Tee 6-Pack"></rds-label>
-          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [outlineButton]="false"
-            [roundedButton]="false" type="button">
+          <rds-button class="position-relative" [size]="'medium'" [colorVariant]="'default'" [isOutline="false"
+            [isFabIcon]="false" type="button">
             <rds-icon name="featured" height="18px" colorVariant="warning" width="18px"></rds-icon>
             <rds-badge right size="smallest" colorVariant="warning" Types="primary" label="Assured" [badgeType]="'pill'"
               [positioned]="false">

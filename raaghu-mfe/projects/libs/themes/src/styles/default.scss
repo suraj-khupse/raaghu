@@ -16,12 +16,13 @@ $black: #000 !default;
 $gray-500: #adb5bd !default;
 $gray-200: #e9ecef !default;
 $white: #fff !default;
+$gray-500:#6874a1 !default;
 $gray-400: #ced4da !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-300: #dee2e6 !default;
 $gray-100: #f8f9fa !default;
-
+$gray-900:#34384f !default;
 /*Variables*/ /*Success - Green*/
 $success-0: #DEFFE4;
 $success-100: #BEFECA;
@@ -66,6 +67,7 @@ $action-600: #0085D3;
 $action-700: #005FA4;
 $action-800: #004986;
 $action-900: #003566;
+$blue-100:#444e73;
 /*Primary - Purple*/
 $primary-0: #ECDEFF;
 $primary-100: #D8BEFE;
@@ -146,16 +148,27 @@ $default-100: #F58220;
   --chartgradient10: rgba(25,70,186,1%);
   
 }
+
+//$input-select-bg: $dark-200!default;
+$form-select-bg: $dark-200!default;
+$form-select-border-color: $dark-100!default;
+//$offcanvas-border-color: $dark-400!default;
+
+$offcanvas-bottom-border-color: $dark-100!default;
+$nav-tabs-bottom-border-color: $dark-100!default;
+
+$modal-bg-color: $dark-200!default;
+
 html[theme=dark] {
+  $input-bg: $dark-200!default;
+  $input-bg-border: $dark-100!default;
+
   $dropdown-color: $white;
-  $input-bg: $dark-100!default;
-  $input-border-color: $input-bg;
-  $form-select-bg: $input-bg!default;
   $input-group-addon-bg: $input-bg;
 
   .form-control, .form-control:focus {
     background-color: $input-bg;
-    border: 1px solid $input-border-color;
+    border: 1px solid $input-bg-border;
     color: $white;
   }
 
@@ -165,11 +178,7 @@ html[theme=dark] {
 
   .input-group-text {
     background-color: $input-group-addon-bg;
-  }
-
-  .form-select {
-    background-color: $form-select-bg;
-   // border-color: $form-select-border-color;
+    border-color: $input-bg-border;
   }
 }
 
@@ -210,7 +219,7 @@ html[theme=dark] {
 }
 html[theme=dark] .form-select {
   background-color: $dark-100;
-}}*/
+}}
 /*rds-dropdownlist .form-select{
   border: 0;
 }*/

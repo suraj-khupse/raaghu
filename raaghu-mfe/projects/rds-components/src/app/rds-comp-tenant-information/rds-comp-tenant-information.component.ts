@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-rds-comp-tenant-information',
+  selector: 'rds-comp-tenant-information',
   templateUrl: './rds-comp-tenant-information.component.html',
   styleUrls: ['./rds-comp-tenant-information.component.scss']
 })
@@ -25,7 +25,7 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
       this.tenantData['tenancyName'] = undefined;
       this.tenantData['tenantName'] = '';
       this.tenantData['adminEmailAddress'] = '';
-      this.tenantData['edition'] = '';
+      this.tenantData['displayText'] = '';
       this.tenantData['unlimitedSubscription'] = true;
       this.tenantData['imageUrl'] = '../assets/edit-pic.png';
       this.tenantData['subscriptionEndDate'] = null;
@@ -51,7 +51,7 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
       this.tenantData['tenancyName'] = '';
       this.tenantData['tenantName'] = '';
       this.tenantData['adminEmailAddress'] = '';
-      this.tenantData['edition'] = '';
+      this.tenantData['displayText'] = '';
       this.tenantData['unlimitedSubscription'] = true;
       this.tenantData['imageUrl'] = '../assets/edit-pic.png';
       this.tenantData['subscriptionEndDate'] = null;
@@ -77,7 +77,9 @@ this.buttonSpinner=true;
   }
 
   onEditionSelect(event: any): void {
-    this.tenantData.edition = event.item.value;
+    this.tenantData.displayText = event.item.value;
+    // console.log("  this.tenantData.displayText",  this.tenantData.displayText);
+    
   }
   getImage(ev: any) {
     let FileImage = ev.target.files[0];

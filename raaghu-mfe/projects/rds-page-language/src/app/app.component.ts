@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
   isShimmer: boolean = false;
   EditShimmer: boolean = false;
   languageCanvasTitle = 'New Language';
-  buttonSpinnerForNewLanguage: boolean = true;
+  showLoadingSpinner: boolean = false;
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompAlert',
     input: {
@@ -154,10 +154,16 @@ export class AppComponent implements OnInit {
             language: data
           }
           this.store.dispatch(saveLanguage(body));
-          this.closeCanvas();
-          // var offcanvas = document.getElementById('AddLanguage');
-          // let openedCanvas = bootstrap.Offcanvas.getInstance(offcanvas);
-          // openedCanvas.hide();
+          var offcanvas = document.getElementById('AddLanguage');
+          var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+          bsOffcanvas.hide();
+          this.viewCanvas = false;
+          this.selectedLanguage = {
+            countryCode: '',
+            icon: '',
+            isEnabled: false,
+            id: undefined,
+          };
         },
         onCloseCanvas: (event: any) => {
           this.closeCanvas();
@@ -255,9 +261,9 @@ export class AppComponent implements OnInit {
   // }
 
   openCanvas(edit: boolean = false): void {
-    this.buttonSpinnerForNewLanguage = true;
     this.viewCanvas = true;
     if (!edit) {
+      this.showLoadingSpinner = true;
       this.selectedLanguage = {
         countryCode: '',
         icon: '',
@@ -292,7 +298,7 @@ export class AppComponent implements OnInit {
       isEnabled: false,
       id: undefined,
     };
-    this.buttonSpinnerForNewLanguage = false;
+    this.showLoadingSpinner = false;
   }
   subscribeToAlerts() {
     this.alertService.alertEvents.subscribe((alert) => {
@@ -302,6 +308,7 @@ export class AppComponent implements OnInit {
         title: alert.title,
         message: alert.message,
       };
+      this.showLoadingSpinner = false;
       this.currentAlerts.push(currentAlert);
       const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
       rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];

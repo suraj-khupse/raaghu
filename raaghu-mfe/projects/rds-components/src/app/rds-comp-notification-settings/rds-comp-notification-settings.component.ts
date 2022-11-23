@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Outpu
 import { TranslateService } from '@ngx-translate/core';
 declare var bootstrap: any;
 @Component({
-  selector: 'app-rds-comp-notification-settings',
+  selector: 'rds-comp-notification-settings',
   templateUrl: './rds-comp-notification-settings.component.html',
   styleUrls: ['./rds-comp-notification-settings.component.scss']
 })

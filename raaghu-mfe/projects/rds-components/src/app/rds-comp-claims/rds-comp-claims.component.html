@@ -93,9 +93,9 @@
     </div>
 </div>
 
-<div class="position-fixed bottom-0 bg-white w-100 my-2 sm-p-0">
+<div class="position-fixed bottom-0 action-buttons w-100 my-2 sm-p-0">
     <rds-button [label]="'Cancel'"
-    [colorVariant]="'primary'" data-bs-dismiss="offcanvas" [outlineButton]="true" [size]="'small'">
+    [colorVariant]="'primary'" data-bs-dismiss="offcanvas" [isOutline]="true" [size]="'small'">
   </rds-button>
   <rds-button  [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" class="ms-2"
   [colorVariant]="'primary'"  [label]="'CREATE'" (click)="SaveClaimData()">

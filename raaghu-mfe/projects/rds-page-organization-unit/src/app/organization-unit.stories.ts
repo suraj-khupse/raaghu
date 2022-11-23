@@ -23,7 +23,7 @@ export default {
         RdsAlertComponent
       ],
       imports: [
-        FormsModule,
+        FormsModule,  
         ReactiveFormsModule,
         RdsButtonModule,
         NgxTranslateModule,       
@@ -127,8 +127,6 @@ Default.args = {
     </div>
   </div>
 </div>
-
-
 <rds-offcanvas [canvasTitle]="usercanvasTitle" [offId]="'addUserModal'" [offcanvaswidth]="550" *ngIf="viewCanvas"
                [placement]="'end'" (onClose)="close()">
   <div class="row form-style">

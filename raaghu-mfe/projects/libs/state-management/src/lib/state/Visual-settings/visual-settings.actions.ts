@@ -12,7 +12,7 @@ export const getVisualsettingsFailure = createAction(
     '[visualsettings Page] Get visualsettings Failure',
     props<{ error: string }>()
 );
-export const UpdateDefaultUiManagementSettings = createAction(
-    '[visualsettings Page] Update default ui managaement settings',
+export const UpdateUiManagementSettings = createAction(
+    '[visualsettings Page] Update ui managaement settings',
     (visualsettings: any) => ({ visualsettings })
 )

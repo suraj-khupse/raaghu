@@ -40,7 +40,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
     { value: 'Import from excel', some: 'value', id: 2, href: '', icon: 'download_data', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
     { value: 'Click here download sample import file.', some: 'value', id: 3, href: '', icon: 'download_data', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
   ];
-
+  droparrow = false;
   @Output()
   onSelect = new EventEmitter<{ item: any }>()
 
@@ -49,9 +49,12 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
   @Input() resetFormSubject: Observable<boolean> = new Observable<boolean>();
   @Input() entity = false;
   badgeList: any[] = [];
+  // @Input() height: string='250';
+  @Input() iconshow: boolean = true;
   constructor() {
     this.isMasterSel = false;
   }
+
 
   ngOnInit(): void {
     this.resetFormSubject.subscribe(response => {
@@ -73,18 +76,22 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
 
   public get button1(): any[] {
 
-    var customClasses = [' form-control', ' form-select ', 'dropdown-toggle', '']
+    var customClasses = [' form-control', 'dropdown-toggle', 'form-select']
 
     if (this.size === 'small') {
       customClasses.push('form-control-sm')
     }
+
     else if (this.size === 'large') {
       customClasses.push('form-control-lg')
     }
     if (this.borderDropdown) {
-      customClasses.push('border')
+      customClasses.push('')
     } if (!this.borderDropdown) {
       customClasses.push('border-0')
+    }
+    if (this.show) {
+      customClasses.push(' droparrow')
     }
 
 
@@ -142,28 +149,34 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
 
     //this.checkedCategoryList = JSON.stringify(this.checkedCategoryList);
   }
-  public get classes(): string[] {
+  // public get classes(): string[] {
 
-    var border = ['border']
-    if (this.borderDropdown == true) {
+  //   var border = ['border']
+  //   if (this.borderDropdown == true) {
 
-      //  border.push('border');
-      border.push('rounded')
-    }
-    else {
-      border.push('border-0');
-    }
-    return border;
+  //     //  border.push('border');
+  //     border.push('rounded')
+  //   }
+  //   else {
+  //     border.push('border-1');
+  //   }
+  //   return border;
 
 
-  }
+  // }
+
 
 
   open(): void {
     this.show = !this.show;
+    // this.droparrow = !this.droparrow;
     var element: any = document.getElementById(this.id);
-    var dropdown = new Dropdown(element);
-    dropdown.show();
+    var dropdown = new Dropdown(element)
+    if (this.show) {
+      dropdown.show();
+    } else {
+      dropdown.hide();
+    }
   }
 
 }

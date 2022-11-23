@@ -23,7 +23,6 @@
               "projects/libs/themes/src/styles/quillEditor.scss",
               "projects/libs/themes/src/styles/responsive.scss",
               "projects/host/src/styles.css",
-              "projects/libs/themes/src/styles/default.scss",
               "./node_modules/ngx-videogular/fonts/videogular.css"
             ],
 						"scripts": [
@@ -336,6 +335,7 @@
 							"projects/libs/themes/src/styles/default.scss",
 							"projects/libs/themes/src/styles/responsive.scss",
 							"projects/host/src/styles.css",
+							"./node_modules/ngx-videogular/fonts/videogular.css",
 							{
 								"input": "projects/libs/themes/src/styles/default.scss",
 								"bundleName": "default",
@@ -4942,8 +4942,8 @@
 								},
 								{
 									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
+									"maximumWarning": "15kb",
+									"maximumError": "20kb"
 								}
 							],
 							"fileReplacements": [

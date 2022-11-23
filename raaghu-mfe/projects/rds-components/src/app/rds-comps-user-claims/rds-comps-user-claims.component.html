@@ -23,10 +23,10 @@
 <div class="footer-buttons my-3">
   <div class="row">
     <div class="col-md-6">
-      <rds-button [label]="translate.instant('Cancel')" class="m-2" [colorVariant]="'primary'" [outlineButton]="true" (click)="onCancel.emit()"
+      <rds-button [label]="translate.instant('Cancel')" class="m-2" [colorVariant]="'primary'" [isOutline]="true" (click)="onCancel.emit()"
         data-bs-dismiss="offcanvas">
       </rds-button>
-      <rds-button [label]="translate.instant('Next')" [disabled]="!userCreationClaimsForm.valid" class="save-btn"
+      <rds-button [label]="translate.instant('Next')" [isDisabled]="!userCreationClaimsForm.valid" class="save-btn"
         [colorVariant]="'primary'" (click)="next(userCreationClaimsForm)">
       </rds-button>
     </div>

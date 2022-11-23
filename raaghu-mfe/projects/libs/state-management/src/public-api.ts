@@ -28,6 +28,13 @@ export * from './lib/state/role/role.effects';
 export * from './lib/state/role/role.reducer';
 export * from './lib/state/dynamic-property-management/dynamic-property.effects';
 export * from './lib/state/dynamic-property-management/dynamic-property.reducer';
+export * from './lib/state/dynamic-property-management/dynamic-property.selector';
+export * from './lib/state/dynamic-property-management/dynamic-property.actions';
+
+export * from './lib/state/dynamic-entity/dynamic-entity.effects';
+export * from './lib/state/dynamic-entity/dynamic-entity.actions';
+export * from './lib/state/dynamic-entity/dynamic-entity.reducer';
+
 export * from './lib/state/edition/edition.action';
 export * from './lib/state/edition/edition.reducer';
 export * from './lib/state/edition/edition.effects';

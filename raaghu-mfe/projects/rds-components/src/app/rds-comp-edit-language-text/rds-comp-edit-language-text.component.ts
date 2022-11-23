@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageText } from 'projects/rds-page-language-text/src/modal/language-text';
 
 @Component({
-  selector: 'app-rds-comp-edit-language-text',
+  selector: 'rds-comp-edit-language-text',
   templateUrl: './rds-comp-edit-language-text.component.html',
   styleUrls: ['./rds-comp-edit-language-text.component.scss']
 })

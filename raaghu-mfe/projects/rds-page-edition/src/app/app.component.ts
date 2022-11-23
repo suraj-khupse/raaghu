@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     }
   }
   public rdsEditionMfeConfig: ComponentLoaderOptions;
-  constructor(private store: Store,private translate:TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
+  constructor(private store: Store, private translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
   TableHeader: TableHeader[] = [
     { displayName: 'Edition Name', key: 'editionname', dataType: 'text', dataLength: 30, sortable: true, required: true, filterable: true },
     { displayName: 'Price', key: 'price', dataType: 'text', dataLength: 30, sortable: true, required: true },
@@ -106,9 +106,9 @@ export class AppComponent implements OnInit {
         noDataTitle: 'Currently you do not have edition',
         editionList: this.editionList,
         freeEditions: this.freeEditions,
-        tenantCount:0,
-        isShimmer:true,
-        editShimmer:true
+        tenantCount: 0,
+        isShimmer: true,
+        editShimmer: true
       },
       output: {
         onEditionSave: (data) => {
@@ -122,14 +122,14 @@ export class AppComponent implements OnInit {
 
         },
         updateEdition: (id) => {
-          if(id==0){
+          if (id == 0) {
             const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
-            rdsEditionMfeConfig.input.editShimmer=false;
-            this.rdsEditionMfeConfig={ ...rdsEditionMfeConfig }
-          }else{
+            rdsEditionMfeConfig.input.editShimmer = false;
+            this.rdsEditionMfeConfig = { ...rdsEditionMfeConfig }
+          } else {
             const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
-            rdsEditionMfeConfig.input.editShimmer=true;
-            this.rdsEditionMfeConfig={ ...rdsEditionMfeConfig }
+            rdsEditionMfeConfig.input.editShimmer = true;
+            this.rdsEditionMfeConfig = { ...rdsEditionMfeConfig }
           }
           this.store.dispatch(getEditionInfo(id))
         },
@@ -145,7 +145,7 @@ export class AppComponent implements OnInit {
       }
     }
     const mfeConfig = this.rdsEditionMfeConfig
-    mfeConfig.input.isShimmer =true
+    mfeConfig.input.isShimmer = true
     this.rdsEditionMfeConfig = mfeConfig;
     this.store.dispatch(getEditions());
     this.store.select(selectAllEditions).subscribe((res: any) => {
@@ -155,17 +155,17 @@ export class AppComponent implements OnInit {
         res.editions.forEach(element => {
           const edition: any = {
             editionname: element.displayName,
-            price: element.annualPrice,
+            price: '$ ' + element.annualPrice,
             trialPeriod: element.trialDayCount,
             expiringEdition: element.expiringEditionDisplayName,
             id: element.id,
-            name:element.displayName,          
+            name: element.displayName,
           }
           this.EditionDatatable.push(edition);
         });
         const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
         rdsEditionMfeConfig.input.EditionsTableData = this.EditionDatatable;
-        rdsEditionMfeConfig.input.isShimmer=false
+        rdsEditionMfeConfig.input.isShimmer = false
         this.rdsEditionMfeConfig = rdsEditionMfeConfig;
       }
 
@@ -179,7 +179,7 @@ export class AppComponent implements OnInit {
         rdsEditionMfeConfig.input.featureList = [...this.featureList];
         rdsEditionMfeConfig.input.selectedFeatures = [...res.editionInfo.featureValues];
         rdsEditionMfeConfig.input.selectedEdition = { ...res.editionInfo.edition };
-        rdsEditionMfeConfig.input.editShimmer=false;
+        rdsEditionMfeConfig.input.editShimmer = false;
         this.rdsEditionMfeConfig = { ...rdsEditionMfeConfig };
       }
 
@@ -208,9 +208,9 @@ export class AppComponent implements OnInit {
     //  }
     //});
     this.store.select(selectTenant).subscribe((res: any) => {
-      if (res && res.status==='success') {
+      if (res && res.status === 'success') {
         const mfeConfig = this.rdsEditionMfeConfig
-        mfeConfig.input.tenantCount =res.tenantCount;
+        mfeConfig.input.tenantCount = res.tenantCount;
         this.rdsEditionMfeConfig = mfeConfig;
       }
     })
@@ -242,9 +242,9 @@ export class AppComponent implements OnInit {
         {
           target: 'selectable',
           targetFunction(item) {
-              return item.inputType.name === 'CHECKBOX';
+            return item.inputType.name === 'CHECKBOX';
           },
-      },
+        },
       ],
       1
     );
@@ -262,6 +262,9 @@ export class AppComponent implements OnInit {
       const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
       rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
       this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+      const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
+      rdsEditionMfeConfig.input['showLoadingSpinner'] = false;
+      this.rdsEditionMfeConfig = rdsEditionMfeConfig;
     });
 
   }

@@ -13,7 +13,7 @@ export class identity{
   lowercase:boolean
 }
 @Component({
-  selector: 'app-rds-comp-identity-management-new',
+  selector: 'rds-comp-identity-management-new',
   templateUrl: './rds-comp-identity-management-new.component.html',
   styleUrls: ['./rds-comp-identity-management-new.component.scss']
 })

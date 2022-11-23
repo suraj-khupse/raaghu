@@ -1,4 +1,5 @@
-<rds-offcanvas [offId]="id" [offcanvaswidth]="offCanvasWidth" [placement]="'end'" [bodySpacing]="false" [scrolling]="true">
+<rds-offcanvas [offId]="id" [offcanvaswidth]="offCanvasWidth" [placement]="'end'" [bodySpacing]="false"
+  [scrolling]="true">
   <button type="button" class="btn-close text-reset closetabs" (click)="close()" aria-label="Close"></button>
   <div class="d-lg-flex d-sm-block h-100 overflow-hidden">
     <div naveContent class="tab-content profileMenuContent" [ngClass]="{ 'd-none': !isAnyProfileMenuSelected }"
@@ -15,14 +16,15 @@
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 1 }" id="nav-Deligation"
         role="tabpanel" aria-labelledby="nav-Deligation">
-        <app-rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader" [pagination]="pagination"
-          [delegateTabopened]="delegateTabopened" (onDeligateSave)="onSaveDelegate.emit($event)"
+        <rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader"
+          [buttonSpinner]="showDelegationButtonSpinner" [pagination]="pagination"
+          [delegateTabopened]="delegateTabopened" (onDeligateSave)="onSaveDelegate.emit($event)" (onDeleteDeligate)="onDeleteDeligate.emit($event)"
           [tableWidth]="tableWidth" [tableStyle]="tableStyle" [recordsPerpage]="recordsPerpage" [userList]="userList"
           [rdsDeligateTableData]="rdsDeligateTableData" (onCancelDeligate)="cancelDelegate($event)">
-        </app-rds-user-delegations>
+        </rds-user-delegations>
       </div>
 
-      <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 2 }" id="nav-Attempts" role="tabpanel"
+      <div class="tab-pane fade h-100" [ngClass]="{'show active': activePage === 2 }" id="nav-Attempts" role="tabpanel"
         aria-labelledby="nav-Attempts">
         <app-rds-comp-login-attempts [LoginAttempts]="LoginAttempts"
           (RefreshLoginAttemts)="onLoginAttempts.emit($event)">
@@ -30,12 +32,12 @@
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 3 }" id="nav-Settings" role="tabpanel"
         aria-labelledby="nav-Settings">
-        <app-rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)" 
+        <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)"
           (onProfileClose)="onClickCloseTabContent()">
-        </app-rds-mysettings>
+        </rds-mysettings>
       </div>
       <div class="tab-pane fade h-100" id="nav-DownLoad" role="tabpanel" aria-labelledby="nav-DownLoad">
-        <!-- <app-rds-comp-download-collection [DownloadTable]="DownloadTable"></app-rds-comp-download-collection> -->
+        <!-- <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection> -->
       </div>
 
       <div class="tab-pane fade h-100" id="nav-Attempts" [ngClass]="{ 'show active': activePage === 4 }" role="tabpanel"
@@ -46,11 +48,11 @@
       </div>
       <div class="tab-pane fade h-100" id="nav-Settings" [ngClass]="{ 'show active': activePage === 5 }" role="tabpanel"
         aria-labelledby="nav-Settings">
-        <app-rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)">
-        </app-rds-mysettings>
+        <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)">
+        </rds-mysettings>
       </div>
       <!-- <div class="tab-pane fade h-100" id="nav-DownLoad" role="tabpanel" aria-labelledby="nav-DownLoad">
-        <app-rds-comp-download-collection [DownloadTable]="DownloadTable"></app-rds-comp-download-collection>
+        <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection>
       </div> -->
     </div>
     <div class="pt-6">
@@ -61,8 +63,8 @@
               <div class="d-inline-block position-relative">
                 <rds-avatar [withProfilePic]="true" [profilePic]="Profileurl" [roundedPills]="true"
                   [verticallyAlligned]="true" [roundedAvatar]="true" [height]="'110'"></rds-avatar>
-                <div class="" *ngIf="ProfileData">
-                  {{ ProfileData.UserName }}
+                <div class="text-center" *ngIf="ProfileData">
+                  {{ ProfileData.userName }}
                   <input type="file" (change)="checkFileSize($event); checkExtension($event)" #file
                     (input)="getValue($event)" name="myfile" style="display: none" />
                   <button class="btn btn-icon upload-icon btn-md rounded-circle" (click)="file.click()"
@@ -78,8 +80,8 @@
               (onClicktab)="onclickMenu($event)">
             </rds-nav-tab>
             <div class="text-center">
-              <rds-button [outlineButton]="true" [label]="translate.instant('LOGOUT')" type="button" [size]="'medium'"
-                          [colorVariant]="'primary'" [iconFill]="false" [iconStroke]="true" (click)="logout()" [icon]="'logout'"
+              <rds-button [isOutline]="true" [label]="translate.instant('LOGOUT')" type="button" [size]="'medium'"
+                          [colorVariant]="'primary'" [isIconFill]="false" [isIconStroke]="true"  (click)="logout()" [icon]="'logout'"
                           [iconHeight]="'15px'" [iconWidth]="'15px'">
               </rds-button>
             </div>
@@ -102,7 +104,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ declare var bootstrap: any;
   ]
 })
 export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
-  actions: TableAction[] = [{ id: 'edit', displayName: this.translate.instant('Edit') }, { id: 'delete', displayName:this.translate.instant('Delete') }, { id: 'moveTenant', displayName: this.translate.instant('Move Tenants to Another Edition') }]
+  actions: TableAction[] = [{ id: 'edit', displayName: this.translate.instant('Edit') }, { id: 'delete', displayName: this.translate.instant('Delete') }, { id: 'moveTenant', displayName: this.translate.instant('Move Tenants to Another Edition') }]
   @Input() selectedFeatures = [];
   @Input() selectedEdition: any;
   @Input() EditionsTableHeader: TableHeader[] = [];
@@ -34,12 +34,12 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
   @Input() ExpiryInterval: number = 0;
   @Input() freeEditon: string;
   @Input() isDefault: boolean = false;
-  @Input() isShimmer:boolean=false;
-  @Input() editShimmer:boolean=true;
+  @Input() isShimmer: boolean = false;
+  @Input() editShimmer: boolean = true;
   @Input() featureList: any = [];
   @Input() nodeColors = [];
   @Input() treeData: TreeNode[] = [];
-  buttonSpinnerForNewEdition: boolean = true;
+  @Input() showLoadingSpinner: boolean = false;
   @Output() deleteEdition = new EventEmitter<{ item: any }>();
   @Output() onEditionSave = new EventEmitter<any>();
   @Output() updateEdition = new EventEmitter<any>();
@@ -175,8 +175,8 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
 
     }
     this.onEditionSave.emit(body);
-    this.closeCanvas();
-    this.resetPermission();
+    this.viewCanvas = false;
+    this.resetPermission();  
   }
 
   resetPermission() {
@@ -216,7 +216,7 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
     this.selectpermissionList = event
   }
   openCanvas(): void {
-    this.buttonSpinnerForNewEdition = true;
+    this.showLoadingSpinner = true;
     this.updateEdition.emit(0);
     this.contentOnEdit = false;
     this.selectedFeatures = [];
@@ -294,7 +294,7 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
 
   closeCanvas(): void {
     this.viewCanvas = false;
-    this.buttonSpinnerForNewEdition = false;
+    this.showLoadingSpinner = false;
     this.resetPermission();
   }
 
@@ -346,8 +346,8 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
 
 
   // fabmenu for mobile list
-  onSelectMenu(event:any){
-    if(event.key==='new'){
+  onSelectMenu(event: any) {
+    if (event.key === 'new') {
       this.openCanvas();
     }
   }

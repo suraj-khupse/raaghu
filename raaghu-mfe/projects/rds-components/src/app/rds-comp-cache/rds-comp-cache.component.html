@@ -1,13 +1,13 @@
 <div class="" *ngIf="cashedata && cashedata.length > 0; else emptyTemplate">
-  <div class="row w-100 border-bottom m-0" *ngFor="let item of dataSource">
-    <div class="col-9 py-3">
+  <div class="w-100 border-bottom m-0 d-flex justify-content-between px-3" *ngFor="let item of dataSource">
+    <div class="py-3">
       <span class="sm-word-wrap">
         {{ item.name }}
       </span>
     </div>
-    <div class="col-3 py-3 text-end">
-      <rds-button (click)="deleteConfirmation(item.name)" [size]="'small'" [icon]="'delete'" [iconHeight]="'18px'"
-        [iconWidth]="'18px'" [roundedButton]="true" [label]="'delete' + item.name">
+    <div class="py-3">
+      <rds-button (click)="deleteConfirmation(item.name)" [size]="'small'" [icon]="'delete'" [iconHeight]="'17px'"
+        [iconWidth]="'17px'" [isFabIcon]="true" >
       </rds-button>
     </div>
   </div>

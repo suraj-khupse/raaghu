@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-12 text-end pb-3 desktop-btn">
             <rds-button [label]="translate.instant('New Tenant')" [size]="'small'" [colorVariant]="'primary'"
-                (click)="newTenant($event, true)" [showLoadingSpinner]="buttonSpinnerForNewUser"
-                buttonType="iconLabel" icon="plus" iconWidth="12px" iconHeight="12px">
+                (click)="newTenant($event, true)" [showLoadingSpinner]="showLoadingSpinner" 
+                icon="plus" iconWidth="12px" iconHeight="12px">
             </rds-button>
         </div>
         <div class="col-md-12">
             <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
-                <app-rds-data-table [tableData]="tableData" [inlineEdit]="false" [pagination]="true"
+                <rds-data-table [tableData]="tableData" [inlineEdit]="false" [pagination]="true"
                     [recordsPerPage]="10" [actions]="actions" (onActionSelection)="onActionSelect($event)"
                     noDataTitle="Currently you do not have tenant" [tableHeaders]="tenantHeaders"
-                    [isShimmer]="isShimmer"></app-rds-data-table>
+                    [isShimmer]="isShimmer"></rds-data-table>
             </div>
         </div>
     </div>
@@ -22,41 +22,40 @@
     </div>
 </div>
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'tenantOffcanvas'" [offcanvaswidth]="650"
-    [placement]="'end'" *ngIf="viewCanvas"(onClose)="close()">
+    [placement]="'end'" *ngIf="viewCanvas" (onClose)="close()">
     <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activeTab]="activePage"
         [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
         [justified]="false">
         <div naveContent class="row tab-content m-2" id="nav-tabContent">
             <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 0}" id="tenant-information"
                 role="tabpanel" aria-labelledby="nav-home-tab">
-                <app-rds-comp-tenant-information (tenantInfo)="getTenantData($event)" [editionList]="editionList"
+                <rds-comp-tenant-information (tenantInfo)="getTenantData($event)" [editionList]="editionList"
                     [tenantData]="tenantData" (onCancel)="close()" [editShimmer]="editShimmer"
                     [showEmail]="showEmailList">
-                </app-rds-comp-tenant-information>
+                </rds-comp-tenant-information>
             </div>
             <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 1}" id="settings" role="tabpanel"
                 aria-labelledby="nav-home-tab">
-                <app-rds-comp-tenant-settings (tenantSettings)="getTenantSettings($event)"
+                <rds-comp-tenant-settings (tenantSettings)="getTenantSettings($event)"
                     [isTenantInfoValid]="isTenantInfoValid" [tenantSettingsInfo]="tenantSettingsInfo"
                     [showEditData]="showEditData" (onCancel)="close()" [passwordValidation]="showEmailList">
-                </app-rds-comp-tenant-settings>
+                </rds-comp-tenant-settings>
             </div>
             <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="features" *ngIf="selectedId"
                 role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="tab-content features py-4">
-                    <app-rds-comp-permission-tree [treeData]="tenantFeatures" [selectedItems]="tenantFeatureValues"
+                    <rds-comp-permission-tree [treeData]="tenantFeatures" [selectedItems]="tenantFeatureValues"
                         (getAllselectedPermissions)="getSelectedFeaturesList($event)"
                         [selectAllLabel]="'Select Features'">
-                    </app-rds-comp-permission-tree>
+                    </rds-comp-permission-tree>
                 </div>
                 <div class="footer-buttons">
                     <div class="col-md-12 ">
-                        <rds-button [label]="translate.instant('Cancel')" [outlineButton]="true" [colorVariant]="'primary'"
-                            [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas">
+                        <rds-button [label]="translate.instant('Cancel')" [isOutline]="true"
+                            [colorVariant]="'primary'" [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas">
                         </rds-button>
                         <rds-button [label]="translate.instant('Save')" [size]="'small'"
-                            [showLoadingSpinner]="buttonSpinnerForSave"
-                            [disabled]="!selectedFeatureList||selectedFeatureList.length===0" class="ms-2"
+                            [isDisabled]="!selectedFeatureList||selectedFeatureList.length===0" class="ms-2"
                             [colorVariant]="'primary'" (click)="save()">
                         </rds-button>
                     </div>

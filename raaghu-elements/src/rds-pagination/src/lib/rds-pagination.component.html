@@ -44,7 +44,7 @@
         </li> -->
         <li class="page-item" [class]="classes">
           <div class="btn-group dropdown page-counter">
-            <select class="form-select form-select-{{getSize()}} custom-select" [(ngModel)]="recordsPerPage"
+            <select class="form-select form-select-{{getSize()}} custom-select cursor-pointer" [(ngModel)]="recordsPerPage"
               (change)="setItemsPerPage(pager.currentPage,$event)">
               <option value="All">All</option>
               <option value="5" selected>5</option>

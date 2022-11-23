@@ -39,8 +39,8 @@ export class RdsLoginComponent implements OnInit, OnChanges {
 
   @Input() switchTenant: boolean = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  @Input() buttonSpinner: boolean = true;
-  @Input() buttonSpinnerForChangeTenant: boolean = true;
+  @Input() buttonSpinner: boolean = false;
+  @Input() buttonSpinnerForChangeTenant: boolean = false;
   constructor(private formBuilder: FormBuilder, public translate: TranslateService) {
   }
 
@@ -59,6 +59,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   }
 
   submit(loginForm: NgForm) {
+    this.buttonSpinner = true;
     this.onLogin.emit({
       userEmail: this.userNameData,
       userPassword: this.userPasswordData,
@@ -68,6 +69,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
 
   ChangeTenant(tenantForm: NgForm) {
     this.onSwitchTenant.emit(this.TenantNameData);
+    this.buttonSpinnerForChangeTenant = true;
   }
 
   onModalClose(tenantForm: NgForm): void {

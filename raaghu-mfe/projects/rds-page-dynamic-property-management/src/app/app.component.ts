@@ -1,37 +1,11 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { AlertService, AppSessionService, ComponentLoaderOptions, SharedService } from '@libs/shared';
-import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
 import { transition, trigger, query, style, animate, } from '@angular/animations';
-
-import {
-  getDynamicEntity,
-  getDynamicProperty,
-  deleteDynamicProperty,
-  deleteDynamicEntity,
-  saveDynamicProperty,
-  saveDynamicEntity,
-  editDynamicEntity,
-  getAllEntities,
-  getInputTypeNames,
-  getDynamicPropertyByEdit,
-  UpdateDynamicProperty,
-  getPermission,
-} from 'projects/libs/state-management/src/lib/state/dynamic-property-management/dynamic-property.actions';
-import {
-  selectAllDynamicEntities,
-  selectAllDynamicProperties,
-  selectAllPermissions,
-  selectDynamicEntities,
-  selectDynamicEntity,
-  selectDynamicProperty,
-  selectDynamicPropertyForEdit,
-  selectInputPropertyNameEntities,
-} from 'projects/libs/state-management/src/lib/state/dynamic-property-management/dynamic-property.selector';
-
+import { selectDefaultLanguage, deleteDynamicProperty, getPermission, selectAllPermissions, getDynamicProperty, deleteDynamicEntity, getDynamicEntity, getAllEntities, selectDynamicEntities, getInputTypeNames, selectInputPropertyNameEntities, UpdateDynamicProperty, saveDynamicProperty, saveDynamicEntity, getDynamicPropertyByEdit, selectDynamicPropertyForEdit, selectAllProperties, selectAllDynamicEntities } from '@libs/state-management';
 declare let bootstrap: any;
 export class TreeNode {
   constructor(
@@ -257,42 +231,6 @@ export class AppComponent implements OnInit {
         },
       },
     };
-    this.store.dispatch(getPermission());
-    this.store.select(selectAllPermissions).subscribe((result: any) => {
-      if (result && result.items && result.items.length > 0) {
-        this.permissionsList = this.ConvertArraytoTreedata(result.items);
-        const mfeConfig = this.rdsDynamicPropertiesMfeConfig;
-        mfeConfig.input.permissionsList = this.permissionsList;
-        this.rdsDynamicPropertiesMfeConfig = mfeConfig;
-      }
-    });
-    this.store.dispatch(getDynamicProperty());
-    this.store.select(selectDynamicProperty).subscribe((res: any) => {
-      if (res && res.dynamicProperty && res.dynamicProperty.items && res.status == "success") {
-        this.isAnimation = false;
-        this.DynamicProperties.DynamicPropertiesTableData = [];
-        res.dynamicProperty.items.forEach((element: any) => {
-          const item: any = {
-            propertyName: element.propertyName,
-            displayName: element.displayName,
-            inputType: element.inputType,
-            permission: element.permission,
-            tenantId: element.tenantId,
-            id: element.id,
-            name: element.propertyName
-          };
-          this.DynamicProperties.DynamicPropertiesTableData.push(item);
-        });
-        const mfeConfig = this.rdsDynamicPropertiesMfeConfig;
-        mfeConfig.input.DynamicPropertiesTableData = [
-          ...this.DynamicProperties.DynamicPropertiesTableData,
-        ];
-        mfeConfig.input.isShimmer = false;
-        this.rdsDynamicPropertiesMfeConfig = mfeConfig;
-      }
-
-    });
-
     this.rdsDynamicEntityPropertiesMfeConfig = {
       name: 'RdsCompDynamicEnityProperties',
       input: {
@@ -314,8 +252,59 @@ export class AppComponent implements OnInit {
         },
       },
     };
+    this.store.dispatch(getPermission());
+    this.store.select(selectAllPermissions).subscribe((result: any) => {
+      if (result && result.DynanmicPermission && result.DynanmicPermission.items && result.DynanmicPermission.items.length > 0) {
+        this.permissionsList = this.ConvertArraytoTreedata(result.DynanmicPermission.items);
+        const mfeConfig = this.rdsDynamicPropertiesMfeConfig;
+        mfeConfig.input.permissionsList = this.permissionsList;
+        this.rdsDynamicPropertiesMfeConfig = mfeConfig;
+      }
+    });
+    this.store.dispatch(getDynamicProperty());
+    this.store.select(selectAllProperties).subscribe((res: any) => {
+      if (res && res.properties && res.properties.items && res.status == "success") {
+        this.isAnimation = false;
+        this.DynamicProperties.DynamicPropertiesTableData = [];
+        this.parameterList = [];
+
+        res.properties.items.forEach((element: any) => {
+          const item: any = {
+            propertyName: element.propertyName,
+            displayName: element.displayName,
+            inputType: element.inputType,
+            permission: element.permission,
+            tenantId: element.tenantId,
+            id: element.id,
+            name: element.propertyName
+          };
+          const item1: any = {
+            value: item.displayName,
+            some: item.displayName,
+            id: item.id,
+            name: item.displayName
+          }
+          this.parameterList.push(item1);
+          this.DynamicProperties.DynamicPropertiesTableData.push(item);
+        });
+
+        const mfeConfig = this.rdsDynamicPropertiesMfeConfig;
+        mfeConfig.input.DynamicPropertiesTableData = [
+          ...this.DynamicProperties.DynamicPropertiesTableData,
+        ];
+        mfeConfig.input.isShimmer = false;
+        this.rdsDynamicPropertiesMfeConfig = mfeConfig;
+        const mfeConfig1 = this.rdsDynamicEntityPropertiesMfeConfig;
+        mfeConfig1.input.parameterList = [...this.parameterList];
+        this.rdsDynamicEntityPropertiesMfeConfig = mfeConfig1;
+
+      }
+
+    });
+
+
     this.store.dispatch(getDynamicEntity());
-    this.store.select(selectDynamicEntity).subscribe((res: any) => {
+    this.store.select(selectAllDynamicEntities).subscribe((res: any) => {
       this.DynamicEntityProperties.DynamicEntityPropertiesTableData = [];
       if (res && res.dynamicEntity.items && res.status == 'success') {
         this.isAnimation = false;
@@ -344,8 +333,8 @@ export class AppComponent implements OnInit {
     this.store.dispatch(getAllEntities());
     this.store.select(selectDynamicEntities).subscribe((res: any) => {
       this.entityNames = [];
-      if (res && res.length > 0) {
-        res.forEach((element: any) => {
+      if (res && res.Entities && res.Entities.length > 0) {
+        res.Entities.forEach((element: any) => {
           const item: any = {
             value: element,
             displayText: element,
@@ -360,12 +349,18 @@ export class AppComponent implements OnInit {
     });
     this.store.dispatch(getInputTypeNames());
     this.store.select(selectInputPropertyNameEntities).subscribe((res: any) => {
-      if (res && res.length > 0) {
+      if (res && res.InputTypeNames && res.InputTypeNames.length > 0) {
         this.inputTypeList = [];
-        res.forEach((element: any) => {
+        res.InputTypeNames.forEach((element: any) => {
           const item: any = {
             value: element,
-            displayText: element,
+            some: element,
+            isSelected: false,
+            icon: '',
+            iconHeight: 0,
+            iconWidth: 0,
+            iconFill: false,
+            iconStroke: true
           };
           this.inputTypeList.push(item);
         });
@@ -375,26 +370,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.store.dispatch(getDynamicProperty());
-    this.store.select(selectAllDynamicProperties).subscribe((res: any) => {
-      if (res && res.items) {
-        this.parameterList = [];
-        const entityParameter: any = [];
-        res.items.forEach((item: any) => {
-          const item1: any = {
-            value: item.displayName,
-            some: item.displayName,
-            id: item.id,
-            name: item.displayName
-          }
-          this.parameterList.push(item1);
-        });
-        const mfeConfig = this.rdsDynamicEntityPropertiesMfeConfig;
-        mfeConfig.input.parameterList = [...this.parameterList];
-        mfeConfig.input.isShimmer = true;
-        this.rdsDynamicEntityPropertiesMfeConfig = mfeConfig;
-      }
-    });
+
   }
   subscribeToAlerts() {
     this.alertService.alertEvents.subscribe((alert) => {
@@ -422,7 +398,6 @@ export class AppComponent implements OnInit {
     }
   }
   addDynamic(data: any): void {
-
     if (data.id) {
       this.store.dispatch(UpdateDynamicProperty(data));
     } else {
@@ -431,30 +406,30 @@ export class AppComponent implements OnInit {
   }
 
   addEntity(Data): void {
-    this.temp = [];
     if (Data && Data.dynamicEntity) {
-      Data.dynamicEntity.forEach((element: any) => {
-        if (
-          element.PropertyID &&
-          element.entityFullName
-        ) {
-          const entityData: any = {
-            dynamicPropertyId: element.PropertyID,
-            entityFullName: element.entityFullName[0],
-            tenantId: this.appSessionService.tenantId,
-          };
-          this.temp.push(entityData);
-        }
-      });
-      this.temp.map(element => {
-        return this.store.dispatch(saveDynamicEntity(element));
-      })
-      // this.temp.forEach(element => {
-      //   setTimeout(()=>{
-      //     this.store.dispatch(saveDynamicEntity(element));
-      //   }, 1000);
-      // });
+      if (Data.dynamicEntity.length > 0) {
+        Data.dynamicEntity.forEach((element: any) => {
+          if (element.PropertyID && element.entityFullName) {
+            const entityData: any = {
+              dynamicPropertyId: element.PropertyID,
+              entityFullName: element.entityFullName,
+              tenantId: this.appSessionService.tenantId,
+            };
+            this.store.dispatch(saveDynamicEntity(entityData));
+          }
+        });
+
+      } else if (Data.dynamicEntity.entityFullName) {
+        const entityData: any = {
+          dynamicPropertyId: 0,
+          entityFullName: Data.dynamicEntity.entityFullName,
+          tenantId: this.appSessionService.tenantId,
+          dynamicPropertyName:''
+        };
+        this.store.dispatch(saveDynamicEntity(entityData));
+      }
     }
+
   }
 
   EditDynamicProperty(event): void {
@@ -533,6 +508,14 @@ export class AppComponent implements OnInit {
     if (this.selectedTabIndex === 0) {
       this.openDynamicCanvas();
     } else {
+      this.parameterList.forEach((ele: any) => {
+        if (ele) {
+          ele.isSelected = false;
+        }
+      })
+      const mfeConfig1 = this.rdsDynamicEntityPropertiesMfeConfig;
+      mfeConfig1.input.parameterList = [...this.parameterList];
+      this.rdsDynamicEntityPropertiesMfeConfig = mfeConfig1;
       this.openEntityCanvas();
     }
   }

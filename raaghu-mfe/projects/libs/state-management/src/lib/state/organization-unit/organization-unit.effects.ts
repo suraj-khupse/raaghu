@@ -54,7 +54,7 @@ export class OrganizationUnitEffects {
       ofType(getOrganizationUnitMembers),
       switchMap((data) =>
         // Call the getTodos method, convert it to an observable
-        from(this.organizationUnitService.getOrganizationUnitUsers(data.id, "userName ASC", 10, 0)).pipe(
+        from(this.organizationUnitService.getOrganizationUnitUsers(data.id, "userName ASC", 1000, 0)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((organizationUnitMembers) => {
             return getOrganizationUnitMembersSuccess({
@@ -72,7 +72,7 @@ export class OrganizationUnitEffects {
       ofType(getOrganizationUnitRoles),
       switchMap((data) =>
         // Call the getTodos method, convert it to an observable
-        from(this.organizationUnitService.getOrganizationUnitRoles(data.id, "", 10, 0)).pipe(
+        from(this.organizationUnitService.getOrganizationUnitRoles(data.id, "", 1000, 0)).pipe(
           // Take the returned value and return a new success action containing the todos
           map((organizationUnitRoles) => {
             return getOrganizationUnitRolesSuccess({

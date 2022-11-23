@@ -49,10 +49,21 @@
         </div>
         <div class="col-md-6 sm-p-0">
           <div class="form-group mb-3">
-            <label for="Edition" class="mb-2">Edition<span class="text-danger">*</span></label>
-            <rds-select-list [(ngModel)]="tenantData.edition" [isRequired]=true
-              [value]="tenantData.edition" ngDefaultControl labelPosition="top" name="edition" [itemList]="editionList" [placeholder]="'Select Edition'">
-            </rds-select-list>
+            <div>
+              <label for="Edition" class="mb-2">Edition<span class="text-danger">*</span></label>
+            </div>
+            <rds-dropdownlist [placeholder]="translate.instant('Select Edition')" 
+            [borderDropdown]="true"
+            class="text-dark"
+            [id]="'edition-dropdown'"
+            [(ngModel)]="tenantData.displayText"
+            [listItems]="editionList" #inputNameData="ngModel" required
+            [multiSelect]="false"
+            [selectAll]="false"
+            [entity]="false"
+            [value]="tenantData.displayText" ngDefaultControl name="tenantData.displayText">
+            </rds-dropdownlist>
+            {{tenantData.displayText}}
           </div>
         </div>
       </div>
@@ -66,7 +77,7 @@
           </div>
         </div>
       </div>
-      <div class="row" >
+      <div class="row">
         <div class="col-md-6 sm-p-0">
           <div class="form-group mb-3">
             <rds-datepicker name="date-picker" [disabled]="tenantData.unlimitedSubscription" [label]="''"
@@ -77,14 +88,13 @@
       </div>
     </form>
   </div>
-  <div class="position-fixed bg-white py-3 bottom-0 w-100">
-    <rds-button [label]="translate.instant('Cancel')" [outlineButton]="true" [colorVariant]="'primary'" [size]="'small'"
+  <div class="position-fixed py-3 bottom-0 w-100 action-buttons">
+    <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" [size]="'small'"
       (click)="onCanceled()" data-bs-dismiss="offcanvas">
     </rds-button>
-    <rds-button [label]="translate.instant('Next')"
-      [disabled]="!tenantCreationForm.valid"
-      [size]="'small'" class="ms-2" [colorVariant]="'primary'" (click)="next(tenantCreationForm)" [showLoadingSpinner]="buttonSpinner">
+    <rds-button [label]="translate.instant('Next')" [isDisabled]="!tenantCreationForm.valid" [size]="'small'" class="ms-2"
+      [colorVariant]="'primary'" (click)="next(tenantCreationForm)">
     </rds-button>
   </div>
 </div>
-<app-rds-comp-tenant-information-shimmer *ngIf="editShimmer"></app-rds-comp-tenant-information-shimmer>
+<rds-comp-tenant-information-shimmer *ngIf="editShimmer"></rds-comp-tenant-information-shimmer>

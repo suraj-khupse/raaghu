@@ -27,7 +27,7 @@
                                         <h5>I need a care giver</h5>
                                     </div>
                                     <div class="mb-3"><small>Start your free search for care in your area.</small></div>
-                                    <rds-button [block]="false" [size]="'medium'" [roundedCorner]="true"
+                                    <rds-button [block]="false" [size]="'medium'" [isRounded]="true"
                                         [colorVariant]="'warning'" [label]="translate.instant('Find care')"
                                         (click)="onFindCare.emit()">
                                     </rds-button>
@@ -41,7 +41,7 @@
                                     <div class="mb-3">
                                         <small>Create a free profile and search for jobs.</small>
                                     </div>
-                                    <rds-button [block]="false" [size]="'medium'" [roundedCorner]="true"
+                                    <rds-button [block]="false" [size]="'medium'" [isRounded]="true"
                                         [colorVariant]="'warning'" [label]="translate.instant('Find jobs')"
                                         (click)="onFindJob.emit()">
                                     </rds-button>
@@ -70,7 +70,7 @@
                                 </rds-button>
                             </div>
                             <div>
-                                <rds-button [block]="false" [size]="'medium'" [outlineButton]="true"
+                                <rds-button [block]="false" [size]="'medium'" [isOutline]="true"
                                     [colorVariant]="'primary'"
                                     [label]="translate.instant('No Thanks, I am already a complete RDS expert')"
                                     (click)="onNotRequired.emit()">
@@ -156,7 +156,7 @@
                                     <div class="col-md-4 sm-mt-1">
                                         <rds-button [block]="true" [size]="'medium'" [colorVariant]="'primary'"
                                             [label]="translate.instant('Start free trial')" (click)="StartFreeTrial()"
-                                            [disabled]="false">
+                                            [isDisabled]="false">
                                         </rds-button>
                                     </div>
                                 </div>

@@ -8,7 +8,7 @@
         <rds-icon [name]="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="iconHeight"
           [width]="iconWidth" class="pe-3"></rds-icon>
         <!-- <i [class]="item.icon" class="pe-2"></i> -->
-        <span data-bs-toggle="tooltip" data-bs-placement="auto" [title]="item.label"
+        <span data-bs-toggle="tooltip" data-bs-placement="auto"
           [ngClass]="{ 'd-none' : collapsed }">
           {{item.label}}
         </span>
@@ -45,7 +45,7 @@
       <div class="sidenav-footer">
         <div *ngIf="collapseRequired" class="d-flex justify-content-center mb-3">
           <rds-icon [name]="'grid_square'" height="23px" [stroke]="true" width="23px" data-bs-toggle="tooltip"
-            data-bs-placement="auto" title="collapse menu" (click)="onCollapse()" class="cursor-pointer"></rds-icon>
+            data-bs-placement="auto" title="collapse menu" (click)="onCollapse()" class="cursor-pointer" id="sidenavCollapsed"></rds-icon>
         </div>
         <div class="btn-container d-flex justify-content-center ">
           <i class="fa fa-sun-o" aria-hidden="true"></i>

@@ -23,7 +23,7 @@ const Template: Story<RdsTestimonialComponent> = (args: RdsTestimonialComponent)
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['testimonialItems'] } };
+// Default.parameters = { controls: { include: ['testimonialItems'] } };
 Default.args = {
   role: 'Default',
   testimonialItems: [
@@ -59,18 +59,6 @@ Default.args = {
       iconFill: true,
       iconStroke: true,
     },
-  ]
-
-}
-
-
-export const testimonialtwo = Template.bind({});
-testimonialtwo.args = {
-  role: 'testimonialtwo',
-  testimonialItemstwo: [
-    {
-      "icon": "chevron_left", "icontwo": "chevron_right"
-    }
   ]
 
 }

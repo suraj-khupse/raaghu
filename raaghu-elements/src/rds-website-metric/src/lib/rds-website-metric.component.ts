@@ -4,9 +4,9 @@ export interface itemModel {
   link: string;
   subtitle: string;
   description?: string;
-  icon?: string;
-  iconHeight?: string;
-  iconWidth?: string;
+  icon: string;
+  iconHeight: string;
+  iconWidth: string;
 }
 @Component({
   selector: 'rds-website-metric',

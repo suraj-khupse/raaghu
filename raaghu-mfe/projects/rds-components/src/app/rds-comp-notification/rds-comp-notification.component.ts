@@ -16,7 +16,7 @@ export interface notificationData {
 
 
 @Component({
-  selector: 'app-rds-notification',
+  selector: 'rds-notification',
   templateUrl: './rds-comp-notification.component.html',
   styleUrls: ['./rds-comp-notification.component.scss'],
 })
@@ -38,7 +38,7 @@ export class RdsNotificationComponent implements OnInit {
   getColor(notification: notificationData, isIcon: boolean = false): any {
     if (isIcon) {
       if (notification.status == 'info') {
-        return 'primary';
+        return 'notification-sub-text';
       }
       if (notification.status == 'error') {
         return 'danger';

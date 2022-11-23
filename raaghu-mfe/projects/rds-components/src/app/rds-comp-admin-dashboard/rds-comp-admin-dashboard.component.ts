@@ -55,7 +55,7 @@ export interface BigNumberWidgetData {
 }
 
 @Component({
-  selector: 'app-rds-admin-dashboard',
+  selector: 'rds-admin-dashboard',
   templateUrl: './rds-comp-admin-dashboard.component.html',
   styleUrls: ['./rds-comp-admin-dashboard.component.scss']
 })

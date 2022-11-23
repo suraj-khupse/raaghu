@@ -121,7 +121,7 @@ export class AppComponent implements OnInit{
           this.deletAllcashe();
         },
         onCancel: (event) => {
-          this.deleyecaheid = undefined;
+          this.deletecaheid = undefined;
         }
       }
     },
@@ -168,7 +168,7 @@ export class AppComponent implements OnInit{
       this.isShimmer = false;
     })
   }
-  deleyecaheid: any;
+  deletecaheid: any;
   tabId: any;
   tabcash: boolean = true;
   tabweb: boolean = false;
@@ -182,13 +182,13 @@ export class AppComponent implements OnInit{
 
 
   deleteConfirmation(id: any): void {
-    this.deleyecaheid = id;
+    this.deletecaheid = id;
     $('#deleteModal').modal('show');
 
   }
   deletCashe() {
     this.cashedata.forEach((item, index) => {
-      if (item.id === this.deleyecaheid) this.cashedata.splice(index, 1);
+      if (item.id === this.deletecaheid) this.cashedata.splice(index, 1);
     });
     $('#deleteModal').modal('hide');
   }
@@ -203,7 +203,7 @@ export class AppComponent implements OnInit{
   }
   close(): void {
     $('#deleteModal').modal('hide');
-    this.deleyecaheid = undefined;
+    this.deletecaheid = undefined;
   }
 
   getnavtabid(e: any) {

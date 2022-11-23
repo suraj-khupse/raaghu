@@ -1,24 +1,24 @@
 <div class="">
   <div class="row">
     <div class="col-md-12 text-end pb-3 desktop-btn">
-      <rds-button [label]="translate.instant('NEW ROLE')" [showLoadingSpinner]="buttonSpinnerForNewRole" type="button"
+      <rds-button [label]="translate.instant('NEW ROLE')" [showLoadingSpinner]="showLoadingSpinner" type="button"
         style="float: right" [size]="'small'" [colorVariant]="'primary'" (click)="newRole($event)" [icon]="'plus'"
         iconHeight="12px" iconWidth="12px" class="ms-2">
       </rds-button>
-      <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [roundedButton]="true" icon="refresh"
-        class="ms-2" (click)="getRoles()" iconHeight="18px" iconWidth="26px">
+      <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [isFabIcon]="true" icon="refresh"
+        class="ms-2" (click)="getRoles()" iconHeight="18px" iconWidth="26px"  buttonType="iconOnly"  [tooltipPlacement]="'bottom'" [tooltipTitle]="'Refresh Filter'">
       </rds-button>
       <rds-button [label]="translate.instant('FILTER BY PERMISSIONS')" type="button"
-        (click)="filterByPermission($event)" [size]="'small'" [colorVariant]="'primary'" [outlineButton]="true"
+        (click)="filterByPermission($event)" [size]="'small'" [colorVariant]="'primary'" [isOutline]="true"
         class="ms-2 px-2">
       </rds-button>
     </div>
     <div class="col-md-12">
       <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
         <div class="table-responsive">
-          <app-rds-data-table [tableData]="tableData" [inlineEdit]="false" [pagination]="true" [recordsPerPage]="10"
+          <rds-data-table [tableData]="tableData" [inlineEdit]="false" [pagination]="true" [recordsPerPage]="10"
             [actions]="actions" (deleteEvent)="deleteEvent.emit($event)" (onActionSelection)="onActionSelect($event)"
-            [tableHeaders]="roleHeaders" [isShimmer]="isShimmer"></app-rds-data-table>
+            [tableHeaders]="roleHeaders" [isShimmer]="isShimmer"></rds-data-table>
         </div>
       </div>
     </div>
@@ -36,27 +36,29 @@
     <div naveContent class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Role" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <app-rds-comp-new-role (RoleInfo)="getRoleData($event)" [roleData]="RolesData" (onCancel)="close()"
+        <rds-comp-new-role (RoleInfo)="getRoleData($event)" [roleData]="RolesData" (onCancel)="close()"
           [isReset]="isReset" [EditShimmer]="EditShimmer">
-        </app-rds-comp-new-role>
+        </rds-comp-new-role>
       </div>
-      <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
+      <div class="tab-pane fade py-2" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <app-rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
-          (getAllSelectedNodes)="getSelectedPermissionList($event)" [selectAllLabel]="'Select Permissions'">
-        </app-rds-comp-permission-tree>
-
-        <div class="pt-4 pb-4">
-          <rds-banner 
-            [bannerText]="translate.instant('If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!')"
-            [sticky]="false" position="bottom" colorVariant="primary"></rds-banner>
+        <div class="col-md-12 pt-3">
+          <rds-search-input placeholder="Search" icon="search" size="small"> </rds-search-input>
         </div>
+        <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
+          (getAllSelectedNodes)="getSelectedPermissionList($event)" [selectAllLabel]="'Select Permissions'">
+        </rds-comp-permission-tree>
+
+       
         <div class="footer-buttons my-2">
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'primary'"
+            <rds-banner 
+              [bannerText]="translate.instant('If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!')"
+              [sticky]="false" position="bottom" colorVariant="primary"></rds-banner>
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [isOutline]="true" [colorVariant]="'primary'"
             [size]="'small'" data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
-            [disabled]="EnableTreeSave" (click)="save()">
+            [isDisabled]="EnableTreeSave" (click)="save()">
           </rds-button>
         </div>
       </div>
@@ -67,15 +69,18 @@
 <!-- Filter by Permissions Offcanvas -->
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'PermissionOffcanvas'" [offcanvaswidth]="550"
   [placement]="'end'" *ngIf="viewCanvas" (onClose)="closeFilterPermission()">
-  <app-rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
+  <div class="col-md-12 pt-3">
+    <rds-search-input placeholder="Search" icon="search" size="small"> </rds-search-input>
+  </div>
+  <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
     (getAllselectedPermissions)="getFilterPermissionList($event)" [selectAllLabel]="'Select Permissions'">
-  </app-rds-comp-permission-tree>
+  </rds-comp-permission-tree>
   <div class="footer-buttons my-2">
     <rds-button [label]="translate.instant('Cancel')" (click)="closeFilterPermission()"
-      [colorVariant]="'primary'" [size]="'small'" [outlineButton]="true" data-bs-dismiss="offcanvas">
+      [colorVariant]="'primary'" [size]="'small'" [isOutline]="true" data-bs-dismiss="offcanvas">
     </rds-button>
     <rds-button [label]="translate.instant('Select')" [class.disabled]="disableButton()" class="ms-2" [colorVariant]="'primary'" [size]="'small'" [id]="'savePermission'"
-      [disabled]="!selectedFilterPermissionList"
+      [isDisabled]="!selectedFilterPermissionList"
       (click)="saveFilterPermission()">
     </rds-button>
   </div>
@@ -88,22 +93,22 @@
     <div naveContent class="row tab-content m-2" id="nav-tabContent">
       <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Role" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <app-rds-comp-new-role (RoleInfo)="getRoleData($event)" (RoleDataemit)="onchangeRoldate($event)"
+        <rds-comp-new-role (RoleInfo)="getRoleData($event)" (RoleDataemit)="onchangeRoldate($event)"
           [roleData]="RolesData" (onCancel)="close()">
-        </app-rds-comp-new-role>
+        </rds-comp-new-role>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <app-rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
+        <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
           (getAllSelectedNodes)="getSelectedPermissionList($event)" [selectAllLabel]="'Select Permissions'">
-        </app-rds-comp-permission-tree>
+        </rds-comp-permission-tree>
 
         <div class="footer-buttons my-2">
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [colorVariant]="'secondary'"
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()"  [isOutline]="true" [colorVariant]="'secondary'"
             data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="save-btn" [colorVariant]="'primary'"
-            [disabled]="!selectedPermissionList||selectedPermissionList.length===0||!selectedPermissionList[0].selected" (click)="save()">
+            [isDisabled]="!selectedPermissionList||selectedPermissionList.length===0||!selectedPermissionList[0].selected" (click)="save()">
           </rds-button>
         </div>
       </div>

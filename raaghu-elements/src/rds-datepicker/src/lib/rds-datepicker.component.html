@@ -3,16 +3,16 @@
     <label *ngIf="label&&TitleType==='Top'" class="mb-2">{{
       label
       }}<span class="text-danger" *ngIf="isRequired">*</span></label>
-    <div class="input-group border default-datepicker rounded-2">
+    <div class="input-group default-datepicker rounded-2">
       <input type="text" autocomplete="off" bsDatepicker [datesDisabled]="datesDisabled"
         [class.disable-pointer]="disabled" [disabled]="disabled" [minDate]="minDate" #datepicker="bsDatepicker"
         (onHidden)="onHide.emit($event)" [daysDisabled]="daysDisabled" [isOpen]="isOpen" [bsConfig]="datePickerConfig"
-        id="DateOfBirth" [maxDate]="maxDate" [outsideEsc]="outsideEsc" (onShown)="onShow.emit($event)"
+        [id]="id" [maxDate]="maxDate" [outsideEsc]="outsideEsc" (onShown)="onShow.emit($event)"
         [placeholder]="placeholder" [bsValue]="value" [dateTooltipTexts]="dateTooltipTexts" [(ngModel)]="value"
         name="date-picker" [minMode]="minMode" (bsValueChange)="onDateChane($event)" [datesEnabled]="datesEnabled"
         [datesDisabled]="datesDisabled" [outsideClick]="outsideClick" [placement]="placement"
-        class="form-control border-0" />
-      <span class="input-group-text border cursor-pointer" id="basic-addon1" (click)="datepicker.show()"
+        class="form-control" />
+      <span class="input-group-text cursor-pointer" id="basic-addon1" (click)="datepicker.show()"
         [class.disable-pointer]="disabled">
         <rds-icon name="calendar" height="18px" width="18px"></rds-icon>
       </span>

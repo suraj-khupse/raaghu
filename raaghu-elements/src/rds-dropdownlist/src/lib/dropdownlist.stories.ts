@@ -22,7 +22,7 @@ export default {
       options: ['small', 'large'],
       control: { type: 'radio' }
     },
-
+    // height: { control: { type: 'text' } }
   },
 } as Meta;
 
@@ -56,6 +56,7 @@ Default.args = {
   iconHeight: '12px',
   iconWidth: '12px',
   multiSelect: false,
+  // height: '250',
   listItems: [
     { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'export', iconWidth: '20px', iconHeight: '25px', iconStroke: true, iconFill: false },
     { value: 'Import from excel', some: 'value', id: 2, href: '', icon: 'download_data', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },

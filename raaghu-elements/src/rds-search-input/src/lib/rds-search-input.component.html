@@ -1,5 +1,5 @@
 
-  <label *ngIf="label&&position==='top'">{{label}}</label>
+  <label class="form-label" *ngIf="label&&position==='top'">{{label}}</label>
   <div class="form-group has-search position-relative" [class]="classes">
     <rds-icon name="search" height="12px" width="12px" class="icon-position"></rds-icon>
     <input type="text" class="form-control" placeholder="{{placeholder}}" (keyup)="sendkeyup($event)"

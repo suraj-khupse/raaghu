@@ -1,5 +1,5 @@
-<div [ngClass]="cardClasses" class="card">
-  <div *ngIf="showHeader" >
+<div [ngClass]="'border-' + borderColor" class="card">
+  <div [class]="'bg-' + borderColor + ' headerClass'" *ngIf="showHeader" >
     <ng-content select="[header]"></ng-content>
   </div>
   <div class="card-body" [ngClass]="cardBody" *ngIf="showBody">

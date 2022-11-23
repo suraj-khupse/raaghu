@@ -65,11 +65,11 @@ const Template: Story<IdentityResources> = (args: IdentityResources) => ({
       </rds-button>
     </div> 
     <div class="row  mt-2">
-    <app-rds-data-table
+    <rds-data-table
     [tableData]="ResourceTableData"
     [tableHeaders]=" ResourceTableHeader"
     [actions]="actions"
-    ></app-rds-data-table>
+    ></rds-data-table>
     </div>
   <rds-offcanvas [canvasTitle]="'New Identity Resource'" [offId]="'addnewIdentityresource'" [offcanvaswidth]="550"
     [placement]="'end'" >
@@ -78,11 +78,11 @@ const Template: Story<IdentityResources> = (args: IdentityResources) => ({
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <app-rds-comp-basic-resource (onBsicResourceSave)="SaveBasicResource($event)"></app-rds-comp-basic-resource>
+          <rds-comp-basic-resource (onBsicResourceSave)="SaveBasicResource($event)"></rds-comp-basic-resource>
         </div>
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Claim" role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <app-rds-comp-claims [ClaimData]="claimData" (onClaimResourceSave)="SaveClaimResource($event)"></app-rds-comp-claims>
+          <rds-comp-claims [ClaimData]="claimData" (onClaimResourceSave)="SaveClaimResource($event)"></rds-comp-claims>
         </div>
 
       </div>

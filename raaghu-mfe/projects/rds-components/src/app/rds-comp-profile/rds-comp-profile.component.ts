@@ -10,7 +10,7 @@ declare var $: any;
 declare var bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-profile',
+  selector: 'rds-comp-profile',
   templateUrl: './rds-comp-profile.component.html',
   styleUrls: ['./rds-comp-profile.component.scss'],
   providers: [DatePipe]
@@ -34,8 +34,10 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() defaultLanguage: string = '';
   delegateTabopened: boolean = false;
   manageLinkedAccountsTabOpened: boolean = false;
-
+  
   @Output() onLanguageSelection = new EventEmitter<any>();
+  @Output() onDeleteDeligate = new EventEmitter<any>();
+
   activePage: number;
   public rdsAlertMfeConfig: ComponentLoaderOptions;
   alertData: any = {
@@ -79,13 +81,14 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() linkedAccountData: any = [];
   @Input() LoginAttempts: any = {};
   @Input() backgroundColor: string;
-  @Input()id: string = 'ProfileCanvas';
+  @Input() id: string = 'ProfileCanvas';
   @Output() onLogout = new EventEmitter<{ islogout: any }>()
   @Output() onImageupload = new EventEmitter<any>();
   @Output() ondeleteLinkaccount = new EventEmitter<any>();
   @Output() onLinkToUser = new EventEmitter<any>();
   @Output() onLoginAttempts = new EventEmitter<any>();
   @Output() onDownloadLink = new EventEmitter<any>();
+  @Input() showLoadingSpinner: boolean = false;
   public Profileform = new FormGroup({})
   offCanvasWidth = 304;
   profileMenu = 1000 + "px";
@@ -94,11 +97,12 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
 
   @Input() ProfileData: Profile = {
     ProfileName: 'Wai Technologies',
-    EmailAddress: 'contact@waiin.com',
-    UserName: 'admin',
+    emailAddress: 'contact@waiin.com',
+    userName: 'admin',
     CurrentPassword: '',
     NewPassword: '',
-    ConFNewPassword: ''
+    ConFNewPassword: '',
+    name: ''
   }
   tabisVisible: boolean = false;
 
@@ -115,7 +119,6 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   islogout: boolean = false;
   navtabcontentClass: string = "d-none";
   firstcontent: boolean = false;
-
   cancelbutton: boolean = true;
   public classlists = [];
   @Input()
@@ -123,6 +126,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input()
   Usernamefilter: any[] = []
   DatasetDeligate: any = [];
+  @Input() showDelegationButtonSpinner: boolean = true;
   onclickMenu(item: any) {
 
     if (this.MenuItems[item]?.showoffcanvas == false) {
@@ -237,6 +241,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   }
 
   logout() {
+    this.showLoadingSpinner = true;
     this.islogout = true;
     this.emitEvent('logout', {
       islogout: true

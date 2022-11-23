@@ -21,7 +21,7 @@ import { OrganizationTreeNode } from '../../models/organization-tree.model';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-user-permissions',
+  selector: 'rds-comp-user-permissions',
   templateUrl: './rds-comp-user-permissions.component.html',
   styleUrls: ['./rds-comp-user-permissions.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -34,7 +34,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   viewCanvas: boolean = false;
   selectedId: any = '';
   selectedOrganizationUnit: any = [];
-  buttonSpinnerForNewUser: boolean = true;
+  @Input() showLoadingSpinner: boolean = false;
   public user: any = {
     userInfo: undefined,
     userSettings: undefined,
@@ -227,8 +227,13 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     this.Saveuserinfo.emit({ item: user });
     this.isReset = true;
     this.activePage = 0;
-    this.close();
-    var offcanvas = document.getElementById('userOffcanvas');
+    this.user = {
+      userInfo: undefined,
+      userSettings: undefined,
+      featureList: [],
+    };
+    this.userinfo = undefined;
+    this.onClose.emit();    var offcanvas = document.getElementById('userOffcanvas');
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
     bsOffcanvas.hide();
     this.viewCanvas = false;
@@ -252,7 +257,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   }
 
   newUser(event): void {
-    this.buttonSpinnerForNewUser = true;
+    this.showLoadingSpinner = true;
     this.selectedId = '';
     this.viewCanvas = true;
     this.navtabsItems = [
@@ -279,14 +284,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
       event.stopPropagation();
 
 
-    } else {
     }
-    setTimeout(() => {
-      var offcanvas = document.getElementById('userOffcanvas');
-      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.show();
-    }, 100);
-
     this.activePage = 0;
   }
 
@@ -299,7 +297,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     };
     this.userinfo = undefined;
     this.onClose.emit();
-    this.buttonSpinnerForNewUser = false;
+    this.showLoadingSpinner = false;
   }
 
   editTableRowData(event): void {
@@ -495,10 +493,17 @@ export class RdsCompUserPermissionsComponent implements OnInit {
       this.exportToExcel();
     }
     else if (event.key === 'filterByPermission') {
-      console.log(this.openFilterByPermission.nativeElement);
       let el: HTMLElement = this.openFilterByPermission.nativeElement as HTMLElement;
       el.click();
     }
+  }
+  openCanvas(canvasId): void {
+    this.viewCanvas = true;
+    setTimeout(() => {
+      var offcanvas = document.getElementById(canvasId);
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 1);
   }
 
 }

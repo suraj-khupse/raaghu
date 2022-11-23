@@ -12,7 +12,7 @@ export interface EditionInfo {
 }
 
 @Component({
-  selector: 'app-rds-comp-plan-information',
+  selector: 'rds-comp-plan-information',
   templateUrl: './rds-comp-plan-information.component.html',
   styleUrls: ['./rds-comp-plan-information.component.scss']
 })

@@ -29,11 +29,11 @@
     </rds-input>
   </div>
   <div class="col-md-12">
-    <rds-button [label]="'Cancel'" type="button" class="me-2" [outlineButton]="true" [colorVariant]="'primary'" data-bs-dismiss="offcanvas"
+    <rds-button [label]="'Cancel'" type="button" class="me-2" [isOutline]="true" [colorVariant]="'primary'" data-bs-dismiss="offcanvas"
       [size]="'small'" (click)="clearclaimtypeData()">
     </rds-button>
     <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-      [disabled]="!ClaimTypeForm.valid" [label]="'Save'" (click)="AddCliamtypeData()">
+      [isDisabled]="!ClaimTypeForm.valid" [label]="'Save'" (click)="AddCliamtypeData()">
     </rds-button>
   </div>
 </form>

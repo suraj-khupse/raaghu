@@ -100,7 +100,7 @@
       </div>
       <rds-button [label]="'Close'" type="button" [size]="'medium'" [colorVariant]="'primary'" data-bs-dismiss="offcanvas">
       </rds-button>
-      <rds-button [disabled]="!nodeForm.valid" [label]="'Save'" type="button" [size]="'medium'" class="px-2"
+      <rds-button [isDisabled]="!nodeForm.valid" [label]="'Save'" type="button" [size]="'medium'" class="px-2"
         [colorVariant]="'primary'" (click)="pushNode()" data-bs-dismiss="offcanvas" data-bs-target="#addNodeModal">
       </rds-button>
     </form>
@@ -129,7 +129,7 @@
     </div>
     <rds-button [label]="'Close'" type="button" [size]="'medium'" [colorVariant]="'primary'" data-bs-dismiss="offcanvas">
     </rds-button>
-    <rds-button [label]="'Save'" type="button" [disabled]="disableSaveButton" [size]="'medium'" class="px-2"
+    <rds-button [label]="'Save'" type="button" [isDisabled]="disableSaveButton" [size]="'medium'" class="px-2"
       [colorVariant]="'primary'" data-bs-dismiss="offcanvas" data-bs-target="#addNestedNodeModal" (click)="pushNestedNode()">
     </rds-button>
 
@@ -153,7 +153,7 @@
     <rds-button [label]="'Close'" type="button" [size]="'medium'" [colorVariant]="'primary'" data-bs-dismiss="offcanvas">
     </rds-button>
     <rds-button [label]="'Save'" type="button" [size]="'medium'" class="px-2" [colorVariant]="'primary'"
-      data-bs-dismiss="offcanvas" [disabled]="disableSaveButton" data-bs-target="#EditNodeModal"
+      data-bs-dismiss="offcanvas" [isDisabled]="disableSaveButton" data-bs-target="#EditNodeModal"
       (click)="EditnodeModal()">
     </rds-button>
 

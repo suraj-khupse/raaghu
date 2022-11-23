@@ -14,7 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-rds-comp-new-dynamic-entity-property',
+  selector: 'rds-comp-new-dynamic-entity-property',
   templateUrl: './rds-comp-new-dynamic-entity-property.component.html',
   styleUrls: ['./rds-comp-new-dynamic-entity-property.component.scss'],
 })
@@ -54,16 +54,16 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
     let Data = this.dynamicEntityDataSelect;
     if (Data.length > 0) {
       this.createOrUpdateDynamicEntity.emit(Data);
-      this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
-      this.dynamicEntityDataSelect = [];
-      dynamicEnityForm.resetForm();
-      this.resetDropdownList();
-      this.Placeholder = "Select Property Name";
     }
     else {
-      this.dynamicEntityInfoForm.form.markAllAsTouched();
+      this.createOrUpdateDynamicEntity.emit(this.dynamicEntityData);
+      // this.dynamicEntityInfoForm.form.markAllAsTouched();
     }
-
+    this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
+    this.dynamicEntityDataSelect = [];
+    dynamicEnityForm.resetForm();
+    this.resetDropdownList();
+    this.Placeholder = "Select Property Name";
 
   }
 

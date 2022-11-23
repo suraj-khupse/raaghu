@@ -3,7 +3,7 @@
     <div class="row" [class.card-body]="selectedTreeNode==0">
       <div class="col-md-6 gutter-b">
         <div>
-          <div class="card p-2 vh-88" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+          <div class="card p-2 vh-88 rounded-0 border-0" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
 
             <div class="card-header bg-transparent">
               <h5 class="card-title">{{'Organization Tree'| translate}}</h5>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-md-6 gutter-b">
-        <div class="card p-2  vh-88">
+        <div class="card p-2  vh-88 rounded-0 border-0">
           <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
             <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
           </div>
@@ -31,15 +31,13 @@
                     {{ organizationName }}
                   </h5>
                   <rds-button [label]="translate.instant('New Member')" *ngIf="selectedTabIndex == 0" [size]="'small'"
-                    [colorVariant]="'primary'" (click)="newUser($event)">
-                    <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
-
+                    [colorVariant]="'primary'" (click)="newUser($event)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
+                    
                   </rds-button>
                   <rds-button [label]="translate.instant('New Role')" (click)="newRole($event)" type="button"
                     *ngIf="selectedTabIndex == 1" [size]="'small'" class="px-2" [colorVariant]="'primary'"
-                    data-bs-dismiss="offcanvas" data-bs-target="#addRoleModal">
-                    <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
-
+                    data-bs-dismiss="offcanvas" data-bs-target="#addRoleModal" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
+                   
                   </rds-button>
                 </div>
 
@@ -147,7 +145,7 @@
       <div class="col-md-12">
         <form #nodeForm="ngForm" novalidate>
           <div class="form-group mb-3">
-            <rds-input size="medium" [label]="translate.instant('Name')" [labelPosition]="'top'" [placeholder]="'Name'"
+            <rds-input size="medium" [label]="translate.instant('Name')" [labelPosition]="'top'" [placeholder]="'Wai Technologies'"
               [(ngModel)]="node" id="txtDescription" name="node_name" [isRequired]="true" required ngDefaultControl
               #nodeName="ngModel">
             </rds-input>

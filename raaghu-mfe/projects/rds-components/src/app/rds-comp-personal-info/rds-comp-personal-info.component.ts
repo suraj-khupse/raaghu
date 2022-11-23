@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-rds-comp-personal-info',
+  selector: 'rds-comp-personal-info',
   templateUrl: './rds-comp-personal-info.component.html',
   styleUrls: ['./rds-comp-personal-info.component.scss']
 })

@@ -12,7 +12,7 @@ import { VisualsettingsState } from './state/Visual-settings/visual-settings.red
 import { WebhookSubscriptionState } from './state/webhook-subscription/webhook-subscription.reducer';
 import { EditionsComboboxState, TenantFeatureState, TenantInfoState, TenantState } from './state/tenant/tenant.reducer';
 import { AuditLogsState } from './state/audit-logs/audit-logs.reducer';
-import { AllDynamicEntitySate, AllDynamicPropertyEntitySate, DynamicEntityState, DynamicPermissionState, DynamicPropertyState, EditDynampicPropertState, InputPropertynameState } from './state/dynamic-property-management/dynamic-property.reducer';
+import { DynamicPermissionState, DynamicPropertyState, EditDynampicPropertState, InputPropertynameState } from './state/dynamic-property-management/dynamic-property.reducer';
 import { OrganizationUnitState } from './state/organization-unit/organization-unit.reducer';
 import { EditUserPermissionSate, EditUserSate, UserPermissionFilterState, UsersState } from './state/user/user.reducer';
 //import { SettingsState, ValidateTenantState } from '../public-api';
@@ -21,12 +21,13 @@ import { LanguageTextsState } from './state/language-text/language-text.reducer'
 import { SettingsState, SettingsTenantPageComboboxState } from './state/settings/settings.reducer';
 import { ValidateTenantState } from './state/login/login.reducer';
 import { downloadState } from './state/DownloadData/download-data.reducer';
+import { AllDynamicEntitySate, AllDynamicPropertyEntitySate, DynamicEntityState } from './state/dynamic-entity/dynamic-entity.reducer';
 
 export interface AppState {
   products: ProductState,
   webhookSubscriptions: WebhookSubscriptionState,
   profile: profileState,
-  dynamicProperty: DynamicPropertyState,
+  properties: DynamicPropertyState,
   organizationUnit: OrganizationUnitState
   dynamicEntity: DynamicEntityState,
   editions: EditionsState,

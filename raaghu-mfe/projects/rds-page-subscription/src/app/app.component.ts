@@ -148,7 +148,7 @@ export class AppComponent implements OnInit {
     duration: "5 days",
     iconurl: "basic_subscription",
     recommended: false,
-    features: ["Maximum User Count", "Test Check feature", "Test check feature count 2"]
+    features: ["Maximum User Count", "Test Check feature","Test Check feature 2"]
   },
   {
     name: "Standard",
@@ -156,7 +156,7 @@ export class AppComponent implements OnInit {
     duration: "15 days",
     iconurl: "professional_subscription",
     recommended: false,
-    features: ["Maximum User Count", "Test Check feature", "Test check feature count 2"]
+    features: ["Maximum User Count", "Test Check feature","Test Check feature 2"]
   },
   {
     name: "Premium",
@@ -164,7 +164,7 @@ export class AppComponent implements OnInit {
     duration: "1 year",
     iconurl: "premium_subscription",
     recommended: true,
-    features: ["Maximum User Count", "Test Check feature", "Test check feature count 2"]
+    features: ["Maximum User Count", "Test Check feature","Test Check feature 2", "Unlimited Subscription"]
   },
   {
     name: "Professional",
@@ -172,7 +172,7 @@ export class AppComponent implements OnInit {
     duration: "1 month",
     iconurl: "standard_subscription",
     recommended: false,
-    features: ["Maximum User Count", "Test Check feature", "Test check feature count 2"]
+    features: ["Maximum User Count", "Test Check feature","Test Check feature 2"]
   }];
   constructor(public datepipe: DatePipe, private store: Store, public translate: TranslateService) { }
 

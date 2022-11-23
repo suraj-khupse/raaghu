@@ -14,7 +14,7 @@ import { TableHeader } from '../../models/table-header.model';
 import { TreeNode } from '../../models/tree-node.model';
 declare let bootstrap: any;
 @Component({
-  selector: 'app-rds-comp-tenant-list',
+  selector: 'rds-comp-tenant-list',
   templateUrl: './rds-comp-tenant-list.component.html',
   styleUrls: ['./rds-comp-tenant-list.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -27,8 +27,8 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
   selectedId: any = '';
   isTenantInfoValid: boolean = false;
   actions: TableAction[] = [
-    { id: 'loginAsTenant', displayName: this.translate.instant('Login as Tenant') }, 
-    { id: 'edit', displayName: this.translate.instant('Edit') }, 
+    { id: 'loginAsTenant', displayName: this.translate.instant('Login as Tenant') },
+    { id: 'edit', displayName: this.translate.instant('Edit') },
     { id: 'delete', displayName: this.translate.instant('Delete') }]
   @Input() tenantSettingsInfo: any;
   @Input() tenantData: any;
@@ -54,8 +54,8 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
   @Input() public tenantList: any = [];
   public tableData: any = [];
   @Input() public editionList: any = [];
-  buttonSpinnerForNewUser : boolean = true;
-  buttonSpinnerForSave : boolean = true;
+  showLoadingSpinner: boolean = false;
+  // buttonSpinnerForSave : boolean = true;
 
   currentAlerts: any = [];
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
@@ -131,7 +131,7 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
       selected: false,
     },
   ];
-  
+
   @Input() tenantHeaders: TableHeader[] = [];
   selectedFeatureList: any = [];
   showEmail: boolean;
@@ -160,8 +160,6 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
   }
 
   save(): void {
-    this.buttonSpinnerForSave = true;
-    this.buttonSpinnerForNewUser = false;
     if (!this.selectedFeatureList || this.selectedFeatureList.length === 0) {
       return;
     }
@@ -220,12 +218,10 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
   }
 
   newTenant(event, showEmail?: boolean): void {
-    this.buttonSpinnerForNewUser = true;
-    this.buttonSpinnerForSave = false;
     this.selectedId = '';
     this.viewCanvas = true;
     this.showEmailList = showEmail ? true : false;
-    this.showEditData = showEmail ? true: false;
+    this.showEditData = showEmail ? true : false;
     if (showEmail) {
       this.tenant = {
         tenantInfo: undefined,
@@ -245,7 +241,7 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
       this.canvasTitle = 'NEW TENANT';
       this.tenantData = undefined;
       this.tenantSettingsInfo = undefined;
-
+      this.showLoadingSpinner = true;
       this.navtabsItems = [
         {
           label: this.translate.instant('Tenant Information'),
@@ -296,14 +292,7 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
     };
     this.tenantData = undefined;
     this.tenantSettingsInfo = undefined;
-    // const event:any={
-    //   newtenant:false,
-    //   reset:true
-    // }
-    // this.onReset.emit(event);
-    // this.isTenantInfoValid = false;
-    this.buttonSpinnerForSave = false;
-    this.buttonSpinnerForNewUser = false;
+    this.showLoadingSpinner = false;
   }
   editTableRowData(event): void {
     this.canvasTitle = 'EDIT TENANT';
@@ -329,6 +318,7 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
+      this.showLoadingSpinner = false;
       const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
       rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
       this.rdsAlertMfeConfig = rdsAlertMfeConfig;
@@ -343,7 +333,7 @@ export class RdsCompTenantListComponent implements OnInit, DoCheck {
       this.newTenant(event);
     }
   }
-  show():void{
+  show(): void {
     var toastEl = document.getElementById('liveToast');
     var toast = new bootstrap.Toast(toastEl);
     toast.show();

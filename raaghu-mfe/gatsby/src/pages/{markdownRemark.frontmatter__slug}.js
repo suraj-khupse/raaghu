@@ -32,7 +32,6 @@ export default function Template({
         displayName: item.name.substring(4).replace(/-/g, " "),
       };
       elementsLists.push(_item);
-      console.log(elementsLists)
     }
   });
   
@@ -122,7 +121,6 @@ export default function Template({
           displayName: item.name.substring(8).replace(/-/g, " "),
         };
         pageLists.push(_item);
-        console.log(pageLists)
       }
     });
 
@@ -166,7 +164,6 @@ export default function Template({
     if(index>0){
       navigate('/'+data[index-1].url)
     }
-    console.log(index);
 
 
   }
@@ -195,7 +192,6 @@ export default function Template({
     if(index<data.length-1){
       navigate('/'+data[index+1].url)
     }
-    console.log(data,frontmatter);
 
   }
   return (
@@ -204,7 +200,7 @@ export default function Template({
       <div className="container-fluid mt-5 p-0 mx-0">
         <div className="row">
           <div id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse cust-scroll border-right">
-            <Sidebar />
+            <Sidebar activeData={data} />
           </div>
           <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4 left-border">
             <div className="row">

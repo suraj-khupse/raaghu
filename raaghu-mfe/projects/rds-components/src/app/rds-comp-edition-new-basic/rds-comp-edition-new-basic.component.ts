@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChil
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-rds-comp-edition-new-basic',
+  selector: 'rds-comp-edition-new-basic',
   templateUrl: './rds-comp-edition-new-basic.component.html',
   styleUrls: ['./rds-comp-edition-new-basic.component.scss']
 })

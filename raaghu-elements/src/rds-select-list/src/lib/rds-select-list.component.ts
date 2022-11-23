@@ -102,10 +102,19 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges {
   }
 
   onSelect(event: any) {
-    this.value = event;
+    if(this.multiple == false){
+      this.value = event[0];
+    this.selectListChange.emit(event[0]);
+    this.onChange(event[0])
+    this.onTouched()
+    }
+    else{
+      this.value = event;
     this.selectListChange.emit(event);
     this.onChange(event)
     this.onTouched()
+    }
+    
   }
 
 }

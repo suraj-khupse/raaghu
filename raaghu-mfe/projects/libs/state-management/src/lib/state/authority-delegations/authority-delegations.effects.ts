@@ -18,7 +18,7 @@ export class DelegationsEffects {
     this.actions$.pipe(
       ofType(getDelegations),
       switchMap(() =>
-        from(this.userDelegationServiceProxy.getDelegatedUsers(10, 0, "")).pipe(
+        from(this.userDelegationServiceProxy.getDelegatedUsers(100, 0,  "id desc",)).pipe(
           map((Delegation) => {
             return getDelegationsSuccess({ Delegation })
           }),

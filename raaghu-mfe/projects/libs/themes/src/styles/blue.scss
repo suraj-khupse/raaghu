@@ -141,11 +141,32 @@
   $accessible-600: #282A42;
 $accessible-700: rgb(48, 51, 78);
   $accessible-800: #13002E;
+$table-border-color: $accessible-200 !default;
+$accordion-button-bg: $accessible-400 !default;
+//$offcanvas-border-color: $accessible-300 !default;
+$offcanvas-bottom-border-color: $accessible-300!default;
+//$nav-tabs-border-color: $accessible-300 !default;
+$nav-tabs-bottom-border-color: $accessible-300!default;
+
+$dropdown-border-bottom: $accessible-500 !default;
+$dropdown-bg-color: $accessible-400 !default;
+$dropdown-border-bottom-hover: $accessible-200 !default;
+$dropdown-bghover-color: $accessible-300 !default;
+$dropdown-link-active-bg: $accessible-500 !default;
+
+$form-select-bg: $accessible-300!default;
+$form-select-border-color: $accessible-400 !default;
+  $modal-bg-color: $accessible-600 !default;
+ 
+
+
+  $card-bg-color: $accessible-700 !default;
 
   $nav-background-color: $accessible-600 !default;
 /*  $form-select-bg: $accessible-500 !default;*/
   $card-dashboard-bg-color: $accessible-700 !default;
   $body-wrapper-bg: $accessible-600 !default;
+
   $sidbar-border-right-color: #1A0339;
   $wrapper-bg: $accessible-600!default;
 
@@ -177,24 +198,19 @@ $datepicker-head: $accessible-600 !default;
     background-color: $accessible-300;
     border: 1px solid $accessible-400;
   }
-
-  #sidebar ul li a {
-    padding-left: 10px;
-    width: 100%;
-    border-radius: 10px;
-  }
   //$body-wrapper-bg:;
-html[theme=light] {
-  $card-bg-color: $white !default;
-  $card-border-color: $accessible-500 !default;
-}
+  html[theme=light] {
+    /* $card-bg-color: white !default;
+  $card-border-color: $accessible-500 !default;*/
+  }
+
 html[theme=dark] {
-  $card-bg-color: $accessible-700 !default;
-  $card-border-color: $accessible-500 !default;
-  $dropdown-color: $white;
+  $form-select-bg: $accessible-600 !default;
   $input-bg: $accessible-300!default;
-  $form-select-border-color: $accessible-200!default;
-  $form-select-bg: $input-bg!default;
+  $input-bg-border: $accessible-400 !default;
+
+  $dropdown-color: $white;
+
   $notification-header-bg: $accessible-500!default;
   $input-group-addon-bg: $input-bg;
   $input-group-addon-border-color: $accessible-400 !default;
@@ -205,18 +221,20 @@ html[theme=dark] {
     color: $white;
   }
 
-  .dropdown-menu {
-    --bs-dropdown-color: $dropdown-color;
+  .form-group.has-search {
+    .form-control {
+      background-color: $input-bg;
+    }
+  }
+
+  .accordion-button {
+    background: $accordion-button-bg;
+    color: $white;
   }
 
   .input-group-text {
     background-color: $input-group-addon-bg;
     border-color: $input-group-addon-border-color;
-  }
-
-  .form-select {
-    background-color: $form-select-bg;
-    border-color: $form-select-border-color;
   }
 
   .notification-header {

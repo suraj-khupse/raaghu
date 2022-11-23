@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { AlertService } from "@libs/shared";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { CachingServiceProxy,WebLogServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
@@ -11,7 +12,7 @@ import { getmaintenances, getmaintenanceSuccess, getmaintenanceFailure,
 
 @Injectable()
 export class MaintenanceEffects {
-    constructor(private actions$: Actions, private Cacheservice: CachingServiceProxy,private WebLogService:WebLogServiceProxy,private store:Store) { }
+    constructor(private actions$: Actions, private Cacheservice: CachingServiceProxy,private WebLogService:WebLogServiceProxy,private store:Store,private alertService: AlertService,) { }
     getMaintenance$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getmaintenances),
@@ -33,7 +34,8 @@ export class MaintenanceEffects {
     ofType(deletecache),
     switchMap(({ id }) =>
       this.Cacheservice.clearCache(id).pipe(map(() => {
-        this.store.dispatch(getmaintenances())
+        this.store.dispatch(getmaintenances());
+        this.alertService.showAlert('Success', 'Cache deleted successfully', 'success')
       }
       ),
         catchError((error) => of())
@@ -64,6 +66,7 @@ clearCache$ = createEffect ( () =>{
     switchMap((action) =>{
       return this.Cacheservice.clearAllCaches().pipe(
         map((data)=>{
+          this.alertService.showAlert('Success', 'All Cache deleted successfully', 'success')
           return clearSuccess();
         }),
       );
@@ -80,7 +83,8 @@ clearCache$ = createEffect ( () =>{
       from(this.WebLogService.getLatestWebLogs()).pipe(
         // Take the returned value and return a new success action containing the todos
         map((Websitelog) => {
-            return getWebsitelogSuccess({ Websitelogs:Websitelog  })
+            return getWebsitelogSuccess({ Websitelogs:Websitelog  });
+           
           }),
         // Or... if it errors return a new failure action containing the error
         catchError((error) => of(getWebsitelogFailure({ error })))

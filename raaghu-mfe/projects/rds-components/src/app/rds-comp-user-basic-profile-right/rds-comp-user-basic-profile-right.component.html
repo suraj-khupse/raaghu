@@ -81,13 +81,13 @@
       </div>
     </form>
   </div>
-  <div class="position-fixed bg-white py-3 bottom-0 w-100">
-    <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [outlineButton]="true" (click)="onCancelUser()"
+  <div class="position-fixed action-buttons py-3 bottom-0 w-100">
+    <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [isOutline]="true" (click)="onCancelUser()"
       data-bs-dismiss="offcanvas" [size]="'small'">
     </rds-button>
-    <rds-button [label]="translate.instant('Next')" [disabled]="!userCreationForm.valid" [colorVariant]="'primary'"
+    <rds-button [label]="translate.instant('Next')" [isDisabled]="!userCreationForm.valid" [colorVariant]="'primary'"
       class="ms-2" (click)="next(userCreationForm)" [size]="'small'">
     </rds-button>
   </div>
 </div>
-<app-rds-comp-user-basics-shimmer *ngIf="editShimmer"></app-rds-comp-user-basics-shimmer>
+<rds-comp-user-basics-shimmer *ngIf="editShimmer"></rds-comp-user-basics-shimmer>

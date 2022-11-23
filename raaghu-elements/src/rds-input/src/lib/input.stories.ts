@@ -3,13 +3,17 @@ import { FormsModule } from '@angular/forms';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsIconModule } from '@libs/rds-icon';
 import { RdsInputComponent } from './rds-input.component';
+import { RdsLabelModule } from '@libs/rds-label';
+
+
+
 
 export default {
   title: 'Elements/Input',
   component: RdsInputComponent,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, FormsModule, RdsIconModule],
+      imports: [CommonModule, FormsModule, RdsIconModule,RdsLabelModule],
     }),
   ],
   argTypes: {
@@ -23,7 +27,7 @@ export default {
     },
     tooltipPlacement: {
       options: ['top', 'bottom', 'right', 'left'],
-      control: { type: 'radio' }
+      control: { type: 'select' }
     },
     size: {
       options: ['small', 'medium', 'large'],
@@ -40,41 +44,45 @@ const Template: Story<RdsInputComponent> = (args: RdsInputComponent) => ({
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder'] } };
+Default.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder','InputId'] } };
 Default.args = {
   size: 'medium',
   inputType: 'text',
   placeholder: 'Add placeholder',
   label: 'Label',
+  InputId:''
 };
 
 export const disabled = Template.bind({});
-disabled.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'disabled'] } };
+disabled.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'disabled','InputId'] } };
 disabled.args = {
   size: 'medium',
   inputType: 'text',
   placeholder: 'Add placeholder',
   label: 'Label',
+  InputId:'',
   disabled: true
 };
 export const readonly = Template.bind({});
-readonly.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'readonly'] } };
+readonly.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'readonly','InputId'] } };
 readonly.args = {
   size: 'medium',
   inputType: 'text',
   placeholder: 'Add placeholder',
   label: 'Label',
+  InputId:'',
   readonly: true
 };
 
 export const withPosition = Template.bind({});
-withPosition.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'labelPosition'] } };
+withPosition.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'labelPosition','InputId'] } };
 withPosition.args = {
   size: 'medium',
   inputType: 'text',
   placeholder: 'Add placeholder',
   label: 'Label',
-  labelPosition: 'top'
+  labelPosition: 'top',
+  InputId:''
 };
 
 const tooltipTemplate: Story<RdsInputComponent> = (args: RdsInputComponent) => ({
@@ -86,12 +94,13 @@ const tooltipTemplate: Story<RdsInputComponent> = (args: RdsInputComponent) => (
 </div>`
 });
 export const Tooltip = tooltipTemplate.bind({});
-Tooltip.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'tooltipPlacement', 'tooltipTitle'] } };
+Tooltip.parameters = { controls: { include: ['size', 'label', 'inputType', 'placeholder', 'tooltipPlacement', 'tooltipTitle','InputId'] } };
 Tooltip.args = {
   size: 'medium',
   inputType: 'text',
   placeholder: 'Add placeholder',
   label: 'Label',
   tooltipPlacement: 'bottom',
-  tooltipTitle: 'This is tooltip'
+  tooltipTitle: 'This is tooltip',
+  InputId:''
 };

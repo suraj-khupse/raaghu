@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-rds-comp-email-settings',
+  selector: 'rds-comp-email-settings',
   templateUrl: './rds-comp-email-settings.component.html',
   styleUrls: ['./rds-comp-email-settings.component.scss']
 })

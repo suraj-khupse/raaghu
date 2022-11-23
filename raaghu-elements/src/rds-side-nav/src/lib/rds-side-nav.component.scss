@@ -8,6 +8,7 @@
 #sidebar > ul {
   height: calc(100vh - 158px) !important;
   overflow-y: auto;
+  overflow-x:hidden;
 }
 
 #sidebar.toggle {
@@ -53,4 +54,28 @@
   #sidebar {
     position: absolute !important;
   }
+}
+
+
+@media screen and (min-width:767px) and (max-width:1023px) {
+
+  #sidebar {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    padding-bottom: 40px;
+  }
+
+  .mobile-sidebar-collapse {
+    display: none !important;
+  }
+
+  #sidebar {
+    position: absolute !important;
+  }
+  
 }

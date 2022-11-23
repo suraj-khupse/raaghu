@@ -2,8 +2,9 @@ import { TableHeader } from "./table-header.model";
 
 export class Profile {
     public ProfileName: string;
-    public EmailAddress: string;
-    public UserName: string;
+    public emailAddress: string;
+    public userName: string;
+    public name:string;
     public CurrentPassword: string;
     public NewPassword: string;
     public ConFNewPassword: string;

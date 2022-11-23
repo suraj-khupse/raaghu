@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from '../../models/table-header.model';
 
 @Component({
-  selector: 'app-rds-comp-website-log',
+  selector: 'rds-comp-website-log',
   templateUrl: './rds-comp-website-log.component.html',
   styleUrls: ['./rds-comp-website-log.component.scss']
 })

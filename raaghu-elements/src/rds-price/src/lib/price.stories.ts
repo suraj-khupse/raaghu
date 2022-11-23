@@ -41,9 +41,7 @@ WithoutDiscount.args = {
   withDiscount: false
 };
 
-
-
-Default.args = {
+WithoutDiscount.args = {
   role: 'Basic',
 };
 

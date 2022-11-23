@@ -36,9 +36,8 @@ export class RdsSideNavComponent implements OnInit {
 
 
   ngOnInit(): void {
-
   }
-
+// @Input() mode : string = 'light';
   @Input() sidenavItems: SideNavItem[] = [];
   @Input() isPageWrapper: boolean = false;
   @Input() collapseRequired: boolean = true;
@@ -50,7 +49,7 @@ export class RdsSideNavComponent implements OnInit {
   @Input() activesubmenu: any = 0;
   @Output() selectedMode = new EventEmitter<any>();
   activeMenuWithChildren: any = 0;
-  isLightMode = true;
+  @Input() isLightMode: boolean = true;
   collapsed = false;
   openedMenu = false;
 
@@ -68,7 +67,15 @@ export class RdsSideNavComponent implements OnInit {
     const x = document.getElementById('menuWithChildren' + i);
     if (x) {
       var dropdown = new Collapse(x);
-      dropdown.show();
+      if (this.showHide) {
+        dropdown.show();
+        this.activesubmenu = 0;
+        this.activepage = i;
+        this.emitPath.emit(path);
+      } else {
+        dropdown.hide();
+        // this.activesubmenu = '';
+      }
     }
 
     if (x !== null)
@@ -98,6 +105,7 @@ export class RdsSideNavComponent implements OnInit {
     this.collapsedState.emit(this.collapsed)
   }
   toggleLightAndDarkMode() {
+    //console.log(checkbox1?.setAttribute('checked'));
     this.isLightMode = !this.isLightMode
     console.log(this.isLightMode)
     this.selectedMode.emit(this.isLightMode)

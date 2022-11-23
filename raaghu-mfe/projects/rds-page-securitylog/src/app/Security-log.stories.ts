@@ -29,11 +29,11 @@ const Template: Story<SecurityLogs> = (args: SecurityLogs) => ({
     props:{
       ...args
   },
-  template:`<app-rds-data-table
+  template:`<rds-data-table
   [tableHeaders]="securityLogsHeaders" 
   [tableData]="securityLogs" 
   [pagination]="true" [recordsPerPage]="'5'"
- ></app-rds-data-table>`
+ ></rds-data-table>`
 
   });
 

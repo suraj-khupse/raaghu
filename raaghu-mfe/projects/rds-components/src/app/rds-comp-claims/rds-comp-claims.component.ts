@@ -6,7 +6,7 @@ export class Claims {
  
 }
 @Component({
-  selector: 'app-rds-comp-claims',
+  selector: 'rds-comp-claims',
   templateUrl: './rds-comp-claims.component.html',
   styleUrls: ['./rds-comp-claims.component.scss']
 })

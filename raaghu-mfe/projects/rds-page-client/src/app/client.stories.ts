@@ -48,8 +48,8 @@ const Template: Story<Client> = (args: Client) => ({
       </div>
     </h5>
   <div class="card-body">
-    <app-rds-data-table [tableHeaders]="clientTableHeaders" [tableData]="clientList" 
-      [actions]="actions"></app-rds-data-table>
+    <rds-data-table [tableHeaders]="clientTableHeaders" [tableData]="clientList" 
+      [actions]="actions"></rds-data-table>
    </div>
   </div>
 
@@ -74,7 +74,7 @@ const Template: Story<Client> = (args: Client) => ({
          </div>
          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
            aria-labelledby="nav-home-tab">
-            <app-rds-comp-client-resources></app-rds-comp-client-resources>
+            <rds-comp-client-resources></rds-comp-client-resources>
          </div>
       </div>
     </rds-nav-tab>

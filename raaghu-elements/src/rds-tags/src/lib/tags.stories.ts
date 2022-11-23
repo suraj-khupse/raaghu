@@ -32,7 +32,7 @@ export default {
     //   control: { type: 'select' }
     // }
 
-    role: { table: { disable: true, }, },
+    // role: { table: { disable: true, }, },
 
   }
 } as Meta

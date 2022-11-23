@@ -29,13 +29,6 @@
           "link": "/collapse"
         },
         {
-          "id": 4,
-          "image": "images/links.png",
-          "title": "Links ",
-          "text": "   Links are used as navigational elements. They may appear on their own, within a sentence or paragraph.",
-          "link": "/links"
-        },
-        {
           "id": 5,
           "image": "images/Landing page-Elements/Dropdown.png",
           "title": "Button Dropdown",
@@ -331,7 +324,7 @@
         },        
         {
           "id": 8,
-          "image": "images/default.png",
+          "image": "images/Color Switcher1.png",
           "title": "Color",
           "text": "Color allows an user to display color variants available for the products in e-commerce website.",
           "link": "/color"
@@ -457,7 +450,7 @@
         },
         {
           "id": 26,
-          "image": "images/default.png",
+          "image": "images/Size1.png",
           "title": "Size",
           "text": " Size is a list of the sizes available for any product on the e-commerce website.",
           "link": "/size"
@@ -506,7 +499,7 @@
         },
         {
           "id": 33,
-          "image": "images/default.png",
+          "image": "images/Text-editor2.png",
           "title": "Text Editor",
           "text": " Text editor lets the user to user to edit and style the text.",
           "link": "/text-editor"
@@ -724,7 +717,7 @@
         },
         {
           "id": 5,
-          "image": "images/default.png",
+          "image": "images/background-image2.png",
           "title": "Background images ",
           "text": "Gives an available caption that can be edited along with the button and a background image",
           "link": "/comp-background-image"
@@ -752,7 +745,7 @@
         },
         {
           "id": 9,
-          "image": "images/default.png",
+          "image": "images/basics-resources1.png",
           "title": "Basic resources",
           "text": "Provides an API information of a user with its different details",
           "link": "/comp-basic-resources"
@@ -850,25 +843,19 @@
         },
         {
           "id": 23,
-          "image": "images/under-construction-dark.png",
+          "image": "images/under-maintenance - under-construction.png",
           "title": "Demo ui",
           "text": " Under construction",
           "link": "/comp-demoui"
         },
         {
           "id": 24,
-          "image": "images/default.png",
+          "image": "images/download-collection2.png",
           "title": "Download collection",
           "text": "Provies a set of dates",
           "link": "/comp-download-collection"
         },
-        {
-          "id": 25,
-          "image": "images/default.png",
-          "title": "Dynamic entity properties",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/comp-dynamic-entity-properties"
-        },
+       
         {
           "id": 26,
           "image": "images/dynamic-properties1.png",
@@ -941,7 +928,7 @@
         },
         {
           "id": 36,
-          "image": "images/default.png",
+          "image": "images/information2.png",
           "title": "Information",
           "text": "It allows a user with a card having details with relevant information boxes ",
           "link": "/comp-information"
@@ -1016,13 +1003,7 @@
           "text": "A card with neccessary details and description at different fields",
           "link": "/comp-new-claim-type"
         },
-        {
-          "id": 47,
-          "image": "images/default.png",
-          "title": "New Dynamic Entity Property",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/comp-new-dynamic-entity-property"
-        },
+      
         {
           "id": 48,
           "image": "images/new-language1.png",
@@ -1053,7 +1034,7 @@
         },
         {
           "id": 52,
-          "image": "images/default.png",
+          "image": "images/Open Positions1.png",
           "title": "Open Position",
           "text": " A card with different select menu and a select button ",
           "link": "/comp-open-position"
@@ -1172,7 +1153,7 @@
         },
         {
           "id": 69,
-          "image": "images/default.png",
+          "image": "images/role-list2.png",
           "title": "Role List",
           "text": " Provides a card with tables and action to edit or delete",
           "link": "/comp-role"
@@ -1242,7 +1223,7 @@
         },
         {
           "id": 79,
-          "image": "images/default.png",
+          "image": "images/tenant-management2.png",
           "title": "Tenant Management",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/comp-tenant-management"
@@ -1359,7 +1340,7 @@
         },
         {
           "id": 3,
-          "image": "images/default.png",
+          "image": "images/my-settings1.png",
           "title": "My Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/Buttons Group"
@@ -1443,7 +1424,7 @@
         },
         {
           "id": 6,
-          "image": "images/layout-grid-container.png",
+          "image": "images/contact-us1.png",
           "title": "Contact Us",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-contact-us"
@@ -1464,14 +1445,14 @@
         },
         {
           "id": 10,
-          "image": "images/layout-grid-container.png",
+          "image": "images/forgot-password1.png",
           "title": "Forgot Password",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-forgot-password"
         },
         {
           "id": 11,
-          "image": "images/layout-grid-container.png",
+          "image": "images/faq1.png",
           "title": "Frequently Asked Questions",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-frequently-asked-questions"
@@ -1492,7 +1473,7 @@
         },
         {
           "id": 15,
-          "image": "images/layout-grid-container.png",
+          "image": "images/login1.png",
           "title": "Login",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
           "link": "/page-login"
@@ -1506,21 +1487,21 @@
         },
         {
           "id": 17,
-          "image": "images/layout-grid-container.png",
+          "image": "images/member-activity1.png",
           "title": "Member Activity",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-member-activity"
         },
         {
           "id": 18,
-          "image": "images/layout-grid-container.png",
+          "image": "images/order-details1.png",
           "title": "Order Details",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-order-details"
         },
         {
           "id": 19,
-          "image": "images/layout-grid-container.png",
+          "image": "images/order-summary1.png",
           "title": "Order Summary",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-summary"
@@ -1534,32 +1515,14 @@
         },
         {
           "id": 21,
-          "image": "images/layout-grid-container.png",
+          "image": "images/Page not found1.png",
           "title": "Page Not Found",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/page-not-found"
         },
-        {
-          "id": 22,
-          "image": "images/layout-grid-container.png",
-          "title": "Product",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/page-product"
-        },
-        {
-          "id": 23,
-          "image": "images/layout-grid-container.png",
-          "title": "Product Details",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-product-details"
-        },
-        {
-          "id": 24,
-          "image": "images/layout-grid-container.png",
-          "title": "Profile Settings",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-profile-settings"
-        },
+    
+       
+        
         {
           "id": 25,
           "image": "images/role_page.png",
@@ -1581,16 +1544,10 @@
           "text": " A page with multiple checkboxes and select menu at the top",
           "link": "/page-settings"
         },
-        {
-          "id": 28,
-          "image": "images/layout-grid-container.png",
-          "title": "Store Front",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-store-front"
-        },
+        
         {
           "id": 29,
-          "image": "images/layout-grid-container.png",
+          "image": "images/subscription1.png",
           "title": "Subscription",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
           "link": "/page-subscription"
@@ -1611,7 +1568,7 @@
         },
         {
           "id": 32,
-          "image": "images/under-maintenance_page.png",
+          "image": "images/under-maintenance - under-construction.png",
           "title": "Under Maintenance",
           "text": "Gives the update on the site being under maintenance",
           "link": "/page-under-maintenance"

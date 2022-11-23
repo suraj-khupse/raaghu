@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AlertService, ComponentLoaderOptions, LanguageServiceProxy } from '@libs/shared';
-import { getWebhookSubscription, selectAll, selectDefaultLanguage } from '@libs/state-management';
+import { getWebhookSubscription, saveWebhookSubscription, selectAll, selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
@@ -40,12 +40,13 @@ declare var bootstrap: any;
 })
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;
-  buttonSpinnerForNewWebhook: boolean = true;
+  showLoadingSpinner: boolean = false;
   title = 'webhooksubscription';
   public viewCanvas: boolean = false;
   currentAlerts: any = [];
-  isShimmer:boolean=false;
-  webhooksEvent:any;
+  isShimmer: boolean = true;
+  public rdswebhookSubscriptionMfeConfig: ComponentLoaderOptions;
+  webhooksEvent: any;
   @Input() listItems = [
     { value: 'New Webhook Subscription', some: 'value', key: 'newwebhook', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
   ];
@@ -61,15 +62,14 @@ export class AppComponent implements OnInit {
     }
   }
   rdswebhookTableMfeConfig: ComponentLoaderOptions;
-  constructor(private store: Store, private alertService: AlertService, public translate:TranslateService) { }
+  constructor(private store: Store, private alertService: AlertService, public translate: TranslateService) { }
   webhookTableHeader: TableHeader[] = [
-    { displayName: 'Webhook Endpoint', key: 'WebhookEndpoint', dataType: 'text', dataLength: 30, sortable: true, required: true,filterable:true },
+    { displayName: 'Webhook Endpoint', key: 'WebhookEndpoint', dataType: 'text', dataLength: 30, sortable: true, required: true, filterable: true },
     { displayName: 'Webhook Events', key: 'webhooksEvent', dataType: 'html', dataLength: 30, required: true, sortable: true },
     { displayName: 'Active', key: 'statusTemplate', dataType: 'html', dataLength: 30, required: true, sortable: true },
   ]
 
   webhookTableData: any = [] = [];
-  @Output() onWebhookSave = new EventEmitter<any>()
   ngOnInit(): void {
     this.isAnimation = true;
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
@@ -78,6 +78,28 @@ export class AppComponent implements OnInit {
       }
     })
     this.subscribeToAlerts();
+    this.rdswebhookSubscriptionMfeConfig = {
+      name: 'RdsCompWebhookSubscription',
+      input:{
+
+      },
+      output: {
+        onSubcriptionSave: (webhookSubscriptionData) => {
+          if (webhookSubscriptionData) {
+            const body: any = { webhookUri: webhookSubscriptionData.subscriptionData.WebhookEndpoint, webhooks: [], headers: {} };
+            webhookSubscriptionData.additionalHeaders.forEach((item: any) => {
+              body.headers[item.additionalheaderKey] = item.additionalheadervalue;
+            })
+            body.webhooks.push(webhookSubscriptionData.subscriptionData.WebhookEvents);
+            this.store.dispatch(saveWebhookSubscription(body));
+
+          }
+        },
+        onCloseCanvas: () => {
+          this.closeCanvas();
+        }
+      }
+    };
     this.rdswebhookTableMfeConfig = {
       name: 'RdsDataTable',
       input: {
@@ -87,8 +109,8 @@ export class AppComponent implements OnInit {
         tableData: this.webhookTableData,
         recordsPerPage: 10,
         pagination: true,
-        noDataTitle:'Currently you do not have webhook subscription',
-        isShimmer : true
+        noDataTitle: 'Currently you do not have webhook subscription',
+        isShimmer: true
       },
 
     };
@@ -101,7 +123,7 @@ export class AppComponent implements OnInit {
           if (element && element.webhooks) {
             this.webhooksEvent = '';
             element.webhooks.forEach((e: any) => {
-              if(this.webhooksEvent == '') {
+              if (this.webhooksEvent == '') {
                 this.webhooksEvent = e;
               }
               else {
@@ -110,7 +132,7 @@ export class AppComponent implements OnInit {
             });
           }
           let statusTemplate;
-           if (element.isActive){
+          if (element.isActive) {
             statusTemplate = `<div> <span class="badge badge-info">Yes</span></div>`;
           } else {
             statusTemplate = `<div><span class="badge badge-danger">No</span></div>`;
@@ -119,8 +141,8 @@ export class AppComponent implements OnInit {
             WebhookEndpoint: element.webhookUri,
             Active: element.isActive,
             WebhookEvents: element.webhooks,
-            statusTemplate:statusTemplate,
-            webhooksEvent:this.webhooksEvent
+            statusTemplate: statusTemplate,
+            webhooksEvent: this.webhooksEvent
           }
           this.webhookTableData.push(item);
         });
@@ -130,30 +152,11 @@ export class AppComponent implements OnInit {
         this.rdswebhookTableMfeConfig = mfeConfig
       }
     })
-    // console.log(this.allTodos$ );
+  }
 
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.rdswebhookTableMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.webhookTableHeader,
-        tableStyle: 'light',
-        width: '100%',
-        tableData: this.webhookTableData,
-        recordsPerPage: 10,
-        pagination: true,
-      },
-
-    };
-  }
-  Addsubcription(subscription: any) {
-    this.webhookTableData.push(subscription.webhookSubscriptionData.webhookSubscriptionData.subscriptionData)
-    this.onWebhookSave.emit({ webhookSubscriptionData: subscription.webhookSubscriptionData });
-  }
 
   openCanvas(): void {
-    this.buttonSpinnerForNewWebhook = true;
+    this.showLoadingSpinner = true;
     this.viewCanvas = true;
     setTimeout(() => {
       var offcanvas = document.getElementById('addwebhook');
@@ -163,7 +166,7 @@ export class AppComponent implements OnInit {
   }
 
   closeCanvas(): void {
-    this.buttonSpinnerForNewWebhook =false;
+    this.showLoadingSpinner = false;
     this.viewCanvas = false;
   }
 
@@ -176,6 +179,7 @@ export class AppComponent implements OnInit {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
+      this.showLoadingSpinner = false;
       const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
       rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
       this.rdsAlertMfeConfig = rdsAlertMfeConfig;
@@ -184,8 +188,8 @@ export class AppComponent implements OnInit {
   }
 
   // fabmenu mobile
-  onSelectMenu(event:any){
-    if(event.key==='newwebhook'){
+  onSelectMenu(event: any) {
+    if (event.key === 'newwebhook') {
       this.openCanvas();
     }
   }

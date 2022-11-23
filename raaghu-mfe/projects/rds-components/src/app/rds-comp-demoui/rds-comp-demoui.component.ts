@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import Chart from 'chart.js/auto';
 
 @Component({
-  selector: 'app-rds-comp-demoui',
+  selector: 'rds-comp-demoui',
   templateUrl: './rds-comp-demoui.component.html',
   styleUrls: ['./rds-comp-demoui.component.scss']
 })

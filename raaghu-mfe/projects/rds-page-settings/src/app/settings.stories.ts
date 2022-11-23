@@ -106,17 +106,17 @@ const Template: Story<AppComponent> = (args: AppComponent) => ({
             <div class="tab-pane fade show active" id="tenant-management" role="tabpanel"
               aria-labelledby="nav-home-tab">
               <div class="row">
-                <app-rds-comp-tenant-management [settingsTenantEditionList]="settingsTenantEditionList"></app-rds-comp-tenant-management>
+                <rds-comp-tenant-management [settingsTenantEditionList]="settingsTenantEditionList"></rds-comp-tenant-management>
               </div>
             </div>
             <div class="tab-pane fade" id="user-management" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                  <app-rds-comp-user-management></app-rds-comp-user-management>
+                  <rds-comp-user-management></rds-comp-user-management>
               </div>
             </div>
             <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <app-rds-security></app-rds-security>
+                <rds-security></rds-security>
               </div>
             </div>
             <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -126,13 +126,13 @@ const Template: Story<AppComponent> = (args: AppComponent) => ({
             </div>
             <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <app-rds-comp-invoice></app-rds-comp-invoice>
+                <rds-comp-invoice></rds-comp-invoice>
 
               </div>
             </div>
             <div class="tab-pane fade" id="other-settings" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-               <app-rds-comp-other-settings></app-rds-comp-other-settings>
+               <rds-comp-other-settings></rds-comp-other-settings>
               </div>
             </div>
           </div>

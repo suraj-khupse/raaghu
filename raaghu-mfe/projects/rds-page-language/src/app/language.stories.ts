@@ -70,8 +70,8 @@ const Template: Story<LanguageComponent> = (args: LanguageComponent) => ({
   <div class="col-md-12">
     <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
      
-          <app-rds-data-table [tableHeaders]="languageTableHeader" [tableStyle]="'light'" [tableData]="languageTableData"
-            [recordsPerPage]="10" [pagination]="true" [inlineEdit]="false"></app-rds-data-table>
+          <rds-data-table [tableHeaders]="languageTableHeader" [tableStyle]="'light'" [tableData]="languageTableData"
+            [recordsPerPage]="10" [pagination]="true" [inlineEdit]="false"></rds-data-table>
      
     </div>
   </div>
@@ -80,7 +80,7 @@ const Template: Story<LanguageComponent> = (args: LanguageComponent) => ({
 <ng-container *ngIf="viewCanvas">
   <rds-offcanvas [canvasTitle]="translate.instant(languageCanvasTitle)" [offId]="'AddLanguage'"
     (onClose)="closeCanvas()" [offcanvaswidth]="550" [placement]="'end'">
-  <app-rds-comp-new-language></app-rds-comp-new-language>
+  <rds-comp-new-language></rds-comp-new-language>
   </rds-offcanvas>
 </ng-container>`
 });

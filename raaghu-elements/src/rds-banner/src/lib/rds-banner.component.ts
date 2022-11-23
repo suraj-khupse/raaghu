@@ -37,11 +37,11 @@ export class RdsBannerComponent implements OnInit {
       classes.push(' m-auto');
     }
     if (this.colorVariant) {
-      const bgColor = 'alert-' + `${this.colorVariant}`;
+      const bgColor = 'alert-' + `${this.colorVariant} text-dark`;
       classes.push(bgColor);
-      if (`${this.colorVariant}` !== 'light' && `${this.colorVariant}` !== 'warning' && `${this.colorVariant}` !== 'info') {
-        classes.push('text-white');
-      }
+      // if (`${this.colorVariant}` !== 'light' && `${this.colorVariant}` !== 'warning' && `${this.colorVariant}` !== 'info') {
+      //   classes.push('text-white');
+      // }
     }
     return classes
   }

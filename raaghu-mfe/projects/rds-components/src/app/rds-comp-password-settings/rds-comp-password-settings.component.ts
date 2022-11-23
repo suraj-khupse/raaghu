@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-rds-comp-password-settings',
+  selector: 'rds-comp-password-settings',
   templateUrl: './rds-comp-password-settings.component.html',
   styleUrls: ['./rds-comp-password-settings.component.scss']
 })

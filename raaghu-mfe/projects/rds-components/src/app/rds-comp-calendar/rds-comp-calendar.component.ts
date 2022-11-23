@@ -63,7 +63,7 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
 
 declare let bootstrap: any;
 @Component({
-  selector: 'app-rds-comp-calendar',
+  selector: 'rds-comp-calendar',
   templateUrl: './rds-comp-calendar.component.html',
   styleUrls: ['./rds-comp-calendar.component.scss'],
   providers: [

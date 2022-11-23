@@ -3,7 +3,7 @@ import { ComponentLoaderOptions } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 declare var $: any;
 @Component({
-  selector: 'app-rds-comp-cache',
+  selector: 'rds-comp-cache',
   templateUrl: './rds-comp-cache.component.html',
   styleUrls: ['./rds-comp-cache.component.scss']
 })

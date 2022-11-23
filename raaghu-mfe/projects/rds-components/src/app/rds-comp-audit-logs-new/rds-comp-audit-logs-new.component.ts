@@ -7,7 +7,7 @@ import { TableHeader } from '../../models/table-header.model';
 declare var bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-audit-logs-new',
+  selector: 'rds-comp-audit-logs-new',
   templateUrl: './rds-comp-audit-logs-new.component.html',
   styleUrls: ['./rds-comp-audit-logs-new.component.scss']
 })

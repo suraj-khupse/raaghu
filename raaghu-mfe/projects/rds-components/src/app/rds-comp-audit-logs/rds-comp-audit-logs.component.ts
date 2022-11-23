@@ -10,7 +10,7 @@ declare var bootstrap: any;
 
 
 @Component({
-  selector: 'app-rds-comp-audit-logs',
+  selector: 'rds-comp-audit-logs',
   templateUrl: './rds-comp-audit-logs.component.html',
   styleUrls: ['./rds-comp-audit-logs.component.scss'],
   encapsulation: ViewEncapsulation.None

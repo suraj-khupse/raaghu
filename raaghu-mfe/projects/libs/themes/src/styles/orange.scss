@@ -141,9 +141,21 @@ $accessible-300: #3a3d5a;
 $accessible-400: #474c74;
 $accessible-500: #4400A4;
 $accessible-600: #282A42;
-$accessible-700: rgb(48, 51, 78);
+$accessible-700: #30334e;
 $accessible-800: #13002E;
 
+$form-select-bg: $accessible-300!default;
+//$offcanvas-border-color: $accessible-300 !default;
+$offcanvas-bottom-border-color: $accessible-300!default;
+//$nav-tabs-border-color: $accessible-300 !default;
+$nav-tabs-bottom-border-color: $accessible-300!default;
+$form-select-border-color: $accessible-400 !default;
+$dropdown-border-bottom: $accessible-500 !default;
+$dropdown-bg-color: $accessible-400 !default;
+$dropdown-border-bottom-hover: $accessible-200 !default;
+$dropdown-bghover-color: $accessible-300 !default;
+$dropdown-link-active-bg: $accessible-500 !default;
+$card-bg-color: $accessible-700 !default;
 $datepicker-bg: $accessible-600 !default;
 $datepicker-head: $accessible-600 !default;
 $nav-background-color: $accessible-600 !default;
@@ -153,7 +165,7 @@ $body-wrapper-bg: $accessible-600 !default;
 $sidbar-border-right-color: #1A0339;
 $wrapper-bg: $accessible-600!default;
 
-$card-bg-color: $accessible-700 !default;
+$card-bg-color: white !default;
 
 $offcanvasbg: $accessible-700 !default;
 
@@ -162,7 +174,7 @@ $footer-bgcolor: $accessible-700 !default;
 $nav-tab-bg-active: $accessible-600!default;
 $profileMenuBgColor: $nav-tab-bg-active !default;
 $trhoverbg-color: $accessible-600;
-
+$card-bg-color: $accessible-700 !default;
 $nav-a-color: $white !default;
 $nav-active-color: $white !default;
 
@@ -172,24 +184,28 @@ $link-color: $primary;
   background-color: none;
 }
 
-#sidebar ul li a {
-  padding-left: 10px;
-  width: 100%;
-  border-radius: 10px;
-}
 html[theme=dark] {
+
   $dropdown-color: $white;
+
   $input-bg: $accessible-300!default;
-  $form-select-bg: $input-bg!default;
-  $form-select-border-color: $accessible-200!default;
+  $input-bg-border: $accessible-400 !default;
+
   $notification-header-bg: $accessible-500!default;
   $input-group-addon-bg: $input-bg;
   $input-group-addon-border-color: $accessible-400 !default;
+
 
   .form-control, .form-control:focus {
     background-color: $input-bg;
     border: 1px solid $accessible-400;
     color: $white;
+  }
+
+  .form-group.has-search {
+    .form-control {
+      background-color: $input-bg;
+    }
   }
 
   .dropdown-menu {
@@ -201,10 +217,6 @@ html[theme=dark] {
     border-color: $input-group-addon-border-color;
   }
 
-  .form-select {
-    background-color: $form-select-bg;
-    border-color: $form-select-border-color;
-  }
 
   .notification-header {
     background-color: $notification-header-bg;

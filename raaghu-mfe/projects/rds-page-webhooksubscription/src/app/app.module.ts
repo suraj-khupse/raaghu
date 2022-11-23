@@ -4,7 +4,6 @@ import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WebhooksubscriptionComponent } from './webhooksubscription/webhooksubscription.component';
 import { StoreModule } from '@ngrx/store';
 import { WebhookSubscriptionEffects, WebhookSubscriptionReducer } from '@libs/state-management';
 import { EffectsModule } from '@ngrx/effects';
@@ -18,7 +17,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    WebhooksubscriptionComponent,
     RdsWebhooksSubscriptionShimmerComponent,
     
   ],

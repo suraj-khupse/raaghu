@@ -67,7 +67,7 @@
   <table [ngClass]="bodyColorClasses" id="table">
     <thead *ngIf="showTableHeader">
       <tr>
-        <th *ngFor="let header of tableHeaders" [ngClass]="header.class">{{header['displayName']}}</th>
+        <th *ngFor="let header of tableHeaders" [class]="header.class">{{header['displayName']}}</th>
       </tr>
     </thead>
     <tbody>
@@ -76,33 +76,33 @@
           <ng-container *ngIf="item[header.key]">
             <ng-container *ngIf="item[header.key].type===undefined; else individualTypeTemplate">
               <ng-container *ngIf="header.dataType=='html';else iconTemplate">
-                <td [ngClass]="header.class" [innerHTML]="item[header.key]"></td>
+                <td [class]="header.class" [innerHTML]="item[header.key]"></td>
               </ng-container>
               <ng-template #iconTemplate>
                 <ng-container *ngIf="header.dataType=='icon';else other">
-                  <td [ngClass]="header.class">
+                  <td [class]="header.class">
                     <rds-icon [name]="item[header.key]" colorVariant="success" height="16px" width="16px"></rds-icon>
                   </td>
                 </ng-container>
                 <ng-template #other>
-                  <td [ngClass]="header.class">{{item[header.key]}}</td>
+                  <td [class]="header.class">{{item[header.key]}}</td>
                 </ng-template>
 
               </ng-template>
             </ng-container>
             <ng-template #individualTypeTemplate>
               <ng-container *ngIf="item[header.key].type=='html';else iconTemplate">
-                <td [ngClass]="header.class" [innerHTML]="item[header.key].value"></td>
+                <td [class]="header.class" [innerHTML]="item[header.key].value"></td>
               </ng-container>
               <ng-template #iconTemplate>
                 <ng-container *ngIf="item[header.key].type=='icon';else other">
-                  <td [ngClass]="header.class">
+                  <td [class]="header.class">
                     <rds-icon [name]="item[header.key].value" colorVariant="success" height="16px" width="16px">
                     </rds-icon>
                   </td>
                 </ng-container>
                 <ng-template #other>
-                  <td [ngClass]="header.class">{{item[header.key].value}}</td>
+                  <td [class]="header.class">{{item[header.key].value}}</td>
                 </ng-template>
 
               </ng-template>

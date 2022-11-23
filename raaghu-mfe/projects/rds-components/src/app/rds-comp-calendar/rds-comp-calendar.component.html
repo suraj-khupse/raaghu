@@ -3,7 +3,7 @@
     <div class="d-flex gap-3">
       <rds-button
         [size]="'medium'"
-        [outlineButton]="true"
+        [isOutline]="true"
         [colorVariant]="'primary'"
         [label]="translate.instant('Today')"
         mwlCalendarToday
@@ -12,14 +12,14 @@
       </rds-button>
       <rds-button
         [size]="'medium'"
-        [outlineButton]="true"
+        [isOutline]="true"
         [colorVariant]="'primary'"
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="closeOpenMonthViewDay()"
         [icon]="'chevron_left'"
-        [roundedButton]="true"
+        [isFabIcon]="true"
         [iconHeight]="'18px'"
         [iconWidth]="'18px'"
       >
@@ -27,7 +27,7 @@
 
       <rds-button
         [size]="'medium'"
-        [outlineButton]="true"
+        [isOutline]="true"
         [colorVariant]="'primary'"
         mwlCalendarNextView
         [view]="view"
@@ -35,7 +35,7 @@
         (viewDateChange)="closeOpenMonthViewDay()"
         [icon]="'chevron_right'"
         [iconHeight]="'18px'"
-        [roundedButton]="true"
+        [isFabIcon]="true"
         [iconWidth]="'18px'"
       >
       </rds-button>
@@ -189,7 +189,7 @@
       <rds-button
         [label]="translate.instant('Edit Event')"
         [submit]="true"
-        [disabled]="!eventCreationForm.valid"
+        [isDisabled]="!eventCreationForm.valid"
         [colorVariant]="'primary'"
         class="ms-2"
         [size]="'small'"
@@ -197,9 +197,9 @@
       </rds-button>
       <rds-button
         [label]="translate.instant('Delete Event')"
-        [disabled]="!eventCreationForm.valid"
+        [isDisabled]="!eventCreationForm.valid"
         [colorVariant]="'danger'"
-        [outlineButton]="true"
+        [isOutline]="true"
         class="ms-2"
         [size]="'small'"
         (click)="deleteEvent(eventCreationForm)"

@@ -43,8 +43,8 @@
   </ul>
 </label> -->
 
-<div class="dropdown w-100" [class]="classes">
-  <span [ngClass]="button1" class="btn dropdown-toggle gap-2" [attr.data-bs-offset]="xOffset + ',' + yOffset"
+<div class="dropdown w-100">
+  <span [ngClass]="button1" class="btn dropdown-toggle gap-2 dropdownarrow py-2" [attr.data-bs-offset]="xOffset + ',' + yOffset"
     (click)="open()" role="button" [attr.id]="id" data-bs-toggle="dropdown" size="small" [attr.aria-expanded]="show">
     <rds-icon *ngIf="icon" [name]="icon" [height]="iconHeight" [width]="iconWidth" [fill]="iconFill"
       [stroke]="iconStroke" class="pe-1"></rds-icon>

@@ -7,6 +7,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
+import { AppSessionService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { TableAction } from '../../models/table-action.model';
@@ -52,7 +53,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
   ];
 
 
-  constructor(public translate: TranslateService) { }
+  constructor(public translate: TranslateService, private appSessionService: AppSessionService) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.DynamicProperyData = undefined;
     var myOffcanvas = document.getElementById('AddDynamic');
@@ -91,7 +92,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     this.canvasTitle = this.translate.instant('NEW DYNAMIC PROPERTY');
     this.IsEdit = false;
     this.selectedPermissionList = [];
-
+    this.viewCanvas = false;
   }
   editTableRow(event): void {
     this.activePage = 0;
@@ -100,6 +101,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     this.selectedPermissionList = [];
     this.editPropertyTableRowData.emit(event.id);
     this.id = event.id;
+    this.viewCanvas = true;
   }
   addDynamic(event) {
     this.activePage = 0;
@@ -110,7 +112,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
           inputType: this.DynamicProperyInfo.dynamicProperties.inputType[0],
           permission: this.selectedPermissions,
           propertyName: this.DynamicProperyInfo.dynamicProperties.propertyName,
-          tenantId: null,
+          tenantId: this.appSessionService.tenantId,
           id: this.id,
         };
         this.createOrUpdateDynamic.emit(DynamicPropery);
@@ -122,16 +124,18 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
           inputType: this.DynamicProperyData.inputType,
           permission: this.selectedPermissions,
           propertyName: this.DynamicProperyData.propertyName,
-          tenantId: null,
+          tenantId: this.appSessionService.tenantId,
           id: this.id,
         };
+        this.closeCanvas();
         this.createOrUpdateDynamic.emit(DynamicPropery);
+
       }
     } else {
-      if (this.DynamicProperyInfo.dynamicProperties?.propertyName && this.DynamicProperyInfo.dynamicProperties.inputType[0] != "" && this.selectedPermissions != "" && this.DynamicProperyInfo.dynamicProperties.propertyName != "") {
+      if (this.DynamicProperyInfo.dynamicProperties?.propertyName && this.DynamicProperyInfo.dynamicProperties.propertyName != "") {
         const DynamicPropery: any = {
           displayName: this.DynamicProperyInfo.dynamicProperties.displayName,
-          inputType: this.DynamicProperyInfo.dynamicProperties.inputType[0],
+          inputType: this.DynamicProperyInfo.dynamicProperties.inputType,
           permission: this.selectedPermissions,
           propertyName: this.DynamicProperyInfo.dynamicProperties.propertyName,
           tenantId: null,
