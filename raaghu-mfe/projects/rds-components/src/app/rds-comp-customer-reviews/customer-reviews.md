@@ -11,6 +11,7 @@ title: "Components > Customer-reviews"
 
 <p>Provides a card with different ratings and it's percentage of different level of reviews</p>
 <section class="py-4">
+<h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,9 +39,9 @@ title: "Components > Customer-reviews"
 
 ```html
 
-<app-rds-comp-customer-reviews
+<rds-comp-customer-reviews
   [itemlist]="itemlist"
-></app-rds-comp-customer-reviews>
+></rds-comp-customer-reviews>
 ```
 </div>
 </div>

@@ -1,5 +1,5 @@
-<div class="card">
-  <div class="card-body">
+<div  [ngClass]="cardClasses">
+  <div [ngClass]="cardbodyClass">
     <div class="d-flex gap-2">
       <div [ngClass]="classes" *ngIf="withIcon">
         <rds-icon height="20px" width="20px" name="location" colorVariant ="primary"></rds-icon>

@@ -13,22 +13,33 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAccessor {
-  private onTouched!: Function;
-  private onChanged!: Function;
   title = 'rds-checkbox-parent-child';
-  onChange!: (value: string) => void;
+  onChange = (event: any) => {};
+  onTouched = () => {};
   @Input() itemList: any;
   @Input() switch?: boolean;
   @Input() inline?: boolean;
   @Input() isInputGroup?: boolean;
   @Input() state: 'checkbox' | 'errorcheckbox' = 'checkbox';
-  checked!: boolean;
+  checked = false;
 
   @Output() onClick = new EventEmitter<{ evnt: any, item: string }>();
 
   constructor() {}
 
   ngOnInit(): void {
+  }
+
+  writeValue(obj: any) {
+    this.checked = obj;
+  }
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
   }
 
   public get classes(): string[] {
@@ -55,13 +66,13 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
   }
 
   getValueParent(event: any) {
-    this.onClick.emit({ evnt: event, item: event.ParentChildchecklist.target.value });
+    this.onClick.emit({ evnt: event, item: event.target.value });
     this.onChange(event.target.click)
     this.onTouched();
   }
 
   getValueChild(event: any) {
-    this.onClick.emit({ evnt: event, item: event.childList.target.value });
+    this.onClick.emit({ evnt: event, item: event.target.value });
     this.onChange(event.target.click)
     this.onTouched();
   }
@@ -73,7 +84,7 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
     }
     parentObj.isSelected = event
     this.onTouched(); // <-- mark as touched
-    this.onChanged(event);
+    this.onChange(event);
   }
 
   //Click event on Child Checkbox checkbox  
@@ -103,17 +114,7 @@ export class RdsCheckboxParentChildComponent implements OnInit, ControlValueAcce
     }
     // childObj.isSelected = event
     this.onTouched(); // <-- mark as toucheds
-    this.onChanged(event);
-  }
-
-  writeValue(value: boolean): void {
-    this.checked = value;
-  }
-  registerOnChange(fn: any): void {
-    this.onChanged = fn; // <-- save the function
-  }
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn; // <-- save the function
+    this.onChange(event);
   }
 
   //Just to show updated JSON object on view

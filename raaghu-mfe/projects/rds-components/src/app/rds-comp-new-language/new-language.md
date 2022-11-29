@@ -10,7 +10,8 @@ title: "Components > New Language"
 #### New Language
 
 <p>Provides a card with different dropdown options on language and country code</p>
-<section class="py-4">                                                                                             
+<section class="py-4"> 
+    <h6>Default</h6>                                                                                            
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -39,10 +40,10 @@ title: "Components > New Language"
 
 ```html
 
-<app-rds-comp-new-language
+<rds-comp-new-language
 [flags]="flags"
 [languageNames]="languageNames"
-></app-rds-comp-new-language>
+></rds-comp-new-language>
 ```
 </div>
 </div>

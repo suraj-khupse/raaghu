@@ -3,7 +3,7 @@
     <div ria-labelledby="nav-LinkAccount" class="h-100">
       <div class="card border-0 h-100">
         <div class="card-header border-bottom">
-          <h5 class="card-title">{{showNewLinkAccoutButton ? "MANAGE LINKED ACCOUNTS" : "NEW LINK ACCOUNT"|translate}}</h5>
+          <h5 class="card-title">{{showNewLinkAccoutButton ? translate.instant("MANAGE LINKED ACCOUNTS") : translate.instant("NEW LINK ACCOUNT")}}</h5>
         </div>
 
         <div class="card-body">
@@ -40,7 +40,7 @@
               </div>
               <div class="col-md-12 col-sm-12">
                 <div class="form-group mb-3">
-                  <rds-input size="medium" value="" [label]="translate.instant('Password')" [placeholder]="'Password'"
+                  <rds-input size="medium" value="" [label]="translate.instant('Password')" [placeholder]="translate.instant('Password')"
                     [iconCursor]="'pointer'" [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'"[iconWidth]="'18px'"
                     name="linked_pswd" [labelPosition]="'top'" inputType="password" [(ngModel)]="password" [isRequired]=true
                     #linkedPswd="ngModel" ngDefaultControl>

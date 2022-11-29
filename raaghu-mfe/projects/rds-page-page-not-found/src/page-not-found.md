@@ -36,7 +36,7 @@ title: "Pages > Page Not Found"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-page-not-found></app-rds-comp-page-not-found>
+<rds-comp-page-not-found></rds-comp-page-not-found>
 ```
 </div>
 </div>

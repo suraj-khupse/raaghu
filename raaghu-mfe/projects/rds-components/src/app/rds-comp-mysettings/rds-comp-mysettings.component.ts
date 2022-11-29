@@ -29,7 +29,6 @@ export class RdsMysettingsComponent implements OnInit, OnChanges {
   navtabcontentClass: string = "d-none";
   isPasswordMismatch: boolean = false;
   public Profileform: FormGroup;
-
   constructor(private formBuilder: FormBuilder, public translate: TranslateService) {
   }
 

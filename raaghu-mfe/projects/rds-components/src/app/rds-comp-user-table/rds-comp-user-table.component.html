@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12 text-end pb-3 desktop-btn">
     <rds-button [label]="translate.instant('New User')" type="button" [colorVariant]="'primary'"
-      (click)="openCanvas()" [attr.aria-controls]="'AddUser'" [icon]="'plus'" iconHeight="12px" iconWidth="12px" [size]="'small'">
+    [showLoadingSpinner]="buttonSpinnerForUserTable" [size]="'small'" (click)="openCanvas()" [attr.aria-controls]="'AddUser'" [icon]="'plus'" iconHeight="12px" iconWidth="12px" [size]="'small'">
     </rds-button>
   </div>
 <mfe-loader [config]="rdsUserTableMfeConfig"></mfe-loader>

@@ -13,6 +13,7 @@ export default {
     }),
   ],
   argTypes: {
+    position: { control: 'radio',options: ['top', 'bottom'], if: { arg: 'sticky' } },
   },
 } as Meta;
 
@@ -22,7 +23,7 @@ const Template: Story<RdsAlertComponent> = (args: RdsAlertComponent) => ({
 
 export const Default = Template.bind({});
 Default.parameters = { controls: { include: ['dismissible', 'icon', 'position', 'delay', 'colorVariant', 
-'iconFill', 'iconStroke', 'iconHeight', 'iconWidth'] } };
+'iconFill', 'iconStroke', 'iconHeight', 'iconWidth', 'sticky'] } };
 Default.args = {
   dismissible: true,
   icon: 'information',
@@ -32,6 +33,7 @@ Default.args = {
   iconFill:false,
   iconStroke:true,
   iconHeight:'25px',
-  iconWidth:'25px'
+  iconWidth:'25px',
+  sticky: false,
 }
 

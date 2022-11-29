@@ -24,6 +24,34 @@
 
 <body>
     <app-root></app-root>
+    <script>
+        window.setCookieValue = function (key, value, expireDate, path, domain, attributes) {
+        var cookieValue = encodeURIComponent(key) + '=';
+       if (value) {
+          cookieValue = cookieValue + encodeURIComponent(value);
+        } 
+       if (expireDate) {
+          cookieValue = cookieValue + "; expires=" + expireDate.toUTCString();
+        } 
+       if (path) {
+          cookieValue = cookieValue + "; path=" + path;
+        } 
+       if (domain) {
+          cookieValue = cookieValue + "; domain=" + domain;
+        } 
+       for (var name in attributes) {
+          if (!attributes[name]) {
+            continue;
+          } 
+         cookieValue += '; ' + name;
+          if (attributes[name] === true) {
+            continue;
+          } 
+         cookieValue += '=' + attributes[name].split(';')[0];
+        } 
+       document.cookie = cookieValue;
+      };
+    </script>
 </body>
 
 </html>

@@ -9,7 +9,7 @@ import { LanguageText } from 'projects/rds-page-language-text/src/modal/language
   styleUrls: ['./rds-comp-edit-language-text.component.scss']
 })
 export class RdsCompEditLanguageTextComponent implements OnInit {
-  @Input() buttonSpinner: boolean = true;
+  @Input() buttonSpinner: boolean = false;
   constructor(public translate:TranslateService) { }
 
   @Input() Languagetext: LanguageText = {

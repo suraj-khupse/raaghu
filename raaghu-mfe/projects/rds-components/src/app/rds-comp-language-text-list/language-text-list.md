@@ -11,6 +11,7 @@ title: "Components > language-text-list"
 
 <p>Gives a table on the respective language along with dropdowns options </p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,10 +39,10 @@ title: "Components > language-text-list"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-language-text-list>
+<rds-comp-language-text-list>
 [listbaseLanguage]=""
 [listsource]=""
-</app-rds-comp-language-text-list>
+</rds-comp-language-text-list>
 ```
 </div>
 </div>

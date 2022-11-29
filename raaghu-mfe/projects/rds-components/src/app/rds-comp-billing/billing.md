@@ -10,7 +10,8 @@ title: "Components > Billing"
 #### Billing
 
 <p>This card provides a user with different subscriptions plan as well as its benefits</p>
-<section class="py-4">                                                                                             
+<section class="py-4">    
+<h6>Default</h6>                                                                                         
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,7 +39,7 @@ title: "Components > Billing"
 <div class="row m-0">
 
 ```html
-  <app-rds-comp-billing
+  <rds-comp-billing
   emailId="admin@aspnetzero.com"
   alternativeEmail=""
   [cardList]="cardList"
@@ -48,7 +49,7 @@ title: "Components > Billing"
   [actions]="actions"
   [radioItem]="radioItem"
   [radioItem1]="radioItem1"
-></app-rds-comp-billing>    
+></rds-comp-billing>    
 ```
 </div>
 </div>

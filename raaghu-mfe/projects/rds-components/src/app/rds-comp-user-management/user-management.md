@@ -37,9 +37,9 @@ title: "Components > User-management"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-user-management
+<rds-comp-user-management
 [Usermanagementsettings]="Usermanagementsettings">
-</app-rds-comp-user-management>
+</rds-comp-user-management>
 ```
 </div>
 </div>

@@ -9,8 +9,9 @@ title: "Components > Download-collection"
 
 #### Download Collection
 
-<p>Provies a set of dates</p>
-<section class="py-4">                                                                                             
+<p>Provies a list of the items downloaded with the details.</p>
+<section class="py-4">     
+<h6>Default</h6>                                                                                        
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,9 +38,9 @@ title: "Components > Download-collection"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-download-collection
+<rds-comp-download-collection
   [DownloadTable]="DownloadTable"
-></app-rds-comp-download-collection>
+></rds-comp-download-collection>
 ```
 </div>
 </div>

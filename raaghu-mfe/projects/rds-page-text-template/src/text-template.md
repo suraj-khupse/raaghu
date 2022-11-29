@@ -10,12 +10,13 @@ title: "Pages > Text-Template"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 
-#### Text-Template
+#### Text Template
 
 <p>Gives description about the status and necessary actions required </p>
 
 <!-- Basic -->
 <section class="py-4">
+<h6>Default</h6>   
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -42,11 +43,11 @@ title: "Pages > Text-Template"
 <div class="row m-0">
 
 ```html
- <app-rds-data-table
+ <rds-data-table
   [tableData]="tableDataForTextTemplate"
   [tableHeaders]="tableHeadersForTextTemplate"
   [actions]="actions"
-></app-rds-data-table>
+></rds-data-table>
 ```
 
 </div>

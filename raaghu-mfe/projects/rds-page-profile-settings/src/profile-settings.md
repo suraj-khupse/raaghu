@@ -54,7 +54,7 @@ title: "Pages > Profile Settings"
               <div class="mb-3">
                 <rds-label [label]="'Update your photo and personal details here.'"></rds-label>
               </div>
-             <app-rds-comp-personal-info></app-rds-comp-personal-info>
+             <rds-comp-personal-info></rds-comp-personal-info>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ title: "Pages > Profile Settings"
               <div class="mb-3">
                 <rds-label [label]="'Please enter your current password to change your password.'"></rds-label>
               </div>
-              <app-rds-comp-password-settings></app-rds-comp-password-settings>
+              <rds-comp-password-settings></rds-comp-password-settings>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ title: "Pages > Profile Settings"
               <div class="mb-3">
                 <rds-label [label]="'Manage and update your email.'"></rds-label>
               </div>
-              <app-rds-comp-email-settings></app-rds-comp-email-settings>
+              <rds-comp-email-settings></rds-comp-email-settings>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@ title: "Pages > Profile Settings"
               <div class="mb-3">
                 <rds-label [label]="'Manage your plan and billing history details.'"></rds-label>
               </div>
-            <app-rds-comp-billing></app-rds-comp-billing>
+            <rds-comp-billing></rds-comp-billing>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@ title: "Pages > Profile Settings"
             <div class="mb-3">
               <rds-label [label]="'Supercharge your workflow and connect the tool you use every day.'"></rds-label>
             </div>
-           <app-rds-comp-integration></app-rds-comp-integration>
+           <rds-comp-integration></rds-comp-integration>
           </div>
         </div>
       </div>

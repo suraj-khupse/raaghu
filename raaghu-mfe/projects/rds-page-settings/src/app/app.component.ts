@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
 import { ComponentLoaderOptions, EmailSettingsEditDto, HostBillingSettingsEditDto, HostSettingsEditDto, MfeBaseComponent, OtherSettingsEditDto, PasswordComplexitySetting, SecuritySettingsEditDto, SharedService, TenantManagementSettingsEditDto, TenantSettingsEditDto, TwoFactorLoginSettingsEditDto, UserLockOutSettingsEditDto } from '@libs/shared';
-import { getSettings, getSettingsTenantPageComboboxItems, selectAllSettings, selectDefaultLanguage, selectSettingsTenantPageComboboxItems, sendTestmail, updateSettings } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { AlertService } from '@libs/shared';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { transition, trigger, query, style, animate, } from '@angular/animations';
+import { getSettings, getSettingsTenantPageComboboxItems, sendTestmail, updateSettings } from 'projects/libs/state-management/src/lib/state/settings/settings.actions';
+import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
+import { selectAllSettings, selectSettingsTenantPageComboboxItems } from 'projects/libs/state-management/src/lib/state/settings/settings.selector';
 
 @Component({
   selector: 'app-root',
@@ -275,9 +277,9 @@ export class AppComponent implements OnInit {
     this.store.dispatch(getSettingsTenantPageComboboxItems())
     this.store.select(selectSettingsTenantPageComboboxItems).subscribe((res: any) => {
     // console.log('tenant dropdown : ', res)
-    if (res && res.settingsComboboxItem) {
+    if (res) {
         this.settingsTenantEditionList = [];
-        res.settingsComboboxItem.forEach(el=>{
+        res.forEach(el=>{
           const data = {
             value:el.value,
             some:el.displayText,
@@ -304,86 +306,86 @@ export class AppComponent implements OnInit {
       this.isAnimation = false;
       console.log(res);
       if (res) {
-        this.hostSetting.general = res.settings.general;
-        this.hostSetting.externalLoginProviderSettings = res.settings.externalLoginProviderSettings;
-        if (res.settings.billing) {
-          this.hostSetting.billing = res.settings.billing;
-          this.invoiceInfoData.legalName = res.settings.billing.legalName;
-          this.invoiceInfoData.address = res.settings.billing.address;
+        this.hostSetting.general = res.general;
+        this.hostSetting.externalLoginProviderSettings = res.externalLoginProviderSettings;
+        if (res.billing) {
+          this.hostSetting.billing = res.billing;
+          this.invoiceInfoData.legalName = res.billing.legalName;
+          this.invoiceInfoData.address = res.billing.address;
           const mfeConfig = this.rdsCompInvoiceMfeConfig
           mfeConfig.input.InvoiceDataForm = { ... this.invoiceInfoData };
           mfeConfig.input.editShimmer = false;
           this.rdsCompInvoiceMfeConfig = mfeConfig;
         }
-        if (res.settings.tenantManagement) {
-          this.hostSetting.tenantManagement = res.settings.tenantManagement
-          this.tenantmanagementData.isNewRegisteredTenantActiveByDefault = res.settings.tenantManagement.isNewRegisteredTenantActiveByDefault;
-          this.tenantmanagementData.defaultEditionId = res.settings.tenantManagement.defaultEditionId;
-          this.tenantmanagementData.useCaptchaOnRegistration = res.settings.tenantManagement.useCaptchaOnRegistration;
-          this.tenantmanagementData.allowSelfRegistration = res.settings.tenantManagement.allowSelfRegistration;
+        if (res.tenantManagement) {
+          this.hostSetting.tenantManagement = res.tenantManagement
+          this.tenantmanagementData.isNewRegisteredTenantActiveByDefault = res.tenantManagement.isNewRegisteredTenantActiveByDefault;
+          this.tenantmanagementData.defaultEditionId = res.tenantManagement.defaultEditionId;
+          this.tenantmanagementData.useCaptchaOnRegistration = res.tenantManagement.useCaptchaOnRegistration;
+          this.tenantmanagementData.allowSelfRegistration = res.tenantManagement.allowSelfRegistration;
           const mfeConfig = this.rdsCompTenantManageMfeConfig
           mfeConfig.input.settings = { ... this.tenantmanagementData };
           mfeConfig.input.editShimmer = false;
           this.rdsCompTenantManageMfeConfig = mfeConfig;
         }
 
-        if (res.settings.otherSettings) {
-          this.hostSetting.otherSettings = res.settings.otherSettings;
-          this.otherSettingData.isQuickThemeSelectEnabled = res.settings.otherSettings.isQuickThemeSelectEnabled;
+        if (res.otherSettings) {
+          this.hostSetting.otherSettings = res.otherSettings;
+          this.otherSettingData.isQuickThemeSelectEnabled = res.otherSettings.isQuickThemeSelectEnabled;
           const mfeConfig = this.rdsCompOtherSettingsMfeConfig
           mfeConfig.input.OtherSetting = { ... this.otherSettingData };
           mfeConfig.input.editShimmer = false;
           this.rdsCompOtherSettingsMfeConfig = mfeConfig;
         }
-        if (res.settings.userManagement) {
-          this.hostSetting.userManagement = res.settings.userManagement;
-          this.usermanagementdata.isEmailConfirmationRequiredForLogin = res.settings.userManagement.isEmailConfirmationRequiredForLogin;
-          this.usermanagementdata.useCaptchaOnLogin = res.settings.userManagement.useCaptchaOnLogin;
-          this.usermanagementdata.isCookieConsentEnabled = res.settings.userManagement.isCookieConsentEnabled;
-          this.usermanagementdata.allowUsingGravatarProfilePicture = res.settings.userManagement.allowUsingGravatarProfilePicture;
-          this.usermanagementdata.smsVerificationEnabled = res.settings.userManagement.smsVerificationEnabled;
-          if (res.settings.userManagement.sessionTimeOutSettings) {
-            this.usermanagementdata.sessionTimeOutSettings = res.settings.userManagement.sessionTimeOutSettings.isEnabled;
+        if (res.userManagement) {
+          this.hostSetting.userManagement = res.userManagement;
+          this.usermanagementdata.isEmailConfirmationRequiredForLogin = res.userManagement.isEmailConfirmationRequiredForLogin;
+          this.usermanagementdata.useCaptchaOnLogin = res.userManagement.useCaptchaOnLogin;
+          this.usermanagementdata.isCookieConsentEnabled = res.userManagement.isCookieConsentEnabled;
+          this.usermanagementdata.allowUsingGravatarProfilePicture = res.userManagement.allowUsingGravatarProfilePicture;
+          this.usermanagementdata.smsVerificationEnabled = res.userManagement.smsVerificationEnabled;
+          if (res.userManagement.sessionTimeOutSettings) {
+            this.usermanagementdata.sessionTimeOutSettings = res.userManagement.sessionTimeOutSettings.isEnabled;
           }
           const mfeConfig = this.rdsCompUserManagementsMfeConfig
           mfeConfig.input.Usermanagementsettings = { ... this.usermanagementdata };
           mfeConfig.input.editShimmer = false;
           this.rdsCompUserManagementsMfeConfig = mfeConfig;
         }
-        if (res.settings.security) {
-          this.hostSetting.security = res.settings.security;
-          this.securityData.useDefaultPasswordComplexitySettings = res.settings.security.useDefaultPasswordComplexitySettings;
-          this.securityData.allowOneConcurrentLoginPerUser = res.settings.security.allowOneConcurrentLoginPerUser;
-          if (res.settings.security.passwordComplexity) {
-            this.securityData.requireDigit = res.settings.security.passwordComplexity.requireDigit;
-            this.securityData.requireLowercase = res.settings.security.passwordComplexity.requireLowercase;
-            this.securityData.requireAlphaNumeric = res.settings.security.passwordComplexity.requireNonAlphanumeric;
-            this.securityData.requireUppercase = res.settings.security.passwordComplexity.requireUppercase;
-            this.securityData.requiredLength = res.settings.security.passwordComplexity.requiredLength;
+        if (res.security) {
+          this.hostSetting.security = res.security;
+          this.securityData.useDefaultPasswordComplexitySettings = res.security.useDefaultPasswordComplexitySettings;
+          this.securityData.allowOneConcurrentLoginPerUser = res.security.allowOneConcurrentLoginPerUser;
+          if (res.security.passwordComplexity) {
+            this.securityData.requireDigit = res.security.passwordComplexity.requireDigit;
+            this.securityData.requireLowercase = res.security.passwordComplexity.requireLowercase;
+            this.securityData.requireAlphaNumeric = res.security.passwordComplexity.requireNonAlphanumeric;
+            this.securityData.requireUppercase = res.security.passwordComplexity.requireUppercase;
+            this.securityData.requiredLength = res.security.passwordComplexity.requiredLength;
           }
 
-          if (res.settings.security.userLockOut) {
-            this.securityData.maxFailedAccessAttemptsBeforeLockout = res.settings.security.userLockOut.maxFailedAccessAttemptsBeforeLockout;
-            this.securityData.defaultAccountLockoutSeconds = res.settings.security.userLockOut.defaultAccountLockoutSeconds;
-            this.securityData.userLockout = res.settings.security.userLockOut.isEnabled
+          if (res.security.userLockOut) {
+            this.securityData.maxFailedAccessAttemptsBeforeLockout = res.security.userLockOut.maxFailedAccessAttemptsBeforeLockout;
+            this.securityData.defaultAccountLockoutSeconds = res.security.userLockOut.defaultAccountLockoutSeconds;
+            this.securityData.userLockout = res.security.userLockOut.isEnabled
           }
-          if (res.settings.security.twoFactorLogin.isEnabled) {
-            this.securityData.twoFactorLogin = res.settings.security.twoFactorLogin.isEnabled
+          if (res.security.twoFactorLogin.isEnabled) {
+            this.securityData.twoFactorLogin = res.security.twoFactorLogin.isEnabled
           }
           const mfeConfig = this.rdsCompSecurityMfeConfig
           mfeConfig.input.Seccuritysetting = { ... this.securityData };
           mfeConfig.input.editShimmer = false;
           this.rdsCompSecurityMfeConfig = mfeConfig;
         }
-        if (res.settings.email) {
-          this.hostSetting.email = res.settings.email;
-          this.emailData.smtpEnableSsl = res.settings.email.smtpEnableSsl;
-          this.emailData.smtpUseDefaultCredentials = res.settings.email.smtpUseDefaultCredentials;
-          this.emailData.defaultFromAddress = res.settings.email.defaultFromAddress;
-          this.emailData.defaultFromDisplayName = res.settings.email.defaultFromDisplayName;
-          this.emailData.smtpHost = res.settings.email.smtpHost;
-          this.emailData.smtpPort = res.settings.email.smtpPort;
-          this.emailData.smtpDomain = res.settings.email.smtpDomain;
+        if (res.email) {
+          this.hostSetting.email = res.email;
+          this.emailData.smtpEnableSsl = res.email.smtpEnableSsl;
+          this.emailData.smtpUseDefaultCredentials = res.email.smtpUseDefaultCredentials;
+          this.emailData.defaultFromAddress = res.email.defaultFromAddress;
+          this.emailData.defaultFromDisplayName = res.email.defaultFromDisplayName;
+          this.emailData.smtpHost = res.email.smtpHost;
+          this.emailData.smtpPort = res.email.smtpPort;
+          this.emailData.smtpDomain = res.email.smtpDomain;
           const mfeConfig = this.rdsCompEmailMfeConfig
           mfeConfig.input.EmailData = { ... this.emailData };
           mfeConfig.input.editShimmer = false;

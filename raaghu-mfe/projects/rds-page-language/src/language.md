@@ -12,11 +12,11 @@ title: "Pages > Language"
 
 #### Language
 
-<p>gives a description on different languages along with their code and action on edit or delete</p>
+<p>Gives a description on different languages along with their code and action on edit or delete</p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -61,14 +61,14 @@ title: "Pages > Language"
   </div>
   <div class="col-md-12">
     <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
-      <app-rds-data-table
+      <rds-data-table
         [tableHeaders]="languageTableHeader"
         [tableStyle]="'light'"
         [tableData]="languageTableData"
         [recordsPerPage]="10"
         [pagination]="true"
         [inlineEdit]="false"
-      ></app-rds-data-table>
+      ></rds-data-table>
     </div>
   </div>
 </div>

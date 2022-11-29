@@ -9,7 +9,7 @@ export class RdsBannerComponent implements OnInit {
 
   @Input() textAlign: 'start' | 'end' | 'center' = 'start';
   @Input() bannerText: string = 'Sample Banner';
-  @Input() sticky: boolean = false;;
+  @Input() sticky: boolean = false;
   @Input() position: 'top' | 'bottom' = 'top';
   @Input() colorVariant:'primary' |'danger'|'success'|'secondary'|'info'|'dark'|'light'|'warning'= 'primary';
   @Input() icon: string = '';

@@ -29,7 +29,7 @@ export default {
       options: ['start', 'center', 'end'],
       control: { type: 'select' }
     },
-    position: { control: 'radio', if: { arg: 'sticky' } },
+    position: { control: 'radio',options: ['top', 'bottom'], if: { arg: 'sticky' } },
   }
 } as Meta
 

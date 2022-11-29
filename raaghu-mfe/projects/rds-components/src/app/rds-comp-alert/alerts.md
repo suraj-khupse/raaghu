@@ -42,7 +42,7 @@ title: "Components > Alert"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-alert [currentAlerts]="currentAlerts"></app-rds-comp-alert>
+<rds-comp-alert [currentAlerts]="currentAlerts"></rds-comp-alert>
 ```
 </div>
 </div>
@@ -81,7 +81,7 @@ title: "Components > Alert"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-alert [currentAlerts]="currentAlerts"></app-rds-comp-alert>
+<rds-comp-alert [currentAlerts]="currentAlerts"></rds-comp-alert>
 ```
 </div>
 </div>
@@ -120,7 +120,7 @@ title: "Components > Alert"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-alert [currentAlerts]="currentAlerts"></app-rds-comp-alert>
+<rds-comp-alert [currentAlerts]="currentAlerts"></rds-comp-alert>
 ```
 </div>
 </div>
@@ -159,7 +159,7 @@ title: "Components > Alert"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-alert [currentAlerts]="currentAlerts"></app-rds-comp-alert>
+<rds-comp-alert [currentAlerts]="currentAlerts"></rds-comp-alert>
 ```
 </div>
 </div>
@@ -198,7 +198,7 @@ title: "Components > Alert"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-alert [currentAlerts]="currentAlerts"></app-rds-comp-alert>
+<rds-comp-alert [currentAlerts]="currentAlerts"></rds-comp-alert>
 ```
 </div>
 </div>

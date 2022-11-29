@@ -37,14 +37,14 @@ title: "Components > User-permission"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-user-permissions
+<rds-comp-user-permissions
 [FilterPermissionList]="FilterPermissionList"
 [userList]="userList"
 [roles]="roles"
 [permissionsList]="permissionsList"
 [userHeaders]="userHeaders"
 [orgTreeData]="orgTreeData">
-</app-rds-comp-user-permissions>
+</rds-comp-user-permissions>
 ```
 </div>
 </div>

@@ -5,7 +5,7 @@
   </div>
   </li>
   <li>
-    <div class="form-group mb-2">
+    <div class="form-group mb-3">
     <rds-checkbox [disabled]="false" [label]="translate.instant('Allow Tenants To Register To The System')+'.'"
       [checked]="settings.allowSelfRegistration" [(ngModel)]="settings.allowSelfRegistration" name="default"
       [withLabel]="true" [switch]="false" [inline]="false" [id]="'isDefault'"
@@ -19,7 +19,7 @@
     </div>
   </li>
   <li>
-    <div class="form-group mb-1 mt-2">
+    <div class="form-group mb-3 mt-2">
       <rds-checkbox [disabled]="false" [label]="translate.instant('Allow Tenants To Register To The System')+'.'"
         [checked]="settings.isNewRegisteredTenantActiveByDefault"
         [(ngModel)]="settings.isNewRegisteredTenantActiveByDefault" name="allowTenants" [withLabel]="true" [switch]="false"
@@ -46,11 +46,11 @@
             (change)="getAllowTenants($event)">
           </rds-select-list> -->
           <div class="mb-2">
-            <rds-label label="Input Type"></rds-label>
+            <rds-label label="Edition"></rds-label>
           </div>
           <rds-dropdownlist [placeholder]="translate.instant('Edition')" 
           [borderDropdown]="true"
-          class="text-dark"
+          class="text-dark dropdown-border"
           [id]="'edition-dropdown'"
           [(ngModel)]="settings.defaultEditionId"  
           [listItems]="settingsTenantEditionList" #inputNameData="ngModel" required

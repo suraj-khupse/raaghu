@@ -57,7 +57,7 @@ title: "Pages > under-construction"
                 
               </div>
               <div class="col-md-4 mt-5">
-                <img src="../assets/Illustration-under-construction.svg" class="w-100 h-100">
+                <img src="../assets/Illustration-under-construction.svg" class="w-50">
               </div>
             </div>
           </div>

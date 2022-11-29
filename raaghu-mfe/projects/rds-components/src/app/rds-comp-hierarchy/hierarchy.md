@@ -39,14 +39,14 @@ title: "Components > Hierarchy"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-hierarchy
+<rds-comp-hierarchy
 [treeData]="treeData"
 [mutable]="true"
 ButtonLabel="New Node"
 [TreeNodeLabeles]="TreeNodeLabeles"
 [TreeType]="TreeType"
 [nodeColors]="nodeColors">
-</app-rds-comp-hierarchy>
+</rds-comp-hierarchy>
 ```
 </div>
 </div>

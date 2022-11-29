@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Store } from '@ngrx/store';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { RdsCookieConsentService } from 'projects/libs/rds-cookieconsent/src/lib/service/cookieconsent.service';
 import { RdsInitializingEvent } from 'projects/libs/rds-cookieconsent/src/lib/event/initializing.event';
 import { RdsInitializationErrorEvent } from 'projects/libs/rds-cookieconsent/src/lib/event/initialization-error.event';
@@ -20,7 +19,6 @@ import { RdsCookieConsentConfig } from 'projects/libs/rds-cookieconsent/src/lib/
 export class AppComponent implements OnInit {
   constructor(
     public translate: TranslateService,   
-    private store: Store, 
     private ccService: RdsCookieConsentService,  
     public config: RdsCookieConsentConfig,
     private cookieService : CookieService

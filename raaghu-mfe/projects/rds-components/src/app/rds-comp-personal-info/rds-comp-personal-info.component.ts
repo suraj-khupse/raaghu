@@ -13,7 +13,7 @@ export class RdsCompPersonalInfoComponent implements OnInit {
     country: '',
     emailAddress: '',
     jobRole: '',
-    profileImage: 'https://demo.raaghu.io/assets/MaskGroup.png',
+    profileImage: 'https://anzdemoui.raaghu.io/assets/MaskGroup.png',
     profileName: '',
     portfolioProjects:[],
     bio:'I am a Lead Ux Designer and working with RDS System Inc. in United Kingdom. I have Ui and Ux skill-set, brand building knowledge also work on client new requirements as per the projects with my product development team.'

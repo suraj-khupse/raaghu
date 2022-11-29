@@ -10,13 +10,13 @@ title: "Pages > Identity-Resources"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 
-#### Identity-Resources
+#### Identity Resource
 
 <p>Gives an important details about a user with other necessary tabular details and actions </p>
 
 <!-- Basic -->
 <section class="py-4">
-    <h6>Basic</h6>
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -43,7 +43,121 @@ title: "Pages > Identity-Resources"
 <div class="row m-0">
 
 ```html
-
+<div class="d-flex justify-content-end mt-2">
+  <rds-button
+    [id]="'yes'"
+    [size]="'small'"
+    [tooltipPlacement]="'top'"
+    [colorVariant]="'primary'"
+    [label]="'NEW RESOURCE'"
+    [attr.data-bs-toggle]="'offcanvas'"
+    [attr.data-bs-target]="'#addnewIdentityresource'"
+    [attr.aria-controls]="'addnewIdentityresource'"
+  ></rds-button>
+</div>
+<div class="row mt-2">
+  <rds-data-table
+    [tableData]="ResourceTableData"
+    [tableHeaders]=" ResourceTableHeader"
+    [actions]="actions"
+  ></rds-data-table>
+</div>
+<rds-offcanvas
+  [canvasTitle]="'New Identity Resource'"
+  [offId]="'addnewIdentityresource'"
+  [offcanvaswidth]="550"
+  [placement]="'end'"
+>
+  <rds-nav-tab
+    [navtabsItems]="navtabsItems"
+    [activepage]="activePage"
+    [horizontalAlignment]="'start'"
+    [verticalAlignment]="false"
+    [pills]="false"
+    [tabs]="true"
+    [fill]="false"
+    [justified]="false"
+  >
+    <div naveContent class="row tab-content m-2" id="nav-tabContent">
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 0}"
+        id="Basics"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <rds-comp-basic-resource
+          (onBsicResourceSave)="SaveBasicResource($event)"
+        ></rds-comp-basic-resource>
+      </div>
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 1}"
+        id="Claim"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <rds-comp-claims
+          [ClaimData]="claimData"
+          (onClaimResourceSave)="SaveClaimResource($event)"
+        ></rds-comp-claims>
+      </div>
+    </div>
+  </rds-nav-tab>
+</rds-offcanvas>
+<rds-offcanvas
+  [canvasTitle]="'Edit Identity Resource'"
+  [offId]="'EditIdentityresource'"
+  [offcanvaswidth]="600"
+  [placement]="'end'"
+>
+  <rds-nav-tab
+    [navtabsItems]="navtabsItemsEdit"
+    [activepage]="activePage"
+    [horizontalAlignment]="'start'"
+    [verticalAlignment]="false"
+    [pills]="false"
+    [tabs]="true"
+    [fill]="false"
+    [justified]="false"
+  >
+    <div naveContent class="row tab-content m-2" id="nav-tabContentEdit">
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 0}"
+        id="Basicsedit"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <basicresource
+          [ResourceData]="BasicResource"
+          (onBsicResourceSave)="SaveBasicResource($event)"
+        ></basicresource>
+      </div>
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 1}"
+        id="ClaimEdit"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <app-claims
+          [ClaimData]="claimData"
+          (onClaimResourceSave)="SaveClaimResource($event)"
+        ></app-claims>
+      </div>
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 1}"
+        id="Properties"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <app-properties [PropertyList]="Properties"></app-properties>
+      </div>
+    </div>
+  </rds-nav-tab>
+</rds-offcanvas>
 ```
 
 </div>

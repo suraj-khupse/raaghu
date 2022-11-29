@@ -100,7 +100,7 @@ title: "Pages > Settings"
             aria-labelledby="nav-home-tab"
           >
             <div class="row">
-              <app-rds-comp-tenant-management></app-rds-comp-tenant-management>
+              <rds-comp-tenant-management></rds-comp-tenant-management>
             </div>
           </div>
           <div
@@ -110,7 +110,7 @@ title: "Pages > Settings"
             aria-labelledby="nav-home-tab"
           >
             <div class="row">
-              <app-rds-comp-user-management></app-rds-comp-user-management>
+              <rds-comp-user-management></rds-comp-user-management>
             </div>
           </div>
           <div
@@ -120,7 +120,7 @@ title: "Pages > Settings"
             aria-labelledby="nav-home-tab"
           >
             <div class="row">
-              <app-rds-security></app-rds-security>
+              <rds-security></rds-security>
             </div>
           </div>
           <div
@@ -130,7 +130,7 @@ title: "Pages > Settings"
             aria-labelledby="nav-home-tab"
           >
             <div class="row">
-              <app-rds-comp-email></app-rds-comp-email>
+              <rds-comp-email></rds-comp-email>
             </div>
           </div>
           <div
@@ -140,7 +140,7 @@ title: "Pages > Settings"
             aria-labelledby="nav-home-tab"
           >
             <div class="row">
-              <app-rds-comp-invoice></app-rds-comp-invoice>
+              <rds-comp-invoice></rds-comp-invoice>
             </div>
           </div>
           <div
@@ -150,7 +150,7 @@ title: "Pages > Settings"
             aria-labelledby="nav-home-tab"
           >
             <div class="row">
-              <app-rds-comp-other-settings></app-rds-comp-other-settings>
+              <rds-comp-other-settings></rds-comp-other-settings>
             </div>
           </div>
         </div>

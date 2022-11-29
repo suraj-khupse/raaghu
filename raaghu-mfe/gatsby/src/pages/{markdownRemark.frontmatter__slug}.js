@@ -14,7 +14,7 @@ export default function Template({
   const elementsList = JSON.parse(JSON.stringify(data.allDirectory.nodes)); 
 
   const componentsList = [];
-  const componentsExcludesList = ["-shimmer", "nents","client-basics","rds-page-"];
+  const componentsExcludesList = ["-shimmer", "nents","client-basics","rds-page-","edition-table","demoui","dynamic-enity-properties","tenant-basic-profile-right","tenant-features","user-basic-profile-right"];
 
   const elementsLists = [];
 
@@ -94,7 +94,9 @@ export default function Template({
   const pageLists = [];
   // find out pages names.
   const pageexcludesList = [
-    "demo-ui"  
+    "demo-ui","careers","contact-us" ,"forgot-password","frequently-asked-questions","login","member-activity",
+    "monthly-summary","order-details","order-summary","page-not-found","product","product-details","profile-settings",
+    "subscription","tenant-new","store-front"
   ];
   // elementsList.forEach((item, index, self) => {
   //   if (

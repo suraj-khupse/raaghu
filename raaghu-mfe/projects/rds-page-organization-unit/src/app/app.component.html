@@ -89,11 +89,11 @@
           <div class="col-md-12 d-flex flex-row">
             <div>
               <rds-button [label]="translate.instant('Cancel')" type="button" [size]="'small'"
-                [colorVariant]="'primary'" [outlineButton]="true" data-bs-dismiss="offcanvas">
+                [colorVariant]="'primary'" [isOutline]="true" data-bs-dismiss="offcanvas">
               </rds-button>
             </div>
             <div *ngIf="addedDataMember">
-              <rds-button [label]="translate.instant('Save')" [disabled]="!selectedUsers||selectedUsers.length==0"
+              <rds-button [label]="translate.instant('Save')" [isDisabled]="!selectedUsers||selectedUsers.length==0"
                 type="button" [size]="'small'" class="px-2" [colorVariant]="'primary'" (click)="pushUser()"
                 data-bs-dismiss="offcanvas" data-bs-target="#addUserModal">
               </rds-button>
@@ -121,11 +121,11 @@
           <div class="col-md-12 d-flex flex-row">
             <div>
               <rds-button [label]="translate.instant('Cancel')" type="button" [size]="'small'"
-                [colorVariant]="'primary'" [outlineButton]="true" data-bs-dismiss="offcanvas">
+                [colorVariant]="'primary'" [isOutline]="true" data-bs-dismiss="offcanvas">
               </rds-button>
             </div>
             <div *ngIf="addedDataRole">
-              <rds-button [label]="translate.instant('Save')" [disabled]="!selectedRoles||selectedRoles.length==0"
+              <rds-button [label]="translate.instant('Save')" [isDisabled]="!selectedRoles||selectedRoles.length==0"
                 type="button" [size]="'small'" class="px-2" [colorVariant]="'primary'" (click)="pushRole()"
                 data-bs-dismiss="offcanvas" data-bs-target="#addRoleModal">
               </rds-button>
@@ -160,11 +160,11 @@
   <div class="footer-buttons my-2">
     <div class="row">
       <div class="col-md-12">
-        <rds-button [label]="translate.instant('Cancel')" (click)="onCancelOrganisation()" [outlineButton]="true"
+        <rds-button [label]="translate.instant('Cancel')" (click)="onCancelOrganisation()" [isOutline]="true"
           type="button" [colorVariant]="'primary'" [size]="'small'" data-bs-target="#addNodeOffcanvas"
           data-bs-dismiss="offcanvas">
         </rds-button>
-        <rds-button [disabled]="!nodeForm.valid" [label]="translate.instant('Save')" [submit]="true" type="submit"
+        <rds-button [isDisabled]="!nodeForm.valid" [label]="translate.instant('Save')" [submit]="true" type="submit"
           [size]="'small'" class="px-2" [colorVariant]="'primary'" (click)="saveNode(nodeForm)">
         </rds-button>
       </div>

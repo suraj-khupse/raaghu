@@ -11,6 +11,7 @@ title: "Components > Linked Accounts"
 
 <p>A card useful to link accounts by adding credentials of a user</p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,13 +39,13 @@ title: "Components > Linked Accounts"
 <div class="row m-0">
 
 ```html
-<app-rds-linked-accounts>
+<rds-linked-accounts>
 [recordsPerpage]="",
 [pagination]="",
 [TenantName]="",
 [tenancyName]="",
 [linkedAccount]=""
-</app-rds-linked-accounts>
+</rds-linked-accounts>
 ```
 </div>
 </div>

@@ -1,18 +1,25 @@
 <div class="">
   <div class="row">
-    <div class="col-md-12 text-end pb-3 desktop-btn">
+      <div class="col-md-8">
+        <ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+          <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+        </ng-container>
+    </div>
+    <div class="col-md-4 text-end pb-3 desktop-btn">
       <rds-button [label]="translate.instant('NEW ROLE')" [showLoadingSpinner]="showLoadingSpinner" type="button"
         style="float: right" [size]="'small'" [colorVariant]="'primary'" (click)="newRole($event)" [icon]="'plus'"
         iconHeight="12px" iconWidth="12px" class="ms-2">
       </rds-button>
       <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [isFabIcon]="true" icon="refresh"
-        class="ms-2" (click)="getRoles()" iconHeight="18px" iconWidth="26px"  buttonType="iconOnly"  [tooltipPlacement]="'bottom'" [tooltipTitle]="'Refresh Filter'">
+        class="ms-2" (click)="getRoles()" iconHeight="18px" iconWidth="26px"  buttonType="iconOnly"  [tooltipPlacement]="'bottom'" [tooltipTitle]="'Refresh'">
       </rds-button>
       <rds-button [label]="translate.instant('FILTER BY PERMISSIONS')" type="button"
         (click)="filterByPermission($event)" [size]="'small'" [colorVariant]="'primary'" [isOutline]="true"
         class="ms-2 px-2">
       </rds-button>
     </div>
+    </div>
+    <div class="row">
     <div class="col-md-12">
       <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
         <div class="table-responsive">
@@ -43,19 +50,19 @@
       <div class="tab-pane fade py-2" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
         aria-labelledby="nav-home-tab">
         <div class="col-md-12 pt-3">
-          <rds-search-input placeholder="Search" icon="search" size="small"> </rds-search-input>
+          <rds-search-input placeholder="Search" (keyup)="filterPermissions($event)" icon="search" size="small"> </rds-search-input>
         </div>
         <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
           (getAllSelectedNodes)="getSelectedPermissionList($event)" [selectAllLabel]="'Select Permissions'">
         </rds-comp-permission-tree>
 
-       
+
         <div class="footer-buttons my-2">
-            <rds-banner 
-              [bannerText]="translate.instant('If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!')"
-              [sticky]="false" position="bottom" colorVariant="primary"></rds-banner>
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [isOutline]="true" [colorVariant]="'primary'"
-            [size]="'small'" data-bs-dismiss="offcanvas">
+          <rds-banner
+            [bannerText]="translate.instant('If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!')"
+            [sticky]="false" position="bottom" colorVariant="primary"></rds-banner>
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [isOutline]="true"
+            [colorVariant]="'primary'" [size]="'small'" data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
             [isDisabled]="EnableTreeSave" (click)="save()">
@@ -70,18 +77,18 @@
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'PermissionOffcanvas'" [offcanvaswidth]="550"
   [placement]="'end'" *ngIf="viewCanvas" (onClose)="closeFilterPermission()">
   <div class="col-md-12 pt-3">
-    <rds-search-input placeholder="Search" icon="search" size="small"> </rds-search-input>
+    <rds-search-input placeholder="Search" icon="search" (keyup)="filterPermissions($event)" size="small">
+    </rds-search-input>
   </div>
   <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="SelectedPermissionValues"
     (getAllselectedPermissions)="getFilterPermissionList($event)" [selectAllLabel]="'Select Permissions'">
   </rds-comp-permission-tree>
   <div class="footer-buttons my-2">
-    <rds-button [label]="translate.instant('Cancel')" (click)="closeFilterPermission()"
-      [colorVariant]="'primary'" [size]="'small'" [isOutline]="true" data-bs-dismiss="offcanvas">
+    <rds-button [label]="translate.instant('Cancel')" (click)="closeFilterPermission()" [colorVariant]="'primary'"
+      [size]="'small'" [isOutline]="true" data-bs-dismiss="offcanvas">
     </rds-button>
-    <rds-button [label]="translate.instant('Select')" [class.disabled]="disableButton()" class="ms-2" [colorVariant]="'primary'" [size]="'small'" [id]="'savePermission'"
-      [isDisabled]="!selectedFilterPermissionList"
-      (click)="saveFilterPermission()">
+    <rds-button [label]="translate.instant('Select')" class="ms-2" [colorVariant]="'primary'" [size]="'small'"
+      [id]="'savePermission'" (click)="saveFilterPermission()">
     </rds-button>
   </div>
 </rds-offcanvas>
@@ -104,11 +111,12 @@
         </rds-comp-permission-tree>
 
         <div class="footer-buttons my-2">
-          <rds-button [label]="translate.instant('Cancel')" (click)="close()"  [isOutline]="true" [colorVariant]="'secondary'"
-            data-bs-dismiss="offcanvas">
+          <rds-button [label]="translate.instant('Cancel')" (click)="close()" [isOutline]="true"
+            [colorVariant]="'secondary'" data-bs-dismiss="offcanvas">
           </rds-button>
           <rds-button [label]="translate.instant('Save')" class="save-btn" [colorVariant]="'primary'"
-            [isDisabled]="!selectedPermissionList||selectedPermissionList.length===0||!selectedPermissionList[0].selected" (click)="save()">
+            [isDisabled]="!selectedPermissionList||selectedPermissionList.length===0||!selectedPermissionList[0].selected"
+            (click)="save()">
           </rds-button>
         </div>
       </div>
@@ -116,7 +124,3 @@
     </div>
   </rds-nav-tab>
 </rds-offcanvas>
-
-<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
-  <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-</ng-container>

@@ -2,7 +2,7 @@
   <div [ngClass]="flexClass">
     <ul class="nav mobile-ul-tabs" [ngClass]="classes">
       <ng-container *ngFor="let item of navtabsItems; index as i">
-        <li class="nav-item mobile-nav-item p-0" *ngIf="!item.hide" >
+        <li class="nav-item mobile-nav-item p-0 px-2" *ngIf="!item.hide" >
           <a class="nav-link" [class.active]="activeTab==i" aria-current="page" href="#" (click)="onClick(i)"
             [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols"
             [class.disabled]="item.disabled">
@@ -20,3 +20,4 @@
     <ng-content select="[naveContent]" class="vertical-class"></ng-content>
   </div>
 </div>
+

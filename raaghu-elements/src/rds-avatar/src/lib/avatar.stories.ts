@@ -52,11 +52,16 @@ Default.args = {
 };
 
 export const profile = Template.bind({});
-profile.parameters = { controls: { include: ['height', 'withProfilePic', 'profilePic'] } };
+profile.parameters = { controls: { include: ['height', 'withProfilePic','firstName', 'lastName', 'profilePic','verticallyAlligned','subTitle','profileContentAlign'] } };
 profile.args = {
   height: '15',
   withProfilePic: true,
-  profilePic: 'https://t4.ftcdn.net/jpg/04/10/43/77/240_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg'
+  firstName: 'Allen',
+  lastName: 'Russel',
+  profilePic: 'https://t4.ftcdn.net/jpg/04/10/43/77/240_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
+  verticallyAlligned:false,
+  subTitle:'host',
+  profileContentAlign:true
 };
 
 export const avtarWithHorizontallyAllignedInfo = avatarWithInfoTemplate.bind({});

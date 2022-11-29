@@ -5,10 +5,13 @@
         <div class="col-md-6">
           <div class="col-md-12 col-sm-12">
             <div class="form-group mt-3">
-              <rds-select-list [(ngModel)]="languageName" [value]="languageName" [placeholder]="'Select Language'"
-                labelPosition="top" ngDefaultControl [label]="translate.instant('Language')" id="select-listlanguage"
-                name="languageName" #language="ngModel" required [itemList]="languageNames">
-              </rds-select-list>
+              <div class="mb-2">
+                <rds-label [label]="translate.instant('Language Name')"></rds-label>
+              </div>
+              <rds-dropdownlist [placeholder]="translate.instant('Select Language')" [borderDropdown]="true" required
+              class="text-dark" [id]="'select-listlanguage'" [(ngModel)]="selectedLanguage.countryCode" [listItems]="languageNames"
+             [value]="selectedLanguage.countryCode" (onSelect)="onLanguageSelect($event)" ngDefaultControl name="selectedLanguage.countryCode"  #language="ngModel">
+            </rds-dropdownlist>
               <div class="form-control-feedback" *ngIf="language.errors && (language.dirty || language.touched)">
                 <span class="text-danger" *ngIf="language.errors.required">{{
                   "language is
@@ -29,7 +32,7 @@
               </rds-select-list> -->
               <div class="form-group mt-3">
                 <div class="mb-2">
-                  <rds-label label="Country Code"></rds-label>
+                  <rds-label [label]="translate.instant('Country Code')"></rds-label>
                 </div>
                 <rds-dropdownlist [icon]="selectedLanguage.icon" [borderDropdown]="true" class="text-dark"
                   [id]="'country-code-dropdown'" [placeholder]="translate.instant('Country Code')"

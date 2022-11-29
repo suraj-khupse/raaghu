@@ -4,12 +4,17 @@ date: "2019-05-04"
 title: "Components > Edition-new-features"
 ---
 
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="../assets/css/style-elements.css">
 
-### Edition-new-features
+
+### Edition New Features
 
 <p>Allows a user to enable different checkboxes according to requirements</p>
 
 <section class="py-4">
+ <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,9 +42,9 @@ title: "Components > Edition-new-features"
 
 ```html
  
-<app-rds-comp-edition-new-features
+<rds-comp-edition-new-features
   [EditionList]="EditionList"
-></app-rds-comp-edition-new-features>
+></rds-comp-edition-new-features>
 ```
 </div>
 </div>

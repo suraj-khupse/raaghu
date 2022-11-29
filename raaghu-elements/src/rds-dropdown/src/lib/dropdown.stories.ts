@@ -37,7 +37,6 @@ const Template: Story<RdsDropdownComponent> = (args: RdsDropdownComponent) => ({
    [role]="role"
    role= 'dropdown-button'
   [colorVariant]="colorVariant"
-   (click)="onclick($event,item)"
    >
     </rds-dropdown>`,
 });

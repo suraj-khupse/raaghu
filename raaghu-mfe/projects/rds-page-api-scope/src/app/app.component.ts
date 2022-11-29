@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { ComponentLoaderOptions } from '../../../libs/shared/src/public-api';
 declare var bootstrap: any;

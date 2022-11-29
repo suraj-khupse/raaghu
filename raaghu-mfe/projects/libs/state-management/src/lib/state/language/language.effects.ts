@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
 import { AlertService } from "@libs/shared";
-import { deleteLanguage } from "@libs/state-management";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { LanguageServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
 import { from, of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
-import { getCountryList, getCountryListSuccess, getLanguageFailure, getLanguages, getLanguageSuccess, saveLanguage, saveLanguageSuccess, setDefaultLanguage, setDefaultLanguageForUI } from "./language.actions";
+import { deleteLanguage, getCountryList, getCountryListSuccess, getLanguageFailure, getLanguages, getLanguageSuccess, saveLanguage, saveLanguageSuccess, setDefaultLanguage, setDefaultLanguageForUI } from "./language.actions";
 
 @Injectable()
 export class LanguageEffects {

@@ -37,7 +37,6 @@ export class RdsColorPickerComponent implements OnInit {
 
   changedValue(event: any) {
     this.onItemClick.emit({ evnt: event, item: event.target.value });
-    console.log(event.target.value);
     // this.onChange(event.target.value)
     // this.onTouched()
   }

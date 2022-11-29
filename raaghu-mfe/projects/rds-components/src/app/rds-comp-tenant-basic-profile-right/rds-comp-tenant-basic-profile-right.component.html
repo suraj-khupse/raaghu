@@ -48,8 +48,8 @@
                 [placeholder]="translate.instant('Enter Password')" [isRequired]=true #tenantName="ngModel">
               </rds-input>
              
-              <div class="form-control-feedback" *ngIf="tenancyName.errors && (tenancyName.dirty || tenancyName.touched)">
-                <span class="text-danger" *ngIf="tenancyName.errors.required">{{"Password is required"|translate}}</span>
+              <div class="form-control-feedback" *ngIf="tenantName.errors && (tenantName.dirty || tenantName.touched)">
+                <span class="text-danger" *ngIf="tenantName.errors.required">{{"Password is required"|translate}}</span>
               </div>
             </div>
           </div>
@@ -85,15 +85,16 @@
             </div>
           </div>
       </form>
+      <div class=" action-buttons w-100 my-2 sm-p-0">
+        <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
+          (click)="onCanceled()" data-bs-dismiss="offcanvas">
+        </rds-button>
+        <rds-button [label]="translate.instant('CREATE')"
+          [isDisabled]="!tenantCreationForm.valid"
+          [size]="'small'" class="ms-2" [colorVariant]="'primary'" (click)="next(tenantCreationForm)" [showLoadingSpinner]="buttonSpinner">
+        </rds-button>
+      </div>
     </div>
-    <div class="position-fixed bottom-0 action-buttons w-100 my-2 sm-p-0">
-      <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
-        (click)="onCanceled()" data-bs-dismiss="offcanvas">
-      </rds-button>
-      <rds-button [label]="translate.instant('CREATE')"
-        [isDisabled]="!tenantCreationForm.valid"
-        [size]="'small'" class="ms-2" [colorVariant]="'primary'" (click)="next(tenantCreationForm)" [showLoadingSpinner]="buttonSpinner">
-      </rds-button>
-    </div>
-  </div>
+   
+</div>
   <rds-comp-tenant-information-shimmer *ngIf="editShimmer"></rds-comp-tenant-information-shimmer>

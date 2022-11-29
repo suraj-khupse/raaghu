@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'rds-range',
   templateUrl: './rds-range.component.html',
   styleUrls: ['./rds-range.component.scss']
 })
-export class RdsRangeComponent implements OnInit {
+export class RdsRangeComponent implements AfterViewInit {
 @Input() value: number = 0;
 
   @Input() min = 0
@@ -27,18 +27,11 @@ export class RdsRangeComponent implements OnInit {
   rangeZIndex2!: number;     
 
   constructor() { }
-
-  ngOnInit(): void {
-    this.value;
-    this.sliderTrack = document.querySelector('.slider-track') as HTMLDivElement
-    this.sliderOne = document.getElementById('slider1') as HTMLInputElement
+  ngAfterViewInit(): void {
+    this.sliderTrack = document.querySelector('.slider-track') as HTMLDivElement;
+    this.sliderOne = document.getElementById('slider1') as HTMLInputElement;
+    this.rangeone();
     this.fillColor();
-
-
-  }
-
-  writeValue(obj: any): void {
-    this.value = obj;
   }
 
   rangeone() {

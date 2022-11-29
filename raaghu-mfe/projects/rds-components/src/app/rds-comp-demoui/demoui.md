@@ -11,8 +11,7 @@ title: "Components > demoui"
 
  <section class="py-5">
         <div class="ps-5">
-            <h3>The component is currently down under construction</h3>
-            <img src="\images\under-contruction.png" class="img-fluid ps-5">
+                       <img src="\images\under-contruction.png" class="img-fluid ps-5">
         </div>
   </section>
                                                                                               

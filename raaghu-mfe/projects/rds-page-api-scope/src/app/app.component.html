@@ -27,9 +27,9 @@
       </rds-nav-tab>
     </div>
     <div class="">
-      <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [outlineButton]="true" [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
+      <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [isOutline]="true" [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
       </rds-button>
-      <rds-button [label]="translate.instant(getBtnName())" [colorVariant]="'primary'"   [size]="'small'" [disabled]="!scope.basicInfo" (click)="save()"></rds-button>
+      <rds-button [label]="translate.instant(getBtnName())" [colorVariant]="'primary'"   [size]="'small'" [isDisabled]="!scope.basicInfo" (click)="save()"></rds-button>
     </div>
   </rds-offcanvas>
 </ng-container>

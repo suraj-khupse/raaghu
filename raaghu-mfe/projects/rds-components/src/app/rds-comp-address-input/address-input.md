@@ -13,6 +13,7 @@ title: "Components > Address-Input"
 
 <p>Enables a user to add/edit description on relevant address with respective location </p>
  <section class="py-4">
+ <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

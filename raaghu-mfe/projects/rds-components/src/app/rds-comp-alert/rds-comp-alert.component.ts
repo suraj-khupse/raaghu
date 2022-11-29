@@ -4,6 +4,7 @@ export interface ToastEvent {
   type: EventTypes;
   title: string;
   message: string;
+  sticky:boolean;
 }
 export enum EventTypes {
   Success = 'success',

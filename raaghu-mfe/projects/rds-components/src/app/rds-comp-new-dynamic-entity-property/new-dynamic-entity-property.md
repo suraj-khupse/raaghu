@@ -9,8 +9,9 @@ title: "Components > New Dynamic Entity Property"
 
 #### New Dynamic Entity Property
 
-<p>provides a dropdown selection on entity and property</p>
-<section class="py-4">                                                                                             
+<p>Provides a dropdown selection on entity and property</p>
+<section class="py-4">    
+    <h6>Default</h6>                                                                                         
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -39,10 +40,10 @@ title: "Components > New Dynamic Entity Property"
 
 ```html
 
-<app-rds-comp-new-dynamic-entity-property
+<rds-comp-new-dynamic-entity-property
 [entityNames]="entityNames"
 [parameterList]="parameterList"
-></app-rds-comp-new-dynamic-entity-property>
+></rds-comp-new-dynamic-entity-property>
 ```
 </div>
 </div>

@@ -37,9 +37,9 @@ title: "Components > Client-Basics"
 <div class="row m-0">
 
 ```html
- <app-rds-comp-client-basics
+ <rds-comp-client-basics
   [clientInfo]="clientInfo"
-></app-rds-comp-client-basics>   
+></rds-comp-client-basics>   
 ```
 </div>
 </div>

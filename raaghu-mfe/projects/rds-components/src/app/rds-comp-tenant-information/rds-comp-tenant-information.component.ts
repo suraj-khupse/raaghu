@@ -16,7 +16,7 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
   @ViewChild('tenantCreationForm') tenantInfoForm: NgForm;
   @Input() showEmail: boolean = true;
   @Input() editShimmer: boolean = false;
-  @Input() buttonSpinner: boolean =true;
+  @Input() buttonSpinner: boolean = true;
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -56,15 +56,21 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
       this.tenantData['imageUrl'] = '../assets/edit-pic.png';
       this.tenantData['subscriptionEndDate'] = null;
     }
-
+    if (this.tenantData && this.tenantData.edition) {
+      this.editionList.forEach((res: any) => {
+        if (res && +res.value===+this.tenantData.edition) {
+          this.tenantData.displayText = res.some;
+        }
+      })
+    }
   }
 
   next(tenantCreationForm: NgForm): void {
     tenantCreationForm.form.markAllAsTouched();
-this.buttonSpinner=true;
+    this.buttonSpinner = true;
 
     if (!tenantCreationForm || tenantCreationForm.invalid) {
-      
+
       return;
     }
     this.tenantInfo.emit({ tenant: this.tenantData, next: true });
@@ -77,9 +83,9 @@ this.buttonSpinner=true;
   }
 
   onEditionSelect(event: any): void {
-    this.tenantData.displayText = event.item.value;
-    // console.log("  this.tenantData.displayText",  this.tenantData.displayText);
-    
+    console.log(event);
+    this.tenantData.displayText = event.item.some;
+    this.tenantData.edition = event.item.value;
   }
   getImage(ev: any) {
     let FileImage = ev.target.files[0];
@@ -94,10 +100,12 @@ this.buttonSpinner=true;
     this.tenantData.subscriptionEndDate = event;
     console.log(event);
   }
-  onCanceled(){
-this.buttonSpinner=false;
-this.onCancel.emit(true);
+  onCanceled() {
+    this.buttonSpinner = false;
+    this.onCancel.emit(true);
 
   }
+
+
 }
 

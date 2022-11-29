@@ -5,7 +5,7 @@ import { AppState } from '../../app.interface';
 import { SettingsState } from './settings.reducer';
 
 
-export const settingsSelector = createFeatureSelector<AppState>('settings');
+export const settingsSelector = (state:AppState)=> state.settings
 
 
 //export const selectSettings = (state: AppState) => state.settings;
@@ -16,11 +16,11 @@ export const settingsSelector = createFeatureSelector<AppState>('settings');
 
 export const selectAllSettings = createSelector(
   settingsSelector,
-  (state: AppState) => state.settings
+  (state: SettingsState) => state.settings
 )
 
 export const selectSettingsTenantPageComboboxItems = createSelector(
   settingsSelector,
-  (state: AppState) => state.settingsComboboxItem
+  (state: SettingsState) => state.settingsComboboxItem
 );
 

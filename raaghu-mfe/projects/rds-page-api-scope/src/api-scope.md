@@ -7,10 +7,11 @@ title: "Pages > api-scope"
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="../assets/css/style-elements.css">
 
-#### Api scopes
+#### Api Scope
 
 <p></p>
-<section class="py-4">                                                                                             
+<section class="py-4">        
+    <h6>Default</h6>                                                                                     
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,94 +38,64 @@ title: "Pages > api-scope"
 <div class="row m-0">
 
 ```html
-<div class="card border-0">
-  <h5
-    class="card-header border-0 bg-transparent d-flex justify-content-between"
-  >
-    <div class="card-title fs-3">Api Scope</div>
-    <div class="card-toolbar">
-      <rds-button
-        [id]="'yes'"
-        [size]="'small'"
-        [tooltipPlacement]="'top'"
-        [colorVariant]="'primary'"
-        [label]="'NEW SCOPE'"
-        [attr.data-bs-toggle]="'offcanvas'"
-        [attr.data-bs-target]="'#addnewapiresource'"
-        [attr.aria-controls]="'addnewapiresource'"
-      ></rds-button>
-    </div>
-  </h5>
-
-  <div class="card-body">
-    <app-rds-data-table
-      [tableData]="scopeList"
-      [tableHeaders]=" scopeTableHeaders"
-      [actions]="actions"
-    ></app-rds-data-table>
-  </div>
+<div class="d-flex justify-content-end mt-2">
+  <rds-button
+    [id]="'yes'"
+    [size]="'small'"
+    [tooltipPlacement]="'top'"
+    [colorVariant]="'primary'"
+    [label]="'NEW SCOPE'"
+    [attr.data-bs-toggle]="'offcanvas'"
+    [attr.data-bs-target]="'#addnewapiresource'"
+    [attr.aria-controls]="'addnewapiresource'"
+  ></rds-button>
+</div>
+<div class="row mt-2">
+  <rds-data-table
+    [tableData]="scopeList"
+    [tableHeaders]=" scopeTableHeaders"
+    [actions]="actions"
+  ></rds-data-table>
 </div>
 
-<ng-container *ngIf="viewCanvas">
-  <rds-offcanvas
-    [canvasTitle]="'canvasTitle'"
-    [offcanvaswidth]="550"
-    [offId]="offcanvasId"
-    [placement]="'end'"
-    (onClose)="close()"
+<rds-offcanvas
+  [canvasTitle]="'NEW API SCOPE'"
+  [offId]="'addnewapiresource'"
+  [offcanvaswidth]="550"
+  [placement]="'end'"
+>
+  <rds-nav-tab
+    [navtabsItems]="navtabsItems"
+    [activepage]="activePage"
+    [horizontalAlignment]="'start'"
+    [verticalAlignment]="false"
+    [pills]="false"
+    [tabs]="true"
+    [fill]="false"
+    [justified]="false"
   >
-    <div class="section">
-      <rds-nav-tab
-        [navtabsItems]="navtabsItems"
-        [activepage]="activePage"
-        [horizontalAlignment]="'start'"
-        [verticalAlignment]="false"
-        [pills]="false"
-        [tabs]="true"
-        [fill]="false"
-        [justified]="false"
+    <div naveContent class="row tab-content m-2" id="nav-tabContent">
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 0}"
+        id="basics"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
       >
-        <div naveContent class="row tab-content m-2" id="nav-tabContent">
-          <div
-            class="tab-pane fade"
-            [ngClass]="{'show active': activePage === 0}"
-            id="basics"
-            role="tabpanel"
-            aria-labelledby="nav-home-tab"
-          >
-            <app-rdc-comp-api-scope-basics></app-rdc-comp-api-scope-basics>
-          </div>
-          <div
-            class="tab-pane fade"
-            [ngClass]="{'show active': activePage === 2}"
-            id="resources"
-            role="tabpanel"
-            aria-labelledby="nav-home-tab"
-          >
-            <app-rdc-comp-api-scope-resources></app-rdc-comp-api-scope-resources>
-          </div>
-        </div>
-      </rds-nav-tab>
+        <rdc-comp-api-scope-basics></rdc-comp-api-scope-basics>
+      </div>
+      <div
+        class="tab-pane fade"
+        [ngClass]="{'show active': activePage === 2}"
+        id="resources"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <rdc-comp-api-scope-resources></rdc-comp-api-scope-resources>
+      </div>
     </div>
-    <div class="">
-      <rds-button
-        [label]="'Cancel'"
-        [colorVariant]="'outline-primary'"
-        [size]="'small'"
-        (click)="close()"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></rds-button>
-      <rds-button
-        [label]="getBtnName()"
-        [colorVariant]="'primary'"
-        [size]="'small'"
-        [disabled]="!scope.basicInfo"
-        (click)="save()"
-      ></rds-button>
-    </div>
-  </rds-offcanvas>
-</ng-container>
+  </rds-nav-tab>
+</rds-offcanvas>
 ```
 </div>
 </div>

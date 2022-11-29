@@ -1,8 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { ComponentLoaderOptions, MfeBaseComponent, AccountServiceProxy, SendPasswordResetCodeInput } from '@libs/shared';
-import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
 declare var bootstrap: any
 @Component({

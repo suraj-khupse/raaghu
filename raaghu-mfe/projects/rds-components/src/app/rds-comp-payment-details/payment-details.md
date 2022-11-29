@@ -11,6 +11,7 @@ title: "Components > Payment-details"
 
 <p>Provides user a card on the details regarding different methods of transaction</p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,13 +39,13 @@ title: "Components > Payment-details"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-payment-details
+<rds-comp-payment-details
 cvc="123"
 cardNumber="246"
 name="abc"
 expirationDate="567"
 buttonSpinner="true">
-</app-rds-comp-payment-details>
+</rds-comp-payment-details>
 ```
 </div>
 </div>

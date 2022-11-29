@@ -39,7 +39,7 @@ title: "Components > Claims"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-claims [ClaimData]="ClaimData"></app-rds-comp-claims>   
+<rds-comp-claims [ClaimData]="ClaimData"></rds-comp-claims>   
 ```
 </div>
 </div>

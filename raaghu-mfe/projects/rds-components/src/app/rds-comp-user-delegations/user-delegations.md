@@ -37,7 +37,7 @@ title: "Components > User-delegations"
 <div class="row m-0">
 
 ```html
-<app-rds-user-delegations
+<rds-user-delegations
 [rdsDeligateTableHeader]="rdsDeligateTableHeader"
 [rdsDeligateTableData]="rdsDeligateTableData"
 [tabClosed]="false"
@@ -46,7 +46,7 @@ title: "Components > User-delegations"
 tableWidth=""
 [buttonSpinner]="true"
 tableStyle="">
-</app-rds-user-delegations>
+</rds-user-delegations>
 ```
 </div>
 </div>

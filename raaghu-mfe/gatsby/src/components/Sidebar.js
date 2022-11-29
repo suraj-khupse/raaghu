@@ -93,7 +93,7 @@ const Sidebar = (activeData) => {
 
 
   const componentsList = [];
-  const componentsExcludesList = ["-shimmer", "nents", "client-basics", "demoui", "other-settings"];
+  const componentsExcludesList = ["-shimmer", "nents", "client-basics", "demoui", "other-settings","edition-table","dynamic-enity-properties","tenant-basic-profile-right","tenant-features","user-basic-profile-right"];
   elementsList.forEach((item) => {
     if (
       item.name.includes("rds-comp") &&
@@ -156,9 +156,10 @@ const Sidebar = (activeData) => {
   const pageLists = [];
   // find out pages names.
   const pageexcludesList = [
-    "demo-ui",
+    "demo-ui","careers","contact-us" ,"forgot-password","frequently-asked-questions","login","member-activity",
+    "monthly-summary","order-details","order-summary","page-not-found","product","product-details","profile-settings",
+    "subscription","tenant-new","store-front"
   ];
-
   elementsList.forEach((item) => {
     if (
       item.name.includes("rds-page-") &&

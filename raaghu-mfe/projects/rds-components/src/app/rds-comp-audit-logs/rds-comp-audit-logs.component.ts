@@ -56,16 +56,16 @@ export class RdsCompAuditLogsComponent implements OnInit {
   status: any = '';
   browserInfo: any = '';
   statusList: any = [
-    { value: '', displayText: 'All' },
-    { value: true, displayText: 'Sucsses' },
-    { value: false, displayText: 'HasError' }]
+    { value: '', some: 'All' },
+    { value: true, some: 'Sucsses' },
+    { value: false, some: 'HasError' }]
   browserList: any = [
-    { value: '', displayText: 'Select Browser' },
-    { value: 'Chrome', displayText: 'Chrome' },
-    { value: 'Opera', displayText: 'Opera' },
-    { value: 'Edge', displayText: 'Edge' },
-    { value: 'Safari', displayText: 'Safari' },
-    { value: 'UC Browser', displayText: 'UC Browser' }]
+    { value: '', some: 'Select Browser' },
+    { value: 'Chrome', some: 'Chrome' },
+    { value: 'Opera', some: 'Opera' },
+    { value: 'Edge', some: 'Edge' },
+    { value: 'Safari', some: 'Safari' },
+    { value: 'UC Browser', some: 'UC Browser' }]
   showFilters: boolean = false;
 
   viewAuditLogsCanvas: boolean = false;
@@ -220,9 +220,11 @@ export class RdsCompAuditLogsComponent implements OnInit {
     this.sendParameterData();
   }
   exceptionModify(event) {
+    this.status = event.item.some
     this.sendParameterData();
   }
   SelectBroser(event) {
+     this.browserInfo = event.item.some
     this.sendParameterData();
   }
   sendParameterData() {

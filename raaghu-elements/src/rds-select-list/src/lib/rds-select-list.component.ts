@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Tooltip } from 'bootstrap'
 declare var bootstrap: any;
 export interface selectListItem {
@@ -18,10 +18,10 @@ export interface selectListItem {
     multi: true
   }]
 })
-export class RdsSelectListComponent implements AfterViewInit, OnChanges {
+export class RdsSelectListComponent implements AfterViewInit, OnChanges, ControlValueAccessor {
 
-  onChange!: (value: string) => void;
-  onTouched!: () => void
+  onChange = (event: string) => {};
+  onTouched = () => {};
   @Input() size: 'small' | 'medium' | 'large' = 'large';
   @Input() label: string = '';
   @Input() labelPosition: 'top' | 'bottom'  = 'top';
@@ -63,15 +63,15 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  writeValue(obj: any): void {
+  writeValue(obj: any) {
     this.value = obj;
-
   }
-  registerOnChange(fn: any): void {
+
+  registerOnChange(fn: any) {
     this.onChange = fn;
-
   }
-  registerOnTouched(fn: any): void {
+
+  registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
 

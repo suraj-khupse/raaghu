@@ -22,26 +22,27 @@ export class RdsCompLoginAttemptsComponent implements OnInit {
   @Input() public operationLogs: any = [];
   @Input() public operationLogsHeaders: TableHeader[] = [];
    showInput:boolean=false;
-
+   @Input() FilterData: any=[]
    
 
-  result:string
-  startDate:any
-  endDate:any
+  result:string;
+  endDate = new Date();
+  startDate = new Date();
+
   @Output() RefreshLoginAttemts = new EventEmitter<any>();
   @Input()
-  listItemsResult: any[] = [{ value: '', displayText: 'All'},
-  { value: 'Success', displayText: 'Success'},
-  { value: 'InvalidUserNameOrEmailAddress', displayText: 'Invalid Username or email Address'},
-  { value: 'InvalidPassword', displayText: 'Invalid Password'},
-  { value: 'UserIsNotActive', displayText: 'User is Not Active'},
-  { value: 'InvalidTenancyName', displayText: 'Invalid Tenancy name'},
-  { value: 'TenantIsNotActive', displayText: 'Tenant Is Not Active'},
-  { value: 'UserEmailIsNotConfirmed', displayText: 'User Email Is Not Confirmed'},
-  { value: 'UnknownExternalLogin', displayText: 'Unknown External Login'},
-  { value: 'LockedOut', displayText: 'Locked Out'},
-  { value: 'UserPhoneNumberIsNotConfirmed', displayText: 'User PhoneNumber IsNot Confirmed'} ]
-
+  listItemsResult: any[] = [{ value: '', some: 'All'},
+  { value: 'Success', some: 'Success'},
+  { value: 'InvalidUserNameOrEmailAddress', some: 'Invalid Username or email Address'},
+  { value: 'InvalidPassword', some: 'Invalid Password'},
+  { value: 'UserIsNotActive', some: 'User is Not Active'},
+  { value: 'InvalidTenancyName', some: 'Invalid Tenancy name'},
+  { value: 'TenantIsNotActive', some: 'Tenant Is Not Active'},
+  { value: 'UserEmailIsNotConfirmed', some: 'User Email Is Not Confirmed'},
+  { value: 'UnknownExternalLogin', some: 'Unknown External Login'},
+  { value: 'LockedOut', some: 'Locked Out'},
+  { value: 'UserPhoneNumberIsNotConfirmed', some: 'User PhoneNumber IsNot Confirmed'} ]
+ 
   ngOnInit(): void {
     this.rdsLoginTableMfeConfig = {
       name: 'RdsDataTable',
@@ -58,6 +59,15 @@ export class RdsCompLoginAttemptsComponent implements OnInit {
     };
    
   }
+
+  startDateModify(event) {
+
+    this.startDate = event;
+  }
+  endDateModify(event) {
+
+    this.endDate = event;
+  }
   ngOnChanges(changes: SimpleChanges): void {
     if (this.rdsLoginTableMfeConfig) {
       this.rdsLoginTableMfeConfig.input.tableData = this.LoginAttempts.LoginDatatable;
@@ -69,23 +79,28 @@ export class RdsCompLoginAttemptsComponent implements OnInit {
  
 Search(loginAttempt:NgForm){
   loginAttempt.form.markAllAsTouched();
-let startdate = this.startDate .toISOString()
-
-let endDate = this.endDate.toISOString()
+  let startdate = this.startDate .toISOString()
+  let endDate = this.endDate.toISOString()
+console.log(" loginAttempt.form.value == ",  loginAttempt.form.value);
   const FilterData:any={
     StartDate:startdate,
     EndDate:endDate,
-    Result:this.result,
+    Result:this.Result,
     Sorting:undefined,
     maxResultCount:10,
     SkipCount:0,
     filter:undefined
   }
 this.RefreshLoginAttemts.emit(FilterData)
+
 }
 
 onClickShowInput()  {
   this.showInput=!this.showInput;
 
+}
+
+onResultListSelect(event : any){
+this.result = event.item.some
 }
 }

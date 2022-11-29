@@ -97,7 +97,7 @@ export class UserAuthService implements OnInit {
     );
   }
 
-  unauthenticateUser(): void {
+  unauthenticateUser(reload?:boolean,returnUrl?:string): void {
     this.userAuthenticated = false;
     let customHeaders = this.requestHeaders();
     localStorage.removeItem('LoginCredential');
@@ -111,7 +111,15 @@ export class UserAuthService implements OnInit {
       customHeaders,
       null,
       () => {
-        this.getUserConfiguration('logout');
+        this.getUserConfiguration('logout'); 
+        if(reload){
+          if (returnUrl) {
+            location.href = returnUrl;
+        } else {
+            location.href = '';
+        } 
+        }      
+   
       }
     );
   }

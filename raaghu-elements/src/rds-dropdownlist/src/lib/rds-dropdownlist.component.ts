@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dropdown } from 'bootstrap'
 
@@ -7,7 +7,7 @@ import { Dropdown } from 'bootstrap'
   templateUrl: './rds-dropdownlist.component.html',
   styleUrls: ['./rds-dropdownlist.component.scss']
 })
-export class RdsDropdownlistComponent implements OnInit, OnChanges {
+export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewInit {
 
   title = 'rds-dropdownlist';
 
@@ -31,6 +31,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
   @Input() placeholder = "Filter by user"
   @Input() show: boolean = false;
   @Input() borderDropdown: boolean = false;
+  @Input() dropdownHeight!: string; 
 
   @Input() xOffset: string = '';
   @Input() yOffset: string = '';
@@ -53,6 +54,16 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
   @Input() iconshow: boolean = true;
   constructor() {
     this.isMasterSel = false;
+  }
+  ngAfterViewInit(): void {
+    const myDropdown = document.getElementById(this.id);
+    if (myDropdown) {
+      myDropdown.addEventListener('hide.bs.collapse', event => {
+        this.show = false;
+      })
+     
+    }
+
   }
 
 

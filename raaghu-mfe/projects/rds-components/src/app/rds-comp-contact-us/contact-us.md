@@ -11,6 +11,7 @@ title: "Components > Contact-us"
 
 <p>Provides a necessary details needed to describe it in a form of a message</p>
 <section class="py-4">
+<h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,7 +38,7 @@ title: "Components > Contact-us"
 <div class="row m-0">
 
 ```html
-  <app-rds-comp-contact-us></app-rds-comp-contact-us>    
+  <rds-comp-contact-us></rds-comp-contact-us>    
 ```
 </div>
 </div>

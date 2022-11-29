@@ -43,7 +43,7 @@
             <rds-button [label]="translate.instant('Cancel')" type="button" [colorVariant]="'primary'"
               [isOutline]="true" [size]="'small'" data-bs-dismiss="offcanvas" (click)="closeCanvas()">
             </rds-button>
-            <rds-button [isDisabled]="!DynamicProperyInfo" [label]="translate.instant('Save')" type="button"
+            <rds-button [isDisabled]="!DynamicProperyInfo?.dynamicProperties?.propertyName" [label]="translate.instant('Save')" type="button"
               [size]="'small'" class="px-2" [colorVariant]="'primary'" (click)="addDynamic($event)">
             </rds-button>
           </div>

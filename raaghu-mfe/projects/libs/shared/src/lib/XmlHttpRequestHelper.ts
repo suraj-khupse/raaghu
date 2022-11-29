@@ -1,5 +1,5 @@
 export class XmlHttpRequestHelper {
-    static ajax(type: string, url: string, customHeaders: any, data: any, success: any) {
+    static ajax(type: string, url: string, customHeaders: any, data: any, success: any, self = undefined) {
         let xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = () => {
@@ -8,7 +8,7 @@ export class XmlHttpRequestHelper {
                     let result = JSON.parse(xhr.responseText);
                     success(result);
                 } else if (xhr.status !== 0) {
-                    
+
                 }
             }
         };

@@ -31,7 +31,7 @@
     <div class="col-md-5">
       <div class="form-group mb-3">
         <rds-input size="medium" [value]="additionalheader.additionalheaderKey" #header_key="ngModel"
-          [placeholder]="translate.instant('Header Key')" name="headerKey" inputType="text"
+          [placeholder]="translate.instant('Header Key')" name="headerKey" inputType="text" 
           [(ngModel)]="additionalheader.additionalheaderKey" required ngDefaultControl>
         </rds-input>
         <div class="form-control-feedback" *ngIf="header_key.errors && (header_key.dirty || header_key.touched)">
@@ -41,7 +41,7 @@
     </div>
     <div class="col-md-5">
       <div class="form-group mb-3">
-        <rds-input size="medium" name="headerValue" required #header_value="ngModel"
+        <rds-input size="medium" name="headerValue" required #header_value="ngModel" 
           [value]="additionalheader.additionalheadervalue" [placeholder]="translate.instant('Header Value')"
           inputType="text" [(ngModel)]="additionalheader.additionalheadervalue" ngDefaultControl>
         </rds-input>
@@ -51,9 +51,9 @@
       </div>
     </div>
     <div class="col-md-2">
-      <rds-button [id]="'yes'" [size]="'medium'" [isDisabled]="headerForm.invalid" [colorVariant]="'primary'"
-        [label]="'add'" (click)="addWebhookHeaders(headerForm)">
-      </rds-button>
+        <rds-button [id]="'yes'" [size]="'medium'" [isDisabled]="headerForm.invalid" [colorVariant]="'primary'"
+        [label]="'Add'" (click)="addWebhookHeaders(headerForm)">
+      </rds-button> 
     </div>
   </div>
 </form>

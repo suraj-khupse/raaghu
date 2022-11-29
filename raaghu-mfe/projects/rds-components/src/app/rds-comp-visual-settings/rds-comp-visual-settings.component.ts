@@ -8,36 +8,36 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { SharedService } from '@libs/shared';
+import { AlertService, SharedService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'rds-comp-visual-settings',
   templateUrl: './rds-comp-visual-settings.component.html',
   styleUrls: ['./rds-comp-visual-settings.component.scss'],
 })
-export class RdsCompVisualSettingsComponent implements OnInit , AfterViewInit {
+export class RdsCompVisualSettingsComponent implements OnInit, AfterViewInit {
   constructor(
     public translate: TranslateService,
     private sharedService: SharedService,
+    public alertService: AlertService,
     @Inject(DOCUMENT) private document: Document,
-    
+
   ) {
     this.selectedThemeIndex = localStorage.getItem('themeIndex');
-    if(this.selectedThemeIndex == null){
+    if (this.selectedThemeIndex == null) {
       this.selectedThemeIndex = '12';
     }
-    else{
-      if(this.selectedThemeIndex == '12'){
-        this.getThemeSettings(this.selectedThemeIndex, 'default')
+    else {
+      if (this.selectedThemeIndex == '12') {
+        this.getThemeSettings(this.selectedThemeIndex, 'default', false)
       }
-      if(this.selectedThemeIndex == '7') {
-        this.getThemeSettings(this.selectedThemeIndex, 'dark')
-      } 
-      if(this.selectedThemeIndex == '4')
-      {
-        this.getThemeSettings(this.selectedThemeIndex, 'accessible')
+      if (this.selectedThemeIndex == '7') {
+        this.getThemeSettings(this.selectedThemeIndex, 'dark', false)
       }
-      
+      if (this.selectedThemeIndex == '4') {
+        this.getThemeSettings(this.selectedThemeIndex, 'accessible', false)
+      }
+
     }
   }
   ngOnInit(): void {
@@ -61,10 +61,32 @@ export class RdsCompVisualSettingsComponent implements OnInit , AfterViewInit {
       this.fixedSubHeader =
         this.visualsettingsItem[this.selectedThemeIndex].subHeader.fixedSubHeader;
     }
+    this.alertService.themes.subscribe((theme) => {
+      if (theme) {
+        if (theme === 'dark') {
+          this.selectedThemeIndex = '7';
+          this.getThemeSettings(this.selectedThemeIndex, 'dark', false)
+
+
+        } else if (theme === 'accessible') {
+          this.selectedThemeIndex = '4';
+          this.getThemeSettings(this.selectedThemeIndex, 'accessible', false)
+
+
+        } else {
+          this.selectedThemeIndex = '12';
+          this.getThemeSettings(this.selectedThemeIndex, 'default', false)
+
+        }
+        localStorage.setItem('themeIndex', this.selectedThemeIndex);
+
+      }
+
+    })
   }
 
   ngAfterViewInit(): void {
-    
+
     if (this.visualsettingsItem && this.visualsettingsItem.length > 0) {
       this.theme = this.visualsettingsItem[this.selectedThemeIndex].theme;
       this.fixedFooter = this.visualsettingsItem[this.selectedThemeIndex].footer.fixedFooter;
@@ -89,8 +111,8 @@ export class RdsCompVisualSettingsComponent implements OnInit , AfterViewInit {
   selectedThemeIndex: any = '12';
   dataLoaded = false;
   // @Input() navtabItems: any;
- navtabItems: any = [
-  
+  navtabItems: any = [
+
     { label: 'Subheader', tablink: '#nav-subheader', ariacontrols: 'nav-subheader', translateKey: 'Subheader' },
 
     { label: 'Menu', tablink: '#nav-Menu', ariacontrols: 'nav-Menu', translateKey: 'Menu' },
@@ -145,45 +167,55 @@ export class RdsCompVisualSettingsComponent implements OnInit , AfterViewInit {
       subHeader: { fixedSubHeader: this.fixedSubHeader },
     });
   }
-  getThemeSettings(index: any, theme: string | undefined) {
- 
+  getThemeSettings(index: any, theme: string | undefined, isSet: boolean = true) {
+
     if (theme) {
       this.selectedTheme = theme;
-      this.selectedThemeIndex = index;
-      const headEl = this.document.getElementsByTagName('head')[0];
-      const existingLinkEl = this.document.getElementById(
-        'client-theme'
-      ) as HTMLLinkElement;
-      const newLinkEl = this.document.createElement('link');
-
-      if (existingLinkEl) {
-        existingLinkEl.href = theme + '.css';
+      if (theme === 'default') {
+        localStorage.setItem('THEME', 'light');
       } else {
-        newLinkEl.id = 'client-theme';
-        newLinkEl.rel = 'stylesheet';
-        newLinkEl.href = theme + '.css';
-        headEl.appendChild(newLinkEl);
+        localStorage.setItem('THEME', theme);
       }
 
+      this.selectedThemeIndex = index;
+      localStorage.setItem('themeIndex', this.selectedThemeIndex);
+
+      // const headEl = this.document.getElementsByTagName('head')[0];
+      // const existingLinkEl = this.document.getElementById(
+      //   'client-theme'
+      // ) as HTMLLinkElement;
+      // const newLinkEl = this.document.createElement('link');
+
+      // if (existingLinkEl) {
+      //   existingLinkEl.href = theme + '.css';
+      // } else {
+      //   newLinkEl.id = 'client-theme';
+      //   newLinkEl.rel = 'stylesheet';
+      //   newLinkEl.href = theme + '.css';
+      //   headEl.appendChild(newLinkEl);
+      // }
+      if (isSet) {
+      this.alertService.setTheme(this.selectedTheme);
+      }
       if (this.selectedTheme === 'default') {
-      
+
         this.navtabItems = [
-         
+
           {
-            label: 'Subheader',
+            label: this.translate.instant('Subheader'),
             tablink: '#nav-subheader',
             ariacontrols: 'nav-subheader',
             translateKey: 'Subheader',
           },
           {
-            label: 'Menu',
+            label: this.translate.instant('Menu'),
             tablink: '#nav-Menu',
             ariacontrols: 'nav-Menu',
             translateKey: 'Menu',
           },
 
           {
-            label: 'Footer',
+            label: this.translate.instant('Footer'),
             tablink: '#nav-footer',
             ariacontrols: 'nav-footer',
             translateKey: 'Footer',
@@ -206,27 +238,27 @@ export class RdsCompVisualSettingsComponent implements OnInit , AfterViewInit {
     this.dataLoaded = true;
     this.selectedThemeIndex = index;
     this.indexEmitter.emit(this.selectedThemeIndex);
-    if(this.visualsettingsItem.length){
+    if (this.visualsettingsItem.length) {
       this.theme = this.visualsettingsItem[index].theme;
-    this.fixedFooter = this.visualsettingsItem[index].footer.fixedFooter;
-    this.desktopFixedHeader =
-      this.visualsettingsItem[index].header.desktopFixedHeader;
-    this.mobileFixedHeader =
-      this.visualsettingsItem[index].header.mobileFixedHeader;
-    this.darkMode = this.visualsettingsItem[index].layout.darkMode;
-  
-    this.asideSkin = this.visualsettingsItem[index].menu.asideSkin;
-    this.fixedAside = this.visualsettingsItem[index].menu.fixedAside;
-    this.allowAsideMinimizing =
-      this.visualsettingsItem[index].menu.allowAsideMinimizing;
-    this.defaultMinimizedAside =
-      this.visualsettingsItem[index].menu.defaultMinimizedAside;
-    this.hoverableAside = this.visualsettingsItem[index].menu.hoverableAside;
-    this.submenuToggle = this.visualsettingsItem[index].menu.submenuToggle;
-    this.fixedSubHeader =
-      this.visualsettingsItem[index].subHeader.fixedSubHeader;
+      this.fixedFooter = this.visualsettingsItem[index].footer.fixedFooter;
+      this.desktopFixedHeader =
+        this.visualsettingsItem[index].header.desktopFixedHeader;
+      this.mobileFixedHeader =
+        this.visualsettingsItem[index].header.mobileFixedHeader;
+      this.darkMode = this.visualsettingsItem[index].layout.darkMode;
+
+      this.asideSkin = this.visualsettingsItem[index].menu.asideSkin;
+      this.fixedAside = this.visualsettingsItem[index].menu.fixedAside;
+      this.allowAsideMinimizing =
+        this.visualsettingsItem[index].menu.allowAsideMinimizing;
+      this.defaultMinimizedAside =
+        this.visualsettingsItem[index].menu.defaultMinimizedAside;
+      this.hoverableAside = this.visualsettingsItem[index].menu.hoverableAside;
+      this.submenuToggle = this.visualsettingsItem[index].menu.submenuToggle;
+      this.fixedSubHeader =
+        this.visualsettingsItem[index].subHeader.fixedSubHeader;
     }
-    
+
   }
   getNavTabItems(): any {
     this.navtabItems.forEach((ele: any) => {

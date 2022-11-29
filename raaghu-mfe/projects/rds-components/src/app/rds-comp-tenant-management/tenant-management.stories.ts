@@ -40,7 +40,7 @@ const Template: Story<RdsCompTenantManagementComponent> = (args: RdsCompTenantMa
   });
   export const Default = Template.bind({});
   Default.args ={
-    settingsTenantEditionList:[{isFree: null, value: '', displayText: 'Not assigned', isSelected: true},
-    {isFree: true, value: '1', displayText: 'Standard', isSelected: false}
+    settingsTenantEditionList:[{isFree: null, value: '', some: 'Not assigned', isSelected: true},
+    {isFree: true, value: '1', some: 'Standard', isSelected: false}
     ],
   }

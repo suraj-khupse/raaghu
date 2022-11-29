@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { AlertService, CommonLookupServiceProxy, EditionServiceProxy } from "@libs/shared";
-import { selectAllEditions } from "@libs/state-management";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { from, of } from "rxjs";

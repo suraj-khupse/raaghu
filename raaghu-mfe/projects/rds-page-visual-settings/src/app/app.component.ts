@@ -11,7 +11,6 @@ import {
 } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.actions';
 import { selectAllVisualsettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.selector';
 import { TranslateService } from '@ngx-translate/core';
-import { selectDefaultLanguage } from '@libs/state-management';
 import { ThemesService } from 'projects/libs/themes/src/public-api';
 
 import {
@@ -21,6 +20,7 @@ import {
   style,
   animate,
 } from '@angular/animations';
+import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
 @Component({
   selector: 'app-root',

@@ -3,29 +3,18 @@ import {
   Inject,
   Injector,
   Input,
-  OnInit,
   SimpleChanges,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
   ComponentLoaderOptions,
-  LinkedUserDto,
   MfeBaseComponent,
   SharedService,
   UserAuthService,
-  UserDelegationServiceProxy,
 } from '@libs/shared';
 import { Store } from '@ngrx/store';
-import {
-  changePassword,
-  getLanguages,
-  getProfile,
-  selectAllLanguages,
-  selectDefaultLanguage,
-  selectProfileInfo,
-  setDefaultLanguageForUI,
-} from '@libs/state-management';
+
 import {
   deleteDelegations,
   getDelegations,
@@ -62,7 +51,13 @@ import { DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
 import { RouterOutlet } from '@angular/router';
 import * as moment from 'moment';
+import { getProfilepic } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
 import { selectAllVisualsettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.selector';
+import { getVisualsettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.actions';
+import { getLanguages, setDefaultLanguageForUI } from 'projects/libs/state-management/src/lib/state/language/language.actions';
+import { changePassword, getProfile } from 'projects/libs/state-management/src/lib/state/mysettings/mysettings.action';
+import { selectAllLanguages, selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
+import { selectProfileInfo } from 'projects/libs/state-management/src/lib/state/mysettings/mysettings.selector';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -70,7 +65,7 @@ declare var bootstrap: any;
   styleUrls: ['./sidenav.component.scss'],
   animations: [slideInAnimation],
 })
-export class SidenavComponent extends MfeBaseComponent implements OnInit {
+export class SidenavComponent extends MfeBaseComponent {
   prepareRoute(outlet: RouterOutlet) {
     return (
       outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
@@ -98,13 +93,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       {
         displayName: 'IP Address',
         key: 'clientIpAddress',
-        dataType: 'text',
-        dataLength: 30,
-        required: true,
-      },
-      {
-        displayName: 'Client',
-        key: 'clientName',
         dataType: 'text',
         dataLength: 30,
         required: true,
@@ -158,7 +146,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       id: '',
       permissionName: 'Pages.Tenant.Dashboard',
       icon: 'home',
-      path: '/pages/dashboard', 
+      path: '/pages/dashboard',
       description: 'Statistics and reports',
       descriptionTranslationKey: 'Statistics and reports',
     },
@@ -183,7 +171,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       descriptionTranslationKey:
         'Manage editions and features of the application',
     },
-    // { label: 'Api Scopes', id: 'ApiScope', permissionName: '', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
     {
       label: 'Administration',
       labelTranslationKey: 'Administration',
@@ -243,7 +230,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           descriptionTranslationKey: '',
         },
         {
-          label: 'subscription',
+          label: 'Subscription',
           labelTranslationKey: 'subscription',
           id: '',
           permissionName: 'Pages.Administration.Tenant.SubscriptionManagement',
@@ -255,7 +242,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           label: 'Maintenance',
           labelTranslationKey: 'Maintenance',
           id: '',
-          permissionName: 'Pages.Administration.Host.Maintenance',
+          permissionName: '',
           icon: 'maintenance',
           path: '/pages/maintenance',
           description: 'Statistics and reports',
@@ -361,6 +348,10 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   counter: number = 0;
   isLightMode: boolean = true;
   fixedHeader: boolean = true;
+  tenancyTableData = [];
+  sidenavItems = [];
+  permissions: any;
+
   constructor(
     private router: Router,
     private store: Store,
@@ -372,100 +363,37 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     private theme: ThemesService,
     @Inject(DOCUMENT) private document: Document
   ) {
- 
+
     super(injector);
     this.index = localStorage.getItem('themeIndex');
-    if(this.index == null){
+    if (this.index == null) {
       this.index = '12'
     }
   }
 
 
-  ngAfterViewInit() {}
-  getdata() {
-    this.store.select(selectTenancyData).subscribe((res) => console.log(res));
+  ngAfterViewInit() {
+
   }
-  tenancyTableData = [];
-  sidenavItems = [];
 
-  permissions: any;
-  selectAllvisualSettings(){
-    this.store.select(selectAllVisualsettings).subscribe((res: any) => {
-      if (res && res.length > 0) {
-        const header = JSON.parse(
-          res[this.index].header.minimizeDesktopHeaderType
-        );
-        const rdsTopNavigationMfeConfig = this.rdsTopNavigationMfeConfig;
-        if (header) {
-          rdsTopNavigationMfeConfig.input.FixedHeader = header.desktop;
-          if (header.desktop) {
-            this.document.getElementById('FixedHeaderOverFlow').style.overflow =
-              'scroll';
-            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
-          } else {
-            this.document.getElementById('FixedHeaderOverFlow').style.overflow =
-              'inherit';
-            document.getElementsByTagName('html')[0].style.overflow = 'inherit';
-          }
-          this.FixedHeaderBody = header.desktop;
-        }
-        this.collapseRequired = res[this.index].menu.allowAsideMinimizing;
-
-        if (res[this.index].menu.defaultMinimizedAside) {
-          if (this.sideMenuCollapsed == false) {
-            document.getElementById('sidenavCollapsed').click();
-          }
-        } else {
-          if (this.sideMenuCollapsed == true) {
-            document.getElementById('sidenavCollapsed').click();
-          }
-        }
-
-        //  const aside = document.getElementById('aside');
-        // if (
-        //   res[this.index].menu.hoverableAside 
-        // ) {
-        //   aside.addEventListener('mouseenter', () => {
-        //     if (this.sideMenuCollapsed == true) {
-        //       document.getElementById('sidenavCollapsed').click();
-        //     }
-        //   });
-        //   aside.addEventListener('mouseleave', () => {
-        //     if (
-        //       this.sideMenuCollapsed == false
-        //     ) {
-        //       document.getElementById('sidenavCollapsed').click();
-        //     } 
-        //   });
-        // }
-
-        const selectedTheme = res[this.index].menu.asideSkin;
-        this.rdsTopNavigationMfeConfig = rdsTopNavigationMfeConfig;
-        this.theme.theme = selectedTheme;
-      }
-    });
-  }
 
   ngOnInit(): void {
+    this.store.dispatch(getVisualsettings());
+    let selectedTheme = localStorage.getItem('THEME');
+    this.setTheme(selectedTheme);
     this.userAuthService.index$.subscribe((value) => {
       this.index = value;
-      this.selectAllvisualSettings();    
+      // this.selectAllvisualSettings();
     });
-    
-    this.selectAllvisualSettings()
-    const selectedTheme = localStorage.getItem('THEME');
-    if (selectedTheme == "undefined" || selectedTheme == '' || selectedTheme == undefined || selectedTheme == null) {
-      this.theme.theme = 'light';
-      localStorage.setItem('THEME', 'light');
-      this.isLightMode = true;
-    } else {
-      this.theme.theme = selectedTheme;
-      if (selectedTheme == 'light') {
-        this.isLightMode = true;
-      } else {
-        this.isLightMode = false;
+    this.alertService.themes.subscribe((theme) => {
+      if (theme) {
+        this.setTheme(theme);
       }
-    }
+
+    })
+
+    // this.selectAllvisualSettings()
+
     const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
     if (tenancy) {
       this.tenancy = tenancy.name;
@@ -511,7 +439,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         selectedMenuDescription: this.selectedMenuDescription,
         LoginAttempts: this.LoginAttempts,
         isPageWrapper: true,
-        profilePic: this.profilePic,
+        // profilePic: this.profilePic,
         profileData: this.profileData,
         rdsDeligateTableData: this.rdsDeligateTableData,
         offCanvasId: this.offCanvasId,
@@ -531,7 +459,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         toggleEvent: () => {
           var element = document.getElementById('sidebar');
           element.style.display =
-            element.style.display === 'none' ? 'block' : 'none';
+            element.style.display === 'none' || element.style.display == '' || !element.style.display ? 'block' : 'none';
         },
         onLanguageSelection: (lan) => {
           this.translate.use(lan);
@@ -594,8 +522,11 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         onUpdateNotificationSettings: (data: any) => {
           this.store.dispatch(updateNotificationSettings(data));
         },
-      },
-    };
+        onProfileData: (event: any) => {
+          this.store.dispatch(getProfilepic());
+        }
+      }
+    }
     this.store.dispatch(getNotificationSettings());
     this.store.select(selectNotificationSettings).subscribe((res: any) => {
       if (res && res !== null) {
@@ -654,6 +585,9 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           if (res.defaultLanguageName === item.name) {
             this.selectedLanguage.language = item.displayName;
             this.selectedLanguage.icon = item.icon.split(' ')[1];
+            const mfe = this.rdsTopNavigationMfeConfig;
+            mfe.input.selectedLanguage = { ...this.selectedLanguage };
+            this.rdsTopNavigationMfeConfig = mfe;
           }
           languages.push(item.name);
         });
@@ -665,11 +599,11 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         // this.translate.addLangs(languages);
         const mfe = this.rdsTopNavigationMfeConfig;
         mfe.input.languageItems = [...this.languageItems];
-        mfe.input.defaultLanguage = this.selectedLanguage;
+        mfe.input.selectedLanguage = { ...this.selectedLanguage };
         this.rdsTopNavigationMfeConfig = mfe;
       }
     });
-    this.on('tenancyDataAgain').subscribe((res) => {});
+    this.on('tenancyDataAgain').subscribe((res) => { });
     if (this.router.url) {
       let matchRoute: any;
       const index = this.getMatchedRoute(this.sidenavItems);
@@ -742,10 +676,11 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         mfe.input.profileData = { ...this.profileData };
         this.rdsTopNavigationMfeConfig = mfe;
       }
-    });
+    })
+
     this.store.dispatch(getDelegations());
     this.store.select(selectDelegationsInfo).subscribe((res: any) => {
-      this.rdsDeligateTableData=[];
+      this.rdsDeligateTableData = [];
       if (res && res.items && res.items.length) {
         res.items.forEach((element: any) => {
           const item: any = {
@@ -770,10 +705,18 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.store.dispatch(getUsername(UsernameFilter));
     this.store.select(selectUserFilter).subscribe((res: any) => {
       if (res && res.items && res.items.length) {
-        res.items.forEach((element: any) => {
+        res.items.forEach((res: any) => {
           const item: any = {
-            value: element.value,
-            displayText: element.name,
+            value: res.value,
+            some: res.name,
+            isSelected: res.isSelected,
+            icon: '',
+            iconWidth: 0,
+            iconHeight: 0,
+            iconFill: false,
+            iconStroke: true,
+            isFree: res.isFree
+
           };
           this.usernameList.push(item);
         });
@@ -795,8 +738,47 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       }
     });
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.rdsTopNavigationMfeConfig.input.backgroundColor = this.backgroundColor;
+  }
+  getdata() {
+    this.store.select(selectTenancyData).subscribe((res) => console.log(res));
+  }
+
+  selectAllvisualSettings() {
+    this.store.select(selectAllVisualsettings).subscribe((res: any) => {
+      if (res && res.length > 0) {
+        const header = JSON.parse(
+          res[this.index].header.minimizeDesktopHeaderType
+        );
+        const rdsTopNavigationMfeConfig = this.rdsTopNavigationMfeConfig;
+        if (header) {
+          rdsTopNavigationMfeConfig.input.FixedHeader = header.desktop;
+          if (header.desktop) {
+            this.document.getElementById('FixedHeaderOverFlow').style.overflow =
+              'scroll';
+            document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+          } else {
+            this.document.getElementById('FixedHeaderOverFlow').style.overflow =
+              'inherit';
+            document.getElementsByTagName('html')[0].style.overflow = 'inherit';
+          }
+          this.FixedHeaderBody = header.desktop;
+        }
+        this.collapseRequired = res[this.index].menu.allowAsideMinimizing;
+
+        if (res[this.index].menu.defaultMinimizedAside) {
+          if (this.sideMenuCollapsed == false) {
+            document.getElementById('sidenavCollapsed').click();
+          }
+        } else {
+          if (this.sideMenuCollapsed == true) {
+            document.getElementById('sidenavCollapsed').click();
+          }
+        }
+      }
+    });
   }
   redirectPath(event): void {
     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
@@ -809,11 +791,14 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     var alertNode = document.querySelector('.alert');
     if (alertNode) {
       var alert = bootstrap.Alert.getInstance(alertNode);
-      alert.close();
+      if(alert){
+        alert.close();
+      }
     }
     this.shared.setTopNavTitle('');
+    this.shared.setSideBarStatus(true)
   }
-  redirect(event): void {}
+  redirect(event): void { }
 
   onCollapse(event): void {
     this.sideMenuCollapsed = event;
@@ -902,13 +887,21 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
   toggleBetweenMode(event: any) {
     let checked = event;
+    let selectedTheme: string = 'default';
     if (!checked) {
       this.theme.theme = 'dark';
       localStorage.setItem('THEME', 'dark');
+      selectedTheme = 'dark'
+      localStorage.setItem('themeIndex', '7');
+
     } else {
       this.theme.theme = 'light';
-      localStorage.setItem('THEME', 'light'); 
+      localStorage.setItem('THEME', 'light');
+      selectedTheme = 'default';
+      localStorage.setItem('themeIndex', '12');
+
     }
+    this.alertService.setTheme(selectedTheme);
   }
 
   private filterNavItems(
@@ -954,6 +947,37 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       }
     });
     return sidenavItems;
+  }
+
+
+  setTheme(selectedTheme: any): void {
+    if (selectedTheme == "undefined" || selectedTheme == '' || selectedTheme == 'light' || selectedTheme == 'default' || selectedTheme == undefined || selectedTheme == null) {
+      this.theme.theme = 'light';
+      localStorage.setItem('THEME', 'light');
+      this.isLightMode = true;
+    } else {
+      this.theme.theme = 'dark';
+      this.isLightMode = false;
+    }
+    if (selectedTheme !== undefined && selectedTheme !== '' && selectedTheme !== 'undefined') {
+      if (selectedTheme == 'light') {
+        selectedTheme = 'default';
+      }
+      const headEl = this.document.getElementsByTagName('head')[0];
+      const existingLinkEl = this.document.getElementById(
+        'client-theme'
+      ) as HTMLLinkElement;
+      const newLinkEl = this.document.createElement('link');
+
+      if (existingLinkEl) {
+        existingLinkEl.href = selectedTheme + '.css';
+      } else {
+        newLinkEl.id = 'client-theme';
+        newLinkEl.rel = 'stylesheet';
+        newLinkEl.href = selectedTheme + '.css';
+        headEl.appendChild(newLinkEl);
+      }
+    }
   }
 
 }

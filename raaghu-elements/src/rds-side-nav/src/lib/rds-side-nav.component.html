@@ -8,8 +8,7 @@
         <rds-icon [name]="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="iconHeight"
           [width]="iconWidth" class="pe-3"></rds-icon>
         <!-- <i [class]="item.icon" class="pe-2"></i> -->
-        <span data-bs-toggle="tooltip" data-bs-placement="auto"
-          [ngClass]="{ 'd-none' : collapsed }">
+        <span data-bs-toggle="tooltip" data-bs-placement="auto" [ngClass]="{ 'd-none' : collapsed }">
           {{item.label}}
         </span>
       </a>
@@ -23,7 +22,7 @@
         </rds-icon><span [ngClass]="{ 'd-none' : collapsed }">{{item.label}}</span>
       </a>
       <div *ngIf="showHide">
-        <div class="collapse pt-2 " [ngClass]="{ 'show' : activepage===i }" [id]="item.id" *ngIf="item.children"
+        <div class="collapse pt-2 " [ngClass]="{ 'show' : showHide }" [id]="item.id" *ngIf="item.children"
           style="margin-left: 1rem;">
           <ul class="list-unstyled fw-normal pb-1 small">
             <li *ngFor="let child of item.children; index as j">
@@ -45,13 +44,14 @@
       <div class="sidenav-footer">
         <div *ngIf="collapseRequired" class="d-flex justify-content-center mb-3">
           <rds-icon [name]="'grid_square'" height="23px" [stroke]="true" width="23px" data-bs-toggle="tooltip"
-            data-bs-placement="auto" title="collapse menu" (click)="onCollapse()" class="cursor-pointer" id="sidenavCollapsed"></rds-icon>
+            data-bs-placement="auto" title="collapse menu" (click)="onCollapse()" class="cursor-pointer"
+            id="sidenavCollapsed"></rds-icon>
         </div>
         <div class="btn-container d-flex justify-content-center ">
           <i class="fa fa-sun-o" aria-hidden="true"></i>
           <label class="switch btn-color-mode-switch border-0">
-            <input type="checkbox" name="color_mode" id="flexSwitchCheckDefault" (click)="toggleLightAndDarkMode()"
-              value="1">
+            <input type="checkbox" [checked]="!isLightMode" name="color_mode" id="flexSwitchCheckDefault"
+              (click)="toggleLightAndDarkMode()" [value]="!!isLightMode">
             <label for="color_mode" data-on="☾ &nbsp; Dark" data-off="☀  Light"
               class="btn-color-mode-switch-inner border-0"></label>
           </label>

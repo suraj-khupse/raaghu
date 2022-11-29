@@ -63,7 +63,15 @@ withCTALink.args = {
   productListItems: [{ id: 1, "icon": "heart","title": "Basic Tee", "subTitle": "White", "price": "35", "badgeLabel": "Quality Assured", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU', iconColor: 'dark', fill: false  },
   { id: 1, "icon": "heart","title": "Basic Tee 2", "subTitle": "White 2", "price": "40", "badgeLabel": "", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU', iconColor: 'dark', fill: false  },
   { id: 1, "icon": "heart","title": "Basic Tee 3", "subTitle": "White 2", "price": "45", "badgeLabel": "Quality Assured", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU', iconColor: 'dark', fill: false  },
-  { id: 1, "icon": "heart","title": "Basic Tee", "subTitle": "White", "price": "35", "badgeLabel": "Quality Assured", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU', iconColor: 'dark', fill: false  },]
+  { id: 1, "icon": "heart","title": "Basic Tee", "subTitle": "White", "price": "35", "badgeLabel": "Quality Assured", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU', iconColor: 'dark', fill: false  },],
+  
+  itemListRating: [
+    { id: 1, value: 1 },
+    { id: 2, value: 2 },
+    { id: 3, value: 3 },
+    { id: 4, value: 4 },
+    { id: 5, value: 5 },
+  ],
 }
 
 export const withColorSwatchesAndHorizontalScrolling = Template.bind({})

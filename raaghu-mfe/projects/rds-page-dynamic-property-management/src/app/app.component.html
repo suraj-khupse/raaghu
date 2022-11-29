@@ -1,6 +1,11 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
   <div class="row">
-    <div class="col-md-12 pb-3 desktop-btn">
+    <div class="col-md-9">
+      <ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+        <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+      </ng-container>
+    </div>
+    <div class="col-md-3 pb-3 desktop-btn">
       <rds-button
         [label]="translate.instant(btnLabel)"
         type="button"
@@ -84,6 +89,4 @@
      
   </div>
 </div>
-<!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
-  <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-</ng-container>-->
+

@@ -11,6 +11,7 @@ title: "Components > Pricing-table"
 
 <p>Gives a card on tables categorized into different subscription plan categories with different pricing details</p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,11 +39,11 @@ title: "Components > Pricing-table"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-pricing-table
+<rds-comp-pricing-table
 [itemList]="itemList"
 selectedPlan="Monthly Plan"
 [planList]="planList">
-</app-rds-comp-pricing-table>
+</rds-comp-pricing-table>
 ```
 </div>
 </div>

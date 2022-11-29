@@ -18,7 +18,7 @@
         role="tabpanel" aria-labelledby="nav-Deligation">
         <rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader"
           [buttonSpinner]="showDelegationButtonSpinner" [pagination]="pagination"
-          [delegateTabopened]="delegateTabopened" (onDeligateSave)="onSaveDelegate.emit($event)" (onDeleteDeligate)="onDeleteDeligate.emit($event)"
+          [delegateTabopened]="delegateTabopened" (onDeligateSave)="onSaveDelegate.emit($event)" (onDeleteDeligate)="deleteDelegate($event)"
           [tableWidth]="tableWidth" [tableStyle]="tableStyle" [recordsPerpage]="recordsPerpage" [userList]="userList"
           [rdsDeligateTableData]="rdsDeligateTableData" (onCancelDeligate)="cancelDelegate($event)">
         </rds-user-delegations>
@@ -61,16 +61,26 @@
           <div class="card-body h-100 p-0 d-grid">
             <div class="justify-content-center d-flex align-items-center">
               <div class="d-inline-block position-relative">
-                <rds-avatar [withProfilePic]="true" [profilePic]="Profileurl" [roundedPills]="true"
-                  [verticallyAlligned]="true" [roundedAvatar]="true" [height]="'110'"></rds-avatar>
+                <rds-avatar [withProfilePic]="true" [firstName]="tenancy" [subTitle]="ProfileData.userName"  [profilePic]="Profileurl" [roundedPills]="true"
+                  [verticallyAlligned]="true" [roundedAvatar]="true"  [profileContentAlign]="false" [width] ="'130'" [height]="'120'"></rds-avatar>
                 <div class="text-center" *ngIf="ProfileData">
-                  {{ ProfileData.userName }}
-                  <input type="file" (change)="checkFileSize($event); checkExtension($event)" #file
+                  <!-- {{ ProfileData.userName }} -->
+                  <input type="file" (change)="onSelectFile($event)" #file
                     (input)="getValue($event)" name="myfile" style="display: none" />
-                  <button class="btn btn-icon upload-icon btn-md rounded-circle" (click)="file.click()"
-                    style="display: none">
-                    <rds-icon name="edit" width="30px" height="30px" text-primary></rds-icon>
-                  </button>
+                  <rds-button class="btn btn-icon upload-icon position-absolute top-50 btn-md rounded-circle" colorVariant="" size="medium" [isFabIcon]="true" tooltipTitle="" tooltipPlacement="right" iconHeight="18px"
+                    iconWidth="18px"
+                    [isIconStroke]="true"
+                    [isIconFill]="false"
+                    buttonType="iconOnly"
+                    icon="pencil"
+                    (click)="file.click()"
+                  ></rds-button>
+
+
+                  <!-- <rds-button class="btn btn-icon upload-icon btn-md rounded-circle" 
+                    >
+                    <rds-icon name="edit" [stroke]="true" [fill]="false" width="15px" height="15px" text-primary></rds-icon>
+                  </rds-button> -->
                 </div>
               </div>
             </div>
@@ -109,8 +119,11 @@
       </div>
     </div>
   </div>
+
 </rds-offcanvas>
 <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-<!--  </div>
-  </div>
-</rds-offcanvas> -->
+<ng-container *ngIf="showConfirmationPopup">
+  <rds-comp-alert-popup [alertID]="'deleteDelegationModal'" (onCancel)="closeModal()" (onDelete)="delete()"
+    [alertData]="deleteConfirmationData">
+  </rds-comp-alert-popup>
+</ng-container>

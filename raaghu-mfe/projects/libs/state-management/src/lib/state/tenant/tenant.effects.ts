@@ -1,16 +1,17 @@
 import { Injectable } from "@angular/core";
 import { AlertService } from "@libs/shared";
-import { saveTenant } from "@libs/state-management";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { EditionServiceProxy, TenantServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
+import { AccountServiceProxy, CommonLookupServiceProxy, EditionServiceProxy, TenantServiceProxy, TokenAuthServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
 import { from, of } from "rxjs";
 import { catchError, filter, map, mergeMap, switchMap } from "rxjs/operators";
-import { getTenants, getTenantSuccess, getTenantFailure, deleteTenant, updateTenant, getEditionComboboxItems, getEditionComboboxItemsFailure, getEditionComboboxItemsSuccess, getTenantForEdit, getTenantForEditSuccess, getTenantForEditFailure, getTenantFeaturesForEdit, getTenantFeaturesForEditSuccess, getTenantFeaturesForEditFailure, updateTenantFeatureValues } from "./tenant.actions";
+import { getTenants, getTenantSuccess, getTenantFailure, deleteTenant, updateTenant, getEditionComboboxItems, getEditionComboboxItemsFailure, getEditionComboboxItemsSuccess, getTenantForEdit, getTenantForEditSuccess, getTenantForEditFailure, getTenantFeaturesForEdit, getTenantFeaturesForEditSuccess, getTenantFeaturesForEditFailure, updateTenantFeatureValues, getTenantUsers, getTenantUsersSuccess, getTenantUsersFailure, getTenantLogin, getTenantLoginSuccess, impersonatedAuthenticate, saveTenant } from "./tenant.actions";
 
 @Injectable()
 export class TenantEffects {
-  constructor(private actions$: Actions, private tenantService: TenantServiceProxy, private alertService: AlertService, private editionService: EditionServiceProxy, private store: Store) { }
+  constructor(private actions$: Actions, private tenantService: TenantServiceProxy, private alertService: AlertService,
+     private editionService: EditionServiceProxy, private store: Store,private findTenantUsers:CommonLookupServiceProxy,
+      private loginTenant:AccountServiceProxy, private tokenAuth:TokenAuthServiceProxy) { }
   getTenants$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getTenants),
@@ -47,7 +48,7 @@ export class TenantEffects {
       mergeMap((data,maxresult) =>
         this.tenantService.createTenant(data.tenant).pipe(map((res: any) => {
           this.store.dispatch(getTenants());
-          this.alertService.showAlert('Success', 'Tenant added successfully', 'success')
+          this.alertService.showAlert('Success', 'Tenant added successfully', 'success', )
 
 
         }),
@@ -144,4 +145,50 @@ export class TenantEffects {
     }
   );
 
+  getTenantUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getTenantUsers),
+      switchMap((data:any) => {
+        return (this.findTenantUsers.findUsers(data.data)).pipe(
+          map((tenantUsers: any) => {
+            return getTenantUsersSuccess({ tenantUsers: tenantUsers})
+          }),
+          catchError((error) => of(getTenantUsersFailure({ error })))
+        )
+      }
+      )      
+    )
+  );
+
+  getTenantLogin$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(getTenantLogin),
+    switchMap((data:any) => {
+      return (this.loginTenant.impersonateTenant(data.data)).pipe(
+        map((tenantLogin: any) => {
+          return getTenantLoginSuccess({ tenantLogin: tenantLogin})
+        }),
+        catchError((error) => of(getTenantUsersFailure({ error })))
+      )
+    }
+    )
+  )
+);
+
+impersonatedAuthenticate$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(impersonatedAuthenticate),
+      mergeMap(({ token}) =>
+        this.tokenAuth.impersonatedAuthenticate(token).pipe(map(() => {
+          // this.store.dispatch(getTenants());          
+
+        }
+        ),
+          catchError((error) => of())
+        )
+      )
+    ),
+    // Most effects dispatch another action, but this one is just a "fire and forget" effect
+    { dispatch: false }
+)
 }

@@ -79,17 +79,16 @@
                     </rds-input>
                 </div>
                 <div class="col-md-2 mt-2 sm-p-0">
-                    <rds-select-list [(ngModel)]="status" (selectListChange)="exceptionModify($event)" [value]="status"
-                        ngDefaultControl name="Property" [placeholder]="translate.instant('Select Property')"
-                        [itemList]="statusList">
-
-                    </rds-select-list>
+                    <rds-dropdownlist [placeholder]="translate.instant('Select Property')" [borderDropdown]="true"
+                    class="text-dark" [id]="'status-list'" [(ngModel)]="status" [listItems]="statusList"
+                   [value]="status" (onSelect)="exceptionModify($event)" ngDefaultControl name="status">
+                  </rds-dropdownlist>
                 </div>
                 <div class="col-md-2 mt-2">
-                    <rds-select-list [(ngModel)]="browserInfo" [value]="browserInfo" ngDefaultControl
-                        [itemList]="browserList" (selectListChange)="SelectBroser($event)" name="browserInfo">
-
-                    </rds-select-list>
+                    <rds-dropdownlist [placeholder]="translate.instant('Select browser')" [borderDropdown]="true"
+                    class="text-dark" [id]="'browserList'" [(ngModel)]="browserInfo" [listItems]="browserList"
+                   [value]="browserInfo" (onSelect)="SelectBroser($event)" ngDefaultControl name="browserInfo">
+                  </rds-dropdownlist>
                 </div>
             </div>
             <div class="row">
@@ -122,9 +121,13 @@
                     </div>
 
                     <div class="col-md-3 col-sm-6 mt-1">
-                        <rds-select-list class="w-100" [(ngModel)]="status" (selectListChange)="exceptionModify($event)"
+                        <!-- <rds-select-list class="w-100" [(ngModel)]="status" (selectListChange)="exceptionModify($event)"
                             [value]="status" ngDefaultControl name="Property" [itemList]="statusList">
-                        </rds-select-list>
+                        </rds-select-list> -->
+                        <rds-dropdownlist [placeholder]="translate.instant('Select Property')" [borderDropdown]="true"
+                    class="text-dark" [id]="'status'" [(ngModel)]="status" [listItems]="statusList"
+                   [value]="status" (onSelect)="exceptionModify($event)" ngDefaultControl name="status">
+                  </rds-dropdownlist>
                     </div>
                 </div>
                 <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5">
@@ -183,7 +186,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group mb-3">
-                <span>{{selectedRowData.client}}</span>
+                <span>{{selectedRowData.clientIpAddress}}</span>
             </div>
         </div>
     </div>
@@ -250,9 +253,9 @@
                 <span>{{'Parameters' |translate}}: </span>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group mb-3">
-                <span>{{selectedRowData.parameters}}</span>
+        <div class="col-md-6  ">
+            <div class="form-group p-2 parameter-bg-color fs-6 mb-3 " style="overflow-wrap:anywhere ;">
+               {{selectedRowData.parameters }}
             </div>
         </div>
     </div>

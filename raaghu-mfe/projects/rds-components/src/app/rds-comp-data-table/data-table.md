@@ -10,7 +10,8 @@ title: "Components > data-table"
 #### Data Table
 
 <p>Categorised the table based on types of plans along with the price</p>
-<section class="py-4">                                                                                             
+<section class="py-4"> 
+<h6>Default</h6>                                                                                            
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,12 +38,12 @@ title: "Components > data-table"
 <div class="row m-0">
 
 ```html
-<app-rds-data-table
+<rds-data-table
   [tableData]="tableData"
   [tableHeaders]="tableHeaders"
   [pagination]="true"
   [actions]="actions"
-></app-rds-data-table>   
+></rds-data-table>   
 ```
 </div>
 </div>

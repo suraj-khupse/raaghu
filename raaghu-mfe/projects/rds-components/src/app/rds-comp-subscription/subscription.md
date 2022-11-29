@@ -10,7 +10,8 @@ title: "Components > subscription"
 #### Subscription
 
 <p>A card having different subscription plans with thier respective price</p>
-<section class="py-4">                                                                                             
+<section class="py-4">   
+<h6>Default</h6>                                                                                          
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,9 +38,9 @@ title: "Components > subscription"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-subscription
+<rds-comp-subscription
   [subscriptionData]="subscriptionData"
-></app-rds-comp-subscription>
+></rds-comp-subscription>
 ```
 </div>
 </div>

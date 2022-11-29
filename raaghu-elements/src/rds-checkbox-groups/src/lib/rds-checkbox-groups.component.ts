@@ -12,11 +12,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     multi: true
   }]
 })
-export class RdsCheckboxGroupsComponent implements OnInit {
+export class RdsCheckboxGroupsComponent implements OnInit, ControlValueAccessor {
   title = "rds-checkbox-groups";
   value = ''
-  onChange!: (value: string) => void;
-  onTouched!: () => void
+  onChange = (event: string) => {};
+  onTouched = () => {};
   // @Output() onChange = new EventEmitter<boolean>();
 
 
@@ -27,7 +27,7 @@ export class RdsCheckboxGroupsComponent implements OnInit {
   @Input() withLabel!: boolean;
   @Output() onCheck: EventEmitter<void> = new EventEmitter<void>();
   @Output() onUncheck: EventEmitter<void> = new EventEmitter<void>();
-  
+
   @Input() isInputGroup!: boolean;
   @Input() itemList!: any;
 
@@ -40,14 +40,16 @@ export class RdsCheckboxGroupsComponent implements OnInit {
   //public selectdataItem: selectedData = [];
 
   constructor() { }
-  writeValue(obj: any): void {
-    this.value = obj
+  writeValue(obj: any) {
+    this.value = obj;
   }
-  registerOnChange(fn: any): void {
-    this.onChange = fn
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
   }
 
   ngOnInit(): void { }
@@ -68,18 +70,18 @@ export class RdsCheckboxGroupsComponent implements OnInit {
     }
   }
 
-  formState(){
-    const checkboxState = `${this.state === 'checkbox' ? 'form-check-input' : 
-      this.state === 'Indeterminate' ? 'form-check-input-intermediate' : 
-      this.state === 'errorcheckbox' ? 'form-check-input-error' : ''}`;
-    
+  formState() {
+    const checkboxState = `${this.state === 'checkbox' ? 'form-check-input' :
+      this.state === 'Indeterminate' ? 'form-check-input-intermediate' :
+        this.state === 'errorcheckbox' ? 'form-check-input-error' : ''}`;
+
     return checkboxState;
   }
 
   getValue(event: any) {
     this.onClick.emit({ evnt: event, item: event.target.value });
-    this.onChange(event.target.checked)
     this.onTouched();
+    this.onChange(event.target.checked);
   }
 
 }

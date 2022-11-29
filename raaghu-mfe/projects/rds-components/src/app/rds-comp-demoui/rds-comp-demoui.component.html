@@ -44,7 +44,7 @@
   <div class="card-body pt-0">
     <div class="row">
       <div class="col-lg-12 col-xs-12 mb-3">
-        <rds-button colorVariant="primary" [block]="false" size="medium" label="Show Alert"
+        <rds-button colorVariant="primary" [block]="false" size="medium" [label]="translate.instant('Show Alert')"
           (click)="onClickShowAlert()"></rds-button>
 
         <rds-alert size="small" [dismissible]="true" icon="close_circle" [iconHeight]="'20px'" [iconWidth]="'20px'"
@@ -127,7 +127,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Badge
+      {{"Badge"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -189,7 +189,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Big Number Widget
+      {{"Big Number Widget"|translate}}Big Number Widget
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -258,7 +258,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      BreadCrumbs
+      {{"BreadCrumbs"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -280,7 +280,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      ButtonGroup
+      {{"ButtonGroup"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -322,91 +322,134 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Button
+      {{"Button"|translate}}
     </h5>
   </div>
   <div class="card-body  pt-0">
     <div class="row border p-4 m-2">
-      <div class="row col-6">
-        <div class="col-4 pb-3">
-          <h6 class="mb-3">{{"Button - Basic"|translate}}</h6>
-          <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="false"
-            [isFabIcon]="false" label="button" tooltipTitle="" tooltipPlacement="bottom">
-          </rds-button>
+      <div class="row mb-3">
+        <div class="col-lg-12 col-md-12 col-xxl-6">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <h6 class="mb-3">{{"Button - Basic"|translate}}</h6>
+              <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="false"
+                [isFabIcon]="false" label="button" tooltipTitle="" tooltipPlacement="bottom">
+              </rds-button>
+            </div>
+            <div class="col-md-4 mb-3">
+              <h6 class="mb-3">{{"Button - Disable"|translate}}</h6>
+              <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="true" [isOutline]="false"
+                [isFabIcon]="false" label="Disable" tooltipTitle="" tooltipPlacement="bottom">
+              </rds-button>
+            </div>
+            <div class="col-md-4 mb-3">
+              <h6 class="mb-3">{{"Button - Icon With Label"|translate}}</h6>
+              <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="false"
+                [isFabIcon]="false" icon="pencil" iconHeight="18px" iconWidth="18px" label="button" tooltipTitle=""
+                tooltipPlacement="bottom">
+              </rds-button>
+            </div>
+          </div>
         </div>
-        <div class="col-4">
-          <h6 class="mb-3">{{"Button - Disable"|translate}}</h6>
-          <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="true" [isOutline]="false"
-            [isFabIcon]="false" label="Disable" tooltipTitle="" tooltipPlacement="bottom">
-          </rds-button>
-        </div>
-        <div class="col-4">
-          <h6 class="mb-3">{{"Button - Icon With Label"|translate}}</h6>
-          <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="false"
-            [isFabIcon]="false" icon="pencil" iconHeight="18px" iconWidth="18px" label="button" tooltipTitle=""
-            tooltipPlacement="bottom">
-          </rds-button>
-        </div>
-        <div class="col-4">
-          <h6 class="mb-3">{{"Button - Outline"|translate}}</h6>
-          <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="true"
-            [isFabIcon]="false" label="outline" tooltipTitle="" tooltipPlacement="bottom">
-          </rds-button>
-        </div>
-        <div class="col-4">
-          <h6 class="mb-3">{{"Button - Tooltip"|translate}}</h6>
-          <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="false"
-            [isFabIcon]="false" label="button" tooltipTitle="This is tooltip" tooltipPlacement="bottom">
-          </rds-button>
-        </div>
-        <div class="col-4">
-          <h6 class="mb-3">{{"Button - icon"|translate}}</h6>
-          <rds-button colorVariant="primary" [submit]="false" [size]="'small'" [block]="false" [isDisabled]="false"
-            [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="13px" iconWidth="13px"
-            tooltipTitle="" tooltipPlacement="bottom">
-          </rds-button>
+        <div class="col-lg-12 col-md-12 col-xxl-6">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <h6 class="mb-3">{{"Button - Outline"|translate}}</h6>
+              <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="true"
+                [isFabIcon]="false" label="outline" tooltipTitle="" tooltipPlacement="bottom">
+              </rds-button>
+            </div>
+            <div class="col-md-4 mb-3">
+              <h6 class="mb-3">{{"Button - Tooltip"|translate}}</h6>
+              <rds-button  type="button" colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false" [isOutline]="false"
+                [isFabIcon]="false" label="button" tooltipTitle="This is tooltip" tooltipPlacement="bottom">
+              </rds-button>      
+            </div>
+            <div class="col-md-4 mb-3">
+              <h6 class="mb-3">{{"Button - icon"|translate}}</h6>
+              <rds-button colorVariant="primary" [submit]="false" [size]="'small'" [block]="false" [isDisabled]="false"
+                [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="13px" iconWidth="13px"
+                tooltipTitle="" tooltipPlacement="bottom">
+              </rds-button>
+            </div>
+          </div>
         </div>
       </div>
+      
       <div class="col-lg-12 col-xl-12 col-xs-12 col-xxl-12 mb-3">
-        <h6 class="mb-3">Button - Size</h6>
         <div class="row">
-          <div class="col-3">
-            <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false"
-              [isOutline]="false" [isFabIcon]="false" label="button" tooltipTitle="This is tooltip"
-              tooltipPlacement="bottom" [size]="'small'"></rds-button>
+          <div class="col-lg-12 col-md-12 col-xxl-6">
+            <h6 class="mb-3">{{"Button - Size"|translate}}</h6>
+            <div class="row">
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="false" label="button" tooltipTitle="This is tooltip"
+                  tooltipPlacement="bottom" [size]="'small'"></rds-button>
+              </div>
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="false" label="button" tooltipTitle="This is tooltip"
+                  tooltipPlacement="bottom" [size]="'medium'"></rds-button>
+              </div>
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="false" label="button" tooltipTitle="This is tooltip"
+                  tooltipPlacement="bottom" [size]="'large'"></rds-button>
+              </div>
+            </div>
           </div>
-          <div class="col-3">
-            <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false"
-              [isOutline]="false" [isFabIcon]="false" label="button" tooltipTitle="This is tooltip"
-              tooltipPlacement="bottom" [size]="'medium'"></rds-button>
+
+          <div class="col-lg-12 col-md-12 col-xxl-6">
+            <h6 class="mb-3">{{"Button - Icon- Size"|translate}}</h6>
+            <div class="row">
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [size]="'small'" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="14px" iconWidth="14px"
+                  tooltipTitle="" tooltipPlacement="bottom">
+                </rds-button>
+              </div>
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [size]="'medium'" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="18px" iconWidth="18px"
+                  tooltipTitle="" tooltipPlacement="bottom">
+                </rds-button>
+              </div>
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [size]="'large'" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="24px" iconWidth="24px"
+                  tooltipTitle="" tooltipPlacement="bottom">
+                </rds-button>
+              </div>
+            </div>
           </div>
-          <div class="col-3">
-            <rds-button colorVariant="primary" [submit]="false" [block]="false" [isDisabled]="false"
-              [isOutline]="false" [isFabIcon]="false" label="button" tooltipTitle="This is tooltip"
-              tooltipPlacement="bottom" [size]="'large'"></rds-button>
-          </div>
+
+
         </div>
-        <h6 class="mb-3">Button Icon- Size</h6>
+        <!-- <h6 class="mb-3">Button Icon- Size</h6>
         <div class="row align-items-center">
-          <div class="col-3">
-            <rds-button colorVariant="primary" [submit]="false" [size]="'small'" [block]="false" [isDisabled]="false"
-              [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="14px" iconWidth="14px"
-              tooltipTitle="" tooltipPlacement="bottom">
-            </rds-button>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [size]="'small'" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="14px" iconWidth="14px"
+                  tooltipTitle="" tooltipPlacement="bottom">
+                </rds-button>
+              </div>
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [size]="'medium'" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="18px" iconWidth="18px"
+                  tooltipTitle="" tooltipPlacement="bottom">
+                </rds-button>
+              </div>
+              <div class="col-md-4 pb-3">
+                <rds-button colorVariant="primary" [submit]="false" [size]="'large'" [block]="false" [isDisabled]="false"
+                  [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="24px" iconWidth="24px"
+                  tooltipTitle="" tooltipPlacement="bottom">
+                </rds-button>
+              </div>
+            </div>
           </div>
-          <div class="col-3">
-            <rds-button colorVariant="primary" [submit]="false" [size]="'medium'" [block]="false" [isDisabled]="false"
-              [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="18px" iconWidth="18px"
-              tooltipTitle="" tooltipPlacement="bottom">
-            </rds-button>
-          </div>
-          <div class="col-3">
-            <rds-button colorVariant="primary" [submit]="false" [size]="'large'" [block]="false" [isDisabled]="false"
-              [isOutline]="false" [isFabIcon]="true" icon="pencil" label="" iconHeight="24px" iconWidth="24px"
-              tooltipTitle="" tooltipPlacement="bottom">
-            </rds-button>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -416,7 +459,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Card
+      {{"Card"|translate}}
     </h5>
   </div>
   <div class="card-body  pt-0">
@@ -437,7 +480,7 @@
         </rds-card>
       </div>
       <div class="col-lg-6 col-md-12 col-xl-4 col-xs-12 col-xxl-4 mb-3">
-        <h6 class="mb-3">Card - With Avatar</h6>
+        <h6 class="mb-3">{{"Card - With Avatar"| translate}}</h6>
         <rds-card width="30%" class="rounded-avatar-left">
           <div header>
             <div class="banner-image1">
@@ -481,7 +524,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Carousel
+      {{"Carousel"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -501,7 +544,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Checkbox
+      {{"Checkbox"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -515,21 +558,23 @@
         <div>
           <h6 class="mb-3">{{"Checkbox Group"|translate}}</h6>
           <rds-checkbox-groups [switch]="false" [inline]="true" [withLabel]="true"
-            [isInputGroup]="false" [itemList]="itemList" [id]="'checkboxGroup'"></rds-checkbox-groups>
+            [isInputGroup]="false" [itemList]="itemListWithInputGroup" [id]="'checkboxGroup'"></rds-checkbox-groups>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 mb-3">
         <div>
           <h6 class="mb-3">{{"Checkbox Group"|translate}}</h6>
           <rds-checkbox-groups [switch]="false" [inline]="false" [withLabel]="true"
-            [isInputGroup]="true" [itemList]="itemList" [id]="'checkboxGroup1'"></rds-checkbox-groups>
+            [isInputGroup]="true" [itemList]="itemListWithoutInputGroup" [id]="'checkboxGroup1'"></rds-checkbox-groups>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 mb-3">
         <h6 class="mb-3">{{"Checkbox -Parent Child"|translate}}</h6>
         <rds-checkbox-parent-child [switch]="false"
-          [inline]="false" [isInputGroup]="false" [id]="'checkboxParentChild'">
+          [inline]="false" [isInputGroup]="false" [itemList]="checkboxParentChilditemList" [id]="'checkboxParentChild'">
         </rds-checkbox-parent-child>
+
+
       </div>
     </div>
   </div>
@@ -539,7 +584,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Collapse
+      {{"Collapse"|translate}}
     </h5>
   </div>
 
@@ -575,7 +620,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Color Picker
+      {{"Color Picker"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -594,7 +639,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Date Picker
+      {{"Date Picker"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -621,7 +666,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Double Range
+      {{"Double Range"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -636,7 +681,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Dropdown
+      {{"Dropdown"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -689,7 +734,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Editor
+      {{"Editor"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -706,7 +751,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      File Uploader
+      {{"File Uploader"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -731,7 +776,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Icon
+      {{"Icon"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0 mb-3">
@@ -747,7 +792,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Illustration
+      {{"Illustration"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0 ">
@@ -764,7 +809,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Input Group
+      {{"Input Group"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -787,7 +832,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Input
+      {{"Input"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -836,7 +881,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      List Group
+      {{"List Group"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -871,7 +916,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Modal
+      {{"Modal"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1048,7 +1093,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Nav Tab
+      {{"Nav Tab"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1182,7 +1227,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Offcanvas
+      {{"Offcanvas"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1225,7 +1270,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Pagination
+      {{"Pagination"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1249,7 +1294,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Popover
+      {{"Popover"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1279,7 +1324,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Radio Button
+      {{"Radio Button"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1294,7 +1339,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Progress Bar
+      {{"Progress Bar"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1397,7 +1442,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Search Input
+      {{"Search Input"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1414,7 +1459,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Spinner
+      {{"Spinner"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1435,7 +1480,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Select list
+      {{"Select list"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1453,7 +1498,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Table
+      {{"Table"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1471,7 +1516,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Tag
+      {{"Tag"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1494,7 +1539,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Text area
+      {{"Text area"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1513,7 +1558,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Toast
+      {{"Toast"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1551,7 +1596,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Widget
+      {{"Widget"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1586,7 +1631,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Counter
+      {{"Counter"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
@@ -1604,20 +1649,20 @@
 <div class="card mb-5 pt-3">
   <div class="card-header">
     <h5>
-      Charts
+      {{"Charts"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Area Chart</h5>
+        <h5 class="py-3">{{"Area Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center">
           <rds-chart-area [chartWidth]="400" [chartLabels]="chartLabelsArea" [chartDataSets]="chartDataSetsArea"
             [chartOptions]="chartOptionsArea" chartId="areaChart"></rds-chart-area>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Bar Chart</h5>
+        <h5 class="py-3">{{"Bar Chart"|translate}}</h5>
         <div class="border p-2 h-100  align-items-center justify-content-center">
           <rds-chart-bar-horizontal [chartWidth]="400" [chartLabels]="chartLables" [chartDataSets]="ChartDatasSets"
             [chartOptions]="chartOptions" chartId="barChart"></rds-chart-bar-horizontal>
@@ -1627,7 +1672,7 @@
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Bubble Chart</h5>
+        <h5 class="py-3">{{"Bubble Chart"|translate}}</h5>
         <div class="border p-2 h-100  align-items-center justify-content-center">
           <rds-chart-bubble [chartWidth]="400" chartId="ChartBubble" [chartLabels]="chartLabelsBubble"
             [chartDataSets]="chartDataSetsBubble" [chartOptions]="chartOptionsBubble">
@@ -1635,7 +1680,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Mixed Chart </h5>
+        <h5 class="py-3"> {{"Mixed Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-mixed [chartWidth]="400" chartId="mixedChart" [chartLabels]="chartLabelsChartMixed"
             [chartDataSets]="chartDataSetsChartMixed" [chartOptions]="chartOptionsChartMixed"></rds-chart-mixed>
@@ -1646,7 +1691,7 @@
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Doughnut Chart</h5>
+        <h5 class="py-3">{{"Doughnut Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-doughnut [chartWidth]="400" [chartHeight]="300" [chartLabels]="chartLabelsDoughnut"
             [chartDataSets]="chartDataSetsDoughnut" [chartOptions]="chartOptionsDoughnut" chartId="doughnutChart">
@@ -1654,7 +1699,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Pie Chart </h5>
+        <h5 class="py-3"> {{"Pie Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-pie [chartWidth]="400" [chartHeight]="300" [chartLabels]="chartLabelsPieChat"
             [chartDataSets]="chartDataSetsPieChat" [chartOptions]="chartOptionsPieChat" chartId="pieChart">
@@ -1665,14 +1710,14 @@
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Boolean Chart</h5>
+        <h5 class="py-3">{{"Boolean Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-bool [chartWidth]="400" [chartHeight]="300" [chartLabels]="chartLablesBool"
             [chartDataSets]="ChartDatasSetsBool" [chartOptions]="chartOptionsBool" chartId="boolChart"></rds-chart-bool>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Multi Series Pie chart</h5>
+        <h5 class="py-3">{{"Multi Series Pie chart"|translate}}</h5>
         <div class="border p-2 h-100  align-items-center justify-content-center">
           <rds-chart-pie [chartWidth]="400" [chartHeight]="300" chartId="multiPieChart"
             [chartLabels]="pieChartMultiLabel" [chartDataSets]="pieChartMultiDataSets"
@@ -1682,7 +1727,7 @@
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Polar Chart</h5>
+        <h5 class="py-3">{{"Polar Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-polar-area [chartWidth]="400" [chartHeight]="400" [chartLabels]="chartLabelsPolar"
             [chartDataSets]="chartDataSetsPolar" [chartOptions]="chartOptionsPolar" chartId=polarChart>
@@ -1690,7 +1735,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4 ">
-        <h5 class="py-3">Radar Chart</h5>
+        <h5 class="py-3">{{"Radar Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center text-center ">
           <rds-chart-radar [chartWidth]="400" [chartHeight]="400" [chartLabels]="chartLabelsRadar"
             [chartDataSets]="chartDataSetsRadar" [chartOptions]="chartOptionsRadar" chartId="radarChart">
@@ -1702,7 +1747,7 @@
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Scatter Chart</h5>
+        <h5 class="py-3">{{"Scatter Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-scatter [chartWidth]="400" [chartLabels]="chartLabelsScatter"
             [chartDataSets]="chartDataSetsScatter" [chartOptions]="chartOptionsScatter" chartId="scatterChart">
@@ -1710,7 +1755,7 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Stacked Line Chart</h5>
+        <h5 class="py-3">{{"Stacked Line Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-stacked [chartWidth]="400" [chartLabels]="chartLabelsStacked"
             [chartDataSets]="chartDataSetsStacked" [chartOptions]="chartOptionsStacked"></rds-chart-stacked>
@@ -1720,15 +1765,15 @@
 
     <div class="row">
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Line Chart</h5>
+        <h5 class="py-3">{{"Line Chart"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
-          <rds-chart-line [chartWidth]="400" [chartHeight]="230" [chartLabels]="chartLabelsLineChart"
+          <rds-chart-line [chartWidth]="400" [isGradient]="true" [chartHeight]="230" [chartLabels]="chartLabelsLineChart"
             [chartDataSets]="chartDataSetsLinechart" [chartOptions]="chartOptionsLineChart" chartId="lineChartgradient">
           </rds-chart-line>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-12 mb-5 pb-4">
-        <h5 class="py-3">Bar Chart With Pills</h5>
+        <h5 class="py-3">{{"Bar Chart With Pills"|translate}}</h5>
         <div class="border p-2 h-100 align-items-center justify-content-center">
           <rds-chart-bar-horizontal [chartWidth]="400" [chartLabels]="chartLabelsBarChartThick"
             [chartDataSets]="chartDataSetsBarChartThick" [chartOptions]="chartOptionsBarChartThick">
@@ -1743,7 +1788,7 @@
 <div class="card mb-3 pt-3">
   <div class="card-header">
     <h5>
-      Video Player
+      {{"Video Player"|translate}}
     </h5>
   </div>
   <div class="card-body pt-0">

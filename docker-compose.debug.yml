@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  raaghumfe:
+    image: raaghumfe
+    build:
+      context: raaghu-mfe
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 80:80
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js --watch=false"]

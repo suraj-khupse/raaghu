@@ -10,7 +10,8 @@ title: "Pages > Api-Resources"
 #### Api Resources
 
 <p>Api Resource list provides a tabular representation of various names and their sub categories as well as necessary action required </p>
-<section class="py-4">                                                                                             
+<section class="py-4">   
+    <h6>Default</h6>                                                                                       
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -57,11 +58,11 @@ title: "Pages > Api-Resources"
   </h5>
 
   <div class="card-body">
-    <app-rds-data-table
+    <rds-data-table
       [tableData]="apiResourceTableData"
       [tableHeaders]=" apiResourceTableHeader"
       [actions]="actions"
-    ></app-rds-data-table>
+    ></rds-data-table>
   </div>
 </div>
 
@@ -94,9 +95,9 @@ title: "Pages > Api-Resources"
         role="tabpanel"
         aria-labelledby="nav-home-tab"
       >
-        <app-api-basics
+        <api-basics
           (onBsicResourceSave)="SaveBasicResource($event)"
-        ></app-api-basics>
+        ></api-basics>
       </div>
 
       <div

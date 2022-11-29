@@ -1,6 +1,5 @@
 import { createAction, props } from "@ngrx/store";
 import { CreateTenantInput, TenantEditDto, UpdateTenantFeaturesInput } from "projects/libs/shared/src/lib/service-proxies";
-import { Tenants } from "./tenant.models";
 
 export const getTenants = createAction('[Tenant Page] Get Tenants',
 );
@@ -69,5 +68,34 @@ export const getTenantFeaturesForEditSuccess = createAction(
 export const getTenantFeaturesForEditFailure = createAction(
     '[Tenant Page] Get Tenant Features For Edit Failure',
     props<{ error: string }>()
+);
+
+export const getTenantUsers = createAction('[Tenant Page] Get Tenant users', (data:any) => ({ data }));
+
+export const getTenantUsersSuccess = createAction(
+    '[Tenant Page]Get Tenant userst Success',
+    props<{ tenantUsers: any }>()
+);
+
+export const getTenantUsersFailure = createAction(
+    '[Tenant Page] Get Tenant users Failure',
+    props<{ error: string }>()
+);
+
+export const getTenantLogin = createAction('[Tenant Page] Get Tenant login', (data:any) => ({ data }));
+
+export const getTenantLoginSuccess = createAction(
+    '[Tenant Page]Get Tenant login Success',
+    props<{ tenantLogin: any }>()
+);
+
+export const getTenantLoginFailure = createAction(
+    '[Tenant Page] Get Tenant login Failure',
+    props<{ error: string }>()
+);
+
+export const impersonatedAuthenticate = createAction(
+    '[Tenant Page] Tenant impersonatedAuthenticate ',
+    (token: string) => ({token})
 );
 

@@ -10,7 +10,8 @@ title: "Pages > client"
 #### Client
 
 <p>Represents a card with a table representation of a client with a unique id and necessary actions</p>
-<section class="py-4">                                                                                             
+<section class="py-4">    
+    <h6>Default</h6>                                                                                         
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -56,11 +57,11 @@ title: "Pages > client"
     </div>
   </h5>
   <div class="card-body">
-    <app-rds-data-table
+    <rds-data-table
       [tableHeaders]="clientTableHeaders"
       [tableData]="clientList"
       [actions]="actions"
-    ></app-rds-data-table>
+    ></rds-data-table>
   </div>
 </div>
 
@@ -91,7 +92,7 @@ title: "Pages > client"
             role="tabpanel"
             aria-labelledby="nav-home-tab"
           >
-            <app-rds-comp-client-basics></app-rds-comp-client-basics>
+            <rds-comp-client-basics></rds-comp-client-basics>
           </div>
           <div
             class="tab-pane fade"
@@ -124,7 +125,7 @@ title: "Pages > client"
             role="tabpanel"
             aria-labelledby="nav-home-tab"
           >
-            <app-rds-comp-client-resources></app-rds-comp-client-resources>
+            <rds-comp-client-resources></rds-comp-client-resources>
           </div>
         </div>
       </rds-nav-tab>

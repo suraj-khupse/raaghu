@@ -37,10 +37,10 @@ title: "Pages > Security Log"
 <div class="row m-0">
 
 ```html
-<app-rds-data-table
+<rds-data-table
   [tableHeaders]="securityLogsHeaders"
   [tableData]="securityLogs"
-></app-rds-data-table>
+></rds-data-table>
 ```
 </div>
 </div>

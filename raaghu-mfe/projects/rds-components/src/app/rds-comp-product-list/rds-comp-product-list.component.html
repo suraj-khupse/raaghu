@@ -94,12 +94,12 @@
                 <rds-price [role]="'withoutDiscount'" [numberPricetwo]="item.price"></rds-price>
                 <span *ngIf="item.badgeLabel != ''">
                   <rds-icon name="featured" height="18px" colorVariant="warning" width="18px"></rds-icon>
-                  <rds-badge size="small" [label]="item.badgeLabel"  [positioned]="false" colorVariant="warning">
+                  <rds-badge size="small" [label]="item.badgeLabel"  [positioned]="false" colorVariant="danger">
                   </rds-badge>
                 </span>
               </div>
               <div class="pt-2 d-flex justify-content-between">
-                <rds-button colorVariant="primary" size="medium" [isOutline="true" label="ADD TO BAG"></rds-button>
+                <rds-button colorVariant="primary" size="medium" [isOutline]="true" label="ADD TO BAG"></rds-button>
                 <rds-button colorVariant="primary" size="medium" label="BUY NOW"></rds-button>
               </div>
             </div>

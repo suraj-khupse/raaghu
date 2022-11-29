@@ -30,6 +30,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Input() actions: TableAction[] = [];
   @Input() resetPagination: boolean = false;
   @Input() refresh: boolean = false;
+  @Input() isDeleteConfirmationRequired: boolean = true;
   totalRecords: number = 0;
   @Input() recordsPerPage: number = 10;
   @Input() noDataTitle?: string;
@@ -121,8 +122,10 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
 
   close(): void {
     var element: any = document.getElementById('deleteModal');
-    var modal = new bootstrap.Modal(element);
-    modal.hide();
+    if (element) {
+      var modal = new bootstrap.Modal(element);
+      modal.hide();
+    }
     this.selectedData = undefined;
     this.showConfirmationPopup = false;
   }
@@ -316,7 +319,12 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
 
   onActionSelect(action: TableAction, selectedData: any): void {
     if (action.id === 'delete') {
-      this.deleteConfirmation(selectedData);
+      if (this.isDeleteConfirmationRequired) {
+        this.deleteConfirmation(selectedData);
+      } else {
+        this.selectedData = selectedData;
+        this.delete();
+      }
     } else if (action.id === 'edit') {
       this.editItem(selectedData);
     } else {

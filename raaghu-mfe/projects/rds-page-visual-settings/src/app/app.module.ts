@@ -5,9 +5,9 @@ import { RdsButtonModule, RdsCardModule, RdsCheckboxModule, RdsDropdownlistModul
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { visualsettingEffects, VisualsettingsReducer } from '@libs/state-management';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { VisualsettingsReducer } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.reducer';
 export const VisualsettingsReducersMap = {
   visualsettings: VisualsettingsReducer,
  

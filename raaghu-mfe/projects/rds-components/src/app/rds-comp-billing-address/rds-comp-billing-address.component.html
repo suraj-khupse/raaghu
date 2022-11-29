@@ -171,11 +171,14 @@
                 </div>
             </div>
             <div class="col-md-6 mb-3">
+                <div class="label mb-2">
+                    State/Province <span class="text-danger">*</span>
+                </div>
                 <rds-input Title="Postal Code" [labelPosition]="'top'" [isRequired]=true required [size]="'medium'"
                     name="postalCode" id="txtPostalCode" [(ngModel)]="model.postalCode" #postalCode="ngModel"
                     [placeholder]="'Enter Postal code'" required>
                 </rds-input>
-                <div class="form-control-feedback"
+                <div class="form-control-feedback mt-1"
                     *ngIf="postalCode.errors && (postalCode.dirty || postalCode.touched)">
 
                     <span class="text-danger" *ngIf="postalCode.errors.required">Postal code is required</span>

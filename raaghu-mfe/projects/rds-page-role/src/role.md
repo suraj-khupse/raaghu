@@ -37,11 +37,11 @@ title: "Pages > Role"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-role-list
+<rds-comp-role-list
   [roleHeaders]="roleHeaders"
   [listItems]="listItems"
   [roleList]="roleList"
-></app-rds-comp-role-list>
+></rds-comp-role-list>
 ```
 </div>
 </div>

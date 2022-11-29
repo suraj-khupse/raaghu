@@ -1,40 +1,22 @@
 import { createReducer, on } from "@ngrx/store";
 import { getPermission, getPermissionSuccess, getRolByEdit, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess } from "./role.actions";
-import { PermissionData, Role } from "./role.models";
 
 
 export interface RolesState {
     roles: any;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-export interface PermissionState {
-    PermissionI: PermissionData;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const roleInitialState: RolesState = {
-    roles: { items: [] },
-    error: null,
-    status: 'pending',
-};
-export const PermissionitialState: PermissionState = {
-    PermissionI: { items: [] },
-    error: null,
-    status: 'pending',
-};
-export interface EditRoleSate {
+    PermissionI: any;
     EditRoleSateI: any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
-export const  EdirRoleInitialState: EditRoleSate = {
-    EditRoleSateI: {  },
+export const roleInitialState: RolesState = {
+    roles: null,
+    EditRoleSateI: null,
+    PermissionI: null,
     error: null,
     status: 'pending',
 };
-
 
 export const RoleReducer = createReducer(
     // Supply the initial state
@@ -53,11 +35,6 @@ export const RoleReducer = createReducer(
         error: error,
         status: 'error',
     })),
-   
-)
-export const PermissionReducer = createReducer(
-    // Supply the initial state
-    PermissionitialState,
     on(getPermission, (state) => ({ ...state, status: 'loading' })),
     on(getPermissionSuccess, (state, { PermissionI }) => ({
         ...state,
@@ -65,19 +42,11 @@ export const PermissionReducer = createReducer(
         error: null,
         status: 'success',
     })),
-   
-)
-
-export const GetRoleforEdit = createReducer(
-    // Supply the initial state
-    EdirRoleInitialState,
     on(getRolByEdit, (state) => ({ ...state, status: 'loading' })),
     on(getRolByEditSuccess, (state, { EditRoleSateI }) => ({
         ...state,
-        RoleEditI: EditRoleSateI,
+        EditRoleSateI: EditRoleSateI,
         error: null,
         status: 'success',
-    })),
-   
+    }))
 )
-

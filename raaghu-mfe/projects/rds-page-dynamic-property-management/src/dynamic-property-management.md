@@ -10,12 +10,13 @@ title: "Pages > Dynamic-Property-Management"
 <link rel="stylesheet" href="../../../../../../../raaghu/src/assets/css/main.css">
 
 
-#### Dynamic-Property-Management
+#### Dynamic Property Management
 
 <p>A representation of a table with different dynamic properties and dynamic entity properties with necessary actions</p>
 
 <!-- Basic -->
 <section class="py-4">
+<h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -96,7 +97,7 @@ title: "Pages > Dynamic-Property-Management"
           aria-labelledby="nav-home-tab"
         >
           <div class="row">
-            <app-rds-comp-dynamic-properties></app-rds-comp-dynamic-properties>
+            <rds-comp-dynamic-properties></rds-comp-dynamic-properties>
           </div>
         </div>
         <!-- Entity -->
@@ -107,7 +108,7 @@ title: "Pages > Dynamic-Property-Management"
           aria-labelledby="nav-home-tab"
         >
           <div class="row">
-            <app-rds-comp-dynamic-enity-properties></app-rds-comp-dynamic-enity-properties>
+            <rds-comp-dynamic-enity-properties></rds-comp-dynamic-enity-properties>
           </div>
         </div>
       </div>

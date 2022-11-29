@@ -17,8 +17,8 @@ export class RdsTextareaComponent implements AfterViewInit, ControlValueAccessor
 
   static count = 0;
   @Input() value = '';
-  private onTouched!: Function;
-  private onChanged!: Function;
+  onChange = (event: string) => {};
+  onTouched = () => {};
 
   @Input() isRequired: boolean = false;
   @Input() disabled: boolean = false;
@@ -34,6 +34,18 @@ export class RdsTextareaComponent implements AfterViewInit, ControlValueAccessor
 
   constructor() {
     this.id = this.id + RdsTextareaComponent.count++;
+  }
+
+  writeValue(obj: any) {
+    this.value = obj;
+  }
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
   }
 
 
@@ -56,18 +68,10 @@ export class RdsTextareaComponent implements AfterViewInit, ControlValueAccessor
   setValue(event: any) {
     this.value = event.target.value
     this.onTouched(); // <-- mark as touched
-    this.onChanged(this.value);
+    this.onChange(this.value);
   }
 
-  writeValue(value: string): void {
-    this.value = value;
-  }
-  registerOnChange(fn: any): void {
-    this.onChanged = fn; // <-- save the function
-  }
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn; // <-- save the function
-  }
+
 
   public get divclasses(): string[] {
     var classList = ['mb-0']

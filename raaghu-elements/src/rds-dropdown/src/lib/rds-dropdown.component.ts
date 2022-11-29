@@ -176,8 +176,6 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
 
   onclick(event: any, item: any) {
     this.onSelect.emit(item.value);
-    console.log(item.value);
-
   }
 
 

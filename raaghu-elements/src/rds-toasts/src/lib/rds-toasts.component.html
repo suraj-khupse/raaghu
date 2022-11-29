@@ -9,13 +9,13 @@
       </div>
       <div class="toast-body" [ngClass]="bodycolor">
         <div *ngIf="!showButton">
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between toast-text">
             <div>
             {{message}}
             <ng-content select="[body]"></ng-content>
             </div>
             <div>
-              <button *ngIf="closebtn" type="button" class="btn-close" data-bs-dismiss="toast" (click)="close()" aria-label="Close"></button>
+              <button *ngIf="closebtn" type="button" class="btn-close toast-close" data-bs-dismiss="toast" (click)="close()" aria-label="Close"></button>
             </div>
           </div>
         </div>

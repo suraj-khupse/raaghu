@@ -3,9 +3,12 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from
 import { DatePipe } from '@angular/common';
 import { DownloadData, LinkedAccount, UserDeligates, LoginAttempts, Profile, success, Account, Deligates, Login } from '../../models/profile.model';
 import { Router } from '@angular/router';
-import { ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
+import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
+import { finalize } from 'rxjs/internal/operators/finalize';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
+import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 declare var $: any;
 declare var bootstrap: any;
 
@@ -32,9 +35,20 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() languageItems = [];
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() defaultLanguage: string = '';
+  selectedData: any;
+  deleteConfirmationData: AlertPopupData = {
+    iconUrl: "delete",
+    colorVariant: "danger",
+    alertConfirmation: "Are you sure ?",
+    messageAlert: "The record will be deleted permanently",
+    CancelButtonLabel: "Cancel",
+    DeleteButtonLabel: "Delete"
+  }
+  showConfirmationPopup: boolean = false;
+
   delegateTabopened: boolean = false;
   manageLinkedAccountsTabOpened: boolean = false;
-  
+
   @Output() onLanguageSelection = new EventEmitter<any>();
   @Output() onDeleteDeligate = new EventEmitter<any>();
 
@@ -48,32 +62,9 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     CancelButtonLabel: "Cancel",
     DeleteButtonLabel: "OK"
   }
-  ngOnInit(): void {
-    this.on('tenancyData').subscribe(res => {
-      this.emitEvent('tenancyDataAgain', res);
-    })
-    this.rdsAlertMfeConfig = {
-      name: 'RdsCompAlertPopup',
-      input: {
-        alertID: 'DownloadDatamodal',
-        alertData: this.alertData
-      },
-      output: {
-        onDelete: (event) => {
-          this.downloadText();
-        },
-
-      }
-    }
-  }
-  constructor(private injector: Injector,
-    public translate: TranslateService,
-    private router: Router) {
-    super(injector);
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
+  uploadProgress: number;
+  uploadSub: any;
+  profilePicture: string;
   @Input() Profileurl: string;
   @Input() MenuItems: any[] = [];
   @Input() DownloadTable: DownloadData[] = []
@@ -88,7 +79,9 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Output() onLinkToUser = new EventEmitter<any>();
   @Output() onLoginAttempts = new EventEmitter<any>();
   @Output() onDownloadLink = new EventEmitter<any>();
+  @Output() onProfileData = new EventEmitter<any>();
   @Input() showLoadingSpinner: boolean = false;
+  @Input() tenancy: string = 'Host Admin';
   public Profileform = new FormGroup({})
   offCanvasWidth = 304;
   profileMenu = 1000 + "px";
@@ -107,6 +100,8 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   tabisVisible: boolean = false;
 
   @Output() onProfileSave = new EventEmitter<any>();
+  @Output() onProfilePicUpdate = new EventEmitter<any>();
+
 
   @Input() viewCanvas: boolean = false;
 
@@ -127,6 +122,53 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   Usernamefilter: any[] = []
   DatasetDeligate: any = [];
   @Input() showDelegationButtonSpinner: boolean = true;
+  url: any;
+
+  @Input()
+  requiredFileType: string;
+
+  fileName = '';
+  ngOnInit(): void {
+    this.on('tenancyData').subscribe(res => {
+      this.emitEvent('tenancyDataAgain', res);
+    })
+    this.rdsAlertMfeConfig = {
+      name: 'RdsCompAlertPopup',
+      input: {
+        alertID: 'DownloadDatamodal',
+        alertData: this.alertData
+      },
+      output: {
+        onDelete: (event) => {
+          this.downloadText();
+        },
+
+      }
+    }
+    this.getProfilePicture();
+
+  }
+  constructor(private injector: Injector,
+    public translate: TranslateService,
+    private router: Router,
+    private http: HttpClient,
+    private _profileService: ProfileServiceProxy) {
+    super(injector);
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
+
+public getProfilePicture():void{
+  this._profileService.getProfilePicture().subscribe((result)=>{
+    if (result && result.profilePicture) {
+      this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
+      this.onProfilePicUpdate.emit(this.Profileurl);
+  }
+  })
+}
+
   onclickMenu(item: any) {
 
     if (this.MenuItems[item]?.showoffcanvas == false) {
@@ -225,19 +267,67 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
       }
     }
   }
-  checkExtension(event: any): void {
+  // checkExtension(event: any): void {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let file = event.target.files[0];
+
+  //     if (file.type == "application/pdf" || file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
+
+  //     }
+  //     else {
+
+
+  //     }
+
+  //   }
+  // }
+
+  onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      let file = event.target.files[0];
 
-      if (file.type == "application/pdf" || file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
+      const file: File = event.target.files[0];
 
-      }
-      else {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileType', file.type);
+      formData.append('fileName', 'ProfilePicture');
+      formData.append('fileToken', this.guid());
+  
+      const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
+      this.uploadSub = upload$.subscribe((result: any) => {
+        this.updateProfilePicture(result.result.fileToken);
+       this.onProfileData.emit(result);
+       console.log(result)
 
-
-      }
+      });
 
     }
+  }
+
+  updateProfilePicture(fileToken: string): void {
+    const input = new UpdateProfilePictureInput();
+    input.fileToken = fileToken;
+
+    this._profileService
+        .updateProfilePicture(input)
+        .subscribe(() => {
+          this.getProfilePicture();
+        });
+}
+
+
+  reset(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  guid(): string {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   }
 
   logout() {
@@ -316,6 +406,30 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
       res.subText = this.translate.instant(res.subtextTranslationKey)
     });
     return this.MenuItems;
+  }
+
+  deleteDelegate(event): void {
+    this.selectedData = event;
+    this.showConfirmationPopup = true;
+    setTimeout(() => {
+      var element: any = document.getElementById('deleteDelegationModal');
+      var modal = new bootstrap.Modal(element);
+      modal.show();
+    }, 100);
+  }
+
+  delete(): void {
+    this.onDeleteDeligate.emit(this.selectedData);
+
+  }
+  closeModal(): void {
+    var element: any = document.getElementById('deleteDelegationModal');
+    if (element) {
+      var modal = new bootstrap.Modal(element);
+      modal.hide();
+    }
+    this.selectedData = undefined;
+    this.showConfirmationPopup = false;
   }
 
 }

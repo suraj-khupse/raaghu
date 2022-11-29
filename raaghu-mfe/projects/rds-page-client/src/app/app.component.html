@@ -45,7 +45,7 @@
     <div class="">
       <rds-button [label]="translate.instant('Cancel')"  [colorVariant]="'primary'"  [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
       </rds-button>
-      <rds-button [label]="getBtnName()" [colorVariant]="'primary'" [size]="'small'" [disabled]="!client.basicInfo" (click)="save()">
+      <rds-button [label]="getBtnName()" [colorVariant]="'primary'" [size]="'small'" [isDisabled]="!client.basicInfo" (click)="save()">
       </rds-button>
     </div>
   </rds-offcanvas>

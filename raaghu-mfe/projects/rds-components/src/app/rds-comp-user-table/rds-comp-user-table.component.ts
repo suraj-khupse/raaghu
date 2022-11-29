@@ -21,6 +21,7 @@ export class RdsCompUserTableComponent implements OnInit {
   listcountrycode: any[] = []
   Isenabled: boolean;
   username: string;
+  buttonSpinnerForUserTable: boolean = false;
   countrycode: string;
   public viewCanvas: boolean = false;
   activePage: number = 0;
@@ -70,6 +71,7 @@ export class RdsCompUserTableComponent implements OnInit {
   }
 
   openCanvas(): void {
+    this.buttonSpinnerForUserTable = true;
     this.viewCanvas = true;
     this.activePage = 0;
     this.canvasTitle = 'Add User';
@@ -82,5 +84,6 @@ export class RdsCompUserTableComponent implements OnInit {
 
   closeCanvas(): void {
     this.viewCanvas = false;
+    this.buttonSpinnerForUserTable = false;
   }
 }

@@ -64,8 +64,14 @@ export class UserEffects {
       switchMap((data) =>
         this.userService.createOrUpdateUser(data.user).pipe(map((res: any) => {
           this.store.dispatch(getUsers([]));
-          this.alertService.showAlert('Success', 'User added successfully', 'success');
-
+          if(data.user.user.id !=undefined){
+            this.alertService.showAlert('Success',  'User Updated successfully', 'success')
+          }
+          else
+          {
+            this.alertService.showAlert('Success',  'User added successfully', 'success')
+          }
+       
         }),
           catchError((error: any) => of(
           ))

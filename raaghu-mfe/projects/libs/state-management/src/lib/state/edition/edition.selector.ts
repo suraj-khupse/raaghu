@@ -1,24 +1,23 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { AppState } from '../../app.interface';
 import { EditionsState } from './edition.reducer';
 
-export const editionSelector = createFeatureSelector<AppState>('editions');
-
+export const editionSelector = (state: AppState) => state.editions;
 export const selectAllEditions = createSelector(
     editionSelector,
-    (state: AppState) => state.editions
+    (state: EditionsState) => state.editions
 );
 export const selectEditionInfo = createSelector(
     editionSelector,
-    (state: AppState) => state.editionInfo
+    (state: EditionsState) => state.editionInfo
 );
 
 export const selectEditionPageComboboxItems = createSelector(
   editionSelector,
-  (state: AppState) => state.editionComboboxItem
+  (state: EditionsState) => state.editionComboboxItem
 );
 
 export const selectTenant = createSelector(
   editionSelector,
-  (state: AppState) => state.tenantCount
+  (state: EditionsState) => state.tenantCount
 );

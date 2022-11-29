@@ -11,6 +11,7 @@ title: "Components > Permission-tree"
 
 <p>Provides a select box having different options that can be selected in single/multiple way</p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,11 +39,11 @@ title: "Components > Permission-tree"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-permission-tree
+<rds-comp-permission-tree
 [selectedItems]="selectedItems"
 [treeData]="treeData"
 [multiselectTree]="false">
-</app-rds-comp-permission-tree>
+</rds-comp-permission-tree>
 ```
 </div>
 </div>

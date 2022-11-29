@@ -1,5 +1,5 @@
 <div *ngIf="!editShimmer">
-  <div class="tab-content py-4 mb-4">
+  <div class="tab-content mb-4 p-4">
     <form #tenantCreationForm="ngForm">
       <div class="row align-items-center">
         <div class="col-md-3 text-center cursor-pointer sm-p-0 mb-2">
@@ -52,18 +52,10 @@
             <div>
               <label for="Edition" class="mb-2">Edition<span class="text-danger">*</span></label>
             </div>
-            <rds-dropdownlist [placeholder]="translate.instant('Select Edition')" 
-            [borderDropdown]="true"
-            class="text-dark"
-            [id]="'edition-dropdown'"
-            [(ngModel)]="tenantData.displayText"
-            [listItems]="editionList" #inputNameData="ngModel" required
-            [multiSelect]="false"
-            [selectAll]="false"
-            [entity]="false"
-            [value]="tenantData.displayText" ngDefaultControl name="tenantData.displayText">
+            <rds-dropdownlist [placeholder]="translate.instant('Select Edition')" [borderDropdown]="true"
+              class="text-dark" [id]="'edition-dropdown'" [(ngModel)]="tenantData.displayText" [listItems]="editionList"
+              required [value]="tenantData.displayText" (onSelect)="onEditionSelect($event)" ngDefaultControl name="edition">
             </rds-dropdownlist>
-            {{tenantData.displayText}}
           </div>
         </div>
       </div>
@@ -88,12 +80,12 @@
       </div>
     </form>
   </div>
-  <div class="position-fixed py-3 bottom-0 w-100 action-buttons">
+  <div class="p-5 bottom-0 w-100 action-buttons">
     <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" [size]="'small'"
       (click)="onCanceled()" data-bs-dismiss="offcanvas">
     </rds-button>
-    <rds-button [label]="translate.instant('Next')" [isDisabled]="!tenantCreationForm.valid" [size]="'small'" class="ms-2"
-      [colorVariant]="'primary'" (click)="next(tenantCreationForm)">
+    <rds-button [label]="translate.instant('Next')" [isDisabled]="!tenantCreationForm.valid" [size]="'small'"
+      class="ms-2" [colorVariant]="'primary'" (click)="next(tenantCreationForm)">
     </rds-button>
   </div>
 </div>

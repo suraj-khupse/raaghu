@@ -4,13 +4,19 @@ import { Edition, EditionItem } from "./edition.model";
 
 
 export interface EditionsState {
-    editions: EditionItem[]
+    editions: EditionItem[];
+    editionInfo: any;
+    editionComboboxItem: any;
+    tenantCount: number;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const editionInitialState: EditionsState = {
-    editions: [],
+    editions: null,
+    editionComboboxItem: null,
+    editionInfo: null,
+    tenantCount: 0,
     error: null,
     status: 'pending',
 };
@@ -45,21 +51,7 @@ export const EditionReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
-)
-
-export interface EditionInfoState {
-    editionInfo: any
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const editInfoInitialState: EditionInfoState = {
-    editionInfo: {},
-    error: null,
-    status: 'pending',
-};
-export const EditionInfoReducer = createReducer(
-    editionInitialState,
+    })),
     on(getEditionInfo, (state) => ({ ...state, status: 'loading' })),
     on(getEditionInfoSuccess, (state, { editionInfo }) => ({
         ...state,
@@ -71,23 +63,8 @@ export const EditionInfoReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
-    }))
-
-)
-
-export interface EditionsPageComboboxState {
-  editionComboboxItem: any[]
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const editionPageComboboxInitialState: EditionsPageComboboxState = {
-  editionComboboxItem: [],
-  error: null,
-  status: 'pending',
-};
-export const EditionPageComboboxReducer = createReducer(
-  editionPageComboboxInitialState,
-  on(getEditionPageComboboxItems, (state) => ({ ...state, status: 'loading' })),
+    })),
+    on(getEditionPageComboboxItems, (state) => ({ ...state, status: 'loading' })),
   on(getEditionPageComboboxItemsSuccess, (state, { editionComboboxItem }) => ({
     ...state,
     editionComboboxItem: editionComboboxItem,
@@ -98,22 +75,7 @@ export const EditionPageComboboxReducer = createReducer(
     ...state,
     error: error,
     status: 'error',
-  }))
-
-)
-
-export interface TenantCountState {
-  tenantCount: number;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const initialTenatCountState: TenantCountState = {
-  tenantCount:0,
-  error: null,
-  status: 'pending',
-};
-export const TenantCountReducer = createReducer(
-  initialTenatCountState,
+  })),
   on(getTenantCount, (state) => ({ ...state, status: 'loading' })),
   on(getTenantCountSuccess, (state, { tenantCount }) => ({
     ...state,
@@ -126,5 +88,10 @@ export const TenantCountReducer = createReducer(
     error: error,
     status: 'error',
   }))
-
 )
+
+
+
+
+
+

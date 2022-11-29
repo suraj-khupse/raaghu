@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
+import { Modal } from 'bootstrap'
 export interface notificationData {
   status: any;
   title: any;
@@ -27,6 +27,7 @@ export class RdsNotificationComponent implements OnInit {
   @Input() borderRadious?: number;
   @Input() Paddig?: number;
   @Input() width?: number;
+  
   @Output() setAllReadOutput = new EventEmitter<boolean>();
   @Output() setAsReadOutput = new EventEmitter<any>();
   constructor(public translate: TranslateService) { }
@@ -103,4 +104,14 @@ export class RdsNotificationComponent implements OnInit {
     return false;
   }
 
+  showNotificationSettingsModal(){
+
+    var myModalEl = document.getElementById('notification-settings');
+
+      var modal = new Modal(myModalEl)
+
+      modal.show();
+
+  }
+  
 }

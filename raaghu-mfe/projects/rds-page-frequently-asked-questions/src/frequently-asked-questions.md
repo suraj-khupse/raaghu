@@ -42,7 +42,7 @@ title: "Pages > Frequently-Asked-Questions"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-faq></app-rds-comp-faq>
+<rds-comp-faq></rds-comp-faq>
 
 ```
 

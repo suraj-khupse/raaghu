@@ -116,6 +116,34 @@ $default-100: #F58220;
 
   /*Chart color variables*/
 :root {
+  --chart-bool-color1: #E30707;
+  --chart-bool-color2: #EBEEFB;
+  --chart-bubble-color1: #FA896B;
+  --chart-bubble-color2: #78F7B8;
+  --chart-area-color1: #FA896B;
+  --chart-area-color2: #78F7B8;
+  --chart-doughnut-color1: #0085D3;
+  --chart-doughnut-color2: #BF00BB;
+  --chart-doughnut-color3: #7E2EEF;
+  --chart-doughnut-text-color: rgba(0, 0, 0, 100%);
+  --chart-bar-horizontal-color1: #FA896B;
+  --chart-bar-horizontal-color2: #78F7B8;
+  --chart-bar-horizontal-color: rgba(7, 150, 227, 5);
+  --chart-bar-horizontal-border-color: rgba(214, 66, 8);
+  // gradient colors for line chart should be in rgba format and opacity should be zero
+  --chart-line-color1: rgba(25, 70, 186, 0);
+  --chart-line-color2: rgba(48, 22, 194, 0);
+  --chart-line-color3: rgba(17, 80, 239, 0);
+  // --chart-line-border-color1: rgba(25, 70, 186);
+  // --chart-line-border-color2: rgb(148, 134, 225);
+  // --chart-line-border-color3: rgb(58, 178, 234);
+  // --chart-line-point-color1: rgba(25, 70, 186);
+  // --chart-line-point-color2: rgb(148, 134, 225);
+  // --chart-line-point-color3: rgba(58, 178, 234);
+  // --chart-line-legend-color: #EDB371;
+  // --chart-line-scale-color1: #71edce;
+  // --chart-line-scale-color2: #d8410a;
+
   --chartColor7: #EBEEFB;
   --chartColor2: #BF00BB;
   --chartColor3: #7E2EEF;
@@ -146,7 +174,6 @@ $default-100: #F58220;
   --chartgradient8: rgba(25,70,186,16%);
   --chartgradient9: rgba(25,70,186,8%);
   --chartgradient10: rgba(25,70,186,1%);
-  
 }
 
 //$input-select-bg: $dark-200!default;
@@ -154,12 +181,13 @@ $form-select-bg: $dark-200!default;
 $form-select-border-color: $dark-100!default;
 //$offcanvas-border-color: $dark-400!default;
 
-$offcanvas-bottom-border-color: $dark-100!default;
-$nav-tabs-bottom-border-color: $dark-100!default;
+// $offcanvas-bottom-border-color: $dark-100!default;
+// $nav-tabs-bottom-border-color: $dark-100!default;
 
 $modal-bg-color: $dark-200!default;
 
 html[theme=dark] {
+  --chart-doughnut-text-color: #fff;
   $input-bg: $dark-200!default;
   $input-bg-border: $dark-100!default;
 

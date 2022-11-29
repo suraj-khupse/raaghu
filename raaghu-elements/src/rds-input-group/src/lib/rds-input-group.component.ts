@@ -27,7 +27,6 @@ export class RdsInputGroupComponent implements OnInit {
   }
 
   onClickEvent(): void {
-    console.log(this.value);
     this.onClick.emit(this.value);
   }
 }

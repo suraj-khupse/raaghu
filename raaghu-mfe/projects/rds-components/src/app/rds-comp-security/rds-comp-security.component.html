@@ -64,12 +64,11 @@
 
           <li>
             <div class="form-group mb-5">
-              <rds-counter [counterValue]="Seccuritysetting.requiredLength" Title="Required Length"
+              <rds-counter [counterValue]="Seccuritysetting.requiredLength" 
                 colorVariant="primary" (counterChange)="getCounterData($event,'requiredLength')"
                 [(ngModel)]="Seccuritysetting.requiredLength" [min]="0" [max]="26" [width]="124" name="requiredLength"
                 #requiredLength="ngModel" ngDefaultControl (change)="onChange()">
               </rds-counter>
-
             </div>
           </li>
         </ul>
@@ -81,7 +80,7 @@
           <div class="fw-medium form-label">
             <rds-label [label]="translate.instant('User Lock Out')"></rds-label>
           </div>
-          <rds-checkbox [label]="'Enable User Account Locking On Failed Login Attempts'"
+          <rds-checkbox [label]="translate.instant('Enable User Account Locking On Failed Login Attempts')"
             [checked]="Seccuritysetting.userLockout" [disabled]="false" [switch]="false" [inline]="false"
             [withLabel]="true" [isInputGroup]="false" [(ngModel)]="Seccuritysetting.userLockout" ngDefaultControl
             name="userLockout" #userLockout="ngModel" (onChange)="selectAllFeature($event,'userLockout')"
@@ -120,7 +119,7 @@
           <div class="form-label fw-medium">
             <rds-label [label]="translate.instant('Two Factor Login')"></rds-label>
           </div>
-          <rds-checkbox [label]="'Enable Two Factor User Login'" [checked]="Seccuritysetting.twoFactorLogin"
+          <rds-checkbox [label]="translate.instant('Enable Two Factor User Login')" [checked]="Seccuritysetting.twoFactorLogin"
             [disabled]="false" [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false"
             ngDefaultControl name="twoFactorLogin" (onChange)="selectAllFeature($event,'twoFactorLogin')"
             [(ngModel)]="Seccuritysetting.twoFactorLogin" #twoFactorLogin="ngModel" [id]="'twoFactorLogin'" (change)="onChange()">
@@ -133,7 +132,7 @@
             <rds-label [label]="translate.instant('Only One Concurrent Login Per User')"></rds-label>
           </div>
           <rds-checkbox
-            [label]="'Disable Concurrent Login For A User. If A User Logins With A Second Device, The First Session Is Automatically Closed.'"
+            [label]="translate.instant('Disable Concurrent Login For A User. If A User Logins With A Second Device, The First Session Is Automatically Closed.')"
             [checked]="Seccuritysetting.loginPerUser" [disabled]="false" [switch]="false" [inline]="false"
             name="allowOneConcurrentLoginPerUser" [withLabel]="true" [isInputGroup]="false"
             [(ngModel)]="Seccuritysetting.allowOneConcurrentLoginPerUser" ngDefaultControl

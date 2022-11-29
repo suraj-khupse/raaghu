@@ -24,14 +24,14 @@
         {
           "id": 3,
           "image": "images/Landing page-Elements/Collapse Button.png",
-          "title": "Collapse Button",
+          "title": "Collapse",
           "text": " It is used to show and hide content. Buttons are used as triggers that are mapped to specific elements you toggle",
           "link": "/collapse"
         },
         {
           "id": 5,
           "image": "images/Landing page-Elements/Dropdown.png",
-          "title": "Button Dropdown",
+          "title": "Dropdown",
           "text": "  Button Dropdowns present a list of options from which a user can select one option.",
           "link": "/dropdown"
         }
@@ -51,21 +51,21 @@
         {
           "id": 2,
           "image": "images/Landing page-Elements/Radio Buttons.png",
-          "title": "Radio",
+          "title": "Radio Buttons",
           "text": "  Radio buttons are group of mutually exclusive choices and only one selection from the group is allowed.",
           "link": "/radio-button"
         },
         {
           "id": 3,
           "image": "images/Landing page-Elements/Datepicker.png",
-          "title": "Date-Time Picker",
+          "title": "Date Picker",
           "text": " Date and time pickers allow users to select a single or a range of dates and times.",
           "link": "/datepicker"
         },
         {
           "id": 4,
           "image": "images/Landing page-Elements/Dropdown List.png",
-          "title": "Dropdown list ",
+          "title": "Dropdown List ",
           "text": " It is list of options for selection. A selected option can represent a value in a form, or can be used as an action",
           "link": "/dropdownlist"
         },
@@ -86,7 +86,7 @@
         {
           "id": 7,
           "image": "images/Landing page-Elements/Search.png",
-          "title": "Search",
+          "title": "Search Input",
           "text": " Search enables users to specify a word or a phrase to find relevant pieces of content without the use of navigation.",
           "link": "/search-input"
         },       
@@ -185,20 +185,6 @@
           "title": "Table",
           "text": " Tables are a designed for displaying large amounts of data in rows and columns.",
           "link": "/table"
-        },
-        {
-          "id": 9,
-          "image": "images/tree.png",
-          "title": "Tree",
-          "text": "  A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed.",
-          "link": "/Date-Time Picker"
-        },
-        {
-          "id": 10,
-          "image": "images/tooltip.png",
-          "title": "Tooltip",
-          "text": "  A tooltip is a message box that is displayed when a user hovers over, clicks or gives focus to a UI element.",
-          "link": "/Date-Time Picker"
         }
       ]
     },
@@ -223,7 +209,7 @@
         {
           "id": 3,
           "image": "images/Landing page-Elements/Toast.png",
-          "title": "Toast Message",
+          "title": "Toast",
           "text": "  Toasts are time-based window elements used to display short messages. It will disappear after a few seconds.",
           "link": "/toasts"
         }
@@ -236,7 +222,7 @@
         {
           "id": 1,
           "image": "images/Landing page-Elements/Tag.png",
-          "title": "Tags",
+          "title": "Tag",
           "text": "  Tags are used to label, organize, or categorize objects. Tags can also serve as a label for content or display counts.",
           "link": "/tags"
         },
@@ -270,7 +256,7 @@
         {
           "id": 3,
           "image": "images/Landing page-Elements/Modal Popups.png",
-          "title": "Modal Popups",
+          "title": "Modal",
           "text": " It is a dialog box/popup window that is displayed on top of the current page",
           "link": "/modal"
         }
@@ -290,14 +276,14 @@
         {
           "id": 2,
           "image": "images/Landing page-Elements/Address-Detail.png",
-          "title": "Address detail",
+          "title": "Address Detail",
           "text": " Address detail is way to input details of address of a user.",
           "link": "/address-detail"
         },
         {
           "id": 3,
           "image": "images/Landing page-Elements/App-Details.png",
-          "title": "App details",
+          "title": "App Details",
           "text": " App Details helps an user to showcase deatils of the app integration for the webpage.",
           "link": "/app-details"
         },
@@ -603,7 +589,7 @@
         {
           "id": 9,
           "image": "images/Landing page-Elements/polar-area-chart.png",
-          "title": "Polar Chart",
+          "title": "Polar Area Chart",
           "text": " Mixed chart is the combination two chart types that are bar and line containing multiple data sets. It helps in the differentiating different types of data in a single chart.",
           "link": "/chart-polar-area"
         },
@@ -666,7 +652,7 @@
           "image": "images/edition1.png",
           "title": "Edition",
           "text": "Gives a price details about a subscription plan along with its benefits",
-          "link": "/comp-features"
+          "link": "/comp-edition"
         },      
         {
           "id": 8,
@@ -697,28 +683,28 @@
         {
           "id": 2,
           "image": "images/alert-popup1.png",
-          "title": "Alert popup ",
+          "title": "Alert Popup ",
           "text": " Pops out whether a user wants to keep the relevant information or delete it",
           "link": "/comp-alert-popup"
         },
         {
           "id": 3,
           "image": "images/apply-for-position1.png",
-          "title": "Apply for position",
+          "title": "Apply For Position",
           "text": " Gives a necessary details to the user needed for the mentioned action",
           "link": "/comp-apply-for-position"
         },
         {
           "id": 4,
           "image": "images/audit-log1.png",
-          "title": "Audit logs",
+          "title": "Audit Logs",
           "text": "It enables a user to have security relevant set of records that gives a documentary evidence of the sequence of sctivities",
           "link": "/comp-audit-logs"
         },
         {
           "id": 5,
           "image": "images/background-image2.png",
-          "title": "Background images ",
+          "title": "Background Images ",
           "text": "Gives an available caption that can be edited along with the button and a background image",
           "link": "/comp-background-image"
         },
@@ -731,7 +717,7 @@
         },
         {
           "id": 7,
-          "image": "images/default.png",
+          "image": "images/tenant-dashboard1.png",
           "title": "Admin Dashboard",
           "text": " Gives a user a graphical and statistical representation of a particular objective",
           "link": "/comp-admin-dashboard"
@@ -746,9 +732,9 @@
         {
           "id": 9,
           "image": "images/basics-resources1.png",
-          "title": "Basic resources",
+          "title": "Basic Resources",
           "text": "Provides an API information of a user with its different details",
-          "link": "/comp-basic-resources"
+          "link": "/comp-basic-resource"
         },
         {
           "id": 10,
@@ -767,7 +753,7 @@
         {
           "id": 12,
           "image": "images/billing-address1.png",
-          "title": "Billing address",
+          "title": "Billing Address",
           "text": "Extracts the necessary details needed for the bill of a customer",
           "link": "/comp-billing-address"
         },
@@ -783,14 +769,14 @@
           "image": "images/calender1.png",
           "title": "Calendar",
           "text": "",
-          "link": "/comp-calender"
+          "link": "/comp-calendar"
         },
         {
           "id": 15,
           "image": "images/card-details-list1.png",
-          "title": "Card detail list",
+          "title": "Card Detail List",
           "text": "Gives relevant information about the different payment options of saved cards",
-          "link": "/comp-card-details-list"
+          "link": "/comp-card-detail-list"
         },
         {
           "id": 16,
@@ -802,56 +788,42 @@
         {
           "id": 17,
           "image": "images/client-basics1.png",
-          "title": "Client basic",
+          "title": "Client Basic",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/comp-client-basic"
+          "link": "/comp-client-basics"
         },
         {
           "id": 18,
           "image": "images/client-resource1.png",
-          "title": "Client resources",
+          "title": "Client Resources",
           "text": " Gives a details about the checkboxes in a alphabetical range",
           "link": "/comp-client-resources"
         },
         {
           "id": 19,
           "image": "images/contact-information1.png",
-          "title": "Contact information",
+          "title": "Contact Information",
           "text": "Requires a necessary personal details from a person and acceptance of the terms and conditions",
           "link": "/comp-contact-information"
         },
         {
-          "id": 20,
-          "image": "images/contact-us1.png",
-          "title": "Contact us",
-          "text": "Provides a necessary details needed to describe it in a form of a message",
-          "link": "/comp-contact-us"
-        },
-        {
           "id": 21,
           "image": "images/customer-reviews1.png",
-          "title": "Customer review",
+          "title": "Customer Review",
           "text": "Provides a card with different ratings and it's percentage of different level of reviews",
-          "link": "/comp-customer-review"
+          "link": "/comp-customer-reviews"
         },
         {
           "id": 22,
           "image": "images/delivery-method1.png",
-          "title": "Delivery method",
+          "title": "Delivery Method",
           "text": "The card provides a details on the type of costs based on the delivery estimation",
           "link": "/comp-delivery-method"
         },
-        {
-          "id": 23,
-          "image": "images/under-maintenance - under-construction.png",
-          "title": "Demo ui",
-          "text": " Under construction",
-          "link": "/comp-demoui"
-        },
-        {
+           {
           "id": 24,
           "image": "images/download-collection2.png",
-          "title": "Download collection",
+          "title": "Download Collection",
           "text": "Provies a set of dates",
           "link": "/comp-download-collection"
         },
@@ -859,30 +831,16 @@
         {
           "id": 26,
           "image": "images/dynamic-properties1.png",
-          "title": "Dynamic properties",
+          "title": "Dynamic Properties",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
           "link": "/comp-dynamic-properties"
         },
         {
           "id": 27,
           "image": "images/edit-language-text1.png",
-          "title": "Edit language text",
+          "title": "Edit Language Text",
           "text": "Provides the details on the selection of a target language from the user base language ",
           "link": "/comp-edit-language-text"
-        },
-        {
-          "id": 28,
-          "image": "images/edition1.png",
-          "title": "Edition",
-          "text": " Gives a price details about a subscription plan along with its benefits ",
-          "link": "/comp-edition"
-        },
-        {
-          "id": 29,
-          "image": "images/edition-list1.png",
-          "title": "Edition table",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/comp-edition-table"
         },
         {
           "id": 30,
@@ -907,7 +865,7 @@
         },
         {
           "id": 33,
-          "image": "images/default.png",
+          "image": "images/edition-list1.png",
           "title": "Features",
           "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
           "link": "/comp-features"
@@ -918,13 +876,6 @@
           "title": "Feeds",
           "text": "Integrates activities in the project with the help of reviews ",
           "link": "/comp-feeds"
-        },
-        {
-          "id": 35,
-          "image": "images/forgot-password1.png",
-          "title": "Forgot Password",
-          "text": " Provides a card with the details neededed to restore an account",
-          "link": "/comp-forgot-password"
         },
         {
           "id": 36,
@@ -1022,7 +973,7 @@
           "id": 50,
           "image": "images/notification1.png",
           "title": "Notification",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
+          "text": " Provides a notification icon for alerts ",
           "link": "/comp-notification"
         },
         {
@@ -1061,13 +1012,6 @@
           "link": "/comp-organization-tree"
         },
         {
-          "id": 56,
-          "image": "images/default.png",
-          "title": "Other Settings",
-          "text": " provides a checkbox to have the option selected or unselected ",
-          "link": "/comp-other-settings"
-        },
-        {
           "id": 57,
           "image": "images/Page not found1.png",
           "title": "Page Not Found",
@@ -1098,7 +1042,7 @@
         {
           "id": 61,
           "image": "images/personal-info1.png",
-          "title": "Personal Info",
+          "title": "Personal Information",
           "text": " Provides a card with newcessary details to be filled by a user along with upload options ",
           "link": "/comp-personal-info"
         },
@@ -1156,7 +1100,7 @@
           "image": "images/role-list2.png",
           "title": "Role List",
           "text": " Provides a card with tables and action to edit or delete",
-          "link": "/comp-role"
+          "link": "/comp-role-list"
         },
         {
           "id": 70,
@@ -1187,13 +1131,6 @@
           "link": "/comp-shopping-cart-product"
         },
         {
-          "id": 74,
-          "image": "images/subscription1.png",
-          "title": "Subscription",
-          "text": " A card having different subscription plans with thier respective price ",
-          "link": "/comp-subscription"
-        },
-        {
           "id": 75,
           "image": "images/teams1.png",
           "title": "Teams",
@@ -1204,7 +1141,7 @@
           "id": 76,
           "image": "images/tenant-dashboard1.png",
           "title": "Tenant Dashboard",
-          "text": " graphical user interface which often provides at-a-glance views of key performance indicators relevant to a particular objective or business process ",
+          "text": " Graphical user interface which often provides at-a-glance views of key performance indicators relevant to a particular objective or business process ",
           "link": "/comp-tenant-dashboard"
         },
         {
@@ -1225,7 +1162,7 @@
           "id": 79,
           "image": "images/tenant-management2.png",
           "title": "Tenant Management",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
+          "text": "  A card with different checkboxes used for registration of a user",
           "link": "/comp-tenant-management"
         },
         {
@@ -1310,7 +1247,7 @@
           "image": "images/user-claims1.png",
           "title": "User Claims",
           "text": " Gives a mandatory fields that need to be filled by a user",
-          "link": "/comp-user-claims"
+          "link": "/comps-user-claims"
         }
 
       ]
@@ -1329,49 +1266,49 @@
           "image": "images/dashboard_page.png",
           "title": "Dashboard",
           "text": " graphical user interface which often provides at-a-glance views of key performance indicators relevant to a particular objective or business process",
-          "link": "/Widgets"
+          "link": "/page-dashboard"
         },
         {
           "id": 2,
           "image": "images/tenant_page.png",
           "title": "Tenants",
           "text": "A page having multiple dropdown options and necessary action required for tenant ",
-          "link": "/Visual Settings"
+          "link": "/page-tenant"
         },
         {
           "id": 3,
           "image": "images/my-settings1.png",
           "title": "My Settings",
           "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-"
         },
         {
           "id": 4,
           "image": "images/role_page.png",
           "title": "Roles",
           "text": " A page with different roles along with necessary options and actions ",
-          "link": "/Buttons Group"
+          "link": "/page-role"
         },
         {
           "id": 5,
           "image": "images/user_page.png",
           "title": "Users",
           "text": "It gives a card having different tables options with status and necessary actions required Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/Buttons Group"
+          "link": "/page-user"
         },
         {
           "id": 6,
           "image": "images/language_page.png",
           "title": "Language",
           "text": " gives a description on different languages along with their code and action on edit or delete",
-          "link": "/Buttons Group"
+          "link": "/page-language"
         },
         {
           "id": 7,
           "image": "images/audit-log_page.png",
           "title": "Audit Logs",
           "text": "It provides a representation in form of a table that represents organisational details ",
-          "link": "/Buttons Group"
+          "link": "/page-audit-logs"
         }
         
 
@@ -1411,9 +1348,9 @@
         {
           "id": 4,
           "image": "images/claim-types_page.png",
-          "title": "Claimtypes",
+          "title": "Claim Types",
           "text": " A tabular representation of a card with different categories and necessary action required for them ",
-          "link": "/page-claimtypes"
+          "link": "/page-claim-types"
         },
         {
           "id": 5,
@@ -1421,14 +1358,7 @@
           "title": "Client",
           "text": " Represents a card with a table representation of a client with a unique id and necessary actions ",
           "link": "/page-client"
-        },
-        {
-          "id": 6,
-          "image": "images/contact-us1.png",
-          "title": "Contact Us",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-contact-us"
-        },        
+        },     
         {
           "id": 8,
           "image": "images/dynamic-property-management_page.png",
@@ -1442,21 +1372,7 @@
           "title": "Edition",
           "text": " It gives a user an option to take necessary action on edit,delete and moving the tenants to another version ",
           "link": "/page-edition"
-        },
-        {
-          "id": 10,
-          "image": "images/forgot-password1.png",
-          "title": "Forgot Password",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-forgot-password"
-        },
-        {
-          "id": 11,
-          "image": "images/faq1.png",
-          "title": "Frequently Asked Questions",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-frequently-asked-questions"
-        },        
+        },  
         {
           "id": 13,
           "image": "images/identity-resources_page.png",
@@ -1472,56 +1388,21 @@
           "link": "/page-language-text"
         },
         {
-          "id": 15,
-          "image": "images/login1.png",
-          "title": "Login",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/page-login"
-        },
-        {
           "id": 16,
           "image": "images/maintenance_page.png",
           "title": "Maintenance",
           "text": "Provides a select menu with it's option to delete the necessary field",
           "link": "/page-maintenance"
         },
-        {
-          "id": 17,
-          "image": "images/member-activity1.png",
-          "title": "Member Activity",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-member-activity"
-        },
-        {
-          "id": 18,
-          "image": "images/order-details1.png",
-          "title": "Order Details",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-order-details"
-        },
-        {
-          "id": 19,
-          "image": "images/order-summary1.png",
-          "title": "Order Summary",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-summary"
-        },
+      
+
         {
           "id": 20,
           "image": "images/organization-unit_page.png",
           "title": "Organization Unit",
           "text": "Provides an organizational description in tree form with available action",
           "link": "/page-organization-unit"
-        },
-        {
-          "id": 21,
-          "image": "images/Page not found1.png",
-          "title": "Page Not Found",
-          "text": "  Lorem Ipsum is simply dummy text of the printing and typesetting industry ",
-          "link": "/page-not-found"
-        },
-    
-       
+        },      
         
         {
           "id": 25,
@@ -1543,14 +1424,6 @@
           "title": "Settings",
           "text": " A page with multiple checkboxes and select menu at the top",
           "link": "/page-settings"
-        },
-        
-        {
-          "id": 29,
-          "image": "images/subscription1.png",
-          "title": "Subscription",
-          "text": " Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-          "link": "/page-subscription"
         },
         {
           "id": 30,

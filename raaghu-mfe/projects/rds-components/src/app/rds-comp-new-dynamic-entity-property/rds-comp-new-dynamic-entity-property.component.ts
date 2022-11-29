@@ -32,22 +32,30 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
   @ViewChild('dynamicEntityForm') dynamicEntityInfoForm: NgForm;
   resetFormSubject: Subject<boolean> = new Subject<boolean>();
   dynamicEntityDataSelect: any[] = [];
-  isHostLogin: boolean = true;
+  // isHostLogin: boolean = true;
   constructor(public translate: TranslateService) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.resetDropdown = this.reset;
     this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
   }
-
+  targetId = undefined;
   ngOnInit(): void {
-    const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
-    if (tenantInfo !== null && tenantInfo.name) {
-      this.isHostLogin = false;
-    } else {
-      this.isHostLogin = true;
-    }
+    // const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
+    // if (tenantInfo !== null && tenantInfo.name) {
+    //   this.isHostLogin = false;
+    // } else {
+    //   this.isHostLogin = true;
+    // }
     this.resetDropdown = this.reset;
     this.Placeholder = "Select Property Name";
+
+    if (this.targetId) {
+      this.entityNames.forEach((res: any) => {
+        if (res && +res.value === +this.targetId) {
+          this.dynamicEntityData.entityFullName = res.some;
+        }
+      })
+    }
   }
 
   addEntity(dynamicEnityForm) {
@@ -100,5 +108,10 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
     this.resetDropdown = true;
     this.Placeholder = "Select Property Name";
 
+  }
+
+  onEntitySelect(selectedItem: any): void {
+    this.dynamicEntityData.entityFullName = selectedItem.item.some;
+    this.targetId = selectedItem.item.value;
   }
 }

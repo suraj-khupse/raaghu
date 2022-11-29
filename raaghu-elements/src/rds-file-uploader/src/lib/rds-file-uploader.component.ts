@@ -90,7 +90,6 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
       });
     }
     this.fileArray = fileArray;
-    console.log(this.fileArray);
   }
 
   public get classes(): string[] {
@@ -173,13 +172,12 @@ export class RdsFileUploaderComponent implements OnInit, ControlValueAccessor {
   checkExtension(event: any): void {
     if (event.target.files && event.target.files[0]) {
       let file = event.target.files[0];
-      console.log(file);
       if (file.type == "application/pdf" || file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
-        console.log("correct");
+        // console.log("correct");
         this.fileIncorrectMsg = false;
       }
       else {
-        console.log('wrong');
+        // console.log('wrong');
         this.fileIncorrectMsg = true;
         this.closeFile = false;
       }

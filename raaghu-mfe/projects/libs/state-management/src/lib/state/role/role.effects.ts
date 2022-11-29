@@ -54,8 +54,14 @@ export class RoleEffects {
       switchMap((data) =>
         this.roleService.createOrUpdateRole(data.role).pipe(map((res: any) => {
           this.store.dispatch(getRoles([]));
-          this.alertService.showAlert('Success',  'Role added successfully', 'success')
-        }),
+          if(data.role.role.id !=undefined){
+            this.alertService.showAlert('Success',  'Role Updated successfully', 'success')
+          }
+          else
+          {
+            this.alertService.showAlert('Success',  'Role added successfully', 'success')
+          }
+         }),
           catchError((error: any) => of(
           ))
         )

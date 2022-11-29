@@ -4,7 +4,7 @@
   <form #emailForm="ngForm">
     <div class="row">
       <div class="col-md-6 mb-3">
-        <rds-input [size]="'medium'" [label]="translate.instant('Default From (Sender) Email Address')" name="defaultFromAddress" [placeholder]="'Email Address'" id="txtUsername"
+        <rds-input [size]="'medium'" [label]="translate.instant('Default From (Sender) Email Address')" name="defaultFromAddress" [placeholder]="translate.instant('Email Address')" id="txtUsername"
                    #defaultFromAddress="ngModel" [pattern]="emailPattern" ngDefaultControl
                    [(ngModel)]="EmailData.defaultFromAddress" required [isRequired]=true floatinginputLabel="" [labelPosition]="'top'" (change)="onChange()">
         </rds-input>
@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group mb-3">
-          <rds-input [size]="'medium'" [label]="translate.instant('Default From (Sender) Display Name')" [placeholder]="'Display Name'" name="defaultFromDisplayName" id="txtUsername"
+          <rds-input [size]="'medium'" [label]="translate.instant('Default From (Sender) Display Name')" [placeholder]="translate.instant('Display Name')" name="defaultFromDisplayName" id="txtUsername"
                      #defaultFromDisplayName="ngModel" [(ngModel)]="EmailData.defaultFromDisplayName" [labelPosition]="'top'" (change)="onChange()">
           </rds-input>
         </div>
@@ -40,6 +40,7 @@
         </div>
       </div>
     </div>
+    
     <div class="row">
       <div class="col-md-12">
         <div class="form-group mb-3">

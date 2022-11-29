@@ -1,13 +1,14 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsIconModule } from '@libs/rds-icon';
 import { RdsFileUploaderComponent } from './rds-file-uploader.component';
+import { CommonModule } from '@angular/common';
 
 export default {
   title: 'Elements/File Uploader',
   component: RdsFileUploaderComponent,
   decorators: [
     moduleMetadata({
-      imports: [RdsIconModule],
+      imports: [RdsIconModule, CommonModule],
     }),
   ],
   argTypes: {

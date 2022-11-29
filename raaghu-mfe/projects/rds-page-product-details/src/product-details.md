@@ -38,10 +38,10 @@ title: "Pages > Product Details"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-product-list
+<rds-comp-product-list
   role="withDivider"
   [productListItems]="productListItems"
-></app-rds-comp-product-list>
+></rds-comp-product-list>
 ```
 </div>
 </div>

@@ -10,7 +10,8 @@ title: "Pages > Careers"
 #### Careers
 
 <p>A career page having description on different position that is available in an organisation with the role description</p>
-<section class="py-4">                                                                                             
+<section class="py-4"> 
+    <h6>Default</h6>                                                                                            
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

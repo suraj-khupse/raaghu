@@ -18,9 +18,12 @@
       </div>
       <div class="d-flex justify-content-end" *ngIf="tabweb && websiteLogData && websiteLogData.length > 0 ">
         <div class="desktop-btn">
-          <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [roundedButton]="true"
+          <!-- <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [roundedButton]="true"
             icon="refresh" iconHeight="16px" iconWidth="16px" (click)="refreshData()" class="me-2">
-          </rds-button>
+          </rds-button> -->
+          <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [isFabIcon]="true" icon="refresh"
+                      class="me-2" (click)="refreshData()" iconHeight="18px" iconWidth="26px"  buttonType="iconOnly"  [tooltipPlacement]="'bottom'" [tooltipTitle]="tooltipRefresh">
+                    </rds-button>
           <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
             (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [outlineButton]="true">
             <rds-icon left name="download_collected_data" height="12px" width="12px"></rds-icon>

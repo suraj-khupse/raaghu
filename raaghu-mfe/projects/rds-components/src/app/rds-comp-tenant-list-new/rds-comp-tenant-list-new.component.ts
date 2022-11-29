@@ -46,7 +46,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
   @Input() public tenantList: any = [];
   public tableData: any = [];
   @Input() public editionList: any = [];
-  buttonSpinnerForNewUser : boolean = true;
+  buttonSpinnerForNewUser : boolean = false;
   buttonSpinnerForSave : boolean = true;
 
   currentAlerts: any = [];

@@ -9,6 +9,7 @@ import { RdsFabMenuModule } from 'projects/libs/rds-elements/src/rds-fab-menu/sr
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DynamicEntityEffects, DynamicEntityReducer, DynamicPermissionReducer, DynamicPropertyEffects, DynamicPropertyReducer, GetAllDynamicPropertyReducer, getDynamicPropertyByEditReducer, GetInputnameReducer } from '@libs/state-management';
+import { CommonModule } from '@angular/common';
 export const featureReducersMap = {
   properties: DynamicPropertyReducer,
   InputTypeNames: GetInputnameReducer,
@@ -23,6 +24,7 @@ export const featureReducersMap = {
   ],
   imports: [
     //BrowserModule,
+    CommonModule,
     AppRoutingModule,
     SharedModule,
     RdsDropdownModule,

@@ -10,7 +10,8 @@ title: "Pages > cart"
 #### Cart
 
 <p>It provides a medium for a selection of a product and respectable quantity to be selected as well as the total transaction amount of the order</p>
-<section class="py-4">                                                                                             
+<section class="py-4"> 
+    <h6>Default</h6>                                                                                            
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

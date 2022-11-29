@@ -12,7 +12,7 @@ import { RdsCompFeaturesListNewComponent } from './rds-comp-features-list-new.co
 
 
 export default {
-    title: 'Components/Edition list New',
+    title: 'Components/Features List New',
     component: RdsCompFeaturesListNewComponent,
     decorators: [
         moduleMetadata({

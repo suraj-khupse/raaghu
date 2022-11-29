@@ -1,5 +1,5 @@
 <div *ngIf="!editShimmer">
-    <div class="tab-content py-4 mb-3">
+    <div class="tab-content p-4 mb-3">
         <form #tenantCreationForm="ngForm">
             <div class="row align-items-center">
                 <div class="col-md-12 border-bottom">
@@ -108,7 +108,7 @@
             </div>
         </form>
     </div>
-    <div class="position-fixed bottom-0 action-buttons w-100 sm-p-0 py-3">
+    <div class="bottom-0 action-buttons w-100 sm-p-0 p-4">
         <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
             (click)="onCanceled()" data-bs-dismiss="offcanvas">
         </rds-button>

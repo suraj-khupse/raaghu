@@ -39,13 +39,13 @@ title: "Components > Cache"
 <div class="row m-0">
 
 ```html
- <app-rds-comp-cache
+ <rds-comp-cache
   [cashedata]="cashedata"
   role="Advanced"
   alignmentType="end"
   [resetPagination]="false"
   [recordsPerPage]="10"
-></app-rds-comp-cache>    
+></rds-comp-cache>    
 ```
 </div>
 </div>

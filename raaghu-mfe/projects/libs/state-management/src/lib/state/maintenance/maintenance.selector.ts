@@ -1,13 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { AppState, maintenances } from '../../app.interface';
-import { maintenanceState,Websitelogstate } from './maintenance.reducer'
+import { AppState } from '../../app.interface';
+import { maintenanceState } from './maintenance.reducer'
 
-export const selectmaintenance = createFeatureSelector<AppState>(maintenances);
+export const selectmaintenance = (state: AppState) => state.maintenances;
 export const selectAllmaintenance = createSelector(
     selectmaintenance,
-    (state: AppState) => state.maintenances
+    (state: maintenanceState) => state.maintenances
 );
 export const selectAllWebsitelog = createSelector(
     selectmaintenance,
-    (state: AppState) => state.Websitelogs
+    (state: maintenanceState) => state.Websitelogs
 );

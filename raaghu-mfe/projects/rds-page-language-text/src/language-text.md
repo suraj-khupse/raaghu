@@ -42,7 +42,102 @@ title: "Pages > Language-Text"
 <div class="row m-0">
 
 ```html
+<div>
+  <!-- <div style="display: flex;"> -->
+  <div class="row justify-content-between">
+    <div class="col-sm-4">
+      <div class="form-group mb-3">
+        <rds-search-input
+          [placeholder]="'Search'"
+          (send)="searchLanguageText($event)"
+          (onClick)="searchLanguageText($event)"
+        ></rds-search-input>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-2">
+      <div class="from-group mb-3">
+        <rds-select-list
+          ngDefaultControl
+          name="baselanguage"
+          [(ngModel)]="baselanguage"
+          [value]="baselanguage"
+          [itemList]="listbaseLanguage"
+          (change)="getLanguageTextTable()"
+        ></rds-select-list>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-2">
+      <div class="form-group mb-3">
+        <rds-select-list
+          ngDefaultControl
+          name="TargetCulturename"
+          [(ngModel)]="TargetCulturename"
+          [value]="TargetCulturename"
+          [itemList]="listbaseLanguage"
+          (change)="getLanguageTextTable()"
+        ></rds-select-list>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-2">
+      <div class="form-group mb-3">
+        <rds-select-list
+          ngDefaultControl
+          name="source"
+          [(ngModel)]="source"
+          [value]="source"
+          [itemList]="listsource"
+          (change)="getLanguageTextTable()"
+        ></rds-select-list>
+      </div>
+      <!-- <rds-select-list [(ngModel)]="source" [value]="source" ngDefaultControl name="source"
+                         (change)="getLanguageTextTable()">
+          <option [value]="''" selected>Source</option>
+          <ng-container *ngFor="let item of listsource">
+            <option [value]="item.displayText">{{item.displayText}}</option>
+          </ng-container>
+        </rds-select-list> -->
+    </div>
 
+    <div class="col-md-2 col-sm-2">
+      <div class="from-group mb-3">
+        <rds-select-list
+          ngDefaultControl
+          name="targetFilter"
+          [(ngModel)]="targetFilter"
+          [value]="targetFilter"
+          [itemList]="listTargetValue"
+          (change)="getLanguageTextTable()"
+        ></rds-select-list>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+        <rds-data-table
+          [tableHeaders]="languageTableHeader"
+          [tableStyle]="'light'"
+          [tableData]="languageTableData"
+          [recordsPerPage]="10"
+          [pagination]="true"
+          [inlineEdit]="false"
+        ></rds-data-table>
+      </div>
+    </div>
+  </div>
+  <rds-offcanvas
+    [canvasTitle]="'EDIT TEXT'"
+    [offId]="'EditlanguageText'"
+    [offcanvaswidth]="550"
+    [placement]="'end'"
+  >
+    <app-edit-language-text
+      [Languagetext]="LanguageText"
+      (onLanguageTextSave)="getLanguageTextTable()"
+    ></app-edit-language-text>
+  </rds-offcanvas>
+</div>
 ```
 
 </div>

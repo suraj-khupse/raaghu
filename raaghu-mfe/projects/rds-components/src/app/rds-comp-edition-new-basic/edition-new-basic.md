@@ -3,13 +3,17 @@ slug: "/comp-edition-new-basic"
 date: "2019-05-04"
 title: "Components > Edition-new-basic"
 ---
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="../assets/css/style-elements.css">
 
 
-### Edition-new-basic
+### Edition New Basic
 
 <p>Gives a text box on a user name and plan options</p>
 
 <section class="py-4">
+ <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -37,9 +41,9 @@ title: "Components > Edition-new-basic"
 
 ```html
  
-<app-rds-comp-edition-new-basic
+<rds-comp-edition-new-basic
   [PlanList]="PlanList">
-</app-rds-comp-edition-new-basic>
+</rds-comp-edition-new-basic>
 ```
 </div>
 </div>

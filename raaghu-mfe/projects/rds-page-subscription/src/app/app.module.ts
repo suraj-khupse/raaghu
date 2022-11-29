@@ -5,10 +5,11 @@ import { RdsButtonModule, RdsCardModule, RdsIconModule, RdsNavTabModule } from '
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SubscriptionEffects, SubscriptionInformationReducer, SubscriptionReducer } from '@libs/state-management';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RdsLabelModule } from 'projects/libs/rds-elements/src/rds-label/src/public-api';
+import { SubscriptionInformationReducer, SubscriptionReducer } from 'projects/libs/state-management/src/lib/state/subscription/subscription.reducer';
+import { SubscriptionEffects } from 'projects/libs/state-management/src/lib/state/subscription/subscription.effects';
 export const SubscriptionReducersMap = {
   Subscription: SubscriptionReducer,
   SubscriptionInformation:SubscriptionInformationReducer

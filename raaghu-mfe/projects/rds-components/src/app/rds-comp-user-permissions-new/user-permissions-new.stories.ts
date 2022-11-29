@@ -10,7 +10,7 @@ import { RdsCompUserPermissionsNewComponent } from './rds-comp-user-permissions-
 import { RdsCompUserBasicProfileRightComponent } from '../rds-comp-user-basic-profile-right/rds-comp-user-basic-profile-right.component';
 
 export default {
-  title: 'Components/User Permissions',
+  title: 'Components/User Permissions New',
    component: RdsCompUserPermissionsNewComponent,
   decorators: [moduleMetadata({
     declarations: [
@@ -64,7 +64,7 @@ UserPermissionNew.args = {
     isActive: true,
     statusTemplate: `<div><span class="badge badge-success">Active</span></div>`,
     // name: "Amc Corporation",
-    name: `<div class="d-flex align-items-center"><div> <img src="../assets/dashboard-data.png" width="40px"></div><div class="ms-2 mt-2"><p class="mb-0"><b>Amc Corporation</b></p><small class="text-muted">Support@amc.com</small></div></div>`, 
+    name: `<div class="d-flex align-items-center"><div> <img src="https://anzstageui.raaghu.io/assets/profile-picture-circle.svg" width="40px"></div><div class="ms-2 mt-2"><p class="mb-0"><b>Amc Corporation</b></p><small class="text-muted">Support@amc.com</small></div></div>`, 
     roleId: 1,
     roleName: "General Manager",
     userId: "1231"
@@ -74,7 +74,7 @@ UserPermissionNew.args = {
     isActive: true,
     statusTemplate: `<div><span class="badge badge-success">Active</span></div>`,
     // name: "Amc Corporation",
-    name: `<div class="d-flex align-items-center"><div> <img src="../assets/dashboard-data.png" width="40px"></div><div class="ms-2 mt-2"><p class="mb-0"><b>Cubic Systems</b></p><small class="text-muted">Support@amc.com</small></div></div>`, 
+    name: `<div class="d-flex align-items-center"><div> <img src="https://anzstageui.raaghu.io/assets/profile-picture-circle.svg" width="40px"></div><div class="ms-2 mt-2"><p class="mb-0"><b>Cubic Systems</b></p><small class="text-muted">Support@amc.com</small></div></div>`, 
     roleId: 1,
     roleName: "Team Lead",
     userId: "0198"

@@ -131,9 +131,9 @@ this.filterChangeLog(eventData);
      this.store.dispatch(getAuditLogs(auditLogParamsData));
      this.store.select(selectAllAuditLogs).subscribe((res: any) => {
        this.auditLogsTableData = [];
-       if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0 && res.status == "success") {
+       if (res && res.items && res.items.length > 0) {
          this.isAnimation = false;
-         res.auditLogs.items.forEach((element: any) => {
+         res.items.forEach((element: any) => {
            const item: any = {
              parameters:element.parameters,
              userName: element.userName,
@@ -172,8 +172,8 @@ this.filterChangeLog(eventData);
     this.store.dispatch(getEntityChanges(ChangeLogParamsData));
     this.store.select(selectAllchangeLogs).subscribe((res: any) => {
       this.changeLogs = [];
-      if (res && res.changeLogs && res.changeLogs.items && res.changeLogs.items.length > 0) {
-        res.changeLogs.items.forEach((element: any) => {
+      if (res && res.items && res.items.length > 0) {
+        res.items.forEach((element: any) => {
           const item: any = {
             userName:element.userName,
             changeTime: element.changeTime,
@@ -213,8 +213,8 @@ this.filterChangeLog(eventData);
     this.store.dispatch(getAuditLogs(auditLogParamsData));
     this.store.select(selectAllAuditLogs).subscribe((res: any) => {
       this.auditLogsTableData = [];
-      if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0) {
-        res.auditLogs.items.forEach((element: any) => {
+      if (res && res.items && res.items.length > 0) {
+        res.items.forEach((element: any) => {
           const item: any = {
             parameters:element.parameters,
             userName: element.userName,

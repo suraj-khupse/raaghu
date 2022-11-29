@@ -3,12 +3,14 @@ import { getmaintenances, getmaintenanceSuccess, getmaintenanceFailure, getWebsi
 import { maintenance, WebLogLines } from "./maintenance.models";
 export interface maintenanceState {
     maintenances: maintenance;
+    Websitelogs: WebLogLines;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 export const maintenanceInitialState: maintenanceState = {
-    maintenances: { items: [] },
+    maintenances: null,
+    Websitelogs: null,
     error: null,
     status: 'pending',
 };
@@ -29,24 +31,6 @@ export const MaintenanceReducer = createReducer(
         error: error,
         status: 'error',
     })),
-
-
-)
-
-export interface Websitelogstate {
-    Websitelogs: WebLogLines;
-    error: string;
-    status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export const WebsitelogInitialState: Websitelogstate = {
-    Websitelogs: { latestWebLogLines: [] },
-    error: null,
-    status: 'pending',
-};
-export const WebsitelogReducer = createReducer(
-    // Supply the initial state
-    WebsitelogInitialState,
     on(getWebsitelog, (state) => ({ ...state, status: 'loading' })),
     // Handle successfully loaded todos
     on(getWebsitelogSuccess, (state, { Websitelogs }) => ({
@@ -61,4 +45,6 @@ export const WebsitelogReducer = createReducer(
         error: error,
         status: 'error',
     }))
+
+
 )

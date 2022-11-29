@@ -5,7 +5,7 @@
         [headerTitle]="translate.instant('Monthly Summary')" (onRefresh)="LoadMonthlySummary()" cardheight = 'card-stretch'>
         <div body>
           <rds-chart-line [chartLabels]="monthlySummaryLabels" [chartWidth]="monthlySummarychartWidth" [chartHeight]="monthlySummarychartHeight"
-            [chartDataSets]="monthlySummaryDataSets" [chartOptions]="monthlySummarychartOptions"></rds-chart-line>
+            [chartDataSets]="monthlySummaryDataSets" [isGradient]="true" [chartOptions]="monthlySummarychartOptions"></rds-chart-line>
         </div>
       </rds-widget>
     </div>
@@ -62,7 +62,7 @@
                   <div class="">
                     <rds-chart-bool chartId="ConnectedCallschart" [centerIconName]="'headset'" [chartDataSets]="ConnectedCallschartDatasets" 
                       [chartLabels]="ConnectedCallschartLabels" [chartWidth]="100" [chartHeight]="100"
-                      [chartOptions]="ConnectedCallschartOptions" chartType="doughnut"></rds-chart-bool>
+                      [chartOptions]="ConnectedCallschartOptions"></rds-chart-bool>
                   </div>
                   <div class="ms-2">
                     <h5 class="custom-title">{{ConnectedCallsData[0]}}%</h5>
@@ -97,7 +97,7 @@
             <div body>
               <rds-big-number-widget [iconFill]="true" [iconStroke]="true" [bigNumber]="'$' +DailySalesGrowth" [subText]="'-$' +SalesGrowthLoss"
                 [icon]="'triangle_down'"  [iconHeight]="'12px'" [iconWidth]="'12px'" [textAlign]="'text-start'" subTitleColorVariant="danger"></rds-big-number-widget>
-              <rds-chart-bar-horizontal [chartLabels]="barHrChartLabels" [chartWidth]="barHrChartWidth" [chartHeight]="barHrchartHeight"
+              <rds-chart-bar-horizontal [isGradient]="true" [chartLabels]="barHrChartLabels" [chartWidth]="barHrChartWidth" [chartHeight]="barHrchartHeight"
                 [chartDataSets]="barHrChartDatasets" [chartOptions]="barHrChartOptions">
               </rds-chart-bar-horizontal>
             </div>

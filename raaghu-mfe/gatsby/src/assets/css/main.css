@@ -472,7 +472,7 @@ label {
   background-size: cover;
   height: auto;
   color: #fff;
-  z-index: -3;
+  /* z-index: -3; */
   position: relative;
 }
 

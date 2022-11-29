@@ -44,11 +44,11 @@
 </label> -->
 
 <div class="dropdown w-100">
-  <span [ngClass]="button1" class="btn dropdown-toggle gap-2 dropdownarrow py-2" [attr.data-bs-offset]="xOffset + ',' + yOffset"
+  <span [ngClass]="button1" class="dropdown-toggle gap-2 dropdownarrow py-2" [attr.data-bs-offset]="xOffset + ',' + yOffset"
     (click)="open()" role="button" [attr.id]="id" data-bs-toggle="dropdown" size="small" [attr.aria-expanded]="show">
     <rds-icon *ngIf="icon" [name]="icon" [height]="iconHeight" [width]="iconWidth" [fill]="iconFill"
       [stroke]="iconStroke" class="pe-1"></rds-icon>
-    <span *ngIf="!entity || checkedCategoryList.length < 1">{{(value)? value:placeholder}}</span>
+    <span class="text-muted" *ngIf="!entity || checkedCategoryList.length < 1">{{(value)? value:placeholder}}</span>
     <span *ngIf="entity && checkedCategoryList.length > 0">
       <rds-badge *ngFor="let title of badgeList" (onClose)="initAllSelect($event, title)" class="mx-1" size="small"
         [colorVariant]="'primary'" [label]="title.value" [showClose]="true"></rds-badge>
@@ -56,7 +56,7 @@
   </span>
 
   <ng-template #other_content>Select Property</ng-template>
-  <ul class="dropdown-menu" [attr.aria-labelledby]="id">
+  <ul class="dropdown-menu" [attr.aria-labelledby]="id" [ngStyle]="{'max-height':dropdownHeight === '' || null || undefined ? '155px' : dropdownHeight + 'px'}">
     <li class="list-group-item p-0" *ngIf="selectAll && multiSelect">
       <span class="dropdown-item">
         <input type="checkbox" class="form-check-input me-2" [(ngModel)]="isMasterSel" name="list_name" value="h1"

@@ -11,6 +11,7 @@ title: "Components > Product-overview"
 
 <p>Gives the details on the product selected along with the user requirement on size</p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">

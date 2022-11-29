@@ -4,8 +4,10 @@ import { NgxTranslateModule } from '@libs/shared';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsButtonModule } from '@libs/rds-button';
 import { CommonModule } from '@angular/common';
-import { RdsInputModule, RdsNavTabModule, RdsTextareaModule } from '@libs/rds-elements';
+import { RdsFileUploaderModule, RdsInputModule, RdsNavTabModule, RdsTextareaModule } from '@libs/rds-elements';
 import { RdsCompOpenPositionComponent } from './rds-comp-open-position.component';
+import { RdsCompApplyForPositionComponent } from '../rds-comp-apply-for-position/rds-comp-apply-for-position.component';
+import { RdsCompAlertPopupComponent } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 
 
 export default {
@@ -18,10 +20,14 @@ export default {
         ReactiveFormsModule,
         RdsLabelModule,
         RdsButtonModule,
+        RdsFileUploaderModule,
+        RdsInputModule,
+        RdsTextareaModule,
         RdsNavTabModule,
         CommonModule,
         NgxTranslateModule.forRoot()
       ],
+      declarations: [RdsCompApplyForPositionComponent],
       providers: [
         FormBuilder
       ],

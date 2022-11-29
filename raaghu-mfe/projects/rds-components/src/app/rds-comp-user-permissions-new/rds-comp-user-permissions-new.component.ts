@@ -22,7 +22,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   viewCanvas: boolean = false;
   selectedId: any = '';
   selectedOrganizationUnit: any = [];
-  buttonSpinnerForNewUser: boolean = true;
+  buttonSpinnerForNewUser: boolean = false;
   public user: any = {
     userInfo: undefined,
     userSettings: undefined,
@@ -236,12 +236,12 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   editTableRowData(event): void {
-    this.canvasTitle = 'EDIT USER';
+    this.canvasTitle = this.translate.instant('Edit User');
     this.selectedId = event.id;
 
     this.viewCanvas = true;
     if (event) {
-      this.canvasTitle = 'EDIT USER';
+      this.canvasTitle = this.translate.instant('Edit User');
       this.navtabsItems = [
         {
           label: this.translate.instant('Basic'),

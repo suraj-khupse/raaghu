@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Tooltip } from 'bootstrap'
 import { is } from 'date-fns/locale';
 @Component({
@@ -6,7 +6,7 @@ import { is } from 'date-fns/locale';
   templateUrl: './rds-button.component.html',
   styleUrls: ['./rds-button.component.scss']
 })
-export class RdsButtonComponent implements AfterViewInit, OnInit {
+export class RdsButtonComponent implements AfterViewInit, OnInit ,OnChanges{
 
   @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'default' | 'review' | '' = 'default';
   @Input() submit = false;
@@ -20,7 +20,7 @@ export class RdsButtonComponent implements AfterViewInit, OnInit {
   @Input() tooltipTitle: string;
   @Input() tooltipPlacement: 'top' | 'bottom' | 'right' | 'left' = 'bottom';
   @Input() id: string = 'rds_buttonId_';
-  @Input() buttonId:string='';
+  @Input() buttonId: string = '';
   @Input() isLoading: boolean = false;
   @Input() showLoadingSpinner: boolean = false;
   @Input() iconHeight: string = '';
@@ -32,24 +32,44 @@ export class RdsButtonComponent implements AfterViewInit, OnInit {
   @Output() onClick = new EventEmitter<Event>();
 
   constructor() {
-  
+
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.tooltipTitle){
+      const btnElement: any = document.getElementById(this.id);
+      if(btnElement){
+        const tooltip = new Tooltip(btnElement, {
+          title: this.tooltipTitle,
+          placement: this.tooltipPlacement
+        });
+      }
+    }  }
 
   ngOnInit(): void {
-    if(this.buttonId==''){
+    if (this.buttonId == '') {
       this.id = this.id + RdsButtonComponent.count++;
     }
-    else{
-      this.id=this.id+this.buttonId;
+    else {
+      this.id = this.id + this.buttonId;
     }
   }
 
   ngAfterViewInit(): void {
-    const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    if (this.tooltipTitle && tooltipTriggerList) {
-      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl)) || '';
+    if(this.tooltipTitle){
+      const btnElement: any = document.getElementById(this.id);
+      if(btnElement){
+        const tooltip = new Tooltip(btnElement, {
+          title: this.tooltipTitle,
+          placement: this.tooltipPlacement
+        });
+      }
     }
-    
+
+    // const tooltipTriggerList: any = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    // if (this.tooltipTitle && tooltipTriggerList) {
+    //   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl)) || '';
+    // }
+
   }
 
   public get classes(): string {
@@ -80,7 +100,7 @@ export class RdsButtonComponent implements AfterViewInit, OnInit {
   }
 
   buttonClick(evt: any) {
-    if(!this.showLoadingSpinner&&!this.isDisabled){
+    if (!this.showLoadingSpinner && !this.isDisabled) {
       this.onClick.emit(evt);
     }
   }

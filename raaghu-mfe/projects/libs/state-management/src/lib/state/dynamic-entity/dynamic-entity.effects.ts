@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { DynamicEntityPropertyServiceProxy, DynamicEntityPropertyDefinitionServiceProxy, AlertService } from "@libs/shared";
-import { deleteDynamicEntity, editDynamicEntity, editDynamicEntityFailure, editDynamicEntitySuccess, getAllEntities, getAllEntitiesFailure, getAllEntitiesSuccess,getDynamicEntity, getDynamicEntityFailure, getDynamicEntitySuccess, getInputTypeNames, getInputTypeNamesFailure, getInputTypeNamesSuccess, saveDynamicEntity } from "@libs/state-management";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { from, of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
+import { getInputTypeNames, getInputTypeNamesFailure, getInputTypeNamesSuccess } from "../dynamic-property-management/dynamic-property.actions";
+import { deleteDynamicEntity, editDynamicEntity, editDynamicEntityFailure, editDynamicEntitySuccess, getAllEntities, getAllEntitiesFailure, getAllEntitiesSuccess, getDynamicEntity, getDynamicEntityFailure, getDynamicEntitySuccess, saveDynamicEntity } from "./dynamic-entity.actions";
 declare var bootstrap:any;
 
 @Injectable()

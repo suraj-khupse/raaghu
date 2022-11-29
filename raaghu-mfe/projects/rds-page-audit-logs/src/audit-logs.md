@@ -10,7 +10,8 @@ title: "Pages > Audit-logs"
 #### Audit Logs
 
 <p>It provides a representation in form of a table that represents organisational details </p>
-<section class="py-4">                                                                                             
+<section class="py-4">  
+    <h6>Default</h6>                                                                                           
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -27,7 +28,7 @@ title: "Pages > Audit-logs"
          <div class="contents  p-5">
               <div class="row">
               <!-- <img src="https://raw.githubusercontent.com/Wai-Technologies/raaghu/main/raaghu-mfe/assets/Edit-Language-Text.png" alt="color"> -->
-              <img src="/images/audit-logs-page.png" class="">
+              <img src="/images/audit-logs.png" class="">
            </div>
                        
   </div>
@@ -37,10 +38,10 @@ title: "Pages > Audit-logs"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-audit-logs
+<rds-comp-audit-logs
   [operationLogsHeaders]="operationLogsHeaders"
   [operationLogs]="operationLogs"
-></app-rds-comp-audit-logs>
+></rds-comp-audit-logs>
 ```
 </div>
 </div>

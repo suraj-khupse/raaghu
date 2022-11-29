@@ -11,6 +11,7 @@ title: "Components > Card-detail-list"
 
 <p>Gives relevant information about the different payment options of saved cards</p>
 <section class="py-4">
+ <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,9 +39,9 @@ title: "Components > Card-detail-list"
 <div class="row m-0">
 
 ```html
-  <app-rds-comp-card-detail-list
+  <rds-comp-card-detail-list
   [listItems]="listItems"
-></app-rds-comp-card-detail-list>    
+></rds-comp-card-detail-list>    
 ```
 </div>
 </div>

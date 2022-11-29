@@ -11,33 +11,24 @@
 // }
 
 import { createReducer, on } from "@ngrx/store";
-import { getAuditLogsSuccess, getAuditLogs, getAuditLogsFailure } from "./audit-logs.actions";
+import { getAuditLogsSuccess, getAuditLogs, getAuditLogsFailure, getEntityChanges, getEntityChangesSuccess } from "./audit-logs.actions";
 import { AuditLogs } from "./audit-logs.models";
 
 
 export interface AuditLogsState {
   auditLogs: AuditLogs;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export const auditLogsInitialState: AuditLogsState = {
-  auditLogs: { items: [] },
-  error: null,
-  status: 'pending',
-};
-
-export interface ChangeLogsState {
   changeLogs: any;
   error: string;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
-export const ChangeLogInitialState: ChangeLogsState = {
-  changeLogs: { items: [] },
+export const auditLogsInitialState: AuditLogsState = {
+  auditLogs: null,
+  changeLogs: null,
   error: null,
   status: 'pending',
 };
+
 export const AuditLogsReducer = createReducer(
   // Supply the initial state
   auditLogsInitialState,
@@ -54,5 +45,12 @@ export const AuditLogsReducer = createReducer(
     ...state,
     error: error,
     status: 'error',
-  }))
+  })),
+  on(getEntityChanges,(state) => ({ ...state, status: 'loading' })),
+  on(getEntityChangesSuccess, (state, { changeLogs }) => ({
+    ...state,
+    changeLogs: changeLogs,
+    error: null,
+    status: 'success',
+  })),
 )

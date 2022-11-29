@@ -15,7 +15,7 @@ export class RdsCompPaymentDetailsComponent implements OnInit {
   @Input() cardNumber:number;
   @Input() name:string;
   @Input() expirationDate:string;  
-  @Input() buttonSpinner: boolean = true;
+  @Input() buttonSpinner: boolean = false;
  
   paymentModeList = [];
 

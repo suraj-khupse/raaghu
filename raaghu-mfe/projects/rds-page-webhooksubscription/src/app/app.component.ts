@@ -117,9 +117,9 @@ export class AppComponent implements OnInit {
     this.store.dispatch(getWebhookSubscription());
     this.store.select(selectAll).subscribe((res: any) => {
       this.webhookTableData = [];
-      if (res && res.webhookSubscriptions && res.webhookSubscriptions.items && res.status == "success") {
+      if (res && res.items) {
         this.isAnimation = false;
-        res.webhookSubscriptions.items.forEach(element => {
+        res.items.forEach(element => {
           if (element && element.webhooks) {
             this.webhooksEvent = '';
             element.webhooks.forEach((e: any) => {

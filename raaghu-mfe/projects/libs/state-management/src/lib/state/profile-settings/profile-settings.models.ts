@@ -1,3 +1,3 @@
-export interface Sample {
-  // Declare properties here
+export interface profilePicture {
+  profilePicture : string
 }

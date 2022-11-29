@@ -112,7 +112,7 @@ title: "Elements > Carousel"
  <div class="card border p-5">
   <div class="row">
       <div class="col-md-12">
-        <img src="/images/carousel-skeleto.png" class="img-fluid">
+        <img src="/images/carousel-skeleton.png" class="img-fluid">
      </div>
    </div>
    </div>

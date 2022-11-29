@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { getProducts, Product, productsSelector, selectProduct } from '@libs/state-management';
 import { Store } from '@ngrx/store';
+import { getProducts, selectProduct } from 'projects/libs/state-management/src/lib/state/products/product.actions';
+import { Product } from 'projects/libs/state-management/src/lib/state/products/product.models';
+import { productsSelector } from 'projects/libs/state-management/src/lib/state/products/product.selectors';
 import { Observable } from 'rxjs';
 
 

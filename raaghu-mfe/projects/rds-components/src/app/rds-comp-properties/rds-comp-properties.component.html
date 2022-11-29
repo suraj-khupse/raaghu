@@ -38,7 +38,7 @@
             >
             </rds-input>
           </div>
-          <div class="col-md-2 pt-3 mt-1">
+          <div class="col-md-2 pt-4 mt-1">
             <rds-button
               [id]="'yes'"
               [size]="'medium'"
@@ -50,32 +50,33 @@
             </rds-button>
           </div>
         </div>
+        
+          <div class="row">
+            <div class="col-sm-12 ml-1">
+              <rds-button
+                class="me-2"
+                [label]="'Cancel'"
+                [isOutline]="true"
+                [colorVariant]="'primary'"
+                data-bs-dismiss="offcanvas"
+                [size]="'small'"
+              >
+              </rds-button>
+              <rds-button
+                [id]="'yes'"
+                [size]="'small'"
+                [tooltipPlacement]="'top'"
+                [colorVariant]="'primary'"
+                [label]="'CREATE'"
+                (click)="SavePropertyData()"
+              >
+              </rds-button>
+            </div>
+          </div>
+        
       </div>
     </div>
   </div>
 </div>
 
-<div class="footer-buttons position-fixed bottom-0 my-2 bg-light">
-  <div class="row">
-    <div class="col-sm-12">
-      <rds-button
-        [label]="'Cancel'"
-        [isOutline]="true"
-        [colorVariant]="'primary'"
-        data-bs-dismiss="offcanvas"
-        [size]="'small'"
-        class="px-2"
-      >
-      </rds-button>
-      <rds-button
-        [id]="'yes'"
-        [size]="'small'"
-        [tooltipPlacement]="'top'"
-        [colorVariant]="'primary'"
-        [label]="'CREATE'"
-        (click)="SavePropertyData()"
-      >
-      </rds-button>
-    </div>
-  </div>
-</div>
+

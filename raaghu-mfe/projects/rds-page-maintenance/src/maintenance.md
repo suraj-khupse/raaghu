@@ -137,7 +137,7 @@ title: "Pages > maintenance"
             role="tabpanel"
             aria-labelledby="nav-Caches"
           >
-            <app-rds-comp-cache [cashedata]="cashedata"></app-rds-comp-cache>
+            <rds-comp-cache [cashedata]="cashedata"></rds-comp-cache>
           </div>
           <div
             class="tab-pane fade"
@@ -145,9 +145,9 @@ title: "Pages > maintenance"
             role="tabpanel"
             aria-labelledby="nav-websiteLogs"
           >
-            <app-rds-comp-website-log
+            <rds-comp-website-log
               [websiteLogData]="websiteLogData"
-            ></app-rds-comp-website-log>
+            ></rds-comp-website-log>
           </div>
         </div>
       </div>

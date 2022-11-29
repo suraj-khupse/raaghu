@@ -113,18 +113,43 @@
   $default-100: #F58220;
 
   /*Chart color variables*/
-  :root {
-    --chartColor1: #01AE9D;
-    --chartColor2: #EBEEFB;
-    --chartColor3: #EDB371;
-    --chartColor4: #CA2882;
-    --chartColor5: #5151D3;
-    --chartColor6: #928AE0;
-    --chartColor7: #323B47;
-    --chartColor8: #F58220;
-    --chartColor9: #EA2745;
-    --chartColor10: #00FFE6;
-    /*    --chartgradient1: rgba(63,28, 255, 100%);
+:root {
+  --chart-bool-color1: #23054E;
+  --chart-bool-color2: #78F7B8;
+  --chart-bool-color2: #F76161;
+  --chart-bubble-color1: #FA896B;
+  --chart-bubble-color2: #78F7B8;
+  --chart-area-color1: #FA896B;
+  --chart-area-color2: #78F7B8;
+  --chart-doughnut-color1: #23054E;
+  --chart-doughnut-color2: #EFAD07;
+  --chart-doughnut-color3: #FF6E48;
+  --chart-doughnut-color4: #8000B9;
+  --chart-doughnut-text-color: rgba(146, 7, 42);
+  --chart-bar-horizontal-color1: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(16,16,138,1) 35%, rgba(0,212,255,1) 100%);
+  --chart-bar-horizontal-color2: #78F7B8;
+  --chart-bar-horizontal-color: rgba(255, 29, 177, 0);
+  --chart-bar-horizontal-border-color: rgba(255, 29, 177);
+  --chart-line-color1: rgba(250, 137, 107, 0);
+  --chart-line-color2: rgba(63, 28, 255, 0);
+  --chart-line-color3: rgba(0, 255, 255, 0);
+  --chart-line-border-color1: rgba(250, 137, 107);
+  --chart-line-border-color2: rgba(56, 25, 226);
+  --chart-line-border-color3: rgba(0, 255, 255);
+  --chart-line-point-color1: rgba(250, 137, 107);
+  --chart-line-point-color2: rgba(56, 25, 226);
+  --chart-line-point-color3: rgba(0, 255, 255);
+  --chartColor1: #01AE9D;
+  --chartColor2: #EBEEFB;
+  --chartColor3: #EDB371;
+  --chartColor4: #CA2882;
+  --chartColor5: #5151D3;
+  --chartColor6: #928AE0;
+  --chartColor7: #323B47;
+  --chartColor8: #F58220;
+  --chartColor9: #EA2745;
+  --chartColor10: #00FFE6;
+  /*    --chartgradient1: rgba(63,28, 255, 100%);
     --chartgradient2: rgba(59,26,240,94%);
     --chartgradient3: rgba(56,25,226,89%);
     --chartgradient4: rgba(48,22,194,76%);
@@ -134,17 +159,17 @@
     --chartgradient8: rgba(12,5,47,18%);
     --chartgradient9: rgba(4,2,16,6%);
     --chartgradient10: rgba(0,0,0,0%);*/
-    --chartgradient1: rgba(63, 28, 255, 100%);
-    --chartgradient2: #863bff94;
-    --chartgradient3: rgba(56, 25, 226, 89%);
-    --chartgradient4: rgba(48, 22, 194, 76%);
-    --chartgradient5: rgba(25, 70, 186, 36%);
-    --chartgradient6: rgba(25, 70, 186, 26%);
-    --chartgradient7: rgba(25, 70, 186, 22%);
-    --chartgradient8: rgba(25, 70, 186, 16%);
-    --chartgradient9: rgba(25, 70, 186, 8%);
-    --chartgradient10: rgba(25, 70, 186, 1%);
-  }
+  --chartgradient1: rgba(63, 28, 255, 100%);
+  --chartgradient2: #863bff94;
+  --chartgradient3: rgba(56, 25, 226, 89%);
+  --chartgradient4: rgba(48, 22, 194, 76%);
+  --chartgradient5: rgba(25, 70, 186, 36%);
+  --chartgradient6: rgba(25, 70, 186, 26%);
+  --chartgradient7: rgba(25, 70, 186, 22%);
+  --chartgradient8: rgba(25, 70, 186, 16%);
+  --chartgradient9: rgba(25, 70, 186, 8%);
+  --chartgradient10: rgba(25, 70, 186, 1%);
+}
 
 
 

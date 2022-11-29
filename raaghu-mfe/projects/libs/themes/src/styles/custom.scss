@@ -21,6 +21,7 @@ $modal-sm:350px !default;
 
 /*------- Main accordian variables-------------*/
 $border-radius: .25rem !default;
+$accordian-border-radius:0.4rem !default;
 $border-radius-pill: 50rem !default;
 $border-width: 1px !default;
 $border-radius-lg: .3rem !default;
@@ -37,7 +38,7 @@ $stretched-link-z-index: 1 !default;
 $accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M19413.9-9696l7 7 7-7' transform='translate(-19412.486 9697.414)' fill='none' stroke='#fff' stroke-linecap='round' stroke-width='2'/></svg>") !default;
 $accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M19413.9-9689l7-7 7 7' transform='translate(-19412.486 9697.414)' fill='none' stroke='#fff' stroke-linecap='round' stroke-width='2'/ ></svg>") !default;
 $accordion-icon-width: 2.875rem;
-$accordion-border-radius: $border-radius  !default;
+$accordion-border-radius:$accordian-border-radius !default;
 $accordio-margin: 0.313rem;
 $accordio-border-width: $border-width;
 
@@ -560,14 +561,16 @@ html[theme=dark] .btn-primary svg {
 
 /* Notification Dropdown List */
 .dropdown-menu.show.notifications-dropdown {
-  max-width: inherit;
-  width: 375px !important;
+  max-width: 370px !important;
+  width: 370px !important;
   box-shadow: 0 0rem 1rem rgb(0 0 0 / 15%) !important;
   left: auto;
   overflow: inherit;
 }
 
-
+.parameter-bg-color{
+  background-color: #f5f5fc;
+}
 
 /* table */
 
@@ -1146,7 +1149,7 @@ $size: 10;
 
 .member-activity-col .table-responsive {
   overflow-y: scroll;
-  height: 22rem;
+  height: 20rem;
 }
 
 // storybook css temp
@@ -1194,7 +1197,7 @@ rds-product-image .imgWidth {
 
 .btn-sm.spinner:before {
   top: 4px;
-  left:48%;
+  left:45%;
 }
 .btn-lg.spinner {
   height: 2.766rem;
@@ -1226,4 +1229,13 @@ bs-datepicker-container {
 }
 .btn.form-select {
   text-transform: capitalize;
+}
+rds-admin-dashboard {
+  .row {
+    --bs-gutter-x: 1rem;
+  }
+
+  .card.card-stretch.gutter-b {
+    height: calc(100% - 1rem);
+  }
 }

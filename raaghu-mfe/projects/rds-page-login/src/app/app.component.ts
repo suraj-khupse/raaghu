@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, Injector, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertService, AlertTypes, AppSessionService, ComponentLoaderOptions, MfeBaseComponent, UserAuthService } from '@libs/shared';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService, AlertTypes, AppSessionService, ComponentLoaderOptions, MfeBaseComponent, TenantServiceProxy, UserAuthService } from '@libs/shared';
 import { AuthenticateModel, AuthenticateResultModel, TokenAuthServiceProxy } from '@libs/shared';
 import { Store } from '@ngrx/store';
+import { XmlHttpRequestHelper } from 'projects/libs/shared/src/lib/XmlHttpRequestHelper';
 import { getCurrentLoginInformation, GetProfilePicture, GetSubscriptionExpiringData, ValidateTenantName } from 'projects/libs/state-management/src/lib/state/login/login.actions';
 import { selectTenant } from 'projects/libs/state-management/src/lib/state/login/login.selector';
 declare var bootstrap: any;
@@ -44,7 +45,9 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     private store: Store,
     private http: HttpClient,
     private alertService: AlertService,
-    private sessionService: AppSessionService
+    private sessionService: AppSessionService,
+    private activatedRoute: ActivatedRoute,
+    private tenantService: TenantServiceProxy
   ) {
     super(injector);
     this.authenticateModal = new AuthenticateModel();
@@ -53,6 +56,19 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let tenantId = this.activatedRoute.snapshot.queryParams.tenantId;
+    let tenantName = this.activatedRoute.snapshot.queryParams.tenancyName;
+    let impersonationToken = this.activatedRoute.snapshot.queryParams.impersonationToken;
+
+    if (tenantId && impersonationToken) {
+      localStorage.setItem('tenantInfo', JSON.stringify({
+        id: tenantId,
+        name: tenantName
+      }));
+      this.impersonatedAuthenticate(impersonationToken, Number.parseInt(tenantId), () => { });
+    }
+
+
     this.subscribeToAlerts();
     const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
     this.tenancyName = tenantInfo && tenantInfo.name ? tenantInfo.name : 'Not Selected';
@@ -163,7 +179,6 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         localStorage.setItem('userNameInfo', JSON.stringify({
           username: this.authenticateModal.userNameOrEmailAddress
         }));
-        // this._router.navigateByUrl('/pages/dashboard');
       },
       error: (err: any) => {
         mfeConfig.input.buttonSpinner = false;
@@ -176,11 +191,11 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     this.authenticateResult = authenticateResult;
     this.store.dispatch(getCurrentLoginInformation());
 
-    let tokenExpireDate = this.authenticateModal.rememberClient ? new Date().getTime() + 1000 * this.authenticateResult?.expireInSeconds : undefined;
-    let refreshTokenExpireDate = this.authenticateModal.rememberClient ? new Date().getTime() + 1000 * this.authenticateResult?.refreshTokenExpireInSeconds : undefined;
+    let tokenExpireDate = this.authenticateResult?.expireInSeconds? new Date().getTime() + 1000 * this.authenticateResult?.expireInSeconds : undefined;
+    let refreshTokenExpireDate = this.authenticateResult?.refreshTokenExpireInSeconds ? new Date().getTime() + 1000 * this.authenticateResult?.refreshTokenExpireInSeconds : undefined;
 
     if (authenticateResult?.accessToken != undefined) {
-      this._router.navigateByUrl('/pages/dashboard');
+      // this._router.navigateByUrl('/pages/dashboard');
       localStorage.setItem('LoginCredential', JSON.stringify({
         token: this.authenticateResult.accessToken,
         refreshToken: this.authenticateResult.refreshToken,
@@ -201,5 +216,28 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     }
   }
 
+  private getRequetHeadersWithDefaultValues(tenantid) {
+
+    let requestHeaders = {
+      'Abp.TenantId': tenantid.toString(),
+    };
+
+    return requestHeaders;
+  }
+
+  impersonatedAuthenticate(impersonationToken: string, tenantId: number, callback: () => void): void {
+    XmlHttpRequestHelper.ajax(
+      'POST',
+      'https://anzdemoapi.raaghu.io' +
+      '/api/TokenAuth/ImpersonatedAuthenticate?impersonationToken=' +
+      impersonationToken, this.getRequetHeadersWithDefaultValues(tenantId),
+      null,
+      (response) => {
+        let result = response.result;
+        document.cookie = document.cookie + ';Abp.AuthToken=' + result.accessToken;
+        this.processAuthenticateResult(result)
+      }
+      , this);
+  }
 }
 

@@ -6,10 +6,10 @@ import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-
 import { addRolesToOrganizationUnit, addUsersToOrganizationUnit, createTreeUnit, deleteMemberFromOrgUnit, deleteRoleFromOrgUnit, deleteRoles, deleteUnitTree, getOrganizationUnitMembers, getOrganizationUnitRoles, getOrganizationUnitRolesList, getOrganizationUnitTree, getOrganizationUnitUsersList, updateUnitTree } from 'projects/libs/state-management/src/lib/state/organization-unit/organization-unit.actions';
 import { selectOrganizationUnitMembers, selectOrganizationUnitRoles, selectOrganizationUnitRolesList, selectOrganizationUnitTree, selectOrganizationUnitUsersList } from 'projects/libs/state-management/src/lib/state/organization-unit/organization-unit.selector';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
-import { selectDefaultLanguage } from '@libs/state-management';
 import { TranslateService } from '@ngx-translate/core';
 import { transition, trigger, query, style, animate, } from '@angular/animations';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
 declare var bootstrap: any;
 

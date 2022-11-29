@@ -11,6 +11,7 @@ title: "Components > Invoice"
 
 <p >Provides a card with the relevant informations on Invoice</p>
 <section class="py-4">
+    <h6>Default</h6>
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -38,10 +39,10 @@ title: "Components > Invoice"
 <div class="row m-0">
 
 ```html
-<app-rds-comp-invoice>
+<rds-comp-invoice>
 [editShimmer]="",
 [InvoiceDataForm]=""
-</app-rds-comp-invoice>
+</rds-comp-invoice>
 
 ```
 </div>

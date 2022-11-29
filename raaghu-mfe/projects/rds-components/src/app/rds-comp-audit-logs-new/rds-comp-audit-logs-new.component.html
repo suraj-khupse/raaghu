@@ -10,21 +10,21 @@
                 (change)="endDateModify($event)" [(ngModel)]="endDate" [value]="endDate" floatinginputLabel="">
             </rds-datepicker>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
             <rds-input size="medium" [(ngModel)]="user" [placeholder]="translate.instant('User')" id="txtUsername"
                 (change)="userModify($event)" floatinginputLabel="" ngDefaultControl name="userName"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
             <rds-input size="medium" [(ngModel)]="urlFilter" [placeholder]="translate.instant('Url Filter')"
                 id="txtUrlFilter" (change)="urlFilterModify($event)" floatinginputLabel="" ngDefaultControl
                 name="urlFilter"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
             <rds-input size="medium" [(ngModel)]="minDuration" [placeholder]="translate.instant('Min Duration')"
                 id="minDuration" (change)="minDurationModify($event)" floatinginputLabel="" ngDefaultControl
                 name="minDuration"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
             <rds-input size="medium" [(ngModel)]="maxDuration" [placeholder]="translate.instant('Max Duration')"
                 id="maxDuration" (change)="maxDurationModify($event)" floatinginputLabel="" ngDefaultControl
                 name="maxDuration"></rds-input>
@@ -302,7 +302,7 @@
         </div>
     </rds-nav-tab>
 
-    <div class="footer-buttons my-2">
+    <div class="buttons my-2">
         <rds-button [label]="translate.instant('Cancel')" (click)="onClose()" [colorVariant]="'primary'"
             [size]="'small'" data-bs-dismiss="offcanvas">
         </rds-button>

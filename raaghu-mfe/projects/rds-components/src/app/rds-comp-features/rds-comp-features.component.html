@@ -2,11 +2,16 @@
 
 
 <div class="row">
-  <div class="col-md-12 text-end pb-3 desktop-btn">
-    <rds-button [label]="translate.instant('NEW EDITION')" [showLoadingSpinner]="showLoadingSpinner" type="button" [colorVariant]="'primary'"
+  <div class="col-md-10">
+    <rds-comp-alert [currentAlerts]="currentAlerts" (onAlertHide)="onAlertHide($event)"></rds-comp-alert>
+   </div>
+<div class="col-md-2 text-end pb-3 desktop-btn">
+  <rds-button [label]="translate.instant('NEW EDITION')" [showLoadingSpinner]="showLoadingSpinner" type="button" [colorVariant]="'primary'"
       (click)="openCanvas()" [attr.aria-controls]="'addEdition'" [icon]="'plus'" iconHeight="12px" iconWidth="12px" [size]="'small'">
     </rds-button>
   </div>
+  </div>
+  <div class="row">
   <div class="col-md-12">
     <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
       <rds-data-table [inlineEdit]="false" [actions]="actions" [recordsPerPage]="recordsPerpage" [pagination]="true"
@@ -64,7 +69,7 @@
         </div>
         <div class="row" *ngIf="contentOnEdit">
           <div class="col-md-12">
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 py-2">
               <rds-input size="medium" [inputType]="'text'" [labelPosition]="'top'"
                 [label]="translate.instant('Edition Name')" #edition_name="ngModel" [isRequired]=true [placeholder]="'Edition name'"
                 required [(ngModel)]="EditionName" name="edition" ngDefaultControl>
@@ -123,9 +128,10 @@
 
           <div class="row mt-4" *ngIf="showAssignEditionDropdown">
             <div class="col-md-6">
-              <rds-select-list ngDefaultControl name="freeEditions" [(ngModel)]="freeEditon" [value]="freeEditon"
-                [itemList]="freeEditions" [id]="freeEditions" [placeholder]="'Select Edition'">
-              </rds-select-list>
+              <rds-dropdownlist [placeholder]="translate.instant('Select Edition')" [borderDropdown]="true"
+              class="text-dark" [id]="'freeEditions'" [(ngModel)]="freeEditon" [listItems]="freeEditions"
+             [value]="freeEditon" (onSelect)="onFreeListSelect($event)" ngDefaultControl name="freeEditionId">
+            </rds-dropdownlist>
             </div>
           </div>
         </div>
@@ -164,13 +170,17 @@
 <rds-offcanvas [canvasTitle]="translate.instant(moveTenantCanvasTitle)" [offId]="'moveTenantEdition'" [placement]="'end'" 
   [offcanvaswidth]="600" *ngIf="viewMoveTenantCanvas" (onClose)="closeMoveTenantCanvas()">
   <!-- <b>{{moveTenantCanvasTitle}}</b> -->
-  <div class="tab-content px-3 py-4 navsm-p-0">
+  <div class="tab-content px-3 navsm-p-0">
     <div class="row">
       <div class="col-md-12">
         <div class="text-primary mb-2">{{tenantCount}} {{"Tenants will be moved"|translate}}</div>
-        <rds-select-list [label]="translate.instant('Edition')" ngDefaultControl 
+        <!-- <rds-select-list [label]="translate.instant('Edition')" ngDefaultControl 
                          name="edition" [(ngModel)]="targetEditionId" [itemList]="editionList" [id]="editionList">
-      </rds-select-list>
+      </rds-select-list> -->
+      <rds-dropdownlist [placeholder]="translate.instant('Edition')" [borderDropdown]="true"
+      class="text-dark" [id]="'editionList'" [(ngModel)]="targetEdition" [listItems]="editionList"
+     [value]="targetEdition" (onSelect)="onTargetListSelect($event)" ngDefaultControl name="targetEditionId">
+    </rds-dropdownlist>
       </div>
     </div>
   </div>

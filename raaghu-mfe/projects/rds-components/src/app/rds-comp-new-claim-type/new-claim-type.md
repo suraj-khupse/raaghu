@@ -10,7 +10,8 @@ title: "Components > New Claim Type"
 #### New Claim Type
 
 <p>A card with neccessary details and description at different fields</p>
-<section class="py-4">                                                                                             
+<section class="py-4">         
+    <h6>Default</h6>                                                                                    
     <div class="py-3">
       <div class="cust-tabs">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -39,7 +40,7 @@ title: "Components > New Claim Type"
 
 ```html
 
-<app-rds-comp-new-claim-type></app-rds-comp-new-claim-type>
+<rds-comp-new-claim-type></rds-comp-new-claim-type>
 ```
 </div>
 </div>

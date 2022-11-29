@@ -24,10 +24,13 @@
           </rds-button> -->
           <!-- <rds-icon name="refresh" width="20px" height="20px" class=" btn btn-primary btn-sm btn-icon"  (click)="refreshData()" text-primary></rds-icon> -->
           
-          <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [roundedButton]="true"
-                      icon="refresh" iconHeight="18px" iconWidth="26px" (click)="refreshData()" class="me-2"></rds-button>
+                    <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [isFabIcon]="true" icon="refresh"
+                      class="me-2" (click)="refreshData()" iconHeight="18px" iconWidth="26px"  buttonType="iconOnly"  [tooltipPlacement]="'bottom'" [tooltipTitle]="'Refresh'">
+                    </rds-button>
+     
+                    
           <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-                      (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [outlineButton]="true">
+                      (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [isOutline]="true">
             <rds-icon left class="me-2" name="download_data" height="12px" width="12px"></rds-icon>
           </rds-button>
         </div>

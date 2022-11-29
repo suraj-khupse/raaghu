@@ -7,8 +7,8 @@
   <ng-container *ngIf="!alwaysOpen; else otherTemplate">
     <div [attr.id]="'collapse'+id" class="accordion-collapse collapse" [class.show]="expanded"
       [attr.data-bs-parent]="'#' + parentId" [attr.aria-labelledby]="'heading'+id">
-      <div class="accordion-body">
-        <ng-content select="[accordianBody]"></ng-content>
+      <div class="accordion-body text-dark ">
+        <ng-content  select="[accordianBody]"></ng-content>
       </div>
     </div>
   </ng-container>
