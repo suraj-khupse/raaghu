@@ -4,8 +4,6 @@
 name: "Build and deploy performance-fix anzstageui.raaghu.io"
 
 on:
-  pull_request:
-    types: [closed]
   push:
     branches: [dev-performance-fixes]
 
