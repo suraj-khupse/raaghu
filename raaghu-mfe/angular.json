@@ -262,7 +262,7 @@
       "projectType": "library",
       "root": "projects/rds-components",
       "sourceRoot": "projects/rds-components/src",
-			"prefix": "app"
+      "prefix": "app"
     },
     "host": {
       "projectType": "application",
