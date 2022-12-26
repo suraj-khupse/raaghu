@@ -1182,7 +1182,7 @@
     color: var(--bs-table-striped-color);
 }
 
-
-
-
+.carousel-indicators [data-bs-target] {
+  height: 30px;
+}
 

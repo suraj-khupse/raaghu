@@ -142,6 +142,10 @@ $tags-padding: 5px 5px 5px 10px;
 
 $enable-caret: true !default;
 
+.carousel-indicators {
+  height: $carousel-indicator-width;
+  width: $carousel-indicator-width;
+}
 input::-webkit-input-placeholder {
   font-size: $font-size-sm;
   font-weight: $input-font-weight;
@@ -2201,4 +2205,11 @@ rds-icon:hover {
 
     
   }
+}
+rds-icon {
+  display: flex;
+  align-items: center;
+}
+.cursor-pointer {
+  cursor: pointer;
 }

@@ -1,25 +1,25 @@
 <div class="border p-3 text-left rounded card-detail" id="card-detail">
   <div (click)="setAsPaymentMethod(cardData)">
-    <rds-label *ngIf="label == '' ? false : true" [label]="label" [bold]="true"></rds-label>
+    <!--<rds-label *ngIf="label == '' ? false : true" [label]="label" [bold]="true"></rds-label>-->
     <div class="d-flex ">
-      <div class="flex-grow-0 d-flex align-items-center h-50 mt-4">
+      <div class="flex-grow-0 d-flex align-items-center h-50">
 
-        <rds-icon [name]="cardData.cardLogo" height="20px" width="20px"></rds-icon>
+        <rds-icon [name]="cardData.cardLogo" height="35px" width="35px"></rds-icon>
 
       </div>
       <div class="flex-grow-1 d-flex align-items-center ms-4">
         <div>
-          <div class="d-block mt-3 fw-medium" style="font-size: 0.80rem;">
+          <h5 class="d-block fw-bolder">
             {{cardData.cardName}} Ending in {{cardData.cardNumber}}
-          </div>
+          </h5>
           <div class="d-block text-muted">Expiry {{cardData.cardExpiry}}</div>
           <div *ngIf="IsEditAndDefaultFunctionalityRequired" class="d-flex mt-3">
             <a *ngIf="!cardData.isDefault" (click)="setAsDefaultCard(cardData)"
-                class="ms-0">Set as default</a>
+                class="ms-0 text-muted cursor-pointer">Set as default</a>
             <a *ngIf="cardData.isDefault"
                class="text-muted">Default</a>
-            <a (click)="onEditCardDetails(cardData)" class="ms-3" >
-              <strong style="cursor: pointer;">Edit</strong>
+            <a (click)="onEditCardDetails(cardData)" class="ms-3 cursor-pointer fw-bolder" >
+              Edit
             </a>
           </div>
         </div>

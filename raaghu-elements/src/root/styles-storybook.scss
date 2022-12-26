@@ -2,7 +2,7 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
 
 .accordion-header {
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
   background: #7e2eef;
   border-color: #7e2eef;
 }
@@ -183,7 +183,10 @@
   width: 8px;
   height: auto;
 }
-
+rds-icon{
+    display:flex;
+    align-items:center;
+}
 // Scroll Type
 .rds-tags {
   width: 100%;
@@ -1900,44 +1903,45 @@ $form-feedback-color: $gray-700;
   @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }
-
-  .alert {
-    svg {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: $alert-color;
-
-      polyline.icon {
+  @each $color, $value in $theme-colors {
+    .alert-#{$color} {
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
         stroke: $alert-color;
-      }
 
-      polygon.icon {
-        stroke: $alert-color;
-      }
+        polyline.icon {
+          stroke: $alert-color;
+        }
 
-      ellipse.icon {
-        stroke: $alert-color;
-      }
+        polygon.icon {
+          stroke: $alert-color;
+        }
 
-      path.icon {
-        stroke: $alert-color;
-      }
+        ellipse.icon {
+          stroke: $alert-color;
+        }
 
-      line.icon {
-        stroke: $alert-color;
-      }
+        path.icon {
+          stroke: $alert-color;
+        }
 
-      rect.icon {
-        stroke: $alert-color;
-      }
+        line.icon {
+          stroke: $alert-color;
+        }
 
-      circle.icon {
-        stroke: $alert-color;
+        rect.icon {
+          stroke: $alert-color;
+        }
+
+        circle.icon {
+          stroke: $alert-color;
+        }
       }
     }
+    }
   }
-}
 
 .bs-datepicker {
   background: $white;
@@ -2063,6 +2067,9 @@ a {
   text-decoration: none;
   color: $primary;
 }
+.breadcrumb-item.active {
+  color: $primary;
+}
 
 .btn-color-mode-switch {
   display: inline-block;
@@ -2141,4 +2148,7 @@ a {
   align-items: center;
   display: flex;
   height: 91vh;
+}
+.cursor-pointer{
+    cursor:pointer;
 }

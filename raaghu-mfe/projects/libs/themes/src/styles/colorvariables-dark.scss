@@ -1762,41 +1762,43 @@ $form-feedback-color: $gray-200;
     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }
 
-  .alert {
-    svg {
-      fill: none;
-      stroke: $alert-color;
-
-      polyline.icon {
+  @each $color, $value in $theme-colors {
+    .alert-#{$color} {
+      svg {
+        fill: none;
         stroke: $alert-color;
-      }
 
-      polygon.icon {
-        stroke: $alert-color;
-      }
+        polyline.icon {
+          stroke: $alert-color;
+        }
 
-      ellipse.icon {
-        stroke: $alert-color;
-      }
+        polygon.icon {
+          stroke: $alert-color;
+        }
 
-      path.icon {
-        stroke: $alert-color;
-      }
+        ellipse.icon {
+          stroke: $alert-color;
+        }
 
-      line.icon {
-        stroke: $alert-color;
-      }
+        path.icon {
+          stroke: $alert-color;
+        }
 
-      rect.icon {
-        stroke: $alert-color;
-      }
+        line.icon {
+          stroke: $alert-color;
+        }
 
-      circle.icon {
-        stroke: $alert-color;
+        rect.icon {
+          stroke: $alert-color;
+        }
+
+        circle.icon {
+          stroke: $alert-color;
+        }
       }
     }
+    } 
   }
-}
 
 @mixin icon-variant($color) {
   color: $color;
@@ -2018,4 +2020,7 @@ $form-feedback-color: $gray-200;
 .form-check-input:checked {
     background-color: $primary-400;
     border-color: $primary-400;
+}
+.breadcrumb-item.active {
+  color: $primary;
 }
