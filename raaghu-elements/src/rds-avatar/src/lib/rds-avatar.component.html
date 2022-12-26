@@ -1,4 +1,4 @@
-<div [ngClass]="{ 'd-flex': !verticallyAlligned }">
+<div [ngClass]="{ 'd-flex align-items-center': !verticallyAlligned }">
   <div *ngIf="withProfilePic" class="" [ngClass]="profileClass" >
     <img [src]="profilePic" class="avatar " [ngClass]="classes" [ngStyle]="{'width': width+'px','height':height + 'px'}" />
     <span class="avatar-initials flex-grow-1 align-items-center ms-2 fw-bold text-decoration-none">

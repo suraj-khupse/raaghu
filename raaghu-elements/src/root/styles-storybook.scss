@@ -48,6 +48,7 @@
 }
 
 // Badge css
+
 .badge-primary {
   background-color: #c2e3ff;
   border-color: #c2e3ff;
@@ -1078,6 +1079,7 @@ svg {
 .badge {
   padding: $badge-padding-y $badge-padding-x;
   @include font-size($badge-font-size);
+  font-weight:500;
 }
 
 @mixin badge-variant($background, $border, $color) {

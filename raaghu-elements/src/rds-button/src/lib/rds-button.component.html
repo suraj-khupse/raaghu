@@ -4,7 +4,7 @@
 <button [type]="submitButton" [class]="classes" (click)="buttonClick($event)" data-bs-toggle="tooltip" 
   [attr.data-bs-placement]="tooltipPlacement" [attr.data-bs-title]="tooltipTitle" [attr.id]="id"
   [disabled]="showLoadingSpinner||isDisabled"  [ngClass]="blockWidth" [class.spinner]="showLoadingSpinner"
-  [attr.aria-label]="label">
+  [attr.aria-label]="label" class="position-relative">
 
   <ng-content select="[left]"></ng-content>
   <span *ngIf="icon" [ngClass]="icon&&label ? 'me-2' :  ''" [class.invisible]="showLoadingSpinner">

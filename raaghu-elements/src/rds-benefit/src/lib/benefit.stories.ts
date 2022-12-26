@@ -52,7 +52,7 @@ WithIllustrationLeftAlign.args = {
   item:
   {
     id: 3,
-    icon:"../assets/benefit_type1.png",
+    icon:"https://raw.githubusercontent.com/Wai-Technologies/raaghu-angular/main/raaghu-elements/assets/benefit_type1.png",
     iconHeight: "40px",
     iconWidth: "40px",
     title: "Free delivery all year long",
@@ -82,7 +82,7 @@ WithLabel.args = {
   item:
   {
     id: 7,
-    icon: "../assets/benefit_type1.png",
+    icon: "https://raw.githubusercontent.com/Wai-Technologies/raaghu-angular/main/raaghu-elements/assets/benefit_type1.png",
     status: 'Active',
     iconHeight: "40px",
     iconWidth: "40px",
