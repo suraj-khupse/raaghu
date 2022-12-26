@@ -19,6 +19,7 @@ import {
   query,
   style,
   animate,
+  state,
 } from '@angular/animations';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
@@ -26,23 +27,31 @@ import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/st
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter', [style({ opacity: 0 })], { optional: true }),
+  //       query(
+  //         ':leave',
+  //         [style({ opacity: 1 }), animate('0.4s', style({ opacity: 0 }))],
+  //         { optional: true }
+  //       ),
+  //       query(
+  //         ':enter',
+  //         [style({ opacity: 0 }), animate('0.4s', style({ opacity: 1 }))],
+  //         { optional: true }
+  //       ),
+  //     ]),
+  //   ]),
+  // ],
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter', [style({ opacity: 0 })], { optional: true }),
-        query(
-          ':leave',
-          [style({ opacity: 1 }), animate('0.4s', style({ opacity: 0 }))],
-          { optional: true }
-        ),
-        query(
-          ':enter',
-          [style({ opacity: 0 }), animate('0.4s', style({ opacity: 1 }))],
-          { optional: true }
-        ),
-      ]),
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
     ]),
-  ],
+  ]
 })
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;

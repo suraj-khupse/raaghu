@@ -5,17 +5,17 @@
         <button [ngClass]="button1" type="button" class="border">
           {{ label }}
         </button>
-        <button
-          type="button"
-          class="border"
-          [ngClass]="classes"
-          id="dropdownMenuButton1"
-          (click)="open()"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <span class="visually-hidden">Toggle Dropdown</span>
-        </button>
+        <span
+        type="button"
+        class="border border_radius"
+        [ngClass]="classes"
+        id="dropdownMenuButton1"
+        (click)="open()"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <span class="visually-hidden">Toggle Dropdown</span>
+      </span>
         <ul [ngClass]="menu" aria-labelledby="dropdownMenuButton1">
           <li
             class="pb-2"

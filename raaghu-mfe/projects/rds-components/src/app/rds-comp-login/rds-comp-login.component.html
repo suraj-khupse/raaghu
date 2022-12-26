@@ -9,9 +9,9 @@
   <div class="pt-5">
     <form #loginForm="ngForm">
       <div class="form-group mb-3 text-start">
-        <rds-input size="medium" [inputType]="'email'" [label]="translate.instant(UserName)"
-          [labelPosition]="'top'" [placeholder]="translate.instant(UserName)" id="txtUsername" floatinginputLabel=""
-          [(ngModel)]="userNameData" [isRequired]=true required #username="ngModel" ngDefaultControl name="userName">
+        <rds-input size="medium" [inputType]="'email'" [label]="translate.instant(UserName)" [labelPosition]="'top'"
+          [placeholder]="translate.instant(UserName)" id="txtUsername" floatinginputLabel="" [(ngModel)]="userNameData"
+          [isRequired]=true required #username="ngModel" ngDefaultControl name="userName">
         </rds-input>
         <div class="form-control-feedback" *ngIf="username.errors && (username.dirty || username.touched)">
           <span class="text-danger" *ngIf="username.errors.required">{{"Username is required"|translate}}</span>
@@ -20,8 +20,8 @@
       </div>
       <div class="form-group mb-3 text-start">
         <rds-input size="medium" [iconCursor]="'pointer'" [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'"
-          [iconWidth]="'18px'" [inputType]="'password'" [label]="translate.instant(Password)"
-          [labelPosition]="'top'" [placeholder]="translate.instant(Password)" floatinginputLabel="" id="txtPassword"
+          [iconWidth]="'18px'" [inputType]="'password'" [label]="translate.instant(Password)" [labelPosition]="'top'"
+          [placeholder]="translate.instant(Password)" floatinginputLabel="" id="txtPassword"
           [(ngModel)]="userPasswordData" [isRequired]=true ngDefaultControl required #userPassword="ngModel"
           name="password"></rds-input>
         <div class="form-control-feedback" *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)">
@@ -37,8 +37,8 @@
             </div>
           </div>
           <div class="col-md-6">
-            <a class="text-decoration-none float-end" routerLink="/forgot-password">{{translate.instant("Forgot
-              password?")}}</a>
+            <a class="link-primary text-decoration-none float-end" [href]="['/forgot-password']">
+              {{translate.instant("Forgot password?")}}</a>
           </div>
         </div>
         <br />
@@ -52,7 +52,8 @@
   </div>
 </div>
 
-<rds-modal [modalId]="'ChangeTenant'" [modalBackdrop]="'static'" (onClose)="onModalClose(tenantForm)" class="change-tenant">
+<rds-modal [modalId]="'ChangeTenant'" [modalBackdrop]="'static'" (onClose)="onModalClose(tenantForm)"
+  class="change-tenant">
   <div modalheader class="d-flex w-100 border-0">
     <h5 class="modal-title"><b> {{"Switch Tenant"|translate}}</b></h5>
     <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
@@ -90,8 +91,8 @@
       [size]="'medium'" (click)="back()" [label]="translate.instant('Cancel')" class="px-2">
     </rds-button>
     <rds-button class="mr-1" [id]="'yes'" [isDisabled]="switchTenant&&!TenantNameData" [size]="'medium'"
-      (click)="ChangeTenant(tenantForm)" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-      [label]="Modallabel" [showLoadingSpinner]="buttonSpinnerForChangeTenant">
+      (click)="ChangeTenant(tenantForm)" [tooltipPlacement]="'top'" [colorVariant]="'primary'" [label]="Modallabel"
+      [showLoadingSpinner]="buttonSpinnerForChangeTenant">
     </rds-button>
   </div>
 </rds-modal>

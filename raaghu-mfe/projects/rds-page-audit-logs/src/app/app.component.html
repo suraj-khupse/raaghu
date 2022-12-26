@@ -1,10 +1,317 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
   <!-- <mfe-loader [config]="rdsauditLogMfeConfig"></mfe-loader> -->
-  <rds-comp-audit-logs
+  <!-- <rds-comp-audit-logs
         [operationLogsHeaders]="operationLogsHeaders"
         [operationLogs]="auditLogsTableData"
         [changeLogsHeaders]= "changeLogsHeaders"
         [changeLogs]= "changeLogs"
         [isShimmer]= "isShimmer"
-  ></rds-comp-audit-logs>
+  ></rds-comp-audit-logs> -->
+  <div class="card p-2 h-100 border-0 rounded-0 vh-88">
+    <div class="row m-1">
+      <div class="col-md-12 text-end position-relative">
+        <div class="position-absolute end-0 desktop-btn">
+          <rds-button #operationlog class="action mb-0" *ngIf="selectedIndex == 0" [colorVariant]="'primary'"
+            [isOutline]="true" [size]="'small'" (click)="exportToExcel('operation-logs')"
+            [label]="translate.instant('Export To Excel')">
+            <rds-icon left name="export_data" height="18px" width="15px" class="me-2"></rds-icon>
+          </rds-button>
+          <rds-button #changelog class="action" [isOutline]="true" *ngIf="selectedIndex == 1" [colorVariant]="'primary'"
+            [size]="'small'" (click)="exportToExcel('change-logs')" [label]="translate.instant('Export To Excel')">
+            <rds-icon left name="export_data" width="15px" class="me-2" height="18px"></rds-icon>
+          </rds-button>
+        </div>
+        <rds-nav-tab [navtabsItems]="getNavTabItems()" [horizontalAlignment]="'start'" [verticalAlignment]="false"
+          [pills]="false" [tabs]="true" [fill]="false" (onClicktab)="onSelectnode($event)" [justified]="false">
+        </rds-nav-tab>
+      </div>
+    </div>
+
+    <div naveContent class="row tab-content m-2" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="operation-logs" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="excel-btn">
+          <div class="row mb-1">
+            <div class="col-md-3 col-sm-6 mt-1">
+              <rds-datepicker name="date-picker" [datePickerType]="'range'" [label]="''"
+                [placeholder]="translate.instant('Date Range')" (change)="onDateRageChange($event)"
+                [(ngModel)]="dateRange" [value]="dateRange" floatinginputLabel="">
+              </rds-datepicker>
+            </div>
+            <!-- <div class="col-md-3  col-sm-6 mt-1">
+                      <rds-datepicker name="date-picker" [style]="'cursor:pointer'" [label]="''"
+                          [placeholder]="translate.instant('End Date')" (change)="endDateModify($event)"
+                          [(ngModel)]="endDate" [value]="endDate" floatinginputLabel="">
+                      </rds-datepicker>
+                  </div> -->
+            <div class="col-md-3  col-sm-6 mt-1">
+              <rds-input size="medium" [inputType]="" [(ngModel)]="user" [placeholder]="translate.instant('User')"
+                id="txtUsername" (change)="userModify($event)" floatinginputLabel="" ngDefaultControl
+                name="userName"></rds-input>
+            </div>
+            <div class="col-md-3  col-sm-6 d-flex align-items-center mt-1">
+              <rds-checkbox [disabled]="false" [label]="translate.instant('Advanced Filters')" [checked]=""
+                [withLabel]="true" [switch]="false" [inline]="false" [id]="'rememeberMe'"
+                (onChange)="showAdvancedFilter()">
+              </rds-checkbox>
+            </div>
+
+          </div>
+          <div class="mobile-btn position-fixed bottom-0 end-0 pb-2 me-4">
+            <rds-fab-menu [listItems]="listItem1" [menuicon]="'plus'" [colorVariant]="'primary'"
+              [menuiconWidth]="'15px'" [menuiconHeight]="'15px'" (onSelect)="onSelectMenu($event)">
+            </rds-fab-menu>
+          </div>
+        </div>
+        <div class="row" *ngIf="showFilters">
+          <div class="col-md-2 mt-2">
+            <rds-input size="medium" [(ngModel)]="service" [placeholder]="translate.instant('Service')"
+              (change)="serviceModify($event)" id="service" floatinginputLabel="" ngDefaultControl name="service">
+            </rds-input>
+          </div>
+          <div class="col-md-2 mt-2">
+            <!-- <rds-input size="medium" [(ngModel)]="from" [inputType]="'number'"
+                      [placeholder]="translate.instant('From')" (change)="fromModify($event)" id="from"
+                      floatinginputLabel="" ngDefaultControl name="from">
+                  </rds-input> -->
+            <rds-dropdownlist [borderDropdown]="true" class="text-dark" [id]="'duration-dropdown'"
+              [placeholder]="translate.instant('Duration Condition')" [value]="durationType"
+              [listItems]="durationTypeList" (onSelect)="onDurationTypeChange($event)"></rds-dropdownlist>
+          </div>
+          <div class="col-md-2 mt-2">
+            <!-- <rds-input size="medium" [(ngModel)]="to" [inputType]="'number'"
+                      [placeholder]="translate.instant('To')" (change)="toModify($event)" id="to"
+                      floatinginputLabel="" ngDefaultControl name="to">
+                  </rds-input> -->
+            <rds-input size="medium" [(ngModel)]="duration" [inputType]="'number'"
+              [placeholder]="translate.instant('Duration')" (change)="onDurationChange()" id="to" floatinginputLabel=""
+              ngDefaultControl name="to">
+            </rds-input>
+          </div>
+          <div class="col-md-2 mt-2">
+            <rds-input size="medium" (change)="actionModify($event)" [(ngModel)]="action"
+              [placeholder]="translate.instant('Action')" id="action" floatinginputLabel="" ngDefaultControl
+              name="action">
+            </rds-input>
+          </div>
+          <div class="col-md-2 mt-2">
+            <rds-dropdownlist [placeholder]="translate.instant('Error State')" [borderDropdown]="true" class="text-dark"
+              [id]="'status-list'" [(ngModel)]="status" [listItems]="statusList" [value]="status"
+              (onSelect)="exceptionModify($event)" ngDefaultControl name="status">
+            </rds-dropdownlist>
+          </div>
+          <div class="col-md-2 mt-2">
+            <rds-dropdownlist [placeholder]="translate.instant('Select browser')" [borderDropdown]="true"
+              class="text-dark" [id]="'browserList'" [(ngModel)]="browserInfo" [listItems]="browserList"
+              [value]="browserInfo" (onSelect)="SelectBroser($event)" ngDefaultControl name="browserInfo">
+            </rds-dropdownlist>
+          </div>
+        </div>
+        <div class="row mt-4 ">
+          <rds-comp-data-table [tableData]="auditLogsTableData" [pagination]="auditLogsTableData.length>5?true:false"
+            [noDataTitle]="translate.instant('Currently you do not have operation log')" [recordsPerPage]="10"
+            (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"
+            [refresh]="true" [tableHeaders]="operationLogsHeaders" [isShimmer]="isShimmer"></rds-comp-data-table>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="change-logs" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="m-1">
+          <div class="row">
+            <!-- <div class="col-md-3 col-sm-6 mt-1">
+              <rds-datepicker name="date-picker" [style]="'cursor:pointer'" [label]="''"
+                [placeholder]="translate.instant('Date Range')" (change)="changelogefiltermodify($event)"
+                [(ngModel)]="changeLogStartdate" [value]="changeLogStartdate">
+              </rds-datepicker>
+            </div> -->
+            <div class="col-md-3 col-sm-6 mt-1">
+              <!-- <rds-datepicker name="date-picker" [style]="'cursor:pointer'" [label]="''"
+                [placeholder]="translate.instant('Date Range')" (change)="sendChangelogParamter()"
+                [(ngModel)]="changeLogEndDate" [value]="changeLogEndDate">
+              </rds-datepicker> -->
+              <rds-datepicker name="date-picker" [datePickerType]="'range'" [label]="''"
+                [placeholder]="translate.instant('Date Range')" (change)="onChangeLogDateChanges($event)"
+                [(ngModel)]="changeLogDateRange" [value]="changeLogDateRange">
+              </rds-datepicker>
+            </div>
+            <div class="col-md-3 col-sm-6 mt-1">
+              <rds-input size="medium" [(ngModel)]="changeLogUsername" [placeholder]="translate.instant('User name')"
+                id="txtchangeLogUsername" (change)="sendChangelogParamter()" ngDefaultControl name="changeLogUsername"></rds-input>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mt-1">
+              <!-- <rds-select-list class="w-100" [(ngModel)]="status" (selectListChange)="exceptionModify($event)"
+                          [value]="status" ngDefaultControl name="Property" [itemList]="statusList">
+                      </rds-select-list> -->
+              <rds-dropdownlist [placeholder]="translate.instant('Object')" [borderDropdown]="true"
+                class="text-dark" [id]="'status'" [(ngModel)]="status" [listItems]="statusList" [value]="status"
+                 ngDefaultControl name="status">
+              </rds-dropdownlist>
+            </div>
+          </div>
+          <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5">
+            <rds-fab-menu [listItems]="listItem2" [menuicon]="'plus'" [colorVariant]="'primary'"
+              [menuiconWidth]="'15px'" [menuiconHeight]="'15px'" (onSelect)="onSelectMenu($event)">
+            </rds-fab-menu>
+          </div>
+          <div class="row">
+            <rds-comp-data-table [tableData]="changeLogs" [actions]="actionForChangeLogs"
+              (onActionSelection)="onChangeActionSelect($event)" [pagination]="changeLogs.length>5?true:false"
+              [recordsPerPage]="10" [noDataTitle]="'Currently you do not have change log'" [showNodataSubtitle]="false"
+              [tableHeaders]="changeLogsHeaders">
+            </rds-comp-data-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
+
+<rds-offcanvas [canvasTitle]="translate.instant(auditLogsCanvasTitle)" [offId]="'auditLogCanvas'" [offcanvaswidth]="550"
+  [placement]="'end'" *ngIf="viewAuditLogsCanvas" (onClose)="onClose()">
+  <h5>
+    <span class="fw-medium">{{ translate.instant("User Information") }}</span>
+  </h5>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("UserName") }}: </span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.userName }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("IP Address") }}:</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.clientIpAddress }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("Client ") }}:</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.clientIpAddress }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("Browser ") }}:</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.browserInfo }}</span>
+      </div>
+    </div>
+  </div>
+
+  <h5>
+    <span class="fw-medium">{{
+      translate.instant("Account Information")
+      }}</span>
+  </h5>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("Service") }}:</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.serviceName }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("Time") }}:</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.executionTime }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("Duration") }}:</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ selectedRowData.executionDuration }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("Parameters") }}: </span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group p-2 parameter-bg-color fs-6 mb-3" style="overflow-wrap: anywhere">
+        {{ selectedRowData.parameters }}
+      </div>
+    </div>
+  </div>
+  <h5>
+    <span class="fw-medium">{{ translate.instant("Custom Data") }}</span>
+  </h5>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span>{{ translate.instant("None") }}</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group mb-3">
+        <span class="fw-medium">{{ translate.instant("Error State") }}:
+        </span>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <rds-badge *ngIf="!selectedRowData.exception" [label]="'success'" size="small" label="9"
+            [colorVariant]="'success'"></rds-badge>
+          <rds-badge *ngIf="selectedRowData.exception" [label]="'HasError'" size="small" label="9">
+          </rds-badge>
+        </div>
+      </div>
+    </div>
+  </div>
+</rds-offcanvas>
+
+<rds-offcanvas [canvasTitle]="changeLogsCanvasTitle" [offId]="'changeLogCanvas'" [offcanvaswidth]="550"
+  [placement]="'end'" *ngIf="viewChangeLogsCanvas" (onClose)="onClose()">
+  <div class="row">
+    <div class="col-md-12">Created by:</div>
+  </div>
+</rds-offcanvas>

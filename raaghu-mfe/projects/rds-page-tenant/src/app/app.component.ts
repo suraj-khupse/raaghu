@@ -1,6 +1,6 @@
-import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ArrayToTreeConverterService, ComponentLoaderOptions, ImpersonateTenantInput, UserAuthService } from '@libs/shared';
+import { ArrayToTreeConverterService, UserAuthService } from '@libs/shared';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
@@ -10,16 +10,16 @@ import {
   query,
   style,
   animate,
+  state,
 } from '@angular/animations';
-import { profileSelector } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
-import { getProfilepic } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
 import { el } from 'date-fns/locale';
 import { data } from 'autoprefixer';
+
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 import { deleteTenant, getEditionComboboxItems, getTenantFeaturesForEdit, getTenantForEdit, getTenantLogin, getTenants, getTenantUsers, saveTenant, updateTenant, updateTenantFeatureValues } from 'projects/libs/state-management/src/lib/state/tenant/tenant.actions';
 import { selectAllTenants, selectEditionComboboxItems, selecteTeantLoginList, selecteTeantUserList, selectTenantFeature, selectTenantInfo } from 'projects/libs/state-management/src/lib/state/tenant/tenant.selector';
-// import login from 'playwright/model/login';
-
+import { TableAction } from 'projects/rds-components/src/models/table-action.model';
+declare let bootstrap: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,77 +30,269 @@ import { selectAllTenants, selectEditionComboboxItems, selecteTeantLoginList, se
   ],
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('0.4s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('0.4s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
   ]
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit{
 
   title = 'tenant';
   tenantSettingsInfo: any = {};
   tenantData: any = {};
-
-  rdsTenantMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompTenantList'
+  userTableActions: TableAction[] = [
+    { id: 'loginIn', displayName: this.translate.instant('Login') },
+  ];
+  selectedFeatureList: any = [];
+  selectedId: any = '';
+  viewCanvas: boolean = false;
+  listItems = [
+    {
+      value: 'New Tenant',
+      some: 'value',
+      key: 'new',
+      icon: 'plus',
+      iconWidth: '20px',
+      iconHeight: '20px',
+    },
+  ];
+  canvasTitle: string = '';
+  showEditData: boolean = false;
+  actions: TableAction[] = [
+    {
+      id: 'loginAsTenant',
+      displayName: this.translate.instant('Login as Tenant'),
+    },
+    { id: 'edit', displayName: this.translate.instant('Edit') },
+    { id: 'delete', displayName: this.translate.instant('Delete') },
+  ];
+  viewLoginAsTenantCanvas: boolean = false;
+  public tenant: any = {
+    tenantInfo: undefined,
+    tenantSettings: undefined,
+    featureList: [],
   };
+  isTenantInfoValid: boolean = false;
+  showLoadingSpinner: boolean = false;
+  public navtabsItems: any = [];
+  activePage: number = 0;
+  newTenantLabel:string = '';
+  tenantHeadersUser: TableHeader[] = [];
   editionList: any = [];
   tenantFeatures: any = [];
   tenantFeatureValues: any = [];
-  tenantLoginLists: any = [];
   tenantTableHeader: TableHeader[] = [
     { displayName: 'Tenant', key: 'tenantInfoTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true, colWidth: '20%' },
     { displayName: 'Edition', key: 'editionTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true, colWidth: '20%' },
     { displayName: 'Status', key: 'statusTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true, colWidth: '20%' },
     { displayName: 'Subscription End Date', key: 'subscriptionEndDateUtc', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true, colWidth: '20%' },
-
   ]
-
   userTableHeader: TableHeader[] = [
     { displayName: 'Name', key: 'name', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
   ]
   isAnimation: boolean = true;
-
   tenantTableData: any = [];
-  userTableData: any = []
+
+  onActionSelect(event: any): void {
+    if (event.actionId === 'delete') {
+      this.deleteEvent(event.selectedData);
+    } 
+    else if (event.actionId === 'edit') {
+      this.selectedId = event.selectedData.id;
+      this.canvasTitle = this.translate.instant('Edit Tenant');
+      this.store.dispatch(getTenantForEdit(event.selectedData.id));
+      this.store.dispatch(getTenantFeaturesForEdit(event.selectedData.id))
+      this.newTenant(false);
+    } else if (event.actionId === 'loginAsTenant') {
+      this.tenantId = event.selectedData.id;
+      this.loginAsTenant(event);
+    }
+  }
+  
+  loginAsTenant(event): void {
+    this.viewLoginAsTenantCanvas = true;
+    const data: any = {
+      tenantId: event.selectedData.id,
+      excludeCurrentUser: true,
+      maxResultCount: 1000,
+      skipCount: 0,
+      filter: '',
+    };
+    this.onSelectTenant(data);
+    this.canvasTitle = 'Select a User';
+    setTimeout(() => {
+      var offcanvas = document.getElementById('loginAsTenantOffcanvas');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 100);
+  }
+
+  onSelectMenu(event: any) {
+    if (event.key === 'new') {
+      this.newTenant(event);
+    }
+  }
+
+  close(): void {
+    this.viewCanvas = false;
+    this.tenant = {
+      tenantInfo: undefined,
+      tenantSettings: undefined,
+      featureList: [],
+    };
+    this.tenantData = undefined;
+    this.tenantSettingsInfo = undefined;
+    this.showLoadingSpinner = false;
+  }
+
+  getSelectedNavTab(event: any): void {
+    this.activePage = event;
+  }
+  
+  getTenantData(event: any): void {
+    if (event.next) {
+      this.activePage = 1;
+    }
+    this.tenant.tenantInfo = event.tenant;
+    if (!event || !event.tenant) {
+      this.isTenantInfoValid = false;
+    } else {
+      this.isTenantInfoValid = true;
+    }
+  }
+  getTenantSettings(event: any): void {
+    this.tenant.tenantSettings = event.settings;
+    if (event.next) {
+      this.onSaveTenant(this.tenant);
+      this.activePage = 0;
+      var offcanvas = document.getElementById('tenantOffcanvas');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.hide();
+      this.viewCanvas = false;
+    }
+  }
+
+  getSelectedFeaturesList(event: any): void {
+    this.selectedFeatureList = event;
+  }
+
+  save(): void {
+    this.showLoadingSpinner =false;
+    if (!this.selectedFeatureList || this.selectedFeatureList.length === 0) {
+      return;
+    }
+    const data = {
+      id: this.selectedId,
+      featureValues: this.selectedFeatureList,
+    };
+    
+    this.onSaveFeatures(data);
+    this.activePage = 0;
+    var offcanvas = document.getElementById('tenantOffcanvas');
+    var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+    bsOffcanvas.hide();
+    this.viewCanvas = false;
+  }
+
+  loginTenant(event): void {
+    const data: any = {
+      tenantId: this.tenantId,
+      userId: event.selectedData.id,
+    };
+    this.onTenantLogIn(data);
+    this.viewLoginAsTenantCanvas = false;
+    console.log(data);
+  }
+
+  closeLoginAsTenant(): void {
+    this.viewLoginAsTenantCanvas = false;
+  }
+  onUserDataActionSelect(event: any): void {
+    if (event.actionId === 'loginIn') {
+      this.loginTenant(event);
+    }
+  }
+
+  userTableData: any = [];
   tenantId: any;
   isShimmer: boolean = true;
   editShimmer: boolean = true;
 
-  constructor(public datepipe: DatePipe, private userAuthService: UserAuthService,
-    private store: Store, private translate: TranslateService,
-    private _arrayToTreeConverterService: ArrayToTreeConverterService) { }
+  constructor(
+    public datepipe: DatePipe,
+    private userAuthService: UserAuthService,
+    private store: Store, 
+    public translate: TranslateService,
+    private _arrayToTreeConverterService: ArrayToTreeConverterService){
+      this.newTenantLabel = this.translate.instant('New Tenant')
+  }
+  
+newTenant(isNewTeanant?: boolean): void {
+    this.viewCanvas = true;
+    this.showEditData = isNewTeanant ? true : false;
+    this.editShimmer = false;
+    if (isNewTeanant) {
+      this.viewCanvas = true;
+      this.showLoadingSpinner = true;
+      this.selectedId = '';
+      this.tenantData = undefined;
+      this.tenantSettingsInfo = undefined;
+      //this.onReset(eventdata);
+      this.isTenantInfoValid = false;
+      this.canvasTitle = this.translate.instant('New Tenant');
+      this.navtabsItems = [
+        {
+          label: this.translate.instant('Tenant Information'),
+          tablink: '#tenant-information',
+          ariacontrols: 'tenant-information',
+        },
+        {
+          label: this.translate.instant('Settings'),
+          tablink: '#settings',
+          ariacontrols: 'settings',
+        },
+      ];
+
+    }
+    else {
+      this.navtabsItems = [
+        {
+          label: this.translate.instant('Tenant Information'),
+          tablink: '#tenant-information',
+          ariacontrols: 'tenant-information',
+        },
+        {
+          label: this.translate.instant('Settings'),
+          tablink: '#settings',
+          ariacontrols: 'settings',
+        },
+        {
+          label: this.translate.instant('Features'),
+          tablink: '#features',
+          ariacontrols: 'features',
+        },
+      ];
+    }
+
+    setTimeout(() => {
+      var offcanvas = document.getElementById('tenantOffcanvas');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 100);
+    this.activePage = 0;
+}
+
+
+  
   ngOnInit(): void {
     this.isAnimation = true;
-
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
         this.translate.use(res);
       }
     });
-
-
     this.store.dispatch(getEditionComboboxItems())
     this.store.select(selectEditionComboboxItems).subscribe((res: any) => {
       if (res) {
@@ -121,10 +313,8 @@ export class AppComponent {
         });
       }
     })
-    this.store.dispatch(getProfilepic());
-    this.store.select(profileSelector).subscribe((res: any) => { })
 
-
+    //this.store.dispatch(getProfilepic());
     this.store.select(selecteTeantLoginList).subscribe((res: any) => {
       if (res) {
         let url = window.location.href;
@@ -134,7 +324,6 @@ export class AppComponent {
         this.userAuthService.unauthenticateUser(true, targetUrl);
       }
     })
-
 
     this.store.select(selecteTeantUserList).subscribe((res: any) => {
       this.userTableData = [];
@@ -146,7 +335,6 @@ export class AppComponent {
           }
           this.userTableData.push(item);
         });
-
       }
     })
 
@@ -154,6 +342,7 @@ export class AppComponent {
     this.store.select(selectAllTenants).subscribe((res: any) => {
       this.tenantTableData = [];
       if (res) {
+        this.isShimmer = false;
         this.isAnimation = false;
         res.items.forEach((element: any) => {
           const status: string = (element.isActive) ? 'Active' : 'Inactive';
@@ -171,7 +360,7 @@ export class AppComponent {
             subscriptionDate = this.datepipe.transform(new Date(element.subscriptionEndDateUtc), 'MM/dd/yyyy, h:mm:ss a');
           } else {
             subscriptionDate = '';
-          }
+          } 
           const item: any = {
             tenantInfoTemplate: tenantInfoTemplate,
             statusTemplate: statusTemplate,
@@ -184,12 +373,12 @@ export class AppComponent {
           }
           this.tenantTableData.push(item);
         });
-        this.isShimmer = false;
-
+        
       }
     });
 
     this.store.select(selectTenantInfo).subscribe((res: any) => {
+      debugger
       if (res) {
         this.tenantSettingsInfo = {};
         this.tenantData = {};
@@ -215,6 +404,7 @@ export class AppComponent {
   }
 
   onSaveTenant(tenant: any) {
+    this.showLoadingSpinner = false;
     if (tenant && tenant.tenantInfo) {
       if (tenant.tenantInfo.id) {
         const data: any = {
@@ -243,38 +433,26 @@ export class AppComponent {
           subscriptionEndDateUtc: (tenant.tenantInfo.unlimitedSubscription || !tenant.tenantInfo.subscriptionEndDate || tenant.tenantInfo.subscriptionEndDate == null) ? null : new Date(tenant.tenantInfo.subscriptionEndDate).toISOString(),
           isInTrialPeriod: false
         };
-        this.store.dispatch(saveTenant(data, 30))
+        this.store.dispatch(saveTenant(data))
 
       }
 
     }
 
   }
-  onEditTenant(selectedTenant: any) {
-    this.store.dispatch(getTenantForEdit(selectedTenant));
-    this.store.dispatch(getTenantFeaturesForEdit(selectedTenant))
-  }
-  onReset(event) {
-    this.tenantData = undefined;
-    this.tenantSettingsInfo = undefined;
-    this.tenantFeatureValues = [];
-    this.tenantFeatures = [];
-
-    if (event.newtenant) {
-      this.editShimmer = false;
-    } else {
-      this.editShimmer = true;
-    }
-  }
+  
   deleteEvent(event: any) {
     this.store.dispatch(deleteTenant(event.id, 30))
   }
+
   onSaveFeatures(feature: any) {
     this.store.dispatch(updateTenantFeatureValues(feature))
   }
+
   onSelectTenant(event: any) {
     this.store.dispatch(getTenantUsers(event));
   }
+
   onTenantLogIn(event: any) {
     this.tenantId = event.tenantId;
     const data: any = {
@@ -282,7 +460,6 @@ export class AppComponent {
       userId: event.userId
     };
     this.store.dispatch(getTenantLogin(data));
-
   }
 
   convertArraytoTreedata(data: any) {

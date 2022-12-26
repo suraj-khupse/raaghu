@@ -38,7 +38,7 @@ export class RdsCompLanguageTextListComponent implements OnInit {
   @Input() listTargetCulturename: any[] = [];
   @Input() listsource: any[] = []
   @Input() listTargetValue: any[] = []
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(private http: HttpClient) {}
   ngOnInit(): void {
     const languageTextDataParams: any = {
       maxResultCount:10,
@@ -52,22 +52,22 @@ export class RdsCompLanguageTextListComponent implements OnInit {
     }
     //this.store.dispatch(getLanguageTexts(languageTextDataParams));
 
-    this.store.select(selectAllLanguageTexts).subscribe((res: any) => {
-      this.languagetextTableData = [];
-      if (res && res.items && res.items.length > 0) {
-        res.items.forEach((element: any) => {
-          const item: any = {
-            Key:element.key,
-            BaseValue:element.baseValue,
-            Value:element.targetValue,
-          }
-          this.languagetextTableData.push(item);
-        });
-        const mfeConfig = this.rdsLanguagetextTableMfeConfig
-        mfeConfig.input.tableData = [... this.languagetextTableData];
-        this.rdsLanguagetextTableMfeConfig = mfeConfig;
-      }
-    })
+    // this.store.select(selectAllLanguageTexts).subscribe((res: any) => {
+    //   this.languagetextTableData = [];
+    //   if (res && res.items && res.items.length > 0) {
+    //     res.items.forEach((element: any) => {
+    //       const item: any = {
+    //         Key:element.key,
+    //         BaseValue:element.baseValue,
+    //         Value:element.targetValue,
+    //       }
+    //       this.languagetextTableData.push(item);
+    //     });
+    //     const mfeConfig = this.rdsLanguagetextTableMfeConfig
+    //     mfeConfig.input.tableData = [... this.languagetextTableData];
+    //     this.rdsLanguagetextTableMfeConfig = mfeConfig;
+    //   }
+    // })
     this.rdsLanguagetextTableMfeConfig = {
       name: 'RdsDataTable',
       input: {

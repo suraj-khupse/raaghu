@@ -20,12 +20,13 @@ import { RdsCompLanguageTextListComponent } from './rds-comp-language-text-list.
 import { RdsCompEditLanguageTextComponent } from '../rds-comp-edit-language-text/rds-comp-edit-language-text.component';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
 import { RdsLabelModule } from '@libs/rds-label';
+import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 export default {
   title: 'Components/language-text-list',
   component: RdsCompLanguageTextListComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompEditLanguageTextComponent, RdsDataTableComponent],
+      declarations: [RdsCompEditLanguageTextComponent],
       imports: [
         RdsOffcanvasModule,
         RdsButtonModule,
@@ -36,7 +37,8 @@ export default {
         NgxTranslateModule,
         RdsInputModule,
         RdsSelectListModule,
-        RdsLabelModule
+        RdsLabelModule,
+        RdsCompDataTableModule
       ],
       providers: [FormBuilder],
     }),

@@ -1,10 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RdsBadgeModule, RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsDropdownlistModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RdsCompAuditLogsModule } from "../../../rds-components/src/app/rds-comp-audit-logs/rds-comp-audit-logs.module";
 
 @NgModule({
     declarations: [
@@ -16,10 +18,23 @@ import { RdsCompAuditLogsModule } from "../../../rds-components/src/app/rds-comp
     ],
     bootstrap: [AppComponent],
     imports: [
+        CommonModule,
+        FormsModule,
         AppRoutingModule,
         SharedModule,
+        CommonModule,
         NgxTranslateModule.forRoot(),
-        RdsCompAuditLogsModule
+        RdsButtonModule,
+        RdsIconModule,
+        RdsNavTabModule,
+        RdsDatepickerModule,
+        RdsCheckboxModule,
+        RdsInputModule,
+        RdsFabMenuModule,
+        RdsDropdownlistModule,
+        RdsCompDataTableModule,
+        RdsOffcanvasModule,
+        RdsBadgeModule
     ]
 })
 export class AppModule { }

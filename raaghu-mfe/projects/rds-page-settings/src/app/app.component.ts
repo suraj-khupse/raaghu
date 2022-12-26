@@ -3,7 +3,7 @@ import { ComponentLoaderOptions, HostBillingSettingsEditDto, HostSettingsEditDto
 import { Store } from '@ngrx/store';
 import { AlertService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
-import { transition, trigger, query, style, animate, } from '@angular/animations';
+import { transition, trigger, query, style, animate, state, } from '@angular/animations';
 import { getSettings, getSettingsTenantPageComboboxItems, sendTestmail, updateSettings } from 'projects/libs/state-management/src/lib/state/settings/settings.actions';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 import { selectAllSettings, selectSettingsTenantPageComboboxItems } from 'projects/libs/state-management/src/lib/state/settings/settings.selector';
@@ -12,31 +12,39 @@ import { selectAllSettings, selectSettingsTenantPageComboboxItems } from 'projec
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 })
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':leave',
+  //         [
+  //           style({ opacity: 1 }),
+  //           animate('1s', style({ opacity: 0 }))
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 }),
+  //           animate('1s', style({ opacity: 1 }))
+  //         ],
+  //         { optional: true }
+  //       )
+  //     ])
+  //   ])
+  // ]
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('1s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('1s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
   ]
 })
 export class AppComponent implements OnInit {

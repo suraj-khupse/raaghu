@@ -1,25 +1,89 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <rds-comp-tenant-list 
-    [tenantHeaders]="tenantTableHeader"
-    [tenantList]="tenantTableData"
-    [editionList]="editionList"
-    [isShimmer]="isShimmer"
-    [tenantData]="tenantData"
-    [tenantSettingsInfo]="tenantSettingsInfo"
-    [editShimmer]="editShimmer"
-    [tenantFeatureValues]="tenantFeatureValues"
-    [tenantHeadersUser]="userTableHeader"
-    [tenantFeatures]="tenantFeatures"
+  <div class="row">
+      <div class="col-md-10">
+          <!-- <rds-comp-alert [currentAlerts]="currentAlerts" (onAlertHide)="onAlertHide($event)"></rds-comp-alert> -->
+      </div>
+      <div class="col-md-2 text-end pb-3 desktop-btn">
+          <rds-button [label]="newTenantLabel" [size]="'small'" [colorVariant]="'primary'"
+              (click)="newTenant(true)" [showLoadingSpinner]="showLoadingSpinner" icon="plus" iconWidth="12px"
+              iconHeight="12px">
+          </rds-button>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+              <rds-comp-data-table [tableData]="tenantTableData" [inlineEdit]="false"
+                  [pagination]="tenantTableData.length>5?true:false" [recordsPerPage]="10" [actions]="actions"
+                  (onActionSelection)="onActionSelect($event)" noDataTitle="Currently you do not have tenant"
+                  [tableHeaders]="tenantTableHeader" [isShimmer]="isShimmer"></rds-comp-data-table>
+          </div>
+      </div>
+  </div>
 
-    [userList]="userTableData"
-    [tenantLoginList]="tenantLoginLists"
-    (onSaveTenant)="onSaveTenant($event)"
-    (onEditTenant)="onEditTenant($event)"
-    (onReset)="onReset($event)"
-    (deleteEvent)="deleteEvent($event)"
-    (onSaveFeatures)="onSaveFeatures($event)"
-    (onSelectTenant)="onSelectTenant($event)"
-    (onTenantLogIn)="onTenantLogIn($event)"
-    
-  ></rds-comp-tenant-list>
+  <div class="mobile-btn position-absolute bottom-0 end-0 my-5 me-5">
+      <rds-fab-menu [listItems]="listItems" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'"
+          [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+  </div>
 </div>
+<rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'tenantOffcanvas'" [offcanvaswidth]="650"
+  [placement]="'end'" *ngIf="viewCanvas" (onClose)="close()">
+  <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activeTab]="activePage"
+      [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
+      [justified]="false">
+      <div naveContent class="row tab-content" id="nav-tabContent">
+          <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 0}" id="tenant-information"
+              role="tabpanel" aria-labelledby="nav-home-tab">
+              <rds-comp-tenant-information (tenantInfo)="getTenantData($event)" [editionList]="editionList"
+                  [tenantData]="tenantData" (onCancel)="close()" [editShimmer]="editShimmer"
+                  [showEmail]="showEditData">
+              </rds-comp-tenant-information>
+          </div>
+          <div class="tab-pane fade p-3" [ngClass]="{'show active': activePage === 1}" id="settings" role="tabpanel"
+              aria-labelledby="nav-home-tab">
+              <rds-comp-tenant-settings (tenantSettings)="getTenantSettings($event)"
+                  [isTenantInfoValid]="isTenantInfoValid" [tenantSettingsInfo]="tenantSettingsInfo"
+                  [showEditData]="showEditData" (onCancel)="close()" [passwordValidation]="showEditData">
+              </rds-comp-tenant-settings>
+          </div>
+          <div class="tab-pane fade ms-2" [ngClass]="{'show active': activePage === 2}" id="features" role="tabpanel" aria-labelledby="nav-home-tab">
+              <div class="tab-content features">
+                  <rds-comp-permission-tree [treeData]="tenantFeatures" [selectedItems]="tenantFeatureValues"
+                      (getAllselectedPermissions)="getSelectedFeaturesList($event)"
+                      [selectAllLabel]="'Select Features'">
+                  </rds-comp-permission-tree>
+              </div>
+              <div class="footer-buttons">
+                  <div class="col-md-12 ">
+                      <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'"
+                          [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas">
+                      </rds-button>
+                      <rds-button [label]="translate.instant('Save')" [size]="'small'"
+                          [isDisabled]="!selectedFeatureList||selectedFeatureList.length===0" class="ms-2"
+                          [colorVariant]="'primary'" (click)="save()">
+                      </rds-button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </rds-nav-tab>
+</rds-offcanvas>
+
+<rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'loginAsTenantOffcanvas'" [offcanvaswidth]="650"
+  [placement]="'end'" *ngIf="viewLoginAsTenantCanvas" (onClose)="closeLoginAsTenant()">
+  <div class="row">
+      <div class="col-md-12">
+          <rds-comp-data-table [tableData]="userTableData" [inlineEdit]="false" [pagination]="userTableData.length>5?true:false"
+              [recordsPerPage]="10" [actions]="userTableActions" (onActionSelection)="onUserDataActionSelect($event)"
+              noDataTitle="Currently you do not have tenant" [tableHeaders]="userTableHeader"></rds-comp-data-table>
+      </div>
+  </div>
+
+  <div class="footer-buttons">
+      <div class="col-md-12 ">
+          <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [size]="'small'"
+              (click)="closeLoginAsTenant()" data-bs-dismiss="offcanvas">
+          </rds-button>
+      </div>
+  </div>
+</rds-offcanvas>

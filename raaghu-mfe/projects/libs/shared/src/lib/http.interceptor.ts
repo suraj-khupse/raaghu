@@ -5,6 +5,8 @@ import { catchError, map, switchMap, tap, timeout } from "rxjs/operators";
 import { HttpConfigurationService, IAjaxResponse } from "./http-configuration.service";
 import { mergeMap as _observableMergeMap } from 'rxjs/operators';
 import { AlertService } from "./alert.service";
+import { setRoleAlert } from "projects/libs/state-management/src/lib/state/role/role.actions";
+import { Store } from "@ngrx/store";
 export enum AlertTypes {
   Success = 'success',
   Info = 'info',
@@ -19,6 +21,7 @@ export class HttpsRequestResponseInterceptor implements HttpInterceptor {
 
   constructor(
     private alertService: AlertService,
+    private store: Store,
     private _httpconfigService: HttpConfigurationService,
     //private router: Router
   ) { }
@@ -61,6 +64,11 @@ export class HttpsRequestResponseInterceptor implements HttpInterceptor {
         if (_responseText) {
           _error = JSON.parse(_responseText);
           if (_error && _error.error) {
+            this.store.dispatch(setRoleAlert({
+              message: _error.error.message,
+              title: 'SuccFailedess',
+              type: AlertTypes.Error,
+            }))
             this.alertService.showAlert('Failed', _error.error.message, AlertTypes.Error)
           }
         }

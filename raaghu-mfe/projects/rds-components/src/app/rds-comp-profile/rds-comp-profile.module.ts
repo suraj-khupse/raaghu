@@ -10,6 +10,7 @@ import { RdsCompUserDelegationsModule } from '../rds-comp-user-delegations/rds-c
 import { RdsCompLoginAttemptsModule } from '../rds-comp-login-attempts/rds-comp-login-attempts.module';
 import { RdsCompMysettingsModule } from '../rds-comp-mysettings/rds-comp-mysettings.module';
 import { RdsCompDownloadCollectionModule } from '../rds-comp-download-collection/rds-comp-download-collection.module';
+import { RdsCompAlertPopupModule } from '../rds-comp-alert-popup/rds-comp-alert-popup.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { RdsCompDownloadCollectionModule } from '../rds-comp-download-collection
     RdsCompLoginAttemptsModule,
     RdsCompMysettingsModule,
     RdsCompDownloadCollectionModule,
-    
+    RdsCompAlertPopupModule
   ]
 })
 export class RdsCompProfileModule { }

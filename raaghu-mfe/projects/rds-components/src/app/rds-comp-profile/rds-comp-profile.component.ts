@@ -2,11 +2,12 @@ import { Component, EventEmitter, Injector, Input, OnInit, Output, SimpleChanges
 import { FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DownloadData, Profile, success } from '../../models/profile.model';
-import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput,AppSessionService, } from '@libs/shared';
+import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput, AppSessionService, } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 // import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 declare var $: any;
 declare var bootstrap: any;
@@ -35,7 +36,14 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() defaultLanguage: string = '';
   selectedData: any;
- 
+  deleteConfirmationData: AlertPopupData = {
+    iconUrl: "delete",
+    colorVariant: "danger",
+    alertConfirmation: "Are you sure ?",
+    messageAlert: "The record will be deleted permanently",
+    CancelButtonLabel: "Cancel",
+    DeleteButtonLabel: "Delete"
+  }
   showConfirmationPopup: boolean = false;
 
   delegateTabopened: boolean = false;
@@ -147,7 +155,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     private router: Router,
     private http: HttpClient,
     private _profileService: ProfileServiceProxy,
-    public sessionService:AppSessionService,) {
+    public sessionService: AppSessionService,) {
     super(injector);
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -426,7 +434,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     this.showConfirmationPopup = false;
   }
 
-  backAccount():void{ 
+  backAccount(): void {
     this.backToAccount.emit(true);
   }
 

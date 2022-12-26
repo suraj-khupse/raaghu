@@ -258,6 +258,12 @@
         }
       }
     },
+    "rds-components": {
+      "projectType": "library",
+      "root": "projects/rds-components",
+      "sourceRoot": "projects/rds-components/src",
+			"prefix": "app"
+    },
     "host": {
       "projectType": "application",
       "schematics": {

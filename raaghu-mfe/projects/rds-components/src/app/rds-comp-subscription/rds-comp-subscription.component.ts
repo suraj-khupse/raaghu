@@ -33,9 +33,9 @@ export class RdsCompSubscriptionComponent implements OnInit {
   @Input()
   footerbackGroundColor?: string;
   @Input()
-  borderRadious?: number;
+  borderRadius?: number;
   @Input()
-  Paddig?: number;
+  Padding?: number;
   @Input()
   borderwidth?:number;
   @Output()

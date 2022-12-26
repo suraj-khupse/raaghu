@@ -1,24 +1,16 @@
 <!-- <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''"> -->
-  <!-- <mfe-loader [config]="rdsUserMfeConfig"></mfe-loader> -->
-  <rds-comp-user-permissions 
-  [userList]="userList" 
-  [roles]="roles" 
-  [isEdit]="isEdit" 
-  [orgTreeData]="orgTreeData"
-  [userinfo]="userinfo"
-  [isShimmer]="isShimmer" 
-  [editShimmer]="editShimmer"
-  [permissionsList]="Permission"
-  [OrganizationUnit]="OrganizationUnit"
-  [selectedOrganizations]="SelectedOrganizationUnit"
-  [selectedPermissions]="selectedPermissions"
-  (Saveuserinfo)="Saveuserinfo($event)"
-  (onClose)="onClose($event)"
-  (deleteUser)="deleteUser($event)"
-  (FilterPermission)="FilterPermission($event)"
-  (CreateOrEditUser)="CreateOrEditUser($event)"
-  (UpdateUserPermission)="UpdateUserPermission($event)"></rds-comp-user-permissions>
-  <!-- <rds-comp-user-permissions [AuthentiactionList]="AuthentiactionList"></rds-comp-user-permissions> -->
+<!-- <mfe-loader [config]="rdsUserMfeConfig"></mfe-loader> -->
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+
+  <rds-comp-user-permissions [userList]="userList" [roles]="roles" [isEdit]="isEdit" [orgTreeData]="orgTreeData"
+    [userinfo]="userinfo" [isShimmer]="isShimmer" [editShimmer]="editShimmer" [permissionsList]="Permission"
+    [OrganizationUnit]="OrganizationUnit" [selectedOrganizations]="SelectedOrganizationUnit"
+    [selectedPermissions]="selectedPermissions" (Saveuserinfo)="Saveuserinfo($event)" (onClose)="onClose($event)"
+    (deleteUser)="deleteUser($event)" (FilterPermission)="FilterPermission($event)"
+    (CreateOrEditUser)="CreateOrEditUser($event)"
+    (UpdateUserPermission)="UpdateUserPermission($event)"></rds-comp-user-permissions>
+</div>
+<!-- <rds-comp-user-permissions [AuthentiactionList]="AuthentiactionList"></rds-comp-user-permissions> -->
 <!-- </div> -->
 
 <!-- <rds-dropdownlist

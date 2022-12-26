@@ -15,18 +15,18 @@ declare var bootstrap: any;
 })
 export class AppComponent extends MfeBaseComponent implements OnInit {
   currentAlerts: any = [];
-  public rdsAlertMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompAlert',
-    input: {
-      currentAlerts: this.currentAlerts,
-      alertPosition: 'top'
-    },
-    output: {
-      onAlertHide: (event: any) => {
-        this.currentAlerts = event;
-      }
-    }
-  }
+  // public rdsAlertMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompAlert',
+  //   input: {
+  //     currentAlerts: this.currentAlerts,
+  //     alertPosition: 'top'
+  //   },
+  //   output: {
+  //     onAlertHide: (event: any) => {
+  //       this.currentAlerts = event;
+  //     }
+  //   }
+  // }
   authenticateModal: AuthenticateModel;
   authenticateResult: AuthenticateResultModel;
   rememberMe: boolean = false;
@@ -111,9 +111,10 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
       }
       this.probableTenancyName = data;
       this.store.dispatch(ValidateTenantName(tenantData));
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig
+      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+      this.currentAlerts=[]
+      // rdsAlertMfeConfig.input.currentAlerts = [];
+      // this.rdsAlertMfeConfig = rdsAlertMfeConfig
     } else {
       localStorage.removeItem('tenantInfo');
       this.tenancyName = 'Not Selected';
@@ -134,9 +135,9 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         sticky : false
       };
       this.currentAlerts.push(currentAlert);
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+      // rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
+      // this.rdsAlertMfeConfig = rdsAlertMfeConfig;
     });
     // this.alertService.showAlert('title','Invalid user name or password','danger')
   }
@@ -219,6 +220,10 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         this.processAuthenticateResult(result)
       }
       , this);
+  }
+
+  onAlertHide (event: any) {
+    this.currentAlerts = event;
   }
 }
 

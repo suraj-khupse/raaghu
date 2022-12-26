@@ -11,10 +11,14 @@ import {
   query,
   style,
   animate,
+  state,
 } from '@angular/animations';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 import { deleteEdition, getEditionInfo, getEditionPageComboboxItems, getEditions, getTenantCount, moveTenant, saveEdition, updateEdition } from 'projects/libs/state-management/src/lib/state/edition/edition.action';
 import { selectAllEditions, selectEditionInfo, selectEditionPageComboboxItems, selectTenant } from 'projects/libs/state-management/src/lib/state/edition/edition.selector';
+import { TableAction } from 'projects/rds-components/src/models/table-action.model';
+import { NgForm } from '@angular/forms';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-root',
@@ -22,29 +26,11 @@ import { selectAllEditions, selectEditionInfo, selectEditionPageComboboxItems, s
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('0.4s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('0.4s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
   ]
 })
 export class AppComponent implements OnInit {
@@ -64,15 +50,14 @@ export class AppComponent implements OnInit {
     }
   }
   // public rdsEditionMfeConfig: ComponentLoaderOptions;
-  constructor(private store: Store, private translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
-  TableHeader: TableHeader[] = [
+  constructor(private store: Store, public translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
+  EditionsTableHeader: TableHeader[] = [
     { displayName: 'Edition Name', key: 'editionname', dataType: 'text', dataLength: 30, sortable: true, required: true, filterable: true },
     { displayName: 'Price', key: 'price', dataType: 'text', dataLength: 30, sortable: true, required: true },
     { displayName: 'Trial Period', key: 'trialPeriod', dataType: 'text', dataLength: 30, sortable: true, required: true },
     { displayName: 'Expiring Edition', key: 'expiringEdition', dataType: 'text', dataLength: 30, sortable: true, required: true },
   ]
 
-  EditionDatatable: any = [];
   featureList: any = [];
   freeEditions: any = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
@@ -85,46 +70,56 @@ export class AppComponent implements OnInit {
   ]
 
   editionList: any = [];
-  defaultEditionName: any[] = [];
   isShimmer: boolean = false;
   editShimmer: boolean = true;
-  tenantCount: any;
+  tenantCount: number = 0;
   selectedFeatures = [];
   selectedEdition: any;
-  showLoadingSpinner:boolean=false;
+  showLoadingSpinner: boolean = false;
+  contentOnEdit: boolean=false;
+  public viewCanvas: boolean = false;
+  public isEdition: boolean = false;
+  EditionName: string;
+  AnnualPrice: number = 0;
+  TrailPeriod: number = 0;
+  ExpiryInterval: number = 0;
+  id: number | undefined = undefined;
+  activePage: number = 0;
+  canvasTitle: string = 'NEW EDITION';
+  itemListImmediately = [];
+  itemListAfterTrailPeriod = [];
+  itemListSubscription = [];
+  itemListAssign = [];
+  navtabsItems: any = [];
+  actions: TableAction[] = [{ id: 'edit', displayName: this.translate.instant('Edit') }, { id: 'delete', displayName: this.translate.instant('Delete') }, { id: 'moveTenant', displayName: this.translate.instant('Move Tenants to Another Edition') }]
+  recordsPerpage: number = 10;
+  sourceEditionId: string = '';
+  viewMoveTenantCanvas: boolean = false;
+  moveTenantCanvasTitle: string = 'MOVE TENANTS TO ANOTHER EDITION  ';
+  listItems = [
+    { value: 'New Edition', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
+  ];
+  selectpermissionList: any = [];
+  freeEditionId = undefined
+  showAssignEditionDropdown: boolean;
+  freeEditon: string;
+  targetEdition: string = '';
+  targetEditionId = undefined;
+  EditionsTableData: any = [];
 
   ngOnInit(): void {
     this.isAnimation = true;
+    this.isShimmer=true;
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
         this.translate.use(res);
       }
     })
-    this.subscribeToAlerts();
-    // this.rdsEditionMfeConfig = {
-    //   name: 'RdsCompFeatures',
-    //   input: {
-    //     // EditionsTableHeader: this.TableHeader,
-    //     // EditionsTableData: this.EditionDatatable,
-    //     // recordsPerpage: 10,
-    //     // nodeColors: this.nodeColors,
-    //     // treeData: this.treeData,
-    //     // featureList: this.featureList,
-    //     // noDataTitle: 'Currently you do not have edition',
-    //     // editionList: this.editionList,
-    //     // freeEditions: this.freeEditions,
-    //     // tenantCount: 0,
-    //     // isShimmer: true,
-    //     // editShimmer: true
-    //   },
-    //   output: {       
-    //   }
-    // }
-
+    this.subscribeToAlerts();    
 
     this.store.dispatch(getEditions());
     this.store.select(selectAllEditions).subscribe((res: any) => {
-      this.EditionDatatable = [];
+      this.EditionsTableData = [];
       if (res) {
         this.isAnimation = false;
         res.forEach(element => {
@@ -136,8 +131,9 @@ export class AppComponent implements OnInit {
             id: element.id,
             name: element.displayName,
           }
-          this.EditionDatatable.push(edition);
+          this.EditionsTableData.push(edition);
         });
+        this.isShimmer=false;
       }
 
     }, (err: any) => {
@@ -146,12 +142,10 @@ export class AppComponent implements OnInit {
     this.store.select(selectEditionInfo).subscribe((res: any) => {
       if (res && res.featureValues) {
         this.featureList = this.convertArraytoTreedata(res.features)
-        // const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
         this.featureList = [...this.featureList];
         this.selectedFeatures = [...res.featureValues];
         this.selectedEdition = { ...res.edition };
         this.editShimmer = false;
-        // this.rdsEditionMfeConfig = { ...rdsEditionMfeConfig };
       }
 
     }, (err: any) => {
@@ -188,29 +182,13 @@ export class AppComponent implements OnInit {
             isFree: res.isFree
           }
           this.editionList.push(data);
-        });
-        // this.editionList = res.editionComboboxItem;
-        // const mfeConfig = this.rdsEditionMfeConfig
-        this.editionList = [... this.editionList];
-        this.freeEditions = [...this.freeEditions]
-        // this.rdsEditionMfeConfig = mfeConfig;
+        });               
       }
     });
-    //this.store.dispatch(getDefaultEditionName())
-    //this.store.select(selectDefaultNameComboboxItems).subscribe((res: any) => {
-    //  if (res && res.defaultEditionNameItem && res.defaultEditionNameItem.length > 0) {
-    //    this.defaultEditionName = res.defaultEditionNameItem;
-    //    const mfeConfig = this.rdsEditionMfeConfig
-    //    mfeConfig.input.defaultEditionName = [this.defaultEditionName];
-    //    this.rdsEditionMfeConfig = mfeConfig;
-    //  }
-    //});
+
     this.store.select(selectTenant).subscribe((res: any) => {
       if (res) {
-        this.tenantCount = res;
-        // const mfeConfig = this.rdsEditionMfeConfig
-        // mfeConfig.input.tenantCount = res;
-        // this.rdsEditionMfeConfig = mfeConfig;
+        this.tenantCount = res;      
       }
     })
   }
@@ -258,14 +236,8 @@ export class AppComponent implements OnInit {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
-      this.currentAlerts=[...this.currentAlerts];
-      this.showLoadingSpinner=false;
-      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      // rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      // this.rdsAlertMfeConfig = rdsAlertMfeConfig;
-      // const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
-      // rdsEditionMfeConfig.input['showLoadingSpinner'] = false;
-      // this.rdsEditionMfeConfig = rdsEditionMfeConfig;
+      this.currentAlerts = [...this.currentAlerts];
+      this.showLoadingSpinner = false;     
     });
 
   }
@@ -282,15 +254,9 @@ export class AppComponent implements OnInit {
 
   updateEdition(id) {
     if (id == 0) {
-      this.editShimmer = false;
-      // const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
-      // rdsEditionMfeConfig.input.editShimmer = false;
-      // this.rdsEditionMfeConfig = { ...rdsEditionMfeConfig }
+      this.editShimmer = false;      
     } else {
-      this.editShimmer = true
-      // const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
-      // rdsEditionMfeConfig.input.editShimmer = true;
-      // this.rdsEditionMfeConfig = { ...rdsEditionMfeConfig }
+      this.editShimmer = true;      
     }
     this.store.dispatch(getEditionInfo(id))
   }
@@ -305,6 +271,225 @@ export class AppComponent implements OnInit {
 
   onMoveTenant(data) {
     this.store.dispatch(moveTenant(data));
+  }
+
+  onAlertHide(event: any): void {
+    this.currentAlerts = event;
+  }
+
+  openCanvas(): void {
+    this.showLoadingSpinner = true;
+    this.updateEdition(0);
+    this.contentOnEdit = false;
+    this.selectedFeatures = [];
+    this.selectedEdition = undefined;
+    this.viewCanvas = true;
+    this.isEdition = false
+    this.EditionName = '';
+    this.AnnualPrice = undefined;
+    this.TrailPeriod = 0;
+    this.ExpiryInterval = 0;
+    this.id = undefined;
+    this.activePage = 0;
+    this.canvasTitle = 'NEW EDITION';
+    this.initialize();
+    setTimeout(() => {
+      var offcanvas = document.getElementById('addEdition');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 100);
+  }
+
+  private initialize(): void {
+    this.itemListImmediately = [
+      {
+        id: 1,
+        label: this.translate.instant('Immediately'),
+        checked: true,
+        disabled: false,
+        name: "Radio-Button"
+      },
+    ];
+
+    this.itemListAfterTrailPeriod = [
+      {
+        id: 2,
+        label: this.translate.instant('After Trial Period'),
+        checked: false,
+        disabled: false,
+        name: "Radio-Button"
+      },
+    ];
+
+    this.itemListSubscription = [
+      {
+        id: 3,
+        label: this.translate.instant("Deactivate Tenant"),
+        checked: true,
+        disabled: false,
+        name: "AfterSubscriptionExpiryBtn"
+      },
+    ];
+
+    this.itemListAssign = [
+      {
+        id: 4,
+        label: this.translate.instant("Assign To Another Edition"),
+        checked: false,
+        disabled: false,
+        name: "AfterSubscriptionExpiryBtn"
+      },
+    ];
+
+
+    this.navtabsItems = [
+      {
+        label: this.translate.instant('Edition information'),
+        tablink: '#newedition',
+        ariacontrols: 'newedition',
+      },
+      {
+        label: this.translate.instant('Features'),
+        tablink: '#feature',
+        ariacontrols: 'feature',
+      }];
+  }
+
+  onActionSelect(event: any): void {
+    if (event.actionId === 'delete') {
+      this.deleteEdition(event.selectedData);
+    } else if (event.actionId === 'edit') {
+      this.onEdit(event.selectedData);
+    } else if (event.actionId === 'moveTenant') {
+      this.sourceEditionId = event.selectedData.id;
+      this.moveTenantEdition();
+      this.onMoveTenantAction(event.selectedData.id)
+    }
+  }
+
+  onEdit(event): void {
+    this.contentOnEdit = true;
+    this.id=event.id;
+    this.updateEdition(event.id)
+    this.isEdition = true;
+    this.viewCanvas = true;
+    this.canvasTitle = 'UPDATE EDITION';
+    this.EditionName=event.editionname;
+    this.activePage = 0;
+    this.initialize();
+    setTimeout(() => {
+      var offcanvas = document.getElementById('addEdition');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 1);
+  }
+
+  moveTenantEdition(): void {
+    this.viewMoveTenantCanvas = true;
+    this.moveTenantCanvasTitle = 'MOVE TENANTS TO ANOTHER EDITION';
+    setTimeout(() => {
+      var offcanvas = document.getElementById('moveTenantEdition');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 100);
+  }
+
+  onSelectMenu(event: any) {
+    if (event.key === 'new') {
+      this.openCanvas();
+    }
+  }
+
+  addEdition(editionForm: NgForm): void {
+    editionForm.form.markAllAsTouched();
+    if (editionForm.invalid) {
+      return;
+    }
+    let featureList = [];    
+    if (this.selectpermissionList) {
+      featureList = this.selectpermissionList;
+    } else {
+      featureList = this.selectedFeatures;
+    }
+    const body: any = {
+      edition: {
+        displayName: this.EditionName,
+        expiringEditionId: undefined,
+        id: this.id
+      },
+      featureValues: featureList
+    };
+    if (!this.id) {
+      body.edition.dailyPrice = 0;
+      body.edition.weeklyPrice = 0;
+      body.edition.monthlyPrice = 0;
+      body.edition.trialDayCount = this.TrailPeriod;
+      body.edition.annualPrice = this.AnnualPrice;
+      body.edition.waitingDayAfterExpire = this.ExpiryInterval;
+      body.edition.expiringEditionId = this.freeEditionId;
+
+    }
+    this.onEditionSave(body);
+    this.viewCanvas = false;
+    this.resetPermission();
+  }
+
+  closeCanvas(): void {
+    this.viewCanvas = false;
+    this.showLoadingSpinner = false;
+    this.resetPermission();
+  }
+
+  resetPermission() {
+    if (this.selectedFeatures) {
+      this.selectedFeatures.forEach((element: any) => {
+        if (element.value == 'false' || element.value == 'true') {
+          element.value = false;
+        }
+        else {
+          element.value = true;
+        }
+      });
+    }
+  }
+
+  onTabClick(index): void {
+    this.activePage = index;
+  }
+
+  hideAssignEditionList() {
+    this.showAssignEditionDropdown = false;
+  }
+
+  showAssignEditionList() {
+    this.showAssignEditionDropdown = true;
+  }
+
+  onFreeListSelect(event: any) {
+    this.freeEditon = event.item.some
+    this.freeEditionId = event.item.value;
+  }
+
+  getselectedPermissionList(event): void {
+    this.selectpermissionList = event
+  }
+
+  closeMoveTenantCanvas() {
+    this.viewMoveTenantCanvas = false;
+    this.sourceEditionId = '';
+  }
+
+  onTargetListSelect(event : any ){
+    this.targetEdition = event.item.some
+    this.targetEditionId = event.item.value
+  }
+
+  moveTenant(): void {
+    const data: any = {
+      sourceEditionId: this.sourceEditionId,
+      targetEditionId: this.targetEditionId
+    };
+    this.onMoveTenant(data);
   }
 
 }

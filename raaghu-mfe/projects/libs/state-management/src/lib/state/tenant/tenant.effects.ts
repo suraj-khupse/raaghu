@@ -45,12 +45,10 @@ export class TenantEffects {
   saveTenant$ = createEffect(() =>
     this.actions$.pipe(
       ofType(saveTenant),
-      mergeMap((data,maxresult) =>
+      switchMap((data) =>
         this.tenantService.createTenant(data.tenant).pipe(map((res: any) => {
           this.store.dispatch(getTenants());
           this.alertService.showAlert('Success', 'Tenant added successfully', 'success', )
-
-
         }),
           catchError((error: any) => of(
           ))

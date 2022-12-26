@@ -7,6 +7,7 @@
     "start": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js --watch=false",
     "mfe": "node utils/generate-mfe.js",
     "patch-dev-server": "node utils/patch-dev-server.js",
+    "new-component": "node utils/generate-component.js",
     "page": "node utils/generate-page.js",
     "lib": "node utils/generate-lib.js",
     "sync-elements": "node utils/sync-elements.js",

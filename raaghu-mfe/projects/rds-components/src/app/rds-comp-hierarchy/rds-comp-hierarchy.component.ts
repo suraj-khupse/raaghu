@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { TreeNode, TreeNodeLabeles, TreeType } from '../../models/tree-node.model';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -18,16 +18,16 @@ export class RdsCompHierarchyComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
 
-    this.nodeForm = this.formBuilder.group({
-      itemCodeData: ['', Validators.required],
-      ItemDescription: ['', Validators.required]
-    })
-    this.nodeEditForm = this.formBuilder.group({
-      ItemDescription: ['', Validators.required]
-    })
-    this.NetednodeForm = this.formBuilder.group({
-      ItemDescription: ['', Validators.required]
-    })
+    // this.nodeForm = this.formBuilder.group({
+    //   itemCodeData: ['', Validators.required],
+    //   ItemDescription: ['', Validators.required]
+    // })
+    // this.nodeEditForm = this.formBuilder.group({
+    //   ItemDescription: ['', Validators.required]
+    // })
+    // this.NetednodeForm = this.formBuilder.group({
+    //   ItemDescription: ['', Validators.required]
+    // })
 
   }
   elementUrls: string[];
@@ -61,9 +61,9 @@ export class RdsCompHierarchyComponent implements OnInit, OnChanges {
   }
 
 
-  public nodeForm = new FormGroup(undefined)
-  public nodeEditForm = new FormGroup(undefined)
-  public NetednodeForm = new FormGroup(undefined)
+  // public nodeForm = new FormGroup(undefined)
+  // public nodeEditForm = new FormGroup(undefined)
+  // public NetednodeForm = new FormGroup(undefined)
   disableSaveButton: boolean;
   disableSaveButtonfromDes: boolean
   disableSaveButtonfromCode: boolean
@@ -259,9 +259,9 @@ export class RdsCompHierarchyComponent implements OnInit, OnChanges {
     return true;
   }
   getNodeByID(node: TreeNode) {
-    this.NetednodeForm = this.formBuilder.group({
-      ItemDescription: ['', Validators.required]
-    })
+    // this.NetednodeForm = this.formBuilder.group({
+    //   ItemDescription: ['', Validators.required]
+    // })
 
     this.ItemDescription = node.ItemDescription;
     this.itemCode = node.ItemCode;

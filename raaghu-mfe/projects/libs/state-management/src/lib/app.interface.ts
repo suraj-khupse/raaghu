@@ -6,7 +6,7 @@ import { profileState } from './state/mysettings/mysettings.reducer';
 import { LoginAttemptsState } from './state/login-attempts/login-attempts.reducer';
 import { ManageLinkedAccountsState } from './state/manage-linked-accounts/manage-linked-accounts.reducer';
 import { ProductState } from './state/products/product.reducer';
-import { RolesState } from './state/role/role.reducer';
+import { RoleAlertState, RolesState } from './state/role/role.reducer';
 import { SubscriptionInformationState, SubscriptionState } from './state/subscription/subscription.reducer';
 import { VisualsettingsState } from './state/Visual-settings/visual-settings.reducer';
 import { WebhookSubscriptionState } from './state/webhook-subscription/webhook-subscription.reducer';
@@ -32,6 +32,7 @@ export interface AppState {
   organizationUnit: OrganizationUnitState
   editions: EditionsState,
   roles: RolesState,
+  roleAlert: RoleAlertState,
   user: UsersState,
   languages: LanguagesState,
   Subscription: SubscriptionState,
@@ -44,20 +45,20 @@ export interface AppState {
   settings: SettingsState,
   tenants: TenantState,
   auditLogs: AuditLogsState,
-  changeLogs:AuditLogsState
-  PermissionI:PermissionState,
+  changeLogs: AuditLogsState
+  PermissionI: PermissionState,
   countries: CountryState,
   Delegation: DelegationsState,
   mla: MLAState,
   entities: DynamicEntityState,
- 
+
   validateTenant: ValidateTenantState,
 
   usernames: UserNameFilterState,
   languageText: LanguageTextsState
   defaultLanguage: DefaultLanguageState,
-  download:downloadState,
-  profilePicture : ProfilepictureState,
+  download: downloadState,
+  profilePicture: ProfilepictureState,
 }
 
 export const products = 'products';
@@ -71,4 +72,3 @@ export const download = 'download';
 
 
 
- 

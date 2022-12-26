@@ -1,13 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
+import { AlertService, ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
 
 import { deleteRole, getPermission, getRolByEdit, getRoles, saveRole } from 'projects/libs/state-management/src/lib/state/role/role.actions';
-import { selectAllPermissions, selectAllRoles, selectRoleForEdit } from 'projects/libs/state-management/src/lib/state/role/role.selector';
+import { selectAllPermissions, selectAllRoles, selectRoleAlert, selectRoleForEdit } from 'projects/libs/state-management/src/lib/state/role/role.selector';
 import { PermissionNode } from 'projects/rds-components/src/models/pemission.model';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import {
@@ -16,6 +15,7 @@ import {
   query,
   style,
   animate,
+  state,
 } from '@angular/animations';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 import { Role } from 'projects/rds-components/src/app/rds-comp-new-role/rds-comp-new-role.component';
@@ -31,33 +31,42 @@ declare let bootstrap: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [
-    DatePipe
+    AlertService
+    // DatePipe
   ],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 })
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':leave',
+  //         [
+  //           style({ opacity: 1 }),
+  //           animate('0.4s', style({ opacity: 0 }))
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 }),
+  //           animate('0.4s', style({ opacity: 1 }))
+  //         ],
+  //         { optional: true }
+  //       )
+  //     ])
+  //   ])
+  // ]
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('0.4s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('0.4s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
   ]
 })
 export class AppComponent implements OnInit {
@@ -139,7 +148,20 @@ export class AppComponent implements OnInit {
   rdsRoleTableMfeConfig: ComponentLoaderOptions;
 
   ngOnInit(): void {
-    this.subscribeToAlerts();
+    // this.subscribeToAlerts();
+
+    this.store.select(selectRoleAlert).subscribe((res: any) => {
+      this.currentAlerts = [];
+      if (res) {
+        this.currentAlerts = [];
+        const currentAlert: any = {
+          type: res.type,
+          title: res.title,
+          message: res.message,
+        };
+        this.currentAlerts.push(currentAlert);
+      }
+    })
     this.isAnimation = true;
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
@@ -384,18 +406,19 @@ export class AppComponent implements OnInit {
     // this.rdsNewRoleMfeConfig = { ...mfeConfig };
   }
 
-  subscribeToAlerts() {
-    this.alertService.alertEvents.subscribe((alert) => {
-      this.currentAlerts = [];
-      const currentAlert: any = {
-        type: alert.type,
-        title: alert.title,
-        message: alert.message,
-        sticky: alert.sticky,
-      };
-      this.currentAlerts.push(currentAlert);
-    });
-  }
+  // subscribeToAlerts() {
+  //   this.alertService.alertEvents.subscribe((_alert: any) => {
+  //     alert();
+  //     this.currentAlerts = [];
+  //     const currentAlert: any = {
+  //       type: _alert.type,
+  //       title: _alert.title,
+  //       message: _alert.message,
+  //       sticky: _alert.sticky,
+  //     };
+  //     this.currentAlerts.push(currentAlert);
+  //   });
+  // }
   onSaveRole(eventData: any) {
     if (eventData && eventData.role) {
       if (eventData.grantedPermissionNames && eventData.grantedPermissionNames.length) {
@@ -413,7 +436,7 @@ export class AppComponent implements OnInit {
         this.store.dispatch(saveRole(data));
       }
     }
-    }
+  }
   onEditRole(event: any) {
 
     if (event) {
@@ -471,7 +494,7 @@ export class AppComponent implements OnInit {
     // this.rdsNewRoleMfeConfig = mfeConfig;
   }
 
-  onAlertHide (event: any) {
+  onAlertHide(event: any) {
     this.currentAlerts = event;
   }
 

@@ -17,6 +17,7 @@ $border-color: $gray-700 !default;
 $btn-close-width: 1em !default;
 $btn-close-color: $gray-300 !default;
 $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#fff'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
+$alertbtn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#fff'><path d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/></svg>") !default;
 
 // /*accordion color variables*/
 $popover-header-bg:$primary-600 !default;
@@ -252,6 +253,10 @@ $file-uploder-multiple-bg: $input-bg !default;
 $datatable-bgColor: $dark-500 !default;
 
 $profile-upload-icon: $dark-100 !default;
+body {
+  background-color: $body-wrapper-bg;
+}
+
 
 // navbar toggler 
 
@@ -538,6 +543,9 @@ svg {
   filter: invert(1);
 }
 
+.alert-dismissible .btn-close {
+  background: transparent escape-svg($alertbtn-close-bg) center / $btn-close-width auto no-repeat;
+}
 .wrapper {
   background-color: $wrapper-bg;
 }
@@ -1478,10 +1486,10 @@ svg {
   }
 }
 
-.form-control, .form-control:focus{
-  background-color: $dark-0 ;
+.form-control, .form-control:focus {
+  background-color: $input-bg;
   border: 1px solid $dark-100;
-  color:$light-200;
+  color: $light-200;
 }
 
 .input-group-text{

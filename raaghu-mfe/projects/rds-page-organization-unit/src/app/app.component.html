@@ -1,7 +1,7 @@
 <ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
   <rds-comp-alert [currentAlerts]="currentAlerts" (onAlertHide)="onAlertHide($event)"></rds-comp-alert>
 </ng-container>
-<div>
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
   <div class="row" [class.card-body]="selectedTreeNode==0">
     <div class="col-md-6 gutter-b">
       <div>

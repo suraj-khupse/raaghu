@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-xxl-6 col-lg-5 col-md-5">
     <rds-comp-alert [currentAlerts]="currentAlerts" (onAlertHide)="onAlertHide($event)"></rds-comp-alert>
   </div>
-  <div class="col-md-6 text-end pb-3 desktop-btn">
+  <div class="col-xxl-6 col-lg-7 col-md-7 d-md-flex desktop-btn justify-content-end pb-3">
     <span data-bs-toggle="offcanvas" data-bs-target="canvasFilterPermission" aria-controls="canvasFilterPermission">
       <rds-button [label]="translate.instant('Filter By Permission')" [size]="'medium'" [colorVariant]="'primary'"
         [size]="'small'" (click)="openCanvasFilter('canvasFilterPermission',true)" [isOutline]="true" class="me-3">
@@ -14,7 +14,6 @@
     <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'"
       [showLoadingSpinner]="showLoadingSpinner" [size]="'small'" (click)="newUser($event)"
       icon="plus" iconWidth="12px" (click)="openCanvas('userOffcanvas',true)" iconHeight="12px">
-
     </rds-button>
   </div>
 </div>
