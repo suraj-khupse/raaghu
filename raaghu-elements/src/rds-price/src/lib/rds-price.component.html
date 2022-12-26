@@ -7,9 +7,9 @@
   <rds-icon class="px-2" [name]="'question'" [width]="'16px'"></rds-icon>
 </div> -->
     <div [ngSwitch]="role">
-      <div *ngSwitchCase="'Basic'">
+      <div *ngSwitchCase="'Basic'" class="align-items-center d-flex">
         <span class="fw-bold fs-4">${{originalPrice}}</span>
-        <span class="text-muted m-2 text-decoration-line-through fs-5"> ${{actualPrice}}</span>
+        <span class="text-muted mx-2 text-decoration-line-through fs-5"> ${{actualPrice}}</span>
         <span class="fs-6 text-primary">{{discount}}% off</span>
          <rds-icon class="px-2" [name]="'question'" [width]="'16px'"></rds-icon>
          <!-- <rds-icon class="px-2" [name]="'question'" [width]="'16px'"></rds-icon>

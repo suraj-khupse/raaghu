@@ -2213,3 +2213,6 @@ rds-icon {
 .cursor-pointer {
   cursor: pointer;
 }
+.form-control:disabled {
+  cursor: no-drop;
+}

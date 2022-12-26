@@ -66,7 +66,7 @@ export const withPosition = withPositionTemplate.bind({});
 withPosition.parameters = { controls: { include: ['label', 'icon', 'size', 'colorVariant', 'iconposition'] } };
 withPosition.args = {
   label: "Contact Number",
-  icon: 'phone',
+  icon: 'date_picker',
   size: 'medium',
   colorVariant: 'dark',
   iconposition: 'right'
