@@ -54,15 +54,15 @@ export class RdsCompAlertPopupComponent implements OnInit {
     DeleteButtonLabel: "Delete"
   }
   @Output()
-  onDelete = new EventEmitter<{ evnt: any, item: boolean }>()
+  onSuccess = new EventEmitter<{ evnt: any, item: boolean }>()
   @Output()
   onCancel = new EventEmitter<{ evnt: any, item: boolean }>()
-  DeleteClick(event: any, item: boolean) {
-    this.onDelete.emit({ evnt: event, item: item });
+  deleteClick() {
+    this.onSuccess.emit();
 
   }
-  CancelClick(event: any, item: boolean) {
-    this.onCancel.emit({ evnt: event, item: item });
+  cancelClick() {
+    this.onCancel.emit();
 
 
   }

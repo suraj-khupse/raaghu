@@ -16,7 +16,7 @@
       [totalRecords]="getTotalRecords()" [alignmentType]="alignmentType" [role]="role"></rds-pagination>
   </div>
 
-  <rds-comp-alert-popup [alertID]="'deleteCacheModal'" [alertData]="alertData" (onDelete)="deleteCache(this)"
+  <rds-comp-alert-popup [alertID]="'deleteCacheModal'" [alertData]="alertData" (onSuccess)="deleteCache(this)"
     (onCancel)="deletecaheid = undefined"></rds-comp-alert-popup>
 </div>
 <ng-template #emptyTemplate>

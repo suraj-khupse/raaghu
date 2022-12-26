@@ -56,15 +56,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
     this.isMasterSel = false;
   }
   ngAfterViewInit(): void {
-    const myDropdown = document.getElementById(this.id);
-    if (myDropdown) {
-      myDropdown.addEventListener('hide.bs.dropdown', event => {
-        this.show = false;
-      })
-      myDropdown.addEventListener('show.bs.dropdown', event => {
-        this.show = true;
-      })
-    }
+
   }
 
 
@@ -83,6 +75,16 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
       this.checkedCategoryList = [];
       this.badgeList = [];
       this.placeholder = this.resetPlaceholder;
+    }
+
+    const myDropdown = document.getElementById(this.id);
+    if (myDropdown) {
+      myDropdown.addEventListener('hide.bs.dropdown', event => {
+        this.show = false;
+      })
+      myDropdown.addEventListener('show.bs.dropdown', event => {
+        this.show = true;
+      })
     }
   }
 

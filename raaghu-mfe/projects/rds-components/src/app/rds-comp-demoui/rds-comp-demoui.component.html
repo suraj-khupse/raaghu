@@ -47,7 +47,7 @@
         <rds-button colorVariant="primary" [block]="false" size="medium" [label]="translate.instant('Show Alert')"
           (click)="onClickShowAlert()"></rds-button>
 
-        <rds-alert [size]="'small'" [dismissible]="true" icon="close_circle" [iconHeight]="'20px'" [iconWidth]="'20px'"
+        <rds-alert size="small" [dismissible]="true" icon="close_circle" [iconHeight]="'20px'" [iconWidth]="'20px'"
           [label]="translate.instant('A simple primary alert—check it out!')" heading="" type="danger" position="bottom"
           *ngIf="showAlert"></rds-alert>
       </div>
