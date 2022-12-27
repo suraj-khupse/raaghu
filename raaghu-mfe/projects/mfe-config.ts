@@ -56,9 +56,6 @@ export const MfeConfig = {
   webhooksubscription: {
     url: 'http://localhost:5014/remoteEntry.js',
   },
-  Claimtype: {
-    url: 'http://localhost:5016/remoteEntry.js',
-  },
   Securitylog: {
     url: 'http://localhost:5018/remoteEntry.js',
   },
@@ -68,17 +65,8 @@ export const MfeConfig = {
   client: {
     url: 'http://localhost:5019/remoteEntry.js',
   },
-  identiyresources: {
-    url: 'http://localhost:7012/remoteEntry.js',
-  },
   texttemplate: {
     url: 'http://localhost:5021/remoteEntry.js',
-  },
-  apiresources: {
-    url: 'http://localhost:6008/remoteEntry.js',
-  },
-  apiscope: {
-    url: 'http://localhost:5028/remoteEntry.js',
   },
   memberactivity: {
     url: 'http://localhost:5029/remoteEntry.js',

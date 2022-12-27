@@ -142,16 +142,7 @@ export const APP_ROUTES: Routes = [
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
         data: { permission: 'Pages.DemoUiComponents' },
-      },
-      {
-        path: 'ClaimType',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: MfeConfig.Claimtype.url,
-            exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-      },
+      },     
       {
         path: 'settings',
         loadChildren: () =>
@@ -229,34 +220,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.client.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-      },
-      {
-        path: 'IdentityResources',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: MfeConfig.identiyresources.url,
-            exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-      },
-      {
-        path: 'apiresources',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: MfeConfig.apiresources.url,
-            exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-      },
-      {
-        path: 'apiScope',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: MfeConfig.apiscope.url,
-            exposedModule: './AppModule',
-          }).then((m) => m.AppModule),
-      },
+      },            
       {
         path: 'products-details',
         loadChildren: () =>
