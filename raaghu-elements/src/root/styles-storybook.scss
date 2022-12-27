@@ -1134,9 +1134,13 @@ svg {
 }
 
 .breadcrumb-item {
-  + .breadcrumb-item {
+   .breadcrumb-item {
     &::before {
       color: $breadcrumb-divider-color;
+    }
+
+    &.active {
+      color: $breadcrumb-active-color;
     }
   }
 }
@@ -1466,6 +1470,13 @@ svg {
   background-color: $gray-100;
   border-color: $gray-500;
 }
+
+// card-detail styles
+.card-color{
+  background-color: #ECDEFF;
+}
+
+
 // /*card color styles*/
 
 .card {
