@@ -25,17 +25,17 @@
             <div class="excel-btn">
                 <div class="row mb-1">
                     <div class="col-md-3 col-sm-6 mt-1">
-                        <rds-datepicker name="date-picker" [label]="''" [placeholder]="translate.instant('Start Date')"
-                            (change)="startDateModify($event)" [(ngModel)]="startDate" [value]="startDate"
-                            floatinginputLabel="">
+                        <rds-datepicker name="date-picker" [datePickerType]="'range'" [label]="''"
+                            [placeholder]="translate.instant('Date Range')" (change)="onDateRageChange($event)"
+                            [(ngModel)]="dateRange" [value]="dateRange" floatinginputLabel="">
                         </rds-datepicker>
                     </div>
-                    <div class="col-md-3  col-sm-6 mt-1">
+                    <!-- <div class="col-md-3  col-sm-6 mt-1">
                         <rds-datepicker name="date-picker" [style]="'cursor:pointer'" [label]="''"
                             [placeholder]="translate.instant('End Date')" (change)="endDateModify($event)"
                             [(ngModel)]="endDate" [value]="endDate" floatinginputLabel="">
                         </rds-datepicker>
-                    </div>
+                    </div> -->
                     <div class="col-md-3  col-sm-6 mt-1">
                         <rds-input size="medium" [inputType]="" [(ngModel)]="user"
                             [placeholder]="translate.instant('User')" id="txtUsername" (change)="userModify($event)"
@@ -56,30 +56,39 @@
                 </div>
             </div>
             <div class="row" *ngIf="showFilters">
-                <div class="col-md-2  mt-2">
+                <div class="col-md-2 mt-2">
                     <rds-input size="medium" [(ngModel)]="service" [placeholder]="translate.instant('Service')"
                         (change)="serviceModify($event)" id="service" floatinginputLabel="" ngDefaultControl
                         name="service">
                     </rds-input>
                 </div>
-                <div class="col-md-2  mt-2">
-                    <rds-input size="medium" [(ngModel)]="from" [placeholder]="translate.instant('From')"
-                        (change)="fromModify($event)" id="from" floatinginputLabel="" ngDefaultControl name="from">
+                <div class="col-md-2 mt-2">
+                    <!-- <rds-input size="medium" [(ngModel)]="from" [inputType]="'number'"
+                        [placeholder]="translate.instant('From')" (change)="fromModify($event)" id="from"
+                        floatinginputLabel="" ngDefaultControl name="from">
+                    </rds-input> -->
+                    <rds-dropdownlist [borderDropdown]="true" class="text-dark" [id]="'duration-dropdown'"
+                        [placeholder]="translate.instant('Duration Condition')" [value]="durationType"
+                        [listItems]="durationTypeList" (onSelect)="onDurationTypeChange($event)"></rds-dropdownlist>
+                </div>
+                <div class="col-md-2 mt-2">
+                    <!-- <rds-input size="medium" [(ngModel)]="to" [inputType]="'number'"
+                        [placeholder]="translate.instant('To')" (change)="toModify($event)" id="to"
+                        floatinginputLabel="" ngDefaultControl name="to">
+                    </rds-input> -->
+                    <rds-input size="medium" [(ngModel)]="duration" [inputType]="'number'"
+                        [placeholder]="translate.instant('Duration')" (change)="onDurationChange()" id="to"
+                        floatinginputLabel="" ngDefaultControl name="to">
                     </rds-input>
                 </div>
-                <div class="col-md-2  mt-2">
-                    <rds-input size="medium" [(ngModel)]="to" [placeholder]="translate.instant('To')"
-                        (change)="toModify($event)" id="to" floatinginputLabel="" ngDefaultControl name="to">
-                    </rds-input>
-                </div>
-                <div class="col-md-2  mt-2">
+                <div class="col-md-2 mt-2">
                     <rds-input size="medium" (change)="actionModify($event)" [(ngModel)]="action"
                         [placeholder]="translate.instant('Action')" id="action" floatinginputLabel="" ngDefaultControl
                         name="action">
                     </rds-input>
                 </div>
-                <div class="col-md-2 mt-2 ">
-                    <rds-dropdownlist [placeholder]="translate.instant('Select Property')" [borderDropdown]="true"
+                <div class="col-md-2 mt-2 sm-p-0">
+                    <rds-dropdownlist [placeholder]="translate.instant('Error State')" [borderDropdown]="true"
                         class="text-dark" [id]="'status-list'" [(ngModel)]="status" [listItems]="statusList"
                         [value]="status" (onSelect)="exceptionModify($event)" ngDefaultControl name="status">
                     </rds-dropdownlist>

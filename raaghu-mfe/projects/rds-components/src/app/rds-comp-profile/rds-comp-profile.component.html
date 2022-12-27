@@ -128,9 +128,14 @@
 
 </rds-offcanvas>
 
-<!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+<!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>-->
 <ng-container *ngIf="showConfirmationPopup">
-  <rds-comp-alert-popup [alertID]="'deleteDelegationModal'" (onCancel)="closeModal()" (onDelete)="delete()"
+  <rds-comp-alert-popup [alertID]="'deleteDelegationModal'" (onCancel)="closeModal()" (onSuccess)="delete()"
     [alertData]="deleteConfirmationData">
   </rds-comp-alert-popup>
-</ng-container> -->
+</ng-container> 
+<ng-container *ngIf="showDownloadPopup">
+  <rds-comp-alert-popup [alertID]="'DownloadDatamodal'" (onCancel)="closeDownloadModal()" (onSuccess)="downloadText()"
+    [alertData]="alertData">
+  </rds-comp-alert-popup>
+</ng-container>

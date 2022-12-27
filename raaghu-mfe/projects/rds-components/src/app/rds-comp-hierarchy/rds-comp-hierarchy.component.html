@@ -31,15 +31,15 @@
       <span #nodeLabel class="my-1 node-label">
         <span class="mr-4" (click)="onClicknode(node.ItemDescription)">{{ node.ItemDescription }}</span>
         <i *ngIf="mutable === true  && TreeType.Normal===true||TreeType.IconLabel===true" data-bs-toggle="offcanvas"
-          data-bs-target="#addNestedNodeModal" (addNestedElement)="addNestedNode(node)" [nestGroup]="nodeLabel"
+          data-bs-target="#addNestedNodeModal" (addNestedElement)="addNestedNode(node)"
           class="pl-3 nest-icon bi bi-plus-circle-fill text-secondary font-size-lg pointer"></i>
 
         <i *ngIf="mutable === true && TreeType.IconLabel==true||TreeType.Normal===true" (click)="getNodeByID(node)"
           data-bs-toggle="offcanvas" data-bs-target="#EditNodeModal" class="bi bi-pencil m-2"
-          [nestGroup]="nodeLabel"></i>
+          ></i>
 
         <i *ngIf="mutable === true && TreeType.IconLabel==true||TreeType.Normal===true" (click)="deleteNode(node)"
-          class="bi bi-trash" [nestGroup]="nodeLabel"></i>
+          class="bi bi-trash"></i>
 
       </span>
 
@@ -84,23 +84,23 @@
 <rds-offcanvas [canvasTitle]="TreeNodeLabeles.ParentNodeTitle" [offId]="'addNodeModal'" [placement]="'end'"
 >
   <div class="form-style">
-    <form [formGroup]="nodeForm">
+    <form>
       <div class="form-group mb-3">
         <rds-input size="medium" [disabled]="false" [readonly]="false" value=""
           [placeholder]="TreeNodeLabeles.ParentItemPlaceholder" id="txtUsername" floatinginputLabel=""
-          [(ngModel)]="itemCode" [isRequired]=true ngDefaultControl formControlName="itemCodeData" (onBlur)='checkItemcodeValidation()'
+          [(ngModel)]="itemCode" name="itemCode" [isRequired]=true ngDefaultControl (onBlur)='checkItemcodeValidation()'
           (keyup)='checkItemcodeValidation()' (mouseup)='checkItemcodeValidation()'></rds-input>
         <small class="text-danger" *ngIf="itemcodeRequiredMessage">{{translate.instant("Item code is Required")}}</small>
       </div>
       <div class="form-group mb-3">
-        <rds-input size="medium" inputType="text"  [isRequired]=true [placeholder]="TreeNodeLabeles.ParentDescriptionPlaceholder"
-          floatinginputLabel="" [(ngModel)]="ItemDescription" id="txtDescription" formControlName="ItemDescription"
-          (onBlur)='checkDescriptionValidation()' (keyup)='checkDescriptionValidation()' ngDefaultControl></rds-input>
+        <rds-input size="medium" inputType="text"  name="itemDescription" [isRequired]=true [placeholder]="TreeNodeLabeles.ParentDescriptionPlaceholder"
+          floatinginputLabel="" [(ngModel)]="ItemDescription" id="txtDescription"
+          (onBlur)='checkDescriptionValidation()' (mouseup)='checkDescriptionValidation()' ngDefaultControl></rds-input>
         <small class="text-danger" *ngIf="DescriptionRequiredMessage">{{translate.instant("Description is Required")}}</small>
       </div>
       <rds-button [label]="'Close'" type="button" [size]="'medium'" [colorVariant]="'primary'" data-bs-dismiss="offcanvas">
       </rds-button>
-      <rds-button [isDisabled]="!nodeForm.valid" [label]="'Save'" type="button" [size]="'medium'" class="px-2"
+      <rds-button [label]="'Save'" type="button" [size]="'medium'" class="px-2"
         [colorVariant]="'primary'" (click)="pushNode()" data-bs-dismiss="offcanvas" data-bs-target="#addNodeModal">
       </rds-button>
     </form>

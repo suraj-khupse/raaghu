@@ -17,9 +17,17 @@
       <div class="text-primary border-bottom">
         <rds-label [multiline]="true" [label]="'65589964322133467999'"></rds-label>
       </div>
-      <mfe-loader [config]="rdsCompShoppingCartProduct"></mfe-loader>
+      <!-- <mfe-loader [config]="rdsCompShoppingCartProduct"></mfe-loader> -->
+      <rds-comp-shopping-cart-product
+      [itemList]="itemList">
+      </rds-comp-shopping-cart-product>
       <div class="pt-2">
-        <mfe-loader [config]="rdsCompOrderSummary"></mfe-loader>
+        <!-- <mfe-loader [config]="rdsCompOrderSummary"></mfe-loader> -->
+        <rds-comp-order-summary
+        [Subtotal]="totalPrice"
+        [Shippingestimate]="10"
+        [Taxestimate]="20"
+        [isCheckout]="false"></rds-comp-order-summary>
       </div>
       <div class="row border-bottom pb-4 mb-4">
         <div class="col-4 my-3">

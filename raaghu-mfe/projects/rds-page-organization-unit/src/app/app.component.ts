@@ -8,7 +8,7 @@ import { selectOrganizationUnitMembers, selectOrganizationUnitRoles, selectOrgan
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { selectDefaultLanguage } from '@libs/state-management';
 import { TranslateService } from '@ngx-translate/core';
-import { transition, trigger, query, style, animate, } from '@angular/animations';
+import { transition, trigger, query, style, animate, state, } from '@angular/animations';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 declare var bootstrap: any;
@@ -18,33 +18,40 @@ declare var bootstrap: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [DatePipe],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 })
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':leave',
+  //         [
+  //           style({ opacity: 1 }),
+  //           animate('0.4s', style({ opacity: 0 }))
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 }),
+  //           animate('0.4s', style({ opacity: 1 }))
+  //         ],
+  //         { optional: true }
+  //       )
+  //     ])
+  //   ])
+  // ]
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('0.4s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('0.4s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
   ]
-
 
 })
 

@@ -151,6 +151,7 @@ input::-webkit-input-placeholder {
   font-weight: $input-font-weight;
 }
 
+
 .form-select {
   font-size: $font-size-sm;
   line-height: 1.8;
@@ -525,12 +526,25 @@ html[theme="dark"] .btn-primary svg {
   white-space: normal;
 }
 
+.border_radius{
+  border-radius: 0 10% 10% 0;
+}
 .dropdown-menu {
   max-height: 350px;
   overflow: auto;
 }
 
 .dropdown-toggle::after {
+  float: right;
+  margin: 10px 5px;
+}
+
+.btn-sm .dropdown-toggle::after {
+  float: right;
+  margin: 7px 5px;
+}
+
+.dropdown-toggle-split::after{
   float: right;
   margin: 10px 5px;
 }
@@ -1247,6 +1261,14 @@ rds-admin-dashboard {
   margin-left: 0px;
 }
 
+
+.dropdown-center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 91vh;
+}
+
 #RoleOffcanvas .offcanvas-body{
   height :calc(100vh - 150px);
 
@@ -1586,8 +1608,7 @@ rds-comp-admin-dashboard {
     }
   }
 }
-rds-icon:hover {
-  svg {
+.jiggle:hover {  
     width: 22px;
     height: 22px;
     -webkit-animation: ring 10s .7s ease-in-out infinite;
@@ -1890,7 +1911,7 @@ rds-icon:hover {
         transform: rotate(0);
       }
     }
-  }
+
 }
 .bg-icon {
   cursor: pointer;

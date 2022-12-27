@@ -8,11 +8,11 @@
         <h5 class="text-color"><rds-label [label]="translate.instant(Dataset.alertConfirmation)"></rds-label></h5>
         <p class="text-color"><rds-label [label]="translate.instant(Dataset.messageAlert)"></rds-label></p>
         <div class="mt-5">
-            <rds-button (click)="CancelClick($event,false)" [label]="translate.instant(Dataset.CancelButtonLabel)" [size]="'small'"
-                class="px-2" [colorVariant]="'primary'" [isOutline]="true" [attr.data-bs-dismiss]="'modal'">
+            <rds-button (click)="cancelClick()" [id]="'popup-cancel'" [label]="translate.instant(Dataset.CancelButtonLabel)" [size]="'small'"
+                class="px-2" [colorVariant]="'primary'" [isOutline]="true"  data-bs-dismiss="modal" aria-label="Close">
             </rds-button>
-            <rds-button [label]="translate.instant(Dataset.DeleteButtonLabel)" [size]="'small'" class="px-2" [colorVariant]="'primary'"
-                (click)="DeleteClick($event,true)" [attr.data-bs-dismiss]="'modal'">
+            <rds-button [label]="translate.instant(Dataset.DeleteButtonLabel)" [id]="'popup-success'" [size]="'small'" class="px-2" [colorVariant]="'primary'"
+                (click)="deleteClick()" data-bs-dismiss="modal" aria-label="Close">
             </rds-button>
         </div>
     </div>

@@ -2,14 +2,14 @@
   <div aria-labelledby="nav-Deligation" class="h-100">
     <div class="card border-0 h-100">
       <div class="card-header  border-bottom border-dark border-opacity-10">
-        <h5 class="card-title m-1">{{"MY SETTINGS"|translate}}</h5>
+        <h5 class="card-title m-1">{{translate.instant('MY SETTINGS')}}</h5>
       </div>
-      <div class="card-body m-1 card-height">
-        <h5>{{"Profile"|translate}}</h5>
+      <div class="card-body mb-2 card-height">
+        <h5>{{translate.instant('Profile')}}</h5>
         <div class="mt-1">
           <div class="row">
             <div class="col-md-12 sm-p-0">
-              <div class="form-group mb-4">
+              <div class="form-group mt-2 mb-4">
                 <rds-input size="medium" [value]="ProfileData.name" [label]="translate.instant('Profile Name')"   
                   [labelPosition]="'top'" [inputType]="'text'" name="profileName" #profile_Name="ngModel"
                   [isRequired]=true required [(ngModel)]="ProfileData.name" [placeholder]="translate.instant('Profile Name')" [disabled]="false"
@@ -30,7 +30,7 @@
                 </rds-input>
                 <div class="form-control-feedback"
                   *ngIf="email_Address.errors && (email_Address.dirty || email_Address.touched)">
-                  <small class="text-danger" *ngIf="email_Address.errors.required">{{"Entered invalid EmailAddress"|translate}}</small>
+                  <small class="text-danger" *ngIf="email_Address.errors.required">{{"Enter valid EmailAddress"|translate}}</small>
                 </div>
               </div>
             </div>

@@ -23,6 +23,10 @@ export default {
       options: [true, false],
       control: { type: 'select' }
     },
+    isAnimate: {
+      options: [true, false],
+      control: { type: 'select' }
+    },
   },
 } as Meta
 
@@ -31,7 +35,7 @@ const Template: Story<RdsIconComponent> = (args: RdsIconComponent) => ({
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['name', 'width', 'height', 'fill', 'stroke', 'colorVariant', 'opacity'] } };
+Default.parameters = { controls: { include: ['name', 'width', 'height', 'fill', 'stroke', 'colorVariant', 'opacity','isAnimate'] } };
 Default.args = {
   name: 'users',
   width: '20px',
@@ -39,5 +43,6 @@ Default.args = {
   fill: false,
   stroke: true,
   colorVariant: 'primary',
-  opacity: '1'
+  opacity: '1',
+  isAnimate:true
 }

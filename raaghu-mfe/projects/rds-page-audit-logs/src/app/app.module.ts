@@ -22,6 +22,7 @@ import { AppComponent } from './app.component';
         FormsModule,
         AppRoutingModule,
         SharedModule,
+        CommonModule,
         NgxTranslateModule.forRoot(),
         RdsButtonModule,
         RdsIconModule,

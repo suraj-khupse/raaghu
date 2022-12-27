@@ -18,7 +18,6 @@ import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsOffcanvasModule 
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     RdsCheckboxModule,
     RdsInputModule,
     RdsOffcanvasModule,

@@ -8,10 +8,11 @@ import { ComponentLoaderOptions } from '@libs/shared';
 })
 export class AppComponent {
   title = 'frequently-asked-questions';
-  rdsNewRoleMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompFaqComponent'
-  };
+  questionList:any;
+  // rdsNewRoleMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompFaqComponent'
+  // };
   ngOnInit(): void {
-    this.rdsNewRoleMfeConfig
+    // this.rdsNewRoleMfeConfig
   }
 }

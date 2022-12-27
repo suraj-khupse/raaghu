@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RdsDropdownlistModule, RdsSearchInputModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompMemberActivityModule } from 'projects/rds-components/src/app/rds-comp-member-activity/rds-comp-member-activity.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,12 +13,15 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     AppRoutingModule,
     SharedModule,
     RdsSearchInputModule,
     RdsDropdownlistModule,
-    NgxTranslateModule
+    NgxTranslateModule,
+    RdsCompMemberActivityModule,
+    RdsCompDataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

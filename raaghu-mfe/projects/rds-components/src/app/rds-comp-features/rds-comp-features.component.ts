@@ -17,8 +17,9 @@ declare var bootstrap: any;
     DatePipe
   ]
 })
+
 export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
-  actions: TableAction[] = [{ id: 'edit', displayName: this.translate.instant('Edit') }, { id: 'delete', displayName: this.translate.instant('Delete') }, { id: 'moveTenant', displayName: this.translate.instant('Move Tenants to Another Edition') }]
+  actions: TableAction[] = []
   @Input() selectedFeatures = [];
   @Input() selectedEdition: any;
   @Input() EditionsTableHeader: TableHeader[] = [];
@@ -109,8 +110,14 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
   rdsEditionTableMfeConfig: ComponentLoaderOptions;
   // rdshierarchyConfig: ComponentLoaderOptions;
   public Editionform: FormGroup;
+  edit: string;
+  delete: string;
+  move_tenant: string;
 
   constructor(public datepipe: DatePipe, public translate: TranslateService, private alertService: AlertService) {
+    this.edit= this.translate.instant('Edit')
+    this.delete= this.translate.instant('Delete')
+    this.move_tenant= this.translate.instant('Move Tenants to Another Edition')
 
   }
   ngOnChanges(): void {
@@ -142,6 +149,10 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
       })
     }
     this.subscribeToAlerts();
+
+    this.actions=[
+      { id: 'edit', displayName: this.edit }, { id: 'delete', displayName: this.delete }, { id: 'moveTenant', displayName: this.move_tenant }
+    ]
   }
 
   onAlertHide(event: any): void {

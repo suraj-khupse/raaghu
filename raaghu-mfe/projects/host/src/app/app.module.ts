@@ -16,7 +16,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DatePipe } from '@angular/common';
 import { RdsSideNavModule } from '@libs/rds-elements';
 import demodata from '../assets/appconfig.json';
-import { RdsCompTopNavigationModule } from '../../../rds-components/src/app/rds-comp-top-navigation/rds-comp-top-navigation.module';
 import { RdsCookieConsentConfig } from 'projects/libs/rds-cookieconsent/src/lib/service/cookieconsent-config';
 import { RdsCookieConsentModule } from 'projects/libs/rds-cookieconsent/src/lib/rds-cookieconsent.module';
 import { ProfilePicEffects } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.effects';
@@ -48,7 +47,7 @@ import { LoginEffects } from 'projects/libs/state-management/src/lib/state/login
 import { DelegationsEffects } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.effects';
 import { LanguageEffects } from 'projects/libs/state-management/src/lib/state/language/language.effects';
 import { UserReducer } from 'projects/libs/state-management/src/lib/state/user/user.reducer';
-import { RoleReducer } from 'projects/libs/state-management/src/lib/state/role/role.reducer';
+import { RoleAlertReducer, RoleReducer } from 'projects/libs/state-management/src/lib/state/role/role.reducer';
 import { RoleEffects } from 'projects/libs/state-management/src/lib/state/role/role.effects';
 import { UserEffects } from 'projects/libs/state-management/src/lib/state/user/user.effects';
 import { AuditLogsEffects } from 'projects/libs/state-management/src/lib/state/audit-logs/audit-logs.effects';
@@ -66,6 +65,7 @@ import { DynamicPropertyReducer } from 'projects/libs/state-management/src/lib/s
 import { DynamicPropertyEffects } from 'projects/libs/state-management/src/lib/state/dynamic-property-management/dynamic-property.effects';
 import { DynamicEntityReducer } from 'projects/libs/state-management/src/lib/state/dynamic-entity/dynamic-entity.reducer';
 import { DynamicEntityEffects } from 'projects/libs/state-management/src/lib/state/dynamic-entity/dynamic-entity.effects';
+import { RdsCompTopNavigationModule } from 'projects/rds-components/src/app/rds-comp-top-navigation/rds-comp-top-navigation.module';
 
 export function getRemoteServiceBaseUrl(): any {
   let URL = demodata.remoteServiceBaseUrl;
@@ -118,6 +118,7 @@ export function getRemoteServiceBaseUrl(): any {
       mla: MLAReducer,
       user: UserReducer,
       roles: RoleReducer,
+      roleAlert:RoleAlertReducer,
       tenants:TenantReducer,
       validateTenant: ValidateTenantReducer,
       usernames: GetUsernameFilterReducer,

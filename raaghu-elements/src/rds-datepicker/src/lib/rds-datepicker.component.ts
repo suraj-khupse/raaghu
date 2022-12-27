@@ -1,7 +1,7 @@
 import { forwardRef, ViewEncapsulation } from '@angular/core';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BsDatepickerConfig, BsDatepickerViewMode, DatepickerDateTooltipText } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerConfig, BsDatepickerViewMode, DatepickerDateCustomClasses, DatepickerDateTooltipText } from 'ngx-bootstrap/datepicker';
 
 export interface selectedRange {
   startDate?: any,
@@ -23,9 +23,10 @@ export class RdsDatepickerComponent implements OnInit, ControlValueAccessor {
   private onTouched!: Function;
   private onChanged!: Function;
   @Input() disabled: boolean = false;
-  @Input() datePickerType: 'advanced' | 'basic' = 'basic';
+  @Input() datePickerType: 'advanced' | 'basic' | 'range' = 'basic';
   //Basic Datepicker options
-  @Input() datePickerConfig: Partial<BsDatepickerConfig> = { dateInputFormat: 'MM/DD/YYYY', showWeekNumbers: false, isAnimated: true, adaptivePosition: false };
+  @Input() datePickerConfig: Partial<BsDatepickerConfig> = { dateInputFormat: 'MM/DD/YYYY', showWeekNumbers: false, isAnimated: true, adaptivePosition: true };
+
   @Input() id: string = Math.random().toString();
   @Input() value: any;
   @Input() placeholder: string = 'Date';
@@ -33,6 +34,7 @@ export class RdsDatepickerComponent implements OnInit, ControlValueAccessor {
   @Input() datesEnabled: Date[] = [];
   @Input() dateTooltipTexts: DatepickerDateTooltipText[] = [];
   @Input() daysDisabled: number[] = [];
+  @Input() isDisabled: boolean = false;
   @Input() isOpen: boolean = false;
   @Input() maxDate: Date | undefined = undefined;
   @Input() minDate: Date | undefined = undefined;
@@ -40,6 +42,7 @@ export class RdsDatepickerComponent implements OnInit, ControlValueAccessor {
   @Input() outsideClick: boolean = true;
   @Input() outsideEsc: boolean = false;
   @Input() placement: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
+  @Input() dateCustomClasses: DatepickerDateCustomClasses[] = []
   @Output() onShow = new EventEmitter<any>();
   @Output() onHide = new EventEmitter<any>();
   @Input() isRequired: boolean = false;
@@ -170,7 +173,7 @@ export class RdsDatepickerComponent implements OnInit, ControlValueAccessor {
     this.change.emit(this.selectdate);
   }
 
-  onDateChane(event: any) {
+  onDateChange(event: any) {
     if (event) {
       this.value = event;
       // this.onTouched(); // <-- mark as touched

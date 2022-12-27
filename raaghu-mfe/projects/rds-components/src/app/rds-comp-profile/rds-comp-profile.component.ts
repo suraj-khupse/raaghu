@@ -2,11 +2,12 @@ import { Component, EventEmitter, Injector, Input, OnInit, Output, SimpleChanges
 import { FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DownloadData, Profile, success } from '../../models/profile.model';
-import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput,AppSessionService, } from '@libs/shared';
+import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput, AppSessionService, } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 // import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 declare var $: any;
 declare var bootstrap: any;
@@ -35,7 +36,15 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() defaultLanguage: string = '';
   selectedData: any;
- 
+  showDownloadPopup: boolean = false;
+  deleteConfirmationData: AlertPopupData = {
+    iconUrl: "delete",
+    colorVariant: "danger",
+    alertConfirmation: "Are you sure ?",
+    messageAlert: "The record will be deleted permanently",
+    CancelButtonLabel: "Cancel",
+    DeleteButtonLabel: "Delete"
+  }
   showConfirmationPopup: boolean = false;
 
   delegateTabopened: boolean = false;
@@ -147,7 +156,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     private router: Router,
     private http: HttpClient,
     private _profileService: ProfileServiceProxy,
-    public sessionService:AppSessionService,) {
+    public sessionService: AppSessionService,) {
     super(injector);
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -173,8 +182,14 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
       // this.cancelbutton = true;
       // this.isAnyProfileMenuSelected = false;
       this.onClickCloseTabContent();
-      this.onDownloadLink.emit(item)
-      $('#DownloadDatamodal').modal('show');
+      this.onDownloadLink.emit(item);
+      this.showDownloadPopup = true;
+      setTimeout(() => {
+        var element: any = document.getElementById('DownloadDatamodal');
+        var modal = new bootstrap.Modal(element);
+        modal.show();
+      }, 100);
+
     } else {
       this.offCanvasWidth = 1000;
       this.tabisVisible = true;
@@ -377,8 +392,6 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
 
   downloadText() {
     let showUserData = JSON.parse(localStorage.getItem('userNameInfo'));
-    console.log("Hello");
-    // this.userEmailOrName = this.showUserData.username;
     const data: any = {
       Tenancy_name: JSON.parse(localStorage.getItem('tenantInfo')),
       User_name: showUserData.username,
@@ -392,6 +405,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     element.setAttribute('download', 'textdocument');
     var event = new MouseEvent("click");
     element.dispatchEvent(event);
+    this.showDownloadPopup = false;
   }
 
   getMenuItems(): any {
@@ -426,7 +440,16 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     this.showConfirmationPopup = false;
   }
 
-  backAccount():void{ 
+  closeDownloadModal(): void {
+    var element: any = document.getElementById('DownloadDatamodal');
+    if (element) {
+      var modal = new bootstrap.Modal(element);
+      modal.hide();
+    }
+    this.showDownloadPopup = false;
+  }
+
+  backAccount(): void {
     this.backToAccount.emit(true);
   }
 

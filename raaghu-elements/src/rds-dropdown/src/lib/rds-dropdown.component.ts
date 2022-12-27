@@ -144,13 +144,13 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
 
   public get classes(): any[] {
 
-    var customClasses = ['btn btn-' + `${this.colorVariant}`];
+    var customClasses = ['btn-' + `${this.colorVariant}`];
 
     if (this.role === "dropdown-button") {
-      customClasses.push('dropdown-toggle')
+      customClasses.push('btn dropdown-toggle')
     }
     else if (this.role === "with_split") {
-      customClasses.push('dropdown-toggle dropdown-toggle-split')
+      customClasses.push('dropdown-toggle dropdown-toggle-split bg-' + `${this.colorVariant}`)
 
     }
 

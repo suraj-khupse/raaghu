@@ -8,14 +8,14 @@
         <div class="">
           <div class="row">
             <div class="col-md-12 mb-3 sm-p-0">
-              <h5>{{"List and filter login attempts"|translate}}</h5>
+              <h5>{{translate.instant('List and filter login attempts')}}</h5>
             </div>
 
           </div>
           <div class="row">
             <div class="col-lg-5 col-md-12 col-sm-12 sm-p-0">
               <div class="form-group mb-3">
-                <label for="Result" class="mb-2">{{"Result"|translate}}</label>
+                <label for="Result" class="mb-2">{{translate.instant('Result')}}</label>
                 <rds-dropdownlist [placeholder]="translate.instant('Select Result')" [borderDropdown]="true" required
                   class="text-dark" [id]="'result-list'" [(ngModel)]="result" [listItems]="listItemsResult"
                   [value]="result" (onSelect)="onResultListSelect($event)" ngDefaultControl name="result"
@@ -53,7 +53,7 @@
             <div class="col-sm-12 sm-p-0">
               <!-- <mfe-loader [config]="rdsLoginTableMfeConfig"></mfe-loader> -->
               <rds-comp-data-table [tableData]="this.LoginAttempts.LoginDatatable"
-                [pagination]="LoginAttempts.LoginDatatable.length>5?true:false" [recordsPerPage]="10"
+                [pagination]="LoginAttempts&&LoginAttempts.LoginDatatable&&LoginAttempts.LoginDatatable.length>5?true:false" [recordsPerPage]="10"
                 [noDataTitle]="translate.instant('Currently you do not have login attempts')"
                 [showNodataSubtitle]="false" [refresh]="true"
                 [tableHeaders]="this.LoginAttempts.TableHeader"></rds-comp-data-table>

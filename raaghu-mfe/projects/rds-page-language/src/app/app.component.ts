@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { transition, trigger, query, style, animate } from '@angular/animations';
+import { transition, trigger, query, style, animate, state } from '@angular/animations';
 import { deleteLanguage, getCountryList, getLanguages, saveLanguage, setDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.actions';
 import { selectAllCountries, selectAllLanguages, selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 declare var bootstrap: any;
@@ -15,23 +15,31 @@ declare var bootstrap: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [DatePipe],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter', [style({ opacity: 0 })], { optional: true }),
+  //       query(
+  //         ':leave',
+  //         [style({ opacity: 1 }), animate('0.4s', style({ opacity: 0 }))],
+  //         { optional: true }
+  //       ),
+  //       query(
+  //         ':enter',
+  //         [style({ opacity: 0 }), animate('0.4s', style({ opacity: 1 }))],
+  //         { optional: true }
+  //       ),
+  //     ]),
+  //   ]),
+  // ],
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter', [style({ opacity: 0 })], { optional: true }),
-        query(
-          ':leave',
-          [style({ opacity: 1 }), animate('0.4s', style({ opacity: 0 }))],
-          { optional: true }
-        ),
-        query(
-          ':enter',
-          [style({ opacity: 0 }), animate('0.4s', style({ opacity: 1 }))],
-          { optional: true }
-        ),
-      ]),
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
     ]),
-  ],
+  ]
 })
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;

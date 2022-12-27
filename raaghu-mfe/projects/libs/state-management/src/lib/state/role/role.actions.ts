@@ -3,7 +3,7 @@ import { createAction, props } from "@ngrx/store";
 import { PermissionData, PostRole, Role } from "./role.models";
 
 export const getRoles = createAction('[Role Page] Get Roles',
-(selectedPermissions: any) => ({ selectedPermissions }));
+    (selectedPermissions: any) => ({ selectedPermissions }));
 
 export const getRoleSuccess = createAction(
     '[Role Page] Get Role Success',
@@ -32,7 +32,7 @@ export const deleteRole = createAction(
 );
 
 export const getRolByEdit = createAction('[Role Page] Get RolByEdit',
-(id: number) => ({ id }));
+    (id: number) => ({ id }));
 
 export const getRolByEditSuccess = createAction(
     '[Role Page] get Rol ByEdit Success',
@@ -41,4 +41,8 @@ export const getRolByEditSuccess = createAction(
 export const getRolByEditFailure = createAction(
     '[Role Page] Get Role By EditF Failure',
     props<{ error: string }>()
+);
+
+export const setRoleAlert = createAction('[Role Page] Set Role Alert',
+    (roleAlert: any) => ({ roleAlert })
 );

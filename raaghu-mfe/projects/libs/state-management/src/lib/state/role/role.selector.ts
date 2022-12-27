@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from '../../app.interface';
-import { RolesState } from './role.reducer';
+import { RoleAlertState, RolesState } from './role.reducer';
 
 
 export const Roleselector = (state: AppState) => state.roles;
@@ -15,4 +15,9 @@ export const selectAllPermissions = createSelector(
 export const selectRoleForEdit = createSelector(
     Roleselector,
     (state: RolesState) => state.EditRoleSateI
+);
+export const roleAlerts = (state: AppState) => state.roleAlert;
+export const selectRoleAlert = createSelector(
+    roleAlerts,
+    (state: RoleAlertState) => state.roleAlert
 );

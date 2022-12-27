@@ -40,5 +40,5 @@
     </rds-button>
   </div>
 </ng-template>
-<rds-comp-alert-popup *ngIf="showDeleteModal" alertID="deleteTreeNode" (onDelete)="deleteNode()"
+<rds-comp-alert-popup *ngIf="showDeleteModal" alertID="deleteTreeNode" (onSuccess)="deleteNode()"
   (onCancel)="cancelDelete()" [alertData]="alertData"></rds-comp-alert-popup>

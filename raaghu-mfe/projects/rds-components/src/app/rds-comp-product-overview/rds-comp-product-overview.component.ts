@@ -13,9 +13,9 @@ export class RdsCompProductOverviewComponent {
     | 'producroverview4'
     | 'producroverviewdescription' = 'producroverview1';
 
-  sizeData: [];
+  @Input() sizeData:any= [];
   sizeDataWithDescription: [];
-  @Input() itemListbenefit: [];
+  @Input() itemListbenefit:any= [];
   @Input() producroverview1 = [
     {
       name: 'Men',
@@ -86,8 +86,8 @@ export class RdsCompProductOverviewComponent {
       disabled: true,
     },
   ];
-  listItems: [] = [];
-  itemList: [];
+  @Input() listItems: any = [];
+  @Input()itemList: any=[];
   item: [
     {
       id: 1;
