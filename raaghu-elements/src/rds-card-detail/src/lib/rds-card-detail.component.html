@@ -1,4 +1,4 @@
-<div class="border p-3 text-left rounded card-detail" id="card-detail">
+<div class="border p-3 text-left rounded card-detail" [ngClass]="{'card-color': IsBackgroundColor === true}">
   <div (click)="setAsPaymentMethod(cardData)">
     <!--<rds-label *ngIf="label == '' ? false : true" [label]="label" [bold]="true"></rds-label>-->
     <div class="d-flex ">
@@ -26,9 +26,9 @@
       </div>
       <div *ngIf="IsSelectionRequired">
         <rds-radio-button [switch]="false" [inline]="false" [isInputGroup]="false" [itemList]="cardData.radioItems"
-                          (onClick)="setAsPaymentMethod(cardData)"></rds-radio-button>
+          (click)="iscardSelected($event)"></rds-radio-button>
       </div>
     </div>
 
   </div>
-  </div>
+</div>
