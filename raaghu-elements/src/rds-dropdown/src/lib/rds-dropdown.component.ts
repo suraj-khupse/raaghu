@@ -70,7 +70,7 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
   }
 
   public get button1(): string {
-    var customClasses = ['btn btn-' + `${this.colorVariant}`];
+    var customClasses = ['btn'];
 
     if (this.size === 'small') {
       var selectSize = 'btn-sm';
@@ -92,7 +92,7 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
 
   public get splitdown(): any[] {
     var customClasses = [
-      'btn btn-' + `${this.colorVariant}`, 'dropdown-toggle' + 'dropdown-toggle-split'];
+      'btn' + 'dropdown-toggle' + 'dropdown-toggle-split'];
 
     if (this.size === 'small') {
       var selectSize = 'btn-sm';

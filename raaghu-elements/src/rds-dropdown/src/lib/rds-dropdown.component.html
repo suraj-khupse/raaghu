@@ -7,7 +7,7 @@
         </button>
         <span
         type="button"
-        class="border border_radius"
+        class="border border_radius d-flex align-items-center"
         [ngClass]="classes"
         id="dropdownMenuButton1"
         (click)="open()"
@@ -45,6 +45,7 @@
       <div [ngClass]="dropdownDirection">
         <button
           [ngClass]="classes"
+          class="border"
           type="button"
           [id]="id"
           data-bs-toggle="dropdown"
