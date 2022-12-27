@@ -244,7 +244,7 @@ export class AppComponent implements OnInit {
 
   onEditionSave(data) {
     if (data) {
-      if (data.editeditionion.id !== undefined) {
+      if (data.edition.id !== undefined) {
         this.store.dispatch(updateEdition(data))
       } else {
         this.store.dispatch(saveEdition(data))
