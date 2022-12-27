@@ -19,6 +19,7 @@ import { RdsCheckboxModule, RdsInputModule, RdsLabelModule } from '@libs/rds-ele
     FormsModule,
     RdsLabelModule,
     RdsCheckboxModule,
+    RdsInputModule,
   ]
 })
 export class RdsCompUserManagementModule { }
