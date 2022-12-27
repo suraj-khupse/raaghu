@@ -91,7 +91,7 @@
         <li><a class="dropdown-item" (click)="yesDate($event)">Yesterday</a></li>
         <li><a class="dropdown-item" (click)="lastSevenDate($event)">Last 7 days</a></li>
         <li><a class="dropdown-item" (click)="lastFourteenDate($event)">Last 14 days</a></li>
-        <li class="menu-item-has-children position-relative">
+        <li class="menu-item-has-children position-relative " (click)="dp.show()">
           <div class="dropdown-item active input-group date datepicker" [bsValue]="bsInlineRangeValue"
             [bsConfig]="{ containerClass: 'theme-dark-blue light-mode', customTodayClass: 'custom-today-class'}"
             #dp="bsDaterangepicker" bsDaterangepicker placement="right" (bsValueChange)="changeDate($event)"

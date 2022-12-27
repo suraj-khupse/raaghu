@@ -66,8 +66,8 @@ Default.args = {
     }
   ]
 };
-export const ReviewTypeWithLabel = Template.bind({});
-ReviewTypeWithLabel.args = {
+export const ReviewTypeWithDescription = Template.bind({});
+ReviewTypeWithDescription.args = {
     itemList: [{
       display_type: "ReviewType_1",
       items: [
@@ -102,8 +102,8 @@ ReviewTypeWithLabel.args = {
     }
   ]
 };
-export const ReviewTypeWithHeadingAndLabel = Template.bind({});
-ReviewTypeWithHeadingAndLabel.args = {
+export const ReviewTypeWithHeadingAndDescription= Template.bind({});
+ReviewTypeWithHeadingAndDescription.args = {
     itemList: [{
       display_type: "ReviewType_2",
       items: [

@@ -56,7 +56,7 @@ export const Panel = Template.bind({});
 Panel.parameters = { controls: { include: ['stepperType', 'readOnly', 'stepperList'] } };
 
 Panel.args = {
-  stepperType: 'panel',
+  stepperType: 'panel-arrow',
   readOnly: true,
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
@@ -76,21 +76,21 @@ Bullets.args = {
   ]
 };
 
-export const Panel_Simple = Template.bind({});
-Panel_Simple.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
-Panel_Simple.args = {
-  stepperType: 'panel-simple',
-  stepperList: [
-    { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
-    { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
-    { stepname: "step3", steptabname: "Setting", tablink: '#nav-contact', ariacontrols: 'nav-contact' }
-  ]
-};
+// export const Panel_Simple = Template.bind({});
+// Panel_Simple.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
+// Panel_Simple.args = {
+//   stepperType: 'panel-simple',
+//   stepperList: [
+//     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
+//     { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
+//     { stepname: "step3", steptabname: "Setting", tablink: '#nav-contact', ariacontrols: 'nav-contact' }
+//   ]
+// };
 
 export const Panel_Arrow = Template.bind({});
 Panel_Arrow.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
 Panel_Arrow.args = {
-  stepperType: 'panel-arrow',
+  stepperType: 'panel',
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
     { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
@@ -132,9 +132,9 @@ multi_circles_with_numbers.args = {
   ]
 };
 
-export const multi_circles_with_vertical_numbers = Template.bind({});
-multi_circles_with_vertical_numbers.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
-multi_circles_with_vertical_numbers.args = {
+export const multi_circles_with_vertical_checks = Template.bind({});
+multi_circles_with_vertical_checks.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
+multi_circles_with_vertical_checks.args = {
   stepperType: 'multi-circles-3',
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home', description: 'Vitae sed mi luctus laoreet.' },

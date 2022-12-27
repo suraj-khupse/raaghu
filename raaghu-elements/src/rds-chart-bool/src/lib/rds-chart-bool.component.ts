@@ -100,7 +100,6 @@ export class RdsChartBoolComponent implements OnInit, AfterViewInit {
         beforeDraw(chart, args, options) {
           const { ctx, chartArea: { top, right, bottom, left, width, height } } = chart;
           ctx.save();
-          console.log(url, 'url')
           let img = new Image();
           img.src = url;
           ctx.drawImage(img, 30, 30, 30, 30);
