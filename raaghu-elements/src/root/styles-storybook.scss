@@ -185,10 +185,7 @@
   width: 8px;
   height: auto;
 }
-rds-icon{
-    display:flex;
-    align-items:center;
-}
+
 // Scroll Type
 .rds-tags {
   width: 100%;
@@ -2148,7 +2145,7 @@ a {
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner {
-  background: transparent;
+  background: #e0e0e0;
   color: #fff;
 }
 

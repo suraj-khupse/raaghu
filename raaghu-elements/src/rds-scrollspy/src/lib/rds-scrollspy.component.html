@@ -2,5 +2,15 @@
   <div class="scrollspy_body pt-4">
     <ng-content></ng-content>
   </div>
+  <a href="#scrollspy" target="_self" class="m-1 text-decoration-none">Go Top</a>
+  <rds-button colorVariant="primary"
+              size="medium"
+              [roundedButton]="true"
+              iconHeight="18px"
+              iconWidth="18px"
+              [iconStroke]="true"
+              [iconFill]="false"
+              icon="plus"></rds-button>
+  <rds-icon name="arrow_up" height="18px" width="18px"></rds-icon>
 </body>
 <scrollspy-item></scrollspy-item>
