@@ -31,8 +31,8 @@ const Template: Story<RdsCollapseComponent> = (args: RdsCollapseComponent) => ({
   props: args,
   template: `
    <rds-collapse [buttonList]="buttonList">
-     <div class="collapse" id="collapseExample">
-       <div class="card card-body mt-1">
+     <div class="collapse mt-1" id="collapseExample">
+       <div class="card card-body">
          Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
        </div>
      </div>
@@ -49,21 +49,17 @@ const multiToggleTemplate: Story<RdsCollapseComponent> = (args: RdsCollapseCompo
   props: args,
   template: `
    <rds-collapse [buttonList]="buttonList">
-   <div class="row mt-4">
-   <div class="col">
-     <div class="collapse" id="collapseExample">
+   <div class="d-flex">
+   <div class="collapse mt-1 me-2" id="collapseExample">
        <div class="card card-body">
          Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
        </div>
      </div>
-   </div>
-   <div class="col">
-     <div class="collapse multi-collapse" id="collapseExample1">
+   <div class="collapse mt-1 multi-collapse" id="collapseExample1">
        <div class="card card-body">
          Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
        </div>
      </div>
-   </div>
  </div>
    </rds-collapse>`
 
@@ -79,8 +75,8 @@ const horizontalTemplate: Story<RdsCollapseComponent> = (args: RdsCollapseCompon
   props: args,
   template: `
    <rds-collapse [buttonList]="buttonList">
-   <div style="min-height: 120px;" class="mt-3">
-   <div class="collapse collapse-horizontal" id="collapseExample">
+   <div style="min-height: 120px;">
+   <div class="collapse collapse-horizontal mt-1" id="collapseExample">
      <div class="card card-body" style="width: 300px;">
        This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
      </div>

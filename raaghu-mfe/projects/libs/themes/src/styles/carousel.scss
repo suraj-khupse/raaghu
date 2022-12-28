@@ -1,9 +1,7 @@
 // /*carousal custom properties*/
-.carousel-indicators {
-  [data-bs-target] {
+.carousel-indicators [data-bs-target] {
     border-radius: 50%;
-  }
-
+    height:30px;
   .active {
     border: 2px solid;
   }
