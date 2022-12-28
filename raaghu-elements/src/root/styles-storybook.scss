@@ -2479,3 +2479,22 @@ a {
     }
  
 }
+rds-popular-pages {
+  svg {
+    stroke: #0176eb !important;
+    stroke-width:1.5;
+  }
+
+  rds-icon {
+    display: grid;
+  }
+}
+rds-stat {
+  svg {
+    stroke: #0176eb !important;
+  }
+
+  rds-icon {
+    display: grid;
+  }
+}
