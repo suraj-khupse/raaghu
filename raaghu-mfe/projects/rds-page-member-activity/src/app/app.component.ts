@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
@@ -36,7 +35,7 @@ export class AppComponent implements OnInit {
     , { "cases": 23, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"32px\" ></div><div class=\"ms-2 mt-2\"><b>Kath</b><div class=\"text-muted\">Manager </div></div></div>", "active": 10, "closed": 3, "rate": "<div class=\"MidRate\">52</div>" }
     
     ]
-    rdsMemberActivityTableMfeConfig: ComponentLoaderOptions;
+    // rdsMemberActivityTableMfeConfig: ComponentLoaderOptions;
     memberActivityTableHeader: TableHeader[] = [
       { displayName: 'Member', key: 'member', dataType: 'html', sortable: true },
       { displayName: 'Cases', key: 'cases', dataType: 'text', sortable: true },
@@ -54,18 +53,18 @@ export class AppComponent implements OnInit {
         this.translate.use(res);
       }
     })
-    this.rdsMemberActivityTableMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.memberActivityTableHeader,
-        tableStyle: this.tableStyle,
-        width: '100%',
-        tableData: this.memberActivityTableData,
-        recordsPerPage: this.recordsPerpage,
-        pagination: true,
-        noDataTitle:'Currently you do not have activity'
-      },
-    };
+    // this.rdsMemberActivityTableMfeConfig = {
+    //   name: 'RdsDataTable',
+    //   input: {
+    //     tableHeaders: this.memberActivityTableHeader,
+    //     tableStyle: this.tableStyle,
+    //     width: '100%',
+    //     tableData: this.memberActivityTableData,
+    //     recordsPerPage: this.recordsPerpage,
+    //     pagination: true,
+    //     noDataTitle:'Currently you do not have activity'
+    //   },
+    // };
   }
   selectedRole(event:any){
   }

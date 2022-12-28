@@ -36,6 +36,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() defaultLanguage: string = '';
   selectedData: any;
+  showDownloadPopup: boolean = false;
   deleteConfirmationData: AlertPopupData = {
     iconUrl: "delete",
     colorVariant: "danger",
@@ -181,8 +182,14 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
       // this.cancelbutton = true;
       // this.isAnyProfileMenuSelected = false;
       this.onClickCloseTabContent();
-      this.onDownloadLink.emit(item)
-      $('#DownloadDatamodal').modal('show');
+      this.onDownloadLink.emit(item);
+      this.showDownloadPopup = true;
+      setTimeout(() => {
+        var element: any = document.getElementById('DownloadDatamodal');
+        var modal = new bootstrap.Modal(element);
+        modal.show();
+      }, 100);
+
     } else {
       this.offCanvasWidth = 1000;
       this.tabisVisible = true;
@@ -385,8 +392,6 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
 
   downloadText() {
     let showUserData = JSON.parse(localStorage.getItem('userNameInfo'));
-    console.log("Hello");
-    // this.userEmailOrName = this.showUserData.username;
     const data: any = {
       Tenancy_name: JSON.parse(localStorage.getItem('tenantInfo')),
       User_name: showUserData.username,
@@ -400,6 +405,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     element.setAttribute('download', 'textdocument');
     var event = new MouseEvent("click");
     element.dispatchEvent(event);
+    this.showDownloadPopup = false;
   }
 
   getMenuItems(): any {
@@ -432,6 +438,15 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     }
     this.selectedData = undefined;
     this.showConfirmationPopup = false;
+  }
+
+  closeDownloadModal(): void {
+    var element: any = document.getElementById('DownloadDatamodal');
+    if (element) {
+      var modal = new bootstrap.Modal(element);
+      modal.hide();
+    }
+    this.showDownloadPopup = false;
   }
 
   backAccount(): void {

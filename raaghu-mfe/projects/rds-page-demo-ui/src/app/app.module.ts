@@ -12,7 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   imports: [    
     CommonModule,
-    BrowserModule,
+    // BrowserModule,
     AppRoutingModule,
     SharedModule,
     NgxTranslateModule.forRoot(),

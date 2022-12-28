@@ -6,14 +6,13 @@ import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompAlertComponent } from '../rds-comp-alert/rds-comp-alert.component';
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
 import { RdsCompFeaturesComponent } from './rds-comp-features.component';
-import { RdsCompRoleListComponent } from '../rds-comp-role-list/rds-comp-role-list.component';
 
 export default {
   title: 'Components/Features',
   component: RdsCompFeaturesComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompRoleListComponent, RdsDataTableComponent,RdsCompPermissionTreeComponent,
+      declarations: [RdsDataTableComponent,RdsCompFeaturesComponent,RdsCompPermissionTreeComponent,
         RdsCompAlertComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
@@ -27,7 +26,7 @@ export default {
     })
   ]
 } as Meta;
-const Template: Story<RdsCompRoleListComponent> = (args: RdsCompRoleListComponent) => ({
+const Template: Story<RdsCompFeaturesComponent> = (args: RdsCompFeaturesComponent) => ({
     props:{
       ...args
   }
