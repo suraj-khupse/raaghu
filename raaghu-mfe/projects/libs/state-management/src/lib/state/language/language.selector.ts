@@ -18,3 +18,8 @@ export const selectLanguageInfo = createSelector(
     selectLanguages,
     (state: LanguagesState) => state.languageInfo
 );
+
+// export const selectLanguageForEdit = createSelector(
+//     selectLanguages,
+//     (state: LanguagesState) => state.languageInfo
+// );

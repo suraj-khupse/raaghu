@@ -16,16 +16,16 @@ import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-tab
   ],
   imports: [
     CommonModule,
-    SharedModule,
     RdsInputModule,
     RdsButtonModule,
-    NgxTranslateModule,
     RdsIconModule,
     FormsModule,
     RdsDatepickerModule,
     RdsDropdownlistModule,
     RdsLabelModule,
+
     RdsCompDataTableModule
+
   ],
   exports: [
     RdsCompSecretsComponent

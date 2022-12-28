@@ -87,7 +87,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { label: 'Dashboard', labelTranslationKey: 'Dashboard', id: '', permissionName: 'BookStore.Dashboard.Tenant', icon: 'home', path: '/pages/dashboard', description: 'Statistics and reports', descriptionTranslationKey: 'Statistics and reports' },
     { label: 'Tenants', labelTranslationKey: 'Tenants', id: 'tenants', permissionName: 'Saas.Tenants', icon: 'tenant', path: '/pages/tenant', description: 'Manage your tenants', descriptionTranslationKey: 'Manage your tenants' },
     { label: 'Editions', labelTranslationKey: 'Editions', id: '', permissionName: 'Saas.Editions', icon: 'editions', path: '/pages/edition', description: 'Manage editions and features of the application', descriptionTranslationKey: 'Manage editions and features of the application' },
-    // { label: 'Api Scopes', id: 'ApiScope', permissionName: '', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
+    { label: 'Api Scopes', id: 'ApiScope', permissionName: '', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
     { label: 'Text Template', labelTranslationKey: 'Text Template', id: '', permissionName: '', icon: 'home', path: '/pages/text-template', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
 
     {
@@ -112,9 +112,12 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { label: 'Security-logs', labelTranslationKey: 'Security-logs', id: 'Security-logs', permissionName: 'Saas.Security-logs', icon: 'tenant', path: '/pages/Security-logs', description: 'Manage your Security-logs', descriptionTranslationKey: 'Manage your Security-logs' },
 
     { label: 'UI Components', labelTranslationKey: 'UI Components', id: '', permissionName: '', icon: 'demo_ui', path: '/pages/demo-ui', description: '', descriptionTranslationKey: '' },
-    { label: 'Security-logs', labelTranslationKey: 'Cart', id: 'cart', permissionName: '' ,icon: 'tenant', path: '/pages/Security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
+    { label: 'Security-logs', labelTranslationKey: 'Cart', id: 'cart', permissionName: '' ,icon: 'tenant', path: '/pages/security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
+
     { label: 'Settings', labelTranslationKey: 'Settings', id: '', permissionName: '', icon: 'setting', path: '/pages/settings', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
     { label: 'Identity Resource', labelTranslationKey: 'Identity Resources', id: '', permissionName: '', icon: 'home', path: '/pages/identityResources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
+    { label: 'Api Resources', labelTranslationKey: 'Api Resources', id: '', permissionName: '', icon: 'home', path: '/pages/apiresources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
+
     // { label: 'Edition-New', labelTranslationKey: 'Edition-New', id: '', permissionName: '', icon: 'home', path: '/pages/editionnew', description: '', descriptionTranslationKey: '' },
   ];
 
@@ -229,7 +232,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           element.style.display = (element.style.display === 'none') ? 'block' : 'none'
         },
         onLanguageSelection: (lan) => {
-          this.translate.use(lan);
+           this.translate.use('en');
           //this.store.dispatch(setDefaultLanguageForUI(lan))
 
         },
@@ -609,7 +612,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   public getSideNavItems(): any {
-    this.sidenavItems = this.translateMenu(this.sidenavItems);
+    // this.sidenavItems = this.translateMenu(this.sidenavItems);
     return this.sidenavItems;
   }
 
@@ -622,7 +625,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     })
     return sidenavItems
   }
-}
+} 
 
 
 

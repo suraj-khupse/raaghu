@@ -3,26 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsTextareaModule } from '@libs/rds-elements';
-import { SharedModule } from '@libs/shared';
+import { RdsButtonModule,RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ApiBasicsComponent } from './api-basics/api-basics.component';
-import { ApiClaimsComponent } from './api-claims/api-claims.component';
-import { ApiSecretsComponent } from './api-secrets/api-secrets.component';
-import { ApiPropertiesComponent } from './api-properties/api-properties.component';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompBasicResourcesModule } from 'projects/rds-components/src/app/rds-comp-basic-resource/rds-comp-basic-resources.module';
+import { RdsCompClientResourcesModule } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.module';
+import { RdsCompPropertiesModule } from 'projects/rds-components/src/app/rds-comp-properties/rds-comp-properties.module';
+import { RdsCompSecretsModule } from 'projects/rds-components/src/app/rds-comp-secrets/rds-comp-secrets.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApiBasicsComponent,
-    ApiClaimsComponent,
-    ApiSecretsComponent,
-    ApiPropertiesComponent,
   ],
   imports: [
-    BrowserModule,
     SharedModule,
+    CommonModule,
+    RdsCompDataTableModule,
+    RdsCompBasicResourcesModule,
+    RdsCompClientResourcesModule,
+    RdsCompPropertiesModule,
+    RdsCompSecretsModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
@@ -30,10 +32,8 @@ import { ApiPropertiesComponent } from './api-properties/api-properties.componen
     RdsButtonModule,
     RdsOffcanvasModule,
     RdsNavTabModule,
-    RdsInputModule,
-    RdsTextareaModule,
-    RdsCheckboxModule,
-    RdsDatepickerModule
+    NgxTranslateModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

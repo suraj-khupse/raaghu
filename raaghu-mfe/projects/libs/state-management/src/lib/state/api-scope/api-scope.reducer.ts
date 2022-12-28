@@ -1,11 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { deleteApiScope, deleteApiScopeSuccess, getAllApiScope, getAllApiScopeFailure, getAllApiScopeSuccess, saveApiScope, saveApiScopeFailure, saveApiScopeSuccess, updateApiScope, updateApiScopeFailure, updateApiScopeSuccess } from "./api-scope-action";
+import { claimTypesAll, claimTypesAllSuccess, deleteApiScope, deleteApiScopeSuccess, getAllApiScope, getAllApiScopeFailure, getAllApiScopeSuccess, getApiScope, getApiScopeSuccess, saveApiScope, saveApiScopeFailure, saveApiScopeSuccess, updateApiScope, updateApiScopeFailure, updateApiScopeSuccess } from "./api-scope-action";
 
 
 export interface ScopeState {
     allScope:any;
     apiScope:any;
     error: string;
+    claims:any;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
 
@@ -14,6 +15,7 @@ export const ScopeInitialState: ScopeState = {
     allScope:null,
     apiScope:null,
     error: null,
+    claims: null,
     status: 'pending',
 };
 
@@ -33,6 +35,13 @@ export const ScopesReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
+    })),
+
+    on(getApiScope , (state) => ({ ...state, status: 'loading' })),
+    on(getApiScopeSuccess ,(state, {apiScope})=> ({
+        ...state,
+        apiScope: apiScope,
+        status: 'success'
     })),
 
     on(saveApiScope, (state) => ({ ...state, status: 'loading' })),
@@ -63,5 +72,13 @@ export const ScopesReducer = createReducer(
         ...state,
         error: error,
         status: 'error'
-    }))
+    })),
+
+    on(claimTypesAll, (state)=>({...state,status:'loading'})),
+    on(claimTypesAllSuccess, (state, { claims}) => ({
+      ...state,
+        claims: claims,  
+        error: null,
+        status: 'success',
+    })),
 )

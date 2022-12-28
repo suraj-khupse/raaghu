@@ -32,7 +32,7 @@ module.exports = {
       exposes: {
         './RdsLogin': './projects/rds-components/src/app/rds-comp-login/rds-comp-login.component.ts',
         './RdsAddressInput': './projects/rds-components/src/app/rds-comp-address-input/rds-comp-address-input.component.ts',
-        // './RdsDataTable': './projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component.ts',
+        
         './RdsTopNavigation': './projects/rds-components/src/app/rds-comp-top-navigation/rds-comp-top-navigation.component.ts',
         './RdsAdminDashboard': './projects/rds-components/src/app/rds-comp-admin-dashboard/rds-comp-admin-dashboard.component.ts',
         './RdsForgotPassword': './projects/rds-components/src/app/rds-comp-forgot-password/rds-comp-forgot-password.component.ts',

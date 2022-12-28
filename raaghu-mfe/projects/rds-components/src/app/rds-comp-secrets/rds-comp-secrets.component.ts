@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ComponentLoaderOptions } from '@libs/shared';
+
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
 
@@ -20,13 +20,13 @@ export class RdsCompSecretsComponent implements OnInit, OnChanges {
   ];
   @Input() apiSecretsTableData: any[] = [];
   @Input() showSecretForm = false;
-
   // Output Decorators
   @Output() secretDataInfo = new EventEmitter();
 
+
   // Properties
   secretList: any[] = [];
-  secretListShow: any[] = [];
+
   secretData: any = {
     type: '',
     value: '',
@@ -77,8 +77,10 @@ export class RdsCompSecretsComponent implements OnInit, OnChanges {
         expiration: this.secretData.expiration,
         description: this.secretData.description
       };
+
       this.secretList.push(item);
       this.secretDataInfo.next(this.secretList);
+
       // secretForm.form.value.expiration = this.selectedEndDate;
       secretForm.reset();
       // this.selectedEndDate = '';

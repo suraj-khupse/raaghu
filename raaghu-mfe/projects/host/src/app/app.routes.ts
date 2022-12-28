@@ -200,7 +200,7 @@ export const APP_ROUTES: Routes = [
 
       },
       {
-        path: 'Security-logs',
+        path: 'securitylogs',
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',

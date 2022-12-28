@@ -14,7 +14,7 @@ export const getAllApiScopeFailure = createAction(
 
 export const getApiScope = createAction(
   '[Api scope page] Get Api-scope',
-  (id:any) => ( id ));
+  (id:any) => ( {id} ));
 
 export const getApiScopeSuccess = createAction(
   '[Api scope page] Get Api Scope Success',
@@ -40,7 +40,7 @@ export const updateApiScopeFailure = createAction(
 
 export const saveApiScope = createAction(
     '[Api scope page] Save Api scope page',
-    (data) => ( data )
+    (data) => ( {data} )
     );
 
 export const saveApiScopeSuccess = createAction(
@@ -55,7 +55,7 @@ export const saveApiScopeFailure = createAction(
 
 export const deleteApiScope = createAction(
     '[Api scope page] delete Api Scope',
-    (data) => ( data )
+    (id) => ( {id} )
     );
 
 export const deleteApiScopeSuccess = createAction(
@@ -65,5 +65,12 @@ export const deleteApiScopeSuccess = createAction(
 export const deleteApiScopeFailure = createAction(
     '[Api scope page] delete Api Scope Failure',
     props<{ error: string }>()
+);
+
+export const  claimTypesAll = createAction('[Identity-Resources Page] Get Claims',);
+
+export const claimTypesAllSuccess = createAction(
+    '[Identity-Resources Page] Get Claims Success Failure',
+     props<{ claims: any }>()
 );
 

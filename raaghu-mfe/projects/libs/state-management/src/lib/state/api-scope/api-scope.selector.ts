@@ -15,3 +15,8 @@ export const selectApiScope = createSelector(
     selectScope,
     (state: ScopeState) => state.apiScope
 );
+
+export const selectClaimTypesAll = createSelector(
+    selectScope,
+    (state: ScopeState) => state.claims
+)

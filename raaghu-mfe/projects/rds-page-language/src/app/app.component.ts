@@ -57,8 +57,8 @@ export class AppComponent implements OnInit {
   @Input() listItems = [
     { value: 'New Language', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
   ];
-  // isShimmer: boolean = false;
-  // EditShimmer: boolean = false;
+  isShimmer: boolean = false;
+  EditShimmer: boolean = false;
   languageCanvasTitle = 'New Language';
   buttonSpinnerForNewLanguage: boolean = true;
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
@@ -107,7 +107,7 @@ export class AppComponent implements OnInit {
         inlineEdit: false,
         actions: [{ id: 'edit', displayName: 'Edit' },{ id: 'delete', displayName: 'Delete' }],
         noDataTitle: 'Currently you do not have language',
-        // isShimmer: true,
+        isShimmer: true,
       },
       output: {
         onActionSelection: (event: any) => {
@@ -115,10 +115,9 @@ export class AppComponent implements OnInit {
             this.store.dispatch(deleteLanguage(event.selectedData.id))
           }else if (event.actionId === 'edit') {
             this.languageCanvasTitle = 'Edit Language';
-            this.selectedLanguage = JSON.parse(JSON.stringify(event.selectedData));
-              this.store.dispatch(getLanguageForEdit({id:event.selectedData.id}))
-
-            // }
+            this.selectedLanguage = event.selectedData;
+             this.store.dispatch(getLanguageForEdit({id:event.selectedData.id}));
+             
             this.openCanvas(true)
           }
         },
@@ -195,7 +194,14 @@ export class AppComponent implements OnInit {
           res.forEach((element: any) => {
           const item: any = {
             value: element.name,
-            displayText: element.displayName,
+            some: element.displayName,
+            isSelected: element.isSelected,
+            icon: '',
+            iconWidth: 0,
+            iconHeight: 0,
+            iconFill: false,
+            iconStroke: true,
+            isFree: element.isFree
           }
           this.cultureList.push(item);
         });    
@@ -207,15 +213,16 @@ export class AppComponent implements OnInit {
     });
 
     this.store.select(selectLanguageInfo).subscribe(res=>{
-      if(res){
+      if(res && res.id){
         const data:any={
           displayName:res.displayName,
           isEnabled:res.isEnabled,
           id:res.id
         }
+
         const mfeConfig = this.rdsNewLanguageMfeConfig;
-        mfeConfig.input.selectedLanguageData = [...data]
-        this.rdsLanguageTableMfeConfig = mfeConfig
+        mfeConfig.input.selectedLanguageData = data;
+        this.rdsLanguageTableMfeConfig = mfeConfig;
       }
     })
     this.subscribeToAlerts();
@@ -223,6 +230,7 @@ export class AppComponent implements OnInit {
   openCanvas(edit: boolean = false): void {
     this.buttonSpinnerForNewLanguage = true;
     this.viewCanvas = true;
+   
     const mfeConfig = this.rdsNewLanguageMfeConfig;
     if (!edit) {
       this.languageCanvasTitle = 'NEW LANGUAGE';
@@ -231,10 +239,11 @@ export class AppComponent implements OnInit {
     } else {
       this.languageCanvasTitle = 'Edit Language';
       mfeConfig.input.editOffCanvas = true;
-      this.rdsNewLanguageMfeConfig =mfeConfig
+      this.rdsNewLanguageMfeConfig =mfeConfig;
     }
     const rdsNewLanguageMfeConfig = this.rdsNewLanguageMfeConfig;
     rdsNewLanguageMfeConfig.input.selectedLanguage = this.selectedLanguage;
+    mfeConfig.input.selectedLanguageData = []
     this.rdsNewLanguageMfeConfig = rdsNewLanguageMfeConfig;
     setTimeout(() => {
       var offcanvas = document.getElementById('AddLanguage');
@@ -247,6 +256,7 @@ export class AppComponent implements OnInit {
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
     bsOffcanvas.hide();
     this.viewCanvas = false;
+    this.selectedLanguage = {}
     this.buttonSpinnerForNewLanguage = false;
   }
   subscribeToAlerts() {
