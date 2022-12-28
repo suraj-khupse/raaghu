@@ -12,6 +12,7 @@ import { RdsCompClientAdvancedComponent } from 'projects/rds-components/src/app/
 import { RdsCompClientBasicsComponent } from 'projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component';
 import { ResourceData } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.component';
 import { RdsCompPermissionTreeComponent } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.component';
+import { TableAction } from 'projects/rds-components/src/models/table-action.model';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 declare var bootstrap: any;
 
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit {
   activePage: number = 0;
   offcanvasId: string = 'client_canvas';
   isEdit = false;
-  rdsClientMfeConfig: ComponentLoaderOptions;
+  dataTableActions: TableAction[] = [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }];
   identityResourcesData: ResourceData[] = [];
   apiResourcesData: ResourceData[] = [];
   selectedResourceId: number;
@@ -138,33 +139,18 @@ export class AppComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    // Client Data Table
-    this.rdsClientMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableData: undefined,
-        tableHeaders: this.clientTableHeaders,
-        recordsPerPage: 10,
-        inlineEdit: false,
-        pagination: true,
-        isShimmer: false,
-        actions: [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }],
-        noDataTitle: 'Currently you do not have client'
-      },
-      output: {
-        onActionSelection: (event: any) => {
-          if (event.actionId == 'edit') {
-            this.isEdit = true;
-            this.actionId = event.actionId;
-            this.openCanvas(event.actionId);
-            this.getClientForEdit(event.selectedData.id)
-            this.getPermissionApi(event.selectedData.clientId);
-          }
-          else if (event.actionId == 'delete') this.store.dispatch(deleteClient(event.selectedData.id));
-        }
-      }
-    };
     this.getClientFn();
+  }
+
+  tableActionSelection(event: any) {
+    if (event.actionId == 'edit') {
+      this.isEdit = true;
+      this.actionId = event.actionId;
+      this.openCanvas(event.actionId);
+      this.getClientForEdit(event.selectedData.id)
+      this.getPermissionApi(event.selectedData.clientId);
+    }
+    else if (event.actionId == 'delete') this.store.dispatch(deleteClient(event.selectedData.id));
   }
 
   async getClientFn() {
@@ -226,7 +212,6 @@ export class AppComponent implements OnInit {
             const item: any = { clientId: element.clientId, clientName: element.clientName, description: element.description, id: element.id }
             this.clientList.push(item);
           });
-          this.rdsClientMfeConfig.input.tableData = this.clientList;
           resolve();
         };
       });
@@ -543,17 +528,5 @@ export class AppComponent implements OnInit {
     else if (this.actionId == 'edit' && this.updateClientData.data.clientName != '') return false;
     else return true;
   }
-
-  // getNavtabsItems() {
-  //   this.navtabsItems = [
-  //     { label: 'Basics', tablink: '#basics', ariacontrols: 'basics' },
-  //     { label: 'Secrets', tablink: '#secrets', ariacontrols: 'secrets' },
-  //     { label: 'Resources', tablink: '#resources', ariacontrols: 'resources' },
-  //     { label: 'Permissions', tablink: '#permissions', ariacontrols: 'permissions' },
-  //     { label: 'Advanced', tablink: '#advanced', ariacontrols: 'advanced' }
-  //   ];
-  //   if (this.actionId == 'edit') return this.navtabsItems;
-  //   else if (this.actionId == 'new') return this.navtabsItems;
-  // }
 
 }

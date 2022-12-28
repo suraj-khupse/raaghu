@@ -63,8 +63,8 @@ import { RdsCompNewLanguageComponent } from './rds-comp-new-language/rds-comp-ne
 // import { RdsCompPropertiesComponent } from './rds-comp-properties/rds-comp-properties.component';
 import { RdsCompCacheComponent } from './rds-comp-cache/rds-comp-cache.component';
 import { RdsCompWebsiteLogComponent } from './rds-comp-website-log/rds-comp-website-log.component';
-import { RdsCompSecretsComponent } from './rds-comp-secrets/rds-comp-secrets.component';
-import { RdsCompClientBasicsComponent } from './rds-comp-client-basics/rds-comp-client-basics.component';
+// import { RdsCompSecretsComponent } from './rds-comp-secrets/rds-comp-secrets.component';
+// import { RdsCompClientBasicsComponent } from './rds-comp-client-basics/rds-comp-client-basics.component';
 // import { RdsCompClientResourcesComponent } from './rds-comp-client-resources/rds-comp-client-resources.component';
 import { RdsCompUserBasicsComponent } from './rds-comp-user-basics/rds-comp-user-basics.component';
 import { RdsCompUserPermissionsComponent } from './rds-comp-user-permissions/rds-comp-user-permissions.component';
@@ -216,8 +216,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     // RdsCompPropertiesComponent,
     RdsCompCacheComponent,
     RdsCompWebsiteLogComponent,
-    RdsCompSecretsComponent,
-    RdsCompClientBasicsComponent,
+    // RdsCompSecretsComponent,
+    // RdsCompClientBasicsComponent,
     // RdsCompClientResourcesComponent,
     RdsCompUserBasicsComponent,
     RdsCompUserPermissionsComponent,

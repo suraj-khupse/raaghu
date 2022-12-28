@@ -5,7 +5,10 @@
     </rds-button>
   </div>
   <div class="col-md-12 m-1">
-    <mfe-loader [config]="rdsClientMfeConfig"></mfe-loader>
+    <rds-data-table [tableData]="clientList" [tableHeaders]="clientTableHeaders" [recordsPerPage]="10"
+      [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="dataTableActions"
+      [noDataTitle]="'Currently you do not have client'" (onActionSelection)="tableActionSelection($event)">
+    </rds-data-table>
   </div>
 </div>
 <ng-container *ngIf="viewCanvas">
