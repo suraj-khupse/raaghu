@@ -85,7 +85,7 @@ outline.args = {
 
 export const rounded_Button_With_Icon = Template.bind({});
 rounded_Button_With_Icon.parameters = { controls: { include: ['buttonId','isFabIcon', 'colorVariant', 'size', 'icon', 
-'iconHeight', 'iconWidth', 'isIconFill', 'isIconStroke', 'tooltipPlacement', 'tooltipTitle','onClick'] } };
+'iconHeight', 'iconWidth', 'isIconFill', 'tooltipPlacement', 'tooltipTitle','onClick'] } };
 rounded_Button_With_Icon.args = {
   buttonId:'',
   icon: 'plus',
@@ -94,7 +94,6 @@ rounded_Button_With_Icon.args = {
   iconHeight: '18px',
   iconWidth: '18px',
   isIconFill: false,
-  isIconStroke: true,
   isFabIcon: true,
   //buttonType: 'iconOnly',
   tooltipPlacement: 'right',
@@ -126,7 +125,7 @@ block_Button.args = {
 };
 
 export const with_Icon_And_Label = Template.bind({});
-with_Icon_And_Label.parameters = { controls: { include: ['buttonId','colorVariant', 'label', 'size', 'icon', 'iconHeight', 'iconWidth', 'isIconFill', 'isIconStroke','onClick'] } };
+with_Icon_And_Label.parameters = { controls: { include: ['buttonId','colorVariant', 'label', 'size', 'icon', 'iconHeight', 'iconWidth', 'isIconFill', 'onClick'] } };
 with_Icon_And_Label.args = {
   buttonId:'',
   icon: 'plus',
@@ -136,7 +135,6 @@ with_Icon_And_Label.args = {
   iconHeight: '18px',
   iconWidth: '18px',
   isIconFill: false,
-  isIconStroke: true,
   //buttonType: 'iconLabel'
 };
 export const tooltip = tooltipTemplate.bind({});

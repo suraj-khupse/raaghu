@@ -2227,13 +2227,48 @@ rds-comp-admin-dashboard {
     
   }
 }
-rds-icon {
-  display: flex;
-  align-items: center;
-}
+
 .cursor-pointer {
   cursor: pointer;
 }
 .form-control:disabled {
   cursor: no-drop;
+}
+.btn:disabled {
+  pointer-events: auto;
+  cursor: no-drop;
+}
+.btn-outline-light {
+  color: #3f3f3f;
+}
+
+rds-popular-pages {
+  svg {
+    stroke-width:1.5;
+  }
+
+  rds-icon {
+    display: grid;
+  }
+}
+rds-stat {
+
+  rds-icon {
+    display: grid;
+  }
+}
+rds-breadcrumb {
+  rds-icon {
+    display: grid;
+  }
+}
+rds-alert {
+  rds-icon {
+    display: grid;
+  }
+}
+rds-fab-menu {
+  rds-icon {
+    display: inline-flex;
+  }
 }

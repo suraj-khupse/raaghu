@@ -872,6 +872,7 @@ $form-select-bg1: $input-bg !default;
 $form-select-border-color1: $gray-400 !default;
 $shimmerbg: $light-700 !default;
 
+
 .ngx-shimmer {
   background-color: $light-600;
   background-image: linear-gradient(to right, $light-800 0, $primary 20%, $light-800 40%, $light-800 100%);
@@ -2497,4 +2498,39 @@ rds-stat {
   rds-icon {
     display: grid;
   }
+}
+rds-breadcrumb {
+  rds-icon {
+    display: grid;
+  }
+}
+rds-alert {
+  rds-icon {
+    display: grid;
+  }
+}
+rds-fab-menu {
+  rds-icon {
+    display: inline-flex;
+  }
+}
+.btn:disabled {
+  pointer-events: auto;
+  cursor: no-drop;
+}
+.btn-outline-light {
+  color: #3f3f3f;
+}
+.carousel-indicators [data-bs-target] {
+  width: 30px;
+  height: 30px;
+  border: 0px;
+  border-radius:4px;
+
+}
+.carousel-indicators .active {
+  border: 0px;
+}
+.dropdown-toggle::after{
+    color:white;
 }
