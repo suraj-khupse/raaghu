@@ -477,74 +477,7 @@ body.dark-theme {
     box-shadow: none;
   }
 
-  .toast-primary {
-    --bs-alert-color: #084298;
-    --bs-alert-bg: #cfe2ff;
-    --bs-alert-border-color: #b6d4fe;
-  }
-
-  .toast-secondary {
-    --bs-alert-color: #41464b;
-    --bs-alert-bg: #e2e3e5;
-    --bs-alert-border-color: #d3d6d8;
-  }
-
-  .toast-success {
-    --bs-alert-color: #0f5132;
-    --bs-alert-bg: #d1e7dd;
-    --bs-alert-border-color: #badbcc;
-  }
-
-  .toast-danger {
-    --bs-alert-color: #842029;
-    --bs-alert-bg: #f8d7da;
-    --bs-alert-border-color: #f5c2c7;
-  }
-
-  .toast-warning {
-    --bs-alert-color: #664d03;
-    --bs-alert-bg: #fff3cd;
-    --bs-alert-border-color: #ffecb5;
-  }
-
-  .toast-info {
-    --bs-alert-color: #055160;
-    --bs-alert-bg: #cff4fc;
-    --bs-alert-border-color: #b6effb;
-  }
-
-  .toast-light {
-    --bs-alert-color: #636464;
-    --bs-alert-bg: #fefefe;
-    --bs-alert-border-color: #fdfdfe;
-  }
-
-  .toast-dark {
-    --bs-alert-color: #141619;
-    --bs-alert-bg: #d3d3d4;
-    --bs-alert-border-color: #bcbebf;
-  }
-}
-.tag-primary {
-  background-color: #e5d5fc;
-  border-color: #d8c0fa;
-  color: #6525bf;
-}
-.tag-success {
-  background-color: #d5fcde;
-  border-color: #c0facd;
-  color: #25bf47;
-}
-
-.tag-info {
-  background-color: #d8fcfa;
-  border-color: #c5fbf8;
-  color: #32c1ba;
-}
-.tag-danger {
-  background-color: #fcd5d5;
-  border-color: #fac0c0;
-  color: #bf2525;
+  
 }
 
 @import "./node_modules/bootstrap/scss/functions";
@@ -700,6 +633,13 @@ $counter-color-scale: -80%;
 $alert-color-scale: 40% !default;
 $alert-bg-scale: -80% !default;
 $alert-border-scale: -70% !default;
+
+
+/*toast mixins color variables*/
+
+$toast-color-scale: 40% !default;
+$toast-bg-scale: -80% !default;
+$toast-border-scale: -70% !default;
 
 // /*icon mixins color variable*/
 $icon-color-scale: 40% !default;
@@ -1062,6 +1002,7 @@ svg {
     //border-color:$primary;
   }
 }
+
 // /*avatar color variables*/
 @mixin avatar-variant($background, $border, $color) {
   @include gradient-bg($background);
@@ -1913,6 +1854,58 @@ $form-feedback-color: $gray-700;
     }
   }
 }
+@mixin toast-variant($background, $border, $color) {
+  color: $color;
+}
+
+@each $state, $value in $theme-colors {
+  $toast-background: shift-color($value, $toast-bg-scale);
+  $toast-border: shift-color($value, $toast-border-scale);
+  $toast-color: shift-color($value, $toast-color-scale);
+
+  @if (contrast-ratio($toast-background, $toast-color) < $min-contrast-ratio) {
+    $toast-color: mix($value, color-contrast($toast-background), abs($toast-color-scale));
+  }
+
+  @each $color, $value in $theme-colors {
+    .toast-#{$color} {
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: $toast-color;
+
+        polyline.icon {
+          stroke: $toast-color;
+        }
+
+        polygon.icon {
+          stroke: $toast-color;
+        }
+
+        ellipse.icon {
+          stroke: $toast-color;
+        }
+
+        path.icon {
+          stroke: $toast-color;
+        }
+
+        line.icon {
+          stroke: $toast-color;
+        }
+
+        rect.icon {
+          stroke: $toast-color;
+        }
+
+        circle.icon {
+          stroke: $toast-color;
+        }
+      }
+    }
+  }
+}
 
 @mixin alert-variant($background, $border, $color) {
   color: $color;
@@ -2753,4 +2746,45 @@ html[theme=dark] #sidebar.toggle .btn-color-mode-switch input[type="checkbox"]:c
 
 .btn-color-mode-switch input[type="checkbox"]:checked ~ .alert {
   display: block;
+}
+.toast-primary {
+  border-left: 7px solid;
+  border-radius: 5px;
+  border-color: #a7d4fa;
+}
+
+.toast-success {
+  border-left: 7px solid;
+  border-color: #a2e4af;
+  border-radius: 5px;
+}
+
+.toast-danger {
+  border-left: 7px solid #dc3545;
+  border-radius: 5px;
+}
+
+.toast-warning {
+  border-radius: 5px;
+  border-left: 7px solid;
+  border-color: #ffecb5;
+}
+.toast-dark {
+  border-radius: 5px;
+  border-left: 7px solid;
+  border-color: #bcbebf;
+}
+.toast-info {
+  border-radius: 5px;
+  border-left: 7px solid;
+  border-color: #b6effb;
+}
+.toast-secondary {
+  border-radius: 5px;
+  border-left:7px solid;
+  border-color: #d3d6d8;
+}
+.toast .btn-close {
+  opacity: 1;
+  background-size: 10px;
 }

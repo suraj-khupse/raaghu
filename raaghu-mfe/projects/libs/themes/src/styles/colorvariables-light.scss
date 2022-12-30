@@ -219,6 +219,11 @@ $nav-tabs-bottom-border-color: $light-100 !default;
 
 $file-uploder-multiple-bg: $input-bg !default;
 
+
+$toast-color-scale: 40% !default;
+$toast-bg-scale: -80% !default;
+$toast-border-scale: -70% !default;
+
 //datatable-first-child-bgcolor
 $datatable-bgColor: $white !default;
 .ngx-shimmer {
@@ -1301,7 +1306,58 @@ $form-feedback-color: $gray-700;
     }
   }
 }
+@mixin toast-variant($background, $border, $color) {
+  color: $color;
+}
 
+@each $state, $value in $theme-colors {
+  $toast-background: shift-color($value, $toast-bg-scale);
+  $toast-border: shift-color($value, $toast-border-scale);
+  $toast-color: shift-color($value, $toast-color-scale);
+
+  @if (contrast-ratio($toast-background, $toast-color) < $min-contrast-ratio) {
+    $toast-color: mix($value, color-contrast($toast-background), abs($toast-color-scale));
+  }
+
+  @each $color, $value in $theme-colors {
+    .toast-#{$color} {
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: $toast-color;
+
+        polyline.icon {
+          stroke: $toast-color;
+        }
+
+        polygon.icon {
+          stroke: $toast-color;
+        }
+
+        ellipse.icon {
+          stroke: $toast-color;
+        }
+
+        path.icon {
+          stroke: $toast-color;
+        }
+
+        line.icon {
+          stroke: $toast-color;
+        }
+
+        rect.icon {
+          stroke: $toast-color;
+        }
+
+        circle.icon {
+          stroke: $toast-color;
+        }
+      }
+    }
+  }
+}
 @mixin alert-variant($background, $border, $color) {
   color: $color;
 }
