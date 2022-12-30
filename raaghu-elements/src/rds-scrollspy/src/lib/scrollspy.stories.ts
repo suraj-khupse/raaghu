@@ -3,6 +3,7 @@ import { moduleMetadata } from "@storybook/angular";
 import { Meta, Story } from "@storybook/angular";
 import { ScrollspyItemComponent } from "./scrollspy-item/scrollspy-item.component";
 import { RdsScrollspyComponent } from "./rds-scrollspy.component";
+import { RdsIconModule } from '@libs/rds-icon';
 
 export default {
     title: 'Elements/Scrollspy',
@@ -10,7 +11,7 @@ export default {
     decorators: [
         moduleMetadata({
           declarations: [RdsScrollspyComponent, ScrollspyItemComponent],
-          imports: [CommonModule],
+          imports: [CommonModule, RdsIconModule],
         }),
       ],
     argTypes: {
@@ -33,7 +34,7 @@ props: { ...args },
 template: `
 <div>
 <div id="scrollspy">
-<nav class="navbar navbar-light">
+<nav class="navbar navbar-light px-4">
       <ul class="nav nav-pills gap-3">
        <li class="nav-item">
          <a class="nav-link text-uppercase rounded" target="_self" href="#scrollspyHeading1">First</a>

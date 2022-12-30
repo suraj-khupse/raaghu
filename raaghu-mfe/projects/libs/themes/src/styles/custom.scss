@@ -2272,3 +2272,17 @@ rds-fab-menu {
     display: inline-flex;
   }
 }
+rds-nav-tab {
+  rds-icon {
+    display: grid;
+  }
+}
+.scrolltotop {
+  border-radius: 50%;
+  border: 1px solid transparent;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 35px;
+  height: 35px;
+}
