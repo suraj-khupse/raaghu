@@ -71,7 +71,7 @@
     "@angular-devkit/build-angular": "13.3.3",
     "@angular/cli": "13.1.2",
     "@angular/compiler-cli": "13.1.1",
-    "@babel/core": "7.17.9",
+    "@babel/core": "7.20.7",
     "@compodoc/compodoc": "1.1.19",
     "@mdx-js/react": "2.1.1",
     "@storybook/addon-actions": "6.5.9",
