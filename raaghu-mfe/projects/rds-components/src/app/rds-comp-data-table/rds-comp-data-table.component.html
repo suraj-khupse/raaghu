@@ -150,7 +150,7 @@
                     else nonTemplateData
                   "
                 >
-                  <span [title]="data[column.key]">******</span>
+                  <td [title]="data[column.key]" class="pt-3"><span >******</span></td>
                 </ng-container>
               </ng-template>
               <ng-template #nonTemplateData>
@@ -332,7 +332,10 @@
   </ng-container>
 </div>
 <ng-template #emptyTemplate>
-  <div class="my-5 py-5 d-flex align-items-center justify-content-center">
+  <div
+    class="my-5 py-5 d-flex align-items-center justify-content-center"
+    *ngIf="showIllustration"
+  >
     <div class="text-center">
       <div class="mb-3">
         <rds-icon name="file_plus" height="100px" width="100px"></rds-icon>

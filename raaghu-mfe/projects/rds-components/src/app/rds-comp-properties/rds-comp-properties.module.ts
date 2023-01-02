@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompPropertiesComponent } from './rds-comp-properties.component';
 import { FormsModule } from '@angular/forms';
-import { RdsButtonModule, RdsCheckboxModule, RdsIconModule, RdsInputModule, RdsLabelModule, RdsModalModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsIconModule, RdsIllustrationModule, RdsInputModule, RdsLabelModule, RdsModalModule, RdsPaginationModule } from '@libs/rds-elements';
 // import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
 import { RdsCompPropertiesShimmerComponent } from './rds-comp-properties-shimmer/rds-comp-properties-shimmer.component';
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
@@ -24,6 +24,7 @@ import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-tab
     FormsModule,
     RdsButtonModule,
     RdsInputModule,
+    RdsIllustrationModule,
     RdsPaginationModule,
     RdsInputModule,
     RdsIconModule,

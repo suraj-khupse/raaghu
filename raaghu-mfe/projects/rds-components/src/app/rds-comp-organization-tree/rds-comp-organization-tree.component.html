@@ -10,11 +10,12 @@
       <span #nodeLabel class="mt-1 node-label d-flex ">
         <span class="mr-5" (click)="onClicknode(node)" [class.text-primary]="node.selected">{{ node.data?.displayName
           }}</span>
-        <rds-icon height="15px" [nestGroup]="nodeLabel"  [fill]="false" [stroke]="true" width="15px"
+          <!-- [nestGroup]="nodeLabel" -->
+        <rds-icon height="15px"   [fill]="false" [stroke]="true" width="15px"
           name="plus" (click)="addNestedNode(node)" class="pl-3 mx-2"></rds-icon>
-        <rds-icon height="15px" [nestGroup]="nodeLabel"  [fill]="false" [stroke]="true" width="15px"
+        <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px"
           name="pencil" (click)="onEdit(node)" class="mx-2 pointer"></rds-icon>
-        <rds-icon height="15px" [nestGroup]="nodeLabel"  [fill]="false" [stroke]="true" width="15px"
+        <rds-icon height="15px"  [fill]="false" [stroke]="true" width="15px"
           name="delete" (click)="deleteConfirmation(node)" class="mx-2"> </rds-icon>
       </span>
     </div>

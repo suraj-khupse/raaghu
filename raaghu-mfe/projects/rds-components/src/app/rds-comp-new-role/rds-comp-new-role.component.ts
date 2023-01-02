@@ -64,30 +64,30 @@ export class RdsCompNewRoleComponent implements OnInit {
     }
   
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (!this.roleData) {
-  //     this.roleData = {};
-  //     this.roleData['name'] = '';
-  //     this.roleData['id'] = undefined;
-  //     this.roleData['isDefault'] = false;
-  //     this.roleData['isPublic'] = false;
-  //   }
-  // }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.roleData) {
+      this.roleData = {};
+      this.roleData['name'] = '';
+      this.roleData['id'] = undefined;
+      this.roleData['isDefault'] = false;
+      this.roleData['isPublic'] = false;
+    }
+  }
 
-  // addRole(Roleform: NgForm): void {
-  //   Roleform.form.markAllAsTouched();
-  //   this.buttonSpinner = true;
-  //   if (!Roleform || Roleform.invalid) return;
-  //   if (Roleform.form.value.isDefault == undefined || null) Roleform.form.value.isDefault = false;
-  //   if (Roleform.form.value.isPublic == undefined || null) Roleform.form.value.isPublic = false;
-  //   this.RoleInfo.emit({ role: Roleform.form.value, isOnSave: true });
-  // }
+  addRole(Roleform: NgForm): void {
+    Roleform.form.markAllAsTouched();
+    this.buttonSpinner = true;
+    if (!Roleform || Roleform.invalid) return;
+    if (Roleform.form.value.isDefault == undefined || null) Roleform.form.value.isDefault = false;
+    if (Roleform.form.value.isPublic == undefined || null) Roleform.form.value.isPublic = false;
+    this.RoleInfo.emit({ role: Roleform.form.value, isOnSave: true });
+  }
 
-  // onCanceledRole(Roleform: NgForm) {
-  //   Roleform.reset();
-  //   this.onCancel.emit(true);
-  //   this.buttonSpinner = false;
-  // }
+  onCanceledRole(Roleform: NgForm) {
+    Roleform.reset();
+    this.onCancel.emit(true);
+    this.buttonSpinner = false;
+  }
   }
 
 
