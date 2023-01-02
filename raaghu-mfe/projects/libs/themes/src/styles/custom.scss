@@ -4,6 +4,7 @@
   --bs-font-sans-serif: 'Poppins', sans-serif;
   --bs-font-monospace: 'Fira Code', monospace;
   --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-datepicker-zindex: 1046;
 }
 
 $font-family-sans-serif: 'Poppins', sans-serif !default;
@@ -1183,4 +1184,8 @@ rds-product-image .imgWidth {
 
 .fs-8 {
   font-size: .50rem !important;
+}
+
+bs-datepicker-container {
+  z-index: var(--bs-datepicker-zindex);
 }

@@ -71,7 +71,6 @@ import { RdsCompsUserClaimsComponent } from './rds-comps-user-claims/rds-comps-u
 import { RdsCompVisualSettingsComponent } from './rds-comp-visual-settings/rds-comp-visual-settings.component';
 import { RdcCompApiScopeBasicsComponent } from './rdc-comp-api-scope-basics/rdc-comp-api-scope-basics.component';
 import { RdcCompApiScopeResourcesComponent } from './rdc-comp-api-scope-resources/rdc-comp-api-scope-resources.component';
-import { RdsCompNewRoleComponent } from './rds-comp-new-role/rds-comp-new-role.component';
 // import { RdsCompPermissionTreeComponent } from './rds-comp-permission-tree/rds-comp-permission-tree.component';
 import { RdsCompTenantDashboardComponent } from './rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component';
 import { RdsCompAlertComponent } from './rds-comp-alert/rds-comp-alert.component';
@@ -82,7 +81,6 @@ import { RdsCompPlanInformationComponent } from './rds-comp-plan-information/rds
 import { RdsCompVisualSettingsShimmerComponent } from './rds-comp-visual-settings/rds-comp-visual-settings-shimmer/rds-comp-visual-settings-shimmer.component';
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { RdsCompFeaturesEditShimmerComponent } from './rds-comp-features/rds-comp-features-edit-shimmer/rds-comp-features-edit-shimmer.component';
-import { RdsCompNewRoleShimmerComponent } from './rds-comp-new-role/rds-comp-new-role-shimmer/rds-comp-new-role-shimmer.component';
 import { RdsCompUserBasicsShimmerComponent } from './rds-comp-user-basics/rds-comp-user-basics-shimmer/rds-comp-user-basics-shimmer.component';
 import { RdsCompsUserClaimsShimmerComponent } from './rds-comps-user-claims/rds-comps-user-claims-shimmer/rds-comps-user-claims-shimmer.component';
 import { RdsCompUserManagementShimmerComponent } from './rds-comp-user-management/rds-comp-user-management-shimmer/rds-comp-user-management-shimmer.component';
@@ -94,8 +92,6 @@ import { RdsCompTenantInformationShimmerComponent } from './rds-comp-tenant-info
 import { RdsCompSubscriptionShimmerComponent } from './rds-comp-subscription/rds-comp-subscription-shimmer/rds-comp-subscription-shimmer.component';
 import { RdsCompSecurityShimmerComponent } from './rds-comp-security/rds-comp-security-shimmer/rds-comp-security-shimmer.component';
 import { RdsCompOrganizationTreeShimmerComponent } from './rds-comp-organization-tree/rds-comp-organization-tree-shimmer/rds-comp-organization-tree-shimmer.component';
-// import { RdsCompPropertiesShimmerComponent } from './rds-comp-properties/rds-comp-properties-shimmer/rds-comp-properties-shimmer.component';
-import { RdsCompTableShimmerComponent } from './rds-comp-data-table/rds-comp-table-shimmer/rds-comp-table-shimmer.component';
 import { RdsCompFeedsComponent } from './rds-comp-feeds/rds-comp-feeds.component';
 import { RdsCompProductListComponent } from './rds-comp-product-list/rds-comp-product-list.component';
 import { RdsCompPageNotFoundComponent } from './rds-comp-page-not-found/rds-comp-page-not-found.component';
@@ -216,7 +212,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompUserPermissionsComponent,
     RdsCompsUserClaimsComponent,
     RdsCompVisualSettingsComponent,
-    RdsCompNewRoleComponent,
     RdcCompApiScopeBasicsComponent,
     RdcCompApiScopeResourcesComponent,
     // RdsCompPermissionTreeComponent,
@@ -228,7 +223,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompPlanInformationComponent,
     RdsCompVisualSettingsShimmerComponent,
     RdsCompFeaturesEditShimmerComponent,
-    RdsCompNewRoleShimmerComponent,
     RdsCompUserBasicsShimmerComponent,
     RdsCompsUserClaimsShimmerComponent,
     RdsCompUserManagementShimmerComponent,
@@ -240,8 +234,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompSubscriptionShimmerComponent,
     RdsCompSecurityShimmerComponent,
     RdsCompOrganizationTreeShimmerComponent,
-    // RdsCompPropertiesShimmerComponent,
-    RdsCompTableShimmerComponent,
     RdsCompPageNotFoundComponent,
     RdsCompFeedsComponent,
     RdsCompMarketingWebsiteNewsletterComponent,

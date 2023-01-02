@@ -35,17 +35,11 @@ export class RdsCompPropertiesComponent implements OnInit {
       displayName: 'Key',
       key: 'key',
       dataType: 'text',
-      dataLength: 30,
-      sortable: false,
-      required: true,
     },
     {
       displayName: 'Value',
       key: 'value',
       dataType: 'text',
-      dataLength: 30,
-      sortable: false,
-      required: true,
     },
   ];
 

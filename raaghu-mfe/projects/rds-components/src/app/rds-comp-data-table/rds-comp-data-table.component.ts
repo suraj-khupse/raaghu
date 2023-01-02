@@ -16,7 +16,7 @@ declare var bootstrap: any;
 @Component({
   selector: 'rds-data-table',
   templateUrl: './rds-comp-data-table.component.html',
-  styleUrls: ['./rds-comp-data-table.component.scss'],
+  styleUrls: ['./rds-comp-data-table.component.scss'], 
 })
 export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Input() tableData: any = [];
@@ -43,6 +43,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Input() resetPagination: boolean = false;
   @Input() refresh: boolean = false;
   @Input() isDeleteConfirmationRequired: boolean = true;
+  @Input() showIllustration: boolean = true;
   totalRecords: number = 0;
   @Input() recordsPerPage: number = 10;
   @Input() noDataTitle?: string;
@@ -477,9 +478,8 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
 
   transformDate(date): any {
     if (date !== null && date !== '' && date !== undefined) {
-      if(date.ts){
+      if (date.ts) {
         return this.datepipe.transform(new Date(date.ts), 'MM/dd/yyyy');
-
       }
       return this.datepipe.transform(new Date(date), 'MM/dd/yyyy');
     }
