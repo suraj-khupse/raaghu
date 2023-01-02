@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-rds-comp-tenant-basic-profile-right',
+  selector: 'rds-comp-tenant-basic-profile-right',
   templateUrl: './rds-comp-tenant-basic-profile-right.component.html',
   styleUrls: ['./rds-comp-tenant-basic-profile-right.component.scss']
 })

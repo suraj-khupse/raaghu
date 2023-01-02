@@ -64,7 +64,6 @@ import { RdsCompNewLanguageComponent } from './rds-comp-new-language/rds-comp-ne
 import { RdsCompCacheComponent } from './rds-comp-cache/rds-comp-cache.component';
 import { RdsCompWebsiteLogComponent } from './rds-comp-website-log/rds-comp-website-log.component';
 // import { RdsCompSecretsComponent } from './rds-comp-secrets/rds-comp-secrets.component';
-
 // import { RdsCompClientResourcesComponent } from './rds-comp-client-resources/rds-comp-client-resources.component';
 import { RdsCompUserBasicsComponent } from './rds-comp-user-basics/rds-comp-user-basics.component';
 import { RdsCompUserPermissionsComponent } from './rds-comp-user-permissions/rds-comp-user-permissions.component';
@@ -146,11 +145,6 @@ import { RdsCompTimelineComponent } from './rds-comp-timeline/rds-comp-timeline.
 import { RdsCompApplyForPositionComponent } from './rds-comp-apply-for-position/rds-comp-apply-for-position.component';
 import { RdsCompOpenPositionComponent } from './rds-comp-open-position/rds-comp-open-position.component';
 import { RdsCompNotificationSettingsComponent } from './rds-comp-notification-settings/rds-comp-notification-settings.component';
-import { RdsCompTenantBasicProfileRightComponent } from './rds-comp-tenant-basic-profile-right/rds-comp-tenant-basic-profile-right.component';
-import { RdsCompTenantListNewComponent } from './rds-comp-tenant-list-new/rds-comp-tenant-list-new.component';
-import { RdsCompTenantFeaturesComponent } from './rds-comp-tenant-features/rds-comp-tenant-features.component';
-import { RdsCompUserBasicProfileRightComponent } from './rds-comp-user-basic-profile-right/rds-comp-user-basic-profile-right.component';
-import { RdsCompUserPermissionsNewComponent } from './rds-comp-user-permissions-new/rds-comp-user-permissions-new.component';
 import { RdsCompAuditLogsNewComponent } from './rds-comp-audit-logs-new/rds-comp-audit-logs-new.component';
 import { RdsCompFeaturesListNewComponent } from './rds-comp-features-list-new/rds-comp-features-list-new.component';
 import { RdsCompEditionNewBasicComponent } from './rds-comp-edition-new-basic/rds-comp-edition-new-basic.component';
@@ -217,7 +211,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompCacheComponent,
     RdsCompWebsiteLogComponent,
     // RdsCompSecretsComponent,
-
     // RdsCompClientResourcesComponent,
     RdsCompUserBasicsComponent,
     RdsCompUserPermissionsComponent,
@@ -303,16 +296,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompOpenPositionComponent,
     RdsCompNotificationSettingsComponent,
 
-    RdsCompTenantBasicProfileRightComponent,
-    RdsCompTenantListNewComponent,
-    RdsCompTenantFeaturesComponent,
-
     RdsCompFeaturesListNewComponent,
     RdsCompEditionNewBasicComponent,
     RdsCompEditionNewFeaturesComponent,
-    
-    RdsCompUserBasicProfileRightComponent,
-    RdsCompUserPermissionsNewComponent,
     RdsCompAuditLogsNewComponent,
     RdsCompEmailSettingsNewComponent,
     RdsCompIdentityManagementNewComponent,

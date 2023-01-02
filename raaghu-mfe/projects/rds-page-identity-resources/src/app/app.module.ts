@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
 import { RdsCompClientResourcesModule } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.module';
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompPropertiesModule } from 'projects/rds-components/src/app/rds-comp-properties/rds-comp-properties.module';
 
 @NgModule({
   declarations: [
@@ -43,14 +44,12 @@ import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp
     RdsCompClientResourcesModule,
     RdsCompBasicResourcesModule,
     RdsAlertModule,
-    // RdsCompPropertiesModule,
+    RdsCompPropertiesModule,
     NgxTranslateModule.forRoot(),
-    
   ],
   providers: [
     TranslateService,
     TranslateStore
-
 ],
   bootstrap: [AppComponent]
 })

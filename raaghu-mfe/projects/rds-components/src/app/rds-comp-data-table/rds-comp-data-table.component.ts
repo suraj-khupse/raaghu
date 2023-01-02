@@ -1,4 +1,14 @@
-import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import {
+  Component,
+  DoCheck,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
@@ -6,14 +16,17 @@ declare var bootstrap: any;
 @Component({
   selector: 'rds-data-table',
   templateUrl: './rds-comp-data-table.component.html',
-  styleUrls: ['./rds-comp-data-table.component.scss']
+  styleUrls: ['./rds-comp-data-table.component.scss'],
 })
 export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Input() tableData: any = [];
   @Input() inlineEdit: boolean = true;
   @Input() enableCheckboxSelection: boolean = false;
   @Output() getAllCheckedItems = new EventEmitter<any>();
-  @Output() onActionSelection = new EventEmitter<{ selectedData: any, actionId: string }>();
+  @Output() onActionSelection = new EventEmitter<{
+    selectedData: any;
+    actionId: string;
+  }>();
   showConfirmationPopup: boolean = false;
   filteredArray: any = [];
   tempData: any = [];
@@ -25,7 +38,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Input() role: any = 'Advanced';
   @Input() tableStyle?: any = 'light';
   @Input() pagination: boolean = false;
-  @Input() alignmentType: any = "end";
+  @Input() alignmentType: any = 'end';
   @Input() actions: TableAction[] = [];
   @Input() resetPagination: boolean = false;
   @Input() refresh: boolean = false;
@@ -42,22 +55,21 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   @Output() onSelectedData = new EventEmitter<any>();
   pageDetails: any;
   alertData: any = {
-    iconUrl: "delete",
-    colorVariant: "danger",
-    alertConfirmation: "Are you sure ?",
-    messageAlert: "The record will be deleted permanently",
-    CancelButtonLabel: "Cancel",
-    DeleteButtonLabel: "Delete"
-  }
+    iconUrl: 'delete',
+    colorVariant: 'danger',
+    alertConfirmation: 'Are you sure ?',
+    messageAlert: 'The record will be deleted permanently',
+    CancelButtonLabel: 'Cancel',
+    DeleteButtonLabel: 'Delete',
+  };
   selectedData: any;
   RecordPerPage: any;
 
   static count: number = 0;
-  public id: any = 'table'
+  public id: any = 'table';
 
-  constructor(public translate: TranslateService) {
+  constructor(public translate: TranslateService, private datepipe: DatePipe) {
     this.id = this.id + RdsDataTableComponent.count++;
-
   }
   ngDoCheck(): void {
     // if (this.tableData) {
@@ -77,9 +89,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     //       this.refresh = false;
     //     }
     //   }
-
     // }
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -90,10 +100,12 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
         this.dataSource = this.tableData;
       } else {
         if (this.pageDetails) {
-          this.onPagination({ RecordsPerPage: this.recordsPerPage, currentPage: 1 });
+          this.onPagination({
+            RecordsPerPage: this.recordsPerPage,
+            currentPage: 1,
+          });
         }
       }
-
     }
     if (!this.pagination) {
       this.dataSource = this.tableData;
@@ -112,7 +124,6 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     if (!this.pagination) {
       this.dataSource = this.tableData;
     }
-
   }
 
   deleteConfirmation(data: any): void {
@@ -127,7 +138,10 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
 
   delete(): void {
     this.clearFilters();
-    this.onActionSelection.emit({ actionId: 'delete', selectedData: this.selectedData });
+    this.onActionSelection.emit({
+      actionId: 'delete',
+      selectedData: this.selectedData,
+    });
     this.filteredArray = [];
     this.isFilterOn = false;
     this.close();
@@ -148,7 +162,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   getDescIconClass(header: any): string {
     if (header.isDecending !== undefined) {
       if (header.isDecending === true) {
-        return 'sort-icon-enabled'
+        return 'sort-icon-enabled';
       }
     }
     return '';
@@ -156,7 +170,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   getAscIconClass(header: any): string {
     if (header.isDecending !== undefined) {
       if (header.isDecending === false) {
-        return 'sort-icon-enabled'
+        return 'sort-icon-enabled';
       }
     }
     return '';
@@ -191,7 +205,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
           if (_a > _b) {
             return 1;
           } else if (_a < _b) {
-            return -1
+            return -1;
           } else {
             return 0;
           }
@@ -204,26 +218,26 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
             return 0;
           }
         }
-      })
+      });
     } else {
       this.tableData.sort((a: any, b: any) => {
         if (header.dataType !== 'number') {
           let _a = a[header.key];
           let _b = b[header.key];
           if (a[header.key] !== null && a[header.key] !== '' && a[header.key]) {
-            _a = a[header.key].toLowerCase()
+            _a = a[header.key].toLowerCase();
           } else {
             _a = '';
           }
           if (b[header.key] !== null && b[header.key] !== '' && b[header.key]) {
-            _b = b[header.key].toLowerCase()
+            _b = b[header.key].toLowerCase();
           } else {
             _b = '';
           }
           if (_a < _b) {
-            return 1
+            return 1;
           } else if (_b < _a) {
-            return -1
+            return -1;
           } else {
             return 0;
           }
@@ -236,38 +250,45 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
             return 0;
           }
         }
-      })
+      });
     }
     if (!this.pagination) {
       this.dataSource = this.tableData;
     }
     const data: any = {
       currentPage: 1,
-      RecordsPerPage: this.RecordPerPage
-    }
+      RecordsPerPage: this.RecordPerPage,
+    };
     this.onPagination(data);
   }
 
   public get classes(): string[] {
-    var classes = ['res-width']
-    if (this.tableStyle !== "light") {
+    var classes = ['res-width'];
+    if (this.tableStyle !== 'light') {
       var bgColor = 'table-' + this.tableStyle;
       classes.push(bgColor);
     }
-    if (this.tableStyle !== 'light' && this.tableStyle !== 'warning' && this.tableStyle !== 'info' && this.tableStyle !== 'white') {
+    if (
+      this.tableStyle !== 'light' &&
+      this.tableStyle !== 'warning' &&
+      this.tableStyle !== 'info' &&
+      this.tableStyle !== 'white'
+    ) {
       classes.push('text-white');
     }
-    return classes
+    return classes;
   }
 
   public clearFilters(): void {
     this.tableHeaders.forEach((_header: TableHeader) => {
       if (_header.filterable) {
-        if (_header[_header.key + 'Filter'] !== '' && _header[_header.key + 'Filter']) {
+        if (
+          _header[_header.key + 'Filter'] !== '' &&
+          _header[_header.key + 'Filter']
+        ) {
           _header[_header.key + 'Filter'] = '';
         }
       }
-
     });
   }
 
@@ -282,8 +303,9 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     this.pageDetails = event;
     this.dataSource = [];
     const activepage: number = event.currentPage;
-    const startingIndex: number = activepage * (+event.RecordsPerPage) - (+event.RecordsPerPage);
-    const endingindex: number = startingIndex + (+event.RecordsPerPage);
+    const startingIndex: number =
+      activepage * +event.RecordsPerPage - +event.RecordsPerPage;
+    const endingindex: number = startingIndex + +event.RecordsPerPage;
     for (let i = startingIndex; i < endingindex; i++) {
       if (i < data.length) {
         this.dataSource.push(data[i]);
@@ -303,7 +325,6 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
       this.onActionSelection.emit({ selectedData: item, actionId: 'edit' });
     }
     // $('[data-bs-toggle="tooltip"]').tooltip('hide');
-
   }
 
   closeEdit(item: any): void {
@@ -311,7 +332,9 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
       item.isEdit = false;
       this.dataSource = this.rowData;
     } else {
-      const index: number = this.dataSource.findIndex((x: any) => JSON.stringify(item) === JSON.stringify(x));
+      const index: number = this.dataSource.findIndex(
+        (x: any) => JSON.stringify(item) === JSON.stringify(x)
+      );
       if (index !== -1) {
         this.dataSource.splice(index, 1);
       }
@@ -322,12 +345,16 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     let hasError: boolean = false;
     if (data) {
       this.tableHeaders.forEach((item: any) => {
-        if (!hasError && item.required && (data[item.key] === undefined || data[item.key] === '')) {
+        if (
+          !hasError &&
+          item.required &&
+          (data[item.key] === undefined || data[item.key] === '')
+        ) {
           hasError = true;
         }
-      })
+      });
       if (hasError) {
-        return
+        return;
       }
       data.isEdit = false;
       this.onActionSelection.emit({ actionId: 'edit', selectedData: data });
@@ -335,13 +362,12 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     }
 
     return;
-
   }
 
   download(data): void {
     this.onDownload.emit(data);
   }
-  selected = false
+  selected = false;
   onChangeSelected(event) {
     console.log(event);
   }
@@ -350,16 +376,26 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     if (event) {
       header[header.key + 'Filter'] = event.target.value;
     }
-    let tempData = JSON.parse(JSON.stringify(this.tempData))
+    let tempData = JSON.parse(JSON.stringify(this.tempData));
     this.isFilterOn = false;
     this.tableHeaders.forEach((_header: TableHeader) => {
       if (_header.filterable) {
-        if (_header[_header.key + 'Filter'] !== '' && _header[_header.key + 'Filter']) {
+        if (
+          _header[_header.key + 'Filter'] !== '' &&
+          _header[_header.key + 'Filter']
+        ) {
           this.isFilterOn = true;
         }
-        const filter: string = (_header && _header[_header.key + 'Filter']) ? _header[_header.key + 'Filter'].toString().toLowerCase() : '';
+        const filter: string =
+          _header && _header[_header.key + 'Filter']
+            ? _header[_header.key + 'Filter'].toString().toLowerCase()
+            : '';
         if (filter !== '') {
-          tempData = tempData.filter((x: any) => x[_header.key] && x[_header.key].toString().toLowerCase().includes(filter));
+          tempData = tempData.filter(
+            (x: any) =>
+              x[_header.key] &&
+              x[_header.key].toString().toLowerCase().includes(filter)
+          );
         }
       }
     });
@@ -382,13 +418,17 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     }
   }
   openSearchModal(index: number): void {
-    var element: any = document.getElementById('search-dropdown' + index + this.id);
+    var element: any = document.getElementById(
+      'search-dropdown' + index + this.id
+    );
     var bsOffcanvas = new bootstrap.Dropdown(element);
     bsOffcanvas.show();
   }
 
   openAction(index: number): void {
-    var element: any = document.getElementById('action-dropdown' + index + this.id);
+    var element: any = document.getElementById(
+      'action-dropdown' + index + this.id
+    );
     var dropdown = new bootstrap.Dropdown(element);
     dropdown.show();
   }
@@ -404,7 +444,10 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     } else if (action.id === 'edit') {
       this.editItem(selectedData);
     } else {
-      this.onActionSelection.emit({ actionId: action.id, selectedData: selectedData });
+      this.onActionSelection.emit({
+        actionId: action.id,
+        selectedData: selectedData,
+      });
     }
   }
 
@@ -413,7 +456,7 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     if (ev.target.value === 'true') {
       value = true;
     }
-    this.tableData.forEach((x: any) => x.checked = value);
+    this.tableData.forEach((x: any) => (x.checked = value));
     const allSelectedItems: any = this.tableData.filter((x: any) => x.checked);
     this.getAllCheckedItems.emit(allSelectedItems);
   }
@@ -431,5 +474,15 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
     const allSelectedItems: any = this.tableData.filter((x: any) => x.checked);
     this.getAllCheckedItems.emit(allSelectedItems);
   }
-}
 
+  transformDate(date): any {
+    if (date !== null && date !== '' && date !== undefined) {
+      if(date.ts){
+        return this.datepipe.transform(new Date(date.ts), 'MM/dd/yyyy');
+
+      }
+      return this.datepipe.transform(new Date(date), 'MM/dd/yyyy');
+    }
+    return date;
+  }
+}

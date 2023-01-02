@@ -1,4 +1,5 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -16,19 +17,33 @@ import {
 } from 'projects/libs/state-management/src/lib/state/api-scope/api-scope.selector';
 import { TableAction } from 'projects/rds-components/src/models/table-action.model';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
-import { ComponentLoaderOptions } from '../../../libs/shared/src/public-api';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+
+  animations: [
+    trigger('fadeAnimation', [
+      state(
+        'void',
+        style({
+          opacity: 0,
+        })
+      ),
+
+      transition('void <=> *', animate(1000)),
+    ]),
+  ],
 })
 export class AppComponent implements OnInit {
   title = 'scope';
+  isAnimation: boolean = true;
+  public isButtonSpinner: boolean = false;
   viewCanvas: boolean = false;
   activePage: number = 0;
-  scopeUniqueId: any ;
+  scopeUniqueId: any;
   offcanvasId: string = 'scope_canvas';
   scopeTableHeaders: TableHeader[] = [
     {
@@ -47,13 +62,19 @@ export class AppComponent implements OnInit {
     },
     { displayName: 'Description', key: 'description', dataType: 'text' },
   ];
-  content!: TemplateRef<any>;
+  public property_actions: any = [
+    {
+      id: 'delete',
+      displayName: 'Delete',
+    },
+  ];
   scopeList: any = [];
   userClaims = [];
-  properties = [];
-  scope: any = {};
-  isShimmer : boolean = true
-  canvasTitle: string = 'New Scope';
+  public claims: any = [];
+  public basicInfo: any;
+  isShimmer: boolean = true;
+  canvasTitle: string = 'New Api Scopes';
+  public isEdit: boolean = false;
   public navtabsItems: any = [
     {
       label: this.translate.instant('Basics'),
@@ -65,32 +86,46 @@ export class AppComponent implements OnInit {
       tablink: '#resources',
       ariacontrols: 'resources',
     },
-    {
-      label: this.translate.instant('Properties'),
-      tablink: '#properties',
-      ariacontrols: 'properties',
-    },
   ];
 
-  actions : TableAction[] = [
-    { id: 'delete', displayName: 'Delete' },
+  actions: TableAction[] = [
     { id: 'edit', displayName: 'Edit' },
+    { id: 'delete', displayName: 'Delete' },
   ];
 
   PropertyTableHeader: TableHeader[] = [
-    { displayName: 'Key', key: 'key', dataType: 'text', dataLength: 30, sortable: false, required: true },
-    { displayName: 'Value', key: 'value', dataType: 'text', dataLength: 30, sortable: false, required: true },
-   ];
-   PropertyList:any=[];
-   PropertyTableData:any=[];
+    {
+      displayName: 'Key',
+      key: 'key',
+      dataType: 'text',
+      dataLength: 30,
+      sortable: false,
+      required: true,
+    },
+    {
+      displayName: 'Value',
+      key: 'value',
+      dataType: 'text',
+      dataLength: 30,
+      sortable: false,
+      required: true,
+    },
+  ];
+  PropertyList: any = [];
+  PropertyTableData: any = [];
   apiScopeEdit: any;
 
   constructor(public translate: TranslateService, private store: Store) {}
-
+  ngOnChanges(changes: SimpleChanges): void {
+   
+   
+  }
   ngOnInit(): void {
+    this.isAnimation = true;
     this.store.dispatch(getAllApiScope());
     this.store.select(selectAllScope).subscribe((res: any) => {
       if (res && res.items) {
+        this.isAnimation = false;
         this.scopeList = [];
         res.items.forEach((ele: any) => {
           const data: any = {
@@ -101,39 +136,73 @@ export class AppComponent implements OnInit {
           };
           this.scopeList.push(data);
         });
-        this.isShimmer = false
+        this.isShimmer = false;
       }
     });
 
     this.store.select(selectApiScope).subscribe((res: any) => {
       if (res) {
-      this.apiScopeEdit = res
+        const data: any = {
+          name: res.name,
+          description: res.description,
+          displayName: res.displayName,
+          emphasize: res.emphasize,
+          enabled: res.enabled,
+          required: res.required,
+          id: res.id,
+          showInDiscoveryDocument: res.showInDiscoveryDocument,
+        };
+        this.apiScopeEdit = data;
+        if (res.userClaims && res.userClaims.length > 0) {
+          this.claims.forEach((claim: any) => {
+            if (claim) {
+              const _claim = res.userClaims.find(
+                (x: any) => x.type == claim.displayName
+              );
+              if (_claim) {
+                claim.left = true;
+              }
+            }
+          });
+        }
+        this.PropertyList = [];
+        if (res.properties && res.properties.length > 0) {
+          res.properties.forEach((element) => {
+            const _PropData = {
+              apiScopeId: element.apiScopeId,
+              value: element.value,
+              key: element.key,
+            };
+            this.PropertyList.push(_PropData);
+          });
+        }
       }
     });
 
     this.store.dispatch(claimTypesAll());
     this.store.select(selectClaimTypesAll).subscribe((res: any) => {
       if (res) {
-        this.userClaims = [];
+        this.claims = [];
         res.forEach((element) => {
-            let item = {
-              id: element.id,
-              displayName: element.name,
-              left : false
-            };
-             this.userClaims.push(item);
+          let item = {
+            id: element.id,
+            displayName: element.name,
+            left: false,
+          };
+          this.claims.push(item);
         });
-      console.log(this.userClaims , 'this.userClaims');
-      
       }
     });
   }
 
   onActionSelect(event: any): void {
     if (event.actionId === 'delete') {
-     this.store.dispatch(deleteApiScope(event.selectedData.id));
-    } 
-    else if (event.actionId === 'edit') {
+      this.store.dispatch(deleteApiScope(event.selectedData.id));
+    } else if (event.actionId === 'edit') {
+      this.claims.forEach((element) => {
+        element.left = false;
+      });
+      this.isEdit = true;
       this.scopeUniqueId = event.selectedData.id;
       this.canvasTitle = this.translate.instant('Edit Scope');
       this.store.dispatch(getApiScope(event.selectedData.id));
@@ -144,77 +213,149 @@ export class AppComponent implements OnInit {
   newScope(edit: boolean = false): void {
     this.viewCanvas = true;
     if (!edit) {
+      this.isButtonSpinner = true;
+      this.isEdit = false;
       this.scopeUniqueId = undefined;
-      this.canvasTitle = 'New Scope';
+      this.apiScopeEdit = [];
+      this.claims.forEach((element) => {
+        element.left = false;
+      });
+      this.canvasTitle = 'New Api Scopes';
+
+      this.navtabsItems = [
+        {
+          label: this.translate.instant('Basics'),
+          tablink: '#basics',
+          ariacontrols: 'basics',
+        },
+        {
+          label: this.translate.instant('Claims'),
+          tablink: '#resources',
+          ariacontrols: 'resources',
+        },
+      ];
     } else {
-      this.canvasTitle = 'Edit Scope';
+      this.canvasTitle = 'Edit Api Scopes';
+      this.isEdit = true;
+      this.navtabsItems = [
+        {
+          label: this.translate.instant('Basics'),
+          tablink: '#basics',
+          ariacontrols: 'basics',
+        },
+        {
+          label: this.translate.instant('Claims'),
+          tablink: '#resources',
+          ariacontrols: 'resources',
+        },
+        {
+          label: this.translate.instant('Properties'),
+          tablink: '#properties',
+          ariacontrols: 'properties',
+        },
+      ];
     }
     setTimeout(() => {
       var offcanvas = document.getElementById(this.offcanvasId);
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
       bsOffcanvas.show();
+      if (offcanvas) {
+        offcanvas.addEventListener('hidden.bs.offcanvas', (event) => {
+          this.viewCanvas = false;
+          this.basicInfo = undefined;
+          this.PropertyList = [];
+          this.userClaims = [];
+          this.isButtonSpinner = false;
+        });
+      }
     }, 100);
   }
 
   close(): void {
-      this.apiScopeEdit = []
+    this.apiScopeEdit = [];
+    this.userClaims = [];
     this.viewCanvas = false;
     this.activePage = 0;
     this.scopeUniqueId = undefined;
+    this.isButtonSpinner = false;
   }
 
   getScopeInfo(event: any): void {
-    if (event.next) {
-      this.activePage = 1;
-    }
-    this.scope.basicInfo = event.scopeResource;
+    this.basicInfo = event;
+    this.save();
   }
 
-  getClaims(event:any) : void {
-    this.scope.userClaims = event;
+  getClaims(event: any): void {
+    this.userClaims = event;
   }
 
-  getProperties(event:any) : void {
-    this.scope.properties = event
+  getProperties(event: any): void {
+    this.PropertyList = event.Property;
+    this.save();
   }
 
   save(): void {
     if (this.scopeUniqueId) {
+      const _data: any[] = [];
+      this.userClaims.forEach((element) => {
+        if (element) {
+          const _claimsData = {
+            apiScopeId: this.scopeUniqueId,
+            type: element.displayName,
+          };
+          _data.push(_claimsData);
+        }
+      });
+      const _dataProp: any[] = [];
+      this.PropertyList.forEach((element) => {
+        const _PropData = {
+          apiScopeId: this.scopeUniqueId,
+          value: element.value,
+          key: element.key,
+        };
+        _dataProp.push(_PropData);
+      });
       const data: any = {
-        description: this.scope.basicInfo.description,
-        displayName: this.scope.basicInfo.displayName,
-        emphasize: this.scope.basicInfo.emphasize,
-        enabled: this.scope.basicInfo.enables,
-        required: this.scope.basicInfo.required,
-        showInDiscoveryDocument: this.scope.basicInfo.showInDiscoveryDocument,
-        userClaims: this.userClaims,
-        properties: [],
+        id: this.scopeUniqueId,
+        body: {
+          description: this.apiScopeEdit.description,
+          displayName: this.apiScopeEdit.displayName,
+          emphasize: this.apiScopeEdit.emphasize,
+          enabled: this.apiScopeEdit.enabled,
+          required: this.apiScopeEdit.required,
+          showInDiscoveryDocument: this.apiScopeEdit.showInDiscoveryDocument,
+          userClaims: _data,
+          properties: _dataProp,
+        },
       };
       this.store.dispatch(updateApiScope(data));
     } else {
-      const _data : any[] = []
-      this.scope.userClaims.forEach(element => {
-        const _claimsData = {
-          apiScopeId :  element.id,
-          type : element.displayName
-        }
-       _data.push(_claimsData)
-      });
       const data: any = {
-        description: this.scope.basicInfo.description,
-        displayName: this.scope.basicInfo.displayName,
-        emphasize: this.scope.basicInfo.emphasize,
-        enabled: this.scope.basicInfo.enables,
-        name: this.scope.basicInfo.name,
-        required: this.scope.basicInfo.required,
-        showInDiscoveryDocument: this.scope.basicInfo.showInDiscoveryDocument,
-        userClaims: _data,
+        description: this.apiScopeEdit.description,
+        displayName: this.apiScopeEdit.displayName,
+        emphasize: this.apiScopeEdit.emphasize,
+        enabled: this.apiScopeEdit.enabled,
+        name: this.apiScopeEdit.name,
+        required: this.apiScopeEdit.required,
+        showInDiscoveryDocument: this.apiScopeEdit.showInDiscoveryDocument,
+        // userClaims: _data,
+        userClaims: [],
         properties: [],
       };
+      this.userClaims.forEach((element) => {
+        if (element) {
+          const _claimsData = {
+            apiScopeId: this.scopeUniqueId,
+            type: element.displayName,
+          };
+          data.userClaims.push(_claimsData);
+        }
+      });
       this.store.dispatch(saveApiScope(data));
     }
     this.activePage = 0;
     this.viewCanvas = false;
+    this.isButtonSpinner = false;
   }
 
   getBtnName(): string {

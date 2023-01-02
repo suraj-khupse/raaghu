@@ -8,7 +8,7 @@ import { TableHeader } from '../../models/table-header.model';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-user-permissions-new',
+  selector: 'rds-comp-user-permissions-new',
   templateUrl: './rds-comp-user-permissions-new.component.html',
   styleUrls: ['./rds-comp-user-permissions-new.component.scss'],
   encapsulation: ViewEncapsulation.None,

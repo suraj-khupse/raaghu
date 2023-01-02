@@ -13,7 +13,7 @@ export const getAllIdentityResourcesFailure = createAction(
 );
 
 export const getIdentityResource = createAction('[Identity-Resources Page] Get Identity-Resource',
-(id:any) => ( id ));
+(id:any) => ( {id}));
 
 export const getIdentityResourceSuccess = createAction(
     '[Identity-Resources Page] Get Identity-Resource Success',

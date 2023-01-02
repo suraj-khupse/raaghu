@@ -10,7 +10,15 @@
       <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
         <!-- <mfe-loader [config]="rdsLanguageTableMfeConfig"></mfe-loader> -->
         <rds-data-table 
-        
+        [tableData]="languageTableData"
+        [tableHeaders]="languageTableHeader"
+        [width]="100"
+        [pagination]="true"
+        [inlineEdit]="false"
+        [actions]="[{ id: 'edit', displayName: 'Edit' },{ id: 'delete', displayName: 'Delete' }]"
+        [noDataTitle]="'Currently you do not have language'"
+        [isShimmer]="isShimmer"
+        (onActionSelection)="onActionSelection($event)"
         ></rds-data-table>
       </div>
     </div>

@@ -1,3 +1,6 @@
+<div class="card">
+  <div class="card-body">
+      <div class="pb-5 mb-5">
 <div class="container">
   <div class="row">
     <div class="d-flex justify-content-end mt-2">
@@ -11,19 +14,21 @@
       <rds-data-table [tableData]="ResourceTableData" 
       [tableHeaders]="ResourceTableHeader"
       [actions]="actions"
+      [inlineEdit]="false"
+      [pagination]="true"
       (onActionSelection)="onActionSelection($event)"
       [noDataTitle]="'Currently you do not have identity resource'"
       ></rds-data-table>
     </div>
   </div>
-  <rds-offcanvas *ngIf="viewCanvas" [canvasTitle]="translate.instant(offCanvasTitle)"  [offId]="offCanvasId" [offcanvaswidth]="550"
+  <rds-offcanvas *ngIf="viewCanvas" [canvasTitle]="translate.instant(offCanvasTitle)"  [offId]="offCanvasId" [offcanvaswidth]="660"
     [placement]="'end'">
     <rds-nav-tab [navtabsItems]="navtabsItems" [activeTab]="activePage" [horizontalAlignment]="'start'"
-      [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
+      [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false"  (onClicktab)="onTabClick($event)"  >
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <rds-comp-basic-resource [basicInfo]="basicInfo"
+          <rds-comp-basic-resource [basicInfo]="onEditBasic"
             (onBasicInfoSave)="onBasicInfoSave($event)"></rds-comp-basic-resource>
         </div>
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Claim" role="tabpanel"
@@ -34,16 +39,20 @@
             <rds-button [label]="'Cancel'"  data-bs-dismiss="offcanvas" [colorVariant]="'primary'" [size]="'small'" [isOutline]="true">
             </rds-button>
             <rds-button [label]="'Create'" [size]="'small'" class="ms-2" 
-                [colorVariant]="'primary'" (click)="onSave()">
+                [colorVariant]="'primary'"   (click)="onSave()">
             </rds-button>
         </div>
         </div>
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="Properties" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <!-- <mfe-loader [config]="rdsClaimsMfeConfig"></mfe-loader> -->
-         <!-- <rds-comp-properties [PropertyTableHeader]="PropertyTableHeader" [PropertyTableData]="PropertyTableData" [PropertyList]="PropertyList"></rds-comp-properties> -->
+          <rds-comp-properties [propertyTableHeader]="propertyTableHeader" [propertyTableData]="propertyTableData"
+          (onPropertyResourceSave)="onPropertiesSave($event)"  [propertyActions]="property_actions"></rds-comp-properties>
         </div>
       </div>
     </rds-nav-tab>
   </rds-offcanvas>
+</div>
+</div>
+</div>
 </div>

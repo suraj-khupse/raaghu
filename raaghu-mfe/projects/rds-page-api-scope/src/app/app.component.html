@@ -1,68 +1,120 @@
-<div class="row m-1">
-  <div class="col-md-12 scope-btn">
-    <rds-button
-      [label]="translate.instant('New Scope')"
-      [colorVariant]="'primary'"
-      (click)="newScope()"
-    >
-      <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
-    </rds-button>
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+  <div class="row">
+    <div class="col-md-12 text-end pb-3">
+      <rds-button
+        [label]="translate.instant('New Scope')"
+        [colorVariant]="'primary'"
+        (click)="newScope()"
+        [icon]="'plus'"
+        [iconHeight]="'12px'"
+        [iconWidth]="'12px'"
+        [showLoadingSpinner]="isButtonSpinner"
+      >
+        <!-- <rds-icon left name="plus" height="12px" width="12px"></rds-icon> -->
+      </rds-button>
+    </div>
   </div>
-  <div class="col-md-12 m-1">
-    <!-- <mfe-loader [config]="rdsApiScopeTableMfeConfig"></mfe-loader> -->
-    <rds-data-table 
-      [tableData]="scopeList" 
-      [tableHeaders]="scopeTableHeaders"
-      [actions]="actions"
-      (onActionSelection)="onActionSelect($event)"
-      [noDataTitle]="'Currently you do not have identity resource'"
-      [pagination]="true"
-      [inlineEdit]="false"
-      ></rds-data-table>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+        <rds-data-table
+          [tableData]="scopeList"
+          [tableHeaders]="scopeTableHeaders"
+          [actions]="actions"
+          (onActionSelection)="onActionSelect($event)"
+          [noDataTitle]="'Currently you do not have identity resource'"
+          [pagination]="true"
+          [inlineEdit]="false"
+          [isShimmer]="isShimmer"
+        ></rds-data-table>
+      </div>
+    </div>
   </div>
 </div>
-
-
-  <rds-offcanvas *ngIf="viewCanvas" [canvasTitle]="translate.instant(canvasTitle)" [offcanvaswidth]="650" [offId]="offcanvasId" [placement]="'end'" (onClose)="close()">
-
-      <rds-nav-tab [navtabsItems]="navtabsItems" [activeTab]="activePage" [horizontalAlignment]="'start'"
-                   [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
-        <div naveContent class="row tab-content m-2" id="nav-tabContent">
-          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
-               aria-labelledby="nav-home-tab">
-            <!-- <mfe-loader [config]="rdsScopeBasicsMfeConfig"></mfe-loader> -->
-            <rds-comp-basic-resource 
-            (onBsicResourceSave)="getScopeInfo($event)"
-            [ResourceData]="apiScopeEdit"
-            >
-            </rds-comp-basic-resource>
-          </div>
-          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="resources" role="tabpanel"
-               aria-labelledby="nav-home-tab">
-            <!-- <mfe-loader [config]="rdsScopeResourcesMfeConfig"></mfe-loader> -->
-            <rds-comp-client-resources
-            [resourceData]="userClaims"
+  <rds-offcanvas
+    *ngIf="viewCanvas"
+    [canvasTitle]="translate.instant(canvasTitle)"
+    [offcanvaswidth]="650"
+    [offId]="offcanvasId"
+    [placement]="'end'"
+    (onClose)="close()"
+  >
+    <rds-nav-tab
+      [navtabsItems]="navtabsItems"
+      [activeTab]="activePage"
+      [horizontalAlignment]="'start'"
+      [verticalAlignment]="false"
+      [pills]="false"
+      [tabs]="true"
+      [fill]="false"
+      [justified]="false"
+    >
+      <div naveContent class="row tab-content m-2" id="nav-tabContent">
+        <div
+          class="tab-pane fade"
+          [ngClass]="{ 'show active': activePage === 0 }"
+          id="basics"
+          role="tabpanel"
+          aria-labelledby="nav-home-tab"
+        >
+          <rds-comp-basic-resource
+            (onBasicInfoSave)="getScopeInfo($event)"
+            [basicInfo]="apiScopeEdit"
+            [isEdit]="isEdit"
+            [isResources]="true"
+          >
+          </rds-comp-basic-resource>
+        </div>
+        <div
+          class="tab-pane fade"
+          [ngClass]="{ 'show active': activePage === 1 }"
+          id="resources"
+          role="tabpanel"
+          aria-labelledby="nav-home-tab"
+        >
+          <rds-comp-client-resources
+            [resourceData]="claims"
             (selectedData)="getClaims($event)"
-            >
+          >
           </rds-comp-client-resources>
-          <div class="footer-buttons">
-            <rds-button [label]="translate.instant('Cancel')" [colorVariant]="'primary'" [isOutline]="true" [size]="'small'" (click)="close()" data-bs-dismiss="offcanvas" aria-label="Close">
+          <div class="footer-buttons d-flex bottom-0">
+            <rds-button
+              [label]="translate.instant('Cancel')"
+              [colorVariant]="'primary'"
+              [isOutline]="true"
+              [size]="'small'"
+              (click)="close()"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            >
             </rds-button>
-            <rds-button [label]="translate.instant(getBtnName())" [colorVariant]="'primary'"   [size]="'small'" [isDisabled]="!scope.basicInfo" (click)="save()"></rds-button>
+            <rds-button
+              [label]="translate.instant(getBtnName())"
+              [colorVariant]="'primary'"
+              [size]="'small'"
+              class="ms-2"
+              [isDisabled]="false"
+              (click)="save()"
+            ></rds-button>
           </div>
-           
         </div>
-          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="Properties" role="tabpanel"
-          aria-labelledby="nav-home-tab" >
-              <rds-comp-properties
-               [PropertyTableHeader]="PropertyTableHeader"
-                [PropertyTableData]="PropertyTableData" 
-                [PropertyList]="PropertyList"
-                (onPropertyResourceSave)="getProperties($event)"
-                ></rds-comp-properties>
-
-     </div>
+        <div
+          class="tab-pane fade"
+          [ngClass]="{ 'show active': activePage === 2 }"
+          id="properties"
+          role="tabpanel"
+          aria-labelledby="nav-home-tab"
+          *ngIf="scopeUniqueId"
+        >
+          <rds-comp-properties
+            [propertyTableHeader]="PropertyTableHeader"
+            [propertyTableData]="PropertyList"
+            (onPropertyResourceSave)="getProperties($event)"
+            [isEdit]="isEdit"
+            [propertyActions]="property_actions"
+          ></rds-comp-properties>
         </div>
-      </rds-nav-tab>
- 
+      </div>
+    </rds-nav-tab>
   </rds-offcanvas>
+

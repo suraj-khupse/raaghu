@@ -36,7 +36,7 @@ export class IdentityResourcesEffects {
   getIdentityResource$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getIdentityResource),
-      switchMap((id) =>
+      switchMap(({id}) =>
         // Call the getTodos method, convert it to an observable
         from(this.identityResourceService.identityResourcesGET2(id)).pipe(
           // Take the returned value and return a new success action containing the todos
@@ -113,6 +113,8 @@ export class IdentityResourcesEffects {
           // Take the returned value and return a new success action containing the todos
           map(() => {
             this.store.dispatch(getAllIdentityResources());
+            this.alertService.showAlert('Success', 'Identity Resource Updated successfully', 'success')
+
             return updateIdentityResourceSuccess();
           }),
           // Or... if it errors return a new failure action containing the error

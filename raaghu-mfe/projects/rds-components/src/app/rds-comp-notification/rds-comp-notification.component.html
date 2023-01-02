@@ -59,7 +59,7 @@
   </div> 
  <div footer  class="  pb-5">
     <rds-button class=" float-end mt-3 mb-2 mx-2" [tooltipPlacement]="'bottom'" [tooltipTitle]="translate.instant('Mark As Read')"
-      [label]="translate.instant('Mark As Read')" type="button" [size]="'small'" [colorVariant]="'primary'"
+      [label]="translate.instant('Mark As Read')" [id]="'notifi-btn'" type="button" [size]="'small'" [colorVariant]="'primary'"
       [isOutline]="false" (click)="setAllReadOutput.emit(true)"></rds-button>
   </div>
 </rds-card>

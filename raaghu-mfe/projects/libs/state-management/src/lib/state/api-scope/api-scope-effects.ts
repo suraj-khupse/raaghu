@@ -103,6 +103,11 @@ export class ApiScopeEffects {
           // Take the returned value and return a new success action containing the todos
           map(() => {
             this.store.dispatch(getAllApiScope());
+            this.alertService.showAlert(
+              'Success',
+              'Api Scope updated successfully',
+              'success'
+            );
             return saveApiScopeSuccess();
           }),
           // Or... if it errors return a new failure action containing the error

@@ -8,6 +8,7 @@ import { TranslateService, TranslateStore } from '@ngx-translate/core';
 import { RdsButtonModule } from '@libs/rds-elements';
 import { TenantReducer } from 'projects/libs/state-management/src/lib/state/tenant/tenant.reducer';
 import { TenantEffects } from 'projects/libs/state-management/src/lib/state/tenant/tenant.effects';
+import { RdsCompTenantListNewModule } from 'projects/rds-components/src/app/rds-comp-tenant-list-new/rds-comp-tenant-list-new.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TenantEffects } from 'projects/libs/state-management/src/lib/state/tena
     AppRoutingModule,
     SharedModule,
     RdsButtonModule,
+    RdsCompTenantListNewModule,
     NgxTranslateModule.forRoot(),
   ],
   providers: [

@@ -6,7 +6,7 @@ import { TableHeader } from '../../models/table-header.model';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-tenant-list-new',
+  selector: 'rds-comp-tenant-list-new',
   templateUrl: './rds-comp-tenant-list-new.component.html',
   styleUrls: ['./rds-comp-tenant-list-new.component.scss']
 })
@@ -52,7 +52,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
     {displayText : 'Disabled', value : 'Disabled'},
     {displayText : 'Forced', value : 'Forced'}
   ];
-  buttonSpinnerForNewUser : boolean = true;
+  buttonSpinnerForNewUser : boolean = false;
   buttonSpinnerForSave : boolean = true;
 
   currentAlerts: any = [];
@@ -120,7 +120,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
 
   saveTenantHostFeature(): void {
   
-      this.onSaveTenantHost.emit(this.tenantFeaturesHostList);
+    this.onSaveTenantHost.emit(this.tenantFeaturesHostList);
      this.activePage = 0;
     var offcanvas = document.getElementById('tenantOffcanvashost');
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
@@ -154,6 +154,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
   }
 
   newTenantHost(event: any): void {
+    debugger
     this.selectedId = '';
     this.viewCanvas = true;
     this.getHostFeatureEmitter.emit(true);
@@ -171,6 +172,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
   }
 
   newTenant(event): void {
+    debugger
     this.buttonSpinnerForNewUser = true;
     this.buttonSpinnerForSave = false;
     this.selectedId = '';
@@ -262,6 +264,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
       this.newTenant(event);
     }
   }
+  
   show():void{
     var toastEl = document.getElementById('liveToast');
     var toast = new bootstrap.Toast(toastEl);

@@ -1,14 +1,14 @@
 import { createAction, props } from '@ngrx/store';
 
-export const getAllApiScope = createAction('[Clients Page] Get All Clients');
+export const getAllApiScope = createAction('[Api scope Page] Get All Api scope');
 
 export const getAllApiScopeSuccess = createAction(
-    '[Clients Page] Get All Clients Success',
+    '[Api scope Page] Get All Api scope Success',
     props<{ allScope: any }>()
 );
 
 export const getAllApiScopeFailure = createAction(
-    '[Clients Page] Get All Clients Failure',
+    '[Api scope Page] Get All Api scope Failure',
     props<{ error: string }>()
 );
 
@@ -26,7 +26,7 @@ export const getApiScopeError = createAction(
   props<{ error: string }>()
 );
 
-export const updateApiScope = createAction('[Clients Page] Update Client',
+export const updateApiScope = createAction('[Api scope Page] Update Client',
 (data:any) => (data));
 
 export const updateApiScopeSuccess = createAction(
@@ -44,7 +44,7 @@ export const saveApiScope = createAction(
     );
 
 export const saveApiScopeSuccess = createAction(
-    '[Clients Page] Save Api scope page Success',
+    '[Api scope Page] Save Api scope page Success',
 );
 
 export const saveApiScopeFailure = createAction(

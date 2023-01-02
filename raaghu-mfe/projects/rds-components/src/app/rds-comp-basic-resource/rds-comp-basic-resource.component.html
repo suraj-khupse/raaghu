@@ -1,90 +1,194 @@
 <form #resourceForm="ngForm">
   <div class="row">
-    <div class="form-group col-sm-4 col-md-6 mb-3" [class.disabled]="isApiResources&&basicInfo.id">
-      <rds-input [label]="translate.instant('Name')" [(ngModel)]="basicInfo.name" [labelPosition]="'top'"
-        name="basic-name" [value]="basicInfo.name" [isRequired]="true" required
-        [placeholder]="translate.instant('Enter Name')" #basicName="ngModel" ngDefaultControl>
+    <div
+      class="form-group col-sm-4 col-md-6 mb-3"
+      [class.disabled]="(isApiResources || isResources) && basicInfo.id"
+    >
+      <rds-input
+        [label]="translate.instant('Name')"
+        [(ngModel)]="basicInfo.name"
+        [labelPosition]="'top'"
+        name="basic-name"
+        [value]="basicInfo.name"
+        [isRequired]="true"
+        required
+        [placeholder]="translate.instant('Enter Name')"
+        #basicName="ngModel"
+        ngDefaultControl
+      >
       </rds-input>
-      <div class="form-control-feedback" *ngIf="basicName.errors && (basicName.dirty || basicName.touched)">
-        <span class="text-danger" *ngIf="basicName.errors.required">{{translate.instant("Name is
-          required")}}</span>
+      <div
+        class="form-control-feedback"
+        *ngIf="basicName.errors && (basicName.dirty || basicName.touched)"
+      >
+        <span class="text-danger" *ngIf="basicName.errors.required">{{
+          translate.instant("Name is
+          required")
+        }}</span>
       </div>
     </div>
     <div class="form-group col-sm-4 col-md-6 mb-3">
-      <rds-input [inputType]="'text'" [label]="translate.instant('Display Name')" #displayname="ngModel"
-        [(ngModel)]="basicInfo.displayName" [value]="basicInfo.displayName" name="displayname" [labelPosition]="'top'"
-        [isRequired]="true" required [placeholder]="translate.instant('Enter Display Name')" ngDefaultControl>
+      <rds-input
+        [inputType]="'text'"
+        [label]="translate.instant('Display Name')"
+        #displayname="ngModel"
+        [(ngModel)]="basicInfo.displayName"
+        [value]="basicInfo.displayName"
+        name="displayname"
+        [labelPosition]="'top'"
+        [placeholder]="translate.instant('Enter Display Name')"
+        ngDefaultControl
+      >
       </rds-input>
-      <div class="form-control-feedback" *ngIf="displayname.errors && (displayname.dirty || displayname.touched)">
+      <!-- <div class="form-control-feedback" *ngIf="displayname.errors && (displayname.dirty || displayname.touched)">
         <span class="text-danger" *ngIf="displayname.errors.required">{{translate.instant("Display Name is
           required")}}</span>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="form-group col-sm-12 mb-3">
-    <rds-textarea #description="ngModel" [placeholderText]="translate.instant('Enter Description')"
-      [label]="translate.instant('Description')" [value]="basicInfo.description" [(ngModel)]="basicInfo.description"
-      name="description" required ngDefaultControl>
+    <rds-textarea
+      #description="ngModel"
+      [placeholderText]="translate.instant('Enter Description')"
+      [label]="translate.instant('Description')"
+      [value]="basicInfo.description"
+      [(ngModel)]="basicInfo.description"
+      name="description"
+      ngDefaultControl
+    >
     </rds-textarea>
-    <div class="form-control-feedback" *ngIf="description.errors && (description.dirty || description.touched)">
+    <!-- <div class="form-control-feedback" *ngIf="description.errors && (description.dirty || description.touched)">
       <span class="text-danger" *ngIf="description.errors.required">{{translate.instant("Description is
         required")}}</span>
-    </div>
+    </div> -->
   </div>
   <div class="form-group col-sm-12 col-md-12 mb-3" *ngIf="isApiResources">
-    <rds-input [inputType]="'text'" [label]="translate.instant('Allowed access token signing algorithms')"
-      #algorithms="ngModel" [(ngModel)]="basicInfo.algorithm" [value]="basicInfo.algorithm" name="signing_algorithm"
-      [labelPosition]="'top'" [isRequired]="true" required
-      [placeholder]="translate.instant('Enter allowed access token signing algorithms')" ngDefaultControl>
+    <rds-input
+      [inputType]="'text'"
+      [label]="translate.instant('Allowed access token signing algorithms')"
+      #algorithms="ngModel"
+      [(ngModel)]="basicInfo.algorithm"
+      [value]="basicInfo.algorithm"
+      name="signing_algorithm"
+      [labelPosition]="'top'"
+      [placeholder]="
+        translate.instant('Enter allowed access token signing algorithms')
+      "
+      ngDefaultControl
+    >
     </rds-input>
-    <div class="form-control-feedback" *ngIf="algorithms.errors && (algorithms.dirty || algorithms.touched)">
+    <!-- <div class="form-control-feedback" *ngIf="algorithms.errors && (algorithms.dirty || algorithms.touched)">
       <span class="text-danger" *ngIf="algorithms.errors.required">{{translate.instant("Signing algorithm is
         required")}}</span>
-    </div>
+    </div> -->
   </div>
-  <div class="mb-2 pt-2" *ngIf="isApiResources&&basicInfo.Id">
-    <rds-checkbox [label]="translate.instant('Enable')" [checked]="basicInfo.enables" [disabled]="false"
-      [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false"
-      (onChange)="getCheckboxValue($event,'enables')" [id]="'enable'"></rds-checkbox>
+  <div class="mb-2 pt-2" *ngIf="isApiResources && basicInfo.id">
+    <rds-checkbox
+      [label]="translate.instant('Enables')"
+      [checked]="basicInfo.enabled"
+      [disabled]="false"
+      [switch]="false"
+      [inline]="false"
+      [withLabel]="true"
+      [isInputGroup]="false"
+      (onChange)="getCheckboxValue($event, 'enables')"
+      [id]="'enable'"
+    ></rds-checkbox>
   </div>
-  <div class="mb-2" *ngIf="isApiResources&&!basicInfo.Id">
-    <rds-checkbox label="Show in discovery Documents" [checked]="basicInfo.showInDiscoveryDocument" [disabled]="false"
-      [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false" name="showInDiscoveryDocument"
-      (onChange)="getCheckboxValue($event,'showindiscovery')" [id]="'showInDiscoveryDocument'"></rds-checkbox>
+  <div class="mb-2" *ngIf="isApiResources && !basicInfo.id">
+    <rds-checkbox
+      label="Show in discovery Documents"
+      [checked]="basicInfo.showInDiscoveryDocument"
+      [disabled]="false"
+      [switch]="false"
+      [inline]="false"
+      [withLabel]="true"
+      [isInputGroup]="false"
+      name="showInDiscoveryDocument"
+      (onChange)="getCheckboxValue($event, 'showindiscovery')"
+      [id]="'showInDiscoveryDocument'"
+    ></rds-checkbox>
   </div>
   <ng-container *ngIf="!isApiResources">
-    <div class="fw-bold">
-      <rds-label [label]="'Others'"></rds-label>
+    <div>
+      <rds-label [label]="'Others'" [bold]="false"></rds-label>
     </div>
     <div class="mb-2 pt-2">
-      <rds-checkbox [label]="translate.instant('Enable')" [checked]="basicInfo.enables" [disabled]="false"
-        [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false"
-        (onChange)="getCheckboxValue($event,'enables')" [id]="'enable'"></rds-checkbox>
+      <rds-checkbox
+        [label]="translate.instant('Enables')"
+        [checked]="basicInfo.enabled"
+        [disabled]="false"
+        [switch]="false"
+        [inline]="false"
+        [withLabel]="true"
+        [isInputGroup]="false"
+        (onChange)="getCheckboxValue($event, 'enables')"
+        [id]="'enable'"
+      ></rds-checkbox>
     </div>
     <div class="mb-2">
-      <rds-checkbox label="Required" [checked]="basicInfo.required" [disabled]="false" [switch]="false" [inline]="false"
-        [withLabel]="true" [isInputGroup]="false" name="required" (onChange)="getCheckboxValue($event,'required')"
-        [id]="'require'"></rds-checkbox>
+      <rds-checkbox
+        label="Required"
+        [checked]="basicInfo.required"
+        [disabled]="false"
+        [switch]="false"
+        [inline]="false"
+        [withLabel]="true"
+        [isInputGroup]="false"
+        name="required"
+        (onChange)="getCheckboxValue($event, 'required')"
+        [id]="'require'"
+      ></rds-checkbox>
     </div>
     <div class="mb-2">
-      <rds-checkbox label="Emphasize" [checked]="basicInfo.emphasize" [disabled]="false" [switch]="false"
-        [inline]="false" [withLabel]="true" [isInputGroup]="false" (onChange)="getCheckboxValue($event,'emphasize')"
-        name="emphasize" [id]="'emphasize'"></rds-checkbox>
+      <rds-checkbox
+        label="Emphasize"
+        [checked]="basicInfo.emphasize"
+        [disabled]="false"
+        [switch]="false"
+        [inline]="false"
+        [withLabel]="true"
+        [isInputGroup]="false"
+        (onChange)="getCheckboxValue($event, 'emphasize')"
+        name="emphasize"
+        [id]="'emphasize'"
+      ></rds-checkbox>
     </div>
     <div class="mb-2">
-      <rds-checkbox label="Show in discovery Documents" [checked]="basicInfo.showInDiscoveryDocument" [disabled]="false"
-        [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false" name="showInDiscoveryDocument"
-        (onChange)="getCheckboxValue($event,'showindiscovery')" [id]="'showInDiscoveryDocument'"></rds-checkbox>
+      <rds-checkbox
+        label="Show In Discovery Documents"
+        [checked]="basicInfo.showInDiscoveryDocument"
+        [disabled]="false"
+        [switch]="false"
+        [inline]="false"
+        [withLabel]="true"
+        [isInputGroup]="false"
+        name="showInDiscoveryDocument"
+        (onChange)="getCheckboxValue($event, 'showindiscovery')"
+        [id]="'showInDiscoveryDocument'"
+      ></rds-checkbox>
     </div>
   </ng-container>
 
-  <div class="footer-buttons my-2  d-flex bottom-0 ">
-    <rds-button [label]="'Cancel'" [id]="'property-cancel'" data-bs-dismiss="offcanvas" [colorVariant]="'primary'" [size]="'small'"
-      [isOutline]="true">
+  <div class="footer-buttons my-2 d-flex bottom-0">
+    <rds-button
+      [label]="'Cancel'"
+      [id]="'property-cancel'"
+      data-bs-dismiss="offcanvas"
+      [colorVariant]="'primary'"
+      [size]="'small'"
+      [isOutline]="true"
+    >
     </rds-button>
-    <rds-button [label]="'Create'" [id]="'property-create'" [class.disabled]="!resourceForm.valid" [size]="'small'" class="ms-2" [colorVariant]="'primary'"
-      (click)="saveResource(resourceForm)">
+    <rds-button
+      [label]="getBtnName()"
+      [id]="'property-create'"
+      [class.disabled]="!resourceForm.valid"
+      [size]="'small'"
+      class="ms-2"
+      [colorVariant]="'primary'"
+      (click)="saveResource(resourceForm)"
+    >
     </rds-button>
   </div>
-
 </form>

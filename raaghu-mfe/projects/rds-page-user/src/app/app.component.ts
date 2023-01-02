@@ -94,6 +94,7 @@ export class AppComponent {
  TreeData: any = [];
   treeData1: any;
   isAssigned: boolean;
+  isShimmer: boolean;
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -135,9 +136,7 @@ export class AppComponent {
     { key: 'name',displayName: 'Name',dataType: 'html',filterable: true,sortable: true,},
     { key: 'statusTemplate',displayName: 'Status',dataType: 'html',filterable: true,sortable: true,},
     { key: 'email',displayName: 'email',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},
-
-    
+    { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},    
   ]
   ngOnInit(): void {
     this.store.dispatch(getUsers());
@@ -162,57 +161,15 @@ export class AppComponent {
           }
           this.userList.push(item);
         });
-        const mfeConfig = this.rdsUserMfeConfig
-        mfeConfig.input.userList = [... this.userList];
-        mfeConfig.input.isShimmer = false;
-        this.rdsUserMfeConfig = mfeConfig;
+        this.isShimmer = false;
       }
     });
  
-    this.store.dispatch(getUsers());
-    this.store.select(selectAllUsers).subscribe((res: any) => {
-     
-      this.userList = [];
-      if (res  && res.items && res.status == "success") {
-        this.isAnimation = false;
-      
-        res.items.forEach((element: any) => {
-          let statusTemplate;
-          if (element.isActive) {
-            statusTemplate = `<div><span class="badge badge-success">Active</span></div>`;
-          }
-          else {
-            statusTemplate = `<div><span class="badge badge-secondary">Inactive</span></div>`;
-          }
-          let emailConfirmTemplate;
-          if (element.isActive) {
-            emailConfirmTemplate = `<div> <span class="badge badge-primary">Yes</span></div>`;
-          }
-          else {
-            emailConfirmTemplate = `<div> <span class="badge badge-danger">No</span></div>`;
-          }
-          const item: any = {
-           name: element.userName,
-           id: element.id,
-           statusTemplate: element.statusTemplate,
-           email: element.email,
-            surName:element.surname,
-          
-          };
-         
-          this.userList.push(item);
-        });
 
-        const mfeConfig = this.rdsUserMfeConfig;
-        mfeConfig.input.userList = [...this.userList];
-        mfeConfig.input.isShimmer=false;
-        this.rdsUserMfeConfig = mfeConfig;
-      }
-    });
     this.store.dispatch(assignableRoles());
     this.store.select(selectAssignableRoles).subscribe((res: any) => {
-      this.roles =  [];
       if (res && res.items) {
+        this.roles =  [];
             this.isAnimation = false;
             res.items.forEach((element: any) => {
             const item: any = {
@@ -222,23 +179,13 @@ export class AppComponent {
           }
           this.roles.push(item);
         });
-        const mfeConfig = this.rdsUserMfeConfig;
-             mfeConfig.input.roles = this.roles;
-          this.rdsUserMfeConfig = mfeConfig;
       }
     });
     
-  
-
-
-
-
-
-
     this.store.dispatch(availbleOrganizationUnit());
     this.store.select(selectAvailableOrgUnit).subscribe((res: any) => {
-      this.orgTreeData =  [];
       if (res && res.items) {
+        this.orgTreeData =  [];
         this.isAnimation = false;
     this.treeData1 = this._arrayToTreeConverterService.createTree(
       res.items,
@@ -266,16 +213,7 @@ export class AppComponent {
       ],
       1
     );
-        res.items.forEach((element: any) => {
-            const item: any = {
-            displayName: element.displayName,
-          }
-          this.orgTreeData.push(item);
-        });
-        const mfeConfig = this.rdsUserMfeConfig;
-             mfeConfig.input.orgTreeData = [...this.treeData1];
-          this.rdsUserMfeConfig = mfeConfig;
-      }
+  }
     });
 
   
@@ -311,111 +249,7 @@ export class AppComponent {
         //  isShimmer:false,
         //  editShimmer:false
       },
-      output: {
-        
-        Saveuserinfo: (user: any ) => {
-          if(user && user.userInfo ){
-            if(user.userInfo.id){
-              const data: any = {
-                email : user.userInfo.email,
-                isActive:user.userInfo.isActive,
-                name:user.userInfo.name,
-                password:user.userInfo.password,
-                surname:user.userInfo.surname,
-                id:user.userInfo.id,
-                userName:user.userInfo.userName,
-                phoneNumber:user.userInfo.phoneNumber
-               };
-               this.store.dispatch(getUserForEdit(data));
-               console.log(getUserForEdit(data));
-            }
-              else{
-
-                const data: any = {
-                  email : user.userInfo.email,
-                  isActive:user.userInfo.isActive,
-                  name:user.userInfo.name,
-                  password:user.userInfo.password,
-                  surname:user.userInfo.surname,
-                  userName:user.userInfo.userName,
-                  phoneNumber:user.userInfo.phoneNumber,
-                  //roleNames:user.roles.name
-                 };
-                this.store.dispatch(saveUser(data));
-              console.log(saveUser(data));
-           }
-           
-          }
-         
-        },
-        CreateOrEditUser: (user: any) => {
-          console.log(user);
-          this.store.dispatch(getUserForEdit(user));
-          this.store.select(selectUserForEdit).subscribe(res=>{
-            const data: any = {
-              email : user.userInfo.email,
-              isActive:user.userInfo.isActive,
-              name:user.userInfo.name,
-              password:user.userInfo.password,
-              surname:user.userInfo.surname,
-              id:user.userInfo.id,
-              roleNames:user.roles.name,
-              userName:user.userInfo.userName,
-              phoneNumber:user.userInfo.phoneNumber
-             };
-           console.log(res);
-           const mfeConfig = this.rdsUserMfeConfig
-           mfeConfig.input.user = { ... this.user};
-                 })  
-
-         // this.store.dispatch(getTenantFesaturesForEdit(selectedTenant))
-
-        },
-        
-        onClose: (event: any) => {
-        this.userinfo = undefined;  
-          const mfeConfigedit = this.rdsUserMfeConfig;
-          mfeConfigedit.input.userinfo = { ...this.userinfo };
-          mfeConfigedit.input.editShimmer=true;
-          this.rdsUserMfeConfig = mfeConfigedit;
-        },
-        deleteUser: (eventData: any) => {
-          this.store.dispatch(deleteUser(eventData.id));
-        },
-      
-
-        
-        ConvertArraytoTreedata(tredata: any) {
-          const treedaTA = this._arrayToTreeConverterService.createTree(
-            tredata,
-            'parentName',
-            'name',
-            null,
-            'children',
-            [
-              {
-                target: 'label',
-                source: 'displayName',
-              },
-              {
-                target: 'expandedIcon',
-                value: 'fa fa-folder-open text-warning',
-              },
-              {
-                target: 'collapsedIcon',
-                value: 'fa fa-folder text-warning',
-              },
-              {
-                target: 'expanded',
-                value: true,
-              },
-            ],
-            1
-          );
-          return treedaTA;
-        }
-      
-      },
+    
     };
    
     
@@ -425,14 +259,78 @@ export class AppComponent {
         this.UserPermissionFiltertreeData = this.ConvertArraytoTreedata(
           res.UserPermissionFilterI.items
         );
-      const mfeConfig = this.rdsUserMfeConfig;
      
-      this.rdsUserMfeConfig = { ...mfeConfig };
     });
 
     this.updateOrganizationTree();
 
   }
+
+  Saveuserinfo(user: any ){
+    if(user && user.userInfo ){
+      if(user.userInfo.id){
+        const data: any = {
+          email : user.userInfo.email,
+          isActive:user.userInfo.isActive,
+          name:user.userInfo.name,
+          password:user.userInfo.password,
+          surname:user.userInfo.surname,
+          id:user.userInfo.id,
+          userName:user.userInfo.userName,
+          phoneNumber:user.userInfo.phoneNumber
+         };
+         this.store.dispatch(getUserForEdit(data));
+         console.log(getUserForEdit(data));
+      }
+        else{
+
+          const data: any = {
+            email : user.userInfo.email,
+            isActive:user.userInfo.isActive,
+            name:user.userInfo.name,
+            password:user.userInfo.password,
+            surname:user.userInfo.surname,
+            userName:user.userInfo.userName,
+            phoneNumber:user.userInfo.phoneNumber,
+            //roleNames:user.roles.name
+           };
+          this.store.dispatch(saveUser(data));
+        console.log(saveUser(data));
+     }
+     
+    }
+   
+  }
+  CreateOrEditUser (user: any) {
+    console.log(user);
+    this.store.dispatch(getUserForEdit(user));
+    this.store.select(selectUserForEdit).subscribe(res=>{
+      const data: any = {
+        email : user.userInfo.email,
+        isActive:user.userInfo.isActive,
+        name:user.userInfo.name,
+        password:user.userInfo.password,
+        surname:user.userInfo.surname,
+        id:user.userInfo.id,
+        roleNames:user.roles.name,
+        userName:user.userInfo.userName,
+        phoneNumber:user.userInfo.phoneNumber
+       };
+     console.log(res);
+   })  
+
+   // this.store.dispatch(getTenantFesaturesForEdit(selectedTenant))
+
+  }
+  
+  onClose(event: any){
+  this.userinfo = undefined;  
+  }
+  deleteUser(eventData: any){
+    this.store.dispatch(deleteUser(eventData.id));
+  }
+
+
   updateOrganizationTree() {
     this.store.dispatch(getOrganizationUnitTree());
     this.store.select(selectOrganizationUnitTree).subscribe((res: any) => {
@@ -463,9 +361,6 @@ export class AppComponent {
           ],
           1
         );
-        const mfeConfig = this.rdsUserMfeConfig;
-        mfeConfig.input.orgTreeData = [...this.treeData1];
-        this.rdsUserMfeConfig = mfeConfig;
       }
     });
   }

@@ -142,6 +142,11 @@ input::-webkit-input-placeholder {
   font-weight: $input-font-weight;
 }
 
+textarea::-webkit-input-placeholder{
+  font-size: $font-size-sm;
+  font-weight: $input-font-weight;
+}
+
 .form-select {
   font-size: $font-size-sm;
   line-height: 1.8;
@@ -220,6 +225,7 @@ html[theme=dark],
 html[theme=light] {
   overflow: hidden;
 }
+
 
 // #storybook-preview-wrapper html{
 //   overflow-y: scroll;

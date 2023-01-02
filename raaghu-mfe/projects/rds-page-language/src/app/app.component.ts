@@ -57,10 +57,10 @@ export class AppComponent implements OnInit {
   @Input() listItems = [
     { value: 'New Language', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' },
   ];
-  isShimmer: boolean = false;
+  isShimmer: boolean = true;
   EditShimmer: boolean = false;
   languageCanvasTitle = 'New Language';
-  buttonSpinnerForNewLanguage: boolean = true;
+  buttonSpinnerForNewLanguage: boolean = false;
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompAlert',
     input: {
@@ -95,6 +95,20 @@ export class AppComponent implements OnInit {
   public flags: any = [];
   public viewCanvas: boolean = false;
   constructor(public datepipe: DatePipe, public translate: TranslateService, private store: Store, private alertService: AlertService, private router: Router) { }
+  
+  onActionSelection(event: any){
+    if (event.actionId === 'delete') {
+      this.store.dispatch(deleteLanguage(event.selectedData.id))
+    }else if (event.actionId === 'edit') {
+      this.languageCanvasTitle = 'Edit Language';
+      this.selectedLanguage = event.selectedData;
+       this.store.dispatch(getLanguageForEdit({id:event.selectedData.id}));
+       
+      this.openCanvas(true)
+    }
+  }
+  
+  
   ngOnInit(): void {
     this.isAnimation = true;
     this.rdsLanguageTableMfeConfig = {
@@ -110,17 +124,7 @@ export class AppComponent implements OnInit {
         isShimmer: true,
       },
       output: {
-        onActionSelection: (event: any) => {
-          if (event.actionId === 'delete') {
-            this.store.dispatch(deleteLanguage(event.selectedData.id))
-          }else if (event.actionId === 'edit') {
-            this.languageCanvasTitle = 'Edit Language';
-            this.selectedLanguage = event.selectedData;
-             this.store.dispatch(getLanguageForEdit({id:event.selectedData.id}));
-             
-            this.openCanvas(true)
-          }
-        },
+        
       }
     };
     this.rdsNewLanguageMfeConfig = {
@@ -181,10 +185,8 @@ export class AppComponent implements OnInit {
           }
           this.languageTableData.push(item);
         });
-        const mfeConfig = this.rdsLanguageTableMfeConfig
-        mfeConfig.input.tableData = [... this.languageTableData];
-         mfeConfig.input.isShimmer = false;
-        this.rdsLanguageTableMfeConfig = mfeConfig;
+        this.isShimmer = false;
+        
       }
     });
     this.store.dispatch(getCultureList())
@@ -222,7 +224,6 @@ export class AppComponent implements OnInit {
 
         const mfeConfig = this.rdsNewLanguageMfeConfig;
         mfeConfig.input.selectedLanguageData = data;
-        this.rdsLanguageTableMfeConfig = mfeConfig;
       }
     })
     this.subscribeToAlerts();

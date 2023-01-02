@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-rds-comp-tenant-features',
+  selector: 'rds-comp-tenant-features',
   templateUrl: './rds-comp-tenant-features.component.html',
   styleUrls: ['./rds-comp-tenant-features.component.scss'],
 })
