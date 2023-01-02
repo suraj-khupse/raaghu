@@ -47,5 +47,6 @@ advanced.args = {
       totalRecords: 101,
       recordsPerPage: 5,
       role: 'Advanced',
-      alignmentType: 'start'
+  alignmentType: 'start',
+  size: 'small',
 };

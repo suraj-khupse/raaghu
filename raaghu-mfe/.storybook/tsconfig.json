@@ -1,13 +1,14 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "allowJs": true,
     "types": [
       "node"
     ],
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
-  	"../projects/test.ts",
+    "../projects/test.ts",
     "../projects/**/*.spec.ts",
     "../projects/**/*.e2e-spec.ts"
   ],

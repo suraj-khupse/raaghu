@@ -161,8 +161,8 @@
 
 
   .bullet-circle {
-    width: 16px;
-    height: 16px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
   }
 
@@ -448,15 +448,15 @@
 
   .bullet-text-complete svg {
     display: inline;
-    top: -3px;
+    //top: -3px;
   }
 
   .multi-circle-complete svg {
     display: inline;
     height: 18px;
     width: 18px;
-    top: -1px;
-    left: -1px;
+   /* top: -1px;
+    left: -1px;*/
   }
 
   .bullet-text-active > .step-name-small {
@@ -514,8 +514,8 @@
     stroke: #fff;
     fill: #fff;
     position: relative;
-    top: -6px;
-    left: -2px;
+   /* top: -6px;
+    left: -2px;*/
     display: none;
   }
 
