@@ -5,7 +5,7 @@
         <div class="node-dot position-relative">
             <rds-checkbox [attr.id]="'Selectall'" (onChange)="selectAllFeature($event)"
                 [checked]="checkSelectAll(treeData)" class="position-absolute" [disabled]="false" [switch]="false"
-                [inline]="false" [id]="'checkSelectAll'">
+               [id]="'checkSelectAll'">
             </rds-checkbox>
         </div>
         <span class="node-label"><span class="mr-4">{{translate.instant(selectAllLabel)}}</span></span>
@@ -23,7 +23,7 @@
                     [height]="'13px'" [width]="'13px'" (click)="node.expanded=!node.expanded"
                     *ngIf="node.children&&node.children.length>0"></rds-icon>
                 <div class="node-dot position-relative ms-2" *ngIf="TreeType.checkbox&&node&&node.data">
-                    <rds-checkbox [checked]="node.selected" [disabled]="false" [switch]="false" [inline]="false"
+                    <rds-checkbox [checked]="node.selected" [disabled]="false" [switch]="false"
                         (onChange)="selectNode(node,$event)" [id]="'selectNode'"></rds-checkbox>
                     <div *ngIf="node.level !== 1" class="horizontal-dotted-line"></div>
                 </div>

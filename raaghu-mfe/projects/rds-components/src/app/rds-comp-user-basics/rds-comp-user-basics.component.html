@@ -106,27 +106,27 @@
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Set Random Password')" [checked]="userData.setRandomPassword"
                           [(ngModel)]="userData.setRandomPassword" name="setRandomPassword" [withLabel]="true" [switch]="false"
-                          [inline]="false" [id]="'setRandomPassword'"></rds-checkbox>
+                           [id]="'setRandomPassword'"></rds-checkbox>
           </div>
        </div>
        <div class="col-md-6">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Send activation email')" [checked]="userData.isTwoFactorEnabled"
                           [(ngModel)]="userData.isTwoFactorEnabled" name="isTwoFactorEnabled" [withLabel]="true" [switch]="false"
-                          [inline]="false" [id]="'isTwoFactorEnabled'"></rds-checkbox>
+                           [id]="'isTwoFactorEnabled'"></rds-checkbox>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Lockout enabled')" [checked]="userData.isLockoutEnabled"
                           [(ngModel)]="userData.isLockoutEnabled" name="isLockoutEnabled" [withLabel]="true" [switch]="false"
-                          [inline]="false" [id]="'isLockoutEnabled'"></rds-checkbox>
+                           [id]="'isLockoutEnabled'"></rds-checkbox>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Active')" [checked]="userData.isActive"
-                          [(ngModel)]="userData.isActive" name="isActive" [withLabel]="true" [switch]="false" [inline]="false"
+                          [(ngModel)]="userData.isActive" name="isActive" [withLabel]="true" [switch]="false" 
                           [id]="'isActive'"></rds-checkbox>
           </div>
         </div>
@@ -134,7 +134,7 @@
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Should Change Password On Next Login')"
                           [checked]="userData.shouldChangePasswordOnNextLogin" [(ngModel)]="userData.shouldChangePasswordOnNextLogin"
-                          name="shouldChangePasswordOnNextLogin" [withLabel]="true" [switch]="false" [inline]="false"
+                          name="shouldChangePasswordOnNextLogin" [withLabel]="true" [switch]="false" 
                           [id]="'shouldChangePasswordOnNextLogin'"></rds-checkbox>
           </div>
         </div>
