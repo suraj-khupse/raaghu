@@ -7,7 +7,7 @@
   [attr.aria-label]="label" class="position-relative">
 
   <ng-content select="[left]"></ng-content>
-  <span *ngIf="icon" [ngClass]="icon&&label ? 'me-2' :  ''" [class.invisible]="showLoadingSpinner">
+  <span *ngIf="icon" [ngClass]="icon&&label ? 'me-2 d-inline-block' :  ''" [class.invisible]="showLoadingSpinner">
     <rds-icon *ngIf="icon" [name]="icon" [width]="iconWidth" [height]="iconHeight" [fill]="isIconFill"
       [stroke]="isIconStroke"></rds-icon>
   </span>

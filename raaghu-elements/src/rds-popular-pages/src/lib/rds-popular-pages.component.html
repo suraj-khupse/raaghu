@@ -5,14 +5,15 @@
   <div>
       <div class="border-bottom d-flex align-items-center py-2 gap-2" *ngFor="let item of customPopularPageItems ;index as i">
         <div class="p-3"> 
-            <rds-icon
-            height="23px"
-            [fill]="false"
-            [stroke]="true"
-            width="23px"
-            type=""
-            [name]="item.icon">
-        </rds-icon>
+          <div class="border rounded-3 bg-primary text-primary-emphasis p-2 bg-opacity-25 ">
+            <rds-icon height="18px"
+                      [fill]="false"
+                      [stroke]="true"
+                      width="18px"
+                      type=""
+                      [name]="item.icon" [colorVariant]="'primary'">
+            </rds-icon>
+          </div>
       </div>
       <div class="w-100">
         <div class="fw-bold text-muted">

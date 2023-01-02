@@ -2,7 +2,7 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
 
 .accordion-header {
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
   background: #7e2eef;
   border-color: #7e2eef;
 }
@@ -93,14 +93,12 @@
 
 /// File Uploader
 .files {
-  height: 100px;
+  height: auto;
   background: #f8f9fa;
   border: 1px dashed #adb5bd;
   border-radius: 0.25rem;
 
-  :hover {
-    background: #e9ecef;
-  }
+  
 
   :focus {
     border: 3px solid #67aeec;
@@ -114,7 +112,7 @@
     left: 0;
     width: 70px;
     right: 0;
-    height: 70px;
+    height: 20px;
     content: "";
     background-image: url("https://image.flaticon.com/icons/svg/130/130993.svg");
     display: block;
@@ -126,11 +124,13 @@
   .file-input {
     top: 10px;
     position: absolute;
+    height: 100%;
+    background-color: transparent;
   }
 
   span.spn-svg {
     right: 30px;
-    top: 29px;
+    top: 19px;
   }
 
   .alert-col {
@@ -141,7 +141,9 @@
     color: #adb5bd;
   }
 }
-
+.files:hover {
+  background: #e9ecef;
+}
 .error-msg {
   color: #ef2e2e;
   top: 4rem;
@@ -769,8 +771,8 @@ $pagination-item-last-bg: $white;
 $page-link-color: $gray-800;
 $pagination-bg-color: $gray-100;
 $page-link-bg-hover: $gray-800;
-$pagination-bg-hover-color: $gray-300;
-$page-link-active-color: $gray-600;
+$pagination-bg-hover-color: $primary;
+$page-link-active-color: $white;
 $pagination-item-bg-active: $gray-800;
 
 // /*dropdown Variales */
@@ -1019,6 +1021,10 @@ svg {
   .nav-link {
     color: $topnav-link-color;
   }
+
+  .nav-link.active {
+    color:$primary;
+  }
 }
 
 #sidebar {
@@ -1262,6 +1268,7 @@ svg {
 
 .pagination {
   .page-item {
+    margin: 0px 3px;
     border-color: $gray-100;
     // &:nth-child(-n + 2) .page-link {
     //   background: $pagination-item-bg;
@@ -1277,8 +1284,9 @@ svg {
   .page-link {
     color: $pagination-item-color;
     background-color: $pagination-bg-color;
+    border-radius: 4px;
+    padding: 3px 10px;
     // border: 1px solid $pagination-bg-color;
-
     &:hover {
       color: $pagination-item-color;
       background-color: $pagination-bg-hover-color;
@@ -1442,7 +1450,7 @@ svg {
 }
 // /* File style */
 .files {
-  color: $file-color;
+  //color: $file-color;
   background: $file-background-color;
   border-color: $file-border-color;
 
@@ -1748,7 +1756,9 @@ $form-feedback-color: $gray-700;
     border-color: $input-focus-border-color;
   }
 }
-
+.form-control:disabled{
+    cursor:no-drop;
+}
 .text-muted {
   color: $gray-500;
 }
@@ -1917,44 +1927,45 @@ $form-feedback-color: $gray-700;
   @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
   }
-
-  .alert {
-    svg {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: $alert-color;
-
-      polyline.icon {
+  @each $color, $value in $theme-colors {
+    .alert-#{$color} {
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
         stroke: $alert-color;
-      }
 
-      polygon.icon {
-        stroke: $alert-color;
-      }
+        polyline.icon {
+          stroke: $alert-color;
+        }
 
-      ellipse.icon {
-        stroke: $alert-color;
-      }
+        polygon.icon {
+          stroke: $alert-color;
+        }
 
-      path.icon {
-        stroke: $alert-color;
-      }
+        ellipse.icon {
+          stroke: $alert-color;
+        }
 
-      line.icon {
-        stroke: $alert-color;
-      }
+        path.icon {
+          stroke: $alert-color;
+        }
 
-      rect.icon {
-        stroke: $alert-color;
-      }
+        line.icon {
+          stroke: $alert-color;
+        }
 
-      circle.icon {
-        stroke: $alert-color;
+        rect.icon {
+          stroke: $alert-color;
+        }
+
+        circle.icon {
+          stroke: $alert-color;
+        }
       }
     }
+    }
   }
-}
 
 .bs-datepicker {
   background: $white;
@@ -2001,6 +2012,7 @@ html #sidebar ul li a.active small {
 }
 
 @each $state, $value in $theme-colors {
+  $value: #0d6efd;
   $icon-color: shift-color($value, $icon-color-scale);
 
   .icon {
@@ -2080,6 +2092,9 @@ a {
   text-decoration: none;
   color: $primary;
 }
+.breadcrumb-item.active {
+  color: $primary;
+}
 
 .btn-color-mode-switch {
   display: inline-block;
@@ -2143,7 +2158,7 @@ a {
 }
 
 .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner {
-  background: transparent;
+  background: #e0e0e0;
   color: #fff;
 }
 

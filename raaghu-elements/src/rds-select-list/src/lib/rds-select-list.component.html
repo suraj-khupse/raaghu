@@ -3,7 +3,7 @@
     for="value">{{label}}<span class="text-danger" *ngIf="isRequired">*</span></label>
   <select  data-bs-toggle="tooltip" [attr.data-bs-placement]="tooltipPlacement" [attr.data-bs-title]="tooltipTitle"
     [attr.id]="id" [(ngModel)]="value" name="value" [ngClass]="classesForSelect" aria-label="Default select example"
-    [disabled]="disabled" [multiple]="multiple" [size]="rows" (ngModelChange)="onSelect($event)">
+    [disabled]="disabled" [multiple]="multiple" [size]="rows" (ngModelChange)="onSelect($event)" class="dropdownarrow">
     <!-- <ng-content>
 
     </ng-content> -->

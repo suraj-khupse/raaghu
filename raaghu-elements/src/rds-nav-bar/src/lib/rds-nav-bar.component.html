@@ -10,7 +10,7 @@
         <ng-content select="[left]"></ng-content>
         <ng-container *ngFor="let item of navbarItems; let i=index">
           <li class="nav-item ">
-            <a class="nav-link" [class.active]="i===activeTab" (click)="onTabClick.emit(item)">{{item.label}}</a>
+            <a class="nav-link cursor-pointer" [class.active]="i===activeTab" (click)="onTabClick.emit(item)">{{item.label}}</a>
           </li>
         </ng-container>
         <ng-content select="[right]"></ng-content>

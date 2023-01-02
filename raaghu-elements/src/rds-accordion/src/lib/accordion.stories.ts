@@ -83,7 +83,7 @@ StackOpen.args = {
 export const StackClosed: Story<RdsAccordionComponent> = (args) => ({
   props: args,
   template: `
-  <rds-accordian  [border]= "true" [outline]= "false" [id]="id">
+  <rds-accordian  [border]= "true" [outline]= "true" [id]="id">
   <accordion-item title="Section 1 title" [parentId]="id" >
   <h3 accordianBody>Custom </h3>
   </accordion-item>

@@ -2,8 +2,8 @@
   <ul class="nav d-flex list-unstyled mb-3" id="simple">
     <li class="flex-fill mx-2" *ngFor="let item of stepperList; index as i">
         <a class="text-decoration-none" [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols">
-          <div class="step-name mt-3 fs-5 mb-1">{{ item.stepname }}</div>
-          <div class="fw-medium text-dark">{{ item.steptabname }}</div>
+          <div class="step-name mt-2 fs-6 mb-1 text-uppercase">{{ item.stepname }}</div>
+          <div class="fw-semibold text-dark"><small>{{ item.steptabname }}</small></div>
         </a>
     </li>
   </ul>
@@ -22,7 +22,7 @@
               <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
             </svg>
           </div>
-          <div class="step-name align-self-center">{{ item.steptabname }}</div>
+          <div class="step-name align-self-center  text-uppercase">{{ item.steptabname }}</div>
         </a>
       </div>
     </li>
@@ -34,7 +34,7 @@
   <ul class="nav d-flex list-unstyled mb-3" id="panel-simple">
     <li class="flex-fill mx-1 p-4" *ngFor="let item of stepperList; index as i">
       <a class="text-decoration-none" [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols">
-        <div class="text-center">{{ item.stepname }}</div>
+        <div class="text-center text-uppercase">{{ item.stepname }}</div>
       </a>
     </li> 
   </ul>
@@ -54,7 +54,7 @@
             </svg>
           </div>
           <div class="align-self-center mx-1 ">
-            <div class="step-name-small align-self-center">{{ item.steptabname }}</div>
+            <div class="step-name-small align-self-center  text-uppercase">{{ item.steptabname }}</div>
             <div class="step-description">{{item.description}}</div>
           </div>
         </a>
@@ -68,7 +68,7 @@
   <ul class="nav d-flex list-unstyled" id="panel-arrow">
     <li class="flex-fill mx-1 p-4" *ngFor="let item of stepperList; index as i">
       <a class="text-decoration-none" [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols">
-        <div class="text-center">{{ item.stepname }}</div>
+        <div class="text-center  text-uppercase">{{ item.stepname }}</div>
       </a>
     </li>
   </ul>
@@ -90,7 +90,7 @@
 
 
 <div *ngIf="stepperType == 'multi-circles-1'" class="d-flex justify-content-around" id="rds-stepper">
-  <ul class="nav list-unstyled d-flex mb-3" id="multi-circles">
+  <ul class="nav list-unstyled d-flex mb-4 pb-3" id="multi-circles">
     <li class="d-flex" *ngFor="let item of stepperList; index as i">
       <div class="multi-circle d-flex" [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols">
         <div class="inner-circle">
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="line"></div>
-      <div class="step-name-small">{{item.stepname}}</div>
+      <div class="step-name-small text-uppercase">{{item.stepname}}</div>
     </li>
   </ul>
 </div>
@@ -108,13 +108,13 @@
 
 <div *ngIf="stepperType == 'multi-circles-2'" class="d-flex justify-content-around" id="rds-stepper">
   <div class="flex-grow-1"></div>
-  <ul class="nav list-unstyled d-flex mb-3" id="multi-circles">
+  <ul class="nav list-unstyled d-flex mb-4 pb-3" id="multi-circles">
     <li class="d-flex" *ngFor="let item of stepperList; index as i">
       <div class="multi-circle" [attr.data-bs-target]="item.tablink" data-bs-toggle="tab" [attr.aria-controls]="item.ariacontrols">
         {{i+1}}
       </div>
       <div class="line"></div>
-      <div class="step-name-small">{{item.steptabname}}</div>
+      <div class="step-name-small  text-uppercase">{{item.steptabname}}</div>
     </li>
   </ul>
   <div class="flex-grow-1">
@@ -133,7 +133,7 @@
             </svg>
           </div>
         </div>
-        <div class="step-name-small align-self-center"> {{item.steptabname}}</div>
+        <div class="step-name-small align-self-center  text-uppercase"> {{item.steptabname}}</div>
       </li>
     </div>
   </ul>
@@ -152,7 +152,7 @@
       </div>
       <div class="line-verticle"></div>
       <div class="mx-3 move-up">
-        <div class="step-name-small">
+        <div class="step-name-small  text-uppercase">
           {{item.steptabname}}
         </div>
         <div class="step-description">

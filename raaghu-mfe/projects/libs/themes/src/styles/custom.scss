@@ -142,6 +142,10 @@ $tags-padding: 5px 5px 5px 10px;
 
 $enable-caret: true !default;
 
+.carousel-indicators {
+  height: $carousel-indicator-width;
+  width: $carousel-indicator-width;
+}
 // /*badge color variables*/
 .badge {
   font-weight: 500;
@@ -2227,4 +2231,14 @@ rds-comp-admin-dashboard {
 
     
   }
+}
+rds-icon {
+  display: flex;
+  align-items: center;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.form-control:disabled {
+  cursor: no-drop;
 }

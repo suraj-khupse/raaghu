@@ -27,12 +27,12 @@ Default.args = {
   display_type: 'basic',
   statItems: [
     {
-      title: 'SAM SMITH',
+      title: 'Downloads',
       value: '2370',
-      icon: 'star',
+      icon: 'cloud_download',
       iconHeight: '80px',
       iconWidth: '80px',
-      iconFill: true,
+      iconFill: false,
       iconStroke: true
     },
   ]
@@ -45,7 +45,7 @@ advanced.args = {
   display_type: 'advanced',
   statItems: [
     {
-      title: 'SAM SMITH',
+      title: 'Downloads',
       value: '2370',
     },
   ]
