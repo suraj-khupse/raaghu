@@ -4,6 +4,12 @@ import { RdsColorPickerComponent } from './rds-color-picker.component';
 export default {
     title: 'Elements/Color Picker',
     component: RdsColorPickerComponent,
+    argTypes: {
+        position: {
+          options: ['start','end','top','bottom'],
+          control: { type: 'radio' },
+        },
+      }
 } as Meta
 
 const Template: Story<RdsColorPickerComponent> = (args: RdsColorPickerComponent) => ({
