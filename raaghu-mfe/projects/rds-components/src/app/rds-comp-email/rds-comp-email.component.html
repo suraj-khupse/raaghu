@@ -48,12 +48,12 @@
         <div class="form-group mb-3">
           <rds-checkbox [label]="translate.instant('Use SSL')" [checked]="EmailData.smtpEnableSsl"
             [(ngModel)]="EmailData.smtpEnableSsl" name="smtpEnableSsl" [disabled]="false" [switch]="false"
-            [inline]="false" #smtpEnableSsl="ngModel" [withLabel]="true" [isInputGroup]="false" [id]="'smtpEnableSsl'"
+             #smtpEnableSsl="ngModel" [withLabel]="true" [isInputGroup]="false" [id]="'smtpEnableSsl'"
             (onChange)="selectAllFeature($event,'smtpEnableSsl')" (change)="onChange()"></rds-checkbox>
         </div>
         <div class="form-group mb-3">
           <rds-checkbox [label]="translate.instant('Use Default Credentials')"
-            [checked]="EmailData.smtpUseDefaultCredentials" [disabled]="false" [switch]="false" [inline]="false"
+            [checked]="EmailData.smtpUseDefaultCredentials" [disabled]="false" [switch]="false" 
             [withLabel]="true" [isInputGroup]="false" [(ngModel)]="EmailData.smtpUseDefaultCredentials" ngDefaultControl
             name="smtpUseDefaultCredentials" #smtpUseDefaultCredentials="ngModel" [id]="'smtpUseDefaultCredentials'"
             (onChange)="selectAllFeature($event,'smtpUseDefaultCredentials')" (change)="onChange()"></rds-checkbox>

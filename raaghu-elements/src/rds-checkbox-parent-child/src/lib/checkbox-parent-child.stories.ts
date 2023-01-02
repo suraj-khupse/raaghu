@@ -14,7 +14,10 @@ export default {
     }),
   ],
   argTypes: {
-
+    state: {
+      options: ['checkbox', 'errorcheckbox'],
+      control: { type: 'radio' },
+    },
   },
   excludeStories: /.*Data$/
 } as Meta;

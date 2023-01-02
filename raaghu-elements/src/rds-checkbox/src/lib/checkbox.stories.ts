@@ -13,7 +13,10 @@ export default {
       }),
     ],
     argTypes: {
-         
+      state: {
+        options: ['checkbox', 'errorcheckbox','Indeterminate'],
+        control: { type: 'radio' },
+      },
     },
     excludeStories: /.*Data$/
 } as Meta
@@ -37,7 +40,7 @@ Default.args = {
  checked:false,
  disabled:false,
  switch:false,
- inline:false,
+//  inline:false,
  state:'checkbox',
  id:"checkboxid",
  withLabel: true,

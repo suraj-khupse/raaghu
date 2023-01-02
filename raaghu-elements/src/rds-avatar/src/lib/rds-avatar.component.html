@@ -1,9 +1,9 @@
 <div [ngClass]="{ 'd-flex': !verticallyAlligned }">
   <div *ngIf="withProfilePic" class="" [ngClass]="profileClass" >
     <img [src]="profilePic" class="avatar " [ngClass]="classes" [ngStyle]="{'width': width+'px','height':height + 'px'}" />
-    <span class="avatar-initials flex-grow-1 align-items-center ms-2 fw-bold text-decoration-none">
+    <span class="avatar-initials flex-grow-1 align-items-center ms-2 fw-bold text-decoration-none"  [ngClass]="profileName">
       <div class="text-center">
-        <span>{{firstName}}</span>
+        <span>{{firstName}} {{lastName}}</span>
         <p class="mb-0 text-muted">
           {{subTitle}}
         </p>

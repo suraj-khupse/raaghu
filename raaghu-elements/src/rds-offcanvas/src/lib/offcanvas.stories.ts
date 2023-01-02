@@ -47,7 +47,7 @@ export const Default: Story<RdsOffcanvasComponent> = (args) => ({
 
 });
 Default.parameters = { controls: { include: ['canvasTitle', 'placement', 'backDrop', 'offId','offcanvaswidth', 'buttonTitle',
-'scrolling','preventEscapeKey','bodySpacing','onShow','onClose'] } };
+'scrolling','preventEscapeKey','bodySpacing','onShow','onClose','offcanvasheight'] } };
 
 
 Default.args = {
