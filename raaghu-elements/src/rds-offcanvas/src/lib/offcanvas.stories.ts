@@ -39,6 +39,7 @@ export const Default: Story<RdsOffcanvasComponent> = (args) => ({
   [backDrop]="backDrop"
   [offId]="offId"
   [offcanvaswidth]="offcanvaswidth"
+  [offcanvasheight]="offcanvasheight"
   [bodySpacing]="bodySpacing"
   [preventEscapeKey]="preventEscapeKey"
   >
@@ -47,7 +48,7 @@ export const Default: Story<RdsOffcanvasComponent> = (args) => ({
 
 });
 Default.parameters = { controls: { include: ['canvasTitle', 'placement', 'backDrop', 'offId','offcanvaswidth', 'buttonTitle',
-'scrolling','preventEscapeKey','bodySpacing','onShow','onClose'] } };
+'scrolling','preventEscapeKey','bodySpacing','onShow','onClose','offcanvasheight'] } };
 
 
 Default.args = {
@@ -60,6 +61,7 @@ Default.args = {
   placement: 'end',
   backDrop: 'static',
   offcanvaswidth:650,
+  offcanvasheight: 350
   // preventEscapeKey: true
 };
 

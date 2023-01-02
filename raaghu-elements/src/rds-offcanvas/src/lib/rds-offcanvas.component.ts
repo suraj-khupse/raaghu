@@ -15,6 +15,7 @@ export class RdsOffcanvasComponent implements OnInit {
   @Input() offId = 'canvasExample';
   @Input() canvasTitle: string = '';
   @Input() offcanvaswidth = 250;
+  @Input() offcanvasheight = 250;
   @Input() bodySpacing: boolean = true;
   @Output() onShow = new EventEmitter<Event>();
   @Output() onClose = new EventEmitter<Event>();

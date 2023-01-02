@@ -7,6 +7,7 @@
 
     <li *ngFor="let item of listItems">{{item.value}}</li>
 </ul> -->
+
 <ng-container *ngIf="display_type=='basic'">
     <ng-container *ngTemplateOutlet="featureListTemplate; context: { list: listItems }"></ng-container>
 </ng-container>
