@@ -8,8 +8,7 @@
 
   <ng-content select="[left]"></ng-content>
   <span *ngIf="icon" [ngClass]="icon&&label ? 'me-2 d-inline-block' :  ''" [class.invisible]="showLoadingSpinner">
-    <rds-icon *ngIf="icon" [name]="icon" [width]="iconWidth" [height]="iconHeight" [fill]="isIconFill"
-      [stroke]="isIconStroke"></rds-icon>
+    <rds-icon *ngIf="icon" [name]="icon" [width]="iconWidth" [height]="iconHeight" [fill]="isIconFill"></rds-icon>
   </span>
   <span *ngIf="label"  [class.invisible]="showLoadingSpinner" class="btn-text">{{label}}</span>
   <ng-content></ng-content>
