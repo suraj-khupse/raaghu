@@ -61,7 +61,8 @@ export class ClientsEffects {
         from(this.clientsService.clientsPOST(data.data)).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
+            this.store.dispatch(savePermissions(data));
+            this.store.dispatch(getAllClients());
             return saveClientSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
@@ -78,7 +79,8 @@ export class ClientsEffects {
         from(this.clientsService.clientsPUT(data.id, data.data)).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
+            this.store.dispatch(savePermissions(data));
+            this.store.dispatch(getAllClients());
             return updateClientSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
@@ -127,7 +129,7 @@ savePermissions$ = createEffect(() =>
   this.actions$.pipe(
     ofType(savePermissions),
     switchMap(({data}) =>
-      this.roleService.permissionsPUT("R",data.name, data.permissions).pipe(map((res: any) => {
+      this.roleService.permissionsPUT("C",data.name, data.permissions).pipe(map((res: any) => {
         // this.store.dispatch(getRoles());
         // this.alertService.showAlert('Success',  'Role added successfully', 'success')
       }),

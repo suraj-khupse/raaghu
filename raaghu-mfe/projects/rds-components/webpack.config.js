@@ -71,7 +71,7 @@ module.exports = {
         // './RdsCompSecrets': './projects/rds-components/src/app/rds-comp-secrets/rds-comp-secrets.component.ts',
         './RdsCompMemberActivity': './projects/rds-components/src/app/rds-comp-member-activity/rds-comp-member-activity.component.ts',
         // './RdsCompClientResources': './projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.component',
-        './RdsCompClientBasics': './projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component.ts',
+        // './RdsCompClientBasics': './projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component.ts',
         './RdsCompUserPermissions': './projects/rds-components/src/app/rds-comp-user-permissions/rds-comp-user-permissions.component.ts',
         './RdsCompNewRole': './projects/rds-components/src/app/rds-comp-new-role/rds-comp-new-role.component.ts',
         './RdsCompVisualSettings': './projects/rds-components/src/app/rds-comp-visual-settings/rds-comp-visual-settings.component.ts',

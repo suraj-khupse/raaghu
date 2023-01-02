@@ -10,6 +10,10 @@
                     <span class="text-danger" *ngIf="client_id.errors.required">{{"Client ID is required" | translate}}
                     </span>
                 </div>
+                <div class="form-control-feedback" *ngIf="checkClientId">
+                    <span class="text-danger">{{"Client ID is already present" | translate}}
+                    </span>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
@@ -21,6 +25,10 @@
                 <div class="form-control-feedback"
                     *ngIf="client_name.errors && (client_name.dirty || client_name.touched)">
                     <span class="text-danger" *ngIf="client_name.errors.required">Client Name is required</span>
+                </div>
+                <div class="form-control-feedback" *ngIf="checkClientName">
+                    <span class="text-danger">{{"Client Name is already present" | translate}}
+                    </span>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ export interface ResourceCheckboxes {
   id: any;
   letterRange: string;
   isAllRangeSelected: boolean;
+  state: "checkbox" | "Indeterminate" | "errorcheckbox";
   resourcesData: ResourceData[];
 }
 
@@ -41,7 +42,8 @@ export class RdsCompClientResourcesComponent implements OnInit, OnChanges {
   // Properties
   showSelectAllCheckbox = false;
   selectAll: boolean;
-finalResourceData: ResourceCheckboxes[] = [];
+  finalResourceData: ResourceCheckboxes[] = [];
+  selectAllIntermediate: "checkbox" | "Indeterminate" | "errorcheckbox";
 
   constructor(public translate: TranslateService) { }
 
@@ -72,9 +74,9 @@ finalResourceData: ResourceCheckboxes[] = [];
         return 0;
       });
       this.finalResourceData = [
-        { id: 1, letterRange: 'A-E', isAllRangeSelected: false, resourcesData: [] },
-        { id: 2, letterRange: 'F-O', isAllRangeSelected: false, resourcesData: [] },
-        { id: 3, letterRange: 'P-Z', isAllRangeSelected: false, resourcesData: [] }
+        { id: 1, letterRange: 'A-E', isAllRangeSelected: false, state: 'checkbox', resourcesData: [] },
+        { id: 2, letterRange: 'F-O', isAllRangeSelected: false, state: 'checkbox', resourcesData: [] },
+        { id: 3, letterRange: 'P-Z', isAllRangeSelected: false, state: 'checkbox', resourcesData: [] }
       ];
       let firstIndex: number = 0;
       for (let i = 0; i < this.finalResourceData.length; i++) {
@@ -86,7 +88,7 @@ finalResourceData: ResourceCheckboxes[] = [];
           this.finalResourceData[i].resourcesData = this.finalResourceData[i].resourcesData.concat(sortedAlphaArray);
           firstIndex = lastIndex + 1;
           this.showSelectAllCheckbox = true;
-          this.onSelectChild(i);
+          this.onSelectChild();
         } else this.showSelectAllCheckbox = false;
       }
       this.emitSelectedData();
@@ -102,27 +104,53 @@ finalResourceData: ResourceCheckboxes[] = [];
     this.emitSelectedData();
   }
 
+  showIntermediateSelectAll() {
+    const sectionSelectedLength = this.finalResourceData.filter(x => x.isAllRangeSelected == true).length
+    if (this.finalResourceData.filter(x => x.isAllRangeSelected == true).length == this.finalResourceData.length &&
+      this.finalResourceData.filter(x => x.state == 'checkbox').length == this.finalResourceData.length) {
+      this.selectAll = true;
+      this.selectAllIntermediate = 'checkbox';
+    }
+    else if (sectionSelectedLength > 0 && sectionSelectedLength < this.finalResourceData.length) {
+      this.selectAll = true;
+      this.selectAllIntermediate = 'Indeterminate';
+    }
+    else if (sectionSelectedLength == 0) {
+      this.selectAll = false;
+      this.selectAllIntermediate = 'checkbox';
+    }
+  }
+
+  showIntermediateSelectSection() {
+    for (let i = 0; i < this.finalResourceData.length; i++) {
+      const checkedData = this.finalResourceData[i].resourcesData.filter(x => x.left == true)
+      if (checkedData.length > 0 && checkedData.length < this.finalResourceData[i].resourcesData.length) {
+        this.finalResourceData[i].isAllRangeSelected = true;
+        this.finalResourceData[i].state = 'Indeterminate';
+        this.selectAllIntermediate = 'Indeterminate';
+      } else if (checkedData.length == this.finalResourceData[i].resourcesData.length) {
+        this.finalResourceData[i].isAllRangeSelected = true;
+        this.finalResourceData[i].state = 'checkbox';
+      } else if (checkedData.length == 0) {
+        this.finalResourceData[i].isAllRangeSelected = false;
+        this.finalResourceData[i].state = 'checkbox';
+      }
+    }
+  }
+
   // Select all data in a section
   selectAllSectionItems(event: any, index: number) {
     this.finalResourceData[index].resourcesData.forEach(element => element.left = event.target.checked);
-    this.onChildCheckboxCheck(index);
+    this.showIntermediateSelectSection();
+    this.showIntermediateSelectAll();
     this.emitSelectedData();
   }
 
   // Select Particular checkbox
-  onSelectChild(parentIndex: number) {
-    this.onChildCheckboxCheck(parentIndex);
+  onSelectChild() {
+    this.showIntermediateSelectSection();
+    this.showIntermediateSelectAll();
     this.emitSelectedData();
-  }
-
-  onChildCheckboxCheck(index: number) {
-    if (this.finalResourceData[index].resourcesData.filter(x => x.left == false).length > 0) {
-      this.selectAll = false;
-      this.finalResourceData[index].isAllRangeSelected = false;
-    } else {
-      this.selectAll = true;
-      this.finalResourceData[index].isAllRangeSelected = true;
-    }
   }
 
   // Emit Selected Data
@@ -134,7 +162,7 @@ finalResourceData: ResourceCheckboxes[] = [];
           displayName: ele.displayName,
           left: ele.left,
           name: ele.name,
-          id : ele.id
+          id: ele.id
         };
         selectedData.push(item);
       });
