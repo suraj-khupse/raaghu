@@ -48,7 +48,7 @@ export class RdsAvatarComponent implements OnInit, OnChanges {
       classes.push('rounded-circle');
     }
     if(!this.profileContentAlign){
-      classes.push('mb-2')
+      classes.push('mb-0')
     }
     return classes;
     
