@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RdsScrollspyComponent } from './rds-scrollspy.component';
 import { ScrollspyItemComponent } from './scrollspy-item/scrollspy-item.component';
 import { RdsIconModule } from '@libs/rds-icon';
+import { RdsButtonModule } from '@libs/rds-button';
 @NgModule({
   declarations: [
     RdsScrollspyComponent,
@@ -10,7 +11,8 @@ import { RdsIconModule } from '@libs/rds-icon';
   ],
   imports: [
     CommonModule,
-    RdsIconModule
+    RdsIconModule,
+    RdsButtonModule
   ],
   exports: [
     RdsScrollspyComponent,
