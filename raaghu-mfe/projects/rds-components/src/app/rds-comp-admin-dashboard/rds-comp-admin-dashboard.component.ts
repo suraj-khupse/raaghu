@@ -114,10 +114,10 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 13 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kath</b></p><small class=\"text-muted\">Manager </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 3 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">52%</div>" }
   ];
   @Input() toDoListTableData: any = [
-    { "issue": " Activate your account with others intil June 2023", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Volosoft</b></p><small class=\"text-muted\">Website </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two week</small></div>"}
-    , { "issue": "Your Order @22345678 has been confirmed", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ABP Framework</b></p><small class=\"text-muted\">Modules </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-50 bg-danger\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in one week</small></div>"}
-    , { "issue": "Create a new page for CMS", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ASPNET Zero</b></p><small class=\"text-muted\">Payment Module </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-75 bg-info\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>"}
-    , { "issue": "Activate your account with others intil June 2024", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Volosoft</b></p><small class=\"text-muted\">ABP Framework</small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>"}
+    { "issue": " Activate your account with others intil June 2023", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Volosoft</b></p><small class=\"text-muted\">Website </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two week</small></div>" }
+    , { "issue": "Your Order @22345678 has been confirmed", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ABP Framework</b></p><small class=\"text-muted\">Modules </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-50 bg-danger\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in one week</small></div>" }
+    , { "issue": "Create a new page for CMS", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ASPNET Zero</b></p><small class=\"text-muted\">Payment Module </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-75 bg-info\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
+    , { "issue": "Activate your account with others intil June 2024", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Volosoft</b></p><small class=\"text-muted\">ABP Framework</small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
     , { "issue": "Your Order @22345789 has been confirmed", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ABP Framework</b></p><small class=\"text-muted\">Website </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
   ]
 
@@ -125,38 +125,50 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() monthlySummaryDataSets = [
     {
       label: 'Sales',
-      data: [800, 425,  280,  700,  490, 200],
+      data: [800, 425, 280, 700, 490, 200],
       borderColor: '#4DCFFF',
       pointBackgroundColor: '#4DCFFF',
       backgroundColor: '--chart-line-color1',
       fill: true,
       pointRadius: 2.5,
-      borderWidth : 1,
+      borderWidth: 1,
       // fillColor: "rgba(195, 40, 96, 0.1)",
       tension: 0.4,
     },
     {
       label: 'Revenue',
       // data: [400, 750.2, 782.4, 639, 490, 445, 470, 598, 750, 630, 500, 780.2],
-      data: [400, 782.4, 490, 470,  750, 500],
-      strokeColor : "rgba(151,187,205,1)",
-      pointColor : "rgba(151,187,205,1)",
-      pointStrokeColor : "#fff",
-      pointHighlightFill : "#fff",
-      pointHighlightStroke : "rgba(151,187,205,1)",
+      data: [400, 782.4, 490, 470, 750, 500],
+      strokeColor: "rgba(151,187,205,1)",
+      pointColor: "rgba(151,187,205,1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(151,187,205,1)",
       borderColor: '#863BFF',
       pointBackgroundColor: '#863BFF',
       backgroundColor: '--chart-line-color2',
       fill: true,
       pointRadius: 2.5,
-      borderWidth : 1,
+      borderWidth: 1,
       tension: 0.4,
     }
   ]
-  @Input() monthlySummaryLabels = ['Jan',  'Mar',  'May', 'Jul',  'Sep',  'Nov']
+  @Input() monthlySummaryLabels = ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov']
   @Input() monthlySummarychartWidth = 650
   @Input() monthlySummarychartHeight = 250
   @Input() monthlySummarychartOptions = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     radius: 0,
     pointStyle: 'circle',
     responsive: true,
@@ -234,15 +246,21 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() pschartWidth = 255;
   @Input() pschartHeight = 200;
   @Input() pschartOptions = {
-
-    cutoutPercentage: 40,
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
+    animationEasing: "easeOutSine",
+    percentageInnerCutout: 60,
+    segmentShowStroke: false,
     legend: {
       display: false
     },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-
       series: {
         label: {
           position: "inside",
@@ -298,6 +316,18 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() barHrChartWidth = 300;
   @Input() barHrchartHeight = 300;
   @Input() barHrChartOptions = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     indexAxis: 'x',
     elements: {
       bar: {
