@@ -69,7 +69,6 @@
                     (input)="getValue($event)" name="myfile" style="display: none" />
                   <rds-button class="btn btn-icon upload-icon position-absolute top-50 btn-md rounded-circle" colorVariant="" size="medium" [isFabIcon]="true" tooltipTitle="" tooltipPlacement="right" iconHeight="18px"
                     iconWidth="18px"
-                    [isIconStroke]="true"
                     [isIconFill]="false"
                     buttonType="iconOnly"
                     icon="pencil"
@@ -97,7 +96,7 @@
             </rds-nav-tab>
             <div class="text-center">
               <rds-button [isOutline]="true" [label]="translate.instant('LOGOUT')" type="button" [size]="'medium'"
-                          [colorVariant]="'primary'" [isIconFill]="false" [isIconStroke]="true"  (click)="logoutFunction()" [icon]="'logout'"
+                          [colorVariant]="'primary'" [isIconFill]="false" (click)="logoutFunction()" [icon]="'logout'"
                           [iconHeight]="'15px'" [iconWidth]="'15px'">
               </rds-button>
             </div>

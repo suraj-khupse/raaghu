@@ -73,7 +73,7 @@ export class RdsButtonComponent implements AfterViewInit, OnInit ,OnChanges{
   }
 
   public get classes(): string {
-    const outline = `${this.isOutline ? ' btn btn-outline-' + this.colorVariant : ' btn d-flex align-items-center btn-' + this.colorVariant}`;
+    const outline = `${this.isOutline ? ' btn btn-outline-' + this.colorVariant : ' btn align-items-center btn-' + this.colorVariant}`;
     const mode = this.size ? ` btn-${this.size === 'small' ? 'sm ' : this.size === 'large' ? 'lg ' : 'md '}` : '';
     const icon = `${this.isFabIcon ? ' btn-icon p-1 rounded-pill ' : ''}`;
     const icon1 = `${this.isRounded ? ' rounded-pill ' : ''}`;
