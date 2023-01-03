@@ -71,7 +71,6 @@ import { RdsCompsUserClaimsComponent } from './rds-comps-user-claims/rds-comps-u
 import { RdsCompVisualSettingsComponent } from './rds-comp-visual-settings/rds-comp-visual-settings.component';
 import { RdcCompApiScopeBasicsComponent } from './rdc-comp-api-scope-basics/rdc-comp-api-scope-basics.component';
 import { RdcCompApiScopeResourcesComponent } from './rdc-comp-api-scope-resources/rdc-comp-api-scope-resources.component';
-import { RdsCompNewRoleComponent } from './rds-comp-new-role/rds-comp-new-role.component';
 // import { RdsCompPermissionTreeComponent } from './rds-comp-permission-tree/rds-comp-permission-tree.component';
 import { RdsCompTenantDashboardComponent } from './rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component';
 import { RdsCompAlertComponent } from './rds-comp-alert/rds-comp-alert.component';
@@ -82,7 +81,6 @@ import { RdsCompPlanInformationComponent } from './rds-comp-plan-information/rds
 import { RdsCompVisualSettingsShimmerComponent } from './rds-comp-visual-settings/rds-comp-visual-settings-shimmer/rds-comp-visual-settings-shimmer.component';
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { RdsCompFeaturesEditShimmerComponent } from './rds-comp-features/rds-comp-features-edit-shimmer/rds-comp-features-edit-shimmer.component';
-import { RdsCompNewRoleShimmerComponent } from './rds-comp-new-role/rds-comp-new-role-shimmer/rds-comp-new-role-shimmer.component';
 import { RdsCompUserBasicsShimmerComponent } from './rds-comp-user-basics/rds-comp-user-basics-shimmer/rds-comp-user-basics-shimmer.component';
 import { RdsCompsUserClaimsShimmerComponent } from './rds-comps-user-claims/rds-comps-user-claims-shimmer/rds-comps-user-claims-shimmer.component';
 import { RdsCompUserManagementShimmerComponent } from './rds-comp-user-management/rds-comp-user-management-shimmer/rds-comp-user-management-shimmer.component';
@@ -216,7 +214,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompUserPermissionsComponent,
     RdsCompsUserClaimsComponent,
     RdsCompVisualSettingsComponent,
-    RdsCompNewRoleComponent,
     RdcCompApiScopeBasicsComponent,
     RdcCompApiScopeResourcesComponent,
     // RdsCompPermissionTreeComponent,
@@ -228,7 +225,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompPlanInformationComponent,
     RdsCompVisualSettingsShimmerComponent,
     RdsCompFeaturesEditShimmerComponent,
-    RdsCompNewRoleShimmerComponent,
     RdsCompUserBasicsShimmerComponent,
     RdsCompsUserClaimsShimmerComponent,
     RdsCompUserManagementShimmerComponent,

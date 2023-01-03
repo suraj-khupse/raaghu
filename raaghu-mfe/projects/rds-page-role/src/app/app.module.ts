@@ -4,19 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RdsBannerModule, RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsSearchInputModule } from '@libs/rds-elements';
 import { RdsIconModule } from '@libs/rds-icon';
-// import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsSearchInputModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-// import { GetRoleforEdit, PermissionReducer, RoleEffects, RoleReducer } from '@libs/state-management';
-
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
-
+import { RdsCompNewRoleModule } from 'projects/rds-components/src/app/rds-comp-new-role/rds-comp-new-role.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// export const RolsReducersMap = {
-//   // PermissionI: PermissionReducer,
-//   // EditRoleSateI: GetRoleforEdit,
-//   roles: RoleReducer,
-// };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +29,7 @@ import { AppComponent } from './app.component';
     CommonModule,
     RdsIconModule,
     FormsModule,
+    RdsCompNewRoleModule
   ],
 
   providers: [ArrayToTreeConverterService],

@@ -7,7 +7,15 @@
             <h5 class="card-title">{{'Role Hierarchy'| translate}}</h5>
           </div>
           <div class="card-body overflow-auto vh-75">
-            <mfe-loader [config]="rdsOrganizationTreeConfig"></mfe-loader>
+            <!-- <mfe-loader [config]="rdsOrganizationTreeConfig"></mfe-loader> -->
+            <!-- <rds-organization-tree
+               (onDeleteNode)="onDeleteNode($event)" 
+               (getSelectedParent)="getSelectedParent($event)" 
+               (onNodeEdit)="onNodeEdit($event)" 
+               [organizationTreeData]="treeData1"
+               [nodeColor]="nodeColors" 
+               [mutable]="true" 
+               ></rds-organization-tree> -->
           </div>
         </div>
       </div>
@@ -23,16 +31,23 @@
     <div naveContent class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Role" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <mfe-loader [config]="RdsCompNewRoleConfig"></mfe-loader>
+        <!-- <mfe-loader [config]="RdsCompNewRoleConfig"></mfe-loader> -->
+        <rds-comp-new-role [roleData]="Roledetails" [isReset]="isReset" [EditShimmer]="EditShimmer" (onCancel)="onCancel()" (RoleInfo)="RoleInfo($event)"> 
+
+        </rds-comp-new-role>
       </div>
       <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <mfe-loader [config]="rdsPermissionRoleMfeConfig"></mfe-loader>
+        <!-- <mfe-loader [config]="rdsPermissionRoleMfeConfig"></mfe-loader> -->
+        <!-- <rds-comp-permission-tree #permissionTreeComponent [treeData]="permissionTreeData" [isEdit]="false"
+        (getAllselectedPermissions)="getAllselectedPermissions($event)">
+      </rds-comp-permission-tree> -->
       </div>
 
       <div class="tab-pane fade pb-5 mb-4" [ngClass]="{'show active': activePage === 2}" id="Claims" role="tabpanel"
         aria-labelledby="nav-home-tab">
-        <mfe-loader [config]="rdsClaimTypeRoleMfeConfig"></mfe-loader>
+        <!-- <mfe-loader [config]="rdsClaimTypeRoleMfeConfig"></mfe-loader> -->
+        <!-- <rds-comp-claim-type-role [claimValueData]="claimValueData" [claimDisplayArray]="claimDisplayArray" (addClaim)="addClaim($event)" (onCancel)="onCancel()" (onClaimSave)="onClaimSave()" (deleteClaim)="deleteClaim($event)"></rds-comp-claim-type-role> -->
       </div>
     </div>
   </rds-nav-tab>
