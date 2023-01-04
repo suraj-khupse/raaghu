@@ -521,7 +521,7 @@ export class AppComponent implements OnInit {
   // Filter by permission canvas
   filterByPermission(event): void {
     this.selectedFilterId = '';
-    this.canvasTitle = this.translate.instant('Filter By Permission');
+    this.canvasTitle = this.translate.instant('FILTER BY PERMISSION');
     this.RolesData = undefined;
     this.viewCanvas = true;
     setTimeout(() => {
