@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from '../../models/table-header.model';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
+import {Dropdown} from 'bootstrap'
 let that: any;
 declare var bootstrap: any;
 @Component({
@@ -14,6 +15,7 @@ declare var bootstrap: any;
 export class RdsTopNavigationComponent extends MfeBaseComponent implements OnInit, DoCheck, OnChanges {
   // rdsProfileMfeConfig: ComponentLoaderOptions;
   showNotification: boolean = false;
+  showNotificationMobile: boolean = false;
   showOffcanvas: boolean = false;
   themes: any = [
 
@@ -39,6 +41,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() languageItems = [];
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() notificationData = [];
+  @Input() notificationDataMobile = [];
   @Input() tenancy: string = 'Host Admin';
   @Input() offCanvasId: string = ''
   @Input() profileLink: string = '';
@@ -48,6 +51,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() profileData: any;
   @Input() rdsDeligateTableData: any = [];
   @Input() unreadCount: any = 0;
+  @Input() id: string = 'dropdownMenuLink';
   @Input() notificationTypes: any = [];
   @Input() receiveNotifications: any;
   @Output() deleteLinkaccount = new EventEmitter<any>();
@@ -112,6 +116,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Output() FixedHeaderStyle = new EventEmitter<any>();
   @Output() logoutEmitter = new EventEmitter<any>();
   @Output() tenancyDataEmitter= new EventEmitter<any>();
+  show: boolean;
 
   constructor(private router: Router, private injector: Injector,
     private alertService: AlertService,
@@ -145,6 +150,12 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     var notificationDropdown = document.getElementById('navbarDropdownMenuLink')
     notificationDropdown.addEventListener('hide.bs.dropdown', function () {
       that.notificationData.forEach((x: any) => {
+        x.selected = false;
+      })
+    })
+    var notificationDropdownMobile = document.getElementById('navbarDropdownMenuLinkMobile')
+    notificationDropdownMobile.addEventListener('hide.bs.dropdown', function () {
+      that.notificationDataMobile.forEach((x: any) => {
         x.selected = false;
       })
     })
@@ -182,7 +193,6 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     this.deleteLinkaccount.emit(event);
   }
   saveLinkUsers(event: any) {
-    debugger
     this.linkUser.emit(event);
   }
   getProfilePic(event: any): void {
@@ -198,7 +208,21 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
     bsOffcanvas.show()
   }
+
+  opendropdown():void{
+    this.show = !this.show;
+    // this.droparrow = !this.droparrow;
+    var element: any = document.getElementById(this.id);
+    var dropdown = new Dropdown(element)
+    if (this.show) {
+      dropdown.show();
+    } else {
+      dropdown.hide();
+    }
+  
+  }
   onLanguageSelect(lan: any): void {
+    debugger
     if (lan && lan.item) {
       this.selectedLanguage.language = lan.item.some;
       this.selectedLanguage.icon = lan.item.icon;
@@ -226,10 +250,25 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   // }
   openNotification(): void {
     this.showNotification = !this.showNotification;
-    var element: any = document.getElementById('notification-popup-menu');
+    var element: any = document.getElementById('navbarDropdownMenuLink');
     if (element) {
       var dropdown = new bootstrap.Dropdown(element);
       if (this.showNotification) {
+        dropdown.show();
+      } else {
+        dropdown.hide();
+      }
+    }
+
+
+  }
+
+  openNotificationMobile(): void {
+    this.showNotificationMobile = !this.showNotificationMobile;
+    var element: any = document.getElementById('navbarDropdownMenuLinkMobile');
+    if (element) {
+      var dropdown = new bootstrap.Dropdown(element);
+      if (this.showNotificationMobile) {
         dropdown.show();
       } else {
         dropdown.hide();
