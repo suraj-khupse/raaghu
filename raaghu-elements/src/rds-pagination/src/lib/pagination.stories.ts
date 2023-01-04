@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 export default {
       title: 'Elements/Pagination',
       component: RdsPaginationComponent,
+      
       decorators: [
             moduleMetadata({
                   imports: [RdsIconModule, CommonModule, FormsModule]
@@ -17,15 +18,20 @@ export default {
                   table: {
                         disable: true
                   }
-            }
+            },
       },
+      parameters: { 
+            actions: {
+              handles: ['click'],
+             }
+           },
 } as Meta;
 const Template: Story<RdsPaginationComponent> = (args: RdsPaginationComponent) => ({
       props: args,
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['totalRecords', 'recordsPerPage', 'size', 'role', 'alignmentType'] } };
+Default.parameters = { controls: { include: ['totalRecords', 'recordsPerPage', 'size', 'role', 'alignmentType','onPageChange','onRecordsPerPageChange'] } };
 
 Default.args = {
       totalRecords: 10,
@@ -35,11 +41,12 @@ Default.args = {
       alignmentType: 'start'
 };
 export const advanced = Template.bind({});
-advanced.parameters = { controls: { include: ['totalRecords', 'recordsPerPage', 'size', 'role', 'alignmentType'] } };
+advanced.parameters = { controls: { include: ['totalRecords', 'recordsPerPage', 'size', 'role', 'alignmentType','onPageChange','onRecordsPerPageChange'] } };
 
 advanced.args = {
       totalRecords: 101,
       recordsPerPage: 5,
       role: 'Advanced',
-      alignmentType: 'start'
+  alignmentType: 'start',
+  size: 'small',
 };

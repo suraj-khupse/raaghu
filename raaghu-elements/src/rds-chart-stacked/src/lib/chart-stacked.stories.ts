@@ -25,21 +25,21 @@ Default.args = {
   chartDataSets: [
     {
       label: 'My Second dataset',
-      data: [131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142],
+      data: [131, -132, -133, 134, 135, 136, 137, 138, -139, -140, 141, 142],
       borderColor: 'white',
       backgroundColor: '#62D5D9',
       fill: true
     },
     {
       label: 'My Third dataset',
-      data: [151, 152, 159, 154, 155, 156, 157, 158, 159, 160, 161, 162],
+      data: [-131, 152, -159, 154, -155, -156, -157, -158, -159, 160, 161, -162],
       borderColor: 'white',
       backgroundColor: '#928AE0',
       fill: true
     },
     {
       label: 'My Fourth dataset',
-      data: [150, 201, 160, 203, 151, 205, 206, 207, 208, 209, 210, 211],
+      data: [-150, 201, 160, 203, -151, 205, 206, -207, 208, 209, -210, 211],
       borderColor: 'white',
       backgroundColor: '#EDB371',
       fill: true
@@ -47,6 +47,7 @@ Default.args = {
   ],
   chartLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   chartWidth: 1000,
+  
   chartOptions: {
     responsive: true,
     maintainAspectRatio: false,
@@ -78,6 +79,7 @@ Default.args = {
     },
     scales: {
       x: {
+        stacked: true,
         title: {
           display: true,
           text: 'Month'

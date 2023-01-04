@@ -22,6 +22,7 @@ export class RdsCardDetailComponent implements OnInit {
   @Input() cardData: CardData;
   @Input() IsEditAndDefaultFunctionalityRequired: boolean = true;
   @Input() IsSelectionRequired: boolean = true;
+  @Output() IsBackgroundColor: boolean=false;
   @Output() onSetDefaultcard = new EventEmitter<any>();
   @Output() onSelectPaymentMethod = new EventEmitter<any>();
   @Output() onEditCard = new EventEmitter<any>();
@@ -47,5 +48,12 @@ export class RdsCardDetailComponent implements OnInit {
   setAsPaymentMethod(cardData: any) {
     cardData.radioItems[0].checked = true;
     this.onSelectPaymentMethod.emit(cardData);
+    
+  }
+  iscardSelected(event){
+    
+      this.IsBackgroundColor=!this.IsBackgroundColor
+      this.cardData.radioItems[0].checked = this.IsBackgroundColor;
+
   }
 }

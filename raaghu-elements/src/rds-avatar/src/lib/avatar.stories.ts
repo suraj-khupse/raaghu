@@ -42,18 +42,18 @@ const avatarWithInfoTemplate: Story<RdsAvatarComponent> = (args: RdsAvatarCompon
 
 });
 
-export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['size', 'firstName', 'lastName', 'colorVariant'] } };
-Default.args = {
+export const BasicWithInitials = Template.bind({});
+BasicWithInitials.parameters = { controls: { include: ['size', 'firstName', 'lastName', 'colorVariant'] } };
+BasicWithInitials.args = {
   size: 'medium',
   firstName: 'Allen',
   lastName: 'Russel',
   colorVariant: 'warning'
 };
 
-export const withCustomImage = Template.bind({});
-withCustomImage.parameters = { controls: { include: ['height', 'withProfilePic','firstName', 'lastName', 'profilePic','verticallyAlligned','subTitle','profileContentAlign'] } };
-withCustomImage.args = {
+export const withProfilePic = Template.bind({});
+withProfilePic.parameters = { controls: { include: ['height', 'withProfilePic','firstName', 'lastName', 'profilePic','verticallyAlligned','subTitle','profileContentAlign'] } };
+withProfilePic.args = {
   height: '35',
   withProfilePic: true,
   firstName: 'Allen',
@@ -61,12 +61,12 @@ withCustomImage.args = {
   profilePic: 'https://t4.ftcdn.net/jpg/04/10/43/77/240_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
   verticallyAlligned:false,
   subTitle:'host',
-  profileContentAlign:true
+  profileContentAlign:true,
 };
 
-export const intialsWithInfo = avatarWithInfoTemplate.bind({});
-intialsWithInfo.parameters = { controls: { include: ['size', 'firstName', 'lastName', 'colorVariant', 'verticallyAlligned'] } };
-intialsWithInfo.args = {
+export const InitialsWithHeading = avatarWithInfoTemplate.bind({});
+InitialsWithHeading.parameters = { controls: { include: ['size', 'firstName', 'lastName', 'colorVariant', 'verticallyAlligned'] } };
+InitialsWithHeading.args = {
   size: 'medium',
   firstName: 'King',
   lastName: 'John',
@@ -74,7 +74,7 @@ intialsWithInfo.args = {
   verticallyAlligned: false
 };
 
-export const withInitials = avatarWithInfoTemplate.bind({});
+/* export const withInitials = avatarWithInfoTemplate.bind({});
 withInitials.parameters = { controls: { include: ['size', 'firstName', 'lastName', 'colorVariant', 'verticallyAlligned'] } };
 withInitials.args = {
   size: 'medium',
@@ -82,7 +82,7 @@ withInitials.args = {
   lastName: 'Potter',
   colorVariant: 'warning',
   verticallyAlligned: true
-};
+}; */
 
 
 

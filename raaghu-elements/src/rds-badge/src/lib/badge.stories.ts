@@ -37,9 +37,9 @@ const Template: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
   props: args,
 });
 
-export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType'] } };
-Default.args = {
+export const TextBadge = Template.bind({});
+TextBadge.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType','onClose'] } };
+TextBadge.args = {
   size: 'medium',
   label: 'badge',
   colorVariant:'danger',
@@ -50,8 +50,9 @@ Default.args = {
 const Button: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
   props: args,
   template:
-    `<rds-button [label]="'Button'" [colorVariant]="'primary'">
+    `<rds-button [label]="'Button'" [colorVariant]="'primary'"  size="medium">
       <rds-badge
+      class="ms-2"
       [size]="size"
       [label]="label"
       [colorVariant]="colorVariant" [badgeType]="badgeType"></rds-badge>
@@ -60,15 +61,16 @@ const Button: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
   `,
 });
 
-Button.args = {
+
+export const button = Button.bind({});
+button.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType','onClose'] } };
+button.args = {
   size: 'medium',
   label: '9',
   colorVariant:'danger',
   badgeType:'rectangle'
 };
 
-export const button = Button.bind({});
-button.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType'] } };
 
 const Positioned: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
   props: args,
@@ -87,9 +89,9 @@ const Positioned: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
 
 });
 
-export const positioned = Positioned.bind({});
-positioned.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType', 'positioned'] } };
-positioned.args = {
+export const LabelWithOverlay = Positioned.bind({});
+LabelWithOverlay.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType', 'positioned','onClose'] } };
+LabelWithOverlay.args = {
   size: 'medium',
   label: '99',
   colorVariant:'danger',
@@ -109,9 +111,9 @@ const WithIcon: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
 
 });
 
-export const withIcon = WithIcon.bind({});
-withIcon.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType', 'positioned'] } };
-withIcon.args = {
+export const IconWithOverlay = WithIcon.bind({});
+IconWithOverlay.parameters = { controls: { include: ['size', 'label', 'colorVariant', 'badgeType', 'positioned'] } };
+IconWithOverlay.args = {
   size: 'medium',
   label: '9',
   colorVariant:'danger',

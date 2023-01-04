@@ -29,7 +29,7 @@ const Template: Story<RdsSearchInputComponent> = (args: RdsSearchInputComponent)
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['placeholder', 'label', 'size'] } };
+Default.parameters = { controls: { include: ['placeholder', 'label', 'size','onClick'] } };
 
 Default.args = {
   placeholder: 'Search',
@@ -38,7 +38,7 @@ Default.args = {
 }
 
 export const withLabelPosition = Template.bind({});
-withLabelPosition.parameters = { controls: { include: ['placeholder', 'label', 'size', 'position'] } };
+withLabelPosition.parameters = { controls: { include: ['placeholder', 'label', 'size', 'position','onClick'] } };
 
 withLabelPosition.args = {
   placeholder: 'Search',

@@ -31,7 +31,7 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
   DropdownItems!: TemplateRef<any>;
   @Input()
   listItems = [
-    { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'export', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
+    { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'circle', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
     { value: 'Import from excel', some: 'value', id: 2, href: '', icon: 'download_data', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
     { value: 'Click here download sample import file.', some: 'value', id: 3, href: '', icon: '', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
   ];
@@ -70,7 +70,7 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
   }
 
   public get button1(): string {
-    var customClasses = ['btn btn-' + `${this.colorVariant}`];
+    var customClasses = ['btn'];
 
     if (this.size === 'small') {
       var selectSize = 'btn-sm';
@@ -92,7 +92,7 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
 
   public get splitdown(): any[] {
     var customClasses = [
-      'btn btn-' + `${this.colorVariant}`, 'dropdown-toggle' + 'dropdown-toggle-split'];
+      'btn' + 'dropdown-toggle' + 'dropdown-toggle-split'];
 
     if (this.size === 'small') {
       var selectSize = 'btn-sm';
@@ -144,13 +144,13 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
 
   public get classes(): any[] {
 
-    var customClasses = ['btn btn-' + `${this.colorVariant}`];
+    var customClasses = ['btn-' + `${this.colorVariant}`];
 
     if (this.role === "dropdown-button") {
-      customClasses.push('dropdown-toggle')
+      customClasses.push('btn dropdown-toggle')
     }
     else if (this.role === "with_split") {
-      customClasses.push('dropdown-toggle dropdown-toggle-split')
+      customClasses.push('dropdown-toggle dropdown-toggle-split bg-' + `${this.colorVariant}`)
 
     }
 
@@ -176,13 +176,18 @@ export class RdsDropdownComponent implements OnInit, ControlValueAccessor {
 
   onclick(event: any, item: any) {
     this.onSelect.emit(item.value);
+    
   }
 
 
   open(): void {
-    this.show=!this.show
+    this.show = !this.show;
     var element: any = document.getElementById(this.id);
     var dropdown = new Dropdown(element);
-    dropdown.show();
+    if (this.show) {
+      dropdown.show();
+    } else {
+      dropdown.hide();
+    }
   }
 }

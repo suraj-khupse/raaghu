@@ -29,10 +29,10 @@ const Template: Story<RdsStepperComponent> = (args: RdsStepperComponent) => ({
         <div class="contents">
         <p>This is some placeholder content the Profile tab's associated content. Clicking another tab will toggle the visibility of this one for the next.<br>
          The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other</p></div></div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div class="contents bg-white p-2">This is some placeholder content the Home tab's associated content. Clicking another tab will toggle the visibility of this one for the next.<br>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"><div class="contents  p-2">This is some placeholder content the Home tab's associated content. Clicking another tab will toggle the visibility of this one for the next.<br>
          The  tab JavaScript swaps classes to control the content visibility  tab JavaScript swaps classes to control the content visibility   tab JavaScript swaps classes to control the content visibilityand styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div></div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="contents bg-white p-2">Tab3 is showing with nav tab </div></div>
-        <div class="tab-pane fade" id="nav-deabled" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="contents bg-white p-2">test</div></div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="contents p-2">Tab3 is showing with nav tab </div></div>
+        <div class="tab-pane fade" id="nav-deabled" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="contents p-2">test</div></div>
       </div>
     </div>
     
@@ -56,7 +56,7 @@ export const Panel = Template.bind({});
 Panel.parameters = { controls: { include: ['stepperType', 'readOnly', 'stepperList'] } };
 
 Panel.args = {
-  stepperType: 'panel',
+  stepperType: 'panel-arrow',
   readOnly: true,
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
@@ -76,21 +76,21 @@ Bullets.args = {
   ]
 };
 
-export const Panel_Simple = Template.bind({});
-Panel_Simple.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
-Panel_Simple.args = {
-  stepperType: 'panel-simple',
-  stepperList: [
-    { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
-    { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
-    { stepname: "step3", steptabname: "Setting", tablink: '#nav-contact', ariacontrols: 'nav-contact' }
-  ]
-};
+// export const Panel_Simple = Template.bind({});
+// Panel_Simple.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
+// Panel_Simple.args = {
+//   stepperType: 'panel-simple',
+//   stepperList: [
+//     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
+//     { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
+//     { stepname: "step3", steptabname: "Setting", tablink: '#nav-contact', ariacontrols: 'nav-contact' }
+//   ]
+// };
 
 export const Panel_Arrow = Template.bind({});
 Panel_Arrow.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
 Panel_Arrow.args = {
-  stepperType: 'panel-arrow',
+  stepperType: 'panel',
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
     { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
@@ -110,9 +110,9 @@ Panel_Border.args = {
   ]
 };
 
-export const multi_circles_1 = Template.bind({});
-multi_circles_1.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
-multi_circles_1.args = {
+export const multi_circles_with_checks = Template.bind({});
+multi_circles_with_checks.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
+multi_circles_with_checks.args = {
   stepperType: 'multi-circles-1',
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
@@ -121,9 +121,9 @@ multi_circles_1.args = {
   ]
 };
 
-export const multi_circles_2 = Template.bind({});
-multi_circles_2.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
-multi_circles_2.args = {
+export const multi_circles_with_numbers = Template.bind({});
+multi_circles_with_numbers.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
+multi_circles_with_numbers.args = {
   stepperType: 'multi-circles-2',
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
@@ -132,9 +132,9 @@ multi_circles_2.args = {
   ]
 };
 
-export const multi_circles_3 = Template.bind({});
-multi_circles_3.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
-multi_circles_3.args = {
+export const multi_circles_with_vertical_checks = Template.bind({});
+multi_circles_with_vertical_checks.parameters = { controls: { include: ['stepperType',  'stepperList'] } };
+multi_circles_with_vertical_checks.args = {
   stepperType: 'multi-circles-3',
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home', description: 'Vitae sed mi luctus laoreet.' },

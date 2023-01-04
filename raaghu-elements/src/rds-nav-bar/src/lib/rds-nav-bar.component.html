@@ -6,11 +6,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0"  *ngIf="navbarItems&&navbarItems.length>0">
+      <ul class="navbar-nav flex-row flex-wrap ms-md-auto"  *ngIf="navbarItems&&navbarItems.length>0">
         <ng-content select="[left]"></ng-content>
         <ng-container *ngFor="let item of navbarItems; let i=index">
           <li class="nav-item ">
-            <a class="nav-link" [class.active]="i===activeTab" (click)="onTabClick.emit(item)">{{item.label}}</a>
+            <a class="nav-link cursor-pointer" [class.active]="i===activeTab" (click)="onTabClick.emit(item)">{{item.label}}</a>
           </li>
         </ng-container>
         <ng-content select="[right]"></ng-content>

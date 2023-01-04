@@ -16,6 +16,11 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: { 
+    actions: {
+      handles: ['hide.bs.offcanvas','hidePrevented.bs.offcanvas','show.bs.offcanvas'],
+     }
+   },
 } as Meta;
 const Template: Story<RdsOffcanvasComponent> = (args: RdsOffcanvasComponent) => ({
   props: args,
@@ -42,7 +47,7 @@ export const Default: Story<RdsOffcanvasComponent> = (args) => ({
 
 });
 Default.parameters = { controls: { include: ['canvasTitle', 'placement', 'backDrop', 'offId','offcanvaswidth', 'buttonTitle',
-'scrolling','preventEscapeKey','bodySpacing'] } };
+'scrolling','preventEscapeKey','bodySpacing','onShow','onClose','offcanvasheight'] } };
 
 
 Default.args = {

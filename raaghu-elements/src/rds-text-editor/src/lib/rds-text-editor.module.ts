@@ -1,6 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { QuillModule } from 'ngx-quill';
 import { RdsTextEditorComponent } from './rds-text-editor.component';
 
@@ -9,7 +9,7 @@ import { RdsTextEditorComponent } from './rds-text-editor.component';
     RdsTextEditorComponent,
   ],
   imports: [
-    BrowserModule,
+     CommonModule,
     FormsModule,
     QuillModule.forRoot(),
   ],

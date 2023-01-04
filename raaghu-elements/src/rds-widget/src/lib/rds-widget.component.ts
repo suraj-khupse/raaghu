@@ -26,7 +26,7 @@ export class RdsWidgetComponent implements OnInit {
 
     const bgColor = 'bg-' + `${this.colorVariant}`;
     classes.push(bgColor);
-    if (`${this.colorVariant}` == 'gradient-primary') {
+    if (`${this.colorVariant}` == 'gradient-primary'||`${this.colorVariant}` == 'primary' ||`${this.colorVariant}` == 'secondary'||`${this.colorVariant}` == 'success'||`${this.colorVariant}` == 'danger'||`${this.colorVariant}` == 'dark'  ) {
       classes.push('text-white');
     } else if (this.colorVariant == '') {
       classes.push('');

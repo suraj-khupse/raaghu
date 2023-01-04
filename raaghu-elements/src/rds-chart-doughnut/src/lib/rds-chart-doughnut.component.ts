@@ -33,6 +33,7 @@ export class RdsChartDoughnutComponent implements OnInit {
   @Input() chartOptions?: any;
   @Input() titleText = '';
   @Input() subTitleText = '';
+  @Input() selectedMode: string = '';
   style: CSSStyleDeclaration | undefined;
 
   constructor() {
@@ -46,7 +47,9 @@ export class RdsChartDoughnutComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.doughnutChartBrowser();
+    if(this.selectedMode){
+      this.doughnutChartBrowser();
+    }
   }
 
   ngAfterViewInit(): void {
@@ -92,7 +95,11 @@ export class RdsChartDoughnutComponent implements OnInit {
             var ctx = chart.ctx;
             var centerConfig = chart.config.options.elements.center;
             var txt = centerConfig.text;
+            that.style = getComputedStyle(document.body);
             var color = centerConfig.color || '#000';
+            if (that.style && that.style.getPropertyValue(centerConfig.color)) {
+             color = that.style.getPropertyValue(centerConfig.color);
+            }
             var lineHeight = centerConfig.lineHeight || 25;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
