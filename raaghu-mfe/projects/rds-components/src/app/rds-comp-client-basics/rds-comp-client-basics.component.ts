@@ -33,6 +33,8 @@ export class RdsCompClientBasicsComponent implements OnInit, OnChanges {
   callBackUrl = '';
   signoutUrl = '';
   corsOrigin = '';
+  checkClientId = false;
+  checkClientName = false;
 
   callbackHeaders: TableHeader[] = [{ displayName: 'Added Url', key: 'redirectUri', dataType: 'text', dataLength: 30, required: true, sortable: true }];
   signoutHeaders: TableHeader[] = [{ displayName: 'Added Url', key: 'postLogoutRedirectUri', dataType: 'text', dataLength: 30, required: true, sortable: true }];
@@ -54,75 +56,24 @@ export class RdsCompClientBasicsComponent implements OnInit, OnChanges {
         });
       };
     }, 100);
+  }
 
-    // callBackUrlTable
-    this.rdsCallBackUrlTable = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.callbackHeaders,
-        tableData: this.clientBasics.redirectUris,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 3,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have Call Back'
-      },
-      output: {
-        onActionSelection: (actionEvent: any) => {
-          const deleteData = this.clientBasics.redirectUris.find(x => x.redirectUri == actionEvent.selectedData.redirectUri);
-          const deleteDataIndex = this.clientBasics.redirectUris.indexOf(deleteData, 0);
-          if (deleteDataIndex != undefined) this.clientBasics.redirectUris.splice(deleteDataIndex, 1);
-          this.rdsCallBackUrlTable.input.tableData = this.clientBasics.redirectUris;
-        }
-      },
-    }
+  actionSelectionRedirectUris(actionEvent: any) {
+    const deleteData = this.clientBasics.redirectUris.find(x => x.redirectUri == actionEvent.selectedData.redirectUri);
+    const deleteDataIndex = this.clientBasics.redirectUris.indexOf(deleteData, 0);
+    if (deleteDataIndex != undefined) this.clientBasics.redirectUris.splice(deleteDataIndex, 1);
+  }
 
-    // rdsSignoutTable
-    this.rdsSignoutTableConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.signoutHeaders,
-        tableData: this.clientBasics.postLogoutRedirectUris,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 3,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have Signout'
-      },
-      output: {
-        onActionSelection: (actionEvent: any) => {
-          const deleteData = this.clientBasics.postLogoutRedirectUris.find(x => x.postLogoutRedirectUri == actionEvent.selectedData.postLogoutRedirectUri);
-          const deleteDataIndex = this.clientBasics.postLogoutRedirectUris.indexOf(deleteData, 0);
-          if (deleteDataIndex != undefined) this.clientBasics.postLogoutRedirectUris.splice(deleteDataIndex, 1);
-          this.rdsSignoutTableConfig.input.tableData = this.clientBasics.postLogoutRedirectUris;
-        }
-      },
-    }
+  actionSelectionSignout(actionEvent: any) {
+    const deleteData = this.clientBasics.postLogoutRedirectUris.find(x => x.postLogoutRedirectUri == actionEvent.selectedData.postLogoutRedirectUri);
+    const deleteDataIndex = this.clientBasics.postLogoutRedirectUris.indexOf(deleteData, 0);
+    if (deleteDataIndex != undefined) this.clientBasics.postLogoutRedirectUris.splice(deleteDataIndex, 1);
+  }
 
-    // rdsAllowedCorsOriginTable  
-    this.rdsAllowedCorsOriginTable = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.corsOriginHeaders,
-        tableData: this.clientBasics.allowedCorsOrigins,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 3,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have Cors Origin'
-      },
-      output: {
-        onActionSelection: (actionEvent: any) => {
-          const deleteData = this.corsOriginArray.find(x => x.origin == actionEvent.selectedData.origin);
-          const deleteDataIndex = this.corsOriginArray.indexOf(deleteData, 0);
-          if (deleteDataIndex != undefined) this.corsOriginArray.splice(deleteDataIndex, 1);
-          this.rdsAllowedCorsOriginTable.input.tableData = this.corsOriginArray;
-        }
-      },
-    }
+  actionSelectionCorsOrigin(actionEvent: any) {
+    const deleteData = this.clientBasics.allowedCorsOrigins.find(x => x.origin == actionEvent.selectedData.origin);
+    const deleteDataIndex = this.clientBasics.allowedCorsOrigins.indexOf(deleteData, 0);
+    if (deleteDataIndex != undefined) this.clientBasics.allowedCorsOrigins.splice(deleteDataIndex, 1);
   }
 
   // Repeatitive functions

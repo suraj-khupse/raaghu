@@ -7,23 +7,23 @@
         <div class="col-md-6 my-2">
             <div class="form-group">
                 <rds-input [inputType]="'number'" [label]="translate.instant('Access Token Lifetime')"
-                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.accessTokenLifetime" name="accessTokenLifetime"
-                    [placeholder]="'Enter Access Token Lifetime'">
+                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.accessTokenLifetime"
+                    name="accessTokenLifetime" [placeholder]="'Enter Access Token Lifetime'">
                 </rds-input>
             </div>
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
-                <rds-input [inputType]="'number'" [label]="translate.instant('Access Token Type')" [labelPosition]="'top'"
-                    [(ngModel)]="clientAdvancedObj.accessTokenType" name="accessTokenType"
+                <rds-input [inputType]="'number'" [label]="translate.instant('Access Token Type')"
+                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.accessTokenType" name="accessTokenType"
                     [placeholder]="'Enter Access Token Type'">
                 </rds-input>
             </div>
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
-                <rds-input [inputType]="'number'" [label]="translate.instant('Consent Lifetime')" [labelPosition]="'top'"
-                    [(ngModel)]="clientAdvancedObj.consentLifetime" name="consentLifetime"
+                <rds-input [inputType]="'number'" [label]="translate.instant('Consent Lifetime')"
+                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.consentLifetime" name="consentLifetime"
                     [placeholder]="'Enter Consent Lifetime'">
                 </rds-input>
             </div>
@@ -31,15 +31,15 @@
         <div class="col-md-6 my-2">
             <div class="form-group">
                 <rds-input [inputType]="'text'" [label]="translate.instant('Pair wise Subject Salt')"
-                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.pairWiseSubjectSalt" name="pairWiseSubjectSalt"
-                    [placeholder]="'Enter Subject Salt'">
+                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.pairWiseSubjectSalt"
+                    name="pairWiseSubjectSalt" [placeholder]="'Enter Subject Salt'">
                 </rds-input>
             </div>
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
-                <rds-input [inputType]="'number'" [label]="translate.instant('User SSO Lifetime')" [labelPosition]="'top'"
-                    [(ngModel)]="clientAdvancedObj.userSsoLifetime" name="userSsoLifetime"
+                <rds-input [inputType]="'number'" [label]="translate.instant('User SSO Lifetime')"
+                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.userSsoLifetime" name="userSsoLifetime"
                     [placeholder]="'Enter SSO Lifetime'">
                 </rds-input>
             </div>
@@ -54,8 +54,8 @@
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
-                <rds-input [inputType]="'number'" [label]="translate.instant('Device Code Type')" [labelPosition]="'top'"
-                    [(ngModel)]="clientAdvancedObj.deviceCodeLifetime" name="deviceCodeLifetime"
+                <rds-input [inputType]="'number'" [label]="translate.instant('Device Code Type')"
+                    [labelPosition]="'top'" [(ngModel)]="clientAdvancedObj.deviceCodeLifetime" name="deviceCodeLifetime"
                     [placeholder]="'Enter Device Code Type'">
                 </rds-input>
             </div>
@@ -92,13 +92,10 @@
             </div>
         </div>
         <div class="my-3">
-           <rds-data-table
-           [tableData]="clientAdvancedObj.claims"
-           [tableHeaders]="claimHeaders"
-           (onActionSelection)="onActionSelection($event)"
-           [noDataTitle]="'Currently you do not have claims'"
-           [actions]="actions"
-           ></rds-data-table>
+            <rds-data-table [tableData]="clientAdvancedObj.claims" [tableHeaders]="claimHeaders"
+                (onActionSelection)="onActionSelectionClaims($event)" [noDataTitle]="'Currently you do not have claims'"
+                [actions]="actions">
+            </rds-data-table>
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
@@ -126,12 +123,16 @@
             <rds-label [label]="translate.instant('Grand Types')"></rds-label>
         </div>
         <div class="my-3">
-            <mfe-loader [config]="rdsGrantTypesDataTableConfig"></mfe-loader>
+            <rds-data-table [tableData]="clientAdvancedObj.allowedGrantTypes" [tableHeaders]="grantTypesHeaders"
+                [recordsPerPage]="5" [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="actions"
+                [noDataTitle]="'Currently you do not have grant types'"
+                (onActionSelection)="onActionSelectionGrants($event)">
+            </rds-data-table>
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
                 <rds-dropdownlist class="mt-2" [placeholder]="'Select Type'" [size]="'large'"
-                     [listItems]="grantTypeData" (onSelect)="selectedGrantType($event)">
+                    [listItems]="grantTypeData" (onSelect)="selectedGrantType($event)">
                 </rds-dropdownlist>
             </div>
         </div>
@@ -153,7 +154,11 @@
             </div>
         </div>
         <div class="my-3">
-            <mfe-loader [config]="rdsRestrictionsDataTableConfig"></mfe-loader>
+            <rds-data-table [tableData]="clientAdvancedObj.identityProviderRestrictions"
+                [tableHeaders]="restrictionsHeaders" [recordsPerPage]="5" [inlineEdit]="false" [pagination]="true"
+                [isShimmer]="false" [actions]="actions" [noDataTitle]="'Currently you do not have restrictions'"
+                (onActionSelection)="onActionSelectionRestrictions($event)">
+            </rds-data-table>
         </div>
         <div class="col-md-12 my-2">
             <div class="form-group">
@@ -174,7 +179,11 @@
             <rds-label [label]="translate.instant('Properties')"></rds-label>
         </div>
         <div class="my-3">
-            <mfe-loader [config]="rdsPropertiesDataTableConfig"></mfe-loader>
+            <rds-data-table [tableData]="clientAdvancedObj.properties" [tableHeaders]="propertiesHeaders"
+                [recordsPerPage]="5" [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="actions"
+                [noDataTitle]="'Currently you do not have properties'"
+                (onActionSelection)="onActionSelectionProperties($event)">
+            </rds-data-table>
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">
@@ -186,8 +195,7 @@
         <div class="col-md-6 my-2">
             <div class="form-group">
                 <rds-input [inputType]="'text'" [label]="translate.instant('Value')" [labelPosition]="'top'"
-                    [(ngModel)]="propertiesDataObj.value" name="propertiesValue"
-                    [placeholder]="'Enter Property Value'">
+                    [(ngModel)]="propertiesDataObj.value" name="propertiesValue" [placeholder]="'Enter Property Value'">
                 </rds-input>
             </div>
         </div>

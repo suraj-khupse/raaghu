@@ -1,17 +1,14 @@
-import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ComponentLoaderOptions, SharedService, UpdateClientDto } from '@libs/shared';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { TranslateService, TranslateStore } from '@ngx-translate/core';
-import { getAllApiResources, saveApiResource } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.actions';
+import { getAllApiResources } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.actions';
 import { selectAllApiResource } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.selector';
 import { deleteClient, getAllClients, getClient, getPermissions, saveClient, savePermissions, updateClient } from 'projects/libs/state-management/src/lib/state/clients/clients.actions';
 import { selectAllClients, selectAllPermissions, selectClient } from 'projects/libs/state-management/src/lib/state/clients/clients.selector';
-import { getAllIdentityResources, saveIdentityResource } from 'projects/libs/state-management/src/lib/state/identity-resources/identity-resources.actions';
+import { getAllIdentityResources } from 'projects/libs/state-management/src/lib/state/identity-resources/identity-resources.actions';
 import { selectA } from 'projects/libs/state-management/src/lib/state/identity-resources/identity-resources.selector';
-import { RdsCompClientAdvancedComponent } from 'projects/rds-components/src/app/rds-comp-client-advanced/rds-comp-client-advanced.component';
 import { RdsCompClientBasicsComponent } from 'projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component';
 import { ResourceData } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.component';
-import { RdsCompPermissionTreeComponent } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.component';
+import { TableAction } from 'projects/rds-components/src/models/table-action.model';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 declare var bootstrap: any;
 
@@ -21,9 +18,6 @@ declare var bootstrap: any;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  @ViewChild('clientBasicsComponent') clientBasicsComp: RdsCompClientBasicsComponent;
-  @ViewChild('clientAdvancedComponent') clientAdvancedComp: RdsCompClientAdvancedComponent;
-  @ViewChild('permissionTreeComponent') permissionTreeComp: RdsCompPermissionTreeComponent;
   clientId: any;
   actionId: string;
   title = 'client';
@@ -31,7 +25,7 @@ export class AppComponent implements OnInit {
   activePage: number = 0;
   offcanvasId: string = 'client_canvas';
   isEdit = false;
-  rdsClientMfeConfig: ComponentLoaderOptions;
+  dataTableActions: TableAction[] = [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }];
   identityResourcesData: ResourceData[] = [];
   apiResourcesData: ResourceData[] = [];
   selectedResourceId: number;
@@ -42,8 +36,9 @@ export class AppComponent implements OnInit {
   clientResourceData: any[] = [];
   permissionTreeData: any = [];
   emitPermissionsData = { name: undefined, permissions: { permissions: [] } };
-  emitClientData: any = {
+  emitClientData = {
     id: '',
+    name: '',
     data: {
       apiResources: [],
       clientId: '',
@@ -55,6 +50,9 @@ export class AppComponent implements OnInit {
       requireConsent: false,
       scopes: [],
       secrets: []
+    },
+    permissions: {
+      permissions: []
     }
   };
   roleName: string;
@@ -62,6 +60,7 @@ export class AppComponent implements OnInit {
   apiSecretsTableData: any;
   editIdentityResourceData: any[] = [];
   editApiResourceData: any[] = [];
+  @ViewChild('clientBasicsComponent') clientBasicsComp: RdsCompClientBasicsComponent;
 
   clientTableHeaders: TableHeader[] = [
     { displayName: 'Client ID', key: 'clientId', dataType: 'text', filterable: true, sortable: true },
@@ -74,7 +73,7 @@ export class AppComponent implements OnInit {
     { displayName: 'Expiration', key: 'expiration', dataType: 'text', filterable: true, sortable: true, required: true },
     { displayName: 'Description', key: 'description', dataType: 'text', required: true }
   ];
-  clientList: any = [];
+  clientList: any[] = [];
   canvasTitle: string = 'New Client';
   public navtabsItemsNew: any[] = [
     { label: 'Basics', tablink: '#basics', ariacontrols: 'basics' },
@@ -93,87 +92,35 @@ export class AppComponent implements OnInit {
   clientAdvancedObj: any = {};
   updateClientData = {
     id: '',
+    name: '',
     data: {
-      clientName: '',
-      description: '',
-      clientUri: '',
-      logoUri: '',
-      enabled: false,
-      requireConsent: false,
-      allowOfflineAccess: false,
-      allowRememberConsent: false,
-      allowAccessTokensViaBrowser: false,
-      requirePkce: false,
-      requireClientSecret: false,
-      requireRequestObject: false,
-      accessTokenLifetime: 0,
-      consentLifetime: 0,
-      accessTokenType: 0,
-      enableLocalLogin: false,
-      frontChannelLogoutUri: '',
-      frontChannelLogoutSessionRequired: false,
-      backChannelLogoutUri: '',
-      allowedIdentityTokenSigningAlgorithms: '',
-      backChannelLogoutSessionRequired: false,
-      includeJwtId: false,
-      alwaysSendClientClaims: false,
-      pairWiseSubjectSalt: '',
-      userSsoLifetime: 0,
-      userCodeType: '',
-      deviceCodeLifetime: 0,
-      clientSecrets: [],
-      claims: [],
-      properties: [],
-      allowedGrantTypes: [],
-      identityProviderRestrictions: [],
-      scopes: [],
-      allowedCorsOrigins: [],
-      redirectUris: [],
-      postLogoutRedirectUris: [],
-      apiResources: [],
-      identityResources: []
+      clientName: '', description: '', clientUri: '', logoUri: '', enabled: false, requireConsent: false, allowOfflineAccess: false, allowRememberConsent: false, allowAccessTokensViaBrowser: false, requirePkce: false, requireClientSecret: false, requireRequestObject: false, accessTokenLifetime: 0,
+      consentLifetime: 0, accessTokenType: 0, enableLocalLogin: false, frontChannelLogoutUri: '', frontChannelLogoutSessionRequired: false, backChannelLogoutUri: '', allowedIdentityTokenSigningAlgorithms: '', backChannelLogoutSessionRequired: false, includeJwtId: false, alwaysSendClientClaims: false,
+      pairWiseSubjectSalt: '', userSsoLifetime: 0, userCodeType: '', deviceCodeLifetime: 0, clientSecrets: [], claims: [], properties: [], allowedGrantTypes: [], identityProviderRestrictions: [], scopes: [], allowedCorsOrigins: [], redirectUris: [], postLogoutRedirectUris: [], apiResources: [], identityResources: []
+    },
+    permissions: {
+      permissions: []
     }
-  }
+  };
 
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    // Client Data Table
-    this.rdsClientMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableData: undefined,
-        tableHeaders: this.clientTableHeaders,
-        recordsPerPage: 10,
-        inlineEdit: false,
-        pagination: true,
-        isShimmer: false,
-        actions: [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }],
-        noDataTitle: 'Currently you do not have client'
-      },
-      output: {
-        onActionSelection: (event: any) => {
-          if (event.actionId == 'edit') {
-            this.isEdit = true;
-            this.actionId = event.actionId;
-            this.openCanvas(event.actionId);
-            this.getClientForEdit(event.selectedData.id)
-            this.getPermissionApi(event.selectedData.clientId);
-          }
-          else if (event.actionId == 'delete') this.store.dispatch(deleteClient(event.selectedData.id));
-        }
-      }
-    };
-    this.getClientFn();
+    this.getAllClientsFn();
+    this.identityResourceApi();
+    this.apiResourceApi();
+    this.getPermissionApi();
   }
 
-  async getClientFn() {
-    await this.getAllClientsFn()
-      .then(() => {
-        this.identityResourceApi()
-        this.apiResourceApi()
-        this.getPermissionApi();
-      });
+  tableActionSelection(event: any) {
+    if (event.actionId == 'edit') {
+      this.isEdit = true;
+      this.actionId = event.actionId;
+      this.openCanvas(event.actionId);
+      this.getClientForEdit(event.selectedData.id)
+      this.getPermissionApi(event.selectedData.clientId);
+    }
+    else if (event.actionId == 'delete') this.store.dispatch(deleteClient(event.selectedData.id));
   }
 
   identityResourceApi() {
@@ -217,19 +164,11 @@ export class AppComponent implements OnInit {
   }
 
   getAllClientsFn() {
-    return new Promise<void>((resolve, reject) => {
-      this.store.dispatch(getAllClients());
-      this.store.select(selectAllClients).subscribe((res: any) => {
-        this.clientList = [];
-        if (res && res.items.length > 0) {
-          res.items.forEach((element: any) => {
-            const item: any = { clientId: element.clientId, clientName: element.clientName, description: element.description, id: element.id }
-            this.clientList.push(item);
-          });
-          this.rdsClientMfeConfig.input.tableData = this.clientList;
-          resolve();
-        };
-      });
+    this.store.dispatch(getAllClients());
+    this.store.select(selectAllClients).subscribe((res: any) => {
+      if (res && res.items.length > 0) {
+        this.clientList = res.items;
+      };
     })
   }
 
@@ -397,8 +336,10 @@ export class AppComponent implements OnInit {
   }
 
   selectedPermissions(data: any) {
-    this.emitPermissionsData.permissions.permissions = [];
-    this.emitPermissionsData.permissions.permissions = data;
+    this.emitClientData.permissions.permissions = [];
+    this.updateClientData.permissions.permissions = [];
+    this.emitClientData.permissions.permissions = data;
+    this.updateClientData.permissions.permissions = data;
   }
 
   selectedResourceOption(option: any) {
@@ -480,39 +421,46 @@ export class AppComponent implements OnInit {
     }, 100);
   };
 
-  saveUpdateClient(): Promise<any> {
-    return new Promise<void>((resolve, reject) => {
-      if (this.actionId == 'new' && this.emitClientData.data.clientId != '' && this.emitClientData.data.clientName != '') {
-        this.store.dispatch(saveClient(this.emitClientData));
-        resolve();
-      }
-      else if (this.actionId == 'edit' && this.updateClientData.data.clientName != '') {
-        this.store.dispatch(updateClient(this.updateClientData));
-        resolve();
-      }
-    });
-  }
-
-  async save() {
-    await this.saveUpdateClient()
-      .then(() => {
-        this.emitPermissionsData.name = this.emitClientData.data.clientName;
-        return this.store.dispatch(savePermissions(this.emitPermissionsData));
-      })
-      .then(() => {
-        this.close();
-        return this.getAllClientsFn();
-      });
+  save() {
+    const emitClientId = this.clientList.find(x => x.clientId == this.emitClientData.data.clientId);
+    const emitClientName = this.clientList.find(x => x.clientName == this.emitClientData.data.clientName);
+    const updatetClientName = this.clientList.find(x => x.clientName == this.updateClientData.data.clientName);
+    emitClientId != undefined ? this.clientBasicsComp.checkClientId = true : this.clientBasicsComp.checkClientId = false;
+    emitClientName != undefined ? this.clientBasicsComp.checkClientName = true : this.clientBasicsComp.checkClientName = false;
+    updatetClientName != undefined ? this.clientBasicsComp.checkClientName = true : this.clientBasicsComp.checkClientName = false;
+    if (emitClientId == undefined && emitClientName == undefined && this.actionId == 'new' &&
+      this.emitClientData.data.clientId != '' && this.emitClientData.data.clientName != '') {
+      this.clientBasicsComp.checkClientId = false;
+      this.clientBasicsComp.checkClientName = false;
+      this.emitClientData.name = this.emitClientData.data.clientId;
+      this.emitClientData.data.apiResources == undefined ? this.emitClientData.data.apiResources = [] : null;
+      this.emitClientData.data.identityResources == undefined ? this.emitClientData.data.identityResources = [] : null;
+      this.emitClientData.data.secrets == undefined ? this.emitClientData.data.secrets = [] : null;
+      this.emitClientData.data.scopes == undefined ? this.emitClientData.data.scopes = [] : null;
+      this.store.dispatch(saveClient(this.emitClientData));
+      this.close();
+      this.getAllClientsFn();
+    }
+    else if (updatetClientName == undefined && this.actionId == 'edit' && this.updateClientData.data.clientName != '') {
+      this.updateClientData.name = this.updateClientData.data.clientName;
+      this.store.dispatch(updateClient(this.updateClientData));
+      this.close();
+      this.getAllClientsFn();
+    }
   }
 
   close(): void {
-    this.emitClientData = { id: '', data: { apiResources: [], clientId: '', clientName: '', clientUri: '', description: '', identityResources: [], logoUri: '', requireConsent: false, scopes: [], secrets: [] } };
+    this.emitClientData = { id: '', name: '', data: { apiResources: [], clientId: '', clientName: '', clientUri: '', description: '', identityResources: [], logoUri: '', requireConsent: false, scopes: [], secrets: [] }, permissions: { permissions: [] } };
     this.updateClientData = {
       id: '',
+      name: '',
       data: {
         clientName: '', description: '', clientUri: '', logoUri: '', enabled: false, requireConsent: false, allowOfflineAccess: false, allowRememberConsent: false, allowAccessTokensViaBrowser: false, requirePkce: false, requireClientSecret: false, requireRequestObject: false, accessTokenLifetime: 0,
         consentLifetime: 0, accessTokenType: 0, enableLocalLogin: false, frontChannelLogoutUri: '', frontChannelLogoutSessionRequired: false, backChannelLogoutUri: '', allowedIdentityTokenSigningAlgorithms: '', backChannelLogoutSessionRequired: false, includeJwtId: false, alwaysSendClientClaims: false,
         pairWiseSubjectSalt: '', userSsoLifetime: 0, userCodeType: '', deviceCodeLifetime: 0, clientSecrets: [], claims: [], properties: [], allowedGrantTypes: [], identityProviderRestrictions: [], scopes: [], allowedCorsOrigins: [], redirectUris: [], postLogoutRedirectUris: [], apiResources: [], identityResources: []
+      },
+      permissions: {
+        permissions: []
       }
     };
     this.clientId = '';
@@ -527,8 +475,6 @@ export class AppComponent implements OnInit {
     this.isEdit = false;
     this.selectedResourceId = 0;
     this.roleName = 'admin';
-    this.clientBasicsComp.clientBasicsForm.reset();
-    this.actionId == 'edit' ? this.clientAdvancedComp.clientAdvancedForm.reset() : null;
     this.actionId = '';
     var offcanvas = document.getElementById(this.offcanvasId);
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
@@ -543,17 +489,5 @@ export class AppComponent implements OnInit {
     else if (this.actionId == 'edit' && this.updateClientData.data.clientName != '') return false;
     else return true;
   }
-
-  // getNavtabsItems() {
-  //   this.navtabsItems = [
-  //     { label: 'Basics', tablink: '#basics', ariacontrols: 'basics' },
-  //     { label: 'Secrets', tablink: '#secrets', ariacontrols: 'secrets' },
-  //     { label: 'Resources', tablink: '#resources', ariacontrols: 'resources' },
-  //     { label: 'Permissions', tablink: '#permissions', ariacontrols: 'permissions' },
-  //     { label: 'Advanced', tablink: '#advanced', ariacontrols: 'advanced' }
-  //   ];
-  //   if (this.actionId == 'edit') return this.navtabsItems;
-  //   else if (this.actionId == 'new') return this.navtabsItems;
-  // }
 
 }

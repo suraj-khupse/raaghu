@@ -9,7 +9,7 @@ import { Permission, PermissionNode, TreeType } from '../../models/pemission.mod
   templateUrl: './rds-comp-permission-tree.component.html',
   styleUrls: ['./rds-comp-permission-tree.component.scss']
 })
-export class RdsCompPermissionTreeComponent implements OnInit {
+export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
 
   // Input Decorators
   @Input() treeData: PermissionNode[] = [];
@@ -27,8 +27,8 @@ export class RdsCompPermissionTreeComponent implements OnInit {
   modifiedtreeData: PermissionNode[] = [];
 
   constructor(public translate: TranslateService) { }
-
-  ngOnInit(): void {
+  
+  ngOnChanges(changes: SimpleChanges): void {
     // Convert data into editable format
     if (this.treeData) {
       const resPermission: any[] = [];
@@ -59,6 +59,8 @@ export class RdsCompPermissionTreeComponent implements OnInit {
       this.modifiedtreeData = resPermission;
     }
   }
+
+  ngOnInit(): void { }
 
   // Parent checkbox selection based on child
   tickCheckbox(node: any): boolean {
