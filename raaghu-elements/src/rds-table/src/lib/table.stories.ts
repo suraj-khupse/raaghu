@@ -37,7 +37,7 @@ const Template: Story<RdsTableComponent> = (args: RdsTableComponent) => ({
 export const Default = Template.bind({});
 Default.parameters = { controls: { include: ['colorVariant', 'tableHeaders', 'tableData'] } };
 Default.args = {
-  colorVariant: 'light',
+  colorVariant: 'primary',
   // borderColorVariant: 'secondary',
   tableHeaders: [
     { displayName: 'Name', dataType: 'text', key: 'name' },
@@ -54,7 +54,7 @@ Default.args = {
 export const withoutBorder = Template.bind({});
 withoutBorder.parameters = { controls: { include: ['colorVariant', 'showTableBorder', 'tableHeaders', 'tableData'] } };
 withoutBorder.args = {
-  colorVariant: 'light',
+  colorVariant: 'primary',
   showTableBorder: false,
   tableHeaders: [
     { displayName: 'Name', dataType: 'text', key: 'name' },
@@ -71,7 +71,7 @@ withoutBorder.args = {
 export const withoutHeader = Template.bind({});
 withoutHeader.parameters = { controls: { include: ['colorVariant', 'showTableHeader', 'tableHeaders', 'tableData'] } };
 withoutHeader.args = {
-  colorVariant: 'light',
+  colorVariant: 'primary',
   showTableHeader: false,
   tableHeaders: [
     { displayName: 'Name', dataType: 'text', key: 'name' },

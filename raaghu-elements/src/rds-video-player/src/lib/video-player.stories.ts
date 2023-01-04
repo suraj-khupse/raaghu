@@ -1,5 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { Story, Meta } from '@storybook/angular';
+import { CommonModule } from '@angular/common';import { Story, Meta } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { VgBufferingModule, VgControlsModule, VgCoreModule, VgOverlayPlayModule } from 'ngx-videogular';
 import { RdsVideoPlayerComponent } from './rds-video-player.component'
@@ -9,7 +8,7 @@ export default {
   component: RdsVideoPlayerComponent,
   decorators: [
     moduleMetadata({
-      imports: [BrowserModule, VgCoreModule, VgControlsModule, VgOverlayPlayModule, VgBufferingModule]
+      imports: [CommonModule, VgCoreModule, VgControlsModule, VgOverlayPlayModule, VgBufferingModule]
     }),
   ],
   argTypes: {

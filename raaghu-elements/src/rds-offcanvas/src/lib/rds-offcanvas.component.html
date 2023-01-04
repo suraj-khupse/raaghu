@@ -1,6 +1,7 @@
 <div [class]="classes" [attr.data-bs-scroll]="scrolling" [attr.data-bs-keyboard]="preventEscapeKey"
   [attr.data-bs-backdrop]="backDrop" tabindex="-1" [id]="offId" [attr.aria-labelledby]="'canvas' + offId"
-  [ngStyle]="placement=='start' || placement=='end'? {'width': offcanvaswidth + 'px'}:{'width':'100%'}">
+  [ngStyle]="placement=='start' || placement=='end'? {'width': offcanvaswidth + 'px'}:{'width':'100%'}"
+  >
   <div class="offcanvas-header" *ngIf="canvasTitle !== '' && canvasTitle !== undefined">
     <h5 class="offcanvas-title" [id]="'canvas' + offId">{{ canvasTitle }}</h5>
     <button type="button" (click)="onClose.emit($event)" class="btn-close text-reset offcanvas-close"

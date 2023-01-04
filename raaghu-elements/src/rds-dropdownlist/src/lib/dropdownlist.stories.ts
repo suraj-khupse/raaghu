@@ -49,7 +49,7 @@ export const Default: Story<RdsDropdownlistComponent> = (args) => ({
   >
     </rds-dropdownlist>`
 });
-Default.parameters = { controls: { include: ['placeholder', 'icon', 'size', 'iconHeight', 'iconWidth', 'multiSelect', 'listItems', 'borderDropdown', 'dropdownHeight'] } };
+Default.parameters = { controls: { include: ['placeholder', 'icon', 'size', 'iconHeight', 'iconWidth', 'multiSelect', 'listItems', 'borderDropdown', 'dropdownHeight','onSelect'] } };
 
 Default.args = {
   placeholder: 'Filter',
@@ -84,7 +84,7 @@ export const WithOffset: Story<RdsDropdownlistComponent> = (args) => ({
   >
     </rds-dropdownlist>`
 });
-WithOffset.parameters = { controls: { include: ['placeholder', 'xOffset', 'yOffset', 'size', 'iconWidth', 'multiSelect', 'listItems', 'borderDropdown'] } };
+WithOffset.parameters = { controls: { include: ['placeholder', 'xOffset', 'yOffset', 'size', 'iconWidth', 'multiSelect', 'listItems', 'borderDropdown', 'dropdownHeight','onSelect'] } };
 WithOffset.args = {
   placeholder: 'Filter',
   xOffset: '0',

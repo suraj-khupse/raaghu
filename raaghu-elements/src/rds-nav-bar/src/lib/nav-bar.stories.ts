@@ -25,7 +25,7 @@ export default {
 export const Default: Story<RdsNavBarComponent> = (args) => ({
   props: args,
 });
-Default.parameters = { controls: { include: ['navbarItems', 'title', 'colorVariant'] } };
+Default.parameters = { controls: { include: ['navbarItems', 'title', 'colorVariant','onTabClick'] } };
 Default.args = {
   // size: 'medium',
   navbarItems: [{

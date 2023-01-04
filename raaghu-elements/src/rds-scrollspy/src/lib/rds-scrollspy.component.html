@@ -1,6 +1,24 @@
 <body data-bs-spy="scroll" [attr.data-bs-target]="'#'+scrollId" data-bs-offset="0" tabindex="0">
-  <div class="pt-4">
+  <div class="scrollspy_body pt-4">
     <ng-content></ng-content>
   </div>
+  <a href="#scrollspy" target="_self" class="m-1 text-decoration-none shadow scrolltotop d-flex justify-content-center">
+    <rds-icon height="20px"
+              [fill]="false"
+              [stroke]="true"
+              width="20px"
+              name="arrow_up"
+              colorVariant="primary"
+              opacity="1"
+              [isAnimate]="false"></rds-icon>
+  </a>
+  <rds-button colorVariant="primary"
+              size="medium"
+              [isRounded]="true"
+              iconHeight="18px"
+              iconWidth="18px"
+              [isIconFill]="false"
+              icon="plus"></rds-button>
+  
 </body>
 <scrollspy-item></scrollspy-item>

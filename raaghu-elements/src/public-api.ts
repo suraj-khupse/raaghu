@@ -209,4 +209,6 @@ export * from './rds-stepper/src/public-api';
 // Public API Surface of rds-address-detail
 export * from './rds-address-detail/src/public-api';
 
+// Public API Surface of rds-address-detail
+export * from './rds-toggle/src/public-api';
 

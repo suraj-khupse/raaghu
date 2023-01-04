@@ -95,7 +95,7 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
   }
 
   saveClaim(claimForm: NgForm) {
-    this.onClaimSave.next();
+    this.onClaimSave.next(null);
   }
 
 }

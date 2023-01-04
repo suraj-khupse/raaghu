@@ -107,6 +107,7 @@ export class RdsSelectListComponent implements AfterViewInit, OnChanges, Control
     this.selectListChange.emit(event[0]);
     this.onChange(event[0])
     this.onTouched()
+    this.value = event;
     }
     else{
       this.value = event;

@@ -12,7 +12,7 @@ const Template: Story<RdsRadioButtonComponent> = (args: RdsRadioButtonComponent)
   props: args,
 });
 export const Default = Template.bind({})
-Default.parameters = { controls: { include: ['display_type', 'itemList'] } };
+Default.parameters = { controls: { include: ['display_type', 'itemList','onClick'] } };
 Default.args = {
   display_type: 'Default',
   itemList : [
@@ -38,7 +38,7 @@ Default.args = {
 }
 
 export const Horizontal = Template.bind({})
-Horizontal.parameters = { controls: { include: ['display_type', 'itemList'] } };
+Horizontal.parameters = { controls: { include: ['display_type', 'itemList','onClick'] } };
 Horizontal.args = {
   display_type: 'Horizontal',
   itemList : [

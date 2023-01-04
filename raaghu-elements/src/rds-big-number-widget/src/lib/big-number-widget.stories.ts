@@ -18,7 +18,7 @@ export default {
   ],
   argTypes: {
     colorVariant: {
-      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'],
+      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark','gradient-primary'],
       control: { type: 'select' }
     },
     subTitleColorVariant: {

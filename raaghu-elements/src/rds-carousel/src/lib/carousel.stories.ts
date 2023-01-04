@@ -14,6 +14,11 @@ export default {
       imports: [CommonModule, FormsModule, RdsIconModule],
     }),
   ],
+  parameters: { 
+    actions: {
+      handles: ['slid.bs.carousel'],
+     }
+   },
   argTypes: {
     display_type: { table: { disable: true, }, },
   },

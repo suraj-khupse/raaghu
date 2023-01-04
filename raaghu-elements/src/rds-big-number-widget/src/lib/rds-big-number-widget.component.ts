@@ -17,7 +17,7 @@ export class RdsBigNumberWidgetComponent implements OnInit {
   @Input() iconFill: boolean = false;
   @Input() iconWidth: string = '12px';
   @Input() iconColor = '';
-  @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined = undefined;;
+  @Input() colorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' |'gradient-primary'| undefined = undefined;;
   @Input() textAlign: 'text-start' | 'text-center' | 'text-end' = 'text-center';
   @Input() subTitleColorVariant: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined = 'light';
   @Input() chartOptions: any;
@@ -37,7 +37,7 @@ export class RdsBigNumberWidgetComponent implements OnInit {
     }
 
     if (this.colorVariant !== undefined && `${this.colorVariant}` !== 'light' && `${this.colorVariant}` !== 'warning' && `${this.colorVariant}` !== 'info' && `${this.colorVariant}` !== 'white' && `${this.colorVariant}` !== '') {
-      customClasses.push('text-white bg-gradient-primary');
+      customClasses.push('text-white');
     }
     return customClasses
   }

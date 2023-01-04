@@ -34,9 +34,9 @@ Default.args ={
 }
 
 
-export const Product_overview1 = Template.bind({});
-Product_overview1.parameters = { controls: { include: ['display_type', 'itemList'] } };
-Product_overview1.args ={
+export const ColumnLayout = Template.bind({});
+ColumnLayout.parameters = { controls: { include: ['display_type', 'itemList'] } };
+ColumnLayout.args ={
   display_type: 'Product_overview1',
   itemList:[
     "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
@@ -46,9 +46,9 @@ Product_overview1.args ={
   ]
 }
 
-export const Product_overview2 = Template.bind({});
-Product_overview2.parameters = { controls: { include: ['display_type', 'itemList'] } };
-Product_overview2.args ={
+export const EnlargeView = Template.bind({});
+EnlargeView.parameters = { controls: { include: ['display_type', 'itemList'] } };
+EnlargeView.args ={
   display_type: 'Product_overview2',
   itemList:[
     "https://cdn.shopify.com/s/files/1/0752/6435/products/7_560d64a9-7d29-4ea4-93ed-7b6d29bd6339_1_765x.jpg?v=1639994439",
@@ -57,8 +57,8 @@ Product_overview2.args ={
   ]
 }
 
-export const Product_overview3 = Template.bind({})
-Product_overview3.args ={
+export const ImageGallery = Template.bind({})
+ImageGallery.args ={
   display_type: 'Product_overview3',
   itemList:[
     "https://cdn.shopify.com/s/files/1/0752/6435/products/7_560d64a9-7d29-4ea4-93ed-7b6d29bd6339_1_765x.jpg?v=1639994439",

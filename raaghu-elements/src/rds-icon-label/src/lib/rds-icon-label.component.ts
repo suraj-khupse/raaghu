@@ -23,18 +23,18 @@ export class RdsIconLabelComponent implements OnInit {
   public get Classes(): string[] {
     var classes: any = [];
 
-    var selectSize = ` form-select-${this.size === 'small' ? 'sm ' : this.size === 'large' ? 'lg' : 'md'}`
+    var selectSize = `d-flex form-select-${this.size === 'small' ? 'sm ' : this.size === 'large' ? 'lg' : 'md'}`
     if (this.size === 'small') {
-      this.height = '13px';
-      this.width = '13px';
-    }
-    if (this.size === 'medium') {
-      this.height = '14px';
-      this.width = '14px';
-    }
-    if (this.size === 'large') {
       this.height = '16px';
       this.width = '16px';
+    }
+    if (this.size === 'medium') {
+      this.height = '18px';
+      this.width = '18px';
+    }
+    if (this.size === 'large') {
+      this.height = '20px';
+      this.width = '20px';
     }
     classes.push(selectSize);
 

@@ -32,7 +32,7 @@ const Template: Story<RdsWebsiteMetricComponent> = (args: RdsWebsiteMetricCompon
 });
 
 export const Default = Template.bind({})
-Default.parameters = { controls: { include: ['display_type', 'item'] } };
+Default.parameters = { controls: { include: ['display_type', 'item','onClickLink'] } };
 Default.args = {
     display_type: 'metric_type1',
     item: {
@@ -43,7 +43,7 @@ Default.args = {
 }
 
 export const withTopBorder = Template.bind({})
-withTopBorder.parameters = { controls: { include: ['display_type', 'item'] } };
+withTopBorder.parameters = { controls: { include: ['display_type', 'item','onClickLink'] } };
 withTopBorder.args = {
     display_type: 'metric_type2',
     item: {
@@ -55,7 +55,7 @@ withTopBorder.args = {
 }
 
 export const leftAligned = Template.bind({})
-leftAligned.parameters = { controls: { include: ['display_type', 'item'] } };
+leftAligned.parameters = { controls: { include: ['display_type', 'item','onClickLink'] } };
 leftAligned.args = {
     display_type: 'metric_type3',
     item: {
@@ -68,7 +68,7 @@ leftAligned.args = {
     }
 }
 export const withLeftAlignedIcon = Template.bind({})
-withLeftAlignedIcon.parameters = { controls: { include: ['display_type', 'item'] } };
+withLeftAlignedIcon.parameters = { controls: { include: ['display_type', 'item','onClickLink'] } };
 withLeftAlignedIcon.args = {
     display_type: 'metric_type4',
     item: {
@@ -82,7 +82,7 @@ withLeftAlignedIcon.args = {
     }
 }
 export const withCenterAlignedIcon = Template.bind({})
-withCenterAlignedIcon.parameters = { controls: { include: ['display_type', 'item'] } };
+withCenterAlignedIcon.parameters = { controls: { include: ['display_type', 'item','onClickLink'] } };
 withCenterAlignedIcon.args = {
     display_type: 'metric_type5',
     item: {
@@ -97,7 +97,7 @@ withCenterAlignedIcon.args = {
     }
 }
 export const centerAligned = Template.bind({})
-centerAligned.parameters = { controls: { include: ['display_type', 'item'] } };
+centerAligned.parameters = { controls: { include: ['display_type', 'item','onClickLink'] } };
 centerAligned.args = {
     display_type: 'metric_type6',
     item: {

@@ -45,9 +45,9 @@ Default.args = {
   }
 }
 
-export const LeftAligned = Template.bind({});
-LeftAligned.parameters = { controls: { include: ['display_type', 'item', 'position'] } };
-LeftAligned.args = {
+export const WithIllustrationLeftAlign = Template.bind({});
+WithIllustrationLeftAlign.parameters = { controls: { include: ['display_type', 'item', 'position'] } };
+WithIllustrationLeftAlign.args = {
   display_type: 'Left Aligned',
   item:
   {
@@ -60,9 +60,9 @@ LeftAligned.args = {
   },
 }
 
-export const centreAligned = Template.bind({});
-centreAligned.parameters = { controls: { include: ['display_type', 'item'] } };
-centreAligned.args = {
+export const WithIllustrationCentreAlign = Template.bind({});
+WithIllustrationCentreAlign.parameters = { controls: { include: ['display_type', 'item'] } };
+WithIllustrationCentreAlign.args = {
   display_type: 'Centre Aligned',
   item:
   {
@@ -91,9 +91,9 @@ WithLabel.args = {
   }
 }
 
-export const WithoutLabel = Template.bind({});
-WithoutLabel.parameters = { controls: { include: ['display_type', 'item'] } };
-WithoutLabel.args = {
+export const WithHeadingAndLabelCentreAlign = Template.bind({});
+WithHeadingAndLabelCentreAlign.parameters = { controls: { include: ['display_type', 'item'] } };
+WithHeadingAndLabelCentreAlign.args = {
   display_type: 'Without Label',
   item:
   {
