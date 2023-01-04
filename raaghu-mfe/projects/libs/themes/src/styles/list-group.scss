@@ -1,14 +1,5 @@
-/*list-group-items*/
+// /*list-group-items*/
 .list-group-item {
-    cursor: pointer !important;
-    font-weight: $font-weight-light;
-  }
-  
-  .form-check {
-    /*label.form-check-label {
-      line-height: 1.8375rem;
-    }*/
-    /*.form-check-input {
-      margin-top: 0;
-    }*/ /*display:flex;*/
-  }
+  cursor: pointer !important;
+  font-weight: $font-weight-light;
+}

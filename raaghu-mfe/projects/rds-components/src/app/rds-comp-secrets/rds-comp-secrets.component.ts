@@ -8,6 +8,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
 

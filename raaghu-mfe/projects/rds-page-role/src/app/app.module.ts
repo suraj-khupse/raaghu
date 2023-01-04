@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RdsBannerModule, RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsSearchInputModule } from '@libs/rds-elements';
 import { RdsIconModule } from '@libs/rds-icon';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
 import { RdsCompClaimsTypeRoleModule } from 'projects/rds-components/src/app/rds-comp-claim-type-role/rds-comp-claims-type-role.module';
 import { RdsCompNewRoleModule } from 'projects/rds-components/src/app/rds-comp-new-role/rds-comp-new-role.module';

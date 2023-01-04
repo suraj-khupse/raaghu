@@ -10,6 +10,10 @@
                     <span class="text-danger" *ngIf="client_id.errors.required">{{"Client ID is required" | translate}}
                     </span>
                 </div>
+                <div class="form-control-feedback" *ngIf="checkClientId">
+                    <span class="text-danger">{{"Client ID is already present" | translate}}
+                    </span>
+                </div>
             </div>
         </div>
         <div class="col-md-6">
@@ -21,6 +25,10 @@
                 <div class="form-control-feedback"
                     *ngIf="client_name.errors && (client_name.dirty || client_name.touched)">
                     <span class="text-danger" *ngIf="client_name.errors.required">Client Name is required</span>
+                </div>
+                <div class="form-control-feedback" *ngIf="checkClientName">
+                    <span class="text-danger">{{"Client Name is already present" | translate}}
+                    </span>
                 </div>
             </div>
         </div>
@@ -173,8 +181,11 @@
                     (onClick)="addCallBackUrl(callBackUrl)"></rds-button>
             </div>
             <rds-label [label]="'Added URL'"></rds-label>
-            <mfe-loader [config]="rdsCallBackUrlTable"></mfe-loader>
-
+            <rds-data-table [tableData]="clientBasics.redirectUris" [tableHeaders]="callbackHeaders"
+                [recordsPerPage]="5" [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="actions"
+                [noDataTitle]="'Currently you do not have Call Back'"
+                (onActionSelection)="actionSelectionRedirectUris($event)">
+            </rds-data-table>
             <!-- Signout Table -->
             <div class="col-md-12 mt-3">
                 <div class="form-group">
@@ -188,7 +199,11 @@
                     (onClick)="addSignoutUrl(signoutUrl)"></rds-button>
             </div>
             <rds-label [label]="'Added URL'"></rds-label>
-            <mfe-loader [config]="rdsSignoutTableConfig"></mfe-loader>
+            <rds-data-table [tableData]="clientBasics.postLogoutRedirectUris" [tableHeaders]="signoutHeaders"
+                [recordsPerPage]="5" [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="actions"
+                [noDataTitle]="'Currently you do not have Signout'"
+                (onActionSelection)="actionSelectionSignout($event)">
+            </rds-data-table>
 
             <!-- Allowed cors origin -->
             <div class="col-md-12 mt-3">
@@ -203,7 +218,11 @@
                     (onClick)="addCorsOrigin(corsOrigin)"></rds-button>
             </div>
             <rds-label [label]="'Added URL'"></rds-label>
-            <mfe-loader [config]="rdsAllowedCorsOriginTable"></mfe-loader>
+            <rds-data-table [tableData]="clientBasics.allowedCorsOrigins" [tableHeaders]="corsOriginHeaders"
+                [recordsPerPage]="5" [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="actions"
+                [noDataTitle]="'Currently you do not have Cors Origin'"
+                (onActionSelection)="actionSelectionCorsOrigin($event)">
+            </rds-data-table>
         </ng-container>
     </div>
 </form>

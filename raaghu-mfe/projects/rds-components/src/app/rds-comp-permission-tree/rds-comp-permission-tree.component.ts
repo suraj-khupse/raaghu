@@ -95,6 +95,8 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
 
   }
 
+  ngOnInit(): void { }
+
   // Parent checkbox selection based on child
   tickCheckbox(node: any): boolean {
     if (node.parentName == undefined && node.isGranted == undefined) return node.permissions.filter((x: Permission) => x.isGranted == true).length > 0 ? true : false;

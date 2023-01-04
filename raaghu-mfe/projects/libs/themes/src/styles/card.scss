@@ -1,4 +1,4 @@
-/*card custom properties*/
+// /*card custom properties*/
 .card {
   .card-header {
     display: flex;
@@ -24,8 +24,8 @@
   }
 
   .card-footer {
-    padding: 2rem 2.25rem;
-    border-top: 1px solid;
+    padding: 1rem 1rem;
+    border-top: 0px solid;
   }
 }
 
@@ -35,16 +35,16 @@
   bottom: -7px;
   width: 100%;
   padding: 2.5%;
-  z-index: 4;
+  z-index: 1000;
 }
 
 .gutter-b {
-  margin-bottom: 25px;
+  margin-bottom: 16px;
 }
 
 .banner-image {
   position: absolute;
-  background-image: url(https://picsum.photos/seed/picsum/1200/600);
+  background-image: url("https://picsum.photos/seed/picsum/1200/600");
   height: 8rem;
   width: 100%;
   background-position: center;
@@ -53,17 +53,7 @@
   border-radius: 4px 4px 0px 0px;
 }
 
-.profile-image {
-  width: 7rem;
-  margin-top: 3.5rem;
-  z-index: 9;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  margin-left: 25px;
-}
-
 .rounded-avatar-left .body-border {
- // background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 40px #0000000a;
   border-radius: 0px 0px 4px 4px;
   padding-left: 35px;
@@ -82,7 +72,6 @@
 
 // avatar badge card variation center css
 .rounded-avatar-center .body-border {
- // background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 40px #0000000a;
   border-radius: 0px 0px 4px 4px;
   padding-left: 35px;
@@ -102,7 +91,7 @@
 }
 
 .rounded-avatar-center .profile-image {
-  margin-left: 85px;
+  margin-left: 105px;
 }
 
 // after binding css
@@ -130,7 +119,7 @@
   margin-left: 20px;
   margin-right: auto;
   width: 37%;
-  margin-top: -130px;
+  margin-top: -60px;
   border: 3px solid #fff;
 }
 
@@ -147,6 +136,21 @@
 
   .rounded-avatar-basic .card {
     width: 100% !important;
+  }
+  .rounded-avatar-center .profile-image {
+    margin-left: 215px;
+    position: relative;
+    top: -60px;
+  }
+}
+
+// ipad pro view css
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .rounded-avatar-center .profile-image {
+    margin-left: 95px;
+    position: relative;
+    top: -10px;
   }
 }
 
@@ -165,8 +169,7 @@
   }
 }
 
-
-/*card css */
+// /*card css */
 
 .card.card-stretch {
   display: -webkit-box;
@@ -183,7 +186,7 @@
 }
 
 .card.card-stretch.gutter-b {
-  height: calc(100% - 25px);
+  height: calc(100% - 15px);
 }
 
 .card.card-stretch.card-stretch-half {
@@ -211,11 +214,8 @@
 }
 
 //subscription-page
-
-
-
 .subscription-border-Standard {
-  border: 1px solid #005FA4;
+  border: 1px solid #005fa4;
   border-radius: 4px;
 }
 
@@ -225,17 +225,17 @@
 }
 
 .subscription-border-Basic {
-  border: 1px solid #00A443;
+  border: 1px solid #00a443;
   border-radius: 4px;
 }
 
 .subscription-border-Professional {
-  border: 1px solid #F76161;
+  border: 1px solid #f76161;
   border-radius: 4px;
 }
 
 .subscription-border-orange {
-  border: 1px solid #F58220;
+  border: 1px solid #f58220;
   border-radius: 4px;
 }
 
@@ -243,5 +243,3 @@
   border: 1px solid black;
   border-radius: 4px;
 }
-
-
