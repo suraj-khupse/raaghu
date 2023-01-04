@@ -1,5 +1,5 @@
 {
      "remoteServiceBaseUrl": "https://abpdemoapi.raaghu.io",
-     "appBaseUrl": "https://abpstageui.raaghu.io",
+     "appBaseUrl": "http://localhost:8080",
      "replaceUrl": "true"
 }

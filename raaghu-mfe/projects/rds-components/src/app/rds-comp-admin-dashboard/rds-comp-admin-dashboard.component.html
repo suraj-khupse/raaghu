@@ -121,8 +121,8 @@
       <rds-widget [isRefreshRequired]="true" [isBorder]="false" cardheight='card-stretch'
         [headerTitle]="translate.instant('Member Activity')" (onRefresh)="LoadMemberActivityTable()">
         <!-- <mfe-loader [config]="rdsMemberActivityTableMfeConfig"></mfe-loader> -->
-        <rds-comp-data-table [tableData]="memberActivityTableData" [inlineEdit]="false" [pagination]="true"
-          [recordsPerPage]="10" [tableHeaders]="memberActivityTableHeader"></rds-comp-data-table>
+        <!-- <rds-comp-data-table [tableData]="memberActivityTableData" [inlineEdit]="false" [pagination]="true"
+          [recordsPerPage]="10" [tableHeaders]="memberActivityTableHeader"></rds-comp-data-table> -->
 
       </rds-widget>
     </div>
@@ -131,9 +131,9 @@
     <rds-widget [isRefreshRequired]="true" [isBorder]="false" cardheight='card-stretch'
       [headerTitle]="translate.instant('To Do List')" (onRefresh)="LoadToDoListTable()">
       <!-- <mfe-loader [config]="rdsMemberActivityTableMfeConfig"></mfe-loader> -->
-      <rds-comp-data-table [tableHeaders]="toDoListTableHeader" [tableStyle]="tableStyle" [width]="100"
+      <!-- <rds-comp-data-table [tableHeaders]="toDoListTableHeader" [tableStyle]="tableStyle" [width]="100"
         [tableData]="toDoListTableData" [pagination]="false" [recordsPerPage]="10"
-        [noDataTitle]="'Currently you do not have to do list'"></rds-comp-data-table>
+        [noDataTitle]="'Currently you do not have to do list'"></rds-comp-data-table> -->
 
     </rds-widget>
   </div>
