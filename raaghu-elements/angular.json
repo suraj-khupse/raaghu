@@ -2635,6 +2635,37 @@
 					}
 				}
 			}
+		},
+		"rds-toggle": {
+			"projectType": "library",
+			"root": "src/rds-toggle",
+			"sourceRoot": "src/rds-toggle/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "src/rds-toggle/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "src/rds-toggle/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "src/rds-toggle/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "src/rds-toggle/src/test.ts",
+						"tsConfig": "src/rds-toggle/tsconfig.spec.json",
+						"karmaConfig": "src/rds-toggle/karma.conf.js"
+					}
+				}
+			}
 		}
 	}
 }

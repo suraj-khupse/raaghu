@@ -1474,7 +1474,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<string[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -3253,7 +3253,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ApiResourceWithDetailsDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -3855,7 +3855,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ApiScopeWithDetailsDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -4770,7 +4770,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<EntityChangeWithUsernameDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -5562,7 +5562,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<IdentityClaimTypeDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -6757,7 +6757,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<PlanDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -8123,7 +8123,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<IdentityResourceWithDetailsDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -9214,7 +9214,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<LanguageResourceDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -9314,7 +9314,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<CultureInfoDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -9414,7 +9414,7 @@ export class ServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<string[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -13472,7 +13472,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<IdentityRoleClaimDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -13572,7 +13572,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ClaimTypeDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -15624,7 +15624,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<EditionLookupDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -17907,7 +17907,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ClaimTypeDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -18010,7 +18010,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<IdentityUserClaimDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -18210,7 +18210,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<OrganizationUnitDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -18978,7 +18978,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<IdentityRoleLookupDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -19078,7 +19078,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<OrganizationUnitLookupDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
@@ -19178,7 +19178,7 @@ console.log("url_",url_);
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<ExternalLoginProviderDto[]>(null as any);
+        return _observableOf<any>(null as any);
     }
 
     /**
