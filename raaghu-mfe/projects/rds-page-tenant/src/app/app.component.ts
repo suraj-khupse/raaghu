@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ArrayToTreeConverterService, UserAuthService } from '@libs/shared';
+import { AlertService } from '@libs/shared';
+import { ArrayToTreeConverterService, ComponentLoaderOptions, UserAuthService } from '@libs/shared';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
@@ -93,7 +94,21 @@ export class AppComponent implements OnInit{
     { displayName: 'Name', key: 'name', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
   ]
   isAnimation: boolean = true;
+
+  currentAlerts: any = [];
+  public rdsAlertMfeConfig: ComponentLoaderOptions = {
+    name: 'RdsCompAlert',
+    input: {
+      currentAlerts: this.currentAlerts
+    },
+    output: {
+      onAlertHide: (event: any) => {
+        this.currentAlerts = event;
+      }
+    }
+  }
   tenantTableData: any = [];
+
 
   onActionSelect(event: any): void {
     if (event.actionId === 'delete') {
@@ -224,6 +239,7 @@ export class AppComponent implements OnInit{
     public datepipe: DatePipe,
     private userAuthService: UserAuthService,
     private store: Store, 
+    private alertService: AlertService,
     public translate: TranslateService,
     private _arrayToTreeConverterService: ArrayToTreeConverterService){
       this.newTenantLabel = this.translate.instant('New Tenant')
@@ -378,7 +394,6 @@ newTenant(isNewTeanant?: boolean): void {
     });
 
     this.store.select(selectTenantInfo).subscribe((res: any) => {
-      debugger
       if (res) {
         this.tenantSettingsInfo = {};
         this.tenantData = {};
@@ -401,6 +416,23 @@ newTenant(isNewTeanant?: boolean): void {
         this.tenantFeatures = this.convertArraytoTreedata(res.features);
       }
     })
+
+    this.subscribeToAlerts();
+  }
+
+  subscribeToAlerts() {
+    this.alertService.alertEvents.subscribe((alert) => {
+      debugger
+      this.currentAlerts = [];
+      const currentAlert: any = {
+        type: alert.type,
+        title: alert.title,
+        message: alert.message,
+      };
+      this.currentAlerts.push(currentAlert);
+      this.currentAlerts = [...this.currentAlerts];
+    });
+
   }
 
   onSaveTenant(tenant: any) {
@@ -451,6 +483,9 @@ newTenant(isNewTeanant?: boolean): void {
 
   onSelectTenant(event: any) {
     this.store.dispatch(getTenantUsers(event));
+  }
+  onAlertHide(event: any): void {
+    this.currentAlerts = event;
   }
 
   onTenantLogIn(event: any) {
