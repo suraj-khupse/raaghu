@@ -41,16 +41,16 @@ integration.args = {
             title: 'Zapier', subtitle: 'Build custom automation and intefrations with app', icon: 'zapier', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: true, iconFill: false
         },
         {
-            title: 'Adobe XD', subtitle: 'Build custom automation and intefrations with app', icon: 'adobeXD', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
+            title: 'Adobe XD', subtitle: 'Build custom automation and intefrations with app', icon: 'xd_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
         },
         {
-            title: 'Figma', subtitle: 'Build custom automation and intefrations with app', icon: 'figma', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
+            title: 'Figma', subtitle: 'Build custom automation and intefrations with app', icon: 'figma_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
         },
         {
-            title: 'Dropbox', subtitle: 'Build custom automation and intefrations with app', icon: 'dropbox', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
+            title: 'Dropbox', subtitle: 'Build custom automation and intefrations with app', icon: 'dropbox_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
         },
         {
-            title: 'Jira', subtitle: 'Build custom automation and intefrations with app', icon: 'jira', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
+            title: 'Jira', subtitle: 'Build custom automation and intefrations with app', icon: 'jira_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
         },
         {
             title: 'Notion', subtitle: 'Build custom automation and intefrations with app', icon: 'notion_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: true, iconFill: false
@@ -62,6 +62,6 @@ integration.args = {
             title: 'Slack', subtitle: 'Build custom automation and intefrations with app', icon: 'slack_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
         },
         {
-            title: 'Linear', subtitle: 'Build custom automation and intefrations with app', icon: 'linear', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
+            title: 'Linear', subtitle: 'Build custom automation and intefrations with app', icon: 'linear_colored', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
         }]
 }
