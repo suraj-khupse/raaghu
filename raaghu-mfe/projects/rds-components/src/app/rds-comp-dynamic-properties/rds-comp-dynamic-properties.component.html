@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-2">
   <rds-comp-data-table [tableData]="DynamicPropertiesTableData" [inlineEdit]="false"
     [pagination]="DynamicPropertiesTableData.length>5?true:false" [recordsPerPage]="10" [actions]="actions"
     [tableHeaders]="DynamicPropertiesTableHeader" (onActionSelection)="onActionSelect($event)"
@@ -13,18 +13,18 @@
         [justified]="false" [activeTab]="activePage">
       </rds-nav-tab>
 
-      <div class="tab-content px-2 py-4">
+      <div class="tab-content px-2">
         <!-- Dynamic Nav Tabs -->
         <div naveContent class="row tab-content px-3 navsm-p-0" id="nav-tabContent">
           <!-- Information tab -->
-          <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 0}" id="information" role="tabpanel"
+          <div class="tab-pane fade px-0 py-4" [ngClass]="{'show active': activePage === 0}" id="information" role="tabpanel"
             aria-labelledby="nav-home-tab">
             <rds-comp-information [inputTypeList]="inputTypeList" [dynamicPropertiesData]="DynamicProperyData"
               [resetFormSubject]="resetFormSubject.asObservable()" [editShimmer]="false"
               (dynamicPropertiesInfo)="getDynamicPropertyInfo($event)"></rds-comp-information>
           </div>
           <!-- Permission tab -->
-          <div class="tab-pane fade px-0" [ngClass]="{'show active': activePage === 1}" id="permission" role="tabpanel"
+          <div class="tab-pane fade px-0 py-2" [ngClass]="{'show active': activePage === 1}" id="permission" role="tabpanel"
             aria-labelledby="nav-home-tab">
             <div class="row">
               <rds-comp-permission-tree [selectedItems]="selectedPermissionList"
