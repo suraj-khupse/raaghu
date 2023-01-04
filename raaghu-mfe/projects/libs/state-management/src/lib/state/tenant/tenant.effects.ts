@@ -9,7 +9,7 @@ import { getTenants, getTenantSuccess, getTenantFailure, deleteTenant, updateTen
 
 @Injectable()
 export class TenantEffects {
-  constructor(private actions$: Actions, private tenantService: TenantServiceProxy, private alertService: AlertService,
+  constructor(private actions$: Actions, private tenantService: TenantServiceProxy, public alertService: AlertService,
      private editionService: EditionServiceProxy, private store: Store,private findTenantUsers:CommonLookupServiceProxy,
       private loginTenant:AccountServiceProxy, private tokenAuth:TokenAuthServiceProxy) { }
   getTenants$ = createEffect(() =>
@@ -62,11 +62,10 @@ export class TenantEffects {
   deleteTenant$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteTenant),
-      mergeMap(({ id,maxresult }) =>
+      mergeMap(({ id }) =>
         this.tenantService.deleteTenant(id).pipe(map(() => {
+          this.alertService.showAlert('Success', 'Tenant deleted successfully', 'success');
           this.store.dispatch(getTenants());
-          this.alertService.showAlert('Success', 'Tenant deleted successfully', 'success')
-
         }
         ),
           catchError((error) => of())

@@ -150,7 +150,8 @@ export const APP_ROUTES: Routes = [
             type: 'module',
             remoteEntry: MfeConfig.settings.url,
             exposedModule: './AppModule',
-          }).then((m) => m.AppModule)
+          }).then((m) => m.AppModule),
+          data:{permission: 'Pages.Settings'}
       },
       {
         path: 'icons',
