@@ -1,4 +1,14 @@
-import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
@@ -9,7 +19,7 @@ declare var bootstrap: any;
   templateUrl: './rds-comp-data-table.component.html',
   styleUrls: ['./rds-comp-data-table.component.scss']
 })
-export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
+export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChecked {
   @Input() tableData: any = [];
   @Input() inlineEdit: boolean = true;
   @Input() enableCheckboxSelection: boolean = false;
@@ -56,31 +66,15 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   static count: number = 0;
   public id: any = 'table'
 
-  constructor(public translate: TranslateService) {
+  constructor(
+    public translate: TranslateService,
+    private changeDetector: ChangeDetectorRef
+  ) {
     this.id = this.id + RdsDataTableComponent.count++;
 
   }
-  ngDoCheck(): void {
-    // if (this.tableData) {
-    //   this.tempData = JSON.parse(JSON.stringify(this.tableData));
-    //   this.totalRecords = this.tableData.length;
-    //   // this.tableData.forEach((item: any) => {
-    //   //   if (item.id) {
-    //   //     const index = this.dataSource.findIndex((x) => x.id === item.id);
-    //   //     if (index !== -1) {
-    //   //       this.dataSource[index] = item;
-    //   //     }
-    //   //   }
-    //   // });
-    //   if (this.refresh) {
-    //     if (this.pageDetails) {
-    //       this.onPagination(this.pageDetails);
-    //       this.refresh = false;
-    //     }
-    //   }
-
-    // }
-
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -94,7 +88,6 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
           this.onPagination({ RecordsPerPage: this.recordsPerPage, currentPage: 1 });
         }
       }
-
     }
   }
 
@@ -107,7 +100,6 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
         this.dataSource = this.tableData;
       }
     }
-
   }
 
   deleteConfirmation(data: any): void {
