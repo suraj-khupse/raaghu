@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-2">
   <rds-comp-data-table [tableData]="DynamicEntityPropertiesTableData" [inlineEdit]="false"
     [pagination]="DynamicEntityPropertiesTableData.length>5?true:false" [recordsPerPage]="10" [actions]="actions"
     (onActionSelection)="onActionSelect($event)" [tableHeaders]="DynamicEntityPropertiesTableHeader"

@@ -132,8 +132,8 @@ with_Icon_And_Label.args = {
   colorVariant: 'primary',
   label: 'button',
   size: 'medium',
-  iconHeight: '18px',
-  iconWidth: '18px',
+  iconHeight: '15px',
+  iconWidth: '15px',
   isIconFill: false,
   //buttonType: 'iconLabel'
 };
