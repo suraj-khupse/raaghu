@@ -8,8 +8,8 @@
       <div class="d-flex justify-content-end" *ngIf="tabcash && cashedata && cashedata.length>0">
         <div class="desktop-btn">
           <rds-button (click)="deletAllcasheConfirmation()" [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'"
-            [colorVariant]="'primary'" [label]="translate.instant('CLEAR ALL')">
-            <rds-icon class="me-2" left name="delete" width="15px" height="15px"></rds-icon>
+            [colorVariant]="'primary'" [label]="translate.instant('CLEAR ALL')" icon="delete" iconHeight="14px" iconWidth="14px">
+            <!-- <rds-icon class="me-2" left name="delete" width="15px" height="15px"></rds-icon> -->
           </rds-button>
         </div>
         <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5" style="z-index: 1;">

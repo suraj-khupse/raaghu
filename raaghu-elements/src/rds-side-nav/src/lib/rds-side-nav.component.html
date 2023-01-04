@@ -14,7 +14,7 @@
       <ng-container *ngTemplateOutlet="childTemplate; context: { item: item,index:i }"></ng-container>
     </li>
     <li>
-      <div class="sidenav-footer">
+      <div class="mb-3 sidenav-footer">
         <div *ngIf="collapseRequired" class="d-flex justify-content-center mb-3 mt-3">
           <rds-icon [name]="'grid_square'" height="23px" [stroke]="true" width="23px" data-bs-toggle="tooltip"
             data-bs-placement="auto" title="collapse menu" (click)="onCollapse()" class="cursor-pointer"

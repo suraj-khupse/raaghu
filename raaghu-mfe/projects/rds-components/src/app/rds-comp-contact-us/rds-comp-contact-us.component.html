@@ -3,7 +3,7 @@
       <div class="col-md-12">
         <div class="form-group mt-4">
           <rds-input [inputType]="'text'" [label]="'Email ID'" [labelPosition]="'top'" [pattern]="emailPattern"
-            [(ngModel)]="info.emailID" name="email_ID" required [placeholder]="'name@domain.com'"
+            [(ngModel)]="info.emailID" name="email_ID" required [placeholder]="'Enter Email Id'"
             [isRequired]=true #emailId="ngModel">
           </rds-input>
           <div class="form-control-feedback" *ngIf="emailId.errors && (emailId.dirty || emailId.touched)">
@@ -16,7 +16,7 @@
       <div class="col-md-12">
         <div class="form-group mt-4">
           <rds-input [inputType]="'text'" [label]="'Full Name'" [labelPosition]="'top'"
-            [(ngModel)]="info.fullName" name="full_name" required [placeholder]="'full name'"
+            [(ngModel)]="info.fullName" name="full_name" required [placeholder]="'Enter Full Name'"
             [isRequired]=true #fullName="ngModel">
           </rds-input>
           <div class="form-control-feedback" *ngIf="fullName.errors && (fullName.dirty || fullName.touched)">
@@ -28,7 +28,7 @@
       <div class="col-md-12">
         <div class="form-group mt-4">
           <label class="pb-2">Message<span class="text-danger">*</span></label>
-          <rds-textarea #message="ngModel" [placeholderText]="'message'"  [value]="info.message"
+          <rds-textarea #message="ngModel" [placeholderText]="'Enter message'"  [value]="info.message"
             [(ngModel)]="info.message" name="contact_message" required>
           </rds-textarea>
           <div class="form-control-feedback" *ngIf="message.errors && (message.dirty || message.touched)">
