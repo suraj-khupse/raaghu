@@ -52,6 +52,7 @@ const Button: Story<RdsBadgeComponent> = (args: RdsBadgeComponent) => ({
   template:
     `<rds-button [label]="'Button'" [colorVariant]="'primary'"  size="medium">
       <rds-badge
+      class="ms-2"
       [size]="size"
       [label]="label"
       [colorVariant]="colorVariant" [badgeType]="badgeType"></rds-badge>

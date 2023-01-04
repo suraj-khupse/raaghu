@@ -37,6 +37,5 @@ Default.args = {
     { value: 'Refresh', some: 'value', key: 'refresh', icon: 'refresh', iconWidth: '20px', iconHeight: '20px' },
     { value: 'Export to excel', some: 'value', key: 'export', icon: 'export_data', iconWidth: '20px', iconHeight: '20px' },
     { value: 'Delete', some: 'value', key: 'delete', icon: 'delete', iconWidth: '20px', iconHeight: '20px' },
-    { value: 'Click here download sample import file.', some: 'value', key: 'download', icon: 'download', iconWidth: '20px', iconHeight: '20px' },
   ],
 };

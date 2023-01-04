@@ -134,7 +134,7 @@ export class RdsCompDemouiComponent implements OnInit {
       label: "Child Checkbox 2"
     },
   ]
-  
+
   itemListWithInputGroup = [
     {
       id: 1,
@@ -154,7 +154,7 @@ export class RdsCompDemouiComponent implements OnInit {
     // }
   ];
 
-  itemListWithoutInputGroup =[
+  itemListWithoutInputGroup = [
     {
       id: 1,
       label: "Child Checkbox 1"
@@ -165,7 +165,7 @@ export class RdsCompDemouiComponent implements OnInit {
     },
   ]
 
-  checkboxParentChilditemList=[
+  checkboxParentChilditemList = [
     {
       "id": 1,
       "label": "Parent Checkbox 1",
@@ -420,6 +420,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptions = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     "pointStyle": "star",
     "radius": 7,
     "responsive": true,
@@ -598,6 +610,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsArea = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     "pointStyle": "star",
     maintainAspectRatio: false,
     "radius": 7,
@@ -802,6 +826,12 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsBool = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     maintainAspectRatio: false,
     "elements": {
       "center": {
@@ -908,6 +938,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsBubble = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     "responsive": true,
     "radius": 10,
     "pointStyle": "triangle",
@@ -1098,6 +1140,12 @@ export class RdsCompDemouiComponent implements OnInit {
     "Blue"
   ];
   chartOptionsDoughnut = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -1354,6 +1402,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ]
 
   chartOptionsLineChart = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     radius: 0,
     pointStyle: 'circle',
     responsive: true,
@@ -1411,6 +1471,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ]
 
   chartOptionsBarChartThick = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     indexAxis: 'x',
     elements: {
       bar: {
@@ -1484,6 +1556,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsChartMixed = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     "radius": 10,
     "pointStyle": "triangle",
     "plugins": {
@@ -1650,9 +1734,11 @@ export class RdsCompDemouiComponent implements OnInit {
     maintainAspectRatio: false,
     "circumference": 360,
     "radius": 100,
-    "animation": {
-      "animateRotate": false,
-      "animateScale": true
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
     },
     "responsive": true,
     "plugins": {
@@ -1692,6 +1778,12 @@ export class RdsCompDemouiComponent implements OnInit {
   pieChartMultiLabel = ['Overall Yay', 'Overall Nay', 'Group A Yay', 'Group A Nay', 'Group B Yay', 'Group B Nay', 'Group C Yay', 'Group C Nay'];
 
   pieChartMultiOptions = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     maintainAspectRatio: false,
     responsive: true,
     plugins: {
@@ -1844,9 +1936,11 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsPolar = {
-    "animation": {
-      "animateRotate": true,
-      "animateScale": false
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
     },
     "responsive": true,
     maintainAspectRatio: false,
@@ -2027,6 +2121,12 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsRadar = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     "responsive": true,
     maintainAspectRatio: false,
     chartWidth: 350,
@@ -2170,6 +2270,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsScatter = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     "pointStyle": "triangle",
     "radius": 10,
     "plugins": {
@@ -2431,6 +2543,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsStacked = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 10,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 1500,
+        from: 500
+      }
+    },
     "radius": 3,
     responsive: true,
     maintainAspectRatio: false,
@@ -2673,7 +2797,7 @@ export class RdsCompDemouiComponent implements OnInit {
     { label: 'UI Components', id: '', icon: 'demo_ui_components', path: 'components' },
   ]
   progressvalues = [{ progressWidth: 50, colorVariant: 'success', stripe: 'progress-bar-striped', animation: 'progress-bar-animated' }, { progressWidth: 20, colorVariant: 'danger', stripe: '', animation: '' }, { progressWidth: 30, colorVariant: 'info', stripe: '', animation: '' }];
-  buttonList= [{ colorVariant: 'primary', label: 'Toggle First Element', id: 'collapseExample', }, { colorVariant: 'primary', label: 'Toggle Second Element', id: 'collapseExample1' }, { colorVariant: 'primary', label: 'Toggle Both Element', id: 'collapseExample,collapseExample1', }];
+  buttonList = [{ colorVariant: 'primary', label: 'Toggle First Element', id: 'collapseExample', }, { colorVariant: 'primary', label: 'Toggle Second Element', id: 'collapseExample1' }, { colorVariant: 'primary', label: 'Toggle Both Element', id: 'collapseExample,collapseExample1', }];
 
 
   onClickShowAlert() {

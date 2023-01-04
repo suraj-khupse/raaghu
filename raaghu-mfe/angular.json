@@ -346,18 +346,6 @@
               "fonts": true
             },
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "1.2mb",
-                  "maximumError": "1.2mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "15kb",
-                  "maximumError": "20kb"
-                }
-              ],
               "fileReplacements": [
                 {
                   "replace": "projects/host/src/environments/environment.ts",

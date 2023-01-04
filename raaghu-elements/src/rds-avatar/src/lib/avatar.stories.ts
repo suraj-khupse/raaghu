@@ -61,7 +61,7 @@ withProfilePic.args = {
   profilePic: 'https://t4.ftcdn.net/jpg/04/10/43/77/240_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
   verticallyAlligned:false,
   subTitle:'host',
-  profileContentAlign:true
+  profileContentAlign:true,
 };
 
 export const InitialsWithHeading = avatarWithInfoTemplate.bind({});

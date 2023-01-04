@@ -146,6 +146,11 @@ $enable-caret: true !default;
   height: $carousel-indicator-width;
   width: $carousel-indicator-width;
 }
+// /*badge color variables*/
+.badge {
+  font-weight: 500;
+}
+
 input::-webkit-input-placeholder {
   font-size: $font-size-sm;
   font-weight: $input-font-weight;
@@ -167,7 +172,7 @@ input::-webkit-input-placeholder {
   top: 17px;
   z-index: 1;
 }
-
+ 
 .page-full-height {
   height: calc(100vh - 90px) !important;
 }
