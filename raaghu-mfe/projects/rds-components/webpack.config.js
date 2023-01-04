@@ -115,9 +115,7 @@ module.exports = {
         './RdsCompAccountNew' : './projects/rds-components/src/app/rds-comp-account-new/rds-comp-account-new.component.ts',
         './RdsCompEmailSettingsNew' : './projects/rds-components/src/app/rds-comp-email-settings-new/rds-comp-email-settings-new.component.ts',
         './RdsCompThemeNew' : './projects/rds-components/src/app/rds-comp-theme-new/rds-comp-theme-new.component.ts',
-        // './RdsCompClaimTypeRole' : './projects/rds-components/src/app/rds-comp-claim-type-role/rds-comp-claim-type-role.component.ts',
-        // './RdsCompClientAdvanced' : './projects/rds-components/src/app/rds-comp-client-advanced/rds-comp-client-advanced.component.ts',
-      },
+       },
 
 
       shared: share({

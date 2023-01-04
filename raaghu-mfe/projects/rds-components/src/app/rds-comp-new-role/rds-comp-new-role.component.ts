@@ -30,6 +30,7 @@ export class RdsCompNewRoleComponent implements OnInit {
   @Input() EditShimmer: boolean = false;
   @Input() isReset: boolean = false;
   @Input() buttonSpinner: boolean = true;
+  @Input() offCanvasId:string='#AddEdition';
   activePage: number = 0;
   treeData: [] = [];
 
@@ -38,6 +39,17 @@ export class RdsCompNewRoleComponent implements OnInit {
 
   constructor(public datepipe: DatePipe, private formBuilder: FormBuilder, public translate: TranslateService) { }
 
+  // ngAfterViewInit(): void {
+  //   if (this.roleData && this.Roleform) {
+  //     this.Roleform.statusChanges.subscribe((res) => {
+  //       if (res === 'VALID') {
+  //         this.RoleInfo.emit({role: this.Roleform.form.value, isOnSave: true} );
+  //       } else {
+  //         // this.onValidForm.emit(undefined);
+  //       }
+  //     });
+  //   }
+  // }
   ngOnInit(): void {
     this.activePage = 0;
     if (!this.roleData) {
@@ -80,7 +92,7 @@ export class RdsCompNewRoleComponent implements OnInit {
     if (!Roleform || Roleform.invalid) return;
     if (Roleform.form.value.isDefault == undefined || null) Roleform.form.value.isDefault = false;
     if (Roleform.form.value.isPublic == undefined || null) Roleform.form.value.isPublic = false;
-    this.RoleInfo.emit({ role: Roleform.form.value, isOnSave: true });
+    this.RoleInfo.emit({ roledata: Roleform.form.value, isOnSave: true });
   }
 
   onCanceledRole(Roleform: NgForm) {

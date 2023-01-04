@@ -30,7 +30,7 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
   @Output() deleteClaim = new EventEmitter();
   @Output() onCancel = new EventEmitter();
   @Output() onClaimSave = new EventEmitter();
-
+  @Input() claimsActions: any = [];
   rdsDataTableClaimType: ComponentLoaderOptions;
   actions: TableAction[] = [{ id: 'delete', displayName: 'Delete' }];
   ClaimTableHeader: TableHeader[] = [
@@ -43,37 +43,34 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-
-    // Claim Display Array Data table
-    this.rdsDataTableClaimType = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.ClaimTableHeader,
-        tableData: this.claimDisplayArray,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 4,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have claims'
-      },
-      output: {
-        deleteEvent: (deleteEvent: any) => {
-          this.sampleDelete = deleteEvent;
-          this.deleteClaim.next(deleteEvent);
-        },
-        onActionSelection: (actionEvent: any) => {
-          if (actionEvent.actionId === 'delete') this.deleteClaim.emit(actionEvent.selectedData);
-        },
-      }
-    };
-    this.rdsDataTableClaimType.input.tableData = this.claimDisplayArray;
   }
 
+  // deleteEvent(deleteEvent: any):void {
+  //   this.sampleDelete = deleteEvent;
+  //   this.deleteClaim.next(deleteEvent);
+  // }
+  onActionSelection(event: any) :void {
+    debugger
+    if (event && event.selectedData) {
+      if (event.actionId === 'delete') {
+        const data = [...this.claimDisplayArray];
+
+        const index = data.findIndex(
+          (x: any) => x.key == event.selectedData.key
+        );
+        if (index !== -1) {
+          data.splice(index, 1);
+          this.claimDisplayArray = [...data];
+
+          // this.onPropertyResourceSave.emit({ Property: this.propertyTableData });
+        }
+      }
+    }
+  }
   addClaimData(claimForm: NgForm) {
     if (claimForm.form.value && claimForm.valid) {
       const item: any = {
-        roleId: this.claimDisplayArray.length + 1,
+        // roleId: this.claimDisplayArray.length + 1,
         claimType: this.ClaimData.claimType,
         claimValue: claimForm.form.value.claimValue
       }
@@ -82,9 +79,9 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
     }
   }
 
-  deleteClaimData(index: number) {
-    this.deleteClaim.next(this.sampleDelete);
-  }
+  // deleteClaimData(index: number) {
+  //   this.deleteClaim.next(this.sampleDelete);
+  // }
 
   selectedClaimType(event: any) {
     this.ClaimData.claimType = event.item.value;

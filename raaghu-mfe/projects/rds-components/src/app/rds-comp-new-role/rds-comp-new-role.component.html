@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-12">
           <div class="form-group mb-3">
-            <rds-checkbox [disabled]="false" [label]="translate.instant('Default')" [checked]="roleData.isDefault"
+            <rds-checkbox [disabled]="false" [label]="translate.instant('Default Role')" [checked]="roleData.isDefault"
               [(ngModel)]="roleData.isDefault" name="isDefault" [withLabel]="true" [switch]="false" [inline]="false"
               [id]="'isDefault'"></rds-checkbox>
             <div class="fw-normal opacity-50">
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="form-group mb-3">
-            <rds-checkbox [disabled]="false" [label]="translate.instant('Public')" [checked]="roleData.isPublic"
+            <rds-checkbox [disabled]="false" [label]="translate.instant('Available For Public')" [checked]="roleData.isPublic"
               [(ngModel)]="roleData.isPublic" name="isPublic" [withLabel]="true" [switch]="false" [inline]="false"
               [id]="'isPublic'"></rds-checkbox>
           </div>
@@ -40,8 +40,8 @@
     <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" [size]="'small'"
       (click)="onCanceledRole(Roleform)" data-bs-dismiss="offcanvas">
     </rds-button>
-    <rds-button [label]="translate.instant('Next')" [isDisabled]="!Roleform.valid" [size]="'small'" class="ms-2"
-      [colorVariant]="'primary'" (click)="addRole(Roleform)" data-bs-target="#AddEdition" [showLoadingSpinner]="false">
+    <rds-button [label]="translate.instant('SAVE')" [isDisabled]="!Roleform.valid" [size]="'small'" class="ms-2"
+      [colorVariant]="'primary'" (click)="addRole(Roleform)" data-bs-target="offCanvasId" [showLoadingSpinner]="false">
     </rds-button>
   </div>
 </div>

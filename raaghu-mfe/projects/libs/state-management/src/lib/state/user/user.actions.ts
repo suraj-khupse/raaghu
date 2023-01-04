@@ -114,7 +114,7 @@ export const getUserPermissionListSuccess = createAction(
     props<{ UserPermissionFilterI: any }>()
 );
 
-export const getAllClaimTypes = createAction('[Role Page] Get All Claim Types');
+export const getAllClaimTypes = createAction('[User Page] Get All Claim Types');
 
 export const getAllClaimTypesSuccess = createAction(
     '[Role Page] Get All Claim Types Success',
@@ -126,7 +126,7 @@ export const getAllClaimTypesFailure = createAction(
     props<{ error: string }>()
 );
 
-export const getClaimTypes = createAction('[Role Page] Get Claim Types',
+export const getClaimTypes = createAction('[User Page] Get Claim Types',
 (id: any) => ({ id }));
 
 export const getClaimTypesSuccess = createAction(
