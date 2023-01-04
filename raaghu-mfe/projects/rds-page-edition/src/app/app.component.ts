@@ -38,17 +38,17 @@ export class AppComponent implements OnInit {
   isAnimation: boolean = true;
 
   currentAlerts: any = [];
-  public rdsAlertMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompAlert',
-    input: {
-      currentAlerts: this.currentAlerts
-    },
-    output: {
-      onAlertHide: (event: any) => {
-        this.currentAlerts = event;
-      }
-    }
-  }
+  // public rdsAlertMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompAlert',
+  //   input: {
+  //     currentAlerts: this.currentAlerts
+  //   },
+  //   output: {
+  //     onAlertHide: (event: any) => {
+  //       this.currentAlerts = event;
+  //     }
+  //   }
+  // }
   // public rdsEditionMfeConfig: ComponentLoaderOptions;
   constructor(private store: Store, public translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
   EditionsTableHeader: TableHeader[] = [
@@ -229,6 +229,7 @@ export class AppComponent implements OnInit {
   }
   subscribeToAlerts() {
     this.alertService.alertEvents.subscribe((alert) => {
+      debugger
       this.currentAlerts = [];
       const currentAlert: any = {
         type: alert.type,

@@ -9,6 +9,7 @@ import { RdsCompTenantInformationModule } from 'projects/rds-components/src/app/
 import { RdsCompTenantSettingsModule } from 'projects/rds-components/src/app/rds-comp-tenant-settings/rds-comp-tenant-settings.module';
 import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-permission-tree.module';
 import { CommonModule } from '@angular/common';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { CommonModule } from '@angular/common';
     RdsCompTenantInformationModule,
     RdsCompTenantSettingsModule,
     RdsPermissionTreeModule,
-    
+    RdsCompAlertModule
   ],
   providers: [
     TranslateService,
