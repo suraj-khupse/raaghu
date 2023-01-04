@@ -48,7 +48,7 @@
   (click)="open()" role="button"  [id]="id"  data-bs-auto-close="true" data-bs-toggle="dropdown" size="small" [attr.aria-expanded]="show">
     <rds-icon *ngIf="icon" [name]="icon" [height]="iconHeight" [width]="iconWidth" [fill]="iconFill"
       [stroke]="iconStroke" class="pe-1"></rds-icon>
-    <span class="text-muted" *ngIf="!entity || checkedCategoryList.length < 1">{{(value)? value:placeholder}}</span>
+    <span class="text-muted text-nowrap text-truncate overflow-hidden" *ngIf="!entity || checkedCategoryList.length < 1">{{(value)? value:placeholder}}</span>
     <span *ngIf="entity && checkedCategoryList.length > 0">
       <rds-badge *ngFor="let title of badgeList" (onClose)="initAllSelect($event, title)" class="mx-1" size="small"
         [colorVariant]="'primary'" [label]="title.value" [showClose]="true"></rds-badge>

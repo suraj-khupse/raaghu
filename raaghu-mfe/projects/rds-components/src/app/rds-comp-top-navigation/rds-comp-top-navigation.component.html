@@ -26,10 +26,10 @@
         <rds-dropdownlist class="ms-2" [id]="'language-dropdown'" [placeholder]="'Languages'"
           [value]="selectedLanguage.language" [xOffset]="'-90'" [yOffset]="'0'" [icon]="selectedLanguage.icon"
           [borderDropdown]="false" [iconHeight]="'18px'" [iconWidth]="'18px'" [listItems]="languageItems"
-          [dropdownHeight]="'500'" (onSelect)="onLanguageSelect($event)">
+          [dropdownHeight]="'500'" (click)="opendropdown()" (onSelect)="onLanguageSelect($event)">
         </rds-dropdownlist>
         <li class="nav-item dropdown pe-3 ps-2 me-1">
-          <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" (click)="openNotification()" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span>
               <rds-button class="position-relative" [isFabIcon]="true" [size]="'small'" [id]="'notification'"
@@ -67,10 +67,10 @@
     <div class="mobile-ms">
       <ul class="navbar-nav d-flex align-items-center flex-row gap-2">
         <li class="nav-item dropdown pe-3 ps-2 me-1 mobile-notification">
-          <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link py-0" href="#" id="navbarDropdownMenuLinkMobile" (click)="openNotificationMobile()" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <span>
-              <rds-button class="position-relative" [isFabIcon]="true" [size]="'small'" [id]="'notification'"
+              <rds-button class="position-relative" [isFabIcon]="true" [size]="'small'" [id]="'notification_mobile'"
                 [isRounded]="true" [colorVariant]="'default'" type="button">
                 <rds-icon name="notification" width="20px" height="20px"></rds-icon>
                 <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
@@ -80,7 +80,7 @@
               <!-- <rds-icon name="notifications" width="20px"></rds-icon> -->
             </span>
           </a>
-          <div aria-labelledby="navbarDropdownMenuLink" class="
+          <div aria-labelledby="navbarDropdownMenuLinkMobile" class="
               dropdown-menu dropdown-menu-right
               notifications-dropdown
               w-md-375px
@@ -88,7 +88,7 @@
               mt-2
               p-0
             ">
-            <rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"
+            <rds-notification [notifications]="notificationDataMobile" [unreadCount]="unreadCount"
               (setAsReadOutput)="setNotificationAsRead.emit($event)"
               (setAllReadOutput)="setAllNotificationAsRead.emit($event)"></rds-notification>
             <!-- <mfe-loader [config]="rdsNotoficationMfeConfig"></mfe-loader> -->
