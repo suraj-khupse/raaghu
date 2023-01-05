@@ -70,7 +70,7 @@
           <div class="form-group mb-3">
   
             <rds-input [inputType]="'text'" [label]="translate.instant('User name')" [labelPosition]="'top'" autocomplete="off"
-              [(ngModel)]="userData.userName" name="uname" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
+              [(ngModel)]="userData.userName" name="userName" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
             </rds-input>
             <div class="form-control-feedback" *ngIf="userName.errors&&(userName.dirty||userName.touched)">
               <span class="text-danger" *ngIf="userName.errors.required">{{translate.instant("User Name is required")}}</span>
@@ -141,7 +141,7 @@
       </div>
     </form>
   </div>
-  <div class="my  footer-buttons my-2">
+  <div>
     <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" (click)="onCancelUser()"
       data-bs-dismiss="offcanvas" [size]="'small'">
     </rds-button>

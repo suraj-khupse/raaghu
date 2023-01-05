@@ -257,7 +257,7 @@ newTenant(isNewTeanant?: boolean): void {
       this.tenantSettingsInfo = undefined;
       //this.onReset(eventdata);
       this.isTenantInfoValid = false;
-      this.canvasTitle = this.translate.instant('New Tenant');
+      this.canvasTitle = this.translate.instant('NEW TENANT');
       this.navtabsItems = [
         {
           label: this.translate.instant('Tenant Information'),
