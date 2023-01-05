@@ -28,30 +28,6 @@ declare var bootstrap: any;
       transition('void <=> *', animate(1000)),
     ]),
   ]
-  // trigger('fadeAnimation', [
-  //   transition('* <=> *', [
-  //     query(':enter',
-  //       [
-  //         style({ opacity: 0 })
-  //       ],
-  //       { optional: true }
-  //     ),
-  //     query(':leave',
-  //       [
-  //         style({ opacity: 1 }),
-  //         animate('0.4s', style({ opacity: 0 }))
-  //       ],
-  //       { optional: true }
-  //     ),
-  //     query(':enter',
-  //       [
-  //         style({ opacity: 0 }),
-  //         animate('0.4s', style({ opacity: 1 }))
-  //       ],
-  //       { optional: true }
-  //     )
-  //   ])
-  // ])
 })
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;
@@ -62,18 +38,13 @@ export class AppComponent implements OnInit {
   { key: 'methodName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
   { key: 'executionDuration', displayName: 'Duration', dataType: 'number', sortable: true, filterable: true },
   { key: 'clientIpAddress', displayName: 'IP Address', dataType: 'text', sortable: true, filterable: true },
-  // { key: 'clientName', displayName: 'Client', dataType: 'html', sortable: true, filterable: true },
-  // { key: 'browserInfo', displayName: 'Browser', dataType: 'html', sortable: true, filterable: true},
   { key: 'executionTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
-
-
   ];
 
   public changeLogsHeaders: TableHeader[] = [{ key: 'entityTypeFullName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTypeName', displayName: 'Object', dataType: 'text', sortable: true, filterable: true },
   { key: 'userName', displayName: 'User Name', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
-    // { key: 'view', displayName: 'Action', dataType: 'view', sortable: false, filterable: false },
   ];
 
   auditLogsTableData: any = [];
@@ -124,8 +95,8 @@ export class AppComponent implements OnInit {
   duration: number | undefined = undefined;
   statusList: any = [
     { value: '', some: 'All' },
-    { value: true, some: 'Success' },
-    { value: false, some: 'HasError' }]
+    { value: false, some: 'Success' },
+    { value: true, some: 'HasError' }]
   browserList: any = [
     { value: '', some: 'Select Browser' },
     { value: 'Chrome', some: 'Chrome' },
@@ -145,7 +116,6 @@ export class AppComponent implements OnInit {
   changeLogEndDate: any = undefined
   changeLogUsername: any = undefined
 
-
   constructor(private store: Store, public translate: TranslateService, private sharedService: SharedService,) { }
 
   ngOnInit(): void {
@@ -157,32 +127,9 @@ export class AppComponent implements OnInit {
       }
     })
     this.rdsauditLogMfeConfig = {
-
       name: 'RdsCompAuditLogs',
-      input: {
-        // operationLogsHeaders: this.operationLogsHeaders,
-        // operationLogs: this.operationLogs,
-        // changeLogsHeaders: this.changeLogsHeaders,
-        // changeLogs: this.changeLogs,
-        // isShimmer:true
-      },
-      output: {
-        //         deleteEvent: (eventData) => {
-        //           const index: number = this.operationLogs.findIndex((x: any) => x.id === eventData.id)
-        //           const data = this.operationLogs;
-        //           data.splice(index, 1)
-        //           this.operationLogs = [...data];
-        //           this.rdsauditLogMfeConfig.input.operationLogs = [...this.operationLogs];
-        //         },
-
-        //         parameterData:(eventData) => {
-        //           this.filterAuditLog(eventData)
-        //         },
-
-        //         ChangeLogparameterData:(eventData)=>{
-        // this.filterChangeLog(eventData);
-        //         }
-      }
+      input: {},
+      output: {}
     };
     let date = new Date();
     let lastday = new Date(Date.now() - 86400000);
@@ -226,10 +173,6 @@ export class AppComponent implements OnInit {
           auditLogsTableData.push(item);
         });
         this.auditLogsTableData = [...auditLogsTableData];
-        //  const mfeConfig = this.rdsauditLogMfeConfig
-        //  mfeConfig.input.operationLogs = [... this.auditLogsTableData];
-        //  mfeConfig.input.isShimmer=false;
-        //  this.rdsauditLogMfeConfig = mfeConfig;
       }
 
     })
@@ -258,9 +201,6 @@ export class AppComponent implements OnInit {
         });
 
       }
-      // const mfeConfig = this.rdsauditLogMfeConfig
-      // mfeConfig.input.changeLogs = [... this.changeLogs];
-      // this.rdsauditLogMfeConfig = mfeConfig;
     })
   }
 
@@ -295,32 +235,20 @@ export class AppComponent implements OnInit {
       maxResultCount: 100,
       skipCount: 0
     }
+    console.log("auditLogParamsData: ", auditLogParamsData);
     this.store.dispatch(getAuditLogs(auditLogParamsData));
   }
 
   formatDate(date: DateTime | Date, format: string): string {
     if (date instanceof Date) {
-
       return this.formatDate(this.fromJSDate(date), format);
-
     }
-
-
-
-    return date.toFormat(format);
-
+    return date && date.toFormat(format);
   }
 
   fromJSDate(date: Date): DateTime {
-
     return DateTime.fromJSDate(date);
-
   }
-
-
-
-
-
 
   exportToExcel(navTab: string): void {
     if (navTab === 'operation-logs') {
@@ -384,7 +312,6 @@ export class AppComponent implements OnInit {
     } else {
       this.sharedService.setTopNavTitle('');
     }
-
   }
 
   startDateModify(event) {
@@ -435,40 +362,41 @@ export class AppComponent implements OnInit {
 
   }
   SelectBroser(event) {
-    this.browserInfo = event.item.some
+    this.browserInfo = event.item.value;
     this.sendParameterData();
   }
 
   sendParameterData() {
-    if (this.dateRange && this.dateRange.length > 0) {
-      let status: boolean | undefined = undefined;
-      if (this.status) {
-        const selected = this.statusList.find((item: any) => item.some === this.status);
-        if (selected) {
-          status = selected.value;
-        }
-      }
-      const data = {
-        startDate: this.dateRange[0],
-        endDate: this.dateRange[1],
-        userName: this.user,
-        serviceName: this.service,
-        // minExecutionDuration: this.from,
-        // maxExecutionDuration: this.to,
-        minExecutionDuration: undefined,
-        maxExecutionDuration: undefined,
-        MethodName: this.action,
-        HasException: status,
-        BrowserInfo: this.browserInfo
-      }
-      if (this.duration !== undefined) {
-        const selected = this.durationTypeList.find((x: any) => x.some == this.durationType);
-        if (selected) {
-          data[selected.value] = +this.duration;
-        }
-      }
-      this.filterAuditLog(data);
+    let data = {
+      userName: this.user,
+      serviceName: this.service,
+      minExecutionDuration: undefined,
+      maxExecutionDuration: undefined,
+      MethodName: this.action,
+      BrowserInfo: this.browserInfo
     }
+    if (this.dateRange && this.dateRange.length > 0) {
+      data['startDate'] = this.dateRange[0];
+      data['endDate'] = this.dateRange[1];
+    } else {
+      let tDate = new Date();
+      data['startDate'] = new Date(tDate.getFullYear(), tDate.getMonth(), tDate.getDate() - 1);
+      data['endDate'] = tDate;
+    }
+    if (this.status) {
+      const selected = this.statusList.find((item: any) => item.some === this.status);
+      if (selected) {
+        data['HasException'] = selected.value;
+      }
+    }
+    if (this.duration !== undefined) {
+      const selected = this.durationTypeList.find((x: any) => x.some == this.durationType);
+      if (selected) {
+        data[selected.value] = +this.duration;
+      }
+    }
+    this.filterAuditLog(data);
+
   }
   showAdvancedFilter() {
     this.showFilters = !this.showFilters;
@@ -482,7 +410,6 @@ export class AppComponent implements OnInit {
       this.exportToExcel('change-logs');
     }
   }
-
 
   onActionSelect(event: any): void {
     if (event.actionId === 'view') {
