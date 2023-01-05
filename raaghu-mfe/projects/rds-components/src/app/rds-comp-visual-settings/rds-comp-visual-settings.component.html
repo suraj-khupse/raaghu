@@ -141,7 +141,7 @@
                       [withLabel]="true"
                       [switch]="false"
                       (onChange)="getCheckboxValue($event, 'fixedSubHeader')"
-                      [inline]="false"
+                    
                       [id]="'fixedHeaderSubHeader'"
                     ></rds-checkbox>
                   </div>
@@ -197,7 +197,6 @@
                       [label]="translate.instant('Allow Aside minimizing')"
                       [withLabel]="true"
                       [switch]="false"
-                      [inline]="false"
                       [id]="'allowAsideMinimizing'"
                       state="checkbox"
                       [checked]="allowAsideMinimizing"
@@ -280,7 +279,6 @@
                   (onChange)="getCheckboxValue($event, 'fixedFooter')"
                   [withLabel]="true"
                   [switch]="false"
-                  [inline]="false"
                   [id]="'fixedFooter'"
                 ></rds-checkbox>
               </div>
@@ -342,7 +340,6 @@
                       [label]="translate.instant('Fixed Header')"
                       [withLabel]="true"
                       [switch]="false"
-                      [inline]="false"
                       [id]="'fixedHeaderMobile'"
                       name="check-box"
                       (onChange)="getCheckboxValue($event, 'mobileFixedHeader')"

@@ -6,7 +6,7 @@
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Use Host Database')"
                         (onChange)="getCheckboxValue($event,'host')" [withLabel]="true"
-                        [checked]="tenantSettingsInfo.useHostDatabase" [switch]="false" [inline]="false"
+                        [checked]="tenantSettingsInfo.useHostDatabase" [switch]="false"
                         [id]="'useHostDatabase'"></rds-checkbox>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Set Random Password')"
                         [withLabel]="true" (onChange)="getCheckboxValue($event,'ramdomPassword')"
-                        [checked]="tenantSettingsInfo.setRandomPassword" [switch]="false" [inline]="false"
+                        [checked]="tenantSettingsInfo.setRandomPassword" [switch]="false"
                         [id]="'setRandomPassword'"></rds-checkbox>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Should Change Password On Next Login')"
                         [checked]="tenantSettingsInfo.changePasswordOnNextLogin" [withLabel]="true" [switch]="false"
-                        [inline]="false" [id]="'changePasswordOnNextLogin'"
+                        [id]="'changePasswordOnNextLogin'"
                         (onChange)="getCheckboxValue($event,'changePassword')">
                     </rds-checkbox>
                 </div>
@@ -73,7 +73,7 @@
                     <rds-checkbox [disabled]="false" [checked]="tenantSettingsInfo.sendActivationEmail"
                         [label]="translate.instant('Send Activation Email')"
                         (onChange)="getCheckboxValue($event,'sendEmail')" [withLabel]="true" [switch]="false"
-                        [inline]="false" [id]="'sendActivationEmail'">
+                        [id]="'sendActivationEmail'">
                     </rds-checkbox>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Activate')"
                         [checked]="tenantSettingsInfo.isActive" [(ngModel)]="tenantSettingsInfo.isActive"
-                        name="isActive" [withLabel]="true" [switch]="false" [inline]="false" [id]="'active'">
+                        name="isActive" [withLabel]="true" [switch]="false" [id]="'active'">
                     </rds-checkbox>
                 </div>
             </div>

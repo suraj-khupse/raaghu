@@ -32,7 +32,7 @@
             <div class="form-group mb-3">
               <rds-checkbox (onChange)="onChangeRememberme($event)" [disabled]="false"
                 [label]="translate.instant(checkboxTitle)" [checked]="rememeberMe" [withLabel]="true" [switch]="false"
-                [inline]="false" [id]="checkboxTitle">
+                [id]="checkboxTitle">
               </rds-checkbox>
             </div>
           </div>
@@ -67,7 +67,7 @@
           <div class="form-group">
             <rds-checkbox [label]="translate.instant('Switch to tenant')" [withLabel]="true" [checked]="switchTenant"
               [(ngModel)]="switchTenant" name="disabled_switch_tenant" (onChange)="switchTenanat($event)"
-              [withLabel]="true" [switch]="true" [inline]="false" id="switchTenant"></rds-checkbox>
+              [withLabel]="true" [switch]="true" id="switchTenant"></rds-checkbox>
           </div>
         </div>
       </div>
