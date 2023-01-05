@@ -54,7 +54,7 @@ import { RdsCompEmailComponent } from './rds-comp-email/rds-comp-email.component
 import { RdsSecurityComponent } from './rds-comp-security/rds-comp-security.component';
 import { RdsCompFeaturesComponent } from './rds-comp-features/rds-comp-features.component';
 import { RdsCompMemberActivityComponent } from './rds-comp-member-activity/rds-comp-member-activity.component';
-import { RdsCompNewClaimTypeComponent } from './rds-comp-new-claim-type/rds-comp-new-claim-type.component';
+// import { RdsCompNewClaimTypeComponent } from './rds-comp-new-claim-type/rds-comp-new-claim-type.component';
 // import { RdsCompBasicResourceComponent } from './rds-comp-basic-resource/rds-comp-basic-resource.component';
 import { RdsCompWebhookSubscriptionComponent } from './rds-comp-webhook-subscription/rds-comp-webhook-subscription.component';
 import { RdsCompEditLanguageTextComponent } from './rds-comp-edit-language-text/rds-comp-edit-language-text.component';
@@ -146,14 +146,14 @@ import { RdsCompApplyForPositionComponent } from './rds-comp-apply-for-position/
 import { RdsCompOpenPositionComponent } from './rds-comp-open-position/rds-comp-open-position.component';
 import { RdsCompNotificationSettingsComponent } from './rds-comp-notification-settings/rds-comp-notification-settings.component';
 import { RdsCompAuditLogsNewComponent } from './rds-comp-audit-logs-new/rds-comp-audit-logs-new.component';
-import { RdsCompFeaturesListNewComponent } from './rds-comp-features-list-new/rds-comp-features-list-new.component';
-import { RdsCompEditionNewBasicComponent } from './rds-comp-edition-new-basic/rds-comp-edition-new-basic.component';
-import { RdsCompEditionNewFeaturesComponent } from './rds-comp-edition-new-features/rds-comp-edition-new-features.component';
-import { RdsCompEmailSettingsNewComponent } from './rds-comp-email-settings-new/rds-comp-email-settings-new.component';
-import { RdsCompIdentityManagementNewComponent } from './rds-comp-identity-management-new/rds-comp-identity-management-new.component';
-import { RdsCompThemeNewComponent } from './rds-comp-theme-new/rds-comp-theme-new.component';
-import { RdsCompAccountNewComponent } from './rds-comp-account-new/rds-comp-account-new.component';
-import { RdsCompSettingsNewComponent } from './rds-comp-settings-new/rds-comp-settings-new.component';
+// import { RdsCompFeaturesListNewComponent } from './rds-comp-features-list-new/rds-comp-features-list-new.component';
+// import { RdsCompEditionNewBasicComponent } from './rds-comp-edition-new-basic/rds-comp-edition-new-basic.component';
+// import { RdsCompEditionNewFeaturesComponent } from './rds-comp-edition-new-features/rds-comp-edition-new-features.component';
+// import { RdsCompEmailSettingsNewComponent } from './rds-comp-email-settings-new/rds-comp-email-settings-new.component';
+// import { RdsCompIdentityManagementNewComponent } from './rds-comp-identity-management-new/rds-comp-identity-management-new.component';
+// import { RdsCompThemeNewComponent } from './rds-comp-theme-new/rds-comp-theme-new.component';
+// import { RdsCompAccountNewComponent } from './rds-comp-account-new/rds-comp-account-new.component';
+// import { RdsCompSettingsNewComponent } from './rds-comp-settings-new/rds-comp-settings-new.component';
 import { RdsCompLanguageNewComponent } from './rds-comp-language-new/rds-comp-language-new.component';
 import { RdsCompLanguageTextListComponent } from './rds-comp-language-text-list/rds-comp-language-text-list.component';
 import { RdsCompClaimTypeRoleComponent } from './rds-comp-claim-type-role/rds-comp-claim-type-role.component';
@@ -201,7 +201,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompEditionTableComponent,
     RdsCompFeaturesComponent,
     RdsCompMemberActivityComponent,
-    RdsCompNewClaimTypeComponent,
+    // RdsCompNewClaimTypeComponent,
     // RdsCompBasicResourceComponent,
     RdsCompWebhookSubscriptionComponent,
     RdsCompEditLanguageTextComponent,
@@ -296,15 +296,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompOpenPositionComponent,
     RdsCompNotificationSettingsComponent,
 
-    RdsCompFeaturesListNewComponent,
-    RdsCompEditionNewBasicComponent,
-    RdsCompEditionNewFeaturesComponent,
+    // RdsCompFeaturesListNewComponent,
+    // RdsCompEditionNewBasicComponent,
+    // RdsCompEditionNewFeaturesComponent,
     RdsCompAuditLogsNewComponent,
-    RdsCompEmailSettingsNewComponent,
-    RdsCompIdentityManagementNewComponent,
-    RdsCompThemeNewComponent,
-    RdsCompAccountNewComponent,
-    RdsCompSettingsNewComponent,
+    // RdsCompEmailSettingsNewComponent,
+    // RdsCompIdentityManagementNewComponent,
+    // RdsCompThemeNewComponent,
+    // RdsCompAccountNewComponent,
+    // RdsCompSettingsNewComponent,
     RdsCompLanguageNewComponent,
     RdsCompClaimTypeRoleComponent  
   ],

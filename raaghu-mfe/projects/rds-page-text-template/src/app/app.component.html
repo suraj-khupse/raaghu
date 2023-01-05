@@ -1,24 +1,27 @@
 <div class="row m-1">
   <div class="col-md-12 m-1">
-    <mfe-loader [config]="rdsDataTableForTextTemplateMfeConfig"></mfe-loader>
+    <!-- <mfe-loader [config]="rdsDataTableForTextTemplateMfeConfig"></mfe-loader> -->
+    <rds-data-table [tableData]="templateList" [tableHeaders]="tableHeadersForTextTemplate" [recordsPerPage]="5"
+      [pagination]="true" [actions]="actions" [inlineEdit]="false" [noDataTitle]="'Currently no text template'"
+      (onActionSelection)="onActionSelection($event)"></rds-data-table>
   </div>
 </div>
 
 <ng-container *ngIf="viewCanvas">
-  <rds-offcanvas [canvasTitle]="canvasTitle" [offcanvaswidth]="500" [offId]="offcanvasId"
-    [placement]="'end'" (onClose)="close()">
+  <rds-offcanvas [canvasTitle]="canvasTitle" [offcanvaswidth]="500" [offId]="offcanvasId" [placement]="'end'"
+    (onClose)="close()">
     <div class="section">
       <div class="row m-1" *ngIf="selectedData">
         <div class="col-md-12">
-          <div class="form-group mb-3"> 
+          <div class="form-group mb-3">
             <!-- <rds-label [label]="'Name:'"> Hello{{ selectedData.templateName }}</rds-label> -->
             <span>Name : {{ selectedData.templateName }}</span>
-            </div>
+          </div>
         </div>
         <div class="col-md-12 mt-3">
           <div class="form-group">
             <rds-textarea #description="ngModel" [placeholderText]="'Enter Content Here'" [label]="'Template Content'"
-               [(ngModel)]="selectedData.content" name="content" required>
+              [(ngModel)]="selectedData.content" name="content" required>
             </rds-textarea>
           </div>
         </div>
@@ -38,4 +41,3 @@
     </div>
   </rds-offcanvas>
 </ng-container>
-

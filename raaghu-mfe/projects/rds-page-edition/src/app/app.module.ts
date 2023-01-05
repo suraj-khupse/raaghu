@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
 import { EditionEffects } from 'projects/libs/state-management/src/lib/state/edition/edition.effects';
 import { EditionReducer } from 'projects/libs/state-management/src/lib/state/edition/edition.reducer';
+import { RdsCompFeaturesListNewModule } from 'projects/rds-components/src/app/rds-comp-features-list-new/rds-comp-features-list-new.module';
 import { SharedModule } from '../../../libs/shared/src/lib/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ export const featureReducersMap = {
     StoreModule.forFeature('editions', featureReducersMap
     ),
     EffectsModule.forRoot([EditionEffects]),
+    RdsCompFeaturesListNewModule
   ],
   providers: [ArrayToTreeConverterService],
   bootstrap: [AppComponent]
