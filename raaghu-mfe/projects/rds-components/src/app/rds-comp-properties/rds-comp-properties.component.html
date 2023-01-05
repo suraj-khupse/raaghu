@@ -2,19 +2,7 @@
 <!-- <div aria-labelledby="nav-Deligation" class="h-100">
     <div class="card border-0 h-100">
       <div class="card-body m-1"> -->
-<div class="row">
-  <rds-data-table
-    [tableData]="propertyTableData"
-    [inlineEdit]="false"
-    [pagination]="propertyTableData&&propertyTableData.length>5?true:false"
-    [recordsPerPage]="5"
-    [actions]="propertyActions"
-    [tableHeaders]="propertyTableHeader"
-    [isDeleteConfirmationRequired]="false"
-    (onActionSelection)="onActionSelection($event)"
-    [noDataTitle]="'Currently you do not have properties'"
-  ></rds-data-table>
-</div>
+
 <form #propertyform="ngForm">
   <div class="mt-4 row pb-5">
     <div class="col-md-5 mb-3">
@@ -62,6 +50,35 @@
     </div>
   </div>
 </form>
+<div class="row">
+  <rds-data-table
+    *ngIf="
+      propertyTableData && propertyTableData.length > 0;
+      else illustrationTemplate
+    "
+    [tableData]="propertyTableData"
+    [inlineEdit]="false"
+    [pagination]="
+      propertyTableData && propertyTableData.length > 5 ? true : false
+    "
+    [recordsPerPage]="5"
+    [showIllustration]="false"
+    [actions]="propertyActions"
+    [tableHeaders]="propertyTableHeader"
+    [isDeleteConfirmationRequired]="false"
+    (onActionSelection)="onActionSelection($event)"
+    [noDataTitle]="'Currently you do not have properties'"
+  ></rds-data-table>
+
+  <ng-template #illustrationTemplate>
+    <rds-illustration
+      [iconHeight]="'100px'"
+      [label]="'Currently you do not have properties'"
+      [subLabel]="'Click on the button above to add'"
+      [iconWidth]="'100px'"
+    ></rds-illustration>
+  </ng-template>
+</div>
 
 <!-- </div>
     </div>

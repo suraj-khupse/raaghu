@@ -39,11 +39,34 @@ export class RdsAlertComponent implements OnInit {
 
     if (this.sticky){
        const mode2 = `${this.position === 'top' ? ' position-absolute top-0 start-0 fullWidth ' : ' position-absolute bottom-0 start-0 fullWidth '}`;
-       return mode + mode2 + mode;
+      mode1 = mode1+mode + mode2;
       }
       else {
-        return mode + mode1;
-      }
+        mode1= mode + mode1;
+    }
+
+    const mode3 = `${this.size === 'small' ? ' alert-sm' : this.size === 'large' ? ' alert-lg' : ' alert-md'}`;
+    mode1 = mode1 +mode3
+    switch (this.size) {
+      case 'small':
+        this.iconHeight = '15px';
+        this.iconWidth = '15px';
+        break;
+      case 'medium':
+        this.iconHeight = '20px';
+        this.iconWidth = '20px';
+        break;
+      case 'large':
+        this.iconHeight = '25px';
+        this.iconWidth = '25px';
+        break;
+      default:
+        this.iconHeight = '20px';
+        this.iconWidth = '20px';
+        break;
+    }
+    return mode1;
+
   }
 
 

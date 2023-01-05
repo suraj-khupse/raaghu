@@ -553,25 +553,25 @@
         <div class="pb-4">
           <h6 class="mb-3">{{"Checkbox"|translate}}</h6>
           <rds-checkbox [label]="'default checkbox'" [checked]="false" [disabled]="false" [switch]="false"
-            [inline]="false" [withLabel]="true" [isInputGroup]="false" [id]="'checkboxDefault'"></rds-checkbox>
+            [withLabel]="true" [isInputGroup]="false" [id]="'checkboxDefault'"></rds-checkbox>
         </div>
         <div>
           <h6 class="mb-3">{{"Checkbox Group"|translate}}</h6>
-          <rds-checkbox-groups [switch]="false" [inline]="true" [withLabel]="true"
+          <rds-checkbox-groups [switch]="false" [withLabel]="true"
             [isInputGroup]="false" [itemList]="itemListWithInputGroup" [id]="'checkboxGroup'"></rds-checkbox-groups>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 mb-3">
         <div>
           <h6 class="mb-3">{{"Checkbox Group"|translate}}</h6>
-          <rds-checkbox-groups [switch]="false" [inline]="false" [withLabel]="true"
+          <rds-checkbox-groups [switch]="false" [withLabel]="true"
             [isInputGroup]="true" [itemList]="itemListWithoutInputGroup" [id]="'checkboxGroup1'"></rds-checkbox-groups>
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 mb-3">
         <h6 class="mb-3">{{"Checkbox -Parent Child"|translate}}</h6>
         <rds-checkbox-parent-child [switch]="false"
-          [inline]="false" [isInputGroup]="false" [itemList]="checkboxParentChilditemList" [id]="'checkboxParentChild'">
+          [isInputGroup]="false" [itemList]="checkboxParentChilditemList" [id]="'checkboxParentChild'">
         </rds-checkbox-parent-child>
 
 
@@ -1329,7 +1329,7 @@
   </div>
   <div class="card-body pt-0">
     <div class="">
-      <rds-radio-button [switch]="false" [inline]="false" [isInputGroup]="false" [itemList]="itemList">
+      <rds-radio-button [switch]="false" [isInputGroup]="false" [itemList]="itemList">
       </rds-radio-button>
     </div>
   </div>

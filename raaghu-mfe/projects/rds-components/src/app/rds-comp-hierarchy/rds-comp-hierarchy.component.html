@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center" *ngIf="TreeType.checkbox">
   <div class="node-dot position-relative">
     <rds-checkbox [attr.id]="'Selectall'" (onChange)="selectAllFeature($event)" [checked]="SelectAll"
-      class="position-absolute" [disabled]="false" [switch]="false" [inline]="false" style="top: -3px; 
+      class="position-absolute" [disabled]="false" [switch]="false" style="top: -3px; 
   right: -4px;
   z-index: 4;
   width: 14px;
@@ -21,7 +21,7 @@
       </div>
       <div class="node-dot position-relative" *ngIf="TreeType.checkbox">
         <rds-checkbox [checked]="node.selected" class="position-absolute" [disabled]="false" [switch]="false"
-          [inline]="false" (onChange)="selectNode(node,$event)" style="top: -3px;
+         (onChange)="selectNode(node,$event)" style="top: -3px;
       right: -4px;
       z-index: 4;
       width: 14px;

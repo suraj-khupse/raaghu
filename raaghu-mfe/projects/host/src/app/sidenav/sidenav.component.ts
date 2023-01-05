@@ -169,6 +169,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   permissions: any;
 
   ngOnInit(): void {
+    this.theme.theme = 'light'
     const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
     if (tenancy) {
       this.tenancy = tenancy.name;
@@ -580,10 +581,10 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   toggleBetweenMode(event: any) {
     let checked = event;
     if (!checked) {
-      this.theme.theme = 'dark'
+      this.theme.theme = 'dark';
     }
     else {
-      this.theme.theme = ''
+      this.theme.theme = 'light';
     }
   }
 

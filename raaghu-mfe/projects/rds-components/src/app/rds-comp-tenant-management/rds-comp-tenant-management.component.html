@@ -8,7 +8,7 @@
     <div class="form-group mb-3">
     <rds-checkbox [disabled]="false" [label]="translate.instant('Allow Tenants To Register To The System')+'.'"
       [checked]="settings.allowSelfRegistration" [(ngModel)]="settings.allowSelfRegistration" name="default"
-      [withLabel]="true" [switch]="false" [inline]="false" [id]="'isDefault'"
+      [withLabel]="true" [switch]="false" [id]="'isDefault'"
       (onChange)="selectAllFeature($event,'useDefault')"></rds-checkbox>
     <h6 class="text-muted pt-2">{{translate.instant("If You Disable This, Tenants Will Only Be Added By Admin Using Tenant Management Page")}}.</h6>
     </div>
@@ -23,7 +23,7 @@
       <rds-checkbox [disabled]="false" [label]="translate.instant('Allow Tenants To Register To The System')+'.'"
         [checked]="settings.isNewRegisteredTenantActiveByDefault"
         [(ngModel)]="settings.isNewRegisteredTenantActiveByDefault" name="allowTenants" [withLabel]="true" [switch]="false"
-        [inline]="false" [id]="'isRegister'" (onChange)="selectAllFeature($event,'allowTenants')"></rds-checkbox>
+        [id]="'isRegister'" (onChange)="selectAllFeature($event,'allowTenants')"></rds-checkbox>
 
       <h6 class="text-muted pt-2">{{translate.instant("If You Disable This, New Tenants Will Not Be Active (And Can Not Login) Until Admin Manually Activates The Account")}}.</h6>
     </div>
@@ -33,7 +33,7 @@
       <rds-checkbox [disabled]="false"
         [label]="translate.instant('Use Security Image Question (Captcha) On Registration.')"
         [checked]="settings.useCaptchaOnRegistration" [(ngModel)]="settings.useCaptchaOnRegistration"
-        name="useSecurityImage" [withLabel]="true" [switch]="false" [inline]="false" [id]="'isSecurityImage'"
+        name="useSecurityImage" [withLabel]="true" [switch]="false" [id]="'isSecurityImage'"
         (onChange)="selectAllFeature($event,'securityImage')"></rds-checkbox>
     </div>
   </li>

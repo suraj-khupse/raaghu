@@ -1,61 +1,7 @@
-/* tags css new variations */
+// /* tags css new variations */
 
-// .tags {
-//     width: auto;
-//     font-size: $font-size-base;
-//     font-weight: $font-weight-bold;
-//     line-height: $line-height-base;
-//     word-wrap: break-word;
-//     text-transform: uppercase;
-//     position: relative;
-//   }
-  
-//   .tags {
-//     .btn-close {
-//       font-size: $font-size-sm;
-//     }
-//   }
-  
-//   .square-tags .tags {
-//     box-shadow: $tags-shadow;
-//     border-radius: $border-radius;
-//   }
-  
-//   .square-tags .tags-body {
-//     padding: $tags-padding;
-//   }
-  
-//   .rounded-tags .toast-body {
-//     padding: $tags-padding;
-//   }
-  
-//   .rounded-tags .tags {
-//     box-shadow: $tags-shadow;
-//     border-radius: $border-radius-pill;
-//   }
-  
-//   .borderd .tags {
-//     background-color: transparent;
-//     border: 1px solid #ff6060 !important;
-//   }
-//   .binding-tags2 {
-//     padding-bottom: 80px;
-//   }
-//   .tags-dismissible {
-//     padding-right: $tag-dismissible-padding-r;
-//     // Adjust close link position
-//     .btn-close {
-//       position: absolute;
-//       top: 0;
-//       right: 0;
-//       z-index: $stretched-link-z-index + 1;
-//       padding: $tag-padding-y * 1.25 $tag-padding-x;
-//     }
-//   }
-
-
-.square-tags { 
-  border-radius: .25rem;
+.square-tags {
+  border-radius: 0.25rem;
 }
 .rounded-tags {
   border-radius: 20px;
@@ -79,11 +25,10 @@
   height: auto;
 }
 
-
-// Scroll Type 
+// Scroll Type
 .rds-tags {
   width: 100%;
-  border: 1px solid  #ced4da; 
+  border: 1px solid #ced4da;
   border-radius: 5px;
   padding: 5px;
 }
@@ -95,29 +40,24 @@
 
 // colors
 
-.tag-primary{
-  background-color: #7E2EEf;
+.tag-primary {
+  background-color: #e5d5fc;
+  border-color: #d8c0fa;
+  color: #6525bf;
 }
-.tag-secondary{
-  background-color: #2B0066;
-  color: #ffffff;
+.tag-success {
+  background-color: #d5fcde;
+  border-color: #c0facd;
+  color: #25bf47;
 }
-.tag-success{
-  background-color: #2EEF59;
+
+.tag-info {
+  background-color: #d8fcfa;
+  border-color: #c5fbf8;
+  color: #32c1ba;
 }
-.tag-info{
-  background-color: #3ef1e8;
-}
-.tag-warning{
-  background-color: #E3A300;
-}
-.tag-danger{
-  background-color: #EF2E2E;
-}
-.tag-dark{
-  background-color: #363636;
-  color: #ffffff;
-}
-.tag-light{
-  background-color: #F8F9FA;
+.tag-danger {
+  background-color: #fcd5d5;
+  border-color: #fac0c0;
+  color: #bf2525;
 }

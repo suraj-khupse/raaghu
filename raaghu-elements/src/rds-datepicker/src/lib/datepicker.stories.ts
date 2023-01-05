@@ -26,7 +26,7 @@ const Template1: Story<RdsDatepickerComponent> = (args: RdsDatepickerComponent) 
   props: args,
 });
 export const advanced = Template1.bind({});
-advanced.parameters = { controls: { include: ['datePickerType', 'label', 'placeholder'] } };
+advanced.parameters = { controls: { include: ['datePickerType', 'label', 'placeholder','onShow','onHide','change'] } };
 
 advanced.args = {
   label: 'Date Range',
@@ -42,7 +42,7 @@ const Template: Story<RdsDatepickerComponent> = (args: RdsDatepickerComponent) =
   [TitleType]="TitleType"></rds-datepicker></div></div>`,
 });
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['datePickerType', 'datePickerConfig', 'placeholder', 'datesDisabled', 'dateTooltipTexts', 'maxDate', 'placement', 'label', 'TitleType','daysDisabled'] } };
+Default.parameters = { controls: { include: ['datePickerType', 'datePickerConfig', 'placeholder', 'datesDisabled', 'dateTooltipTexts', 'maxDate', 'placement', 'label', 'TitleType','daysDisabled','onShow','onHide','change'] } };
 
 Default.args = {
   datePickerType: 'basic',

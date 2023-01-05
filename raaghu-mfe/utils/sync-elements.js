@@ -13,6 +13,7 @@ const filesToReplace = [
 const dependentElements = [
     'rds-icon',
     'rds-label',
+    'rds-toggle',
     'rds-icon-label',
     'rds-checkbox',
     'rds-radio-button',
@@ -29,7 +30,9 @@ const dependentElements = [
     'rds-nav-tab',
     'rds-big-number-widget',
     'rds-chart-bar-horizontal',
-    'rds-chart-line'
+    'rds-chart-line',
+    'rds-chart-bool',
+    'rds-chart-doughnut'
 ];
 
 function replaceFiles() {
@@ -56,6 +59,16 @@ function mergeTSConfigJson() {
             "@libs/rds-icon": [
                 "rds-elements/rds-icon/public-api",
                 "rds-elements/rds-icon"
+            ]
+        };
+        changesDone = true;
+    };
+    if (ngElementsFile.compilerOptions.paths["@libs/rds-toggle"] == undefined) {
+        ngElementsFile.compilerOptions.paths = {
+            ...ngElementsFile.compilerOptions.paths,
+            "@libs/rds-toggle": [
+                "rds-elements/rds-toggle/public-api",
+                "rds-elements/rds-toggle"
             ]
         };
         changesDone = true;
@@ -246,6 +259,26 @@ function mergeTSConfigJson() {
             "@libs/rds-chart-bar-horizontal": [
                 "rds-elements/rds-chart-bar-horizontal/public-api",
                 "rds-elements/rds-chart-bar-horizontal"
+            ]
+        };
+        changesDone = true;
+    };
+    if (ngElementsFile.compilerOptions.paths["@libs/rds-chart-bool"] == undefined) {
+        ngElementsFile.compilerOptions.paths = {
+            ...ngElementsFile.compilerOptions.paths,
+            "@libs/rds-chart-bool": [
+                "rds-elements/rds-chart-bool/public-api",
+                "rds-elements/rds-chart-bool"
+            ]
+        };
+        changesDone = true;
+    };
+    if (ngElementsFile.compilerOptions.paths["@libs/rds-chart-doughnut"] == undefined) {
+        ngElementsFile.compilerOptions.paths = {
+            ...ngElementsFile.compilerOptions.paths,
+            "@libs/rds-chart-doughnut": [
+                "rds-elements/rds-chart-doughnut/public-api",
+                "rds-elements/rds-chart-doughnut"
             ]
         };
         changesDone = true;

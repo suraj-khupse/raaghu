@@ -1,0 +1,6 @@
+<label class="switch btn-color-mode-switch border-0">
+  <input type="checkbox" [checked]="!isChecked" name="color_mode" id="flexSwitchCheckDefault"
+         (click)="toggleLightAndDarkMode()" [value]="!isChecked">
+  <label for="color_mode" id="toggleId" [attr.data-on]="OnLabel" [attr.data-off]="OffLabel"
+         class="btn-color-mode-switch-inner border-0"></label>
+</label>

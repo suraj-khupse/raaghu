@@ -31,7 +31,7 @@ const Template: Story<RdsCounterComponent> = (args: RdsCounterComponent) => ({
 });
 
 export const Default = Template.bind({})
-Default.parameters = { controls: { include: ['label', 'colorVariant', 'counterValue', 'width', 'min', 'max', 'position'] } };
+Default.parameters = { controls: { include: ['label', 'colorVariant', 'counterValue', 'width', 'min', 'max', 'position','counterChange'] } };
 Default.args = {
   label: '',
   colorVariant: 'primary',

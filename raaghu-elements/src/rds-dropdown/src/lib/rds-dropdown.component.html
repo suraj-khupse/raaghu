@@ -1,45 +1,38 @@
-<div [ngSwitch]="role">
-  <div *ngSwitchCase="'with_split'">
-    <div [ngClass]="dropdownDirection">
-      <button [ngClass]="button1" type="button" [attr.id]="id" (click)="open()" data-bs-toggle="dropdown" aria-haspopup="true"
-        [attr.aria-expanded]="show" class="border">
-        {{ label }}
-      </button>
-      <button [ngClass]="button1" type="button" [attr.id]="id" (click)="open()" data-bs-toggle="dropdown" aria-haspopup="true"
-      [attr.aria-expanded]="show" class="border">
-        <span class="visually-hidden">Toggle Dropdown</span>
-      </button>
-      <ul [ngClass]="menu" [attr.aria-labelledby]="id">
-        <li class="pb-2" (click)="onclick($event,item)" *ngFor="let item of listItems; index as i;">
-          <a class="dropdown-item">
-            <div class="d-flex justify-content-between align-items-center">
-              <span>{{item.value}}</span>
-              <rds-icon [name]="item.icon" *ngIf="item.icon" [width]="item.iconWidth"
-              [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="item.iconHeight"></rds-icon>
-            </div>
-            
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-<div class="row ">
-  <div class="col-md-12 text-center p-3 pt-5">
-
-    <div *ngSwitchCase="'dropdown-button'">
-      <div [ngClass]="dropdownDirection">
-        <button [ngClass]="classes" type="button" (click)="open()" [attr.id]="id" data-bs-toggle="dropdown"
-        [attr.aria-expanded]="show">
+<div [ngSwitch]="role" class="dropdown-center">
+  <div>
+    <div *ngSwitchCase="'with_split'">
+      <div [ngClass]="dropdownDirection" class="btn-group">
+        <button [ngClass]="button1" type="button" class="border">
           {{ label }}
         </button>
-        <ul [ngClass]="menu" [attr.aria-labelledby]="id">
-
-          <li (click)="onclick($event,item)" *ngFor="let item of listItems; index as i;">
+        <span
+        type="button"
+        class="border border_radius d-flex align-items-center"
+        [ngClass]="classes"
+        id="dropdownMenuButton1"
+        (click)="open()"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <span class="visually-hidden">Toggle Dropdown</span>
+      </span>
+        <ul [ngClass]="menu" aria-labelledby="dropdownMenuButton1">
+          <li
+            class="pb-2"
+            (click)="onclick($event, item)"
+            *ngFor="let item of listItems; index as i"
+          >
             <a class="dropdown-item">
               <div class="d-flex justify-content-between align-items-center">
-                <span>{{item.value}} </span>
-                <rds-icon [name]="item.icon" *ngIf="item.icon" [width]="item.iconWidth"
-                          [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="item.iconHeight"></rds-icon>
+                <span>{{ item.value }}</span>
+                <rds-icon
+                  [name]="item.icon"
+                  *ngIf="item.icon"
+                  [width]="item.iconWidth"
+                  [fill]="item.iconFill"
+                  [stroke]="item.iconStroke"
+                  [height]="item.iconHeight"
+                ></rds-icon>
               </div>
             </a>
           </li>
@@ -47,6 +40,41 @@
       </div>
     </div>
   </div>
-    
-</div>
+  <div >
+    <div *ngSwitchCase="'dropdown-button'">
+      <div [ngClass]="dropdownDirection">
+        <button
+          [ngClass]="classes"
+          class="border"
+          type="button"
+          [id]="id"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          (click)="open()"
+        >
+          {{ label }}
+        </button>
+        <ul class="dropdown-menu" [attr.aria-labelledby]="id">
+          <li
+            (click)="onclick($event, item)"
+            *ngFor="let item of listItems; index as i"
+          >
+            <a class="dropdown-item">
+              <div class="d-flex justify-content-between align-items-center">
+                <span>{{ item.value }} </span>
+                <rds-icon
+                  [name]="item.icon"
+                  *ngIf="item.icon"
+                  [width]="item.iconWidth"
+                  [fill]="item.iconFill"
+                  [stroke]="item.iconStroke"
+                  [height]="item.iconHeight"
+                ></rds-icon>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

@@ -40,7 +40,7 @@ Default.args = {
   teamItem : [{
       title: 'Tina',
       subTitle: 'Web Developer',
-      imgLink: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png?W=100',
+      imgLink: 'https://t4.ftcdn.net/jpg/04/10/43/77/240_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
       description: 'Lorem ipsum dolor sit amet conr adipiscing elit',
   }]
 };
@@ -54,25 +54,10 @@ advance.args = {
     {
       title: 'Tina',
       subTitle: 'Web Developer',
-      imgLink: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png?W=100',
+      imgLink: 'https://t4.ftcdn.net/jpg/04/10/43/77/240_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
       description: 'Lorem ipsum dolor sit amet conr adipiscing elit',
 
     },
-    {
-      title: 'Tina',
-      subTitle: 'Web Developer',
-      imgLink: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png?W=100',
-      description: 'Lorem ipsum dolor sit amet conr adipiscing elit',
-
-    },
-    {
-      title: 'Tina',
-      subTitle: 'Web Developer',
-      imgLink: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/no-profile-picture-icon.png?W=100',
-      description: 'Lorem ipsum dolor sit amet conr adipiscing elit',
-
-    }
-
   ]
 
 }

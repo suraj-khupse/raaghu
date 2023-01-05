@@ -1,11 +1,11 @@
-<div [ngClass]="cardClasses" class="card">
-  <div *ngIf="showHeader" >
+<div [ngClass]="'border-' + borderColor" class="card"  [class.border]="isBorder">
+  <div [class]=" ' headerClass'" *ngIf="showHeader" >
     <ng-content select="[header]"></ng-content>
   </div>
   <div class="card-body" [ngClass]="cardBody" *ngIf="showBody">
     <ng-content select="[body]"></ng-content>
   </div>
-  <div *ngIf="showFooter" >
+  <div class="card-footer" *ngIf="showFooter" >
     <ng-content select="[footer]"></ng-content>
   </div>
 </div>

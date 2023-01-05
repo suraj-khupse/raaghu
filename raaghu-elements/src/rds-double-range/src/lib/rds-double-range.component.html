@@ -1,24 +1,24 @@
 <div class="position-relative py-5">
 
-  <ng-container>
+  <!-- <ng-container>
     <span class="position-absolute "
       [ngClass]="{'val1PositionDefault': role === 'Default', 
-                    'val1PositionType2 rounded px-2 py-1' : role === 'Double Range Type 1' || role === 'Double Range Type 2'}">{{min}}</span>
+                    'val1PositionType2 rounded px-2 py-1' : role === 'Double Range On Scale' || role === 'Double Range Below Scale'}">{{min}}</span>
     <span class="position-absolute "
       [ngClass]="{ 
                     'val2PositionDefault': role === 'Default', 
-                    'val2PositionType2 rounded px-2 py-1' : role === 'Double Range Type 1' || role === 'Double Range Type 2'}">{{max}}</span>
-  </ng-container>
+                    'val2PositionType2 rounded px-2 py-1' : role === 'Double Range On Scale' || role === 'Double Range Below Scale'}">{{max}}</span>
+  </ng-container> -->
 
   <ng-container *ngIf="role === 'Default'">
     <span id="range1" class="sliderTooltipRangeOne " [attr.data-tooltip]="val1"></span>
     <span id="range2" class="sliderTooltipRangeOne " [attr.data-tooltip]="val2"></span>
   </ng-container>
-  <ng-container *ngIf="role === 'Double Range Type 1'">
+  <ng-container *ngIf="role === 'Double Range On Scale'">
     <span id="range1" class="sliderTooltipRangeType1 " [attr.data-tooltip]="val1"></span>
     <span id="range2" class="sliderTooltipRangeType1 " [attr.data-tooltip]="val2"></span>
   </ng-container>
-  <ng-container *ngIf="role === 'Double Range Type 2'">
+  <ng-container *ngIf="role === 'Double Range Below Scale'">
     <span id="range1" class="sliderTooltipRangeType2 " [attr.data-tooltip]="val1"></span>
     <span id="range2" class="sliderTooltipRangeType2 " [attr.data-tooltip]="val2"></span>
   </ng-container>
@@ -26,10 +26,10 @@
   <div class="slider-track"></div>
 
   <input id=slider1 class="slider_1 "
-    [ngClass]="{'slider_Type1': role === 'Double Range Type 1', 'slider_Type21': role === 'Double Range Type 2'}"
+    [ngClass]="{'slider_Type1': role === 'Double Range On Scale', 'slider_Type21': role === 'Double Range Below Scale'}"
     type="range" [min]="min" [max]="max" [value]="val1" (input)="rangeone()" [disabled]="valueDisabled1">
   <input id=slider2 class="slider_1 "
-    [ngClass]="{'slider_Type1': role === 'Double Range Type 1', 'slider_Type21': role === 'Double Range Type 2'}"
+    [ngClass]="{'slider_Type1': role === 'Double Range On Scale', 'slider_Type21': role === 'Double Range Below Scale'}"
     type="range" [min]="min" [max]="max" [value]="val2" (input)="rangetwo()" [disabled]="valueDisabled2">
 
 </div>

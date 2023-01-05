@@ -64,7 +64,7 @@ export class RdsCheckboxGroupsComponent implements OnInit, ControlValueAccessor 
 
   inlineGroup() {
     if (this.inline && this.isInputGroup) {
-      return 'd-flex';
+      return 'd-flex align-items-center';
     } else {
       return '';
     }

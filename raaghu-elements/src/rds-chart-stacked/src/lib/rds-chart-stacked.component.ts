@@ -10,6 +10,7 @@ export interface chartDataSetstacked {
   tension: number,
   backgroundColor: Array<string>;
   borderWidth: number;
+
 }
 
 @Component({
@@ -32,6 +33,7 @@ export class RdsChartStackedComponent implements OnInit {
   // @Input() canvasBackgroundColor?: any;
   @Input() chartDataSets?: chartDataSetstacked[] | any;
   @Input() chartOptions?: any;
+
   style: CSSStyleDeclaration | undefined;
 
   constructor() {
@@ -111,7 +113,7 @@ export class RdsChartStackedComponent implements OnInit {
       }
       this.ctx = this.canvas.getContext('2d');
       const stackedChart = new Chart(this.ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
           labels: this.chartLabels,
           datasets: this.chartDataSets,

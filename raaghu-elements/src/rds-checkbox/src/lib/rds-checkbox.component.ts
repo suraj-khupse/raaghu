@@ -24,7 +24,7 @@ export class RdsCheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() checked!: boolean;
   @Input() disabled!: boolean;
   @Input() switch?: boolean;
-  @Input() inline?: boolean;
+  // @Input() inline?: boolean;
   @Input() id?: string;
   @Input() withLabel?: boolean;
   @Input() isInputGroup?: boolean;
@@ -46,10 +46,10 @@ export class RdsCheckboxComponent implements OnInit, ControlValueAccessor {
       classes.push('form-switch')
       return classes
     }
-    if (this.inline === true) {
-      classes.push('form-check-inline')
-      return classes
-    }
+    // if (this.inline === true) {
+    //   classes.push('form-check-inline')
+    //   return classes
+    // }
     return classes
   }
 

@@ -40,14 +40,14 @@
     <div class="row">
         <div class="col-md-12">
             <rds-checkbox [disabled]="false" [label]="'Enable Ssl'" name="useSecurityImage" [withLabel]="true"
-                [switch]="false" [inline]="false" [(ngModel)]="emailSettingsData.ssl"
+                [switch]="false" [(ngModel)]="emailSettingsData.ssl"
                 #ssl="ngModel" [id]="'ssl'"></rds-checkbox>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-3">
             <rds-checkbox [disabled]="false" [label]="'Use Default Credentials'" name="useSecurityImage"
-                [withLabel]="true" [switch]="false" [inline]="false" [(ngModel)]="emailSettingsData.defaultcredentials"
+                [withLabel]="true" [switch]="false"  [(ngModel)]="emailSettingsData.defaultcredentials"
                 #defaultcredentials="ngModel" [id]="'defaultcredentials'"></rds-checkbox>
         </div>
     </div>

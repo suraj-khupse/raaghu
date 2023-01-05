@@ -6,7 +6,7 @@ import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsCardDetailComponent } from './rds-card-detail.component';
 
 export default {
-  title: 'Elements/Bank Card Detail',
+  title: 'Elements/Card Detail',
   component: RdsCardDetailComponent,
   decorators: [
     moduleMetadata({
@@ -27,9 +27,9 @@ const Template: Story<RdsCardDetailComponent> = (args: RdsCardDetailComponent) =
 });
 
 // const teletext = "some text"
-export const BankCardDetail = Template.bind({});
-BankCardDetail.parameters = { controls: { include: ['cardData', 'IsEditAndDefaultFunctionalityRequired', 'IsSelectionRequired', 'label'] } };
-BankCardDetail.args = {
+export const CardDetail = Template.bind({});
+CardDetail.parameters = { controls: { include: ['cardData', 'IsEditAndDefaultFunctionalityRequired', 'IsSelectionRequired', 'label','onSetDefaultcard','onSelectPaymentMethod','onEditCard'] } };
+CardDetail.args = {
   cardData: {
     cardID: '1011', cardName: 'MasterCard', cardExpiry: '11/2027', cardLogo:'editions', cardNumber: 3596, isDefault:false,radioItems: [{id: 1011, checked: false, name: "Radio-Button"}]
   },
@@ -37,4 +37,5 @@ BankCardDetail.args = {
   IsSelectionRequired: true,
   label: 'Label card'
 };
+
 
