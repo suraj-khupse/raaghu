@@ -1,45 +1,51 @@
-<div class="card">
-  <div class="card-body">
-      <div class="pb-5 mb-5">
-<div class="container">
+
+<div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
   <div class="row">
-    <div class="d-flex justify-content-end mt-2">
+    <div class="col-md-12 text-end pb-3">
       <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-        [label]="'NEW RESOURCE'" [attr.data-bs-toggle]="'offcanvas'" [attr.data-bs-target]="'#addnewIdentityresource'"
-        [attr.aria-controls]="'addnewIdentityresource'" (click)="openCanvas()">
+        [label]="'NEW RESOURCE'" [icon]="'plus'" [iconHeight]="'12px'" [iconWidth]="'12px'"  [attr.data-bs-toggle]="'offcanvas'" [attr.data-bs-target]="'#addnewIdentityresource'"
+        [attr.aria-controls]="'addnewIdentityresource'"  [showLoadingSpinner]="showLoadingSpinner"  (click)="openCanvas()">
       </rds-button>
     </div>
-    <div class="row mx-3 mt-2">
+  </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
       <!-- <mfe-loader [config]="rdsresourceTableMfeConfig"></mfe-loader> -->
       <rds-data-table [tableData]="ResourceTableData" 
       [tableHeaders]="ResourceTableHeader"
       [actions]="actions"
       [inlineEdit]="false"
       [pagination]="true"
+     
       (onActionSelection)="onActionSelection($event)"
       [noDataTitle]="'Currently you do not have identity resource'"
       ></rds-data-table>
-    </div>
-  </div>
+      </div>
+      </div>
+      </div>
+   
+ </div>
   <rds-offcanvas *ngIf="viewCanvas" [canvasTitle]="translate.instant(offCanvasTitle)"  [offId]="offCanvasId" [offcanvaswidth]="660"
-    [placement]="'end'">
+    [placement]="'end'" (onClose)="closeCanvas()">
+   <div>
     <rds-nav-tab [navtabsItems]="navtabsItems" [activeTab]="activePage" [horizontalAlignment]="'start'"
       [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false"  (onClicktab)="onTabClick($event)"  >
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
-          <rds-comp-basic-resource [basicInfo]="onEditBasic"
+          <rds-comp-basic-resource [basicInfo]="basicInfo" [isEditShimmer]="editShimmer"
             (onBasicInfoSave)="onBasicInfoSave($event)"></rds-comp-basic-resource>
         </div>
         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Claim" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <!-- <mfe-loader [config]="rdsClaimsMfeConfig"></mfe-loader> -->
           <rds-comp-client-resources [resourceData]="ResourceData"  (selectedData)="onClientResourceSave($event)"></rds-comp-client-resources>
-          <div class="footer-buttons my-2  d-flex bottom-0 ">
-            <rds-button [label]="'Cancel'"  data-bs-dismiss="offcanvas" [colorVariant]="'primary'" [size]="'small'" [isOutline]="true">
+          <div class="footer-buttons  d-flex bottom-0 ">
+            <rds-button [label]="'Cancel'" (click)="closeCanvas()"  data-bs-dismiss="offcanvas" [colorVariant]="'primary'" [size]="'small'" [isOutline]="true">
             </rds-button>
             <rds-button [label]="'Create'" [size]="'small'" class="ms-2" 
-                [colorVariant]="'primary'"   (click)="onSave()">
+                [colorVariant]="'primary'" (click)="onSave()">
             </rds-button>
         </div>
         </div>
@@ -51,8 +57,6 @@
         </div>
       </div>
     </rds-nav-tab>
+  </div>
   </rds-offcanvas>
-</div>
-</div>
-</div>
-</div>
+

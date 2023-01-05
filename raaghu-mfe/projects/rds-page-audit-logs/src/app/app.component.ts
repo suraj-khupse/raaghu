@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
+import { Component, Input, OnInit } from '@angular/core';
+import { ComponentLoaderOptions, SharedService } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 // import { getAuditLogs, getEntityChanges, selectAllAuditLogs, selectAllchangeLogs, selectDefaultLanguage } from '../../../libs/state-management/src/public-api';
 import { DateTime } from 'luxon';
+
 import { TranslateService } from '@ngx-translate/core';
 import {
   transition,
@@ -52,32 +53,54 @@ export class AppComponent implements OnInit {
   public rdsauditLogMfeConfig: ComponentLoaderOptions;
   public operationLogs: any = [];
   public changeLogs: any = [];
-  public operationLogsHeaders: TableHeader[] = [{ key: 'userName', displayName:'User Name', dataType: 'text', sortable: true, filterable: true },
-    { key: 'serviceName', displayName: 'Service', dataType: 'text', sortable: true, filterable: true },
-    { key: 'action', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},
-    { key: 'executionDuration', displayName: 'Duration', dataType: 'text', sortable: true, filterable: true},
+  changelogData:any=[];
+ public changelogHeader: TableHeader[] = [];
+  public activePage:number=0;
+  public activeTab: number = 0;
+  public operationLogsHeaders: TableHeader[] = [{ key: 'serviceName', displayName: 'Http Request', dataType: 'text', sortable: true, filterable: true },
+    { key: 'userName', displayName:'User', dataType: 'text', sortable: true, filterable: true },
     { key: 'clientIpAddress', displayName: 'IP Address', dataType: 'text', sortable: true, filterable: true},
-    // { key: 'clientName', displayName: 'Client', dataType: 'html', sortable: true, filterable: true },
-    // { key: 'browserInfo', displayName: 'Browser', dataType: 'html', sortable: true, filterable: true},
     { key: 'executionTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true},
-  
+    { key: 'executionDuration', displayName: 'Duration', dataType: 'text', sortable: true, filterable: true},
+    { key: 'action', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},
+   
+    
+
+    
     
   ];
-  
+  auditLogParamsData:any = {};
+  ChangeLogParamsData:any = {};
+  navtabsItems = [{
+    label: 'Audit Log',
+    tablink: '#auditlogs',
+    ariacontrols: 'auditlogs',
+  },
+  {
+    label: 'Entity Changes',
+    tablink: '#entityChanges',
+    ariacontrols: 'entityChanges',
+  },
+  ]
+ 
   public changeLogsHeaders: TableHeader[] = [
   { key: 'entityTypeFullName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTypeName', displayName: 'Object', dataType: 'text', sortable: true, filterable: true },
   { key: 'userName', displayName: 'User Name', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
-  // { key: 'view', displayName: 'Action', dataType: 'view', sortable: false, filterable: false },
   ];
 
-  auditLogsTableData: any = []
+  public auditLogsTableData: any = []
+  changeType: any;
+  hasException: any;
+  httpStatus: any;
+  httpMethod: any;
   
 
-  constructor( private store: Store,public translate:TranslateService) { }
+  constructor( private store: Store,public translate:TranslateService, private sharedService: SharedService,) { }
 
   ngOnInit(): void {
+    this.activePage=0;
     this.isAnimation = true;
     this.store.select(selectAllLanguages).subscribe((res: any) => {
 
@@ -89,48 +112,23 @@ export class AppComponent implements OnInit {
 
     })
    
-  this.rdsauditLogMfeConfig = {
+  
 
-      name: 'RdsCompAuditLogsNew',
-      input: {
-        operationLogsHeaders: this.operationLogsHeaders,
-        operationLogs: this.operationLogs,
-        changeLogsHeaders: this.changeLogsHeaders,
-        changeLogs: this.changeLogs,
-        isShimmer:true
-      },
-      output: {
-        deleteEvent: (eventData) => {
-          const index: number = this.operationLogs.findIndex((x: any) => x.id === eventData.id)
-          const data = this.operationLogs;
-          data.splice(index, 1)
-          this.operationLogs = [...data];
-          this.rdsauditLogMfeConfig.input.operationLogs = [...this.operationLogs];
-        },
-
-        parameterData:(eventData) => {
-          this.filterAuditLog(eventData)
-        },
-        
-        ChangeLogparameterData:(eventData)=>{
-       
-          this.filterChangeLog(eventData);
-        }
-      }
-    };
+ 
     let date = new Date();
     let lastday=new Date(Date.now() - 86400000);
     const auditLogParamsData: any = {
-      startDate:this.formatDate(lastday, 'yyyy-LL-dd HH:mm:ss'),
-      endDate:this.formatDate( date, 'yyyy-LL-dd HH:mm:ss'),
-      userName:'',
-      serviceName:'',
-      action:'',
-      MethodName:'',
-      BrowserInfo:'',
-      HasException:'',
-      minExecutionDuration:'',
-      maxExecutionDuration:'',
+      startDate:undefined,
+      endDate:undefined,
+      userName:undefined,
+      applicationName:undefined,
+      clientIpAddress:undefined,
+      correlationId:undefined,
+      httpMethod:undefined,
+      HasException:undefined,
+      httpStatusCode:undefined,
+      maxExecutionDuration:undefined,
+      minExecutionDuration:undefined,
       sorting:'',
       maxResultCount:10,
       skipCount:0
@@ -138,7 +136,7 @@ export class AppComponent implements OnInit {
      this.store.dispatch(getAuditLogs(auditLogParamsData));
 
      this.store.select(selectAllAuditLogs).subscribe((res: any) => {
-       this.auditLogsTableData = [];
+       this.operationLogs = [];
        if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0 && res.status == "success") {
          this.isAnimation = false;
          res.auditLogs.items.forEach((element: any) => {
@@ -157,92 +155,153 @@ export class AppComponent implements OnInit {
              id: element.id,
              name:element.methodName,
            }
-           this.auditLogsTableData.push(item);
+           this.operationLogs.push(item);
          });
-         const mfeConfig = this.rdsauditLogMfeConfig
-         mfeConfig.input.operationLogs = [... this.auditLogsTableData];
-         mfeConfig.input.isShimmer=false;
-         this.rdsauditLogMfeConfig = mfeConfig;
+         
+         
+        //  const mfeConfig = this.rdsauditLogMfeConfig
+        //  mfeConfig.input.operationLogs = [... this.auditLogsTableData];
+        //  mfeConfig.input.isShimmer=false;
+        //  this.rdsauditLogMfeConfig = mfeConfig;
        }
        
      })
-  }
-  filterChangeLog(eventData){
-    const ChangeLogParamsData: any = {
-  
-      StartDate:this.formatDate( eventData.StartDate, 'yyyy-LL-dd HH:mm:ss'),
-      EndDate:this.formatDate( eventData.EndDate, 'yyyy-LL-dd HH:mm:ss'),
-      UserName:eventData.userName,
+
+     let startDate = new Date();
+     let endDate=new Date(Date.now() - 86400000);
+     const ChangeLogParamsData: any = {
+
+      StartDate:this.formatDate(startDate, 'yyyy-LL-dd HH:mm:ss'),
+      EndDate:this.formatDate(endDate, 'yyyy-LL-dd HH:mm:ss'),
+      UserName:'',
+      entityChangeType:'',
       Sorting:'',
       MaxResultCount:10,
       SkipCount:0,
     }
-    this.store.dispatch(getEntityChanges(ChangeLogParamsData));
-    this.store.select(selectAllchangeLogs).subscribe((res: any) => {
-      this.changeLogs = [];
-      if (res && res.changeLogs && res.changeLogs.items && res.changeLogs.items.length > 0) {
-        res.changeLogs.items.forEach((element: any) => {
-          const item: any = {
-            userName:element.userName,
-            changeTime: element.changeTime,
-            entityTypeFullName: element.entityTypeFullName,
-            changeTypeName: element.changeTypeName,
-           
-          }
-          this.auditLogsTableData.push(item);
-        });
-       
-      }
-      const mfeConfig = this.rdsauditLogMfeConfig
-      mfeConfig.input.changeLogs = [... this.changeLogs];
-      this.rdsauditLogMfeConfig = mfeConfig;
-    })
+     this.store.dispatch(getEntityChanges(ChangeLogParamsData));
+     this.store.select(selectAllchangeLogs).subscribe((res: any) => {
+      
+       if (res && res.changeLogs && res.changeLogs.items && res.changeLogs.items.length > 0) {
+         res.changeLogs.items.forEach((element: any) => {
+          this.changeLogs = [];
+           const item: any = {
+             entityName:element.entityTypeFullName,
+             changeType: element.entityChangeType,
+             minchangeDate: element.startDate,
+             maxchangeDate:element.endDate
+            
+           }
+           this.auditLogsTableData.push(item);
+         });
+        
+       }
+      
+     })
   }
+  filterChangeLog(eventData){
+    debugger
+    // changeLogsParams.entityChangeSetId,undefined,undefined,undefined,
+    // changeLogsParams.startDate,changeLogsParams.endDate,undefined,
+    // changeLogsParams.skipCount,changeLogsParams.maxResultCount
+    this.ChangeLogParamsData = {
+      ...this.ChangeLogParamsData,
+      StartDate:this.formatDate( eventData.minchangeDate, 'yyyy-LL-dd HH:mm:ss'),
+      EndDate:this.formatDate( eventData.maxchangeDate, 'yyyy-LL-dd HH:mm:ss'),
+      entityTypeFullName:eventData.entityName,
+      changeType: this.changeType,
+      Sorting:'',
+      MaxResultCount:10,
+      SkipCount:0,
+    }
+    this.store.dispatch(getEntityChanges(this.ChangeLogParamsData));
+    // this.store.select(selectAllchangeLogs).subscribe((res: any) => {
+    //   this.changeLogs = [];
+    //   if (res && res.changeLogs && res.changeLogs.items && res.changeLogs.items.length > 0) {
+    //     res.changeLogs.items.forEach((element: any) => {
+    //       const item: any = {
+    //         entityName:element.entityTypeFullName,
+    //         changeType: element.entityChangeType,
+    //         entityTypeFullName: element.entityTypeFullName,
+    //         minchangeDate: element.startDate,
+    //         maxchangeDate:element.endDate
+           
+    //       }
+    //       this.auditLogsTableData.push(item);
+    //     });
+       
+    //   }
+     
+    // })
+  }
+  onTabClick(index: any): void {
+    this.activeTab = index
+  }
+
+  handleDropdowns(event){
+    
+    if(event.hasException){
+      this.hasException = event.event.item.value
+    }
+    if(event.httpStatus){
+      this.httpStatus = event.event.item.value 
+    }
+    if(event.httpMethod){
+      this.httpMethod = event.event.item.value
+    }
+    if(event.changeType){
+      this.changeType=event.event.item.value
+    }
+  }
+
 
   filterAuditLog(eventData){
     let date = new Date();
-    const auditLogParamsData: any = {
-  
+    this.auditLogParamsData = {
+      ...this.auditLogParamsData,
       startDate:this.formatDate( eventData.startDate, 'yyyy-LL-dd HH:mm:ss'),
       endDate:this.formatDate( eventData.endDate, 'yyyy-LL-dd HH:mm:ss'),
       userName:eventData.userName,
       serviceName:eventData.serviceName,
       MethodName:eventData.MethodName,
-      BrowserInfo:eventData.BrowserInfo,
-      HasException:eventData.HasException,
-      minExecutionDuration:eventData.minExecutionDuration,
-      maxExecutionDuration:eventData.maxExecutionDuration,
+      applicationName:eventData.AppName,
+      httpMethod:this.httpMethod,
+      httpStatus: this.httpStatus,
+      hasException:this.hasException,
+      correlationID:eventData.CorrelationID,
+      minExecutionDuration:eventData.MinDuration,
+      maxExecutionDuration:eventData.MaxDuration,
+      url:eventData.urlFilter,
       sorting:'',
       maxResultCount:10,
       skipCount:0
-     
     }
-    this.store.dispatch(getAuditLogs(auditLogParamsData));
-    this.store.select(selectAllAuditLogs).subscribe((res: any) => {
-      this.auditLogsTableData = [];
-      if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0) {
-        res.auditLogs.items.forEach((element: any) => {
-          const item: any = {
-            parameters:element.parameters,
-            userName: element.userName,
-            serviceName: element.serviceName,
-            executionDuration: element.executionDuration,
-            clientIpAddress: element.clientIpAddress,
-            clientName: element.clientName,
-            browserInfo: element.browserInfo,
-            executionTime:this.formatDate( element.executionTime,'yyyy-LL-dd HH:mm:ss'),
-            methodName:element.methodName,
-            exception:element.exception,
-            name:element.methodName,
-          }
-          this.auditLogsTableData.push(item);
-        });
+    this.store.dispatch(getAuditLogs(this.auditLogParamsData));
+    // this.store.select(selectAllAuditLogs).subscribe((res: any) => {
+    //   this.operationLogs = [];
+    //   if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0) {
+    //     res.auditLogs.items.forEach((element: any) => {
+    //       const item: any = {
+    //         parameters:element.parameters,
+    //         userName: element.userName,
+    //         serviceName: element.serviceName,
+    //         executionDuration: element.executionDuration,
+    //         clientIpAddress: element.clientIpAddress,
+    //         clientName: element.clientName,
+    //         browserInfo: element.browserInfo,
+    //         executionTime:this.formatDate( element.executionTime,'yyyy-LL-dd HH:mm:ss'),
+    //         methodName:element.methodName,
+    //         exception:element.exception,
+    //         name:element.methodName,
+    //       }
+    //       this.operationLogs.push(item);
+    //     });
        
-      }
-      const mfeConfig = this.rdsauditLogMfeConfig
-      mfeConfig.input.operationLogs = [... this.auditLogsTableData];
-      this.rdsauditLogMfeConfig = mfeConfig;
-    })
+    //   }
+    //   // const mfeConfig = this.rdsauditLogMfeConfig
+    //   // mfeConfig.input.operationLogs = [... this.auditLogsTableData];
+    //   // this.rdsauditLogMfeConfig = mfeConfig;
+    // })
 
   }
   formatDate(date: DateTime | Date, format: string): string {
@@ -257,4 +316,21 @@ export class AppComponent implements OnInit {
     return DateTime.fromJSDate(date);
   
   }
+ 
+  deleteEvent (eventData)  {
+    const index: number = this.operationLogs.findIndex((x: any) => x.id === eventData.id)
+    const data = this.operationLogs;
+    data.splice(index, 1)
+    this.operationLogs = [...data];
+    // this.rdsauditLogMfeConfig.input.operationLogs = [...this.operationLogs];
+  }
+
+  parameterData(eventData) {
+    this.filterAuditLog(eventData)
+  }
+  ChangeLogparameterData(eventData){       
+    this.filterChangeLog(eventData);
+  }
+
+ 
 }

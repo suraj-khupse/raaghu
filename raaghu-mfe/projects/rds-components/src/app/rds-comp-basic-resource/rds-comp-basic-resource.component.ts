@@ -23,7 +23,7 @@ export class RdsCompBasicResourceComponent implements OnInit, AfterViewInit {
   @Input() isResources: boolean = false;
   @Output() onBasicInfoSave = new EventEmitter<any>();
   @Output() onValidForm = new EventEmitter<any>();
-
+   @Input() isEditShimmer:boolean=false
   @Output() onFormValid = new EventEmitter<any>();
 
   @ViewChild('resourceForm') resourceForm: NgForm;
