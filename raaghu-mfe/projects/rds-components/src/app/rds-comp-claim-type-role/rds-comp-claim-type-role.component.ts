@@ -45,32 +45,30 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // deleteEvent(deleteEvent: any):void {
-  //   this.sampleDelete = deleteEvent;
-  //   this.deleteClaim.next(deleteEvent);
-  // }
+
   onActionSelection(event: any) :void {
-    debugger
     if (event && event.selectedData) {
       if (event.actionId === 'delete') {
         const data = [...this.claimDisplayArray];
 
         const index = data.findIndex(
-          (x: any) => x.key == event.selectedData.key
+          (x: any) => x.Id == event.selectedData.Id
         );
         if (index !== -1) {
           data.splice(index, 1);
           this.claimDisplayArray = [...data];
-
+          this.deleteClaim.emit(this.claimDisplayArray);
           // this.onPropertyResourceSave.emit({ Property: this.propertyTableData });
         }
       }
     }
   }
   addClaimData(claimForm: NgForm) {
+
     if (claimForm.form.value && claimForm.valid) {
+      
       const item: any = {
-        // roleId: this.claimDisplayArray.length + 1,
+        roleId: this.claimDisplayArray.length + 1,
         claimType: this.ClaimData.claimType,
         claimValue: claimForm.form.value.claimValue
       }
@@ -79,9 +77,6 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
     }
   }
 
-  // deleteClaimData(index: number) {
-  //   this.deleteClaim.next(this.sampleDelete);
-  // }
 
   selectedClaimType(event: any) {
     this.ClaimData.claimType = event.item.value;

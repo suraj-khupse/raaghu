@@ -227,10 +227,12 @@ export class AppComponent implements OnInit {
     this.store
       .select(selectClaimsTypeByRole)
       .subscribe((res: any) => {
+        debugger
         if (res) {
           this.claimDisplayArray = []
             res.forEach((element) => {
               this.claimDisplayArray.push({
+                id:element.roleId,
                 claimType: element.claimType,
                 claimValue: element.claimValue,
               });
@@ -324,13 +326,10 @@ export class AppComponent implements OnInit {
     }
     this.claimDisplayArray.push(data);
   }
-  deleteClaim(deleteEvent: any): void {
-    const deleteData = this.claimDisplayArray.find(
-      (x) => x.emitClaimData.id == deleteEvent.roleId
-    );
-    const deleteDataIndex = this.claimDisplayArray.indexOf(deleteData, 0);
-    if (deleteDataIndex != undefined)
-      this.claimDisplayArray.splice(deleteDataIndex, 1);
+  deleteClaim(event: any): void {
+    this.emitClaimData.id=this.selectedId;
+    this.claimDisplayArray = event;
+    this.onClaimSave();
   }
   onClaimSave() {
     this.emitClaimData.claimData = this.claimDisplayArray

@@ -16,7 +16,7 @@
         <div class="col-md-12">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Default Role')" [checked]="roleData.isDefault"
-              [(ngModel)]="roleData.isDefault" name="isDefault" [withLabel]="true" [switch]="false" [inline]="false"
+              [(ngModel)]="roleData.isDefault" name="isDefault" [withLabel]="true" [switch]="false" 
               [id]="'isDefault'"></rds-checkbox>
             <div class="fw-normal opacity-50">
               <rds-label [label]="translate.instant('Assign to new users by default')"></rds-label>
@@ -24,7 +24,7 @@
           </div>
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Available For Public')" [checked]="roleData.isPublic"
-              [(ngModel)]="roleData.isPublic" name="isPublic" [withLabel]="true" [switch]="false" [inline]="false"
+              [(ngModel)]="roleData.isPublic" name="isPublic" [withLabel]="true" [switch]="false" 
               [id]="'isPublic'"></rds-checkbox>
           </div>
         </div>

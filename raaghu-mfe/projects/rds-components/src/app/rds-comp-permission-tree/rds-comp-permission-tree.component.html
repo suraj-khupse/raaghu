@@ -4,7 +4,7 @@
             <div class="vertical-dotted-line-select-all"></div>
             <!-- Select All Checkbox -->
             <rds-checkbox [attr.id]="'Selectall'" (onChange)="selectAllFeature($event)" [checked]="false"
-                class="position-absolute" [disabled]="false" [switch]="false" [inline]="false" [id]="'checkSelectAll'">
+                class="position-absolute" [disabled]="false" [switch]="false" [id]="'checkSelectAll'">
             </rds-checkbox>
         </div>
         <span class="node-label"><span class="mr-4">{{translate.instant(selectAllLabel)}}</span></span>
@@ -20,7 +20,7 @@
             <div class="d-flex align-items-center position-relative"
                  [id]="'menuWithChildren'+i">
                 <div class="node-dot position-relative">
-                    <rds-checkbox [checked]="tickCheckbox(node)" [disabled]="false" [switch]="false" [inline]="false"
+                    <rds-checkbox [checked]="tickCheckbox(node)" [disabled]="false" [switch]="false"
                         (onChange)="selectNode(node,$event)" [id]="node.name"></rds-checkbox>
                     <div class="horizontal-dotted-line dottedstyle"></div>
                 </div>

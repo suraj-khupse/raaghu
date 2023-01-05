@@ -12,7 +12,7 @@
         main-body
       ">
       <div class="aside">
-        <rds-side-nav [isPageWrapper]="true" [activepage]="activePage" [activesubmenu]="activesubmenu"
+        <rds-side-nav [isPageWrapper]="true" [activeMenu]="activePage" 
                       (collapsedState)="onCollapse($event)" [collapseRequired]="collapseRequired" [sidenavItems]="getSideNavItems()"
                       (emitPath)="redirectPath($event)" (selectedMode)="toggleBetweenMode($event)"></rds-side-nav>
         <!-- <rds-side-nav [isPageWrapper]="true"

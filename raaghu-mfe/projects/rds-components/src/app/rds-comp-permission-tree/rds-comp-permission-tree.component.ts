@@ -28,8 +28,10 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
   demoTreeData:PermissionNode[] = [];
 
   constructor(public translate: TranslateService) { }
- ngOnChanges(changes: SimpleChanges): void {
+ 
+  ngOnChanges(changes: SimpleChanges): void {
    console.log('this.treeData', this.treeData);
+   debugger
    
    if (this.treeData && this.demoTreeData!= this.treeData) {
     const resPermission: any[] = [];
@@ -95,7 +97,6 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
 
   }
 
-  ngOnInit(): void { }
 
   // Parent checkbox selection based on child
   tickCheckbox(node: any): boolean {

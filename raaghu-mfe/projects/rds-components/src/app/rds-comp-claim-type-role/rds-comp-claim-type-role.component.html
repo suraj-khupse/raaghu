@@ -5,7 +5,7 @@
                 <rds-label [label]="'Type'"></rds-label>
             </div>
             <rds-dropdownlist class="mt-2" [placeholder]="'Type'" [size]="'large'"
-                [listItems]="claimValueData" (onSelect)="selectedClaimType($event)" required>
+                [listItems]="claimValueData" (onSelect)="selectedClaimType($event)" [value]="ClaimData.claimType" required>
             </rds-dropdownlist>
         </div>
 
@@ -16,10 +16,13 @@
         </div>
     </div>
     <div class="col-md-12">
-        <rds-button [id]="'yes'" [icon]="'plus'" [block]="true" [size]="'small'"
+        <!-- <rds-button [id]="'yes'" [icon]="'plus'" [block]="true" [size]="'small'"
             [tooltipPlacement]="'top'" [colorVariant]="'primary'" [isDisabled]="false" [label]="'Add'" [submit]="true"
             (click)="addClaimData(claimDataForm)">
-        </rds-button>
+        </rds-button> -->
+        <rds-button [label]="translate.instant('Add')" [size]="'small'" [block]="true"
+        [colorVariant]="'primary'" (click)="addClaimData(claimDataForm)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
+      </rds-button>
     </div>
     <div class="col-md-12 mt-3">
         <rds-data-table
