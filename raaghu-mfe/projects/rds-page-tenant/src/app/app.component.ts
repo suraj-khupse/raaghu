@@ -422,7 +422,6 @@ newTenant(isNewTeanant?: boolean): void {
 
   subscribeToAlerts() {
     this.alertService.alertEvents.subscribe((alert) => {
-      debugger
       this.currentAlerts = [];
       const currentAlert: any = {
         type: alert.type,
@@ -443,7 +442,7 @@ newTenant(isNewTeanant?: boolean): void {
           tenancyName: tenant.tenantInfo.tenancyName,
           name: tenant.tenantInfo.tenantName,
           connectionString: tenant.tenantSettings.connectionString,
-          editionId: +tenant.tenantInfo.edition,
+          editionId: tenant.tenantInfo.edition,
           isActive: tenant.tenantSettings.isActive,
           subscriptionEndDateUtc: (tenant.tenantInfo.unlimitedSubscription || !tenant.tenantInfo.subscriptionEndDate || tenant.tenantInfo.subscriptionEndDate == null) ? null : new Date(tenant.tenantInfo.subscriptionEndDate).toISOString(),
           isInTrialPeriod: false,
@@ -460,7 +459,7 @@ newTenant(isNewTeanant?: boolean): void {
           connectionString: tenant.tenantSettings.connectionString,
           shouldChangePasswordOnNextLogin: tenant.tenantSettings.changePasswordOnNextLogin,
           sendActivationEmail: tenant.tenantSettings.sendActivationEmail,
-          editionId: +tenant.tenantInfo.edition,
+          editionId: tenant.tenantInfo.edition,
           isActive: tenant.tenantSettings.isActive,
           subscriptionEndDateUtc: (tenant.tenantInfo.unlimitedSubscription || !tenant.tenantInfo.subscriptionEndDate || tenant.tenantInfo.subscriptionEndDate == null) ? null : new Date(tenant.tenantInfo.subscriptionEndDate).toISOString(),
           isInTrialPeriod: false
