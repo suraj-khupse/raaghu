@@ -6,7 +6,11 @@ import { RdsBannerModule, RdsButtonModule, RdsCheckboxModule, RdsInputModule, Rd
 import { RdsIconModule } from '@libs/rds-icon';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
+import { RdsCompClaimsTypeRoleModule } from 'projects/rds-components/src/app/rds-comp-claim-type-role/rds-comp-claims-type-role.module';
 import { RdsCompNewRoleModule } from 'projects/rds-components/src/app/rds-comp-new-role/rds-comp-new-role.module';
+import { RdsCompOrganizationTreeModule } from 'projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.module';
+import { RdsCompPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -29,7 +33,10 @@ import { AppComponent } from './app.component';
     CommonModule,
     RdsIconModule,
     FormsModule,
-    RdsCompNewRoleModule
+    RdsCompNewRoleModule,
+    RdsCompClaimsTypeRoleModule,
+    RdsCompPermissionTreeModule,
+    RdsCompOrganizationTreeModule
   ],
 
   providers: [ArrayToTreeConverterService],

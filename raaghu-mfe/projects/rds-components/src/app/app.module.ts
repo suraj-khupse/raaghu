@@ -15,7 +15,6 @@ import { RdsNotificationComponent } from './rds-comp-notification/rds-comp-notif
 
 import { CommonModule } from '@angular/common';
 import { RdsCompProfileComponent } from './rds-comp-profile/rds-comp-profile.component';
-import { RdsOrganizationTreeComponent } from './rds-comp-organization-tree/rds-comp-organization-tree.component';
 import { RdsCompEditionComponent } from './rds-comp-edition/rds-comp-edition.component';
 import { NestGroupDirective } from './rds-comp-hierarchy/node-label.directive';
 import { RdsCompHierarchyComponent } from './rds-comp-hierarchy/rds-comp-hierarchy.component';
@@ -91,9 +90,6 @@ import { RdsCompTenantManagementShimmerComponent } from './rds-comp-tenant-manag
 import { RdsCompTenantInformationShimmerComponent } from './rds-comp-tenant-information/rds-comp-tenant-information-shimmer/rds-comp-tenant-information-shimmer.component';
 import { RdsCompSubscriptionShimmerComponent } from './rds-comp-subscription/rds-comp-subscription-shimmer/rds-comp-subscription-shimmer.component';
 import { RdsCompSecurityShimmerComponent } from './rds-comp-security/rds-comp-security-shimmer/rds-comp-security-shimmer.component';
-import { RdsCompOrganizationTreeShimmerComponent } from './rds-comp-organization-tree/rds-comp-organization-tree-shimmer/rds-comp-organization-tree-shimmer.component';
-// import { RdsCompPropertiesShimmerComponent } from './rds-comp-properties/rds-comp-properties-shimmer/rds-comp-properties-shimmer.component';
-// import { RdsCompTableShimmerComponent } from './rds-comp-data-table/rds-comp-table-shimmer/rds-comp-table-shimmer.component';
 import { RdsCompFeedsComponent } from './rds-comp-feeds/rds-comp-feeds.component';
 import { RdsCompProductListComponent } from './rds-comp-product-list/rds-comp-product-list.component';
 import { RdsCompPageNotFoundComponent } from './rds-comp-page-not-found/rds-comp-page-not-found.component';
@@ -154,7 +150,6 @@ import { RdsCompAccountNewComponent } from './rds-comp-account-new/rds-comp-acco
 import { RdsCompSettingsNewComponent } from './rds-comp-settings-new/rds-comp-settings-new.component';
 import { RdsCompLanguageNewComponent } from './rds-comp-language-new/rds-comp-language-new.component';
 import { RdsCompLanguageTextListComponent } from './rds-comp-language-text-list/rds-comp-language-text-list.component';
-import { RdsCompClaimTypeRoleComponent } from './rds-comp-claim-type-role/rds-comp-claim-type-role.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { RdsCompClientAdvancedComponent } from './rds-comp-client-advanced/rds-comp-client-advanced.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -187,7 +182,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompTenantListComponent,
     RdsCompTenantInformationComponent,
     RdsCompTenantSettingsComponent,
-    RdsOrganizationTreeComponent,
     OrganizationTreeDirective,
     RdsCompTenantManagementComponent,
     RdsCompUserManagementComponent,
@@ -235,9 +229,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompTenantInformationShimmerComponent,
     RdsCompSubscriptionShimmerComponent,
     RdsCompSecurityShimmerComponent,
-    RdsCompOrganizationTreeShimmerComponent,
-    // RdsCompPropertiesShimmerComponent,
-    // RdsCompTableShimmerComponent,
     RdsCompPageNotFoundComponent,
     RdsCompFeedsComponent,
     RdsCompMarketingWebsiteNewsletterComponent,
@@ -302,7 +293,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompAccountNewComponent,
     RdsCompSettingsNewComponent,
     RdsCompLanguageNewComponent,
-    RdsCompClaimTypeRoleComponent  
   ],
   imports: [
     StoreModule,
