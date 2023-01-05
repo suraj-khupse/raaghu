@@ -1,39 +1,37 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: "Build and deploy anzstageui.raaghu.io"
+name: Build and deploy ABP-DEMO-UI-MAIN-ABP-BRANCH
 
 on:
-  pull_request:
-    types: [closed]
   push:
-    branches: [development]
-
+    branches:
+      - development-abp
   workflow_dispatch:
-
+  
 env:
-  AZURE_WEBAPP_NAME: raaghumfestageuiapp   # set this to your application's name
+  AZURE_WEBAPP_NAME: raaghuabpstageuiapp   # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '18.12.1'                # set this to the node version to use
   NODE_OPTIONS: "--max_old_space_size=6144"
 
 permissions:
   contents: read
-   
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
     - name: Checkout raaghu code
       uses: actions/checkout@v3
-
+    
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
         cache-dependency-path: './raaghu-mfe'  
-
+        
     - name: npm install raaghu-elements
       working-directory: raaghu-elements
       run: |
@@ -48,7 +46,6 @@ jobs:
         npm run build-all
         cp web.config dist
         cp dist/host/* dist -r
-
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
       with:
@@ -65,16 +62,16 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v3
-      with:
-        name: node-app
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: node-app
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      id: deploy-to-webapp
-      with:
-        app-name: 'raaghumfestageuiapp'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_392363CA3B8C4905BC10144A553C3367 }}
-        package: .
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
+        with:
+          app-name: 'abpdemoui'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_11C2522F3B864650B5A4BAD0CD60581C }}
+          package: .
