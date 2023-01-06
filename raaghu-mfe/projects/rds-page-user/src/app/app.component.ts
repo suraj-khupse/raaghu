@@ -76,6 +76,22 @@ import { selectOrganizationUnitTree } from 'projects/libs/state-management/src/l
 })
 export class AppComponent {
 
+
+  userList: any = [];
+  userHeaders: TableHeader[] = [
+    { key: 'name',displayName: 'Name',dataType: 'html',filterable: true,sortable: true,},
+    { key: 'statusTemplate',displayName: 'Status',dataType: 'html',filterable: true,sortable: true,},
+    { key: 'email',displayName: 'email',dataType: 'html',filterable: true,sortable: true,},
+    { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},    
+  ]
+
+
+
+
+
+
+
+
   isAnimation: boolean = true;
 
   title: string = 'user';
@@ -106,7 +122,6 @@ export class AppComponent {
   public rdsUserMfeConfig: ComponentLoaderOptions={ name:'RdsCompUserPermissionsNew'}
   UserPermissionFiltertreeData: any = [];
   roleName: any;
-  userList: any = [];
   roles: any=[] ;
   userData:any=[];
   user:any=[];
@@ -132,18 +147,13 @@ export class AppComponent {
   orgTreeData: any = [];
  UserTableData: any = [];
  
-  userHeaders: TableHeader[] = [
-    { key: 'name',displayName: 'Name',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'statusTemplate',displayName: 'Status',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'email',displayName: 'email',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},    
-  ]
+  
   ngOnInit(): void {
     this.store.dispatch(getUsers());
     this.store.select(selectAllUsers).subscribe((res: any) => {
       this.userList = [];
       if (res && res.items) {
-        this.isAnimation = false;
+        //this.isAnimation = false;
         res.items.forEach((element: any) => {
           let statusTemplate;
           if (element.isActive) {
@@ -161,7 +171,7 @@ export class AppComponent {
           }
           this.userList.push(item);
         });
-        this.isShimmer = false;
+        //this.isShimmer = false;
       }
     });
  
@@ -187,7 +197,7 @@ export class AppComponent {
       if (res && res.items) {
         this.orgTreeData =  [];
         this.isAnimation = false;
-    this.treeData1 = this._arrayToTreeConverterService.createTree(
+    this.organizationTreeList = this._arrayToTreeConverterService.createTree(
       res.items,
       'parentId',
       'code',
@@ -227,7 +237,6 @@ export class AppComponent {
     this.rdsUserMfeConfig = {
       name: 'RdsCompUserPermissionsNew',
       input: {
-        userList: this.userList,
         roles: this.roles,
         userinfo:this.userinfo,
         organizationTreeList:this.organizationTreeList,
@@ -244,8 +253,6 @@ export class AppComponent {
          PermissionFiltertreeData:this.PermissionFiltertreeData,
          listItemsm:this.listItemsm,
         selectedRoles:this.selectedRoles,
-        userHeaders:this.userHeaders,
-        userTableData:this.UserTableData,
         //  isShimmer:false,
         //  editShimmer:false
       },

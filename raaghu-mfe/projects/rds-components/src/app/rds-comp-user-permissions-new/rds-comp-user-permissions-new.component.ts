@@ -22,7 +22,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   viewCanvas: boolean = false;
   selectedId: any = '';
   selectedOrganizationUnit: any = [];
-  buttonSpinnerForNewUser: boolean = true;
+  buttonSpinnerForNewUser: boolean = false;
   public user: any = {
     userInfo: undefined,
     userSettings: undefined,
@@ -211,12 +211,11 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
       },
       
     ];
-    this.CreateOrEditUser.emit({ id: undefined });
+    //this.CreateOrEditUser.emit({ id: undefined });
     if (event) {
       this.canvasTitle = 'NEW USER';
       this.userinfo = undefined;
       event.stopPropagation();
-
 
     } else {
     }
@@ -285,7 +284,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
 
     this.activePage = 0;
     // this.newUser(undefined);
-    this.CreateOrEditUser.emit({ id: this.selectedId });
+    this.CreateOrEditUser.emit(this.selectedId);
 
   }
   getSelectedRoles() {
