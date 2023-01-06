@@ -268,6 +268,12 @@
 						"main": "projects/host/src/main.ts",
 						"polyfills": "projects/host/src/polyfills.ts",
 						"tsConfig": "projects/host/tsconfig.app.json",
+						"allowedCommonJsDependencies": [
+							"quill",
+							"moment",
+							"localforage",
+							"fast-sha256"
+						  ],
 						"assets": [
 							"projects/host/src/favicon.ico",
 							"projects/host/src/assets",
