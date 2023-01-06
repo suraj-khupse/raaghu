@@ -1,5 +1,6 @@
 import { Component, ComponentFactoryResolver, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {Dropdown} from 'bootstrap';
 
 
 export class TenantManagement {
@@ -51,6 +52,7 @@ export class RdsCompTenantManagementComponent implements OnInit, OnChanges {
   @Output() change = new EventEmitter<any>();
 
   @Input() public settingsTenantEditionList: any = [];
+  show: boolean;
 
 
   constructor(public translate:TranslateService) { }
@@ -64,7 +66,17 @@ export class RdsCompTenantManagementComponent implements OnInit, OnChanges {
     // this.dataset = this.settings;   
   }
 
-
+  opendropdownTenant():void{
+    this.show = !this.show;
+    // this.droparrow = !this.droparrow;
+    var element: any = document.getElementById('edition-dropdown');
+    var dropdown = new Dropdown(element)
+    if (this.show) {
+      dropdown.show();
+    } else {
+      dropdown.hide();
+    }
+  }
 
 
 
