@@ -39,24 +39,28 @@ export class RdsCompOpenPositionComponent implements OnInit {
         type: "developer",
         roleName: "Android Developer",
         roleDescription: "Designing and developing advanced applications for the Android platform · Unit-testing code for robustness, ...",
+        rolePosition: " 2 Positions",
         buttonLabel: "Apply Now"
       },     
       {
         type: "marketing",
         roleName: "Sales",
         roleDescription: "Designing and developing advanced applications for the Android platform · Unit-testing code for robustness, ...",
+        rolePosition: " 2 Positions",
         buttonLabel: "Apply Now"
       },
       {
         type: "designer",
         roleName: "Android Developer",
         roleDescription: "Designing and developing advanced applications for the Android platform · Unit-testing code for robustness, ...",
+        rolePosition: " 2 Positions",
         buttonLabel: "Apply Now"
       },
       {
         type: "researcher",
         roleName: "Tester",
         roleDescription: "Designing and developing advanced applications for the Android platform · Unit-testing code for robustness, ...",
+        rolePosition: " 2 Positions",
         buttonLabel: "Apply Now"
       },
     ],
