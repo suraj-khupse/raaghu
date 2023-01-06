@@ -1,3 +1,24 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <mfe-loader [config]="rdsauditLogMfeConfig"></mfe-loader>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <rds-nav-tab [navtabsItems]="navtabsItems" [activeTab]="activePage" [horizontalAlignment]="'start'" [verticalAlignment]="false"
+            [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
+            <div naveContent class="row tab-content m-2" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="auditlogs" [ngClass]="{'show active': activePage === 0}"  role="tabpanel" aria-labelledby="nav-home-tab">
+                <rds-comp-audit-logs-new [operationLogsHeaders]="operationLogsHeaders" [operationLogs]="operationLogs"
+                  [changeLogsHeaders]="changeLogsHeaders" [changeLogs]="changeLogs" 
+                  (parameterData)="parameterData($event)" (onItemClick)="handleDropdowns($event)"></rds-comp-audit-logs-new>
+              </div>
+              <div class="tab-pane fade"  [ngClass]="{'show active': activePage === 1}" id="entityChanges" role="tabpanel" aria-labelledby="nav-home-tab">
+                <rds-comp-entity-changes [changelogData]="changelogData" [changelogHeader]="changelogHeader"
+                  (entityData)="ChangeLogparameterData($event)" (onItemClick)="handleDropdowns($event)"></rds-comp-entity-changes>
+              </div>
+            </div>
+          </rds-nav-tab>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
