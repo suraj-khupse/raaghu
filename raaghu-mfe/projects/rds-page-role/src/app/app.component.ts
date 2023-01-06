@@ -295,6 +295,7 @@ export class AppComponent implements OnInit {
         this.Roledetails = undefined;
       });
     }
+    this.activePage = 0;
   }
 
   RoleInfo(eventdata: any): void {
@@ -384,6 +385,7 @@ export class AppComponent implements OnInit {
 
   getSelectedParent(parent): void {
     // this.selectedParent = parent;
+    this.activePage = 0;
     this.selectedId= undefined;
     this.canvasTitle = 'New Role';
     this.isEdit = false;
@@ -410,6 +412,7 @@ export class AppComponent implements OnInit {
 
   // Edit Action click
   onNodeEdit(node: any): void {
+    this.activePage = 0;
     this.selectedId = node.data.id;
     this.emitPermissionsData.name = node.data.displayName;
     this.store.dispatch(getPermission(this.emitPermissionsData.name));
