@@ -1,13 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AlertService, ComponentLoaderOptions } from '@libs/shared';
 
-import { TranslateService } from '@ngx-translate/core';
-import { TableAction } from '../../models/table-action.model';
-import { TableHeader } from '../../models/table-header.model';
-import { claims } from '../rds-comp-claim-type-role/rds-comp-claim-type-role.component';
-import { Role } from '../rds-comp-new-role/rds-comp-new-role.component';
 export class RoleData {
-  Roles: Role
+  Roles: any
   permissions: [];
 }
 

@@ -1,5 +1,5 @@
 
-<h6 class="text-primary">{{header}}</h6>
+<h4>{{header}}</h4>
 <ul class="px-3" [ngStyle]="{'column-count': columns}">
 
 
@@ -7,6 +7,7 @@
 
     <li *ngFor="let item of listItems">{{item.value}}</li>
 </ul> -->
+
 <ng-container *ngIf="display_type=='basic'">
     <ng-container *ngTemplateOutlet="featureListTemplate; context: { list: listItems }"></ng-container>
 </ng-container>

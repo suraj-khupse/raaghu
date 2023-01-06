@@ -33,7 +33,7 @@ Default.args = {
      selected:true,
      iconHeight:'30px',
      iconWidth:'30px',
-     iconFill:false,
+     iconFill:true,
      iconStroke:true
     }
 }

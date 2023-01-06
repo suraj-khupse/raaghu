@@ -3,7 +3,7 @@
     <!-- Default  -->
     <!-- <div class="row"> -->
     <div class="pt-1 mb-4" *ngSwitchCase="'Default'">
-      <div class="border p-4 text-center bg-light rounded">
+      <div class="benefit border p-4 text-center rounded">
         <div>
           <rds-icon [name]="item.icon" [height]="item.iconHeight" [width]="item.iconWidth"></rds-icon>
         </div>
@@ -18,7 +18,7 @@
 
     <!-- Left Aligned -->
     <div class="pt-1" *ngSwitchCase="'Left Aligned'">
-      <div  class="border p-4 text-left bg-light rounded">
+      <div  class="border p-4 text-left  rounded">
         <div>
           <img [src]="item.icon" alt="" height="40" width="40">
         </div>
@@ -33,7 +33,7 @@
 
     <!-- Centre Aligned -->
     <div class="pt-1" *ngSwitchCase="'Centre Aligned'">
-      <div class="border p-4 text-center bg-light rounded">
+      <div class="border p-4 text-center rounded">
           <div>
             <span class="rounded-circle p-2 bg-secondary bg-opacity-10 d-inline-block">
               <rds-icon [name]="item.icon" [height]="item.iconHeight" [width]="item.iconWidth"></rds-icon>
@@ -50,11 +50,11 @@
 
       <!-- With Label -->
       <div class="pt-1" *ngSwitchCase="'With Label'">
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
           <div class="d-flex align-items-center">
             <img [src]="item.icon" alt="" height="40" width="40">
           </div>
-          <div class="ms-3 mt-3">
+          <div class="ms-3">
             <div>
               <rds-label [label]="item.title" [bold]="true"></rds-label>
               <span class="m-5" *ngIf="item.status">
@@ -70,7 +70,7 @@
       <!-- </div> -->
       <!-- Without Label -->
       <div class="pt-1" *ngSwitchCase="'Without Label'">
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
           <div class="d-flex align-items-center">
             <span class="rounded-circle p-2 bg-secondary bg-opacity-10">
               <rds-icon [name]="item.icon" [height]="item.iconHeight" [width]="item.iconWidth"></rds-icon>

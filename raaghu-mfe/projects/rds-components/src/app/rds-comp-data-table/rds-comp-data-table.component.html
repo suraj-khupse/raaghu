@@ -150,7 +150,7 @@
                     else nonTemplateData
                   "
                 >
-                  <span [title]="data[column.key]">******</span>
+                  <td [title]="data[column.key]" class="pt-3"><span >******</span></td>
                 </ng-container>
               </ng-template>
               <ng-template #nonTemplateData>
@@ -248,7 +248,6 @@
                   [block]="false"
                   [size]="'small'"
                   [isIconFill]="true"
-                  [isIconStroke]="false"
                   [isDisabled]="false"
                   [isOutline]="true"
                   [isFabIcon]="true"
@@ -332,9 +331,12 @@
   </ng-container>
 </div>
 <ng-template #emptyTemplate>
-  <div class="my-5 py-5 d-flex align-items-center justify-content-center">
+  <div
+    class="my-5 py-5 d-flex align-items-center justify-content-center"
+    *ngIf="showIllustration"
+  >
     <div class="text-center">
-      <div class="mb-3">
+      <div class="mb-3 justify-content-center d-flex">
         <rds-icon name="file_plus" height="100px" width="100px"></rds-icon>
       </div>
       <div>

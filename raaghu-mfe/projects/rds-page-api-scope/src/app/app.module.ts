@@ -10,13 +10,15 @@ import { RdsCompBasicResourcesModule } from 'projects/rds-components/src/app/rds
 import { RdsCompClientResourcesModule } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.module';
 import { RdsCompPropertiesModule } from 'projects/rds-components/src/app/rds-comp-properties/rds-comp-properties.module';
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     AppRoutingModule,
     SharedModule,
     RdsOffcanvasModule,

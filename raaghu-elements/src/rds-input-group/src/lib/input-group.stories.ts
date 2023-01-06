@@ -34,7 +34,7 @@ export default {
 export const Default: Story<RdsInputGroupComponent> = (args) => ({
     props: args,
 });
-Default.parameters = { controls: { include: ['colorVariant', 'position', 'size', 'buttonLabel', 'placeholder'] } };
+Default.parameters = { controls: { include: ['colorVariant', 'position', 'size', 'buttonLabel', 'placeholder','onClick'] } };
 
 Default.args = {
     size: 'small',

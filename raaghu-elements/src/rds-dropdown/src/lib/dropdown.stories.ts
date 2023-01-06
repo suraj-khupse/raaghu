@@ -11,10 +11,10 @@ export default {
     }),
   ],
   argTypes: {
-    colorVariant: {
-      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'],
-      control: { type: 'select' }
-    },
+    //colorVariant: {
+    //  options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'],
+    //  control: { type: 'select' }
+    //},
     size: {
       options: ['small', 'large', 'medium'],
       control: { type: 'radio' }
@@ -36,15 +36,14 @@ const Template: Story<RdsDropdownComponent> = (args: RdsDropdownComponent) => ({
    [size]="size"
    [role]="role"
    role= 'dropdown-button'
-  [colorVariant]="colorVariant"
    >
     </rds-dropdown>`,
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['colorVariant', 'size', 'listItems', 'label', 'direction', 'role'] } };
+Default.parameters = { controls: { include: ['size', 'listItems', 'label', 'direction', 'role'] } };
 Default.args = {
-  colorVariant: 'primary',
+  //colorVariant: 'primary',
   size: 'default',
   listItems: [
     { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'export', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },
@@ -57,9 +56,9 @@ Default.args = {
 };
 
 export const Dropdown_with_split = Template.bind({});
-Dropdown_with_split.parameters = { controls: { include: ['colorVariant', 'size', 'listItems', 'label', 'direction', 'role'] } };
+Dropdown_with_split.parameters = { controls: { include: ['size', 'listItems', 'label', 'direction', 'role'] } };
 Dropdown_with_split.args = {
-  colorVariant: 'primary',
+  //colorVariant: 'primary',
   size: 'default',
   listItems :  [
     { value: 'Export to excel', some: 'value', id: 1, href: '', icon: 'export', iconWidth: '20px', iconHeight: '20px', iconStroke: true, iconFill: false },

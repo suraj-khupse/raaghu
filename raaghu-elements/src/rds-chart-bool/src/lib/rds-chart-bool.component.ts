@@ -41,6 +41,7 @@ export class RdsChartBoolComponent implements OnInit, AfterViewInit {
   @Input() iconColor: string = '#000';
   @Input() chartOptions?: any;
   @Input() centerSvg: any;
+  @Input() selectedMode: string = '';
   static inload: boolean;
   style: CSSStyleDeclaration | undefined;
 
@@ -50,80 +51,90 @@ export class RdsChartBoolComponent implements OnInit, AfterViewInit {
 
   }
 
+  renderChart(): void {
+    let chartStatus = Chart.getChart(this.chartId);
+    if (chartStatus != undefined) {
+      chartStatus.destroy();
+    }
+    this.canvas = document.getElementById(this.chartId);
+    if (this.canvas) {
+      this.ctx = this.canvas.getContext('2d');
+      this.style = getComputedStyle(document.body);
+      this.chartDataSets.forEach((element: any) => {
+        if (element.backgroundColor && element.backgroundColor.length > 0) {
+          element.backgroundColor.forEach((bg: any, index: number) => {
+            if (this.style) {
+              const color = this.style.getPropertyValue(element.backgroundColor[index]);
+              if (color) {
+                element.backgroundColor[index] = color;
+              }
+            }
+          });
+        }
+
+      });
+      let svg = ChartIcons[this.centerIconName];
+      const div = document.createElement('DIV');
+      div.innerHTML = svg;
+      const svgContent = div.querySelector('svg');
+      let url = '';
+      if (svgContent) {
+        svgContent.style.height = '20px';
+        svgContent.style.width = '20px';
+        this.style = getComputedStyle(document.body);
+        if (this.style && this.style.getPropertyValue(this.iconColor)) {
+          svgContent.style.stroke = this.style.getPropertyValue(this.iconColor);
+        } else {
+          svgContent.style.stroke = this.iconColor;
+        }
+        svgContent.style.fill = 'none';
+        const updatedSvg = svgContent.outerHTML;
+        let blob = new Blob([updatedSvg], { type: 'image/svg+xml' });
+        url = URL.createObjectURL(blob);
+        let image = document.createElement('img');
+        image.src = url;
+      }
+
+      const centerImage = {
+        id: 'counter2',
+        beforeDraw(chart, args, options) {
+          const { ctx, chartArea: { top, right, bottom, left, width, height } } = chart;
+          ctx.save();
+          let img = new Image();
+          img.src = url;
+          ctx.drawImage(img, 30, 30, 30, 30);
+          ctx.restore();
+        }
+
+      };
+
+      const myChart = new Chart(this.ctx, {
+        type: 'doughnut',
+        data: {
+          labels: this.chartLabels,
+          datasets: this.chartDataSets,
+        },
+
+        options: this.chartOptions,
+        plugins: [centerImage]
+      });
+      if (myChart !== null) {
+        myChart.canvas.style.height = this.chartHeight + 'px';
+        myChart.canvas.style.width = this.chartWidth + 'px';
+      }
+
+
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (this.selectedMode) {
+      this.renderChart();
+    }
 
   }
-
-
 
   ngAfterViewInit() {
-    this.canvas = document.getElementById(this.chartId);
-    this.ctx = this.canvas.getContext('2d');
-    this.style = getComputedStyle(document.body);
-    this.chartDataSets.forEach((element: any) => {
-      if (element.backgroundColor && element.backgroundColor.length > 0) {
-        element.backgroundColor.forEach((bg: any, index: number) => {
-          if (this.style) {
-            const color = this.style.getPropertyValue(element.backgroundColor[index]);
-            if (color) {
-              element.backgroundColor[index] = color;
-            }
-          }
-        });
-      }
-
-    });
-    let svg = ChartIcons[this.centerIconName];
-    const div = document.createElement('DIV');
-    div.innerHTML = svg;
-    const svgContent = div.querySelector('svg');
-    let url = '';
-    if (svgContent) {
-      svgContent.style.height = '20px';
-      svgContent.style.width = '20px';
-      this.style = getComputedStyle(document.body);
-      if (this.style && this.style.getPropertyValue(this.iconColor)) {
-        svgContent.style.stroke = this.style.getPropertyValue(this.iconColor);
-      } else {
-        svgContent.style.stroke = this.iconColor;
-      }
-      svgContent.style.fill = 'none';
-      const updatedSvg = svgContent.outerHTML;
-      let blob = new Blob([updatedSvg], { type: 'image/svg+xml' });
-      url = URL.createObjectURL(blob);
-      let image = document.createElement('img');
-      image.src = url;
-    }
-
-    const centerImage = {
-      id: 'counter2',
-      beforeDraw(chart, args, options) {
-        const { ctx, chartArea: { top, right, bottom, left, width, height } } = chart;
-        ctx.save();
-        console.log(url, 'url')
-        let img = new Image();
-        img.src = url;
-        ctx.drawImage(img, 30, 30, 30, 30);
-        ctx.restore();
-      }
-
-    };
-
-    const myChart = new Chart(this.ctx, {
-      type: 'doughnut',
-      data: {
-        labels: this.chartLabels,
-        datasets: this.chartDataSets,
-      },
-
-      options: this.chartOptions,
-      plugins: [centerImage]
-    });
-    if (myChart !== null) {
-      myChart.canvas.style.height = this.chartHeight + 'px';
-      myChart.canvas.style.width = this.chartWidth + 'px';
-    }
-
-}
+    this.renderChart();
   }
+}

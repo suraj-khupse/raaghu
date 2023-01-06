@@ -4,6 +4,11 @@ import { RdsListGroupComponent } from './rds-list-group.component';
 export default {
   title: 'Elements/List Group',
   component: RdsListGroupComponent,
+  parameters: { 
+    actions: {
+      handles: ['hide.bs.tab','show.bs.tab'],
+     }
+   },
   argTypes: {
     labelPosition: {
       options: ['top', 'bottom'],
@@ -27,7 +32,7 @@ export const Default: Story<RdsListGroupComponent> = (args) => ({
   props: args,
  
 });
-Default.parameters = { controls: { include: ['labelPosition', 'label', 'listItem'] } };
+Default.parameters = { controls: { include: ['labelPosition', 'label', 'listItem','onClick'] } };
 
 Default.args = {
   labelPosition: 'top',
@@ -66,6 +71,7 @@ export const list_group_with_multiselect: Story<RdsListGroupComponent> = (args) 
   props: args,
 
 });
+
 list_group_with_multiselect.args = {
   label: 'List Group',
   multiSelect: true,
@@ -104,7 +110,7 @@ list_group_with_multiselect.args = {
   labelPosition: 'top',
 
 };
-list_group_with_multiselect.parameters = { controls: { include: ['labelPosition', 'label', 'listItem', 'multiSelect'] } };
+list_group_with_multiselect.parameters = { controls: { include: ['labelPosition', 'label', 'listItem', 'multiSelect','onClick'] } };
 
 
 // Template 1

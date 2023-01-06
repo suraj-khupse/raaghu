@@ -42,7 +42,7 @@ const Template: Story<RdsSelectListComponent> = (args: RdsSelectListComponent) =
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','isRequired'] } };
+Default.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','isRequired','selectListChange'] } };
 Default.args = {
   label:'select list',
   size:'small',
@@ -68,7 +68,7 @@ const muliselectTemplate: Story<RdsSelectListComponent> = (args: RdsSelectListCo
   </rds-select-list>`,
 });
 export const multiSelect = muliselectTemplate.bind({});
-multiSelect.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','multiple'] } };
+multiSelect.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','multiple','selectListChange'] } };
 multiSelect.args = {
   label:'select list',
   size:'small',
@@ -94,7 +94,7 @@ const labelPositionTemplate: Story<RdsSelectListComponent> = (args: RdsSelectLis
   </rds-select-list>`,
 });
 export const labelPosition = labelPositionTemplate.bind({});
-labelPosition.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','labelPosition'] } };
+labelPosition.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','labelPosition','selectListChange'] } };
 labelPosition.args = {
   label:'select list',
   size:'small',
@@ -123,7 +123,7 @@ const tooltipTemplate: Story<RdsSelectListComponent> = (args: RdsSelectListCompo
   </rds-select-list></div></div>`,
 });
 export const tooltip = tooltipTemplate.bind({});
-tooltip.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','tooltipTitle','tooltipPlacement'] } };
+tooltip.parameters = { controls: { include: ['itemList',  'label', 'size','placeholder','tooltipTitle','tooltipPlacement','selectListChange'] } };
 tooltip.args = {
   label:'select list',
   size:'small',

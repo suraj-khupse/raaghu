@@ -27,7 +27,7 @@ const Template: Story<RdsFileUploaderComponent> = (args: RdsFileUploaderComponen
 });
 
 export const Default = Template.bind({})
-Default.parameters = { controls: { include: ['size', 'multipleFiles', 'role', 'label'] } };
+Default.parameters = { controls: { include: ['size', 'multipleFiles', 'role', 'label','onItemClick','click'] } };
 Default.args = {
   size: 'medium',
   multipleFiles: false,
@@ -37,9 +37,9 @@ Default.args = {
 
 
 export const multiple_file_uploader = Template.bind({})
-multiple_file_uploader.parameters = { controls: { include: ['size', 'multipleFiles', 'role', 'label', 'extensions'] } };
+multiple_file_uploader.parameters = { controls: { include: ['size', 'multipleFiles', 'role', 'label', 'extensions','onItemClick','click'] } };
 multiple_file_uploader.args = {
-  size: 'medium',
+  size: 'small',
   multipleFiles: true,
   role: 'fileUpload',
   label: 'Upload Files',

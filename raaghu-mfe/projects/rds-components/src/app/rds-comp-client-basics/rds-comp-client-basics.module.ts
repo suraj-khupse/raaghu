@@ -5,6 +5,7 @@ import { RdsButtonModule, RdsCheckboxModule, RdsDropdownlistModule, RdsInputModu
 import { RdsLabelModule } from '@libs/rds-label';
 import { FormsModule } from '@angular/forms';
 import { RdsCompClientBasicsComponent } from './rds-comp-client-basics.component';
+import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 
 
 
@@ -22,7 +23,8 @@ import { RdsCompClientBasicsComponent } from './rds-comp-client-basics.component
     FormsModule,
     RdsTextareaModule,
     RdsButtonModule,
-    NgxTranslateModule
+    NgxTranslateModule,
+    RdsCompDataTableModule
   ],
   exports: [
     RdsCompClientBasicsComponent

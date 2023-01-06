@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-12 mt-4">
             <rds-checkbox [disabled]="false" [label]="'Enable Self Registration'" name="registration" [withLabel]="true"
-                [switch]="false" [inline]="false" [(ngModel)]="accountData.registration" #authentication="ngModel"
+                [switch]="false" [(ngModel)]="accountData.registration" #authentication="ngModel"
                 [id]="'ssl'"></rds-checkbox>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-3">
             <rds-checkbox [disabled]="false" [label]="'Authentication With a Local Account'" name="authentication"
-                [withLabel]="true" [switch]="false" [inline]="false" [(ngModel)]="accountData.authentication"
+                [withLabel]="true" [switch]="false" [(ngModel)]="accountData.authentication"
                 #authentication="ngModel" [id]="'ssl'"></rds-checkbox>
         </div>
     </div>
@@ -38,14 +38,14 @@
         <div class="col-md-12 mt-4"
             *ngIf="accountData&&accountData.twofactorauthentication&&accountData.twofactorauthentication.toLocaleLowerCase()=='optional'">
             <rds-checkbox [disabled]="false" [label]="'Allow User to Change their two factor'" name="allowUser"
-                [withLabel]="true" [switch]="false" [inline]="false" [(ngModel)]="accountData.allowUser"
+                [withLabel]="true" [switch]="false" [(ngModel)]="accountData.allowUser"
                 #allowUser="ngModel" [id]="'ssl'"></rds-checkbox>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-3">
             <rds-checkbox [disabled]="false" [label]="'Remember this browser'" name="browser" [withLabel]="true"
-                [switch]="false" [inline]="false" [(ngModel)]="accountData.browser" #browser="ngModel" [id]="'ssl'">
+                [switch]="false" [(ngModel)]="accountData.browser" #browser="ngModel" [id]="'ssl'">
             </rds-checkbox>
         </div>
     </div>
@@ -55,14 +55,14 @@
     <div class="row">
         <div class="col-md-12 mt-4">
             <rds-checkbox [disabled]="false"  [label]="'Use Security Image Questions(Captcha) On Login'"
-                name="imagacaptcha" [withLabel]="true" [switch]="false" [inline]="false"
+                name="imagacaptcha" [withLabel]="true" [switch]="false"
                 [(ngModel)]="accountData.imagacaptcha" #imagacaptcha="ngModel" [id]="'ssl'"></rds-checkbox>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-3">
             <rds-checkbox [disabled]="false" [label]="'Use Security Image Questions(Captcha) On Registration'"
-                name="securityauthentication" [withLabel]="true" [switch]="false" [inline]="false"
+                name="securityauthentication" [withLabel]="true" [switch]="false"
                 [(ngModel)]="accountData.securityauthentication" #securityauthentication="ngModel" [id]="'ssl'">
             </rds-checkbox>
         </div>
@@ -118,7 +118,7 @@
     <div class="row pt-3" *ngFor="let externalProvider of _externalProviders">
         <div class="col-md-12 mb-1">
             <rds-checkbox [disabled]="false" [label]="externalProvider.name" (onChange)="onExternalProviderChange($event,externalProvider)" [checked]="externalProvider.enabled"
-                [name]="externalProvider.name" [withLabel]="true" [switch]="false" [inline]="false"
+                [name]="externalProvider.name" [withLabel]="true" [switch]="false"
                 [(ngModel)]="externalProvider.enabled"></rds-checkbox>
         </div>
         <ng-container *ngIf="externalProvider.enabled">

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RdsSizeComponent } from './rds-size.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 
@@ -9,7 +8,7 @@ import { CommonModule } from '@angular/common';
     RdsSizeComponent
   ],
   imports: [
-    BrowserModule,
+    
     CommonModule
   ],
   exports: [

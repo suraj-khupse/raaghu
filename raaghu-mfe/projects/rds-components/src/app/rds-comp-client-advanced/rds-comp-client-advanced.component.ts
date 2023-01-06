@@ -61,112 +61,43 @@ export class RdsCompClientAdvancedComponent implements OnInit, OnChanges {
     if (this.clientAdvancedObj != undefined) this.advanceObjFn();
   }
 
+  ngOnInit(): void {
+    if (this.clientAdvancedObj == undefined) this.advanceObjFn();
+    setTimeout(() => {
+      if (this.clientAdvancedForm && this.clientAdvancedObj) {
+        this.clientAdvancedForm.statusChanges.subscribe(res => {
+          this.advancedData.next(this.clientAdvancedObj)
+        })
+      }
+    }, 100);
+  }
 
-  onActionSelection (actionEvent: any) {
+  onActionSelectionClaims(actionEvent: any) {
     const deleteData = this.clientAdvancedObj.claims.find((x: any) => x.type == actionEvent.selectedData.type);
     const deleteDataIndex = this.clientAdvancedObj.claims.indexOf(deleteData, 0);
     if (deleteDataIndex != undefined) this.clientAdvancedObj.claims.splice(deleteDataIndex, 1);
     this.rdsClaimsDataTableConfig.input.tableData = this.clientAdvancedObj.claims;
   }
 
+  onActionSelectionGrants(actionEvent: any) {
+    const deleteData = this.clientAdvancedObj.allowedGrantTypes.find((x: any) => x.grantType == actionEvent.selectedData.grantType);
+    const deleteDataIndex = this.clientAdvancedObj.allowedGrantTypes.indexOf(deleteData, 0);
+    if (deleteDataIndex != undefined) this.clientAdvancedObj.allowedGrantTypes.splice(deleteDataIndex, 1);
+    this.rdsGrantTypesDataTableConfig.input.tableData = this.clientAdvancedObj.allowedGrantTypes;
+  }
 
-  ngOnInit(): void {
-   
-    if (this.clientAdvancedObj == undefined) this.advanceObjFn();
-    setTimeout(() => {
-      if (this.clientAdvancedForm && this.clientAdvancedObj) {
-        this.clientAdvancedForm.statusChanges.subscribe(res => {
-            this.advancedData.next(this.clientAdvancedObj)
-        })
-      }
-    }, 100);
+  onActionSelectionRestrictions(actionEvent: any) {
+    const deleteData = this.clientAdvancedObj.identityProviderRestrictions.find((x: any) => x.name == actionEvent.selectedData.name);
+    const deleteDataIndex = this.clientAdvancedObj.identityProviderRestrictions.indexOf(deleteData, 0);
+    if (deleteDataIndex != undefined) this.clientAdvancedObj.identityProviderRestrictions.splice(deleteDataIndex, 1);
+    this.rdsRestrictionsDataTableConfig.input.tableData = this.clientAdvancedObj.identityProviderRestrictions;
+  }
 
-    // Claims Table
-    this.rdsClaimsDataTableConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.claimHeaders,
-        tableData: this.clientAdvancedObj.claims,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 5,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have claims'
-      },
-      output: {
-        
-      },
-    };
-
-    // Grant Types Table
-    this.rdsGrantTypesDataTableConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.grantTypesHeaders,
-        tableData: this.clientAdvancedObj.allowedGrantTypes,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 5,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have grant types'
-      },
-      output: {
-        onActionSelection: (actionEvent: any) => {
-          const deleteData = this.clientAdvancedObj.allowedGrantTypes.find((x: any) => x.grantType == actionEvent.selectedData.grantType);
-          const deleteDataIndex = this.clientAdvancedObj.allowedGrantTypes.indexOf(deleteData, 0);
-          if (deleteDataIndex != undefined) this.clientAdvancedObj.allowedGrantTypes.splice(deleteDataIndex, 1);
-          this.rdsGrantTypesDataTableConfig.input.tableData = this.clientAdvancedObj.allowedGrantTypes;
-        }
-      },
-    }
-
-    // Restrictions
-    this.rdsRestrictionsDataTableConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.restrictionsHeaders,
-        tableData: this.clientAdvancedObj.identityProviderRestrictions,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 5,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have restrictions'
-      },
-      output: {
-        onActionSelection: (actionEvent: any) => {
-          const deleteData = this.clientAdvancedObj.identityProviderRestrictions.find((x: any) => x.name == actionEvent.selectedData.name);
-          const deleteDataIndex = this.clientAdvancedObj.identityProviderRestrictions.indexOf(deleteData, 0);
-          if (deleteDataIndex != undefined) this.clientAdvancedObj.identityProviderRestrictions.splice(deleteDataIndex, 1);
-          this.rdsRestrictionsDataTableConfig.input.tableData = this.clientAdvancedObj.identityProviderRestrictions;
-        }
-      },
-    }
-
-    // Properties
-    this.rdsPropertiesDataTableConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.propertiesHeaders,
-        tableData: this.clientAdvancedObj.properties,
-        inlineEdit: false,
-        pagination: true,
-        recordsPerPage: 5,
-        actions: this.actions,
-        isShimmer: false,
-        noDataTitle: 'Currently you do not have properties'
-      },
-      output: {
-        onActionSelection: (actionEvent: any) => {
-          const deleteData = this.clientAdvancedObj.properties.find((x: any) => x.key == actionEvent.selectedData.key);
-          const deleteDataIndex = this.clientAdvancedObj.properties.indexOf(deleteData, 0);
-          if (deleteDataIndex != undefined) this.clientAdvancedObj.properties.splice(deleteDataIndex, 1);
-          this.rdsPropertiesDataTableConfig.input.tableData = this.clientAdvancedObj.properties;
-        }
-      },
-    }
+  onActionSelectionProperties(actionEvent: any) {
+    const deleteData = this.clientAdvancedObj.properties.find((x: any) => x.key == actionEvent.selectedData.key);
+    const deleteDataIndex = this.clientAdvancedObj.properties.indexOf(deleteData, 0);
+    if (deleteDataIndex != undefined) this.clientAdvancedObj.properties.splice(deleteDataIndex, 1);
+    this.rdsPropertiesDataTableConfig.input.tableData = this.clientAdvancedObj.properties;
   }
 
   addClaims(type: string, value: string) {

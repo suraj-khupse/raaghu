@@ -9,7 +9,7 @@ import { Permission, PermissionNode, TreeType } from '../../models/pemission.mod
   templateUrl: './rds-comp-permission-tree.component.html',
   styleUrls: ['./rds-comp-permission-tree.component.scss']
 })
-export class RdsCompPermissionTreeComponent implements OnInit {
+export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
 
   // Input Decorators
   @Input() treeData: PermissionNode[] = [];
@@ -25,9 +25,45 @@ export class RdsCompPermissionTreeComponent implements OnInit {
 
   // Properties
   modifiedtreeData: PermissionNode[] = [];
+  demoTreeData:PermissionNode[] = [];
 
   constructor(public translate: TranslateService) { }
+ 
+  ngOnChanges(changes: SimpleChanges): void {
+   console.log('this.treeData', this.treeData);
+   debugger
+   
+   if (this.treeData && this.demoTreeData!= this.treeData) {
+    const resPermission: any[] = [];
+    this.treeData.forEach(element => {
+      const item = {
+        name: element.name,
+        displayName: element.displayName,
+        permissions: element.permissions
+      };
+      resPermission.push(item);
+    });
+    for (let i = 0; i < resPermission.length; i++) {
+      const eachPermission: any[] = [];
+      resPermission[i].permissions.forEach(element => {
+        const eachPermissionItem = {
+          referParentIndex: i,
+          allowedProviders: element.allowedProviders,
+          displayName: element.displayName,
+          grantedProviders: element.grantedProviders,
+          isGranted: this.roleName == 'admin' && this.isEdit === false ? false : element.isGranted,
+          name: element.name,
+          parentName: element.parentName,
+        }
+        eachPermission.push(eachPermissionItem);
+      });
+      resPermission[i].permissions = eachPermission;
+    }
+    this.modifiedtreeData = resPermission;
+  }
 
+  this.demoTreeData = this.treeData;
+ }
   ngOnInit(): void {
     // Convert data into editable format
     if (this.treeData) {
@@ -58,7 +94,9 @@ export class RdsCompPermissionTreeComponent implements OnInit {
       }
       this.modifiedtreeData = resPermission;
     }
+
   }
+
 
   // Parent checkbox selection based on child
   tickCheckbox(node: any): boolean {

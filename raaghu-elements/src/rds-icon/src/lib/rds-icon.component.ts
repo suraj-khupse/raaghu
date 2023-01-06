@@ -20,6 +20,8 @@ export class RdsIconComponent implements OnInit, OnChanges {
   @Input() colorVariant!: string;
   @Input() opacity: string = '';
   @Input() strokeWidth: string = '';
+  @Input() isAnimate: boolean=true;
+
 
   constructor(private element: ElementRef,
     @Optional() @Inject(DOCUMENT) private document: any) {
@@ -116,6 +118,9 @@ export class RdsIconComponent implements OnInit, OnChanges {
       svg.style.stroke = fillColor;
     } else {
       svg.style.stroke = 'none';
+    }
+    if(this.isAnimate){
+      svg.classList.add("jiggle");
     }
     // if (this.color) {
     //   const paths = svg.querySelectorAll('[stroke]');

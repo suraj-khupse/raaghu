@@ -1,8 +1,20 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { claimTypesAll, deleteApiScope, getAllApiScope,getApiScope,saveApiScope,updateApiScope,} from 'projects/libs/state-management/src/lib/state/api-scope/api-scope-action';
-import { selectAllScope, selectApiScope, selectClaimTypesAll,} from 'projects/libs/state-management/src/lib/state/api-scope/api-scope.selector';
+import {
+  claimTypesAll,
+  deleteApiScope,
+  getAllApiScope,
+  getApiScope,
+  saveApiScope,
+  updateApiScope,
+} from 'projects/libs/state-management/src/lib/state/api-scope/api-scope-action';
+import {
+  selectAllScope,
+  selectApiScope,
+  selectClaimTypesAll,
+} from 'projects/libs/state-management/src/lib/state/api-scope/api-scope.selector';
 import { TableAction } from 'projects/rds-components/src/models/table-action.model';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 declare var bootstrap: any;
@@ -11,9 +23,24 @@ declare var bootstrap: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+
+  animations: [
+    trigger('fadeAnimation', [
+      state(
+        'void',
+        style({
+          opacity: 0,
+        })
+      ),
+
+      transition('void <=> *', animate(1000)),
+    ]),
+  ],
 })
 export class AppComponent implements OnInit {
   title = 'scope';
+  isAnimation: boolean = true;
+  public isButtonSpinner: boolean = false;
   viewCanvas: boolean = false;
   activePage: number = 0;
   scopeUniqueId: any;
@@ -90,20 +117,15 @@ export class AppComponent implements OnInit {
 
   constructor(public translate: TranslateService, private store: Store) {}
   ngOnChanges(changes: SimpleChanges): void {
-    const offcanvas = document.getElementById(this.offcanvasId);
-    if (offcanvas) {
-      offcanvas.addEventListener('hidden.bs.offcanvas', (event) => {
-        this.viewCanvas = false;
-        this.basicInfo = undefined;
-        this.PropertyList = [];
-        this.userClaims = [];
-      });
-    }
+   
+   
   }
   ngOnInit(): void {
+    this.isAnimation = true;
     this.store.dispatch(getAllApiScope());
     this.store.select(selectAllScope).subscribe((res: any) => {
       if (res && res.items) {
+        this.isAnimation = false;
         this.scopeList = [];
         res.items.forEach((ele: any) => {
           const data: any = {
@@ -127,14 +149,16 @@ export class AppComponent implements OnInit {
           emphasize: res.emphasize,
           enabled: res.enabled,
           required: res.required,
-          id:res.id,
+          id: res.id,
           showInDiscoveryDocument: res.showInDiscoveryDocument,
         };
         this.apiScopeEdit = data;
         if (res.userClaims && res.userClaims.length > 0) {
           this.claims.forEach((claim: any) => {
             if (claim) {
-              const _claim = res.userClaims.find( (x: any) => x.type == claim.displayName);
+              const _claim = res.userClaims.find(
+                (x: any) => x.type == claim.displayName
+              );
               if (_claim) {
                 claim.left = true;
               }
@@ -158,7 +182,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(claimTypesAll());
     this.store.select(selectClaimTypesAll).subscribe((res: any) => {
       if (res) {
-       this.claims = [];
+        this.claims = [];
         res.forEach((element) => {
           let item = {
             id: element.id,
@@ -189,6 +213,7 @@ export class AppComponent implements OnInit {
   newScope(edit: boolean = false): void {
     this.viewCanvas = true;
     if (!edit) {
+      this.isButtonSpinner = true;
       this.isEdit = false;
       this.scopeUniqueId = undefined;
       this.apiScopeEdit = [];
@@ -234,15 +259,25 @@ export class AppComponent implements OnInit {
       var offcanvas = document.getElementById(this.offcanvasId);
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
       bsOffcanvas.show();
+      if (offcanvas) {
+        offcanvas.addEventListener('hidden.bs.offcanvas', (event) => {
+          this.viewCanvas = false;
+          this.basicInfo = undefined;
+          this.PropertyList = [];
+          this.userClaims = [];
+          this.isButtonSpinner = false;
+        });
+      }
     }, 100);
   }
 
   close(): void {
     this.apiScopeEdit = [];
-   this.userClaims = [];
+    this.userClaims = [];
     this.viewCanvas = false;
     this.activePage = 0;
     this.scopeUniqueId = undefined;
+    this.isButtonSpinner = false;
   }
 
   getScopeInfo(event: any): void {
@@ -320,6 +355,7 @@ export class AppComponent implements OnInit {
     }
     this.activePage = 0;
     this.viewCanvas = false;
+    this.isButtonSpinner = false;
   }
 
   getBtnName(): string {

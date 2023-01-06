@@ -8,7 +8,6 @@ import { NotFoundComponent } from './not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MultipleMfeComponent } from './multiple-mfe/multiple-mfe.component';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule, UserAuthModule, NgxTranslateModule, API_BASE_URL, UserAuthService } from '@libs/shared';
@@ -167,7 +166,6 @@ export function getRemoteServiceBaseUrl(): any {
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    MultipleMfeComponent,
     SidenavComponent,
   ],
 

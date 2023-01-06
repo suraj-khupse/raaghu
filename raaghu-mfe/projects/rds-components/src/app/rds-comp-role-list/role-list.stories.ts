@@ -5,7 +5,6 @@ import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-tabl
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompAlertComponent } from '../rds-comp-alert/rds-comp-alert.component';
 import { RdsCompRoleListComponent } from './rds-comp-role-list.component';
-import { RdsCompNewRoleComponent } from '../rds-comp-new-role/rds-comp-new-role.component';
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
 
 export default {
@@ -13,7 +12,7 @@ export default {
   component: RdsCompRoleListComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompRoleListComponent, RdsDataTableComponent,RdsCompNewRoleComponent,RdsCompPermissionTreeComponent,
+      declarations: [RdsCompRoleListComponent, RdsDataTableComponent,RdsCompPermissionTreeComponent,
         RdsCompAlertComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 

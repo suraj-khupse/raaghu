@@ -18,7 +18,7 @@
     -webkit-appearance: none;
     height: 1.7em;
     width: 1.7em;
-    background-color: #5c82e3;
+    background-color: #7E2EEf;
     cursor: pointer;
     margin-top: -9px;
     pointer-events: auto;
@@ -50,7 +50,7 @@
     margin-top: -9px;
     pointer-events: auto;
     border-radius: 50%;
-    border: 2px solid #5c82e3;
+    border: 2px solid #7E2EEf;
   }
 }
 .slider_1 {
@@ -74,7 +74,7 @@
   -webkit-appearance: none;
   height: 1.7em;
   width: 1.7em;
-  background-color: #5c82e3;
+  background-color: #7E2EEf;
   cursor: pointer;
   margin-top: -9px;
   pointer-events: auto;
@@ -102,7 +102,7 @@
   -webkit-appearance: none;
   height: 1.7em;
   width: 1.7em;
-  background-color: #5c82e3;
+  background-color:  #7E2EEf;
   cursor: pointer;
   margin-top: -9px;
   pointer-events: auto;
@@ -118,7 +118,7 @@
   margin-top: -9px;
   pointer-events: auto;
   border-radius: 50%;
-  border: 2px solid #5c82e3;
+  border: 2px solid #7E2EEf;
 }
 
 .wapper {
@@ -144,7 +144,7 @@
   max-width: 100%;
   top: -3rem;
   padding: 0.25rem;
-  background: #5c82e3;
+  background: #7E2EEf;
   border-radius: 0.3rem;
   text-align: center;
   font-size: smaller;
@@ -218,7 +218,7 @@
   border-radius: 0.3rem;
   text-align: center;
   font-size: small;
-  background-color: #5c82e3;
+  background-color:  #7E2EEf;
   z-index: 1;
   pointer-events: all;
 }
@@ -236,9 +236,9 @@
 .custtooltip_1::after {
   display: block;
   content: " ";
-  background: #5c82e3;
+  background:  #7E2EEf;
   position: absolute;
-  border: 1px #5c82e3 solid;
+  border: 1px  #7E2EEf solid;
   border-top: 0;
   border-left: 0;
   width: 8px;
@@ -251,9 +251,9 @@
 .sliderTooltipRangeOne::after {
   display: block;
   content: "";
-  background: #5c82e3;
+  background: #7E2EEf;
   position: absolute;
-  border: 1px #5c82e3 solid;
+  border: 1px  #7E2EEf solid;
   border-top: 0;
   border-left: 0;
   width: 8px;
@@ -268,7 +268,7 @@
   position: absolute;
   color: #ffff;
   max-width: 100%;
-  background: #5c82e3;
+  background: #7E2EEf;
   border-top: 0;
   border-left: 0;
   padding: 0.25rem;
@@ -280,7 +280,7 @@
   display: block;
   position: absolute;
   color: #ffff;
-  background: #5c82e3;
+  background: #7E2EEf;
   border-top: 0;
   border-left: 0;
   padding: 0.25rem;
@@ -390,7 +390,7 @@
   display: block;
   position: absolute;
   color: white;
-  background: #5c82e3;
+  background:  #7E2EEf;
   border-top: 0;
   border-left: 0;
   padding: 0.25rem;
@@ -399,7 +399,7 @@
   z-index: 1;
   padding-left: 6px;
   margin-left: -7px;
-  width: 39px;
+  width: 46px;
     text-align: center;
     max-width: 100%;
 }
@@ -410,7 +410,7 @@
   display: block;
   position: absolute;
   color: #ffff;
-  background: #5c82e3;
+  background: #7E2EEf;
   border-top: 0;
   border-left: 0;
   padding: 0.25rem;

@@ -24,7 +24,7 @@ const Template: Story<RdsCardComponent> = (args: RdsCardComponent) => ({
   props: args,
   template: `<rds-card [topBottomPadding]="topBottomPadding" [sidePadding]="sidePadding"
      [showHeader]="showHeader" [showBody]="showBody" [showFooter]="showFooter" [borderColor]="borderColor">
-     <div header class="pt-3 px-3">
+     <div header class=" card-header pt-3 px-3">
         <h5>Header Title</h5>
      </div>
     <div body>  

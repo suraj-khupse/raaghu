@@ -1,3 +1,10 @@
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 import { DatePipe } from '@angular/common';
 import {
   Component,
@@ -28,8 +35,22 @@ declare var bootstrap: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      state(
+        'void',
+        style({
+          opacity: 0,
+        })
+      ),
+
+      transition('void <=> *', animate(1000)),
+    ]),
+  ],
 })
 export class AppComponent implements OnInit, OnChanges {
+  isAnimation: boolean = true;
+  isShimmer: boolean = true;
   public resourceTableData: any = [];
   public navtabsItems: any = [];
   public userClaims: ApiResourceClaimDto[] = [];
@@ -90,30 +111,26 @@ export class AppComponent implements OnInit, OnChanges {
   public selectedSecrets: any = [];
   public basicInfo: any;
   public isEdit: boolean = false;
+  public isButtonSpinner: boolean = false;
   constructor(
     private store: Store,
     public translate: TranslateService,
     private datepipe: DatePipe
   ) {}
   ngOnChanges(changes: SimpleChanges): void {
-    const offcanvas = document.getElementById('api-resource-offcanvas');
-    if (offcanvas) {
-      offcanvas.addEventListener('hidden.bs.offcanvas', (event) => {
-        this.viewCanvas = false;
-        this.basicInfo = undefined;
-        this.selectedProperties = [];
-        this.userClaims = [];
-        this.selectedSecrets = [];
-        this.activeTab = 0;
-      });
-    }
+ 
   }
 
   ngOnInit(): void {
+    this.isAnimation = true;
+    this.isShimmer = true;
     this.store.dispatch(getAllApiResources());
     this.store.select(selectAllApiResource).subscribe((res: any) => {
       this.resourceTableData = [];
+
       if (res && res.items && res.items.length > 0) {
+        this.isAnimation = false;
+        this.isShimmer = false;
         res.items.forEach((ele: any) => {
           if (ele) {
             this.resourceTableData.push(ele);
@@ -290,7 +307,11 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   openCanvas(): void {
+
+    this.isButtonSpinner = true;
+
     
+
     this.claims.forEach((claim) => {
       claim.left = false;
     });
@@ -328,7 +349,19 @@ export class AppComponent implements OnInit, OnChanges {
       var offcanvas = document.getElementById('api-resource-offcanvas');
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
       bsOffcanvas.show();
+      if (offcanvas) {
+        offcanvas.addEventListener('hidden.bs.offcanvas', (event) => {
+          this.viewCanvas = false;
+          this.basicInfo = undefined;
+          this.selectedProperties = [];
+          this.userClaims = [];
+          this.selectedSecrets = [];
+          this.activeTab = 0;
+          this.isButtonSpinner = false;
+        });
+      }
     }, 100);
+
   }
 
   onSecretsChange(event: any): void {

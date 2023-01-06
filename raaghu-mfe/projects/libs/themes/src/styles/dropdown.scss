@@ -1,60 +1,47 @@
-/*dropdown-list custom properties*/
+// /*dropdown-list custom properties*/
 .dropdown-item {
-    
-    cursor: pointer;
-    // border-bottom: 0.03rem solid;
-    // padding: $dropdown-padding-y $dropdown-padding-x;
-  }
+  cursor: pointer;
+}
 
 .dropdown-menu {
-  //max-width: 30rem;
-  //white-space: unset;
   padding: 0 0;
 }
-  
-  .dropdown {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    align-items: center;
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+
+  .dropdownlist-input {
+    display: none;
     cursor: pointer;
-  
-    .dropdownlist-input {
-      display: none;
-      cursor: pointer;
-    }
-  
-    .dropdownlist-input + .dropdown-menu {
-      display: none;
-      //max-width: 30rem;
-    }
-  
-    .dropdownlist-input:checked + .dropdown-menu {
-      display: block;
-    }
-  }
-  
-  .dropdown .btn {
-    text-align: left;
-  }
-  #action-dropdown .rounded-pill{
-    text-align: center;
-    color: gray;
-    border: 1px solid;
   }
 
-/**/
+  .dropdownlist-input + .dropdown-menu {
+    display: none;
+  }
+
+  .dropdownlist-input:checked + .dropdown-menu {
+    display: block;
+  }
+}
+
+.dropdown .btn {
+  text-align: left;
+}
+#action-dropdown .rounded-pill {
+  text-align: center;
+  color: gray;
+  border: 1px solid;
+}
+
 .form-select[size]:not([size="1"]) {
   padding-right: 1.25rem;
   background-position: right 0.15rem center;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 }
 
-
-.dropdown-menu.show {
-  min-width: max-content;
-}
-
-.dropdown ul{
-  width: 100% ;
+.dropdown ul {
+  width: 100%;
 }

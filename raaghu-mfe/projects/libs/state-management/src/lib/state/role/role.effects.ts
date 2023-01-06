@@ -71,7 +71,7 @@ export class RoleEffects {
       ofType(saveClaims),
       switchMap(({data}) =>
         this.roleService.claims(data.id, data.claimData).pipe(map((res: any) => {
-          // this.store.dispatch(getRoles());
+          this.store.dispatch(getRoles());
           // this.alertService.showAlert('Success',  'Role added successfully', 'success')
         }),
           catchError((error: any) => of(
@@ -108,8 +108,8 @@ export class RoleEffects {
     this.actions$.pipe(
       ofType(savePermissions),
       switchMap(({data}) =>
-        this.roleService.permissionsPUT("R",data.name, data.permissions).pipe(map((res: any) => {
-          // this.store.dispatch(getRoles());
+        this.roleService.permissionsPUT("R",data.name,data.permissions).pipe(map((res: any) => {
+           this.store.dispatch(getRoles());
           // this.alertService.showAlert('Success',  'Role added successfully', 'success')
         }),
           catchError((error: any) => of(

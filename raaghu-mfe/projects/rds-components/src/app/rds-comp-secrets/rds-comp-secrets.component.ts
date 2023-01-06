@@ -8,6 +8,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
 
@@ -23,33 +24,21 @@ export class RdsCompSecretsComponent implements OnInit, OnChanges {
       displayName: 'Type',
       key: 'type',
       dataType: 'text',
-      dataLength: 30,
-      sortable: true,
-      required: true,
     },
     {
       displayName: 'Value',
       key: 'value',
       dataType: 'password',
-      dataLength: 30,
-      required: true,
-      sortable: true,
     },
     {
       displayName: 'Expiration',
       key: 'expiration',
       dataType: 'date',
-      dataLength: 30,
-      required: true,
-      sortable: true,
     },
     {
       displayName: 'Description',
       key: 'description',
       dataType: 'text',
-      dataLength: 30,
-      required: true,
-      sortable: true,
     },
   ];
   @Input() apiSecretsTableData: any[] = [];

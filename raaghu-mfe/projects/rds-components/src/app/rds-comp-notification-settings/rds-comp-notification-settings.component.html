@@ -13,7 +13,7 @@
                             [label]="translate.instant('(this option can be used to completely enable/disable receiving notifications.)')"
                             [withLabel]="true" [checked]="receiveNotifications" [(ngModel)]="receiveNotifications"
                             name="receive_notification" (onChange)="onReceiveNotificationsChange($event)"
-                            [withLabel]="true" [switch]="true" [inline]="false" id="receive_Notifications">
+                            [withLabel]="true" [switch]="true" id="receive_Notifications">
                         </rds-checkbox>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <rds-checkbox [label]="notification.displayName" [withLabel]="true"
                             (onChange)="onNotificationTypeChange($event,notification)"
                             [checked]="notification.isSubscribed" [(ngModel)]="notification.isSubscribed"
-                            [name]="notification.name" [withLabel]="true" [switch]="false" [inline]="false"
+                            [name]="notification.name" [withLabel]="true" [switch]="false"
                             [id]="notification.name"></rds-checkbox>
                     </div>
                 </div>

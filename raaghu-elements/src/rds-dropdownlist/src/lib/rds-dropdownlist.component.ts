@@ -7,7 +7,7 @@ import { Dropdown } from 'bootstrap'
   templateUrl: './rds-dropdownlist.component.html',
   styleUrls: ['./rds-dropdownlist.component.scss']
 })
-export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewInit {
+export class RdsDropdownlistComponent implements OnInit, OnChanges {
 
   title = 'rds-dropdownlist';
 
@@ -30,7 +30,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewIni
   @Input() icon: string = '';
   @Input() placeholder = "Filter by user"
   @Input() show: boolean = false;
-  @Input() borderDropdown: boolean = false;
+  @Input() borderDropdown: boolean = true;
   @Input() dropdownHeight!: string; 
 
   @Input() xOffset: string = '';
@@ -56,13 +56,6 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewIni
     this.isMasterSel = false;
   }
   ngAfterViewInit(): void {
-    const myDropdown = document.getElementById(this.id);
-    if (myDropdown) {
-      myDropdown.addEventListener('hide.bs.collapse', event => {
-        this.show = false;
-      })
-     
-    }
 
   }
 
@@ -82,6 +75,16 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewIni
       this.checkedCategoryList = [];
       this.badgeList = [];
       this.placeholder = this.resetPlaceholder;
+    }
+
+    const myDropdown = document.getElementById(this.id);
+    if (myDropdown) {
+      myDropdown.addEventListener('hide.bs.dropdown', event => {
+        this.show = false;
+      })
+      myDropdown.addEventListener('show.bs.dropdown', event => {
+        this.show = true;
+      })
     }
   }
 
@@ -136,7 +139,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewIni
       this.onSelect.emit({ item: selecteditem });
     }
     else {
-      this.placeholder = selecteditem.some;
+      // this.placeholder = selecteditem.some;
       this.onSelect.emit({ item: selecteditem });
     }
   }
@@ -189,5 +192,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges, AfterViewIni
       dropdown.hide();
     }
   }
+
+
 
 }

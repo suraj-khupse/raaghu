@@ -26,7 +26,7 @@ const Template: Story<RdsSizeComponent> = (args: RdsSizeComponent) => ({
 });
 
 export const Simple = Template.bind({});
-Simple.parameters = { controls: { include: ['sizeType', 'sizeData'] } };
+Simple.parameters = { controls: { include: ['sizeType', 'sizeData','onselect'] } };
 Simple.args = {
   sizeType: 'withoutDescription',
   sizeData: [
@@ -35,7 +35,7 @@ Simple.args = {
 };
 
 export const withDescription = Template.bind({});
-withDescription.parameters = { controls: { include: ['sizeType', 'sizeDataWithDescription'] } };
+withDescription.parameters = { controls: { include: ['sizeType', 'sizeDataWithDescription','onselect'] } };
 withDescription.args = {
   sizeType: 'withDescription',
   sizeDataWithDescription: [
