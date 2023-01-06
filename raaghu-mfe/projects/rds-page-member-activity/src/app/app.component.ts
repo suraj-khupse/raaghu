@@ -54,18 +54,6 @@ export class AppComponent implements OnInit {
         this.translate.use(res);
       }
     })
-    this.rdsMemberActivityTableMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.memberActivityTableHeader,
-        tableStyle: this.tableStyle,
-        width: '100%',
-        tableData: this.memberActivityTableData,
-        recordsPerPage: this.recordsPerpage,
-        pagination: true,
-        noDataTitle:'Currently you do not have activity'
-      },
-    };
   }
   selectedRole(event:any){
   }
