@@ -18,5 +18,7 @@
 <div class="col-md-6">
 </div>
 <div class="col-md-12 mt-3">
-  <mfe-loader [config]="rdsMemberActivityTableMfeConfig"></mfe-loader>
+  <rds-data-table [tableHeaders]="memberActivityTableHeader" [tableStyle]="'light'" [tableData]="memberActivityTableData"
+    [recordsPerPage]="10" [pagination]="true" [noDataTitle]="'Currently you do not have activity'">
+  </rds-data-table>
 </div>

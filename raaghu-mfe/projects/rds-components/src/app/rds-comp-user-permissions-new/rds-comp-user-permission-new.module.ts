@@ -4,9 +4,9 @@ import { RdsCompUserPermissionsNewComponent } from './rds-comp-user-permissions-
 import { RdsButtonModule, RdsCheckboxModule, RdsFabMenuModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
 import { FormsModule } from '@angular/forms';
 import { RdsCompUserBasicProfileRightModule } from '../rds-comp-user-basic-profile-right/rds-comp-user-basic-profile-right.module';
-
-
-
+import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompPermissionTreeModule } from '../rds-comp-permission-tree/rds-comp-permission-tree.module';
+import { RdsCompTreeStructureModule } from '../rds-comp-tree-structure/rds-comp-tree-structure.module';
 @NgModule({
   declarations: [RdsCompUserPermissionsNewComponent],
   exports:[RdsCompUserPermissionsNewComponent],
@@ -18,7 +18,10 @@ import { RdsCompUserBasicProfileRightModule } from '../rds-comp-user-basic-profi
     RdsNavTabModule,
     RdsCheckboxModule,
     FormsModule,
-    RdsCompUserBasicProfileRightModule
+    RdsCompUserBasicProfileRightModule,
+    RdsCompPermissionTreeModule,
+    RdsCompTreeStructureModule,
+    RdsCompDataTableModule
   ]
 })
 export class RdsCompUserPermissionNewModule { }
