@@ -1,5 +1,7 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <mfe-loader [config]="rdsEditionMfeConfig"></mfe-loader>
+  <!-- <mfe-loader [config]="rdsEditionMfeConfig"></mfe-loader> -->
+  <rds-comp-features-list-new [EditionList]="featureList" [editionData]="editionList"
+  (onEditionSave)="onEditionSave($event)"></rds-comp-features-list-new>
 </div>
 <!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
   <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>

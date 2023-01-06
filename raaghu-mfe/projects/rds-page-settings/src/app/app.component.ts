@@ -41,8 +41,8 @@ import { selectCaptchaSettings, selectEmailSettings, selectexternalproviderSetti
 })
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;
-  accountApiCall:boolean=false;
-  errorShowed:boolean=false;
+  accountApiCall: boolean = false;
+  errorShowed: boolean = false;
   currentAlerts: any = [];
   editShimmer: boolean = false;
   public accountData: any = {}
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
     accountData: undefined
 
   };
-  countError:number=0;
+  countError: number = 0;
   emailSettingsInfo: any = [];
   accountInfo: any = [];
   themeInfo: any = [];
@@ -162,113 +162,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  rdsCompSettingsNewMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompSettingsNew'
-  };
-
-
   ngOnInit(): void {
-    this.rdsCompSettingsNewMfeConfig = {
-      name: 'RdsCompSettingsNew',
-      input: {
-        externalProviders: this.externalProviders,
-        AuthentiactionList: this.AuthentiactionList,
-        VersionList: this.VersionList,
-        StyleList: this.StyleList,
-        WebList: this.WebList,
-        MenuList: this.MenuList,
-        StatusList: this.StatusList
-
-      },
-      output: {
-        onDataSaveEmail: (emailData: any) => {
-          const data: any = {
-            defaultFromAddress: emailData.defaultAddress,
-            defaultFromDisplayName: emailData.defaultDisplayName,
-            smtpEnableSsl: emailData.ssl,
-            smtpHost: emailData.host,
-            smtpPort: emailData.port,
-            smtpUseDefaultCredentials: emailData.defaultcredentials,
-            smtpDomain: emailData.smtpdomain,
-            smtpUserName: emailData.smtpusername,
-            smtpPassword: emailData.smtpPassword
-
-          }
-          this.store.dispatch(saveEmailSettings(data));
-        },
-        onDataSaveIdentity: (identitydata: any) => {
-          const data: any = {
-
-            password: {
-              requiredLength: identitydata.requiredlength,
-              requiredUniqueChars: identitydata.splChar,
-              requireNonAlphanumeric: identitydata.nonAlpha,
-              requireLowercase: identitydata.lowercaserequired,
-              requireUppercase: identitydata.uppercaserequired,
-              requireDigit: identitydata.numbers
-            },
-            lockout: {
-              allowedForNewUsers: identitydata.newusers,
-              lockoutDuration: identitydata.lockoutDuration,
-              maxFailedAccessAttempts: identitydata.MaxAttmpts
-            },
-            signIn: {
-              requireConfirmedEmail: identitydata.confirmEmail,
-              enablePhoneNumberConfirmation: identitydata.phoneNumber,
-              requireConfirmedPhoneNumber: identitydata.confirmPhoneNumber
-            },
-            user: {
-              isUserNameUpdateEnabled: identitydata.changeUserName,
-              isEmailUpdateEnabled: identitydata.changeEmail
-            }
-
-          }
-
-          this.store.dispatch(saveIdentityManagementSettings(data))
-        },
-        onDataSaveTheme: (themeData: any) => {
-          const data: any = {
-            style: themeData.styleId,
-            publicLayoutStyle: themeData.webStyleId,
-            menuPlacement: themeData.placementId,
-            menuStatus: themeData.statusId
-          }
-          this.store.dispatch(saveThemeSettings(data))
-        },
-        onDataSaveAccount: (accountData: any) => {
-          const data: any = {
-            usersCanChange: accountData.allowUser,
-            isRememberBrowserEnabled: accountData.browser,
-            twoFactorBehaviour: accountData.twofactorauthenticationId,
-
-          };
-          this.store.dispatch(saveAccountTwoFactorSettings(data));
-          const _data: any = {
-            isSelfRegistrationEnabled: accountData.registration,
-            enableLocalLogin: accountData.authentication
-          }
-          this.store.dispatch(saveAccountGeneralSettings(_data))
-          this.accountApiCall=true;
-          const captchaData: any = {
-            score: accountData.score,
-            siteKey: accountData.site,
-            siteSecret: accountData.secret,
-            useCaptchaOnLogin: accountData.imagacaptcha,
-            useCaptchaOnRegistration: accountData.securityauthentication,
-            verifyBaseUrl: accountData.baseUrl,
-            version: accountData.versionId
-
-          }
-          this.store.dispatch(saveAccountCaptchaSettings(captchaData))
-          if (accountData.externalProviders) {
-            this.store.dispatch(saveExternalProviderSettings(accountData.externalProviders))
-          }
-        }
-
-      }
-    };
-
-
     this.store.dispatch(getAccountTwoFactorSettings());
     this.store.select(selectTwoFactorSettings).subscribe((res: any) => {
       if (res && res.twoFactorSettings) {
@@ -279,9 +173,6 @@ export class AppComponent implements OnInit {
         }
         this.accountData['allowUser'] = twoFactorSettings.usersCanChange;
         this.accountData['browser'] = twoFactorSettings.isRememberBrowserEnabled;
-        const rdsCompSettingsNewMfeConfig = this.rdsCompSettingsNewMfeConfig;
-        rdsCompSettingsNewMfeConfig.input.accountData = this.accountData;
-        this.rdsCompSettingsNewMfeConfig = rdsCompSettingsNewMfeConfig
       }
     })
     this.store.dispatch(getAccountGeneralSettings());
@@ -306,15 +197,13 @@ export class AppComponent implements OnInit {
           this.accountData['imagacaptcha'] = captchaSettings.useCaptchaOnLogin,
           this.accountData['securityauthentication'] = captchaSettings.useCaptchaOnRegistration,
           this.accountData['baseUrl'] = captchaSettings.verifyBaseUrl
-
-        const rdsCompSettingsNewMfeConfig = this.rdsCompSettingsNewMfeConfig;
-        rdsCompSettingsNewMfeConfig.input.accountData = this.accountData;
-        this.rdsCompSettingsNewMfeConfig = rdsCompSettingsNewMfeConfig
       }
     })
     this.store.dispatch(getEmailSettings());
     this.store.select(selectEmailSettings).subscribe((res: any) => {
       if (res) {
+        console.log('email', res);
+        
         // const emaildata: any = res.emailSettings;
         this.emailSettingData['defaultDisplayName'] = res.defaultFromDisplayName;
         this.emailSettingData['defaultAddress'] = res.defaultFromAddress;
@@ -322,11 +211,6 @@ export class AppComponent implements OnInit {
         this.emailSettingData['port'] = res.smtpPort
         this.emailSettingData['ssl'] = res.smtpEnableSsl
         this.emailSettingData['defaultcredentials'] = res.smtpUseDefaultCredentials
-
-        const rdsCompSettingsNewMfeConfig = this.rdsCompSettingsNewMfeConfig;
-        rdsCompSettingsNewMfeConfig.input.emailSettingsData = this.emailSettingData;
-        this.rdsCompSettingsNewMfeConfig = rdsCompSettingsNewMfeConfig
-
       }
     })
 
@@ -348,10 +232,6 @@ export class AppComponent implements OnInit {
         this.identityData['MaxAttmpts'] = res.lockout.maxFailedAccessAttempts;
         this.identityData['changeEmail'] = res.user.isEmailUpdateEnabled;
         this.identityData['changeUserName'] = res.user.isUserNameUpdateEnabled;
-
-        const rdsCompSettingsNewMfeConfig = this.rdsCompSettingsNewMfeConfig;
-        rdsCompSettingsNewMfeConfig.input.identiyData = this.identityData;
-        this.rdsCompSettingsNewMfeConfig = rdsCompSettingsNewMfeConfig
       }
     })
 
@@ -378,21 +258,95 @@ export class AppComponent implements OnInit {
         if (themeStatus) {
           this.themeData['status'] = themeStatus.some
         }
-        const rdsCompSettingsNewMfeConfig = this.rdsCompSettingsNewMfeConfig;
-        rdsCompSettingsNewMfeConfig.input.themeData = this.themeData;
-        this.rdsCompSettingsNewMfeConfig = rdsCompSettingsNewMfeConfig
       }
     })
     this.store.dispatch(getExternalProviderSettings());
     this.store.select(selectexternalproviderSettings).subscribe((res: any) => {
-      if (res) {
-        this.externalProviders = res.settings;
-        const rdsCompSettingsNewMfeConfig = this.rdsCompSettingsNewMfeConfig;
-        rdsCompSettingsNewMfeConfig.input.externalProviders = [...this.externalProviders];
-        
+      if (res) this.externalProviders = res.settings;
+    });
+  }
+
+  onDataSaveEmail(emailData: any) {
+    const data: any = {
+      defaultFromAddress: emailData.defaultAddress,
+      defaultFromDisplayName: emailData.defaultDisplayName,
+      smtpEnableSsl: emailData.ssl,
+      smtpHost: emailData.host,
+      smtpPort: emailData.port,
+      smtpUseDefaultCredentials: emailData.defaultcredentials,
+      smtpDomain: emailData.smtpdomain,
+      smtpUserName: emailData.smtpusername,
+      smtpPassword: emailData.smtpPassword
+    }
+    this.store.dispatch(saveEmailSettings(data));
+  }
+
+  onDataSaveIdentity(identitydata: any) {
+    const data: any = {
+      password: {
+        requiredLength: identitydata.requiredlength,
+        requiredUniqueChars: identitydata.splChar,
+        requireNonAlphanumeric: identitydata.nonAlpha,
+        requireLowercase: identitydata.lowercaserequired,
+        requireUppercase: identitydata.uppercaserequired,
+        requireDigit: identitydata.numbers
+      },
+      lockout: {
+        allowedForNewUsers: identitydata.newusers,
+        lockoutDuration: identitydata.lockoutDuration,
+        maxFailedAccessAttempts: identitydata.MaxAttmpts
+      },
+      signIn: {
+        requireConfirmedEmail: identitydata.confirmEmail,
+        enablePhoneNumberConfirmation: identitydata.phoneNumber,
+        requireConfirmedPhoneNumber: identitydata.confirmPhoneNumber
+      },
+      user: {
+        isUserNameUpdateEnabled: identitydata.changeUserName,
+        isEmailUpdateEnabled: identitydata.changeEmail
       }
-    })
-    
+    }
+    this.store.dispatch(saveIdentityManagementSettings(data))
+  }
+
+  onDataSaveTheme(themeData: any) {
+    const data: any = {
+      style: themeData.styleId,
+      publicLayoutStyle: themeData.webStyleId,
+      menuPlacement: themeData.placementId,
+      menuStatus: themeData.statusId
+    }
+    this.store.dispatch(saveThemeSettings(data));
+  }
+
+  onDataSaveAccount(accountData: any) {
+    const data: any = {
+      usersCanChange: accountData.allowUser,
+      isRememberBrowserEnabled: accountData.browser,
+      twoFactorBehaviour: accountData.twofactorauthenticationId,
+
+    };
+    this.store.dispatch(saveAccountTwoFactorSettings(data));
+    const _data: any = {
+      isSelfRegistrationEnabled: accountData.registration,
+      enableLocalLogin: accountData.authentication
+    }
+    this.store.dispatch(saveAccountGeneralSettings(_data))
+    this.accountApiCall = true;
+    const captchaData: any = {
+      score: accountData.score,
+      siteKey: accountData.site,
+      siteSecret: accountData.secret,
+      useCaptchaOnLogin: accountData.imagacaptcha,
+      useCaptchaOnRegistration: accountData.securityauthentication,
+      verifyBaseUrl: accountData.baseUrl,
+      version: accountData.versionId
+
+    }
+    this.store.dispatch(saveAccountCaptchaSettings(captchaData))
+    if (accountData.externalProviders) {
+      this.store.dispatch(saveExternalProviderSettings(accountData.externalProviders))
+    }
   }
 
 

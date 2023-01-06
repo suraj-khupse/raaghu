@@ -50,7 +50,9 @@ export class AppComponent implements OnInit {
     { key: 'layoutStatus', displayName: 'Layout Status', dataType: 'html', filterable: true, sortable: true, required: false, },
     { key: 'layoutDetails', displayName: 'Layout Details', dataType: 'html', filterable: true, sortable: true, required: false, },
 
-  ]
+  ];
+
+  actions = [{ id: 'edit', displayName: 'Edit' }];
   
   constructor(private store: Store) { }
   tableDataForTextTemplate = [];
@@ -169,33 +171,6 @@ export class AppComponent implements OnInit {
   //   },
   // ];
 
-  rdsDataTableForTextTemplateMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsDataTable',
-    input: {
-      tableData: this.tableDataForTextTemplate,
-      tableHeaders: this.tableHeadersForTextTemplate,
-      recordsPerPage: 5,
-      width: '100%',
-      pagination: true,
-      actions: [{ id: 'edit', displayName: 'Edit' }],
-      inlineEdit: false,
-    },
-    output: {
-      onActionSelection: (event: any) => {
-        if (event.actionId === 'edit') {
-          this.openTextTemplate();
-
-          const data: any = {
-            templateName: event.selectedData.name,
-          }
-          this.store.dispatch(getTemplateContent(data));
-        }
-      },
-
-
-    },
-  };
-
   ngOnInit(): void {
     this.store.dispatch(getTemplateDefinition());
     this.store.select(selectAllTT).subscribe((res: any) => {
@@ -220,9 +195,6 @@ export class AppComponent implements OnInit {
           }
           this.templateList.push(item);
         });
-        const mfeConfig = this.rdsDataTableForTextTemplateMfeConfig
-        mfeConfig.input.tableData = [... this.templateList];
-        this.rdsDataTableForTextTemplateMfeConfig = mfeConfig;
       }
     });
 
@@ -236,6 +208,17 @@ export class AppComponent implements OnInit {
         this.selectedData.content = data.content;
       }
     })
+  }
+
+  onActionSelection(event: any) {
+    if (event.actionId === 'edit') {
+      this.openTextTemplate();
+
+      const data: any = {
+        templateName: event.selectedData.name,
+      }
+      this.store.dispatch(getTemplateContent(data));
+    }
   }
 
   openTextTemplate(): void {

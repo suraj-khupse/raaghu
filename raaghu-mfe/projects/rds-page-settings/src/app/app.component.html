@@ -1,1 +1,6 @@
-<mfe-loader [config]="rdsCompSettingsNewMfeConfig"></mfe-loader>
+<rds-comp-settings-new [externalProviders]="externalProviders" [accountData]="accountData" [AuthentiactionList]="AuthentiactionList"
+    [emailSettingsData]="emailSettingData" [VersionList]="VersionList" [StyleList]="StyleList" [WebList]="WebList"
+    [MenuList]="MenuList" [StatusList]="StatusList" [identiyData]="identityData" [themeData]="themeData" (onDataSaveEmail)="onDataSaveEmail($event)"
+    (onDataSaveIdentity)="onDataSaveIdentity($event)" (onDataSaveTheme)="onDataSaveTheme($event)"
+    (onDataSaveAccount)="onDataSaveAccount($event)">
+</rds-comp-settings-new>

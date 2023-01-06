@@ -9,6 +9,7 @@ import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { RdsFabMenuModule } from 'projects/libs/rds-elements/src/rds-fab-menu/src/public-api';
 import { SettingEffects } from 'projects/libs/state-management/src/lib/state/settings/settings.effects';
 import { settingReducer } from 'projects/libs/state-management/src/lib/state/settings/settings.reducer';
+import { RdsCompSettingsNewModule } from 'projects/rds-components/src/app/rds-comp-settings-new/rds-comp-settings-new.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { AppComponent } from './app.component';
     NgxShimmerLoadingModule,
     NgxTranslateModule.forRoot(),
     CommonModule,
+    RdsCompSettingsNewModule
     //StoreModule.forFeature('settings', { settings: settingReducer }),
 
     // EffectsModule.forRoot([SettingEffects]),

@@ -1,5 +1,4 @@
 <!-- <mfe-loader [config]="rdssecurityLogMfeConfig"></mfe-loader> -->
-
 <div class="container">
     <div class="row">
         <div class="d-flex justify-content-end mt-2 mb-1">
@@ -10,8 +9,11 @@
         </div>
     </div>
     <div class="row">
-    <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-        <mfe-loader [config]="rdssecurityLogTableMfeConfig"></mfe-loader>
-    </div>
+        <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+            <rds-data-table [tableHeaders]="securityLogsHeaders" [tableStyle]="'light'" [tableData]="securityLogs"
+                [recordsPerPage]="10" [pagination]="true" [noDataTitle]="'Currently you do not have security log'"
+                (onActionSelection)="onActionSelection($event)">
+            </rds-data-table>
+        </div>
     </div>
 </div>

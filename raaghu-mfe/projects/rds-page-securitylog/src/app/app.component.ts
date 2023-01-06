@@ -44,15 +44,14 @@ import {
     ])
   ]
 })
-export class AppComponent implements OnInit  {
-  public rdssecurityLogTableMfeConfig: ComponentLoaderOptions;
- securityLogs: any = [];
+export class AppComponent implements OnInit {
+  securityLogs: any = [];
   securityLogsTableData: any = [];
   isAnimation: boolean = true;
 
 
   // @Output() deleteEvent = new EventEmitter<any>();
-   constructor( private store: Store) { }
+  constructor(private store: Store) { }
 
   public securityLogsHeaders: TableHeader[] = [
     { key: 'time', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
@@ -65,41 +64,16 @@ export class AppComponent implements OnInit  {
   ];
 
   ngOnInit(): void {
-    this.rdssecurityLogTableMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.securityLogsHeaders,
-        tableStyle: 'light',
-        width: '100%',
-        tableData: this.securityLogs,
-        recordsPerPage: 10,
-        pagination: true,
-        noDataTitle: 'Currently you do not have security log'
-      },
-      output: {
-        onActionSelection: (event: any) => {
-          // if (event.actionId === 'delete') {
-          //   const index = this.securityLogs.findIndex((x: any) => x.id === event.selectedData.id);
-          //   if (index !== -1) {
-          //     this.securityLogs.splice(index, 1);
-          //     const mfeConfig = this.securityLogs
-          //     mfeConfig.input.tableData = [... this.securityLogs];
-          //     this.securityLogs = mfeConfig;
-          //   }
-          // }
-        }
-      }
-    };
-     this.store.dispatch(getSecuritylogs());
-     this.store.select(selectSecurityLogs).subscribe((res: any) => {
+    this.store.dispatch(getSecuritylogs());
+    this.store.select(selectSecurityLogs).subscribe((res: any) => {
       if (res && res.items) {
-         this.isAnimation = false;
+        this.isAnimation = false;
         res.items.forEach((element: any) => {
-         const item: any = {
+          const item: any = {
             id: element.id,
             time: element.creationTime,
             action: element.action,
-            ipAddress: element.clientIpAddress ,
+            ipAddress: element.clientIpAddress,
             browser: element.browserInfo,
             application: element.applicationName,
             identity: element.identity,
@@ -107,16 +81,25 @@ export class AppComponent implements OnInit  {
           }
           this.securityLogs.push(item);
         });
-        const mfeConfig = this.rdssecurityLogTableMfeConfig
-        mfeConfig.input.tableData = [... this.securityLogs];
-         mfeConfig.input.isShimmer = false;
-        this.rdssecurityLogTableMfeConfig = mfeConfig;
 
 
       }
     });
 
   }
+
+  onActionSelection($event) {
+    // if (event.actionId === 'delete') {
+    //   const index = this.securityLogs.findIndex((x: any) => x.id === event.selectedData.id);
+    //   if (index !== -1) {
+    //     this.securityLogs.splice(index, 1);
+    //     const mfeConfig = this.securityLogs
+    //     mfeConfig.input.tableData = [... this.securityLogs];
+    //     this.securityLogs = mfeConfig;
+    //   }
+    // }
+  }
+
   exportToExcel(navTab: string): void {
     this.downloadCSV(this.securityLogs, this.securityLogsHeaders, 'security_logs');
   }
