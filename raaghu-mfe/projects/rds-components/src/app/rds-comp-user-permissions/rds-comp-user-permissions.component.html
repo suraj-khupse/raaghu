@@ -128,7 +128,7 @@
     <div class="col-md-12 pt-3">
       <rds-search-input placeholder="Search" icon="search" size="small"> </rds-search-input>
     </div>
-    <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="selectedFilteredPermissions"
+    <rds-comp-permission-tree [treeData]="permissionsList" [selectedItems]="selectedPermissions"
       (getAllselectedPermissions)="getSelectedUserPermissionFilterList($event)"
       [selectAllLabel]="'Select All Permissions'">
     </rds-comp-permission-tree>

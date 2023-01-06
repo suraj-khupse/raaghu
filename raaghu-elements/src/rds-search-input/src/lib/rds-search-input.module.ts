@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     RdsIconModule,
     RdsLabelModule,
-    FormsModule
+    FormsModule,
+    RdsLabelModule
   ],
   exports: [
     RdsSearchInputComponent
