@@ -1,28 +1,41 @@
-<!-- <form #claimDataForm="ngForm" class="mt-3">
+<form #claimDataForm="ngForm" class="mt-3">
     <div class="row">
         <div class="form-group col-sm-6 mb-3">
             <div class="mb-2">
                 <rds-label [label]="'Type'"></rds-label>
             </div>
             <rds-dropdownlist class="mt-2" [placeholder]="'Type'" [size]="'large'"
-                [listItems]="claimValueData" (onSelect)="selectedClaimType($event)">
+                [listItems]="claimValueData" (onSelect)="selectedClaimType($event)" [value]="ClaimData.claimType" required>
             </rds-dropdownlist>
         </div>
 
         <div class="form-group col-sm-6 mb-3">
             <rds-input size="medium" value="" [label]="'Value'" [labelPosition]="'top'" inputType="text"
-                [(ngModel)]="ClaimData.claimValue" [disabled]="false" [readonly]="false" name="claimValue">
+                [(ngModel)]="ClaimData.claimValue" [disabled]="false" [readonly]="false" name="claimValue" required>
             </rds-input>
         </div>
     </div>
     <div class="col-md-12">
-        <rds-button [id]="'yes'" [icon]="'plus'" [block]="true" [size]="'small'"
+        <!-- <rds-button [id]="'yes'" [icon]="'plus'" [block]="true" [size]="'small'"
             [tooltipPlacement]="'top'" [colorVariant]="'primary'" [isDisabled]="false" [label]="'Add'" [submit]="true"
             (click)="addClaimData(claimDataForm)">
-        </rds-button>
+        </rds-button> -->
+        <rds-button [label]="translate.instant('Add')" [size]="'small'" [block]="true"
+        [colorVariant]="'primary'" (click)="addClaimData(claimDataForm)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
+      </rds-button>
     </div>
     <div class="col-md-12 mt-3">
-        <mfe-loader [config]="rdsDataTableClaimType"></mfe-loader>
+        <rds-data-table
+        [tableHeaders]="ClaimTableHeader"
+        [tableData]="claimDisplayArray"
+        [inlineEdit]="false"
+        [pagination]="true"
+        [recordsPerPage]= "4"
+        [actions]="claimsActions"
+        [isShimmer]="false"
+        [noDataTitle]="'Currently you do not have claims'"
+        (onActionSelection)="onActionSelection($event)"
+        ></rds-data-table>
     </div>
 </form>
 
@@ -36,4 +49,4 @@
       [showLoadingSpinner]="false">
     </rds-button>
 
-  </div> -->
+  </div>

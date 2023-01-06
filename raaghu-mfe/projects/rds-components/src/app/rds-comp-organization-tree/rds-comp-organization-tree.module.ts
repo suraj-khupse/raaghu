@@ -7,13 +7,15 @@ import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { RdsCompAlertPopupModule } from '../rds-comp-data-table/rds-comp-alert-popup/rds-comp-alert-popup.module';
 import { NgxTranslateModule } from '@libs/shared';
 import { FormsModule } from '@angular/forms';
+import { NestGroupDirective } from '../rds-comp-hierarchy/node-label.directive';
 
 
 
 @NgModule({
   declarations: [
     RdsOrganizationTreeComponent,
-    RdsCompOrganizationTreeShimmerComponent
+    RdsCompOrganizationTreeShimmerComponent,
+    NestGroupDirective
 
   ],
   imports: [

@@ -19,6 +19,7 @@ export class RdsOrganizationTreeComponent implements OnInit {
   private deleteNodeId: any;
   @Input() organizationTreeData;
   @Input() mutable: boolean;
+  @Input() isRoles: boolean= false;
   @Input() nodeColor: string[] = ['#BDCEFC', '#0D79AE', '#14A94B', '#FBA919'];
   @Output() onSelectnode = new EventEmitter<{ item: any }>()
   @Output() onDeleteNode = new EventEmitter<{ id: any }>()
