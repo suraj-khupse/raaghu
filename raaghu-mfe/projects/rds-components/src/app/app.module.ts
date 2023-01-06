@@ -282,9 +282,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompApplyForPositionComponent,
     RdsCompOpenPositionComponent,
     RdsCompNotificationSettingsComponent,
-    RdsCompLanguageNewComponent,
-    RdsCompClaimTypeRoleComponent,
-    // RdsCompEntityChangesComponent  
+    RdsCompLanguageNewComponent
   ],
   imports: [
     StoreModule,
