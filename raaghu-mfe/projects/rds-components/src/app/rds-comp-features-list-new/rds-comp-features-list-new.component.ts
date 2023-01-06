@@ -9,7 +9,7 @@ export interface EditionItem {
   features: any;
 }
 @Component({
-  selector: 'app-rds-comp-features-list-new',
+  selector: 'rds-comp-features-list-new',
   templateUrl: './rds-comp-features-list-new.component.html',
   styleUrls: ['./rds-comp-features-list-new.component.scss']
 })

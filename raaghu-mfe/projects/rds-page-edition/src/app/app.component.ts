@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     }
   }
   public rdsEditionMfeConfig: ComponentLoaderOptions;
-  constructor(private store: Store,private translate:TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
+  constructor(private store: Store, private translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService, private alertService: AlertService) { }
 
   EditionDatatable: any = [];
   featureList: any = [];
@@ -81,29 +81,19 @@ export class AppComponent implements OnInit {
         featureList: this.featureList,
         noDataTitle: 'Currently you do not have edition',
         editionList: this.editionList,
-        isShimmer:true,
-        editShimmer:true
+        isShimmer: true,
+        editShimmer: true
       },
       output: {
         onEditionSave: (edition) => {
-          if (edition && edition.editionBasicInfo) {
-            if (edition.editionBasicInfo.id) {
-              this.store.dispatch(updateEdition(edition))
-            } else {
-              const data: any = {
-                displayName : edition.editionBasicInfo.editionName ,
-                planId : edition.editionBasicInfo.editionPlan
-              }
-              this.store.dispatch(saveEdition(data))
-            }
-    }
-  }
-}
+
+        }
+      }
     }
     // const mfeConfig = this.rdsEditionMfeConfig
     // mfeConfig.input.isShimmer =false
     // this.rdsEditionMfeConfig = mfeConfig;
-  
+
     this.store.dispatch(getEditions());
     this.store.select(selectAllEditions).subscribe((res: any) => {
       // this.EditionDatatable = [];
@@ -130,10 +120,10 @@ export class AppComponent implements OnInit {
         //     this.Dataset.push(data);
         // })
         const rdsEditionMfeConfig = this.rdsEditionMfeConfig;
-        rdsEditionMfeConfig.input.editionData ={...this.editionData};
-        rdsEditionMfeConfig.input.editionData =res.editionList;
-        rdsEditionMfeConfig.input.editionData =res.editions;
-        rdsEditionMfeConfig.input.isShimmer=false
+        rdsEditionMfeConfig.input.editionData = { ...this.editionData };
+        rdsEditionMfeConfig.input.editionData = res.editionList;
+        rdsEditionMfeConfig.input.editionData = res.editions;
+        rdsEditionMfeConfig.input.isShimmer = false
         this.rdsEditionMfeConfig = rdsEditionMfeConfig;
       }
 
@@ -182,55 +172,69 @@ export class AppComponent implements OnInit {
     //   }
     // })
     //}
-  // convertArraytoTreedata(data: any) {
-  //   const treedaTA = this._arrayToTreeConverterService.createTree(
-  //     data,
-  //     'parentName',
-  //     'name',
-  //     null,
-  //     'children',
-  //     [
-  //       {
-  //         target: 'label',
-  //         source: 'displayName',
-  //       },
-  //       {
-  //         target: 'expandedIcon',
-  //         value: 'fa fa-folder-open text-warning',
-  //       },
-  //       {
-  //         target: 'collapsedIcon',
-  //         value: 'fa fa-folder text-warning',
-  //       },
-  //       {
-  //         target: 'expanded',
-  //         value: true,
-  //       },
-  //       {
-  //         target: 'selectable',
-  //         targetFunction(item) {
-  //             return item.inputType.name === 'CHECKBOX';
-  //         },
-  //     },
-  //     ],
-  //     1
-  //   );
-  //   return treedaTA;
-  // }
-  // subscribeToAlerts() {
-  //   this.alertService.alertEvents.subscribe((alert) => {
-  //     this.currentAlerts = [];
-  //     const currentAlert: any = {
-  //       type: alert.type,
-  //       title: alert.title,
-  //       message: alert.message,
-  //     };
-  //     this.currentAlerts.push(currentAlert);
-  //     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-  //     rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-  //     this.rdsAlertMfeConfig = rdsAlertMfeConfig;
-  //   });
+    // convertArraytoTreedata(data: any) {
+    //   const treedaTA = this._arrayToTreeConverterService.createTree(
+    //     data,
+    //     'parentName',
+    //     'name',
+    //     null,
+    //     'children',
+    //     [
+    //       {
+    //         target: 'label',
+    //         source: 'displayName',
+    //       },
+    //       {
+    //         target: 'expandedIcon',
+    //         value: 'fa fa-folder-open text-warning',
+    //       },
+    //       {
+    //         target: 'collapsedIcon',
+    //         value: 'fa fa-folder text-warning',
+    //       },
+    //       {
+    //         target: 'expanded',
+    //         value: true,
+    //       },
+    //       {
+    //         target: 'selectable',
+    //         targetFunction(item) {
+    //             return item.inputType.name === 'CHECKBOX';
+    //         },
+    //     },
+    //     ],
+    //     1
+    //   );
+    //   return treedaTA;
+    // }
+    // subscribeToAlerts() {
+    //   this.alertService.alertEvents.subscribe((alert) => {
+    //     this.currentAlerts = [];
+    //     const currentAlert: any = {
+    //       type: alert.type,
+    //       title: alert.title,
+    //       message: alert.message,
+    //     };
+    //     this.currentAlerts.push(currentAlert);
+    //     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+    //     rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
+    //     this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+    //   });
 
-  // }
+    // }
+  }
+
+  onEditionSave(edition: any) {
+    if (edition && edition.editionBasicInfo) {
+      if (edition.editionBasicInfo.id) {
+        this.store.dispatch(updateEdition(edition))
+      } else {
+        const data: any = {
+          displayName: edition.editionBasicInfo.editionName,
+          planId: edition.editionBasicInfo.editionPlan
         }
+        this.store.dispatch(saveEdition(data))
       }
+    }
+  }
+}
