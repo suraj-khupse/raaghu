@@ -3,7 +3,7 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
 
   <rds-comp-user-permissions [userList]="userList" [roles]="roles" [isEdit]="isEdit" [orgTreeData]="orgTreeData"
-    [userinfo]="userinfo" [isShimmer]="isShimmer" [editShimmer]="editShimmer" [permissionsList]="Permission"
+    [userinfo]="userinfo" [isShimmer]="isShimmer" [editShimmer]="editShimmer" [permissionsList]="permissionsList"
     [OrganizationUnit]="OrganizationUnit" [selectedOrganizations]="SelectedOrganizationUnit"
     [selectedPermissions]="selectedPermissions" (Saveuserinfo)="Saveuserinfo($event)" (onClose)="onClose($event)"
     (deleteUser)="deleteUser($event)" (FilterPermission)="FilterPermission($event)"
