@@ -4,7 +4,7 @@
       [ngClass]="classes" [attr.placeholder]="placeholder" [(ngModel)]="value" [value]="value" data-bs-toggle="tooltip"
       [attr.data-bs-placement]="tooltipPlacement" [attr.data-bs-title]="tooltipTitle" [attr.id]="id" [disabled]="disabled" [readonly]="readonly"
       (mouseup)="onMouseup($event)" />
-    <rds-icon [title]="iconTitle" *ngIf="icon" [ngStyle]="{'cursor': iconCursor}" [ngClass]="iconClass"
+    <rds-icon [title]="iconTitle" *ngIf="icon" [isAnimate]="false" [ngStyle]="{'cursor': iconCursor}" [ngClass]="iconClass"
       [height]="iconHeight" [width]="iconWidth" [fill]="iconFill" [stroke]="iconStroke" [opacity]="iconOpacity"
       class="icon-position" [name]="icon" (click)="showPassword(inputType)"></rds-icon>
     <rds-icon [name]="'disable'" *ngIf="disabled && !readonly"></rds-icon>
