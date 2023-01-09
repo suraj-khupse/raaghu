@@ -44,9 +44,8 @@ Default.args={
   { value: 'UnknownExternalLogin', some: 'Unknown External Login', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
   { value: 'LockedOut', some: 'Locked Out', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
   { value: 'UserPhoneNumberIsNotConfirmed', some: 'User PhoneNumber IsNot Confirmed', isSelected:false, icon:'',iconFill:false,conWidth:0,iconStroke:false,isFree:false,} ],
-  
- operationLogs : [
-  {
+  LoginAttempts:{
+    LoginDatatable:[{
       "IP address":`<div>106.214.19.218</div>`,
       "parameters": "{\"input\": {\"extraProperties\": {}, \"name\": \"Lorem Ipsum\", \"displayName\": \"Lorem Ipsum\",\"description\": \"Lorem Ipsum\", \"required\": true, \"enabled\": true, \"emphasize\": true, \"showInDiscoveryDocument\": true,\"userClaims\": [], \"properties\": [] } }",         
       "client": "admin",
@@ -57,8 +56,8 @@ Default.args={
       "browserInfo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
       "executionTime": "12/14/2021, 5:15:24 PM",
       "exception": null
-  },
-  {
+    },
+    {
       "IP address":`<div>406.274.19.321</div>`,
       "parameters": "{\"input\": {\"extraProperties\": {}, \"name\": \"Lorem Ipsum\", \"displayName\": \"Lorem Ipsum\",\"description\": \"Lorem Ipsum\", \"required\": true, \"enabled\": true, \"emphasize\": true, \"showInDiscoveryDocument\": true,\"userClaims\": [], \"properties\": [] } }",         
       "client": "admin",
@@ -82,6 +81,29 @@ Default.args={
       "executionTime": "12/14/2021, 5:15:24 PM",
       "exception": null
   },
+  ],
+    TableHeader: [
+      { key: 'IP address', displayName:'IP address', dataType: 'html', sortable: true, filterable: true },
+      { key: 'client', displayName:'Client', dataType: 'text', sortable: true, filterable: true },
+      { key: 'clientIpAddress', displayName: 'Browser', dataType: 'text', sortable: true, filterable: true},
+      { key: 'executionTime', displayName: 'Date & time', dataType: 'html', sortable: true, filterable: true},
+      { key: 'executionDuration', displayName: 'Result', dataType: 'html', sortable: true, filterable: true},
+      ]
+  },
+ operationLogs : [
+  {
+      "IP address":`<div>106.214.19.218</div>`,
+      "parameters": "{\"input\": {\"extraProperties\": {}, \"name\": \"Lorem Ipsum\", \"displayName\": \"Lorem Ipsum\",\"description\": \"Lorem Ipsum\", \"required\": true, \"enabled\": true, \"emphasize\": true, \"showInDiscoveryDocument\": true,\"userClaims\": [], \"properties\": [] } }",         
+      "client": "admin",
+      "serviceName": "UserDelegationAppService",
+      "executionDuration": `<div class="text-success">Success</div>`,
+      "clientIpAddress": "Firefox",
+      "clientName": null,
+      "browserInfo": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+      "executionTime": "12/14/2021, 5:15:24 PM",
+      "exception": null
+  },
+  
  
 ],
 operationLogsHeaders: [

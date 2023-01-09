@@ -6,18 +6,21 @@ import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompAlertComponent } from '../rds-comp-alert/rds-comp-alert.component';
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
 import { RdsCompFeaturesComponent } from './rds-comp-features.component';
+import { RdsCompAlertModule } from '../rds-comp-alert/rds-comp-alert.module';
+import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 
 export default {
   title: 'Components/Features',
   component: RdsCompFeaturesComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsDataTableComponent,RdsCompFeaturesComponent,RdsCompPermissionTreeComponent,
-        RdsCompAlertComponent],
+      declarations: [RdsCompFeaturesComponent,RdsCompPermissionTreeComponent,
+    ],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
         RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,RdsRadioButtonModule,RdsCounterModule,RdsNavTabModule,
+        RdsCompAlertModule,RdsCompDataTableModule
       ],
       providers: [
         FormBuilder,

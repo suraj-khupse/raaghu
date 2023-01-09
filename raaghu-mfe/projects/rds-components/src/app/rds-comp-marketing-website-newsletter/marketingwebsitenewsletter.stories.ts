@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsInputModule, } from '@libs/rds-elements';
+import { RdsButtonModule, RdsInputModule, RdsLabelModule, } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompMarketingWebsiteNewsletterComponent } from './rds-comp-marketing-website-newsletter.component';
 
@@ -12,11 +12,10 @@ export default {
         moduleMetadata({
             declarations: [RdsCompMarketingWebsiteNewsletterComponent],
             imports: [
-                FormsModule, ReactiveFormsModule, NgxTranslateModule, RdsButtonModule, RdsInputModule, SharedModule
+                FormsModule, ReactiveFormsModule, NgxTranslateModule, RdsButtonModule, RdsInputModule, SharedModule,RdsLabelModule
             ],
             providers: [
                 FormBuilder,
-
             ],
         })
     ],
