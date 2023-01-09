@@ -212,7 +212,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   opendropdown():void{
     this.show = !this.show;
     // this.droparrow = !this.droparrow;
-    var element: any = document.getElementById(this.id);
+    var element: any = document.getElementById('language-dropdown');
     var dropdown = new Dropdown(element)
     if (this.show) {
       dropdown.show();
@@ -222,7 +222,6 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   
   }
   onLanguageSelect(lan: any): void {
-    debugger
     if (lan && lan.item) {
       this.selectedLanguage.language = lan.item.some;
       this.selectedLanguage.icon = lan.item.icon;
