@@ -21,23 +21,7 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    if (!this.userData) {
-      this.userData = {};
-      this.userData['name'] = '';
-      this.userData['userName'] = '';
-      this.userData['emailAddress'] = '';
-      this.userData['phoneNumber'] = '';
-      this.userData['password'] = '';
-      this.userData['confirmPass'] = '';
-
-      this.userData['setRandomPassword'] = true;
-      this.userData['shouldChangePasswordOnNextLogin'] = true;
-      this.userData['isTwoFactorEnabled'] = false;
-      this.userData['isActive'] = false;
-      this.userData['isLockoutEnabled'] = false;
-      this.userData['surname'] = '';
-      this.userData['imageUrl'] = '../assets/edit-profile.png';
-    }
+    //this.modifyUserData();
     // setTimeout(() => {
     if (this.userData && this.userInfoForm) {
       this.userInfoForm.statusChanges.subscribe(res => {
@@ -51,30 +35,28 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
 
   }
 
+  modifyUserData(){
+  //   if (!this.userData || this.userData.id == null) {
+  //     this.userInfoForm.resetForm();
+  //     this.userData = {};
+  //     this.userData['name'] = '';
+  //     this.userData['userName'] = '';
+  //     this.userData['emailAddress'] = '';
+  //     this.userData['phoneNumber'] = '';
+  //     this.userData['password'] = '';
+  //     this.userData['confirmPass'] = '';
+  //     this.userData['setRandomPassword'] = true;
+  //     this.userData['shouldChangePasswordOnNextLogin'] = true;
+  //     this.userData['isTwoFactorEnabled'] = true;
+  //     this.userData['isActive'] = true;
+  //     this.userData['isLockoutEnabled'] = true;
+  //     this.userData['surname'] = '';
+  //     this.userData['imageUrl'] = '../assets/edit-profile.png'
+  // }
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.userData || this.userData.id == null || !this.userData.id) {
-      if (this.userInfoForm) {
-        this.userInfoForm.resetForm();
-        this.userData = {};
-        this.userData['name'] = '';
-        this.userData['userName'] = '';
-        this.userData['emailAddress'] = '';
-        this.userData['phoneNumber'] = '';
-        this.userData['password'] = '';
-        this.userData['confirmPass'] = '';
-        this.userData['setRandomPassword'] = true;
-        this.userData['shouldChangePasswordOnNextLogin'] = true;
-        this.userData['isTwoFactorEnabled'] = false;
-        this.userData['isActive'] = false;
-        this.userData['isLockoutEnabled'] = false;
-        this.userData['surname'] = '';
-        this.userData['imageUrl'] = '../assets/edit-profile.png'
-      }
-     
-    }
-    else {
-      this.userData['imageUrl'] = '../assets/edit-profile.png'
-    }
+    //this.modifyUserData();
   }
 
   next(userCreationForm: NgForm): void {

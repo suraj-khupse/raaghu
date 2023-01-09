@@ -11,11 +11,11 @@
     </button>
     <div class="py-0 m-0 breadcrumbs">
       <div>
-        <a class="nav-link active p-0" aria-current="page" href="#">{{ selectedMenu
-          }}<span *ngIf="tabName" class="mx-2"><b class="text-primary pt-1"></b> {{ tabName }}</span></a>
+        <a class="nav-link active p-0" aria-current="page">{{ selectedMenu
+          }}<span *ngIf="tabName" class="mx-2"><rds-icon name="chevron_right" colorVariant="primary" height="10px" width="10px"></rds-icon><b class="text-primary pt-1"></b> {{ tabName }}</span></a>
       </div>
       <div class="mob-description">
-        <a class="nav-link text-muted p-0 fs-6" href="#">{{
+        <a class="nav-link text-muted p-0 fs-6">{{
           selectedMenuDescription
           }}</a>
       </div>

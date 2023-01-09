@@ -74,7 +74,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   @Input() public isEdit: boolean = false;
   @Input() public OrganizationUnit: any = [];
   @Input() organizationTreeList: [];
-  @Input() permissionsList: PermissionNode[] = [];
+  @Input() permissionsList: any[] = [];
   @Input() selectedPermissions: any = [];
   @Input() selectedOrganizations: any = [];
   @Input() listItemsm = [
@@ -267,11 +267,8 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     ];
     this.CreateOrEditUser.emit({ id: undefined });
     if (event) {
-      this.canvasTitle = this.translate.instant('New User');
-      this.userinfo = undefined;
+      this.canvasTitle = this.translate.instant('NEW USER');
       event.stopPropagation();
-
-
     }
     this.activePage = 0;
   }
