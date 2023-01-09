@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RdsCompMarketingWebsiteNewsletterComponent } from './rds-comp-marketing-website-newsletter.component';
-import { RdsButtonModule, RdsInputModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsInputModule, RdsLabelModule } from '@libs/rds-elements';
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { RdsButtonModule, RdsInputModule } from '@libs/rds-elements';
     CommonModule,
     FormsModule,
     RdsButtonModule,
-    RdsInputModule
+    RdsInputModule,
+    RdsLabelModule
   ]
 })
 export class RdsCompMarketingWebsiteNewsletterModule { }
