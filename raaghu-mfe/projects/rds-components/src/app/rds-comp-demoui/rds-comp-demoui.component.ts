@@ -423,13 +423,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 300
       }
     },
     "pointStyle": "star",
@@ -613,13 +613,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 400
       }
     },
     "pointStyle": "star",
@@ -941,13 +941,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 150
       }
     },
     "responsive": true,
@@ -1084,38 +1084,6 @@ export class RdsCompDemouiComponent implements OnInit {
     }
   }
 
-  // chartDataSetsDoughnut = [
-  //   {
-  //     "label": "Dataset 1",
-  //     "data": [
-  //       20,
-  //       10,
-  //       30,
-  //       40,
-  //       45
-  //     ],
-  //     "backgroundColor": [
-  //       "#ff6384",
-  //       "#ff9f40",
-  //       "#ffcd56",
-  //       "#4bc0c0"
-  //     ],
-  //     "borderColor": [
-  //       "#fff"
-  //     ],
-  //     borderWidth: 1,
-  //     cutout: '80%',
-
-  //   }
-  // ];
-
-  // chartLabelsDoughnut = [
-  //   "Persian Green",
-  //   "Portage",
-  //   "Carrot Orange",
-  //   "Shamrock",
-  //   "Blue"
-  // ];
   chartDataSetsDoughnut = [
     {
       label: 'Dataset 1',
@@ -1159,56 +1127,6 @@ export class RdsCompDemouiComponent implements OnInit {
       }
     }
   };
-  // chartOptionsDoughnut = {
-  //   "type": "doughnut",
-  //   maintainAspectRatio: true,
-  //   responsive: true,
-  //   chartWidth: 120,
-  //   "options": {
-  //     "responsive": true,
-  //     "plugins": {
-  //       "legend": {
-  //         "position": "top"
-  //       },
-  //       "title": {
-  //         "display": true,
-  //         // "text": "Chart.js Doughnut Chart"
-  //       }
-  //     }
-  //   },
-  //   plugins: {
-
-  //     series: {
-  //       label: {
-  //         position: "inside",
-  //         text: 'total', // or "inside" | "outside"
-  //         display: false
-  //       }
-  //     },
-  //     doughnutlabel: {
-  //       labels: [{
-  //         text: '550',
-  //         font: {
-  //           size: 20,
-  //           weight: 'bold'
-  //         }
-  //       }, {
-  //         text: 'total'
-  //       }
-  //       ]
-  //     },
-  //     legend: {
-  //       display: true,
-  //       align: "middle",
-  //       position: 'right',
-  //       labels: {
-  //         boxWidth: 15,
-  //         padding: 20
-  //       },
-  //     },
-  //   },
-  //   "scales": {}
-  // };
 
   chartDataSetsLine = [
     {
@@ -1372,7 +1290,6 @@ export class RdsCompDemouiComponent implements OnInit {
   };
 
   // line chart start
-
   chartDataSetsLinechart = [
     {
       label: 'Sales',
@@ -1405,13 +1322,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 220
       }
     },
     radius: 0,
@@ -1474,13 +1391,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 300
       }
     },
     indexAxis: 'x',
@@ -1559,13 +1476,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 150
       }
     },
     "radius": 10,
@@ -2273,13 +2190,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 150
       }
     },
     "pointStyle": "triangle",
@@ -2546,13 +2463,13 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 200
       }
     },
     "radius": 3,

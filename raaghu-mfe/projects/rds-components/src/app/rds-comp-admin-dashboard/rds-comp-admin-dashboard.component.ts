@@ -121,7 +121,6 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     , { "issue": "Your Order @22345789 has been confirmed", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ABP Framework</b></p><small class=\"text-muted\">Website </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
   ]
 
-
   @Input() monthlySummaryDataSets = [
     {
       label: 'Sales',
@@ -160,13 +159,13 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 230
       }
     },
     radius: 0,
@@ -205,6 +204,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
         }
       },
       x: {
+        beginAtZero: true,
         grid: {
           display: false
         }
@@ -319,13 +319,13 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     animation: {
       x: {
         easing: "linear",
-        duration: 10,
+        duration: 3000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 1500,
-        from: 500
+        duration: 3000,
+        from: 240
       }
     },
     indexAxis: 'x',
