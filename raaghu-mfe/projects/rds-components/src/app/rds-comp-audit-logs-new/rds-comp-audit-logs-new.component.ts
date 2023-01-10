@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { SharedService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { TableAction } from '../../models/table-action.model';
@@ -13,7 +13,7 @@ declare var bootstrap: any;
   templateUrl: './rds-comp-audit-logs-new.component.html',
   styleUrls: ['./rds-comp-audit-logs-new.component.scss']
 })
-export class RdsCompAuditLogsNewComponent implements OnInit {
+export class RdsCompAuditLogsNewComponent implements OnInit,OnChanges{
   selectedIndex: any = 0;
   startDate: any = undefined;
   endDate: any = undefined;
@@ -44,6 +44,7 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
     { value: true, some: 'Yes' },
     { value: false, some: 'No' }
   ];
+  dateRange: Date[] = [];
   hasException:any='';
   appName:any='';
   correlationID:any='';
@@ -67,7 +68,9 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
  ) { }
   
   ngOnInit(): void {
-    this.operationLogs=[...this.operationLogs];
+    console.log(this.operationLogs);
+  }
+  ngOnChanges(changes: SimpleChanges): void {
   }
   startDateModify(event) {
 
@@ -79,7 +82,7 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
     this.sendParameterData();
   }
   userModify(event) {
-    
+  
     this.sendParameterData();
   }
   urlFilterModify(event){
@@ -118,29 +121,43 @@ export class RdsCompAuditLogsNewComponent implements OnInit {
     this.sendParameterData();
   }
 
-  search(){
+  Search(){
      this.sendParameterData();
+     this.parameterData.emit(this.sendParameterData)
   }
   sendParameterData() {
-    if (this.startDate && this.endDate) {
-      this.parameterData.emit({
-        startDate: this.startDate, 
-        endDate: this.endDate, 
-        userName: this.user, 
-        urlFilter : this.urlFilter, 
-        MinDuration: this.minDuration,
-        MaxDuration: this.maxDuration,
-        HttpStatus: this.httpStatus,
-        HttpMethod:this.httpMethod,
-        AppName:this.appName,
-      
-        CorrelationID: this.correlationID,
-        HasException:this.hasException,
-        BrowserInfo: this.browserInfo
-      })
+    let data={
+      startDate: this.startDate, 
+      endDate: this.endDate, 
+      userName: this.user, 
+      urlFilter : this.urlFilter, 
+      MinDuration: this.minDuration,
+      MaxDuration: this.maxDuration,
+      HttpStatus: this.httpStatus,
+      HttpMethod:this.httpMethod,
+      AppName:this.appName,
+    
+      CorrelationID: this.correlationID,
+      HasException:this.hasException,
+      BrowserInfo: this.browserInfo
+    }
+ 
+  if (this.dateRange && this.dateRange.length > 0) {
+    data['startDate'] = this.dateRange[0];
+    data['endDate'] = this.dateRange[1];
+  } else {
+    let tDate = new Date();
+    data['startDate'] = new Date(tDate.getFullYear(), tDate.getMonth(), tDate.getDate() - 1);
+    data['endDate'] = tDate;
+  }
+  this.parameterData.emit(data)
+}
+onDateRageChange(event) {
+  if (event && event.length > 0) {
+    this.dateRange = event;
+    this.sendParameterData();
   }
 }
-
   onActionSelect(event: any): void {
     if (event.actionId === 'details') {
       this.selectedRowData = event.selectedData;
