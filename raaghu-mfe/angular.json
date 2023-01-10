@@ -1,2819 +1,2701 @@
 {
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"cli": {
+	  "analytics": false
+	},
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"@libs/shared": {
-			"projectType": "library",
-			"root": "projects/libs/shared",
-			"sourceRoot": "projects/libs/shared/src",
-			"prefix": "lib",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "projects/libs/shared/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "projects/libs/shared/tsconfig.lib.prod.json"
-						},
-						"development": {
-							"tsConfig": "projects/libs/shared/tsconfig.lib.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/libs/shared/src/test.ts",
-						"tsConfig": "projects/libs/shared/tsconfig.spec.json",
-						"karmaConfig": "projects/libs/shared/karma.conf.js"
-					}
-				}
-			}
-		},
-		"@libs/state-management": {
-			"projectType": "library",
-			"root": "projects/libs/state-management",
-			"sourceRoot": "projects/libs/state-management/src",
-			"prefix": "lib",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "projects/libs/state-management/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "projects/libs/state-management/tsconfig.lib.prod.json"
-						},
-						"development": {
-							"tsConfig": "projects/libs/state-management/tsconfig.lib.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/libs/state-management/src/test.ts",
-						"tsConfig": "projects/libs/state-management/tsconfig.spec.json",
-						"karmaConfig": "projects/libs/state-management/karma.conf.js"
-					}
-				}
-			}
-		},
-		"@libs/ngx-cookieconsent": {
-			"projectType": "library",
-			"root": "projects/libs/ngx-cookieconsent",
-			"sourceRoot": "projects/libs/ngx-cookieconsent/src",
-			"prefix": "lib",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "projects/libs/ngx-cookieconsent/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "projects/libs/ngx-cookieconsent/tsconfig.lib.prod.json"
-						},
-						"development": {
-							"tsConfig": "projects/libs/ngx-cookieconsent/tsconfig.lib.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/libs/ngx-cookieconsent/src/test.ts",
-						"tsConfig": "projects/libs/ngx-cookieconsent/tsconfig.spec.json",
-						"karmaConfig": "projects/libs/ngx-cookieconsent/karma.conf.js"
-					}
-				}
-			}
-		},
-		"@libs/rds-elements": {
-			"projectType": "library",
-			"root": "projects/libs/rds-elements",
-			"sourceRoot": "projects/libs/rds-elements/src",
-			"prefix": "lib",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "projects/libs/rds-elements/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "projects/libs/rds-elements/tsconfig.lib.prod.json"
-						},
-						"development": {
-							"tsConfig": "projects/libs/rds-elements/tsconfig.lib.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/libs/rds-elements/src/test.ts",
-						"tsConfig": "projects/libs/rds-elements/tsconfig.spec.json",
-						"karmaConfig": "projects/libs/rds-elements/karma.conf.js"
-					}
-				}
-			}
-		},
-		"rds-components": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
+	  "@libs/shared": {
+		"projectType": "library",
+		"root": "projects/libs/shared",
+		"sourceRoot": "projects/libs/shared/src",
+		"prefix": "lib",
+		"architect": {
+		  "build": {
+			"builder": "@angular-devkit/build-angular:ng-packagr",
+			"options": {
+			  "project": "projects/libs/shared/ng-package.json"
 			},
-			"root": "projects/rds-components",
-			"sourceRoot": "projects/rds-components/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-components",
-						"index": "projects/rds-components/src/index.html",
-						"main": "projects/rds-components/src/main.ts",
-						"polyfills": "projects/rds-components/src/polyfills.ts",
-						"tsConfig": "projects/rds-components/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-components/src/favicon.ico",
-							"projects/rds-components/src/assets"
-						],
-						"styles": [
-							"projects/rds-components/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-components/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"optimization": {
-							"scripts": true,
-							"styles": {
-								"minify": true,
-								"inlineCritical": true
-							},
-							"fonts": true
-						},
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-components/src/environments/environment.ts",
-									"with": "projects/rds-components/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-components/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-components:build:production",
-							"extraWebpackConfig": "projects/rds-components/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-components:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5000,
-						"publicHost": "http://localhost:5000",
-						"extraWebpackConfig": "projects/rds-components/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-components:build",
-						"extraWebpackConfig": "projects/rds-components/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-components/src/test.ts",
-						"polyfills": "projects/rds-components/src/polyfills.ts",
-						"tsConfig": "projects/rds-components/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-components/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-components/src/favicon.ico",
-							"projects/rds-components/src/assets"
-						],
-						"styles": [
-							"projects/rds-components/src/styles.scss"
-						],
-						"scripts": []
-					}
+			"configurations": {
+			  "production": {
+				"tsConfig": "projects/libs/shared/tsconfig.lib.prod.json"
+			  },
+			  "development": {
+				"tsConfig": "projects/libs/shared/tsconfig.lib.json"
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/libs/shared/src/test.ts",
+			  "tsConfig": "projects/libs/shared/tsconfig.spec.json",
+			  "karmaConfig": "projects/libs/shared/karma.conf.js"
+			}
+		  }
+		}
+	  },
+	  "@libs/state-management": {
+		"projectType": "library",
+		"root": "projects/libs/state-management",
+		"sourceRoot": "projects/libs/state-management/src",
+		"prefix": "lib",
+		"architect": {
+		  "build": {
+			"builder": "@angular-devkit/build-angular:ng-packagr",
+			"options": {
+			  "project": "projects/libs/state-management/ng-package.json"
+			},
+			"configurations": {
+			  "production": {
+				"tsConfig": "projects/libs/state-management/tsconfig.lib.prod.json"
+			  },
+			  "development": {
+				"tsConfig": "projects/libs/state-management/tsconfig.lib.json"
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/libs/state-management/src/test.ts",
+			  "tsConfig": "projects/libs/state-management/tsconfig.spec.json",
+			  "karmaConfig": "projects/libs/state-management/karma.conf.js"
+			}
+		  }
+		}
+	  },
+	  "@libs/ngx-cookieconsent": {
+		"projectType": "library",
+		"root": "projects/libs/ngx-cookieconsent",
+		"sourceRoot": "projects/libs/ngx-cookieconsent/src",
+		"prefix": "lib",
+		"architect": {
+		  "build": {
+			"builder": "@angular-devkit/build-angular:ng-packagr",
+			"options": {
+			  "project": "projects/libs/ngx-cookieconsent/ng-package.json"
+			},
+			"configurations": {
+			  "production": {
+				"tsConfig": "projects/libs/ngx-cookieconsent/tsconfig.lib.prod.json"
+			  },
+			  "development": {
+				"tsConfig": "projects/libs/ngx-cookieconsent/tsconfig.lib.json"
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/libs/ngx-cookieconsent/src/test.ts",
+			  "tsConfig": "projects/libs/ngx-cookieconsent/tsconfig.spec.json",
+			  "karmaConfig": "projects/libs/ngx-cookieconsent/karma.conf.js"
+			}
+		  }
+		}
+	  },
+	  "@libs/rds-elements": {
+		"projectType": "library",
+		"root": "projects/libs/rds-elements",
+		"sourceRoot": "projects/libs/rds-elements/src",
+		"prefix": "lib",
+		"architect": {
+		  "build": {
+			"builder": "@angular-devkit/build-angular:ng-packagr",
+			"options": {
+			  "project": "projects/libs/rds-elements/ng-package.json"
+			},
+			"configurations": {
+			  "production": {
+				"tsConfig": "projects/libs/rds-elements/tsconfig.lib.prod.json"
+			  },
+			  "development": {
+				"tsConfig": "projects/libs/rds-elements/tsconfig.lib.json"
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/libs/rds-elements/src/test.ts",
+			  "tsConfig": "projects/libs/rds-elements/tsconfig.spec.json",
+			  "karmaConfig": "projects/libs/rds-elements/karma.conf.js"
+			}
+		  }
+		}
+	  },
+	  "rds-components": {
+		"projectType": "library",
+		"root": "projects/rds-components",
+		"sourceRoot": "projects/rds-components/src",
+		"prefix": "app"
+	  },
+	  "host": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/host",
+		"sourceRoot": "projects/host/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/host",
+			  "index": "projects/host/src/index.html",
+			  "main": "projects/host/src/main.ts",
+			  "polyfills": "projects/host/src/polyfills.ts",
+			  "tsConfig": "projects/host/tsconfig.app.json",
+			  "allowedCommonJsDependencies": [
+				"quill",
+				"moment",
+				"localforage",
+				"fast-sha256"
+			  ],
+			  "assets": [
+				"projects/host/src/favicon.ico",
+				"projects/host/src/assets",
+				{
+				  "glob": "**/*",
+				  "input": "projects/libs/rds-elements/src/rds-icon/src/assets/",
+				  "output": "./assets"
 				}
+			  ],
+			  "styles": [
+				"./node_modules/bootstrap/dist/css/bootstrap.min.css",
+				"projects/libs/themes/src/styles/quillEditor.scss",
+				"projects/libs/themes/src/styles/default.scss",
+				"projects/libs/themes/src/styles/responsive.scss",
+				"projects/host/src/styles.css",
+				"./node_modules/ngx-videogular/fonts/videogular.css",
+				{
+				  "input": "projects/libs/themes/src/styles/default.scss",
+				  "bundleName": "default",
+				  "inject": false
+				},
+				{
+				  "input": "projects/libs/themes/src/styles/accessible.scss",
+				  "bundleName": "accessible",
+				  "inject": false
+				},
+				{
+				  "input": "projects/libs/themes/src/styles/blue.scss",
+				  "bundleName": "blue",
+				  "inject": false
+				},
+				{
+				  "input": "projects/libs/themes/src/styles/green.scss",
+				  "bundleName": "green",
+				  "inject": false
+				},
+				{
+				  "input": "projects/libs/themes/src/styles/orange.scss",
+				  "bundleName": "orange",
+				  "inject": false
+				}
+			  ],
+			  "scripts": [
+				"./node_modules/bootstrap/dist/js/bootstrap.min.js",
+				"./node_modules/cookieconsent/build/cookieconsent.min.js"
+			  ],
+			  "extraWebpackConfig": "projects/host/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "optimization": {
+				"scripts": true,
+				"styles": {
+				  "minify": true,
+				  "inlineCritical": true
+				},
+				"fonts": true
+			  },
+			  "production": {
+				"fileReplacements": [
+				  {
+					"replace": "projects/host/src/environments/environment.ts",
+					"with": "projects/host/src/environments/environment.prod.ts"
+				  }
+				],
+				"optimization": {
+				  "scripts": true,
+				  "styles": {
+					"minify": true,
+					"inlineCritical": false
+				  },
+				  "fonts": true
+				},
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/host/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "host:build:production",
+				"extraWebpackConfig": "projects/host/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "host:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": true,
+			  "port": 8080,
+			  "publicHost": "http://localhost:8080",
+			  "extraWebpackConfig": "projects/host/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "host:build",
+			  "extraWebpackConfig": "projects/host/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/host/src/test.ts",
+			  "polyfills": "projects/host/src/polyfills.ts",
+			  "tsConfig": "projects/host/tsconfig.spec.json",
+			  "karmaConfig": "projects/host/karma.conf.js",
+			  "assets": [
+				"projects/host/src/favicon.ico",
+				"projects/host/src/assets"
+			  ],
+			  "styles": [
+				"projects/libs/themes/src/styles/custom.scss",
+				"projects/host/src/styles.css"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-product": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-product",
+		"sourceRoot": "projects/rds-page-product/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-product",
+			  "index": "projects/rds-page-product/src/index.html",
+			  "main": "projects/rds-page-product/src/main.ts",
+			  "polyfills": "projects/rds-page-product/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-product/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-product/src/favicon.ico",
+				"projects/rds-page-product/src/assets"
+			  ],
+			  "styles": [
+				"projects/libs/themes/src/styles/custom.scss",
+				"projects/rds-page-product/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-product/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "optimization": {
+				"scripts": true,
+				"styles": {
+				  "minify": true,
+				  "inlineCritical": true
+				},
+				"fonts": true
+			  },
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-product/src/environments/environment.ts",
+					"with": "projects/rds-page-product/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-product/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-product:build:production",
+				"extraWebpackConfig": "projects/rds-page-product/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "product:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 3000,
+			  "publicHost": "http://localhost:3000",
+			  "extraWebpackConfig": "projects/rds-page-product/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-product:build",
+			  "extraWebpackConfig": "projects/rds-page-product/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-product/src/test.ts",
+			  "polyfills": "projects/rds-page-product/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-product/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-product/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-product/src/favicon.ico",
+				"projects/rds-page-product/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-product/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-dashboard": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-dashboard",
+		"sourceRoot": "projects/rds-page-dashboard/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-dashboard",
+			  "index": "projects/rds-page-dashboard/src/index.html",
+			  "main": "projects/rds-page-dashboard/src/main.ts",
+			  "polyfills": "projects/rds-page-dashboard/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-dashboard/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-dashboard/src/favicon.ico",
+				"projects/rds-page-dashboard/src/assets"
+			  ],
+			  "styles": [
+				"projects/libs/themes/src/styles/custom.scss",
+				"projects/rds-page-dashboard/src/styles.scss"
+			  ],
+			  "scripts": [
+				"./node_modules/bootstrap/dist/js/bootstrap.min.js"
+			  ],
+			  "extraWebpackConfig": "projects/rds-page-dashboard/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-dashboard/src/environments/environment.ts",
+					"with": "projects/rds-page-dashboard/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-dashboard/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-dashboard:build:production",
+				"extraWebpackConfig": "projects/rds-page-dashboard/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-dashboard:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5001,
+			  "publicHost": "http://localhost:5001",
+			  "extraWebpackConfig": "projects/rds-page-dashboard/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-dashboard:build",
+			  "extraWebpackConfig": "projects/rds-page-dashboard/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-dashboard/src/test.ts",
+			  "polyfills": "projects/rds-page-dashboard/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-dashboard/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-dashboard/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-dashboard/src/favicon.ico",
+				"projects/rds-page-dashboard/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-dashboard/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-user": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-user",
+		"sourceRoot": "projects/rds-page-user/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-user",
+			  "index": "projects/rds-page-user/src/index.html",
+			  "main": "projects/rds-page-user/src/main.ts",
+			  "polyfills": "projects/rds-page-user/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-user/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-user/src/favicon.ico",
+				"projects/rds-page-user/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-user/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-user/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-user/src/environments/environment.ts",
+					"with": "projects/rds-page-user/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-user/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-user:build:production",
+				"extraWebpackConfig": "projects/rds-page-user/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-user:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5002,
+			  "publicHost": "http://localhost:5002",
+			  "extraWebpackConfig": "projects/rds-page-user/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-user:build",
+			  "extraWebpackConfig": "projects/rds-page-user/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-user/src/test.ts",
+			  "polyfills": "projects/rds-page-user/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-user/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-user/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-user/src/favicon.ico",
+				"projects/rds-page-user/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-user/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-demo-ui": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-demo-ui",
+		"sourceRoot": "projects/rds-page-demo-ui/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-demo-ui",
+			  "index": "projects/rds-page-demo-ui/src/index.html",
+			  "main": "projects/rds-page-demo-ui/src/main.ts",
+			  "polyfills": "projects/rds-page-demo-ui/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-demo-ui/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-demo-ui/src/favicon.ico",
+				"projects/rds-page-demo-ui/src/assets"
+			  ],
+			  "styles": [
+				"projects/libs/themes/src/styles/quillEditor.scss",
+				"projects/rds-page-demo-ui/src/styles.scss"
+			  ],
+			  "scripts": [
+				"./node_modules/quill/dist/quill.min.js"
+			  ],
+			  "extraWebpackConfig": "projects/rds-page-demo-ui/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-demo-ui/src/environments/environment.ts",
+					"with": "projects/rds-page-demo-ui/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-demo-ui:build:production",
+				"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-demo-ui:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5003,
+			  "publicHost": "http://localhost:5003",
+			  "extraWebpackConfig": "projects/rds-page-demo-ui/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-demo-ui:build",
+			  "extraWebpackConfig": "projects/rds-page-demo-ui/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-demo-ui/src/test.ts",
+			  "polyfills": "projects/rds-page-demo-ui/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-demo-ui/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-demo-ui/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-demo-ui/src/favicon.ico",
+				"projects/rds-page-demo-ui/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-demo-ui/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-language": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-language",
+		"sourceRoot": "projects/rds-page-language/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-language",
+			  "index": "projects/rds-page-language/src/index.html",
+			  "main": "projects/rds-page-language/src/main.ts",
+			  "polyfills": "projects/rds-page-language/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-language/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-language/src/favicon.ico",
+				"projects/rds-page-language/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-language/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-language/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-language/src/environments/environment.ts",
+					"with": "projects/rds-page-language/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-language/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-language:build:production",
+				"extraWebpackConfig": "projects/rds-page-language/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-language:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5005,
+			  "publicHost": "http://localhost:5005",
+			  "extraWebpackConfig": "projects/rds-page-language/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-language:build",
+			  "extraWebpackConfig": "projects/rds-page-language/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-language/src/test.ts",
+			  "polyfills": "projects/rds-page-language/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-language/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-language/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-language/src/favicon.ico",
+				"projects/rds-page-language/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-language/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-audit-logs": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-audit-logs",
+		"sourceRoot": "projects/rds-page-audit-logs/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-audit-logs",
+			  "index": "projects/rds-page-audit-logs/src/index.html",
+			  "main": "projects/rds-page-audit-logs/src/main.ts",
+			  "polyfills": "projects/rds-page-audit-logs/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-audit-logs/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-audit-logs/src/favicon.ico",
+				"projects/rds-page-audit-logs/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-audit-logs/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-audit-logs/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-audit-logs/src/environments/environment.ts",
+					"with": "projects/rds-page-audit-logs/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-audit-logs:build:production",
+				"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-audit-logs:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5006,
+			  "publicHost": "http://localhost:5006",
+			  "extraWebpackConfig": "projects/rds-page-audit-logs/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-audit-logs:build",
+			  "extraWebpackConfig": "projects/rds-page-audit-logs/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-audit-logs/src/test.ts",
+			  "polyfills": "projects/rds-page-audit-logs/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-audit-logs/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-audit-logs/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-audit-logs/src/favicon.ico",
+				"projects/rds-page-audit-logs/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-audit-logs/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-role": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-role",
+		"sourceRoot": "projects/rds-page-role/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-role",
+			  "index": "projects/rds-page-role/src/index.html",
+			  "main": "projects/rds-page-role/src/main.ts",
+			  "polyfills": "projects/rds-page-role/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-role/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-role/src/favicon.ico",
+				"projects/rds-page-role/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-role/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-role/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-role/src/environments/environment.ts",
+					"with": "projects/rds-page-role/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-role/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-role:build:production",
+				"extraWebpackConfig": "projects/rds-page-role/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-role:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5007,
+			  "publicHost": "http://localhost:5007",
+			  "extraWebpackConfig": "projects/rds-page-role/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "role:build",
+			  "extraWebpackConfig": "projects/rds-page-role/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-role/src/test.ts",
+			  "polyfills": "projects/rds-page-role/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-role/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-role/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-role/src/favicon.ico",
+				"projects/rds-page-role/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-role/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-visual-settings": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-visual-settings",
+		"sourceRoot": "projects/rds-page-visual-settings/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-visualsettings",
+			  "index": "projects/rds-page-visual-settings/src/index.html",
+			  "main": "projects/rds-page-visual-settings/src/main.ts",
+			  "polyfills": "projects/rds-page-visual-settings/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-visual-settings/tsconfig.app.json",
+			  "assets": [
+				"projects/rds-page-visual-settings/src/favicon.ico",
+				"projects/rds-page-visual-settings/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-visual-settings/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-visual-settings/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-visual-settings/src/environments/environment.ts",
+					"with": "projects/rds-page-visual-settings/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-visualsettings:build:production",
+				"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-visual-settings:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5008,
+			  "publicHost": "http://localhost:5008",
+			  "extraWebpackConfig": "projects/rds-page-visual-settings/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-visual-settings:build",
+			  "extraWebpackConfig": "projects/rds-page-visual-settings/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-visual-settings/src/test.ts",
+			  "polyfills": "projects/rds-page-visual-settings/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-visual-settings/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-visual-settings/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-visual-settings/src/favicon.ico",
+				"projects/rds-page-visual-settings/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-visual-settings/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-forgot-password": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-forgot-password",
+		"sourceRoot": "projects/rds-page-forgot-password/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-forgot-password",
+			  "index": "projects/rds-page-forgot-password/src/index.html",
+			  "main": "projects/rds-page-forgot-password/src/main.ts",
+			  "polyfills": "projects/rds-page-forgot-password/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-forgot-password/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-forgot-password/src/favicon.ico",
+				"projects/rds-page-forgot-password/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-forgot-password/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-forgot-password/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-forgot-password/src/environments/environment.ts",
+					"with": "projects/rds-page-forgot-password/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-forgot-password:build:production",
+				"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-forgot-password:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5010,
+			  "publicHost": "http://localhost:5010",
+			  "extraWebpackConfig": "projects/rds-page-forgot-password/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-forgot-password:build",
+			  "extraWebpackConfig": "projects/rds-page-forgot-password/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-forgot-password/src/test.ts",
+			  "polyfills": "projects/rds-page-forgot-password/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-forgot-password/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-forgot-password/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-forgot-password/src/favicon.ico",
+				"projects/rds-page-forgot-password/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-forgot-password/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-login": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-login",
+		"sourceRoot": "projects/rds-page-login/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-login",
+			  "index": "projects/rds-page-login/src/index.html",
+			  "main": "projects/rds-page-login/src/main.ts",
+			  "polyfills": "projects/rds-page-login/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-login/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-login/src/favicon.ico",
+				"projects/rds-page-login/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-login/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-login/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-login/src/environments/environment.ts",
+					"with": "projects/rds-page-login/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-login/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-login:build:production",
+				"extraWebpackConfig": "projects/rds-page-login/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-login:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5011,
+			  "publicHost": "http://localhost:5011",
+			  "extraWebpackConfig": "projects/rds-page-login/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-login:build",
+			  "extraWebpackConfig": "projects/rds-page-login/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-login/src/test.ts",
+			  "polyfills": "projects/rds-page-login/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-login/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-login/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-login/src/favicon.ico",
+				"projects/rds-page-login/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-login/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-organization-unit": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-organization-unit",
+		"sourceRoot": "projects/rds-page-organization-unit/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-organization-unit",
+			  "index": "projects/rds-page-organization-unit/src/index.html",
+			  "main": "projects/rds-page-organization-unit/src/main.ts",
+			  "polyfills": "projects/rds-page-organization-unit/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-organization-unit/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-organization-unit/src/favicon.ico",
+				"projects/rds-page-organization-unit/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-organization-unit/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-organization-unit/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-organization-unit/src/environments/environment.ts",
+					"with": "projects/rds-page-organization-unit/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-organization-unit:build:production",
+				"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-organization-unit:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5012,
+			  "publicHost": "http://localhost:5012",
+			  "extraWebpackConfig": "projects/rds-page-organization-unit/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-organization-unit:build",
+			  "extraWebpackConfig": "projects/rds-page-organization-unit/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-organization-unit/src/test.ts",
+			  "polyfills": "projects/rds-page-organization-unit/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-organization-unit/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-organization-unit/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page--unit/src/favicon.ico",
+				"projects/organization-unit/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-organization-unit/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-tenant": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-tenant",
+		"sourceRoot": "projects/rds-page-tenant/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-tenant",
+			  "index": "projects/rds-page-tenant/src/index.html",
+			  "main": "projects/rds-page-tenant/src/main.ts",
+			  "polyfills": "projects/rds-page-tenant/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-tenant/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-tenant/src/favicon.ico",
+				"projects/rds-page-tenant/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-tenant/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-tenant/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-tenant/src/environments/environment.ts",
+					"with": "projects/rds-page-tenant/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-tenant/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-tenant:build:production",
+				"extraWebpackConfig": "projects/rds-page-tenant/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-tenant:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5015,
+			  "publicHost": "http://localhost:5015",
+			  "extraWebpackConfig": "projects/rds-page-tenant/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-tenant:build",
+			  "extraWebpackConfig": "projects/rds-page-tenant/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-tenant/src/test.ts",
+			  "polyfills": "projects/rds-page-tenant/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-tenant/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-tenant/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-tenant/src/favicon.ico",
+				"projects/rds-page-tenant/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-tenant/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },    
+	  "rds-page-claim-types": {
+		"projectType": "application",
+		"schematics": {
+			"@schematics/angular:component": {
+				"style": "scss"
+			},
+			"@schematics/angular:application": {
+				"strict": true
 			}
 		},
-		"host": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/host",
-			"sourceRoot": "projects/host/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/host",
-						"index": "projects/host/src/index.html",
-						"main": "projects/host/src/main.ts",
-						"polyfills": "projects/host/src/polyfills.ts",
-						"tsConfig": "projects/host/tsconfig.app.json",
-						"allowedCommonJsDependencies": [
-							"quill",
-							"moment",
-							"localforage",
-							"fast-sha256"
-						  ],
-						"assets": [
-							"projects/host/src/favicon.ico",
-							"projects/host/src/assets",
+		"root": "projects/rds-page-claim-types",
+		"sourceRoot": "projects/rds-page-claim-types/src",
+		"prefix": "app",
+		"architect": {
+			"build": {
+				"builder": "ngx-build-plus:browser",
+				"options": {
+					"outputPath": "dist/rds-page-claim-types",
+					"index": "projects/rds-page-claim-types/src/index.html",
+					"main": "projects/rds-page-claim-types/src/main.ts",
+					"polyfills": "projects/rds-page-claim-types/src/polyfills.ts",
+					"tsConfig": "projects/rds-page-claim-types/tsconfig.app.json",
+					"inlineStyleLanguage": "scss",
+					"assets": [
+						"projects/rds-page-claim-types/src/favicon.ico",
+						"projects/rds-page-claim-types/src/assets"
+					],
+					"styles": [
+						"projects/rds-page-claim-types/src/styles.scss"
+					],
+					"scripts": [],
+					"extraWebpackConfig": "projects/rds-page-claim-types/webpack.config.js",
+					"commonChunk": false
+				},
+				"configurations": {
+					"production": {
+						"budgets": [
 							{
-								"glob": "**/*",
-								"input": "projects/libs/rds-elements/src/rds-icon/src/assets/",
-								"output": "./assets"
+								"type": "initial",
+								"maximumWarning": "1000kb",
+								"maximumError": "1.2mb"
+							},
+							{
+								"type": "anyComponentStyle",
+								"maximumWarning": "15kb",
+								"maximumError": "20kb"
 							}
 						],
-						"styles": [
-							"./node_modules/bootstrap/dist/css/bootstrap.min.css",
-							"projects/libs/themes/src/styles/quillEditor.scss",
-							"projects/libs/themes/src/styles/default.scss",
-							"projects/libs/themes/src/styles/responsive.scss",
-							"projects/host/src/styles.css",
+						"fileReplacements": [
 							{
-								"input": "projects/libs/themes/src/styles/default.scss",
-								"bundleName": "default",
-								"inject": false
-							},
-							{
-								"input": "projects/libs/themes/src/styles/accessible.scss",
-								"bundleName": "accessible",
-								"inject": false
-							},
-							{
-								"input": "projects/libs/themes/src/styles/blue.scss",
-								"bundleName": "blue",
-								"inject": false
-							},
-							{
-								"input": "projects/libs/themes/src/styles/green.scss",
-								"bundleName": "green",
-								"inject": false
-							},
-							{
-								"input": "projects/libs/themes/src/styles/orange.scss",
-								"bundleName": "orange",
-								"inject": false
+								"replace": "projects/rds-page-claim-types/src/environments/environment.ts",
+								"with": "projects/rds-page-claim-types/src/environments/environment.prod.ts"
 							}
 						],
-						"scripts": [
-							"./node_modules/bootstrap/dist/js/bootstrap.min.js",
-							"./node_modules/cookieconsent/build/cookieconsent.min.js",
-							"./node_modules/bootstrap/dist/js/bootstrap.min.js"
-						],
-						"extraWebpackConfig": "projects/host/webpack.config.js",
-						"commonChunk": false
+						"outputHashing": "all",
+						"extraWebpackConfig": "projects/rds-page-claim-types/webpack.prod.config.js"
 					},
-					"configurations": {
-						"optimization": {
-							"scripts": true,
-							"styles": {
-								"minify": true,
-								"inlineCritical": true
+					"development": {
+						"buildOptimizer": false,
+						"optimization": false,
+						"vendorChunk": true,
+						"extractLicenses": false,
+						"sourceMap": true,
+						"namedChunks": true
+					}
+				},
+				"defaultConfiguration": "production"
+			},
+			"serve": {
+				"builder": "ngx-build-plus:dev-server",
+				"configurations": {
+					"production": {
+						"browserTarget": "rds-page-claim-types:build:production",
+						"extraWebpackConfig": "projects/rds-page-claim-types/webpack.prod.config.js"
+					},
+					"development": {
+						"browserTarget": "rds-page-claim-types:build:development"
+					}
+				},
+				"defaultConfiguration": "development",
+				"options": {
+					"open": false,
+					"port": 5016,
+					"publicHost": "http://localhost:5016",
+					"extraWebpackConfig": "projects/rds-page-claim-types/webpack.config.js"
+				}
+			},
+			"extract-i18n": {
+				"builder": "ngx-build-plus:extract-i18n",
+				"options": {
+					"browserTarget": "rds-page-claim-types:build",
+					"extraWebpackConfig": "projects/rds-page-claim-types/webpack.config.js"
+				}
+			},
+			"test": {
+				"builder": "@angular-devkit/build-angular:karma",
+				"options": {
+					"main": "projects/rds-page-claim-types/src/test.ts",
+					"polyfills": "projects/rds-page-claim-types/src/polyfills.ts",
+					"tsConfig": "projects/rds-page-claim-types/tsconfig.spec.json",
+					"karmaConfig": "projects/rds-page-claim-types/karma.conf.js",
+					"inlineStyleLanguage": "scss",
+					"assets": [
+						"projects/rds-page-claim-types/src/favicon.ico",
+						"projects/rds-page-claim-types/src/assets"
+					],
+					"styles": [
+						"projects/rds-page-claim-types/src/styles.scss"
+					],
+					"scripts": []
+				}
+			}
+		}
+	},
+	  "rds-page-settings": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-settings",
+		"sourceRoot": "projects/rds-page-settings/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-settings",
+			  "index": "projects/rds-page-settings/src/index.html",
+			  "main": "projects/rds-page-settings/src/main.ts",
+			  "polyfills": "projects/rds-page-settings/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-settings/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-settings/src/favicon.ico",
+				"projects/rds-page-settings/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-settings/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-settings/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-settings/src/environments/environment.ts",
+					"with": "projects/rds-page-settings/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-settings/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-settings:build:production",
+				"extraWebpackConfig": "projects/rds-page-settings/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-settings:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5017,
+			  "publicHost": "http://localhost:5017",
+			  "extraWebpackConfig": "projects/rds-page-settings/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-settings:build",
+			  "extraWebpackConfig": "projects/rds-page-settings/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-settings/src/test.ts",
+			  "polyfills": "projects/rds-page-settings/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-settings/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-settings/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-settings/src/favicon.ico",
+				"projects/rds-page-settings/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-settings/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-securitylog": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-securitylog",
+		"sourceRoot": "projects/rds-page-securitylog/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-securitylog",
+			  "index": "projects/rds-page-securitylog/src/index.html",
+			  "main": "projects/rds-page-securitylog/src/main.ts",
+			  "polyfills": "projects/rds-page-securitylog/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-securitylog/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-securitylog/src/favicon.ico",
+				"projects/rds-page-securitylog/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-securitylog/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-securitylog/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-securitylog/src/environments/environment.ts",
+					"with": "projects/rds-page-securitylog/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-securitylog/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-securitylog:build:production",
+				"extraWebpackConfig": "projects/rds-page-securitylog/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-securitylog:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "open": false,
+			  "port": 5018,
+			  "publicHost": "http://localhost:5018",
+			  "extraWebpackConfig": "projects/rds-page-securitylog/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-securitylog:build",
+			  "extraWebpackConfig": "projects/securitylog/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/securitylog/src/test.ts",
+			  "polyfills": "projects/securitylog/src/polyfills.ts",
+			  "tsConfig": "projects/securitylog/tsconfig.spec.json",
+			  "karmaConfig": "projects/securitylog/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/securitylog/src/favicon.ico",
+				"projects/securitylog/src/assets"
+			  ],
+			  "styles": [
+				"projects/securitylog/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-edition": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
+		},
+		"root": "projects/rds-page-edition",
+		"sourceRoot": "projects/rds-page-edition/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+			  "outputPath": "dist/rds-page-edition",
+			  "index": "projects/rds-page-edition/src/index.html",
+			  "main": "projects/rds-page-edition/src/main.ts",
+			  "polyfills": "projects/rds-page-edition/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-edition/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-edition/src/favicon.ico",
+				"projects/rds-page-edition/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-edition/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-edition/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+				  {
+					"replace": "projects/rds-page-edition/src/environments/environment.ts",
+					"with": "projects/rds-page-edition/src/environments/environment.prod.ts"
+				  }
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-edition/webpack.prod.config.js"
+			  },
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+			  "production": {
+				"browserTarget": "rds-page-edition:build:production",
+				"extraWebpackConfig": "projects/rds-page-edition/webpack.prod.config.js"
+			  },
+			  "development": {
+				"browserTarget": "rds-page-edition:build:development"
+			  }
+			},
+			"defaultConfiguration": "development",
+			"options": {
+			  "port": 3003,
+			  "publicHost": "http://localhost:3003",
+			  "extraWebpackConfig": "projects/rds-page-edition/webpack.config.js"
+			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+			  "browserTarget": "rds-page-edition:build",
+			  "extraWebpackConfig": "projects/rds-page-edition/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+			  "main": "projects/rds-page-edition/src/test.ts",
+			  "polyfills": "projects/rds-page-edition/src/polyfills.ts",
+			  "tsConfig": "projects/rds-page-edition/tsconfig.spec.json",
+			  "karmaConfig": "projects/rds-page-edition/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-edition/src/favicon.ico",
+				"projects/rds-page-edition/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-edition/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },    
+	  "rds-page-identity-resources": {
+		"projectType": "application",
+		"schematics": {
+			"@schematics/angular:component": {
+				"style": "scss"
+			},
+			"@schematics/angular:application": {
+				"strict": true
+			}
+		},
+		"root": "projects/rds-page-identity-resources",
+		"sourceRoot": "projects/rds-page-identity-resources/src",
+		"prefix": "app",
+		"architect": {
+			"build": {
+				"builder": "ngx-build-plus:browser",
+				"options": {
+					"outputPath": "dist/rds-page-identity-resources",
+					"index": "projects/rds-page-identity-resources/src/index.html",
+					"main": "projects/rds-page-identity-resources/src/main.ts",
+					"polyfills": "projects/rds-page-identity-resources/src/polyfills.ts",
+					"tsConfig": "projects/rds-page-identity-resources/tsconfig.app.json",
+					"inlineStyleLanguage": "scss",
+					"assets": [
+						"projects/rds-page-identity-resources/src/favicon.ico",
+						"projects/rds-page-identity-resources/src/assets"
+					],
+					"styles": [
+						"projects/rds-page-identity-resources/src/styles.scss"
+					],
+					"scripts": [],
+					"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.config.js",
+					"commonChunk": false
+				},
+				"configurations": {
+					"production": {
+						"budgets": [
+							{
+								"type": "initial",
+								"maximumWarning": "1000kb",
+								"maximumError": "1.2mb"
 							},
-							"fonts": true
-						},
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/host/src/environments/environment.ts",
-									"with": "projects/host/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/host/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "host:build:production",
-							"extraWebpackConfig": "projects/host/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "host:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": true,
-						"port": 8080,
-						"publicHost": "http://localhost:8080",
-						"extraWebpackConfig": "projects/host/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "host:build",
-						"extraWebpackConfig": "projects/host/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/host/src/test.ts",
-						"polyfills": "projects/host/src/polyfills.ts",
-						"tsConfig": "projects/host/tsconfig.spec.json",
-						"karmaConfig": "projects/host/karma.conf.js",
-						"assets": [
-							"projects/host/src/favicon.ico",
-							"projects/host/src/assets"
+							{
+								"type": "anyComponentStyle",
+								"maximumWarning": "15kb",
+								"maximumError": "20kb"
+							}
 						],
-						"styles": [
-							"projects/libs/themes/src/styles/custom.scss",
-							"projects/host/src/styles.css"
+						"fileReplacements": [
+							{
+								"replace": "projects/rds-page-identity-resources/src/environments/environment.ts",
+								"with": "projects/rds-page-identity-resources/src/environments/environment.prod.ts"
+							}
 						],
-						"scripts": []
+						"outputHashing": "all",
+						"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.prod.config.js"
+					},
+					"development": {
+						"buildOptimizer": false,
+						"optimization": false,
+						"vendorChunk": true,
+						"extractLicenses": false,
+						"sourceMap": true,
+						"namedChunks": true
 					}
-				}
-			}
-		},
-		"rds-page-product": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
 				},
-				"@schematics/angular:application": {
-					"strict": true
+				"defaultConfiguration": "production"
+			},
+			"serve": {
+				"builder": "ngx-build-plus:dev-server",
+				"configurations": {
+					"production": {
+						"browserTarget": "rds-page-identity-resources:build:production",
+						"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.prod.config.js"
+					},
+					"development": {
+						"browserTarget": "rds-page-identity-resources:build:development"
+					}
+				},
+				"defaultConfiguration": "development",
+				"options": {
+					"port": 7012,
+					"publicHost": "http://localhost:7012",
+					"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.config.js"
 				}
 			},
-			"root": "projects/rds-page-product",
-			"sourceRoot": "projects/rds-page-product/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-product",
-						"index": "projects/rds-page-product/src/index.html",
-						"main": "projects/rds-page-product/src/main.ts",
-						"polyfills": "projects/rds-page-product/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-product/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-product/src/favicon.ico",
-							"projects/rds-page-product/src/assets"
-						],
-						"styles": [
-							"projects/libs/themes/src/styles/custom.scss",
-							"projects/rds-page-product/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-product/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"optimization": {
-							"scripts": true,
-							"styles": {
-								"minify": true,
-								"inlineCritical": true
+			"extract-i18n": {
+				"builder": "ngx-build-plus:extract-i18n",
+				"options": {
+					"browserTarget": "rds-page-identity-resources:build",
+					"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.config.js"
+				}
+			},
+			"test": {
+				"builder": "@angular-devkit/build-angular:karma",
+				"options": {
+					"main": "projects/rds-page-identity-resources/src/test.ts",
+					"polyfills": "projects/rds-page-identity-resources/src/polyfills.ts",
+					"tsConfig": "projects/rds-page-identity-resources/tsconfig.spec.json",
+					"karmaConfig": "projects/rds-page-identity-resources/karma.conf.js",
+					"inlineStyleLanguage": "scss",
+					"assets": [
+						"projects/rds-page-identity-resources/src/favicon.ico",
+						"projects/rds-page-identity-resources/src/assets"
+					],
+					"styles": [
+						"projects/rds-page-identity-resources/src/styles.scss"
+					],
+					"scripts": []
+				}
+			}
+		}
+	},
+	"rds-page-client": {
+		"projectType": "application",
+		"schematics": {
+			"@schematics/angular:component": {
+				"style": "scss"
+			},
+			"@schematics/angular:application": {
+				"strict": true
+			}
+		},
+		"root": "projects/rds-page-client",
+		"sourceRoot": "projects/rds-page-client/src",
+		"prefix": "app",
+		"architect": {
+			"build": {
+				"builder": "ngx-build-plus:browser",
+				"options": {
+					"outputPath": "dist/rds-page-client",
+					"index": "projects/rds-page-client/src/index.html",
+					"main": "projects/rds-page-client/src/main.ts",
+					"polyfills": "projects/rds-page-client/src/polyfills.ts",
+					"tsConfig": "projects/rds-page-client/tsconfig.app.json",
+					"inlineStyleLanguage": "scss",
+					"assets": [
+						"projects/rds-page-client/src/favicon.ico",
+						"projects/rds-page-client/src/assets"
+					],
+					"styles": [
+						"projects/rds-page-client/src/styles.scss"
+					],
+					"scripts": [],
+					"extraWebpackConfig": "projects/rds-page-client/webpack.config.js",
+					"commonChunk": false
+				},
+				"configurations": {
+					"production": {
+						"budgets": [
+							{
+								"type": "initial",
+								"maximumWarning": "1000kb",
+								"maximumError": "1.2mb"
 							},
-							"fonts": true
-						},
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-product/src/environments/environment.ts",
-									"with": "projects/rds-page-product/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-product/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-product:build:production",
-							"extraWebpackConfig": "projects/rds-page-product/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "product:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 3000,
-						"publicHost": "http://localhost:3000",
-						"extraWebpackConfig": "projects/rds-page-product/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-product:build",
-						"extraWebpackConfig": "projects/rds-page-product/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-product/src/test.ts",
-						"polyfills": "projects/rds-page-product/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-product/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-product/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-product/src/favicon.ico",
-							"projects/rds-page-product/src/assets"
+							{
+								"type": "anyComponentStyle",
+								"maximumWarning": "15kb",
+								"maximumError": "20kb"
+							}
 						],
-						"styles": [
-							"projects/rds-page-product/src/styles.scss"
+						"fileReplacements": [
+							{
+								"replace": "projects/rds-page-client/src/environments/environment.ts",
+								"with": "projects/rds-page-client/src/environments/environment.prod.ts"
+							}
 						],
-						"scripts": []
+						"outputHashing": "all",
+						"extraWebpackConfig": "projects/rds-page-client/webpack.prod.config.js"
+					},
+					"development": {
+						"buildOptimizer": false,
+						"optimization": false,
+						"vendorChunk": true,
+						"extractLicenses": false,
+						"sourceMap": true,
+						"namedChunks": true
 					}
-				}
-			}
-		},
-		"rds-page-dashboard": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
 				},
-				"@schematics/angular:application": {
-					"strict": true
+				"defaultConfiguration": "production"
+			},
+			"serve": {
+				"builder": "ngx-build-plus:dev-server",
+				"configurations": {
+					"production": {
+						"browserTarget": "rds-page-client:build:production",
+						"extraWebpackConfig": "projects/rds-page-client/webpack.prod.config.js"
+					},
+					"development": {
+						"browserTarget": "rds-page-client:build:development"
+					}
+				},
+				"defaultConfiguration": "development",
+				"options": {
+					"port": 5019,
+					"publicHost": "http://localhost:5019",
+					"extraWebpackConfig": "projects/rds-page-client/webpack.config.js"
 				}
 			},
-			"root": "projects/rds-page-dashboard",
-			"sourceRoot": "projects/rds-page-dashboard/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-dashboard",
-						"index": "projects/rds-page-dashboard/src/index.html",
-						"main": "projects/rds-page-dashboard/src/main.ts",
-						"polyfills": "projects/rds-page-dashboard/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-dashboard/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-dashboard/src/favicon.ico",
-							"projects/rds-page-dashboard/src/assets"
-						],
-						"styles": [
-							"projects/libs/themes/src/styles/custom.scss",
-							"projects/rds-page-dashboard/src/styles.scss"
-						],
-						"scripts": [
-							"./node_modules/bootstrap/dist/js/bootstrap.min.js"
-						],
-						"extraWebpackConfig": "projects/rds-page-dashboard/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-dashboard/src/environments/environment.ts",
-									"with": "projects/rds-page-dashboard/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-dashboard/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-dashboard:build:production",
-							"extraWebpackConfig": "projects/rds-page-dashboard/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-dashboard:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5001,
-						"publicHost": "http://localhost:5001",
-						"extraWebpackConfig": "projects/rds-page-dashboard/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-dashboard:build",
-						"extraWebpackConfig": "projects/rds-page-dashboard/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-dashboard/src/test.ts",
-						"polyfills": "projects/rds-page-dashboard/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-dashboard/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-dashboard/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-dashboard/src/favicon.ico",
-							"projects/rds-page-dashboard/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-dashboard/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-user": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
+			"extract-i18n": {
+				"builder": "ngx-build-plus:extract-i18n",
+				"options": {
+					"browserTarget": "rds-page-client:build",
+					"extraWebpackConfig": "projects/rds-page-client/webpack.config.js"
 				}
 			},
-			"root": "projects/rds-page-user",
-			"sourceRoot": "projects/rds-page-user/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-user",
-						"index": "projects/rds-page-user/src/index.html",
-						"main": "projects/rds-page-user/src/main.ts",
-						"polyfills": "projects/rds-page-user/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-user/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-user/src/favicon.ico",
-							"projects/rds-page-user/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-user/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-user/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-user/src/environments/environment.ts",
-									"with": "projects/rds-page-user/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-user/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-user:build:production",
-							"extraWebpackConfig": "projects/rds-page-user/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-user:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5002,
-						"publicHost": "http://localhost:5002",
-						"extraWebpackConfig": "projects/rds-page-user/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-user:build",
-						"extraWebpackConfig": "projects/rds-page-user/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-user/src/test.ts",
-						"polyfills": "projects/rds-page-user/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-user/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-user/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-user/src/favicon.ico",
-							"projects/rds-page-user/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-user/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-demo-ui": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-demo-ui",
-			"sourceRoot": "projects/rds-page-demo-ui/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-demo-ui",
-						"index": "projects/rds-page-demo-ui/src/index.html",
-						"main": "projects/rds-page-demo-ui/src/main.ts",
-						"polyfills": "projects/rds-page-demo-ui/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-demo-ui/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-demo-ui/src/favicon.ico",
-							"projects/rds-page-demo-ui/src/assets"
-						],
-						"styles": [
-							"projects/libs/themes/src/styles/quillEditor.scss",
-							"projects/rds-page-demo-ui/src/styles.scss"
-						],
-						"scripts": [
-							"./node_modules/quill/dist/quill.min.js"
-						],
-						"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-demo-ui/src/environments/environment.ts",
-									"with": "projects/rds-page-demo-ui/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-demo-ui:build:production",
-							"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-demo-ui:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5003,
-						"publicHost": "http://localhost:5003",
-						"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-demo-ui:build",
-						"extraWebpackConfig": "projects/rds-page-demo-ui/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-demo-ui/src/test.ts",
-						"polyfills": "projects/rds-page-demo-ui/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-demo-ui/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-demo-ui/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-demo-ui/src/favicon.ico",
-							"projects/rds-page-demo-ui/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-demo-ui/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-language": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-language",
-			"sourceRoot": "projects/rds-page-language/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-language",
-						"index": "projects/rds-page-language/src/index.html",
-						"main": "projects/rds-page-language/src/main.ts",
-						"polyfills": "projects/rds-page-language/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-language/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-language/src/favicon.ico",
-							"projects/rds-page-language/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-language/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-language/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-language/src/environments/environment.ts",
-									"with": "projects/rds-page-language/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-language/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-language:build:production",
-							"extraWebpackConfig": "projects/rds-page-language/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-language:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5005,
-						"publicHost": "http://localhost:5005",
-						"extraWebpackConfig": "projects/rds-page-language/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-language:build",
-						"extraWebpackConfig": "projects/rds-page-language/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-language/src/test.ts",
-						"polyfills": "projects/rds-page-language/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-language/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-language/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-language/src/favicon.ico",
-							"projects/rds-page-language/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-language/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-audit-logs": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-audit-logs",
-			"sourceRoot": "projects/rds-page-audit-logs/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-audit-logs",
-						"index": "projects/rds-page-audit-logs/src/index.html",
-						"main": "projects/rds-page-audit-logs/src/main.ts",
-						"polyfills": "projects/rds-page-audit-logs/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-audit-logs/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-audit-logs/src/favicon.ico",
-							"projects/rds-page-audit-logs/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-audit-logs/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-audit-logs/src/environments/environment.ts",
-									"with": "projects/rds-page-audit-logs/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-audit-logs:build:production",
-							"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-audit-logs:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5006,
-						"publicHost": "http://localhost:5006",
-						"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-audit-logs:build",
-						"extraWebpackConfig": "projects/rds-page-audit-logs/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-audit-logs/src/test.ts",
-						"polyfills": "projects/rds-page-audit-logs/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-audit-logs/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-audit-logs/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-audit-logs/src/favicon.ico",
-							"projects/rds-page-audit-logs/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-audit-logs/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-role": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-role",
-			"sourceRoot": "projects/rds-page-role/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-role",
-						"index": "projects/rds-page-role/src/index.html",
-						"main": "projects/rds-page-role/src/main.ts",
-						"polyfills": "projects/rds-page-role/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-role/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-role/src/favicon.ico",
-							"projects/rds-page-role/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-role/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-role/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-role/src/environments/environment.ts",
-									"with": "projects/rds-page-role/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-role/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-role:build:production",
-							"extraWebpackConfig": "projects/rds-page-role/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-role:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5007,
-						"publicHost": "http://localhost:5007",
-						"extraWebpackConfig": "projects/rds-page-role/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "role:build",
-						"extraWebpackConfig": "projects/rds-page-role/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-role/src/test.ts",
-						"polyfills": "projects/rds-page-role/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-role/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-role/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-role/src/favicon.ico",
-							"projects/rds-page-role/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-role/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-visual-settings": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-visual-settings",
-			"sourceRoot": "projects/rds-page-visual-settings/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-visualsettings",
-						"index": "projects/rds-page-visual-settings/src/index.html",
-						"main": "projects/rds-page-visual-settings/src/main.ts",
-						"polyfills": "projects/rds-page-visual-settings/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-visual-settings/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-visual-settings/src/favicon.ico",
-							"projects/rds-page-visual-settings/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-visual-settings/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-visual-settings/src/environments/environment.ts",
-									"with": "projects/rds-page-visual-settings/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-visualsettings:build:production",
-							"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-visual-settings:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5008,
-						"publicHost": "http://localhost:5008",
-						"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-visual-settings:build",
-						"extraWebpackConfig": "projects/rds-page-visual-settings/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-visual-settings/src/test.ts",
-						"polyfills": "projects/rds-page-visual-settings/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-visual-settings/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-visual-settings/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-visual-settings/src/favicon.ico",
-							"projects/rds-page-visual-settings/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-visual-settings/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-forgot-password": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-forgot-password",
-			"sourceRoot": "projects/rds-page-forgot-password/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-forgot-password",
-						"index": "projects/rds-page-forgot-password/src/index.html",
-						"main": "projects/rds-page-forgot-password/src/main.ts",
-						"polyfills": "projects/rds-page-forgot-password/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-forgot-password/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-forgot-password/src/favicon.ico",
-							"projects/rds-page-forgot-password/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-forgot-password/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-forgot-password/src/environments/environment.ts",
-									"with": "projects/rds-page-forgot-password/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-forgot-password:build:production",
-							"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-forgot-password:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5010,
-						"publicHost": "http://localhost:5010",
-						"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-forgot-password:build",
-						"extraWebpackConfig": "projects/rds-page-forgot-password/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-forgot-password/src/test.ts",
-						"polyfills": "projects/rds-page-forgot-password/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-forgot-password/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-forgot-password/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-forgot-password/src/favicon.ico",
-							"projects/rds-page-forgot-password/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-forgot-password/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-login": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-login",
-			"sourceRoot": "projects/rds-page-login/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-login",
-						"index": "projects/rds-page-login/src/index.html",
-						"main": "projects/rds-page-login/src/main.ts",
-						"polyfills": "projects/rds-page-login/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-login/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-login/src/favicon.ico",
-							"projects/rds-page-login/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-login/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-login/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-login/src/environments/environment.ts",
-									"with": "projects/rds-page-login/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-login/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-login:build:production",
-							"extraWebpackConfig": "projects/rds-page-login/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-login:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5011,
-						"publicHost": "http://localhost:5011",
-						"extraWebpackConfig": "projects/rds-page-login/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-login:build",
-						"extraWebpackConfig": "projects/rds-page-login/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-login/src/test.ts",
-						"polyfills": "projects/rds-page-login/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-login/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-login/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-login/src/favicon.ico",
-							"projects/rds-page-login/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-login/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-organization-unit": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-organization-unit",
-			"sourceRoot": "projects/rds-page-organization-unit/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-organization-unit",
-						"index": "projects/rds-page-organization-unit/src/index.html",
-						"main": "projects/rds-page-organization-unit/src/main.ts",
-						"polyfills": "projects/rds-page-organization-unit/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-organization-unit/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-organization-unit/src/favicon.ico",
-							"projects/rds-page-organization-unit/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-organization-unit/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-organization-unit/src/environments/environment.ts",
-									"with": "projects/rds-page-organization-unit/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-organization-unit:build:production",
-							"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-organization-unit:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5012,
-						"publicHost": "http://localhost:5012",
-						"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-organization-unit:build",
-						"extraWebpackConfig": "projects/rds-page-organization-unit/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-organization-unit/src/test.ts",
-						"polyfills": "projects/rds-page-organization-unit/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-organization-unit/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-organization-unit/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page--unit/src/favicon.ico",
-							"projects/organization-unit/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-organization-unit/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-tenant": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-tenant",
-			"sourceRoot": "projects/rds-page-tenant/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-tenant",
-						"index": "projects/rds-page-tenant/src/index.html",
-						"main": "projects/rds-page-tenant/src/main.ts",
-						"polyfills": "projects/rds-page-tenant/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-tenant/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-tenant/src/favicon.ico",
-							"projects/rds-page-tenant/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-tenant/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-tenant/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-tenant/src/environments/environment.ts",
-									"with": "projects/rds-page-tenant/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-tenant/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-tenant:build:production",
-							"extraWebpackConfig": "projects/rds-page-tenant/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-tenant:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5015,
-						"publicHost": "http://localhost:5015",
-						"extraWebpackConfig": "projects/rds-page-tenant/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-tenant:build",
-						"extraWebpackConfig": "projects/rds-page-tenant/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-tenant/src/test.ts",
-						"polyfills": "projects/rds-page-tenant/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-tenant/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-tenant/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-tenant/src/favicon.ico",
-							"projects/rds-page-tenant/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-tenant/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-claim-types": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-claim-types",
-			"sourceRoot": "projects/rds-page-claim-types/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-claim-types",
-						"index": "projects/rds-page-claim-types/src/index.html",
-						"main": "projects/rds-page-claim-types/src/main.ts",
-						"polyfills": "projects/rds-page-claim-types/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-claim-types/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-claim-types/src/favicon.ico",
-							"projects/rds-page-claim-types/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-claim-types/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-claim-types/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-claim-types/src/environments/environment.ts",
-									"with": "projects/rds-page-claim-types/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-claim-types/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-claim-types:build:production",
-							"extraWebpackConfig": "projects/rds-page-claim-types/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-claim-types:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5016,
-						"publicHost": "http://localhost:5016",
-						"extraWebpackConfig": "projects/rds-page-claim-types/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-claim-types:build",
-						"extraWebpackConfig": "projects/rds-page-claim-types/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-claim-types/src/test.ts",
-						"polyfills": "projects/rds-page-claim-types/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-claim-types/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-claim-types/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-claim-types/src/favicon.ico",
-							"projects/rds-page-claim-types/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-claim-types/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-settings": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-settings",
-			"sourceRoot": "projects/rds-page-settings/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-settings",
-						"index": "projects/rds-page-settings/src/index.html",
-						"main": "projects/rds-page-settings/src/main.ts",
-						"polyfills": "projects/rds-page-settings/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-settings/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-settings/src/favicon.ico",
-							"projects/rds-page-settings/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-settings/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-settings/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-settings/src/environments/environment.ts",
-									"with": "projects/rds-page-settings/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-settings/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-settings:build:production",
-							"extraWebpackConfig": "projects/rds-page-settings/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-settings:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5017,
-						"publicHost": "http://localhost:5017",
-						"extraWebpackConfig": "projects/rds-page-settings/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-settings:build",
-						"extraWebpackConfig": "projects/rds-page-settings/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-settings/src/test.ts",
-						"polyfills": "projects/rds-page-settings/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-settings/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-settings/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-settings/src/favicon.ico",
-							"projects/rds-page-settings/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-settings/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-securitylog": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-securitylog",
-			"sourceRoot": "projects/rds-page-securitylog/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-securitylog",
-						"index": "projects/rds-page-securitylog/src/index.html",
-						"main": "projects/rds-page-securitylog/src/main.ts",
-						"polyfills": "projects/rds-page-securitylog/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-securitylog/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-securitylog/src/favicon.ico",
-							"projects/rds-page-securitylog/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-securitylog/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-securitylog/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-securitylog/src/environments/environment.ts",
-									"with": "projects/rds-page-securitylog/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-securitylog/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-securitylog:build:production",
-							"extraWebpackConfig": "projects/rds-page-securitylog/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-securitylog:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"open": false,
-						"port": 5018,
-						"publicHost": "http://localhost:5018",
-						"extraWebpackConfig": "projects/rds-page-securitylog/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-securitylog:build",
-						"extraWebpackConfig": "projects/securitylog/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/securitylog/src/test.ts",
-						"polyfills": "projects/securitylog/src/polyfills.ts",
-						"tsConfig": "projects/securitylog/tsconfig.spec.json",
-						"karmaConfig": "projects/securitylog/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/securitylog/src/favicon.ico",
-							"projects/securitylog/src/assets"
-						],
-						"styles": [
-							"projects/securitylog/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-edition": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-edition",
-			"sourceRoot": "projects/rds-page-edition/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-edition",
-						"index": "projects/rds-page-edition/src/index.html",
-						"main": "projects/rds-page-edition/src/main.ts",
-						"polyfills": "projects/rds-page-edition/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-edition/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-edition/src/favicon.ico",
-							"projects/rds-page-edition/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-edition/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-edition/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-edition/src/environments/environment.ts",
-									"with": "projects/rds-page-edition/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-edition/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-edition:build:production",
-							"extraWebpackConfig": "projects/rds-page-edition/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-edition:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 3003,
-						"publicHost": "http://localhost:3003",
-						"extraWebpackConfig": "projects/rds-page-edition/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-edition:build",
-						"extraWebpackConfig": "projects/rds-page-edition/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-edition/src/test.ts",
-						"polyfills": "projects/rds-page-edition/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-edition/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-edition/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-edition/src/favicon.ico",
-							"projects/rds-page-edition/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-edition/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-identity-resources": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-identity-resources",
-			"sourceRoot": "projects/rds-page-identity-resources/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-identity-resources",
-						"index": "projects/rds-page-identity-resources/src/index.html",
-						"main": "projects/rds-page-identity-resources/src/main.ts",
-						"polyfills": "projects/rds-page-identity-resources/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-identity-resources/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-identity-resources/src/favicon.ico",
-							"projects/rds-page-identity-resources/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-identity-resources/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-identity-resources/src/environments/environment.ts",
-									"with": "projects/rds-page-identity-resources/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-identity-resources:build:production",
-							"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-identity-resources:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 7012,
-						"publicHost": "http://localhost:7012",
-						"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-identity-resources:build",
-						"extraWebpackConfig": "projects/rds-page-identity-resources/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-identity-resources/src/test.ts",
-						"polyfills": "projects/rds-page-identity-resources/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-identity-resources/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-identity-resources/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-identity-resources/src/favicon.ico",
-							"projects/rds-page-identity-resources/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-identity-resources/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
-			}
-		},
-		"rds-page-client": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/rds-page-client",
-			"sourceRoot": "projects/rds-page-client/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-client",
-						"index": "projects/rds-page-client/src/index.html",
-						"main": "projects/rds-page-client/src/main.ts",
-						"polyfills": "projects/rds-page-client/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-client/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-client/src/favicon.ico",
+			"test": {
+				"builder": "@angular-devkit/build-angular:karma",
+				"options": {
+					"main": "projects/rds-page-client/src/test.ts",
+					"polyfills": "projects/rds-page-client/src/polyfills.ts",
+					"tsConfig": "projects/rds-page-client/tsconfig.spec.json",
+					"karmaConfig": "projects/rds-page-client/karma.conf.js",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-client/src/favicon.ico",
 							"projects/rds-page-client/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-client/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-client/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-client/src/environments/environment.ts",
-									"with": "projects/rds-page-client/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-client/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-client:build:production",
-							"extraWebpackConfig": "projects/rds-page-client/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-client:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 5019,
-						"publicHost": "http://localhost:5019",
-						"extraWebpackConfig": "projects/rds-page-client/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-client:build",
-						"extraWebpackConfig": "projects/rds-page-client/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-client/src/test.ts",
-						"polyfills": "projects/rds-page-client/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-client/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-client/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-client/src/favicon.ico",
-							"projects/rds-page-client/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-client/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
+			  ],
+			  "styles": [
+				"projects/rds-page-client/src/styles.scss"
+			  ],
+			  "scripts": []
+			}
+		  }
+		}
+	  },
+	  "rds-page-text-template": {
+		"projectType": "application",
+		"schematics": {
+			"@schematics/angular:component": {
+				"style": "scss"
+			},
+			"@schematics/angular:application": {
+				"strict": true
 			}
 		},
-		"rds-page-text-template": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
+		"root": "projects/rds-page-text-template",
+		"sourceRoot": "projects/rds-page-text-template/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+				"outputPath": "dist/rds-page-text-template",
+				"index": "projects/rds-page-text-template/src/index.html",
+				"main": "projects/rds-page-text-template/src/main.ts",
+				"polyfills": "projects/rds-page-text-template/src/polyfills.ts",
+				"tsConfig": "projects/rds-page-text-template/tsconfig.app.json",
+			  "inlineStyleLanguage": "scss",
+			  "assets": [
+				"projects/rds-page-text-template/src/favicon.ico",
+				"projects/rds-page-text-template/src/assets"
+			  ],
+			  "styles": [
+				"projects/rds-page-text-template/src/styles.scss"
+			  ],
+			  "scripts": [],
+			  "extraWebpackConfig": "projects/rds-page-text-template/webpack.config.js",
+			  "commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+					{
+						"replace": "projects/rds-page-text-template/src/environments/environment.ts",
+						"with": "projects/rds-page-text-template/src/environments/environment.prod.ts"
+					}
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-text-template/webpack.prod.config.js"
+			},
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+				"production": {
+					"browserTarget": "rds-page-text-template:build:production",
+					"extraWebpackConfig": "projects/rds-page-text-template/webpack.prod.config.js"
 				},
-				"@schematics/angular:application": {
-					"strict": true
+				"development": {
+					"browserTarget": "rds-page-text-template:build:development"
 				}
 			},
-			"root": "projects/rds-page-text-template",
-			"sourceRoot": "projects/rds-page-text-template/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-text-template",
-						"index": "projects/rds-page-text-template/src/index.html",
-						"main": "projects/rds-page-text-template/src/main.ts",
-						"polyfills": "projects/rds-page-text-template/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-text-template/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-text-template/src/favicon.ico",
-							"projects/rds-page-text-template/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-text-template/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-text-template/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-text-template/src/environments/environment.ts",
-									"with": "projects/rds-page-text-template/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-text-template/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-text-template:build:production",
-							"extraWebpackConfig": "projects/rds-page-text-template/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-text-template:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 5021,
-						"publicHost": "http://localhost:5021",
-						"extraWebpackConfig": "projects/rds-page-text-template/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-text-template:build",
-						"extraWebpackConfig": "projects/rds-page-text-template/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-text-template/src/test.ts",
-						"polyfills": "projects/rds-page-text-template/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-text-template/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-text-template/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-text-template/src/favicon.ico",
-							"projects/rds-page-text-template/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-text-template/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
+			"defaultConfiguration": "development",
+			"options": {
+				"port": 5021,
+				"publicHost": "http://localhost:5021",
+				"extraWebpackConfig": "projects/rds-page-text-template/webpack.config.js"
 			}
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+				"browserTarget": "rds-page-text-template:build",
+				"extraWebpackConfig": "projects/rds-page-text-template/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+				"main": "projects/rds-page-text-template/src/test.ts",
+				"polyfills": "projects/rds-page-text-template/src/polyfills.ts",
+				"tsConfig": "projects/rds-page-text-template/tsconfig.spec.json",
+				"karmaConfig": "projects/rds-page-text-template/karma.conf.js",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					"projects/rds-page-text-template/src/favicon.ico",
+					"projects/rds-page-text-template/src/assets"
+				],
+				"styles": [
+					"projects/rds-page-text-template/src/styles.scss"
+				],
+				"scripts": []
+			}
+		}
+		}
+	  },
+	  "rds-page-api-resources": {
+		"projectType": "application",
+		"schematics": {
+		  "@schematics/angular:component": {
+			"style": "scss"
+		  },
+		  "@schematics/angular:application": {
+			"strict": true
+		  }
 		},
-		"rds-page-api-resources": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
+		"root": "projects/rds-page-api-resources",
+		"sourceRoot": "projects/rds-page-api-resources/src",
+		"prefix": "app",
+		"architect": {
+		  "build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+				"outputPath": "dist/rds-page-api-resources",
+				"index": "projects/rds-page-api-resources/src/index.html",
+				"main": "projects/rds-page-api-resources/src/main.ts",
+				"polyfills": "projects/rds-page-api-resources/src/polyfills.ts",
+				"tsConfig": "projects/rds-page-api-resources/tsconfig.app.json",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					"projects/rds-page-api-resources/src/favicon.ico",
+					"projects/rds-page-api-resources/src/assets"
+				],
+				"styles": [
+					"projects/rds-page-api-resources/src/styles.scss"
+				],
+				"scripts": [],
+				"extraWebpackConfig": "projects/rds-page-api-resources/webpack.config.js",
+				"commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+					{
+						"replace": "projects/rds-page-api-resources/src/environments/environment.ts",
+						"with": "projects/rds-page-api-resources/src/environments/environment.prod.ts"
+					}
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-api-resources/webpack.prod.config.js"
+			},
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+				"production": {
+					"browserTarget": "rds-page-api-resources:build:production",
+					"extraWebpackConfig": "projects/rds-page-api-resources/webpack.prod.config.js"
 				},
-				"@schematics/angular:application": {
-					"strict": true
+				"development": {
+					"browserTarget": "rds-page-api-resources:build:development"
 				}
 			},
-			"root": "projects/rds-page-api-resources",
-			"sourceRoot": "projects/rds-page-api-resources/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-api-resources",
-						"index": "projects/rds-page-api-resources/src/index.html",
-						"main": "projects/rds-page-api-resources/src/main.ts",
-						"polyfills": "projects/rds-page-api-resources/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-api-resources/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-api-resources/src/favicon.ico",
-							"projects/rds-page-api-resources/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-api-resources/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-api-resources/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-api-resources/src/environments/environment.ts",
-									"with": "projects/rds-page-api-resources/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-api-resources/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-api-resources:build:production",
-							"extraWebpackConfig": "projects/rds-page-api-resources/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-api-resources:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 6008,
-						"publicHost": "http://localhost:6008",
-						"extraWebpackConfig": "projects/rds-page-api-resources/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-api-resources:build",
-						"extraWebpackConfig": "projects/rds-page-api-resources/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-api-resources/src/test.ts",
-						"polyfills": "projects/rds-page-api-resources/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-api-resources/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-api-resources/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-api-resources/src/favicon.ico",
-							"projects/rds-page-api-resources/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-api-resources/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
+			"defaultConfiguration": "development",
+			"options": {
+				"port": 6008,
+				"publicHost": "http://localhost:6008",
+				"extraWebpackConfig": "projects/rds-page-api-resources/webpack.config.js"
 			}
 		},
-		"rds-page-api-scope": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
+		"extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+				"browserTarget": "rds-page-api-resources:build",
+				"extraWebpackConfig": "projects/rds-page-api-resources/webpack.config.js"
+			}
+		},
+		"test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+				"main": "projects/rds-page-api-resources/src/test.ts",
+				"polyfills": "projects/rds-page-api-resources/src/polyfills.ts",
+				"tsConfig": "projects/rds-page-api-resources/tsconfig.spec.json",
+				"karmaConfig": "projects/rds-page-api-resources/karma.conf.js",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					"projects/rds-page-api-resources/src/favicon.ico",
+					"projects/rds-page-api-resources/src/assets"
+				],
+				"styles": [
+					"projects/rds-page-api-resources/src/styles.scss"
+				],
+				"scripts": []
+			}
+		}
+	}
+},
+"rds-page-api-scope": {
+	"projectType": "application",
+	"schematics": {
+		"@schematics/angular:component": {
+			"style": "scss"
+		},
+		"@schematics/angular:application": {
+			"strict": true
+		}
+	},
+	"root": "projects/rds-page-api-scope",
+	"sourceRoot": "projects/rds-page-api-scope/src",
+	"prefix": "app",
+	"architect": {
+		"build": {
+			"builder": "ngx-build-plus:browser",
+			"options": {
+				"outputPath": "dist/rds-page-api-scope",
+				"index": "projects/rds-page-api-scope/src/index.html",
+				"main": "projects/rds-page-api-scope/src/main.ts",
+				"polyfills": "projects/rds-page-api-scope/src/polyfills.ts",
+				"tsConfig": "projects/rds-page-api-scope/tsconfig.app.json",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					"projects/rds-page-api-scope/src/favicon.ico",
+					"projects/rds-page-api-scope/src/assets"
+				],
+				"styles": [
+					"projects/rds-page-api-scope/src/styles.scss"
+				],
+				"scripts": [],
+				"extraWebpackConfig": "projects/rds-page-api-scope/webpack.config.js",
+				"commonChunk": false
+			},
+			"configurations": {
+			  "production": {
+				"budgets": [
+				  {
+					"type": "initial",
+					"maximumWarning": "1000kb",
+					"maximumError": "1.2mb"
+				  },
+				  {
+					"type": "anyComponentStyle",
+					"maximumWarning": "15kb",
+					"maximumError": "20kb"
+				  }
+				],
+				"fileReplacements": [
+					{
+						"replace": "projects/rds-page-api-scope/src/environments/environment.ts",
+						"with": "projects/rds-page-api-scope/src/environments/environment.prod.ts"
+					}
+				],
+				"outputHashing": "all",
+				"extraWebpackConfig": "projects/rds-page-api-scope/webpack.prod.config.js"
+			},
+			  "development": {
+				"buildOptimizer": false,
+				"optimization": false,
+				"vendorChunk": true,
+				"extractLicenses": false,
+				"sourceMap": true,
+				"namedChunks": true
+			  }
+			},
+			"defaultConfiguration": "production"
+		  },
+		  "serve": {
+			"builder": "ngx-build-plus:dev-server",
+			"configurations": {
+				"production": {
+					"browserTarget": "rds-page-api-scope:build:production",
+					"extraWebpackConfig": "projects/rds-page-api-scope/webpack.prod.config.js"
 				},
-				"@schematics/angular:application": {
-					"strict": true
+				"development": {
+					"browserTarget": "rds-page-api-scope:build:development"
 				}
 			},
-			"root": "projects/rds-page-api-scope",
-			"sourceRoot": "projects/rds-page-api-scope/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "ngx-build-plus:browser",
-					"options": {
-						"outputPath": "dist/rds-page-api-scope",
-						"index": "projects/rds-page-api-scope/src/index.html",
-						"main": "projects/rds-page-api-scope/src/main.ts",
-						"polyfills": "projects/rds-page-api-scope/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-api-scope/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-api-scope/src/favicon.ico",
-							"projects/rds-page-api-scope/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-api-scope/src/styles.scss"
-						],
-						"scripts": [],
-						"extraWebpackConfig": "projects/rds-page-api-scope/webpack.config.js",
-						"commonChunk": false
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "15kb",
-									"maximumError": "20kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/rds-page-api-scope/src/environments/environment.ts",
-									"with": "projects/rds-page-api-scope/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "projects/rds-page-api-scope/webpack.prod.config.js"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "ngx-build-plus:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "rds-page-api-scope:build:production",
-							"extraWebpackConfig": "projects/rds-page-api-scope/webpack.prod.config.js"
-						},
-						"development": {
-							"browserTarget": "rds-page-api-scope:build:development"
-						}
-					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 5028,
-						"publicHost": "http://localhost:5028",
-						"extraWebpackConfig": "projects/rds-page-api-scope/webpack.config.js"
-					}
-				},
-				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
-					"options": {
-						"browserTarget": "rds-page-api-scope:build",
-						"extraWebpackConfig": "projects/rds-page-api-scope/webpack.config.js"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/rds-page-api-scope/src/test.ts",
-						"polyfills": "projects/rds-page-api-scope/src/polyfills.ts",
-						"tsConfig": "projects/rds-page-api-scope/tsconfig.spec.json",
-						"karmaConfig": "projects/rds-page-api-scope/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/rds-page-api-scope/src/favicon.ico",
-							"projects/rds-page-api-scope/src/assets"
-						],
-						"styles": [
-							"projects/rds-page-api-scope/src/styles.scss"
-						],
-						"scripts": []
-					}
-				}
+			"defaultConfiguration": "development",
+			"options": {
+				"port": 5028,
+				"publicHost": "http://localhost:5028",
+				"extraWebpackConfig": "projects/rds-page-api-scope/webpack.config.js"
 			}
-		},
+		  },
+		  "extract-i18n": {
+			"builder": "ngx-build-plus:extract-i18n",
+			"options": {
+				"browserTarget": "rds-page-api-scope:build",
+				"extraWebpackConfig": "projects/rds-page-api-scope/webpack.config.js"
+			}
+		  },
+		  "test": {
+			"builder": "@angular-devkit/build-angular:karma",
+			"options": {
+				"main": "projects/rds-page-api-scope/src/test.ts",
+				"polyfills": "projects/rds-page-api-scope/src/polyfills.ts",
+				"tsConfig": "projects/rds-page-api-scope/tsconfig.spec.json",
+				"karmaConfig": "projects/rds-page-api-scope/karma.conf.js",
+				"inlineStyleLanguage": "scss",
+				"assets": [
+					"projects/rds-page-api-scope/src/favicon.ico",
+					"projects/rds-page-api-scope/src/assets"
+				],
+				"styles": [
+					"projects/rds-page-api-scope/src/styles.scss"
+				],
+				"scripts": []
+			}
+		}
+		}
+	  },
 		"rds-page-member-activity": {
 			"projectType": "application",
 			"schematics": {
@@ -2853,8 +2735,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumWarning": "1000kb",
+									"maximumError": "1.2mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -2966,8 +2848,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumWarning": "1000kb",
+									"maximumError": "1.2mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -3079,8 +2961,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumWarning": "1000kb",
+									"maximumError": "1.2mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -3192,8 +3074,8 @@
 							"budgets": [
 								{
 									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumWarning": "1000kb",
+									"maximumError": "1.2mb"
 								},
 								{
 									"type": "anyComponentStyle",
