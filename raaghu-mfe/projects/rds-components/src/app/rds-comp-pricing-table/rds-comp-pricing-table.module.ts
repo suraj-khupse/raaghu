@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompPricingTableComponent } from './rds-comp-pricing-table.component';
-import { RdsButtonModule, RdsLabelModule, RdsRadioButtonModule, RdsTableModule } from '@libs/rds-elements';
+import { RdsBadgeModule, RdsButtonModule, RdsLabelModule, RdsRadioButtonModule, RdsTableModule } from '@libs/rds-elements';
 
 
 
@@ -14,7 +14,8 @@ import { RdsButtonModule, RdsLabelModule, RdsRadioButtonModule, RdsTableModule }
     RdsLabelModule,
     RdsRadioButtonModule,
     RdsTableModule,
-    RdsButtonModule
+    RdsButtonModule,
+    RdsBadgeModule
   ],
   exports: [
     RdsCompPricingTableComponent

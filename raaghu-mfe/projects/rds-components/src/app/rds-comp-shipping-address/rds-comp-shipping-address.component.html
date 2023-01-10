@@ -61,6 +61,10 @@
             </rds-input>
         </div>
     </div>
+    <div class="row">
+    <span><rds-checkbox label="Billing Address is Same as Shipping Address"[checked]="false" [disabled]="false" [switch]="false "id="checkboxid" [withLabel]="true" [isInputGroup]="false" state="checkbox"
+      ></rds-checkbox> </span>
+    </div>
     <!-- <div class="my-4 pt-1 d-flex">
         <div class="mr-3">
             <rds-checkbox [checked]="false" [disabled]="false" [switch]="false"
@@ -71,14 +75,12 @@
         </div>
     </div> -->
     <div class="my-4 row">
-        <div class="col-md-6 mb-3">
-            <rds-button [block]="true" [size]="'medium'" [isOutline]="true" [colorVariant]="'primary'"
-            [label]="translate.instant('back')" (click)="back()">
+        <div class="col-md-12 mb-3">
+            <rds-button [size]="'medium'" class="mx-3" [isOutline]="true" [colorVariant]="'primary'"
+            [label]="translate.instant('Cancel')" (click)="back()">
         </rds-button>
-        </div>
-        <div class="col-md-6 mb-3">
-            <rds-button [block]="true" [size]="'medium'" [colorVariant]="'primary'"
-            [label]="translate.instant('Continue')" (click)="continue()" [showLoadingSpinner]="buttonSpinner">
+            <rds-button [size]="'medium'" [colorVariant]="'primary'"
+            [label]="translate.instant('Save')" (click)="continue()" [showLoadingSpinner]="buttonSpinner">
         </rds-button>
         </div>
     </div>
