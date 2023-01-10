@@ -111,6 +111,7 @@ export class AppComponent {
   treeData1: any;
   isAssigned: boolean;
   isShimmer: boolean;
+  roleListItem: any[];
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -179,15 +180,15 @@ export class AppComponent {
     this.store.dispatch(assignableRoles());
     this.store.select(selectAssignableRoles).subscribe((res: any) => {
       if (res && res.items) {
-        this.roles =  [];
+        this.roleListItem =  [];
             this.isAnimation = false;
             res.items.forEach((element: any) => {
             const item: any = {
-            name: element.name,
-            id:element.id,
-            isAssigned:false
+            some: element.name,
+            value:element.id,
+            isSelected:false
           }
-          this.roles.push(item);
+          this.roleListItem.push(item);
         });
       }
     });

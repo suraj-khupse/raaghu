@@ -1,11 +1,9 @@
 <div class="checkedstyle flush-border treeview-flush ">
     <div *ngIf="multiselectTree" class="d-flex align-items-center checkedstyle">
-
-
         <div class="node-dot position-relative">
             <rds-checkbox [attr.id]="'Selectall'" (onChange)="selectAllFeature($event)"
                 [checked]="checkSelectAll(treeData)" class="position-absolute" [disabled]="false" [switch]="false"
-                [inline]="false" [id]="'checkSelectAll'">
+                [id]="'checkSelectAll'">
             </rds-checkbox>
         </div>
         <span class="node-label"><span class="mr-4">{{translate.instant(selectAllLabel)}}</span></span>
@@ -23,7 +21,7 @@
                     [height]="'13px'" [width]="'13px'" (click)="node.expanded=!node.expanded"
                     *ngIf="node.children&&node.children.length>0"></rds-icon>
                 <div class="node-dot position-relative ms-2" *ngIf="TreeType.checkbox&&node&&node.data">
-                    <rds-checkbox [checked]="node.selected" [disabled]="false" [switch]="false" [inline]="false"
+                    <rds-checkbox [checked]="node.selected" [disabled]="false" [switch]="false"
                         (onChange)="selectNode(node,$event)" [id]="'selectNode'"></rds-checkbox>
                     <div *ngIf="node.level !== 1" class="horizontal-dotted-line"></div>
                 </div>
@@ -48,34 +46,3 @@
         </div>
     </ng-template>
 </div>
-<!--Old Permission tree Structure  -->
-
-<!-- 
- <ng-container *ngTemplateOutlet="recursiveNodeTemplate; context: { list: treeData }"></ng-container>
-    <ng-template #recursiveNodeTemplate let-list="list">
-    <ul>
-            <div *ngFor="let node of list; let i = index" class="position-relative"
-                [ngStyle]="{'margin-left': list[0].level === 1 ? '24px' : '35px'}" >
-                <div class="vertical-dotted-line" *ngIf="setStateBasedOnMutable(i === list.length - 1, node)"></div>
-                <div class="d-flex align-items-center position-relative"
-                [ngClass]="{ 'active' : activepage===i, 'child' :  !collapsed }"  (click)="onMenuWithChildrenClick(i,node.children[0])" [id]="'menuWithChildren'+i">
-               <i  class="bi bi-chevron-down collapse-icon" *ngIf="node.children.length>0"></i>
-                <div class="node-dot position-relative" *ngIf="TreeType.checkbox">
-                <rds-checkbox [checked]="node.selected" [disabled]="false" [switch]="false"
-                        [inline]="false" (onChange)="selectNode(node,$event)" [id]="'selectNode'"></rds-checkbox>
-                    <div *ngIf="node.level !== 1" class="horizontal-dotted-line"></div>
-                </div>
-                <span #nodeLabel class="node-label">
-                    <span class="mr-4" (click)="onClicknode(node.data.displayName)">{{ node.data.displayName }}</span>
-                    </span>
-                </div>
-                <ul *ngIf="node.children && node.expanded">
-                     <ng-container *ngTemplateOutlet="recursiveNodeTemplate; context: { list: node.children }">
-                    </ng-container>
-                <div *ngIf="node.children?.length > 0" [ngClass]="{ 'show' : activepage===i }" [id]="node.id">
-                   
-                </div>
-                </ul>
-            </div>
-             </ul>
-        </ng-template> -->
