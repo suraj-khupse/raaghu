@@ -22,9 +22,6 @@ export const AuditLogReducersMap = {
     AppRoutingModule,
     SharedModule,
     NgxTranslateModule.forRoot(),
-    StoreModule.forFeature('auditLogs', AuditLogReducersMap
-    ),
-    EffectsModule.forRoot([AuditLogsEffects]),
     RdsCompAuditLogsNewModule,
     RdsCompEntityChangesModule,
     RdsNavTabModule,

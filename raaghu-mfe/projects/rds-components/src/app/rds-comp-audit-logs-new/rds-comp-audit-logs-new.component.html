@@ -1,85 +1,147 @@
 <!-- <form #entityChanges="ngForm"> -->
 <div class="card p-2 h-100 border-0 rounded-0 vh-88">
-    <div class="row">
-        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
-            <rds-datepicker name="date-picker" [placeholder]="translate.instant('Start Date')"
-                (change)="startDateModify($event)" [(ngModel)]="startDate" [value]="startDate" floatinginputLabel="">
-            </rds-datepicker>
+    <!-- <div class="row">
+        <div class="col col-sm-12 col-md-6 mb-3 mt-1 sm-p-0  align-items-center sm-block">
+            <rds-datepicker name="date-picker" [datePickerType]="'range'" [label]="''"
+            [placeholder]="translate.instant('Date Range')" (change)="onDateRageChange($event)"
+            [(ngModel)]="dateRange" [value]="dateRange" floatinginputLabel="">
+          </rds-datepicker>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 d-flex align-items-center sm-block">
-            <rds-datepicker name="date-picker" [placeholder]="translate.instant('End Date')"
-                (change)="endDateModify($event)" [(ngModel)]="endDate" [value]="endDate" floatinginputLabel="">
-            </rds-datepicker>
-        </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+
+        <div class="col mb-3 col-sm-12 col-md-6 sm-p-0 mt-1 d-flex align-items-center sm-block">
             <rds-input [inputType]="" [label]="" [(ngModel)]="user" [placeholder]="translate.instant('User')"
-                id="txtUsername" (change)="userModify($event)" floatinginputLabel="" ngDefaultControl
+                id="txtUsername"  (change)="userModify($event)" floatinginputLabel="" ngDefaultControl
                 name="userName"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col mb-3 col-sm-12 col-md-6 sm-p-0 mt-1 d-flex align-items-center sm-block">
             <rds-input [inputType]="" [label]="" [(ngModel)]="urlFilter" [placeholder]="translate.instant('Url Filter')"
                 id="txtUrlFilter" (change)="urlFilterModify($event)" floatinginputLabel="" ngDefaultControl
                 name="urlFilter"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col mb-3 col-sm-12 col-md-6 sm-p-0 mt-1 d-flex align-items-center sm-block">
             <rds-input [inputType]="" [label]="" [(ngModel)]="minDuration"
                 [placeholder]="translate.instant('Min Duration')" id="minDuration" (change)="minDurationModify($event)"
                 floatinginputLabel="" ngDefaultControl name="minDuration"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col mb-3 col-sm-12 col-md-6 sm-p-0 mt-1 d-flex align-items-center sm-block">
             <rds-input [inputType]="" [label]="" [(ngModel)]="maxDuration"
                 [placeholder]="translate.instant('Max Duration')" id="maxDuration" (change)="maxDurationModify($event)"
                 floatinginputLabel="" ngDefaultControl name="maxDuration"></rds-input>
         </div>
-    </div>
+    </div> -->
 
+
+    <div class="grid">
+        <div>
+            <rds-datepicker name="date-picker" [datePickerType]="'range'" [label]="''"
+            [placeholder]="translate.instant('Date Range')" (change)="onDateRageChange($event)"
+            [(ngModel)]="dateRange" [value]="dateRange" floatinginputLabel="">
+          </rds-datepicker>
+        </div>
+       
+        <div>
+            <rds-input [inputType]="" [label]="" [(ngModel)]="user" [placeholder]="translate.instant('User')"
+                id="txtUsername"  (change)="userModify($event)" floatinginputLabel="" ngDefaultControl
+                name="userName"></rds-input>
+        </div>
+        <div >
+            <rds-input [inputType]="" [label]="" [(ngModel)]="urlFilter" [placeholder]="translate.instant('Url Filter')"
+                id="txtUrlFilter" (change)="urlFilterModify($event)" floatinginputLabel="" ngDefaultControl
+                name="urlFilter"></rds-input>
+        </div>
+        <div>
+            <rds-input [inputType]="" [label]="" [(ngModel)]="minDuration"
+                [placeholder]="translate.instant('Min Duration')" id="minDuration" (change)="minDurationModify($event)"
+                floatinginputLabel="" ngDefaultControl name="minDuration"></rds-input>
+        </div>
+        <div>
+            <rds-input [inputType]="" [label]="" [(ngModel)]="maxDuration"
+                [placeholder]="translate.instant('Max Duration')" id="maxDuration" (change)="maxDurationModify($event)"
+                floatinginputLabel="" ngDefaultControl name="maxDuration"></rds-input>
+        </div>
+        </div>
+<!-- 
     <div class="row">
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
-            <!-- <rds-select-list (selectListChange)="httpMethodModify($event)" class="w-100" [itemList]="httpMethodList"
-                id="httpMethod" [value]="httpMethodList" [placeholder]="translate.instant('Http Method')" [label]=""
-                name="httpMethod">
-            </rds-select-list> -->
+        <div class="col-md-2 mb-3 sm-p-0 mt-3 align-items-center">
             <rds-dropdownlist [placeholder]="translate.instant('Http Method')" [borderDropdown]="true" required
             class="text-dark" [id]="'httpMethod'" [listItems]="httpMethodList" [value]="hasException"
             (onSelect)="httpMethodModify($event)" ngDefaultControl name="httpMethod">
         </rds-dropdownlist>
-
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center">
-            <!-- <rds-select-list (selectListChange)="httpStatusModify($event)" class="w-100" [(ngModel)]="httpStatus"
-                [value]="httpStatus" [itemList]="httpStatusList" id="httpStatus"
-                [placeholder]="translate.instant('Http Status Code')" [label]="" name="httpStatus">
-            </rds-select-list> -->
+        <div class="col-md-2 mb-3 sm-p-0 mt-3  align-items-center">
             <rds-dropdownlist [placeholder]="translate.instant('Http Status Code')" [borderDropdown]="true" required
             class="text-dark" [id]="'httpStatus'" [listItems]="httpStatusList" [value]="httpStatus"
             (onSelect)="httpStatusModify($event)" ngDefaultControl name="httpStatus">
         </rds-dropdownlist>
         </div>
-        <div class="col-md-2 mb-4 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col-md-2 mb-4 sm-p-0 mt-3 d-flex align-items-center sm-block">
             <rds-input [inputType]="" [label]="" [(ngModel)]="appName"
                 [placeholder]="translate.instant('Application Name')" id="appName" (change)="appNameModify($event)"
                 floatinginputLabel="" ngDefaultControl name="appName"></rds-input>
         </div>
 
-        <div class="col-md-2 mb-4 sm-p-0 mt-1 d-flex align-items-center sm-block">
+        <div class="col-md-2 mb-4 sm-p-0 mt-3 d-flex align-items-center sm-block">
             <rds-input [inputType]="" [label]="" [(ngModel)]="correlationID"
                 [placeholder]="translate.instant('Correlation ID')" id="correlationID"
                 (change)="correlationIDModify($event)" floatinginputLabel="" ngDefaultControl
                 name="correlationID"></rds-input>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center ">
+        <div class="col-md-2 mb-3 sm-p-0 mt-3  align-items-center ">
             
             <rds-dropdownlist [placeholder]="translate.instant('Has Exception')" [borderDropdown]="true" required
                 class="text-dark" [id]="'hasException'" [listItems]="hasExceptionList" [value]="hasException"
                 (onSelect)="hasExceptionModify($event)" ngDefaultControl name="hasException">
             </rds-dropdownlist>
         </div>
-        <div class="col-md-2 mb-3 sm-p-0 mt-1 d-flex align-items-center ">
-        <rds-button [label]="'Refresh'" [id]="'filter'"  [size]="'medium'" class="ms-2" [colorVariant]="'primary'"
+        <div class="col-md-2 mb-3 sm-p-0 mt-3  align-items-center ">
+        <rds-button [label]="'Refresh'" [id]="'filter'"  [size]="'medium'" (click)="Search()" class="ms-2" [colorVariant]="'primary'"
         >
         </rds-button>
         </div>
-    </div>
+    </div> -->
+    <div class="grid mt-4 mb-2">
+        <div>
+            <rds-dropdownlist [placeholder]="translate.instant('Http Method')" [borderDropdown]="true" required
+            class="text-dark" [id]="'httpMethod'" [listItems]="httpMethodList" [value]="hasException"
+            (onSelect)="httpMethodModify($event)" ngDefaultControl name="httpMethod">
+        </rds-dropdownlist>
+        </div>
+        <div>
+            <rds-dropdownlist [placeholder]="translate.instant('Http Status Code')" [borderDropdown]="true" required
+            class="text-dark" [id]="'httpStatus'" [listItems]="httpStatusList" [value]="httpStatus"
+            (onSelect)="httpStatusModify($event)" ngDefaultControl name="httpStatus">
+        </rds-dropdownlist>
+        </div>
+        <div>
+            <rds-input [inputType]="" [label]="" [(ngModel)]="appName"
+                [placeholder]="translate.instant('Application Name')" id="appName" (change)="appNameModify($event)"
+                floatinginputLabel="" ngDefaultControl name="appName"></rds-input>
+        </div>
+        <div>
+            <rds-input [inputType]="" [label]="" [(ngModel)]="correlationID"
+                [placeholder]="translate.instant('Correlation ID')" id="correlationID"
+                (change)="correlationIDModify($event)" floatinginputLabel="" ngDefaultControl
+                name="correlationID"></rds-input>
+        </div>
+        <div>
+            
+            <rds-dropdownlist [placeholder]="translate.instant('Has Exception')" [borderDropdown]="true" required
+                class="text-dark" [id]="'hasException'" [listItems]="hasExceptionList" [value]="hasException"
+                (onSelect)="hasExceptionModify($event)" ngDefaultControl name="hasException">
+            </rds-dropdownlist>
+        </div>
+        </div>
+        <div class="d-flex">
+            <div class="flex-grow-1"></div>
+            <div class="mb-3 sm-p-0 mt-3   ">
+                <rds-button [label]="'Refresh'" [id]="'filter'"  [size]="'medium'" (click)="Search()"  [colorVariant]="'primary'"
+                >
+                </rds-button>
+            </div>
+            
+
+        </div>
+      
     <div class="row">
         <rds-data-table [tableData]="operationLogs" (deleteEvent)="delete($event)" [pagination]="true"
             [noDataTitle]="translate.instant('Currently you do not have operation log')" [recordsPerPage]="10"

@@ -63,11 +63,8 @@ export class AppComponent implements OnInit {
     { key: 'executionTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true},
     { key: 'executionDuration', displayName: 'Duration', dataType: 'text', sortable: true, filterable: true},
     { key: 'action', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},
-   
     
-
-    
-    
+ 
   ];
   auditLogParamsData:any = {};
   ChangeLogParamsData:any = {};
@@ -130,16 +127,17 @@ export class AppComponent implements OnInit {
       maxExecutionDuration:undefined,
       minExecutionDuration:undefined,
       sorting:'',
-      maxResultCount:10,
+      maxResultCount:20,
       skipCount:0
      }
      this.store.dispatch(getAuditLogs(auditLogParamsData));
 
      this.store.select(selectAllAuditLogs).subscribe((res: any) => {
-       this.operationLogs = [];
-       if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0 && res.status == "success") {
+      
+       if (res && res.items && res.items.length > 0 ) {
          this.isAnimation = false;
-         res.auditLogs.items.forEach((element: any) => {
+         this.operationLogs =[];
+         res.items.forEach((element: any) => {
            const item: any = {
              parameters:element.parameters,
              userName: element.userName,
@@ -157,14 +155,7 @@ export class AppComponent implements OnInit {
            }
            this.operationLogs.push(item);
          });
-         
-         
-        //  const mfeConfig = this.rdsauditLogMfeConfig
-        //  mfeConfig.input.operationLogs = [... this.auditLogsTableData];
-        //  mfeConfig.input.isShimmer=false;
-        //  this.rdsauditLogMfeConfig = mfeConfig;
        }
-       
      })
 
      let startDate = new Date();
@@ -192,7 +183,7 @@ export class AppComponent implements OnInit {
              maxchangeDate:element.endDate
             
            }
-           this.auditLogsTableData.push(item);
+           this.changeLogs.push(item);
          });
         
        }
@@ -200,10 +191,7 @@ export class AppComponent implements OnInit {
      })
   }
   filterChangeLog(eventData){
-    debugger
-    // changeLogsParams.entityChangeSetId,undefined,undefined,undefined,
-    // changeLogsParams.startDate,changeLogsParams.endDate,undefined,
-    // changeLogsParams.skipCount,changeLogsParams.maxResultCount
+   
     this.ChangeLogParamsData = {
       ...this.ChangeLogParamsData,
       StartDate:this.formatDate( eventData.minchangeDate, 'yyyy-LL-dd HH:mm:ss'),
@@ -215,24 +203,7 @@ export class AppComponent implements OnInit {
       SkipCount:0,
     }
     this.store.dispatch(getEntityChanges(this.ChangeLogParamsData));
-    // this.store.select(selectAllchangeLogs).subscribe((res: any) => {
-    //   this.changeLogs = [];
-    //   if (res && res.changeLogs && res.changeLogs.items && res.changeLogs.items.length > 0) {
-    //     res.changeLogs.items.forEach((element: any) => {
-    //       const item: any = {
-    //         entityName:element.entityTypeFullName,
-    //         changeType: element.entityChangeType,
-    //         entityTypeFullName: element.entityTypeFullName,
-    //         minchangeDate: element.startDate,
-    //         maxchangeDate:element.endDate
-           
-    //       }
-    //       this.auditLogsTableData.push(item);
-    //     });
-       
-    //   }
-     
-    // })
+   
   }
   onTabClick(index: any): void {
     this.activeTab = index
@@ -273,50 +244,24 @@ export class AppComponent implements OnInit {
       maxExecutionDuration:eventData.MaxDuration,
       url:eventData.urlFilter,
       sorting:'',
-      maxResultCount:10,
+      maxResultCount:1000,
       skipCount:0
     }
     this.store.dispatch(getAuditLogs(this.auditLogParamsData));
-    // this.store.select(selectAllAuditLogs).subscribe((res: any) => {
-    //   this.operationLogs = [];
-    //   if (res && res.auditLogs && res.auditLogs.items && res.auditLogs.items.length > 0) {
-    //     res.auditLogs.items.forEach((element: any) => {
-    //       const item: any = {
-    //         parameters:element.parameters,
-    //         userName: element.userName,
-    //         serviceName: element.serviceName,
-    //         executionDuration: element.executionDuration,
-    //         clientIpAddress: element.clientIpAddress,
-    //         clientName: element.clientName,
-    //         browserInfo: element.browserInfo,
-    //         executionTime:this.formatDate( element.executionTime,'yyyy-LL-dd HH:mm:ss'),
-    //         methodName:element.methodName,
-    //         exception:element.exception,
-    //         name:element.methodName,
-    //       }
-    //       this.operationLogs.push(item);
-    //     });
-       
-    //   }
-    //   // const mfeConfig = this.rdsauditLogMfeConfig
-    //   // mfeConfig.input.operationLogs = [... this.auditLogsTableData];
-    //   // this.rdsauditLogMfeConfig = mfeConfig;
-    // })
+    
 
   }
   formatDate(date: DateTime | Date, format: string): string {
-
     if (date instanceof Date) {
-        return this.formatDate(this.fromJSDate(date), format);
+      return this.formatDate(this.fromJSDate(date), format);
     }
-    return date.toFormat(format);
+    return date && date.toFormat(format);
   }
-  
+
   fromJSDate(date: Date): DateTime {
     return DateTime.fromJSDate(date);
-  
   }
- 
+
   deleteEvent (eventData)  {
     const index: number = this.operationLogs.findIndex((x: any) => x.id === eventData.id)
     const data = this.operationLogs;

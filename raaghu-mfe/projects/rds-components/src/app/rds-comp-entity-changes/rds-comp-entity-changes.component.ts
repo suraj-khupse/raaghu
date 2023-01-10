@@ -16,7 +16,7 @@ export class RdsCompEntityChangesComponent implements OnInit {
   maxchangeDate: any = undefined;
   entityName: any;
   changeType: any
-
+  dateRange: Date[] = [];
 
   changeTypeList: any = [
     { value: '0', some: 'Created' },
@@ -54,16 +54,28 @@ export class RdsCompEntityChangesComponent implements OnInit {
     this.onItemClick.emit({event:event, changeType:'changeType'});
     this.sendEntityData();
   }
-
-  sendEntityData() {
-    if (this.minchangeDate && this.maxchangeDate) {
-      this.entityData.emit({
-        minchangeDate: this.minchangeDate,
-        maxchangeDate: this.maxchangeDate,
-        changeType:this.changeType,
-        entityName: this.entityName,
-      })
+  onDateRageChangeEntity(event) {
+    if (event && event.length > 0) {
+      this.dateRange = event;
+      this.sendEntityData();
     }
+  }
+  sendEntityData() {
+    let entityData={
+      minchangeDate: this.minchangeDate,
+      maxchangeDate: this.maxchangeDate,
+      changeType:this.changeType,
+      entityName: this.entityName,
+    }
+    if (this.dateRange && this.dateRange.length > 0) {
+      entityData['minchangeDate'] = this.dateRange[0];
+      entityData['maxchangeDate'] = this.dateRange[1];
+    } else {
+      let tDate = new Date();
+      entityData['minchangeDate'] = new Date(tDate.getFullYear(), tDate.getMonth(), tDate.getDate() - 1);
+      entityData['maxchangeDate'] = tDate;
+    }
+      this.entityData.emit(entityData)
   }
   showAuditLogDetail(): void {
     this.viewChangeLogsCanvas = true;
