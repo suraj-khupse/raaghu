@@ -5,18 +5,19 @@
                 <div class="w-75 mx-auto sm-w">
                     <div class="pt-5 sm-pt-0">
                         <img src="static/media/.storybook/assets/raaghu-logo.svg" alt="Raaghu" class="raaghu-lg">
-                        <h2 class="fw-normal pt-3">
-                            Trusted by families.
+                        <h2 class="pt-3">
+                            <rds-label [label]="'Trusted by families.'" [bold]="false" [italic]="false"></rds-label> 
                         </h2>
-                        <h2 class="fw-normal pb-3">
-                            Loved by caregivers.
+                        <h2 class="pb-3">
+                           <rds-label [label]="'Loved by caregivers.'" [bold]="false" [italic]="false"></rds-label>
                         </h2>
                     </div>
                     <div class="card p-3 mt-3">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="text-center">
-                                    <h4 class="mb-4 pb-2 fw-normal">Let's get started. Choose an option</h4>
+                                    <h4 class="mb-4 pb-2 fw-normal">
+                                        <rds-label [label]="'Lets get started. Choose an option'"></rds-label></h4>
                                 </div>
                             </div>
                         </div>
@@ -24,11 +25,11 @@
                             <div class="col-md-6 border-end">
                                 <div class="text-center">
                                     <div class="mb-2">
-                                        <h5>I need a care giver</h5>
+                                        <h5><rds-label [label]="'I need a care giver'" [bold]="false" [italic]="false" ></rds-label></h5>
                                     </div>
-                                    <div class="mb-3"><small>Start your free search for care in your area.</small></div>
-                                    <rds-button [block]="false" [size]="'medium'" [isRounded]="true"
-                                        [colorVariant]="'warning'" [label]="translate.instant('Find care')"
+                                    <div class="mb-3"><small><rds-label [label]="'Start your free search for care in your area.'"></rds-label></small></div>
+                                    <rds-button [block]="false" [size]="'medium'" [isRounded]="false"
+                                        [colorVariant]="'primary'" [label]="translate.instant('Find care')"
                                         (click)="onFindCare.emit()">
                                     </rds-button>
                                 </div>
@@ -36,13 +37,13 @@
                             <div class="col-md-6 sm-pt">
                                 <div class="text-center">
                                     <div class="mb-2">
-                                        <h5>I want a care job</h5>
+                                        <h5><rds-label [label]="'I want a care job'" ></rds-label></h5>
                                     </div>
                                     <div class="mb-3">
-                                        <small>Create a free profile and search for jobs.</small>
+                                        <small><rds-label [label]="'Create a free profile and search for jobs.'" ></rds-label></small>
                                     </div>
-                                    <rds-button [block]="false" [size]="'medium'" [isRounded]="true"
-                                        [colorVariant]="'warning'" [label]="translate.instant('Find jobs')"
+                                    <rds-button [block]="false" [size]="'medium'" [isRounded]="false"
+                                        [colorVariant]="'primary'" [label]="translate.instant('Find jobs')"
                                         (click)="onFindJob.emit()">
                                     </rds-button>
                                 </div>
@@ -57,10 +58,9 @@
             <div class="row">
                 <div class="marketing-temp-two d-flex align-items-center text-center justify-content-center vh-100">
                     <div class="mb-4">
-                        <h1 class="text-white fw-bold">Would You like to get</h1>
+                        <h1 class="text-warning fw-bold"><rds-label [label]="'Would You like to get'" ></rds-label></h1>
                         <div class="mb-4">
-                            <h2 class="text-white fw-bold w-75 mx-auto py-3">The RDS Components & elements guide for
-                                Users in 2023?</h2>
+                            <h2 class="text-white fw-bold w-75 mx-auto py-3"><rds-label [label]="'The RDS Components & elements guide for Users in 2023?'" ></rds-label></h2>
                         </div>
                         <div class="">
                             <div class="mb-4">
@@ -87,19 +87,19 @@
             <div class="marketing-temp-three d-flex justify-content-center align-items-center">
                 <div class="text-center">
                     <div class="mt-4">
-                        <h1 class="fw-bold text-white">
-                            WOAH, HOLD ON THERE.
+                        <h1 class="fw-bold text-warning">
+                            <rds-label [label]="' WOAH, HOLD ON THERE.'" ></rds-label> 
                         </h1>
                         <h5 class="fw-bold text-white w-75 mx-auto py-3 sm-w">
-                            We have just launched our brand new web experience! To celebrate, we're offering 50% off for
-                            a limited time.
+                            <rds-label [label]="'We have just launched our brand new web experience! To celebrate, we're offering 50% off for
+                            a limited time.'" ></rds-label>                            
                         </h5>
                         <div class="card p-4 mt-4 mx-auto w-50 sm-w">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-center">
                                         <div class="mb-3">
-                                            <h4>Claim your 50% off discount code</h4>
+                                            <h4><rds-label [label]="'Claim your 50% off discount code'" ></rds-label></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -112,8 +112,8 @@
                                     <div class="form-control-feedback"
                                         *ngIf="emailAddress.errors&&(emailAddress.dirty||emailAddress.touched)">
                                         <span class="text-danger text-left" *ngIf="emailAddress.errors.pattern">Please
-                                            enter
-                                            a valid emailId</span>
+                                            <rds-label [label]="'enter
+                                            a valid emailId'" ></rds-label> </span>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-2">
@@ -133,11 +133,11 @@
                 <div class="text-center">
                     <div class="mb-3">
                         <h1 class="fw-light text-white mx-auto w-50 sm-w">
-                            Get Voice of Customer Insights that Help Your Business Grow.
+                            <rds-label [label]="'Get Voice of Customer Insights that Help Your Business Grow.'" ></rds-label>   
                         </h1>
                         <h5 class="fw-medium text-white w-50 mx-auto py-3 sm-w">
-                            Analytics tells you what people are doing, RDS tells you why. RDS website surveys uncover
-                            customer insights that lead to better business results.
+                            <rds-label [label]="'Analytics tells you what people are doing, RDS tells you why. RDS website surveys uncover
+                            customer insights that lead to better business results.'" ></rds-label>   
                         </h5>
                         <div class="card p-4 mt-4 mx-auto w-50 sm-w">
                             <form #trialForm="ngForm">
@@ -149,8 +149,8 @@
                                         </rds-input>
                                         <div class="form-control-feedback"
                                             *ngIf="emailAddress.errors&&(emailAddress.dirty||emailAddress.touched)">
-                                            <span class="text-danger" *ngIf="emailAddress.errors.pattern">Please enter
-                                                a valid emailId</span>
+                                            <span class="text-danger" *ngIf="emailAddress.errors.pattern">
+                                                <rds-label [label]="'Please enter a valid emailId'" ></rds-label> </span>
                                         </div>
                                     </div>
                                     <div class="col-md-4 sm-mt-1">
