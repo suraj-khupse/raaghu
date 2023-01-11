@@ -10,14 +10,17 @@
         container-fluid
         px-0
         main-body
-      ">
+      "
+      [class.main-body]="FixedHeaderBody">
       <div class="aside">
+        <div class="mx-2">
         <rds-side-nav [isPageWrapper]="true" [activeMenu]="activePage" 
                       (collapsedState)="onCollapse($event)" [collapseRequired]="collapseRequired" [sidenavItems]="getSideNavItems()"
                       (emitPath)="redirectPath($event)" (selectedMode)="toggleBetweenMode($event)"></rds-side-nav>
         <!-- <rds-side-nav [isPageWrapper]="true"
                       (collapsedState)="onCollapse($event)" [collapseRequired]="collapseRequired"
                       [sidenavItems]="sidenavItems" (emitPath)="redirectPath($event)"></rds-side-nav> -->
+      </div>
       </div>
       <div class="wrapper d-flex flex-column flex-row-fluid rds-scrollable-wrapper pt-3 px-3"
            [class.collapsed]="sideMenuCollapsed">
