@@ -3,15 +3,25 @@ import { AppState } from '../../app.interface';
 import { ProfileState } from './profile-settings.reducers';
 
 
-export const selectProfile = (state: AppState) => state.profileSettings;
+export const selectProfile = (state: AppState) => state.profile;
 // export const selectDynamicEntity = (state: AppState) => state.dynamicEntity;
 
-export const selectAllScope = createSelector(
+export const selectAllProfileSettings = createSelector(
     selectProfile,
     (state: ProfileState) => state.profile
 );
 
-export const selectApiScope = createSelector(
+export const selectTwoFactor = createSelector(
     selectProfile,
-    (state: ProfileState) => state.profile
+    (state: ProfileState) => state.twoFactor
+);
+
+export const selectlinkUser = createSelector(
+    selectProfile,
+    (state: ProfileState) => state.user
+);
+
+export const selectPersonalData = createSelector(
+    selectProfile,
+    (state: ProfileState) => state.personalData
 );

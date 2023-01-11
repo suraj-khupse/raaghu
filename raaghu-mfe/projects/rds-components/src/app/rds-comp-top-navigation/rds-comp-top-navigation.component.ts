@@ -112,11 +112,23 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     { DateofData: '08/07/2022', NummberofDates: '5days ago', downloadUrl: 'assets/Group.jpg' },
     { DateofData: '08/07/2022', NummberofDates: '5days ago', downloadUrl: 'assets/DeleteIcon.jpg' },
     { DateofData: '08/07/2022', NummberofDates: '5days ago', downloadUrl: 'assets/Photp.jpeg' }
-  ]
+  ];
+
+  profileItems: any = [
+    { id: 1, value: 'Welcome Admin', some: 'Welcome Admin'},
+    { id: 2, value: 'Linked Accounts', some: 'Linked Accounts'},
+    { id: 3, value: 'My Accounts', some: 'My Accounts'},
+    { id: 4, value: 'Security Logs', some: 'Security Logs'},
+    { id: 5, value: 'Log out', some: 'Log out'},
+    { id: 6, value: 'Personal Data', some: 'Personal Data'},
+  ];
+
+  showProfileDropdown = false;
 
 
   @Output() onProfileSave = new EventEmitter<any>();
   @Output() FixedHeaderStyle = new EventEmitter<any>();
+  @Output() viewProfileCanvas = new EventEmitter<any>();
 
   constructor(private router: Router, private injector: Injector,
     private alertService: AlertService,
@@ -194,6 +206,10 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     this.redirection.emit(type);
   }
 
+  onProfileSelect(event: any) {
+    this.viewProfileCanvas.next(event.item.value);
+  }
+
 
 
   redirectToSettings() {
@@ -216,7 +232,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     this.showOffcanvas = true;
     var offcanvas = document.getElementById(this.offCanvasId);
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-    bsOffcanvas.show()
+    bsOffcanvas.show();
   }
   onLanguageSelect(lan: any): void {
     if (lan && lan.item) {
