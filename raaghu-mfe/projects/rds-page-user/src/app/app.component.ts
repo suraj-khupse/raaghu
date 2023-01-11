@@ -76,7 +76,7 @@ import { selectOrganizationUnitTree } from 'projects/libs/state-management/src/l
 })
 export class AppComponent {
 
-
+  permissionTreeData = [];
   userList: any = [];
   userHeaders: TableHeader[] = [
     { key: 'name',displayName: 'Name',dataType: 'html',filterable: true,sortable: true,},
@@ -84,13 +84,6 @@ export class AppComponent {
     { key: 'email',displayName: 'email',dataType: 'html',filterable: true,sortable: true,},
     { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},    
   ]
-
-
-
-
-
-
-
 
   isAnimation: boolean = true;
 
@@ -111,6 +104,7 @@ export class AppComponent {
   treeData1: any;
   isAssigned: boolean;
   isShimmer: boolean;
+  roleListItem: any[];
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -145,8 +139,8 @@ export class AppComponent {
   selectedRoles:any=[];
   listItemsm:any=[];
   orgTreeData: any = [];
- UserTableData: any = [];
- 
+  UserTableData: any = [];
+  entityDisplayName: string = '';
   
   ngOnInit(): void {
     this.store.dispatch(getUsers());
@@ -155,7 +149,7 @@ export class AppComponent {
       if (res && res.items) {
         //this.isAnimation = false;
         res.items.forEach((element: any) => {
-          let statusTemplate;
+          let statusTemplate; 
           if (element.isActive) {
             statusTemplate = `<div> <span class="badge badge-success">Active</span></div>`;
           } else {
@@ -175,19 +169,26 @@ export class AppComponent {
       }
     });
  
+    this.store.dispatch(getUserPermission('admin'));
+    this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
+      if (res && res.groups) {
+        this.permissionTreeData = res.groups;
+        this.isEdit = false;
+      }
+    });
 
     this.store.dispatch(assignableRoles());
     this.store.select(selectAssignableRoles).subscribe((res: any) => {
       if (res && res.items) {
-        this.roles =  [];
+        this.roleListItem =  [];
             this.isAnimation = false;
             res.items.forEach((element: any) => {
             const item: any = {
-            name: element.name,
-            id:element.id,
-            isAssigned:false
+            some: element.name,
+            value:element.id,
+            isSelected:false
           }
-          this.roles.push(item);
+          this.roleListItem.push(item);
         });
       }
     });

@@ -33,7 +33,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   public navtabsItems: any = [];
  
   @Input() public userList: any = [];
-  @Input() public roles: any = [];
   @Input() public userinfo: any;
   // @Input() isShimmer: boolean = false;
   // @Input() editShimmer: boolean = false;
@@ -45,6 +44,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   @Input() selectedOrganizations: any = [];
   @Input() userTableData:any=[];
   @Input() orgTreeData:any;
+  @Input() permissionTreeData:any;
+  @Input() roleListItem: any;
+  @Input() entityDisplayName:any
   @Input() listItemsm = [
     { value: 'New User', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' }
   ];
@@ -153,15 +155,13 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   save(): void {
-    this.getSelectedRoles();
     this.checkSelectedOrganizationUnits();
     const user: any = {
       userInfo: this.user.userInfo,
       roles: this.selectedRoles,
       organizationUnits: this.orgTreeData,
     };
-    this.Saveuserinfo.emit({ item: user });
-    this.Saveuserinfo.emit(this.user)
+    this.Saveuserinfo.emit(user);
     this.isReset = true;
     this.activePage = 0;
     this.close();
@@ -188,6 +188,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   getSelectedFeaturesList(event: any): void {
     this.user.featureList = event;
   }
+  getAllselectedPermissions(event:any){
+    this.user.permissionList = event;
+  }
 
   newUser(event): void {
     this.buttonSpinnerForNewUser = true;
@@ -200,14 +203,14 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
         ariacontrols: 'basics',
       },
       {
-        label: this.translate.instant('Roles'),
-        tablink: '#roles',
-        ariacontrols: 'roles',
+        label: this.translate.instant('Permissions'),
+        tablink: '#permissions',
+        ariacontrols: 'permissions',
       },
       {
-        label: this.translate.instant('Organization Units'),
-        tablink: '#organizationUnit',
-        ariacontrols: 'organizationUnit',
+        label: this.translate.instant('Claims'),
+        tablink: '#claims',
+        ariacontrols: 'claims',
       },
       
     ];
@@ -287,14 +290,14 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     this.CreateOrEditUser.emit(this.selectedId);
 
   }
-  getSelectedRoles() {
-    this.selectedRoles = [];
-    this.roles.forEach((item: any) => {
-      if (item.isAssigned) {
-        this.selectedRoles.push(item.name);
-      }
-    });
-  }
+  // getSelectedRoles() {
+  //   this.selectedRoles = [];
+  //   this.roles.forEach((item: any) => {
+  //     if (item.isAssigned) {
+  //       this.selectedRoles.push(item.name);
+  //     }
+  //   });
+  // }
   getSelectedPermissionsList(event: any): void {
     this.treeData = event;
     let permissionlist = [];
@@ -309,6 +312,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   getSelectedorganizationunits(event: any): void {
+    debugger
     this.organizationtreeData = event;
     let organizationList = [];
     if (this.organizationtreeData && this.organizationtreeData.length > 0) {
