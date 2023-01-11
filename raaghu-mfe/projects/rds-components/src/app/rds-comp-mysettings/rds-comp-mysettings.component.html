@@ -21,7 +21,7 @@
                 </div>
               </div>
             </div>
-            <rds-button (onClick)="savePhoto()">Save Photo</rds-button>
+            <!-- <rds-button (onClick)="savePhoto()">Save Photo</rds-button> -->
             <form #accountForm="ngForm">
               <div class="col-md-12 sm-p-0">
                 <div class="form-group mb-4">
@@ -151,17 +151,15 @@
                   <small class="text-danger" *ngIf="isPasswordMismatch">{{"Password mismatch found"|translate}}</small>
                 </div>
               </div>
-
-              <div class="col-md-12 sm-p-0">
-                <div class="form-group mb-3">
-                  <rds-checkbox [disabled]="false" [label]="translate.instant('Two factor enabled')"
-                    [checked]="ProfileData.twoFactorEnabled" [(ngModel)]="ProfileData.twoFactorEnabled"
-                    name="twoFactorEnabled" [withLabel]="true" [switch]="false"
-                    [id]="'twoFactorEnabled'"></rds-checkbox>
-                </div>
-              </div>
             </div>
           </form>
+          <div class="col-md-12 sm-p-0">
+            <div class="form-group mb-3">
+              <rds-checkbox [disabled]="false" [label]="translate.instant('Two factor enabled')"
+                [checked]="ProfileData.twoFactorEnabled" [(ngModel)]="ProfileData.twoFactorEnabled"
+                name="twoFactorEnabled" [withLabel]="true" [switch]="false" [id]="'twoFactorEnabled'"></rds-checkbox>
+            </div>
+          </div>
         </div>
       </div>
     </div>
