@@ -29,9 +29,9 @@ const Template: Story<RdsCompTenantInformationComponent> = (args: RdsCompTenantI
       ...args
   }
   });
-  export const TenantInformation = Template.bind({});
+  export const Default = Template.bind({});
 
-  TenantInformation.args = {
+  Default.args = {
     tenantData: {},
     editionList:[{isFree: null, value: '', some: 'Not assigned', isSelected: true},
     {isFree: true, value: '1', some: 'Standard', isSelected: false},
