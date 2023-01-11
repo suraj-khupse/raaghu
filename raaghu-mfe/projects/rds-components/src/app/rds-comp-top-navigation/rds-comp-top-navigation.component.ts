@@ -50,7 +50,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() notificationLink: string = '';
   @Input() profileData: any;
   @Input() rdsDeligateTableData: any = [];
-  @Input() unreadCount: any = 0;
+  @Input() unreadCount: any ;
   @Input() id: string = 'dropdownMenuLink';
   @Input() notificationTypes: any = [];
   @Input() receiveNotifications: any;

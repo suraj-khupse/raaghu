@@ -141,7 +141,7 @@
       </div>
     </form>
   </div>
-  <div>
+  <div class="footer-buttons my-2">
     <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" (click)="onCancelUser()"
       data-bs-dismiss="offcanvas" [size]="'small'">
     </rds-button>
@@ -149,4 +149,5 @@
       (click)="next(userCreationForm)" [size]="'small'">
     </rds-button>
   </div>
+    
   <rds-comp-user-basics-shimmer *ngIf="editShimmer"></rds-comp-user-basics-shimmer>
