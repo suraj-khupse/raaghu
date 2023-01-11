@@ -235,7 +235,6 @@ export class AppComponent implements OnInit {
       maxResultCount: 100,
       skipCount: 0
     }
-    console.log("auditLogParamsData: ", auditLogParamsData);
     this.store.dispatch(getAuditLogs(auditLogParamsData));
   }
 
@@ -252,7 +251,6 @@ export class AppComponent implements OnInit {
 
   exportToExcel(navTab: string): void {
     if (navTab === 'operation-logs') {
-
       this.downloadCSV(this.auditLogsTableData, this.operationLogsHeaders, 'operation_logs');
     } else {
       this.downloadCSV(this.changeLogs, this.changeLogsHeaders, 'change_logs');
@@ -347,20 +345,24 @@ export class AppComponent implements OnInit {
     this.sendParameterData();
   }
   exceptionModify(event) {
-    this.status = event.item.some
+    this.status = event.item.some;
     this.sendParameterData();
   }
 
   onDurationChange(): void {
-    if (this.duration !== undefined && this.duration >= 0) {
+    if (!this.duration || this.duration == null) {
+      this.duration = undefined;
+    }
+    if (this.duration !== undefined && this.duration >= 0 && this.durationType !== undefined) {
       this.sendParameterData();
     }
   }
+
   public onDurationTypeChange(event: any): void {
     this.durationType = event.item.some;
     this.onDurationChange();
-
   }
+
   SelectBroser(event) {
     this.browserInfo = event.item.value;
     this.sendParameterData();
@@ -389,15 +391,18 @@ export class AppComponent implements OnInit {
         data['HasException'] = selected.value;
       }
     }
-    if (this.duration !== undefined) {
+    // if (this.duration !== undefined) {
       const selected = this.durationTypeList.find((x: any) => x.some == this.durationType);
       if (selected) {
+        // if (!this.duration || this.duration == null || this.duration == undefined) {
+        //   this.duration = 0;
+        // }
         data[selected.value] = +this.duration;
       }
-    }
+    // }
     this.filterAuditLog(data);
-
   }
+
   showAdvancedFilter() {
     this.showFilters = !this.showFilters;
   }
@@ -421,7 +426,6 @@ export class AppComponent implements OnInit {
 
   onChangeActionSelect(event: any): void {
     if (event.actionId === 'view') {
-      console.log(event.selectedData);
       this.selectedRowData = event.selectedData;
       // this.deleteEdition.emit(event.selectedData);
       this.showAuditChangeLogDetail();
