@@ -152,6 +152,9 @@
 					"main": "projects/rds-components/src/main.ts",
 					"polyfills": "projects/rds-components/src/polyfills.ts",
 					"tsConfig": "projects/rds-components/tsconfig.app.json",
+					"allowedCommonJsDependencies": [
+						"moment"
+					  ],
 					"inlineStyleLanguage": "scss",
 					"assets": [
 						"projects/rds-components/src/favicon.ico",
