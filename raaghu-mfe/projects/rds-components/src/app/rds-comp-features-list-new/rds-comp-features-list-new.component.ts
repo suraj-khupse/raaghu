@@ -1,4 +1,13 @@
-import { Component, Input, OnInit, SimpleChanges , Output ,EventEmitter,DoCheck } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+  DoCheck,
+} from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var bootstrap: any;
 export interface EditionItem {
@@ -11,86 +20,56 @@ export interface EditionItem {
 @Component({
   selector: 'rds-comp-features-list-new',
   templateUrl: './rds-comp-features-list-new.component.html',
-  styleUrls: ['./rds-comp-features-list-new.component.scss']
+  styleUrls: ['./rds-comp-features-list-new.component.scss'],
 })
 export class RdsCompFeaturesListNewComponent implements OnInit {
   public viewCanvas: boolean = false;
   @Input() canvasTitle: string = 'NEW EDITION';
   @Input() public PlanList: any = [];
-  @Input() editionData: any;
+  @Input() editionData: any = {};
   @Input() public EditionList: any = [];
-  @Input() editionDataInfo:any;
+  @Input() public featuresData: any = [];
+  @Input() editionDataInfo: any = {};
+  @Input() TwoFactorList: any = [];
   @Output() onEditionSave = new EventEmitter<any>();
+  @Output() onEditionDelete = new EventEmitter<{ id: any }>();
+  @Output() EditEdition = new EventEmitter<any>();
   public editionBasic: any = {
-    editionData: undefined,
-    featuresData: undefined
+    editionDataInfo: undefined,
+    features: undefined,
   };
   isReset: boolean = false;
   navtabsItems: any = [];
   viewMoveTenantCanvas: boolean = false;
   activePage: number = 0;
-  
+  selectedId: any ;
   Editionitems: EditionItem[] = [];
   Dataset: any[] = [];
-  @Input()
-  EditionBorder?: number = 0;
-  @Input()
-  bodybackGroundColor?: string;
-  @Input()
-  borderRadious?: number;
-  @Input()
-  Paddig?: number;
-  @Input()
-  borderwidth?: number;
-  // @Input()
-  // EditionData: EditionItem[] = [{
-
-  //   EditionName: "Corporate",
-  //   EditionTitle: "Strong Application for large team",
-  //   Price: "45",
-  //   Plan: "Per month",
-  //   features: [
-  //     {
-  //       label:"Chat Support",
-  //     },
-  //     {
-  //         label:"Optimized hashtags",
-  //     },
-  //     {
-  //         label:"Unlimited Users",
-  //     },
-  // ]
-  // }];
+  @Input() EditionBorder?: number = 0;
+  @Input() bodybackGroundColor?: string;
+  @Input() borderRadious?: number;
+  @Input() Paddig?: number;
+  @Input() borderwidth?: number;
+  @Input() isEdit: boolean = false;
   showConfirmationPopup: boolean = false;
+  private deleteId: any;
   alertData: any = {
-    iconUrl: "delete",
-    colorVariant: "danger",
-    alertConfirmation: "Thank You!",
-    messageAlert: "Your application has been summited successfully.",
-    CancelButtonLabel: "Cancel",
-    DeleteButtonLabel: "Delete"
-  }
- 
-  constructor() { }
+    iconUrl: 'delete',
+    colorVariant: 'danger',
+    alertConfirmation: 'Are you sure ?',
+    messageAlert: 'The record will be deleted permanently.',
+    CancelButtonLabel: 'Cancel',
+    DeleteButtonLabel: 'Delete',
+  };
 
-  ngOnInit(): void {
-    // this.Dataset = this.EditionData;
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.Dataset = this.EditionData;
-  }
-  openCanvas() {
+  constructor(public translate: TranslateService) {}
+
+  ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges): void {}
+  openCanvas(event) {
+    this.activePage = 0;
     this.viewCanvas = true;
-    this.initialize();
-    setTimeout(() => {
-      var offcanvas = document.getElementById('addNewEdition');
-      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.show();
-    }, 100);
-
-
-  }
-  private initialize(): void {
+    this.selectedId = '';
     this.navtabsItems = [
       {
         label: 'Basics',
@@ -101,62 +80,68 @@ export class RdsCompFeaturesListNewComponent implements OnInit {
         label: 'Features',
         tablink: '#features',
         ariacontrols: 'features',
-      }
+      },
     ];
-  }
-
-
-  closeCanvas() {
-    this.viewCanvas = false;
-  }
-  onTabClick(index): void {
-    this.activePage = index;
-  }
-  closeMoveTenantCanvas() {
-    this.viewMoveTenantCanvas = false;
-
-  }
-  onEdit() {
-    this.viewCanvas = true;
-    this.initialize();
+    if(event){
+      this.isEdit = false;
+      this.canvasTitle = 'NEW EDITION';
+      this.editionDataInfo = undefined;
+      this.editionBasic.features = undefined;
+      this.selectedId = '';
+    }
     setTimeout(() => {
       var offcanvas = document.getElementById('addNewEdition');
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
       bsOffcanvas.show();
     }, 100);
-    this.canvasTitle = 'Update Edition'
   }
-  openConfirmationPopup() {
+  closeCanvas() {
+    this.viewCanvas = false;
+    this.selectedId = '';
+  }
+
+  onEdit(item) {
+    this.canvasTitle = 'Update Edition';
+    this.openCanvas(undefined);
+    this.EditEdition.emit(item);
+    this.selectedId = item.id;
+  }
+  openDeleteConfirmationPopup(item) {
     this.showConfirmationPopup = true;
     setTimeout(() => {
+      this.deleteId = item.id;
       var element: any = document.getElementById('confirmationId');
       var modal = new bootstrap.Modal(element);
       modal.show();
     }, 100);
   }
 
-  getTenantData(event: any): void {
-    this.editionBasic.editionBasicInfo = event
+  deleteEdition() {
+    this.onEditionDelete.emit({ id: this.deleteId });
+    var myModalEl = document.getElementById('confirmationId');
+    var modal = bootstrap.Modal.getInstance(myModalEl);
+    modal.hide();
+    this.showConfirmationPopup = false;
+  }
+
+  cancelDelete(): void {
+    this.deleteId = undefined;
+    this.showConfirmationPopup = false;
+  }
+  getEditionData(event: any): void {
+    this.editionBasic.editionDataInfo = event;
   }
   getEditionFeatureInfo(event: any): void {
-    this.editionBasic.featuresData = event
-
+    this.editionBasic.features = event;
   }
-  onSave():void{
+  onSave(): void {
     console.log(this.editionBasic);
-    this.onEditionSave.emit(this.editionBasic)
-      this.isReset = true;
-      this.activePage = 0;
-      this.close();
-      var offcanvas = document.getElementById('addNewEdition');
+    this.onEditionSave.emit(this.editionBasic);
+    this.isReset = true;
+    this.activePage = 0;
+    var offcanvas = document.getElementById('addNewEdition');
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.hide();
-      this.viewCanvas = false;
-     
-    }
-    close(): void {
-      this.viewCanvas = false;
-     
-    }
-
+    bsOffcanvas.hide();
+    this.viewCanvas = false;
+  }
 }

@@ -76,22 +76,28 @@ export const deleteEditionFailure = createAction(
   props<{ error: string }>()
 );
 
-
-
-
-
 export const updateEdition = createAction(
     '[Edition Page] Update Edition',
-    (edition: any) => ({ edition })
+    (data: any) => ({ data })
 );
 
 export const updateEditionSuccess = createAction(
     '[Edition Page] Edition Update Success',
-    props<{ edition: any }>()
+
 );
 export const updateEditionFailure= createAction(
   '[Edition Page] Edition Update Success',
   props<{ error: any }>()
+);
+
+export const updateEditionFeatureValues = createAction(
+  '[Edition Page] Update Edition Feature Values',
+  (data: any) => ({ data })
+);
+
+export const updateEditionFeatureValuesSuccess = createAction(
+  '[Edition Page] Edition Feature Update Success',
+
 );
 
 

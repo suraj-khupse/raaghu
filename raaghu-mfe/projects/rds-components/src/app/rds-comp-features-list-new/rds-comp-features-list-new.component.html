@@ -1,112 +1,104 @@
 <!-- <rds-label [label]="'Edition List'"></rds-label> -->
-<div class="row mt-5 flex-row flex-code">
-  <div class="col-md-2 navsm-p-0 m-1 mb-3" *ngFor="let item of editionData">
-    <rds-card
-      [showHeader]=""
-      [showBody]=""
-      [showFooter]=""
-      [borderColor]="'primary'"
+<div class="row mt-5 flex-row flex-code m-2">
+  <div class="col-md-3 navsm p-0 m-1 mb-3 featureList " *ngFor="let item of editionData">
+    <rds-card 
+      [showHeader]="true"
+      [showBody]="true"
+      [showFooter]="true"
+      [isBorder]="false"
     >
-      <div showHeader header>
+
+      <div showHeader header class="p-3">
         <div class="text-center mt-3">
           <rds-label
             [bold]="false"
-            [label]="item.displayName"
+            [label]="item.editionName"
             class="fs-4 fw-bold"
           ></rds-label>
           <p class="fw-medium text-muted pt-2">
             {{ item.EditionTitle }} A simple start for a small business
           </p>
         </div>
+       
+      </div>
+      <div body >
         <div class="pt-3">
           <div class="text-center">
-            <h1 class="text-primary fw-bold"><sup>&#x24;</sup>12</h1>
+            <h1 class="text-primary "><sup>&#x24;</sup><span class="fw-bold">{{item.planValue}}</span></h1>
             <span class="text-muted fw-medium text-black-50">per month</span>
           </div>
         </div>
-      </div>
-      <div showBody body>
-        <ul>
-          <li class="fw-semibold">Chat support</li>
+        <ul class="p-3 ps-0 m-0">
+          <li class="fw-semibold ">Chat support</li>
           <li class="fw-semibold">up to 10 users per month</li>
           <li class="fw-semibold">Optimized hashtags</li>
           <li class="fw-semibold">Unlimited users</li>
         </ul>
       </div>
       <div footer>
-        <div class="d-flex gap-2 p-4">
+        <div class="d-flex gap-2">
           <div>
             <rds-button
-              colorVariant="primary"
+              [colorVariant]="'primary'"
               [block]="false"
               size="small"
               [isOutline]="true"
               [isRounded]="true"
               [isIconFill]="false"
-              buttonType="iconLabel"
-              icon="pencil"
-              iconHeight="12px"
-              iconWidth="12px"
-              (click)="onEdit()"
+              [iconHeight]="'12px'"
+              [iconWidth]="'12px'"
+              [isFabIcon]="true"
+              [icon]="'pencil'"
+              (click)="onEdit(item)"
             ></rds-button>
           </div>
           <div>
             <rds-button
-              colorVariant="danger"
+              [colorVariant]="'danger'"
               size="small"
               [isOutline]="true"
               [isRounded]="true"
               [isRounded]="true"
               [isIconFill]="false"
-              buttonType="iconLabel"
-              iconHeight="12px"
-              iconWidth="12px"
-              icon="delete"
-              (click)="openConfirmationPopup()"
+              [isFabIcon]="true"
+              [iconHeight]="'12px'"
+              [iconWidth]="'12px'"
+              [icon]="'delete'"
+              (click)="openDeleteConfirmationPopup(item)"
             ></rds-button>
           </div>
         </div>
       </div>
+
     </rds-card>
+
+
   </div>
-  <div class="col-md-2 mb-3 p-0 m-1">
-    <div>
+  <div class="col-md-3 mb-3 p-0 m-1 featureList">
       <rds-card
-        [showHeader]=""
+        [showHeader]="false"
         [showBody]=""
-        [showFooter]=""
-        [borderColor]="'primary'"
+        [showFooter]="false"
+        [isBorder]="false"
       >
-        <div header>
-          <div class="mb-5"></div>
-        </div>
-        <div body class="">
-          <div
-            class="
-              d-flex
-              justify-content-center
-              feature-empty-card
-              align-items-center
-            "
-          >
-            <rds-button
-              [label]="'NEW EDITION'"
+        
+        <div body class="h-100 d-flex justify-content-center align-items-center  ">
+            <rds-button 
               type="button"
               [colorVariant]="'primary'"
-              (click)="openCanvas()"
+              (click)="openCanvas($event)"
               [attr.aria-controls]="'addNewEdition'"
               [icon]="'plus'"
-              iconHeight="12px"
+              [iconHeight]="'12px'"
+              [iconWidth]="'12px'"
+              [isFabIcon]="true"
               [isRounded]="true"
-              iconWidth="12px"
               [size]="'small'"
             >
             </rds-button>
-          </div>
         </div>
-        <div footer class="mt-5"></div>
+
       </rds-card>
-    </div>
   </div>
 </div>
 
@@ -126,9 +118,9 @@
     [pills]="false"
     [tabs]="true"
     [fill]="false"
-    [justified]="false"
-    (onClicktab)="onTabClick($event)"
+    [justified]="false" 
   ></rds-nav-tab>
+  <!-- (onClicktab)="onTabClick($event)" -->
   <div naveContent class="tab-content py-2 px-3 navsm-p-0" id="nav-tabContent">
     <div
       class="tab-pane fade"
@@ -139,8 +131,7 @@
     >
       <app-rds-comp-edition-new-basic
         [PlanList]="PlanList"
-        (editionBasicInfo)="getTenantData($event)"
-        [PlanList]="PlanList"
+        (editionBasicInfo)="getEditionData($event)"
         [editionData]="editionDataInfo"
       ></app-rds-comp-edition-new-basic>
     </div>
@@ -150,10 +141,12 @@
       id="features"
       edition="tabpanel"
       aria-labelledby="nav-home-tab"
-    >
-      <rds-comp-edition-new-features
-        (editionFeaturesInfo)="getEditionFeatureInfo($event)"
-        [EditionList]="EditionList"
+    > 
+      <rds-comp-edition-new-features   
+        [treeData]="featuresData"
+        [TwoFactorList]="TwoFactorList"
+        [isEdit]="isEdit"
+        (selectedData)="getEditionFeatureInfo($event)"
       ></rds-comp-edition-new-features>
     </div>
   </div>
@@ -163,7 +156,7 @@
       [colorVariant]="'primary'"
       [size]="'small'"
       [isOutline]="true"
-      (click)="closeMoveTenantCanvas()"
+      (click)="closeCanvas()"
       data-bs-dismiss="offcanvas"
     >
     </rds-button>
@@ -179,7 +172,7 @@
   </div>
 </rds-offcanvas>
 <div *ngIf="showConfirmationPopup">
-  <!-- <rds-comp-alert-popup [alertID]="'confirmationId'"
-                              [alertData]="alertData">
-    </rds-comp-alert-popup> -->
+  <rds-comp-alert-popup [alertID]="'confirmationId'" [alertData]="alertData"  (onDelete)="deleteEdition()"
+  (onCancel)="cancelDelete()"  >
+    </rds-comp-alert-popup>
 </div>

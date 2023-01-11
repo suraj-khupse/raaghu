@@ -31,7 +31,7 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
  
   ngOnChanges(changes: SimpleChanges): void {
    console.log('this.treeData', this.treeData);
-   debugger
+  
    
    if (this.treeData && this.demoTreeData!= this.treeData) {
     const resPermission: any[] = [];

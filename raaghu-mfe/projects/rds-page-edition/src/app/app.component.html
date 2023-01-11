@@ -1,8 +1,19 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <!-- <mfe-loader [config]="rdsEditionMfeConfig"></mfe-loader> -->
-  <rds-comp-features-list-new [EditionList]="featureList" [editionData]="editionList"
-  (onEditionSave)="onEditionSave($event)"></rds-comp-features-list-new>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+        <rds-comp-features-list-new
+          [editionData]="editionData"
+          (onEditionDelete)="onEditionDelete($event)"
+          [PlanList]="planList"
+          (onEditionSave)="onEditionSave($event)"
+          [editionDataInfo]="editionDataInfo"
+          (EditEdition)="EditEdition($event)"
+          [featuresData]="featuresData"
+          [TwoFactorList]="TwoFactorList"
+          [isEdit]="isEdit"
+        ></rds-comp-features-list-new>
+      </div>
+    </div>
+  </div>
 </div>
-<!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
-  <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-</ng-container>-->

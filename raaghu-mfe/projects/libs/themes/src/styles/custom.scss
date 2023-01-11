@@ -151,6 +151,9 @@ input::-webkit-input-placeholder {
   font-weight: $input-font-weight;
 }
 
+.editionCard:hover{
+  border: 1px solid;
+}
 
 .form-select {
   font-size: $font-size-sm;
