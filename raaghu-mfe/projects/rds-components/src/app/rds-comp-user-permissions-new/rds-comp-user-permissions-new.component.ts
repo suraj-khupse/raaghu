@@ -44,7 +44,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   @Input() selectedOrganizations: any = [];
   @Input() userTableData:any=[];
   @Input() orgTreeData:any;
+  @Input() permissionTreeData:any;
   @Input() roleListItem: any;
+  @Input() entityDisplayName:any
   @Input() listItemsm = [
     { value: 'New User', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' }
   ];
@@ -185,6 +187,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
   getSelectedFeaturesList(event: any): void {
     this.user.featureList = event;
+  }
+  getAllselectedPermissions(event:any){
+    this.user.permissionList = event;
   }
 
   newUser(event): void {
