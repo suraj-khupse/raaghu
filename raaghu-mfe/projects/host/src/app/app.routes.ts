@@ -18,7 +18,7 @@ export const APP_ROUTES: Routes = [
       loadRemoteModule({
         type: 'module',
         remoteEntry: MfeConfig.login.url,
-        exposedModule: './AppModule',
+        exposedModule: './AppModule',  
       }).then((m) => m.AppModule),
   },
   {

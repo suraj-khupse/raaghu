@@ -1,7 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 //import { AuditLogs } from "./audit-logs.models";
 
-export const getAuditLogs = createAction('[AuditLogs Page] Get AuditLogs',
+export const getAuditLogs = createAction('[AuditLogs Page] Get AuditLogs ',
 (auditLogParams: any) => ({ auditLogParams}));
 
 export const getAuditLogsSuccess = createAction(
@@ -14,7 +14,7 @@ export const getAuditLogsFailure = createAction(
   props<{ error: string }>()
 );
 
-export const getAuditLogDetails = createAction('[AuditLogs Page] Get AuditLogs',
+export const getAuditLogDetails = createAction('[AuditLogs Page] Get AuditLogs Details',
 (id: any) => ({ id}));
 
 export const getAuditLogDetailsSuccess = createAction(

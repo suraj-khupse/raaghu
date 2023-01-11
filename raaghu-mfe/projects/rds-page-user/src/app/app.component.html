@@ -6,7 +6,8 @@
 
   <rds-comp-user-permissions-new
   [userList]="userList"
-  [roles]="roles"
+  [userHeaders]="userHeaders"
+  [roleListItem]="roleListItem"
   [userinfo]="userinfo"
   [organizationTreeList]="organizationTreeList"
   [orgTreeData]="treeData1"
@@ -14,8 +15,6 @@
   [selectedOrganizations]="selectedOrganizations"
   [Selectedata]="Selectedata"
   [listItemsm]="listItemsm"
-  [userHeaders]="userHeaders"
-  [userTableData]="UserTableData"
   (Saveuserinfo)="Saveuserinfo($event)"
   (CreateOrEditUser)="CreateOrEditUser($event)"
   (onClose)="onClose($event)"

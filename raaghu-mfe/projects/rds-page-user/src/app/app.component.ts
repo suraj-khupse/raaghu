@@ -76,6 +76,15 @@ import { selectOrganizationUnitTree } from 'projects/libs/state-management/src/l
 })
 export class AppComponent {
 
+  permissionTreeData = [];
+  userList: any = [];
+  userHeaders: TableHeader[] = [
+    { key: 'name',displayName: 'Name',dataType: 'html',filterable: true,sortable: true,},
+    { key: 'statusTemplate',displayName: 'Status',dataType: 'html',filterable: true,sortable: true,},
+    { key: 'email',displayName: 'email',dataType: 'html',filterable: true,sortable: true,},
+    { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},    
+  ]
+
   isAnimation: boolean = true;
 
   title: string = 'user';
@@ -95,6 +104,7 @@ export class AppComponent {
   treeData1: any;
   isAssigned: boolean;
   isShimmer: boolean;
+  roleListItem: any[];
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -106,7 +116,6 @@ export class AppComponent {
   public rdsUserMfeConfig: ComponentLoaderOptions={ name:'RdsCompUserPermissionsNew'}
   UserPermissionFiltertreeData: any = [];
   roleName: any;
-  userList: any = [];
   roles: any=[] ;
   userData:any=[];
   user:any=[];
@@ -130,22 +139,17 @@ export class AppComponent {
   selectedRoles:any=[];
   listItemsm:any=[];
   orgTreeData: any = [];
- UserTableData: any = [];
- 
-  userHeaders: TableHeader[] = [
-    { key: 'name',displayName: 'Name',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'statusTemplate',displayName: 'Status',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'email',displayName: 'email',dataType: 'html',filterable: true,sortable: true,},
-    { key: 'surName',displayName: 'surName',dataType: 'html',filterable: true,sortable: true,},    
-  ]
+  UserTableData: any = [];
+  entityDisplayName: string = '';
+  
   ngOnInit(): void {
     this.store.dispatch(getUsers());
     this.store.select(selectAllUsers).subscribe((res: any) => {
       this.userList = [];
       if (res && res.items) {
-        this.isAnimation = false;
+        //this.isAnimation = false;
         res.items.forEach((element: any) => {
-          let statusTemplate;
+          let statusTemplate; 
           if (element.isActive) {
             statusTemplate = `<div> <span class="badge badge-success">Active</span></div>`;
           } else {
@@ -161,23 +165,30 @@ export class AppComponent {
           }
           this.userList.push(item);
         });
-        this.isShimmer = false;
+        //this.isShimmer = false;
       }
     });
  
+    this.store.dispatch(getUserPermission('admin'));
+    this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
+      if (res && res.groups) {
+        this.permissionTreeData = res.groups;
+        this.isEdit = false;
+      }
+    });
 
     this.store.dispatch(assignableRoles());
     this.store.select(selectAssignableRoles).subscribe((res: any) => {
       if (res && res.items) {
-        this.roles =  [];
+        this.roleListItem =  [];
             this.isAnimation = false;
             res.items.forEach((element: any) => {
             const item: any = {
-            name: element.name,
-            id:element.id,
-            isAssigned:false
+            some: element.name,
+            value:element.id,
+            isSelected:false
           }
-          this.roles.push(item);
+          this.roleListItem.push(item);
         });
       }
     });
@@ -187,7 +198,7 @@ export class AppComponent {
       if (res && res.items) {
         this.orgTreeData =  [];
         this.isAnimation = false;
-    this.treeData1 = this._arrayToTreeConverterService.createTree(
+    this.organizationTreeList = this._arrayToTreeConverterService.createTree(
       res.items,
       'parentId',
       'code',
@@ -227,7 +238,6 @@ export class AppComponent {
     this.rdsUserMfeConfig = {
       name: 'RdsCompUserPermissionsNew',
       input: {
-        userList: this.userList,
         roles: this.roles,
         userinfo:this.userinfo,
         organizationTreeList:this.organizationTreeList,
@@ -244,8 +254,6 @@ export class AppComponent {
          PermissionFiltertreeData:this.PermissionFiltertreeData,
          listItemsm:this.listItemsm,
         selectedRoles:this.selectedRoles,
-        userHeaders:this.userHeaders,
-        userTableData:this.UserTableData,
         //  isShimmer:false,
         //  editShimmer:false
       },

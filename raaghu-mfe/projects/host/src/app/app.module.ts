@@ -49,12 +49,7 @@ import { ProfileReducer } from 'projects/libs/state-management/src/lib/state/pro
 import { ProfileEffects } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.effects';
 import { SecurityLogsReducer } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.reducer';
 import { SecurityLogEffects } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.effects';
-import {
-  DownloadEffects,
-  downloadReducer,
-  LoginEffects,
-  ValidateTenantReducer,
-} from '@libs/state-management';
+import { AuditLogsEffects, AuditLogsReducer, DownloadEffects, downloadReducer, LoginEffects, ValidateTenantReducer } from '@libs/state-management';
 // import { LanguageEffects } from 'projects/libs/state-management/src/lib/state/language/language.effects';
 import { ManageLinkedAccountsEffects } from 'projects/libs/state-management/src/lib/state/manage-linked-accounts/manage-linked-accounts.effects';
 import { UserEffects } from 'projects/libs/state-management/src/lib/state/user/user.effects';
@@ -112,11 +107,14 @@ const cookieConfig: RdsCookieConsentConfig = {
     NgxTranslateModule.forRoot(),
     StoreModule.forRoot({
       products: productReducer,
-      languages: LanguageReducer,
-      settings: settingReducer,
-      editions: EditionReducer,
-      tenants: TenantReducer,
-      profile: ProfileReducer,
+      languages:LanguageReducer,
+      settings : settingReducer,
+      auditLogs: AuditLogsReducer,
+      tenants:TenantReducer,
+      // dynamicProperty: DynamicPropertyReducer,
+      // dynamicEntity: DynamicEntityReducer,
+        profile: ProfileReducer,
+        editions: EditionReducer,
       organizationUnit: OrganizationUnitReducer,
       roles: RoleReducer,
       texTemplate: TextTemplateReducer,
@@ -163,6 +161,7 @@ const cookieConfig: RdsCookieConsentConfig = {
       UserEffects,
       LanguageEffects,
       SettingEffects,
+      AuditLogsEffects
     ]),
     SharedModule,
     UserAuthModule,

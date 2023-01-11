@@ -81,9 +81,9 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
         resPermission[i].permissions.forEach(element => {
           const eachPermissionItem = {
             referParentIndex: i,
-            allowedProviders: element.allowedProviders,
+            allowedProviders: element?.allowedProviders,
             displayName: element.displayName,
-            grantedProviders: element.grantedProviders,
+            grantedProviders: element?.grantedProviders,
             isGranted: this.roleName == 'admin' && this.isEdit === false ? false : element.isGranted,
             name: element.name,
             parentName: element.parentName,

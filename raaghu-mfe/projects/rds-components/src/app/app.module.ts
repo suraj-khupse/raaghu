@@ -139,7 +139,6 @@ import { RdsCompTimelineComponent } from './rds-comp-timeline/rds-comp-timeline.
 import { RdsCompApplyForPositionComponent } from './rds-comp-apply-for-position/rds-comp-apply-for-position.component';
 import { RdsCompOpenPositionComponent } from './rds-comp-open-position/rds-comp-open-position.component';
 import { RdsCompNotificationSettingsComponent } from './rds-comp-notification-settings/rds-comp-notification-settings.component';
-import { RdsCompAuditLogsNewComponent } from './rds-comp-audit-logs-new/rds-comp-audit-logs-new.component';
 // import { RdsCompFeaturesListNewComponent } from './rds-comp-features-list-new/rds-comp-features-list-new.component';
 // import { RdsCompEditionNewBasicComponent } from './rds-comp-edition-new-basic/rds-comp-edition-new-basic.component';
 // import { RdsCompEditionNewFeaturesComponent } from './rds-comp-edition-new-features/rds-comp-edition-new-features.component';
@@ -153,6 +152,7 @@ import { RdsCompLanguageTextListComponent } from './rds-comp-language-text-list/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { RdsCompClientAdvancedComponent } from './rds-comp-client-advanced/rds-comp-client-advanced.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+// import { RdsCompEntityChangesComponent } from './rds-comp-entity-changes/rds-comp-entity-changes.component';
 // import { RdsCompClientAdvancedComponent } from './rds-comp-client-advanced/rds-comp-client-advanced.component';
 
 
@@ -282,17 +282,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompApplyForPositionComponent,
     RdsCompOpenPositionComponent,
     RdsCompNotificationSettingsComponent,
-
-    // RdsCompFeaturesListNewComponent,
-    // RdsCompEditionNewBasicComponent,
-    // RdsCompEditionNewFeaturesComponent,
-    RdsCompAuditLogsNewComponent,
-    // RdsCompEmailSettingsNewComponent,
-    // RdsCompIdentityManagementNewComponent,
-    // RdsCompThemeNewComponent,
-    // RdsCompAccountNewComponent,
-    // RdsCompSettingsNewComponent,
-    RdsCompLanguageNewComponent,
+    RdsCompLanguageNewComponent
   ],
   imports: [
     StoreModule,
