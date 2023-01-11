@@ -8,12 +8,12 @@
         [logo]="'assets/raaghu_icon.png'" [projectName]="'Raaghu'" [linkedAccountData]="linkedAccountData"
         [linkedAccountHeaders]="linkedAccountHeaders" [userList]="usernameList" [notificationData]="notifications"
         [unreadCount]="unreadCount" [languageItems]="languageItems" [selectedLanguage]="selectedLanguage" [showDelegationButtonSpinner]="showDelegationButtonSpinner" [receiveNotifications]="receiveNotifications"
-        [notificationTypes]="notificationTypes" [tenancy]="tenancy" (onUpdateNotificationSettings)="onUpdateNotificationSettings($event)" 
+        [profilePic]="Profileurl" [notificationTypes]="notificationTypes" [tenancy]="tenancy" (onUpdateNotificationSettings)="onUpdateNotificationSettings($event)" 
         (setNotificationAsRead)="setNotificationAsRead($event)" (deleteDeligateuser)="deleteDeligateuser($event)" (saveDeligate)="saveDeligate($event)"
         (onProfileSave)="onProfileSave($event)" (deleteLinkaccount)="deleteLinkaccount($event)" (onLoginAttemptsRefresh)="onLoginAttemptsRefresh($event)"
         (onLanguageSelection)="onLanguageSelection($event)" (onDownloadLink)="onDownloadLink($event)"
         (setAllNotificationAsRead)="setAllNotificationAsRead($event)" (linkUser)="linkUser($event)"
-         (logoutEmitter)="logoutEmitter($event)" [FixedHeader]="fixedHeader" (backToImpersonateAccount)="backToImpersonateAccount()">
+         (logoutEmitter)="logoutEmitter($event)" [FixedHeader]="fixedHeader" (backToImpersonateAccount)="backToImpersonateAccount()" (profilePicUpload)="onUploadProfile($event)">
       
       </rds-top-navigation>
     </div>

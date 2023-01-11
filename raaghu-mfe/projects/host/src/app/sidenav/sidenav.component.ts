@@ -3,7 +3,7 @@ import * as moment_ from 'moment';
 const moment = moment_;
 import { DateTime } from 'luxon';
 import { Subscription } from 'rxjs';
-import { ComponentLoaderOptions, SharedService, UserAuthService, } from '@libs/shared';
+import { ComponentLoaderOptions, ProfileServiceProxy, SessionServiceProxy, SharedService, UpdateProfilePictureInput, UserAuthService, } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { deleteDelegations, getDelegations, getUsername, saveDelegations, } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
 import { selectDelegationsInfo, selectUserFilter, } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.selector';
@@ -29,6 +29,7 @@ import { changePassword, getProfile } from 'projects/libs/state-management/src/l
 import { selectAllLanguages, selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 import { selectProfileInfo } from 'projects/libs/state-management/src/lib/state/mysettings/mysettings.selector';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 declare var bootstrap: any;
 @Component({
@@ -84,11 +85,14 @@ export class SidenavComponent {
     LoginDatatable: [],
   };
   profileData: any;
+  uploadSub: any;
   rdsDeligateTableData: any = [];
   usernameList: any = [];
   sideMenuCollapsed: boolean = false;
   headerHeight: any = '110px';
   @Input() AccountLinkedTable: any = [];
+  @Input() Profileurl: string = 'https://anzstageui.raaghu.io/assets/profile-picture-circle.svg';
+  @Input() impersonatorUserId : boolean = false;
   receiveNotifications: any;
   notificationTypes: any = [];
   sidenavItemsOriginal: any = [
@@ -388,6 +392,9 @@ export class SidenavComponent {
     private shared: SharedService,
     private userAuthService: UserAuthService,
     private theme: ThemesService,
+    private http: HttpClient,
+    private sessionService: SessionServiceProxy,
+    private _profileService: ProfileServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
 
@@ -395,6 +402,7 @@ export class SidenavComponent {
     if (this.index == null) {
       this.index = '12'
     }
+    this.getProfilePicture();
   }
 
 
@@ -615,9 +623,13 @@ export class SidenavComponent {
         this.getMatchedRoute(this.sidenavItems);
       }
     });
+    // this.getProfilePicture();
 
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getProfilePicture();
+  }
   onLanguageSelection(lan) {
     this.translate.use(lan);
     this.store.dispatch(setDefaultLanguageForUI(lan));
@@ -690,9 +702,9 @@ export class SidenavComponent {
   onUpdateNotificationSettings(data: any) {
     this.store.dispatch(updateNotificationSettings(data));
   }
-  onProfileData(event: any) {
-    this.store.dispatch(getProfilepic());
-  }
+  // onProfileData(event: any) {
+  //   this.store.dispatch(getProfilepic());
+  // }
 
   selectAllvisualSettings() {
     this.store.select(selectAllVisualsettings).subscribe((res: any) => {
@@ -941,6 +953,99 @@ export class SidenavComponent {
 
   backToImpersonateAccount():void{
     this.store.dispatch(backToImpersonator());
+  }
+
+
+   getProfilePicture(): void {
+    this._profileService.getProfilePicture().subscribe((result) => {
+      
+      if (result && result.profilePicture) {
+        this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
+        // this.onProfilePicUpdate.emit(this.Profileurl);
+        
+      }
+    })
+  }
+
+
+  onUploadProfile(event): void{
+    if (event.target.files && event.target.files[0]) {
+
+      const file: File = event.target.files[0];
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileType', file.type);
+      formData.append('fileName', 'ProfilePicture');
+      formData.append('fileToken', this.guid());
+
+      const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
+      this.uploadSub = upload$.subscribe((result: any) => {
+        this.updateProfilePicture(result.result.fileToken);
+        console.log(result)
+      });
+
+    }
+
+    // this._profileService.getProfilePicture().subscribe((result) => {
+    //   if (result && result.profilePicture) {
+    //     this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
+    //     console.log(this.Profileurl);
+    //     // this.onUploadProfile.emit(this.Profileurl);
+    //   }
+    //   this.onSelectFile(event);
+    // })
+    //  this.onSelectFile(event);
+    // this.getProfilePicture(event);
+  }
+
+
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+
+      const file: File = event.target.files[0];
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileType', file.type);
+      formData.append('fileName', 'ProfilePicture');
+      formData.append('fileToken', this.guid());
+
+      const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
+      this.uploadSub = upload$.subscribe((result: any) => {
+        this.updateProfilePicture(result.result.fileToken);
+        // this.onProfileData.emit(result);
+        console.log(result)
+
+      });
+
+    }
+  }
+
+  updateProfilePicture(fileToken: string): void {
+    const input = new UpdateProfilePictureInput();
+    input.fileToken = fileToken;
+
+    this._profileService
+      .updateProfilePicture(input)
+      .subscribe(() => {
+        this.onUploadProfile(event);
+      });
+  }
+
+
+  reset(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  guid(): string {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
   }
 
 }
