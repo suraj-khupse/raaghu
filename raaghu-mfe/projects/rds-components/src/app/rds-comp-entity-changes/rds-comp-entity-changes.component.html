@@ -1,0 +1,32 @@
+<div class="card p-2 h-100 border-0 rounded-0 vh-88">
+    <div class="row">
+        <div class="col-md-3 mb-3 sm-p-0 align-items-center sm-block">
+            <rds-datepicker name="date-picker" [datePickerType]="'range'" [label]="''"
+            [placeholder]="translate.instant('Date Range')" (change)="onDateRageChangeEntity($event)"
+            [(ngModel)]="dateRange" [value]="dateRange" floatinginputLabel="">
+          </rds-datepicker>
+        </div>
+        <div class="col-md-3 mb-3 sm-p-0  align-items-center sm-block">
+
+  <rds-dropdownlist  [borderDropdown]="true" required
+  class="text-dark" [id]="'changeType'" [listItems]="changeTypeList" [value]="changeType"
+  (onSelect)="onChangeTypeSelect($event)" ngDefaultControl name="changeType">
+</rds-dropdownlist>
+        </div>
+        <div class="col-md-3 mb-3 sm-p-0  align-items-center sm-block">
+            <rds-input [inputType]="" [label]="" [(ngModel)]="entityName" [placeholder]="translate.instant('User')"
+                id="entityName" (change)="entityNameModify($event)" floatinginputLabel="Entity Type Full Name"
+                ngDefaultControl name="entityName"></rds-input>
+        </div>
+        <div class="col-md-3 mb-3 sm-p-0  align-items-center ">
+            <rds-button [label]="'Refresh'" [id]="'filter'"  [size]="'medium'" class="ms-2" [colorVariant]="'primary'">
+            </rds-button>
+            </div>
+        <div class="row">
+            <rds-data-table [tableData]="changelogData" [pagination]="true"
+                [noDataTitle]="translate.instant('Currently you do not have Entity Changes log')" [recordsPerPage]="10"
+                (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"
+                [refresh]="true" [tableHeaders]="changelogHeader" [isShimmer]="isShimmer"></rds-data-table>
+        </div>
+    </div>
+</div>

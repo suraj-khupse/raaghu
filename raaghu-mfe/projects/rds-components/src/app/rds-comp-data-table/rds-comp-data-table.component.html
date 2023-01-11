@@ -29,11 +29,13 @@
                       mobile-header-option
                       cursor-pointer
                       ps-1
+                      d-flex
+                      align-items-center
                     "
                   >
-                    <span
+                    <span 
                       (click)="sortByColumn(header)"
-                      class="text-right sort-icons mobile-sort"
+                      class="text-right sort-icons mobile-sort d-flex "
                       *ngIf="header.sortable"
                     >
                       <rds-icon

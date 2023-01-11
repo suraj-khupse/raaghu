@@ -24,9 +24,10 @@ export class AuditLogsEffects {
           auditLogParams.clientIpAddress,
           auditLogParams.correlationId,
           auditLogParams.httpMethod,
-          auditLogParams.httpStatusCode,
+          auditLogParams.httpStatus,
           auditLogParams.maxExecutionDuration,
-          auditLogParams.minExecutionDuration,auditLogParams.HasException,
+          auditLogParams.minExecutionDuration,
+          auditLogParams.hasException,
           auditLogParams.sorting,
           auditLogParams.skipCount,
           auditLogParams.maxResultCount).pipe(
@@ -62,7 +63,7 @@ export class AuditLogsEffects {
     ofType(getEntityChanges),
     switchMap(({changeLogsParams}) =>
       // Call the getTodos method, convert it to an observable
-      from(this.auditLogsService.entityChanges(changeLogsParams.entityChangeSetId,undefined,undefined,undefined,changeLogsParams.startDate,changeLogsParams.endDate,undefined,changeLogsParams.skipCount,changeLogsParams.maxResultCount)).pipe(
+      from(this.auditLogsService.entityChanges(undefined,changeLogsParams.changeType,undefined,changeLogsParams.entityTypeFullName,changeLogsParams.StartDate,changeLogsParams.EndDate,undefined,0,1000)).pipe(
         // Take the returned value and return a new success action containing the todos
         map((changeLogs) => {
           return getEntityChangesSuccess({ changeLogs: changeLogs })

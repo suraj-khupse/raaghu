@@ -16,6 +16,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
   @Input() userData: any;
   @Input() editShimmer: boolean = false;
   @Input() buttonSpinner: boolean = true;
+  @Input() roleListItem: any;
   public phonePattern = /^((\\+91-?)|0)?[0-9]{10}$/;
   @ViewChild('userCreationForm') userInfoForm: NgForm;
   constructor(public translate: TranslateService) { }
@@ -32,6 +33,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
       this.userData['isActive'] = true;
       this.userData['surname'] = '';
       this.userData['imageUrl'] = '../assets/edit-profile.png';
+      this.userData['roles'] = '';
     }
      setTimeout(() => {
     if (this.userData && this.userInfoForm) {
@@ -61,7 +63,6 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
       this.userData['surname'] = '';
       this.userData['imageUrl'] = '../assets/edit-profile.png';
       }
-     
     }
     else {
       this.userData['imageUrl'] = '../assets/edit-profile.png'
@@ -75,7 +76,6 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
       return;
     }
     this.userInfo.emit({ user: this.userData, next: true });
-
   }
   getCheckboxValue(event: any): void {
     this.userData.unlimitedSubscription = event;
@@ -83,6 +83,11 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
 
   onEditionSelect(event: any): void {
     this.userData.edition = event.item.value;
+  }
+
+  onRolesSelect(event){
+    debugger
+    console.log(event);
   }
   getImage(ev: any) {
     let FileImage = ev.target.files[0];
@@ -95,7 +100,6 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
   onCancelUser() {
     this.buttonSpinner = false;
     this.onCancel.emit(true);
-
   }
 
 }

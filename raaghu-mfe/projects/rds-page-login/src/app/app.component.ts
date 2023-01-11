@@ -44,7 +44,6 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   constructor(
     private injector: Injector,
     private _userAuthService: UserAuthService,
-    private _router: Router,
     private store: Store,
     private alertService: AlertService,
     private oauthService: OAuthService
@@ -192,7 +191,6 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     //       console.log(result);
           
     //     })
-      this._router.navigateByUrl('/pages/dashboard');
     });
     
 

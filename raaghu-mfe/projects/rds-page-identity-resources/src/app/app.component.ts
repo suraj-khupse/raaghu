@@ -1,3 +1,4 @@
+import { animate, query, state, style, transition, trigger } from '@angular/animations';
 import { Component, Injector, Input } from '@angular/core';
 import { ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
@@ -12,12 +13,41 @@ declare let bootstrap: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition('* <=> *', [
+        query(':enter',
+          [
+            style({ opacity: 0 })
+          ],
+          { optional: true }
+        ),
+        query(':leave',
+          [
+            style({ opacity: 1 }),
+            animate('0.4s', style({ opacity: 0 }))
+          ],
+          { optional: true }
+        ),
+        query(':enter',
+          [
+            style({ opacity: 0 }),
+            animate('0.4s', style({ opacity: 1 }))
+          ],
+          { optional: true }
+        )
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   userClaims: any;
 
   constructor(public translate: TranslateService, public store: Store) { }
   viewCanvas: boolean = false;
+  isAnimation: boolean = true;
+  isShimmer : boolean = false;
+  showLoadingSpinner:boolean=false
   offCanvasId: string = 'EditIdentityresource'
   title = 'identity-resources';
   offCanvasTitle = 'New Identity Resources'
@@ -74,7 +104,7 @@ export class AppComponent {
   finalResourceData: any;
   ResourceData: any = {};
 
-  basicInfo: any = [];
+  basicInfo: any = {};
   clientResourceData: any = [
     {
       displayName: 'abc',
@@ -121,11 +151,15 @@ export class AppComponent {
     }
   }
   ngOnInit(): void {
+  this.isAnimation=true;
+  this.isShimmer=true;
 
     this.store.dispatch(getAllIdentityResources());
     this.store.select(selectA).subscribe((res: any) => {
       this.ResourceTableData = [];
       if (res && res.items) {
+        this.isAnimation=false;
+      
         res.items.forEach((ele: any) => {
           const data: any = {
             id: ele.id,
@@ -136,7 +170,8 @@ export class AppComponent {
           }
           this.ResourceTableData.push(data);
         });
-
+        this.isShimmer=false;
+        this.editShimmer = false;
       }
     })
 
@@ -149,15 +184,15 @@ export class AppComponent {
           description: res.description,
           displayName: res.displayName,
           emphasize: res.emphasize,
-          enables: res.enables,
+          enabled: res.enabled,
           required: res.required,
           showInDiscoveryDocument: res.showInDiscoveryDocument,
         };
-        this.onEditBasic = data
+        this.basicInfo = data
 
         if (res.userClaims && res.userClaims.length > 0) {
           this.ResourceData.forEach((claim: any) => {
-            debugger
+       
             claim.left =false;
             if (claim) {
               const _claim = res.userClaims.find(
@@ -201,13 +236,14 @@ export class AppComponent {
   }
   openCanvas(edit: boolean = false): void {
     this.viewCanvas = true;
-    this.onEditBasic= {}
+    this.showLoadingSpinner=true;
+    this.offCanvasTitle="New Identity Resources";
+    this.basicInfo= {}
     this.ResourceData.forEach((claims)=>{
       if(claims){
         claims.left = false;
       }
     })
-    this.onEditBasic = undefined
     this.navtabsItems = [{
       label: 'Basics',
       tablink: '#Basics',
@@ -225,7 +261,7 @@ export class AppComponent {
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
       bsOffcanvas.show();
     }, 100);
-
+  
   }
 
   
@@ -258,7 +294,8 @@ export class AppComponent {
   }
   onBasicInfoSave(event: any) {
     this.activePage = 1;
-    this.onEditBasic = event
+    this.basicInfo = event
+    console.log(this.basicInfo)
   }
 
   onClientResourceSave(event: any) {
@@ -273,12 +310,17 @@ export class AppComponent {
   onTabClick(index: any): void {
     this.activeTab = index
   }
+  closeCanvas(): void {
+    this.viewCanvas = false;
+    this.showLoadingSpinner = false;
+  
+  }
   onSave() {
     const _data: any[] = [];
     if (this.identity && this.identity.ResourceData) {
       this.identity.ResourceData.forEach(ele => {
         const _claimsData = {
-          identityResourceId: this.selectId,
+          identityResourceId: ele.id,
           type: ele.displayName
         }
         _data.push(_claimsData)
@@ -298,13 +340,13 @@ export class AppComponent {
         });
       }
       const data: any = {
-        name: this.onEditBasic.name,
-        description: this.onEditBasic.description,
-        displayName: this.onEditBasic.displayName,
-        enabled: this.onEditBasic.enables,
-        required: this.onEditBasic.required,
-        emphasize: this.onEditBasic.emphasize,
-        showInDiscoveryDocument: this.onEditBasic.showInDiscoveryDocument,
+        name: this.basicInfo.name,
+        description: this.basicInfo.description,
+        displayName: this.basicInfo.displayName,
+        enabled: this.basicInfo.enabled,
+        required: this.basicInfo.required,
+        emphasize: this.basicInfo.emphasize,
+        showInDiscoveryDocument: this.basicInfo.showInDiscoveryDocument,
         userClaims: _data,
         properties: properties
      }
@@ -312,25 +354,30 @@ export class AppComponent {
      this.store.dispatch(updateIdentityResource(updateData));
      this.activePage = 0
       this.viewCanvas = false
+      this.showLoadingSpinner=false
+      this.editShimmer = false;
     }
     else {
       const data: any = {
-        name: this.onEditBasic.name,
-        description: this.onEditBasic.description,
-        displayName: this.onEditBasic.displayName,
-        enabled: this.onEditBasic.enables,
-        required: this.onEditBasic.required,
-        emphasize: this.onEditBasic.emphasize,
-        showInDiscoveryDocument: this.onEditBasic.showInDiscoveryDocument,
+        name: this.basicInfo.name,
+        description: this.basicInfo.description,
+        displayName: this.basicInfo.displayName,
+        enabled: this.basicInfo.enabled,
+        required: this.basicInfo.required,
+        emphasize: this.basicInfo.emphasize,
+        showInDiscoveryDocument: this.basicInfo.showInDiscoveryDocument,
         userClaims: _data,
         properties: []
       }
       this.store.dispatch(saveIdentityResource(data));
+      
       this.activePage = 0
       this.viewCanvas = false
+      this.showLoadingSpinner=false
     }
 
 
   }
+  
 
 }

@@ -68,6 +68,11 @@ export class UserAuthService implements OnInit {
       //     this.router.navigateByUrl('/login');
       //   }
       // }
+      if(result.currentUser.isAuthenticated){
+        this.router.navigateByUrl('/pages/dashboard');
+      }
+      
+
     })
 
   }
