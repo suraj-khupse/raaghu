@@ -17,7 +17,7 @@ import {
 import { selectAllNotification, selectNotificationSettings, selectTenancyData, } from 'projects/libs/state-management/src/lib/state/mla/mla.selector';
 import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ThemesService } from 'projects/libs/themes/src/public-api';
+import { RdsThemesService } from 'raaghu-themes/rds-themes';
 import { PrepareCollectedData } from 'projects/libs/state-management/src/lib/state/DownloadData/download-data.action';
 import { DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
@@ -391,10 +391,10 @@ export class SidenavComponent {
     public translate: TranslateService,
     private shared: SharedService,
     private userAuthService: UserAuthService,
-    private theme: ThemesService,
     private http: HttpClient,
     private sessionService: SessionServiceProxy,
     private _profileService: ProfileServiceProxy,
+    private theme: RdsThemesService
     @Inject(DOCUMENT) private document: Document
   ) {
 
@@ -851,13 +851,15 @@ export class SidenavComponent {
     let checked = event;
     let selectedTheme: string = 'default';
     if (!checked) {
-      this.theme.theme = 'dark';
+      // this.theme.theme = 'dark';
+      this.theme.setThemeMode('dark');
       localStorage.setItem('THEME', 'dark');
       selectedTheme = 'dark'
       localStorage.setItem('themeIndex', '7');
 
     } else {
-      this.theme.theme = 'light';
+      // this.theme.theme = 'light';
+      this.theme.setThemeMode('light');
       localStorage.setItem('THEME', 'light');
       selectedTheme = 'default';
       localStorage.setItem('themeIndex', '12');
@@ -916,11 +918,13 @@ export class SidenavComponent {
 
   setTheme(selectedTheme: any): void {
     if (selectedTheme == "undefined" || selectedTheme == '' || selectedTheme == 'light' || selectedTheme == 'default' || selectedTheme == undefined || selectedTheme == null) {
-      this.theme.theme = 'light';
+      // this.theme.theme = 'light';
+      this.theme.setThemeMode('light');
       localStorage.setItem('THEME', 'light');
       this.isLightMode = true;
     } else {
-      this.theme.theme = 'dark';
+      // this.theme.theme = 'dark';
+      this.theme.setThemeMode('dark');
       this.isLightMode = false;
     }
     if (selectedTheme !== undefined && selectedTheme !== '' && selectedTheme !== 'undefined') {

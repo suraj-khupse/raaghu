@@ -30,11 +30,9 @@
               }
             ],
             "styles": [
-              "projects/libs/themes/src/styles/quillEditor.scss",
-              "projects/libs/themes/src/styles/responsive.scss",
-              "projects/host/src/styles.css",
-              "projects/libs/themes/src/styles/default.scss",
-              "./node_modules/ngx-videogular/fonts/videogular.css"
+              "./node_modules/raaghu-themes/rds-themes/styles/default.scss",
+              "./node_modules/ngx-videogular/fonts/videogular.css",
+              "projects/host/src/styles.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
@@ -94,11 +92,9 @@
               }
             ],
             "styles": [
-              "projects/libs/themes/src/styles/quillEditor.scss",
-              "projects/libs/themes/src/styles/responsive.scss",
-              "projects/host/src/styles.css",
-              "projects/libs/themes/src/styles/default.scss",
-              "./node_modules/ngx-videogular/fonts/videogular.css"
+              "./node_modules/raaghu-themes/rds-themes/styles/default.scss",
+              "./node_modules/ngx-videogular/fonts/videogular.css",
+              "projects/host/src/styles.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
@@ -298,36 +294,9 @@
               }
             ],
             "styles": [
-              "projects/libs/themes/src/styles/quillEditor.scss",
-              "projects/libs/themes/src/styles/default.scss",
-              "projects/libs/themes/src/styles/responsive.scss",
               "projects/host/src/styles.css",
-              "./node_modules/ngx-videogular/fonts/videogular.css",
-              {
-                "input": "projects/libs/themes/src/styles/default.scss",
-                "bundleName": "default",
-                "inject": false
-              },
-              {
-                "input": "projects/libs/themes/src/styles/accessible.scss",
-                "bundleName": "accessible",
-                "inject": false
-              },
-              {
-                "input": "projects/libs/themes/src/styles/blue.scss",
-                "bundleName": "blue",
-                "inject": false
-              },
-              {
-                "input": "projects/libs/themes/src/styles/green.scss",
-                "bundleName": "green",
-                "inject": false
-              },
-              {
-                "input": "projects/libs/themes/src/styles/orange.scss",
-                "bundleName": "orange",
-                "inject": false
-              }
+              "./node_modules/raaghu-themes/rds-themes/styles/default.scss",
+              "./node_modules/ngx-videogular/fonts/videogular.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -412,7 +381,6 @@
               "projects/host/src/assets"
             ],
             "styles": [
-              "projects/libs/themes/src/styles/custom.scss",
               "projects/host/src/styles.css"
             ],
             "scripts": []
@@ -448,7 +416,6 @@
               "projects/rds-page-product/src/assets"
             ],
             "styles": [
-              "projects/libs/themes/src/styles/custom.scss",
               "projects/rds-page-product/src/styles.scss"
             ],
             "scripts": [],
@@ -571,7 +538,6 @@
               "projects/rds-page-dashboard/src/assets"
             ],
             "styles": [
-              "projects/libs/themes/src/styles/custom.scss",
               "projects/rds-page-dashboard/src/styles.scss"
             ],
             "scripts": [
@@ -802,7 +768,6 @@
               "projects/rds-page-demo-ui/src/assets"
             ],
             "styles": [
-              "projects/libs/themes/src/styles/quillEditor.scss",
               "projects/rds-page-demo-ui/src/styles.scss"
             ],
             "scripts": [
