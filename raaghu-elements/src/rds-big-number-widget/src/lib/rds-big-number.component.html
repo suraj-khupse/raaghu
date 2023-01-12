@@ -1,5 +1,5 @@
 <ng-container [ngSwitch]="role">
-  <div class="card border-0" [ngClass]="classes" *ngSwitchCase="'basic'">
+  <div class="card border-0 bg-transparent" [ngClass]="classes" *ngSwitchCase="'basic'">
     <div [ngClass]="alignclasses">
       <h1>{{bigNumber}}</h1>
       <h6 [ngClass]="subTitleClasses">
@@ -15,7 +15,7 @@
     <div class="">
       <div class="fs-1 text-center">
         <p class="mb-0"><b>{{bigNumber}}</b></p>
-        <p [ngClass]="subTitleClasses" class="fs-6 mb-0">
+        <p [ngClass]="classes" class="fs-6 mb-0">
           {{subText}}
         </p>
       </div>

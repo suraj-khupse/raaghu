@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RdsOrganizationTreeComponent } from './rds-comp-organization-tree.component';
+import { RdsCompOrganizationTreeComponent } from './rds-comp-organization-tree.component';
 
-describe('RdsOrganizationTreeComponent', () => {
-  let component: RdsOrganizationTreeComponent;
-  let fixture: ComponentFixture<RdsOrganizationTreeComponent>;
+describe('RdsCompOrganizationTreeComponent', () => {
+  let component: RdsCompOrganizationTreeComponent;
+  let fixture: ComponentFixture<RdsCompOrganizationTreeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RdsOrganizationTreeComponent ]
+      declarations: [ RdsCompOrganizationTreeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RdsOrganizationTreeComponent);
+    fixture = TestBed.createComponent(RdsCompOrganizationTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

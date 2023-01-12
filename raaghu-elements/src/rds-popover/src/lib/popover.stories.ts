@@ -1,19 +1,26 @@
 import { CommonModule } from '@angular/common';
+import { RdsButtonModule } from '@libs/rds-button';
 import { moduleMetadata } from '@storybook/angular';
 import { Story, Meta } from '@storybook/angular';
 import { RdsPopoverComponent } from './rds-popover.component';
+
 
 export default {
   title: 'Elements/Popover',
   component: RdsPopoverComponent,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule],
+      imports: [CommonModule,RdsButtonModule],
     }),
   ],
   argTypes: {
     hover: {table: {disable: true,},},
-  }
+  },
+  parameters: { 
+    actions: {
+      handles: ['hide.bs.popover','inserted.bs.popover','show.bs.popover'],
+     }
+   },
 } as Meta;
 
 const Template: Story<RdsPopoverComponent> = (args: RdsPopoverComponent) => ({
@@ -29,7 +36,7 @@ const Template: Story<RdsPopoverComponent> = (args: RdsPopoverComponent) => ({
 });
 
 export const PopoverWithButton = Template.bind({});
-PopoverWithButton.parameters = { controls: { include: ['popoverPosition', 'popoverTitle', 'popoverContent'] } };
+PopoverWithButton.parameters = { controls: { include: ['popoverPosition', 'popoverTitle', 'popoverContent','onClick'] } };
 PopoverWithButton.args = {
   popoverPosition: 'left',
   popoverTitle: 'popover title',
@@ -57,7 +64,7 @@ export const PopoverWithLink: Story<RdsPopoverComponent> = (args) => ({
       </rds-popover>
       `,
 });
-PopoverWithLink.parameters = { controls: { include: ['popoverPosition', 'popoverTitle', 'popoverContent', 'hover'] } };
+PopoverWithLink.parameters = { controls: { include: ['popoverPosition', 'popoverTitle', 'popoverContent', 'hover','onClick'] } };
 PopoverWithLink.args = {
   popoverPosition: 'right',
   popoverTitle: 'popover title',

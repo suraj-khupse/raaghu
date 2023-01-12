@@ -6,7 +6,7 @@
           <div class=" " style="float:left">
               <div class="p-0" id="inserTag">
                 <ng-container *ngIf="tagArray">
-                  <span class="d-inline-block m-1 mb-2" *ngFor="let item of tagArray; index as i">
+                  <span class="d-inline-block m-1" *ngFor="let item of tagArray; index as i">
                     <div [ngClass]="classes">
                       <div class="tags tags-dismissible align-items-center fade show tagcorners" role="alert" aria-live="assertive"
                         aria-atomic="true">
@@ -24,7 +24,7 @@
               </div>
           </div>
           <span>
-            <input type="text" class="form-control form-control-sm border-0" name="inputText" [(ngModel)]="inputText"
+            <input type="text" class="form-control form-control-sm border-0  mt-1 d-inline-block" name="inputText" [(ngModel)]="inputText"
               (keydown.enter)="addTag()" placeholder="+ Add Tag" aria-label="+Tag" aria-describedby="basic-addon1" />
           </span>
 
@@ -36,7 +36,7 @@
     <div class="binding-tags2">
       <div class="d-flex">
         <div class="rds-tags res-class slim-scroll" >
-          <div class="scroll-type d-block m-1 mb-2" style="float:left"  *ngIf="tagArray&&tagArray.length>0">
+          <div class="scroll-type d-block m-1" style="float:left"  *ngIf="tagArray&&tagArray.length>0">
             <span class="m-1 d-inline-block w-auto" *ngFor="let item of tagArray; index as i">
               <ng-container>
                 <span class="" >
@@ -57,7 +57,7 @@
             </span>
         </div>
           <span>
-            <input type="text" class="form-control form-control-sm border-0" name="inputText" [(ngModel)]="inputText"
+            <input type="text" class="form-control form-control-sm border-0 mt-1 d-inline-block" name="inputText" [(ngModel)]="inputText"
               (keydown.enter)="addTag()" placeholder="+ Add Tag" aria-label="+Tag" aria-describedby="basic-addon1" />
           </span>
         </div>

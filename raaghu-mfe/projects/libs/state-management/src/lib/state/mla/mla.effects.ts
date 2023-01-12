@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AlertService } from '@libs/shared';
+import { AlertService,AppSessionService,UserAuthService } from '@libs/shared';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { EntityDtoOfGuid, NotificationServiceProxy, UserLinkServiceProxy } from 'projects/libs/shared/src/lib/service-proxies';
+import { AccountServiceProxy, EntityDtoOfGuid, NotificationServiceProxy, UserLinkServiceProxy } from 'projects/libs/shared/src/lib/service-proxies';
 import { from, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { deleteAccount, getMLATenancyData, getMLATenancyDataFailure, getMLATenancyDataSuccess, getNotificationSettings, getNotificationSettingsFailure, getNotificationSettingsSuccess, getUserNotification, getUserNotificationFailure, getUserNotificationSuccess, linkToUser, SetAllNotificationsAsRead, SetNotificationRead, updateNotificationSettings } from './mla.actions';
+import { backToImpersonator, deleteAccount, getMLATenancyData, getMLATenancyDataFailure, getMLATenancyDataSuccess, getNotificationSettings, getNotificationSettingsFailure, getNotificationSettingsSuccess, getUserNotification, getUserNotificationFailure, getUserNotificationSuccess, linkToUser, SetAllNotificationsAsRead, SetNotificationRead, updateNotificationSettings } from './mla.actions';
 declare var bootstrap: any;
 
 @Injectable()
@@ -15,7 +15,10 @@ export class MLAEffects {
     private UserLinkService: UserLinkServiceProxy,
     private notificationService: NotificationServiceProxy,
     private store: Store,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private accoutService:AccountServiceProxy,
+    private sessionService:AppSessionService,
+    private userAuthService:UserAuthService
   ) { }
 
   getMLATenancyData$ = createEffect(() =>
@@ -162,4 +165,28 @@ export class MLAEffects {
     }
   );
 
-}
+  backToImpersonator$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(backToImpersonator),
+      mergeMap(() =>
+        this.accoutService.backToImpersonator().pipe(map((res: any) => {          
+          let url = window.location.href;
+          url = url.substring(0, url.indexOf("/pages"));
+          let targetUrl = url + '/login' + '?impersonationToken=' + res.impersonationToken;         
+          if (this.sessionService.impersonatorUser.id) {
+            targetUrl = targetUrl + '&tenantId=' + this.sessionService.impersonatorUser.id;
+        }
+          this.userAuthService.unauthenticateUser(true, targetUrl);
+
+        }),
+          catchError((error: any) => of(
+          ))
+        )
+      )
+    ),
+    {
+      dispatch: false
+    }
+  );
+
+}               

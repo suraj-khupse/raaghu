@@ -41,7 +41,7 @@ title: "Components > Address-Input"
 <div class="row m-0">
 
 ```html
-<rds-address-input></rds-address-input>
+<rds-comp-address-input></rds-comp-address-input>
 ```
 </div>
 </div>

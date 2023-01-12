@@ -12,6 +12,11 @@ export default {
       imports: [RdsIconModule],
     }),
   ],
+  parameters: { 
+    actions: {
+      handles: ['close.bs.alert'],
+     }
+   },
   argTypes: {
     position: { control: 'radio',options: ['top', 'bottom'], if: { arg: 'sticky' } },
   },
@@ -23,7 +28,7 @@ const Template: Story<RdsAlertComponent> = (args: RdsAlertComponent) => ({
 
 export const Default = Template.bind({});
 Default.parameters = { controls: { include: ['dismissible', 'icon', 'position', 'delay', 'colorVariant', 
-'iconFill', 'iconStroke', 'iconHeight', 'iconWidth', 'sticky'] } };
+'iconFill', 'iconStroke', 'iconHeight', 'iconWidth', 'sticky','onDismiss'] } };
 Default.args = {
   dismissible: true,
   icon: 'information',

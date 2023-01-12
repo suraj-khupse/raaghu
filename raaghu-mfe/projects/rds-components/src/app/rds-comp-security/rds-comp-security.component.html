@@ -13,7 +13,7 @@
         <div class="form-group mb-3">
           <rds-checkbox [label]="translate.instant('Use Default Settings')"
             [checked]="Seccuritysetting.useDefaultPasswordComplexitySettings" [disabled]="false" [switch]="false"
-            [inline]="false" [withLabel]="true" name="useDefaultPasswordComplexitySettings"
+            [withLabel]="true" name="useDefaultPasswordComplexitySettings"
             #useDefaultPasswordComplexitySettings="ngModel" [isInputGroup]="false"
             [(ngModel)]="Seccuritysetting.useDefaultPasswordComplexitySettings" ngDefaultControl
             (onChange)="selectAllFeature($event,'useDefaultPasswordComplexitySettings')"
@@ -24,7 +24,7 @@
           <li class="">
             <div class="form-group mb-3">
               <rds-checkbox [label]="translate.instant('Require Digit')" [checked]="Seccuritysetting.requireDigit"
-                [disabled]="disable" [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false"
+                [disabled]="disable" [switch]="false" [withLabel]="true" [isInputGroup]="false"
                 name="requireDigit" #requireDigit="ngModel" [(ngModel)]="Seccuritysetting.requireDigit" ngDefaultControl
                 (onChange)="selectAllFeature($event,'requireDigit')" [id]="'requireDigits'" (change)="onChange()"></rds-checkbox>
             </div>
@@ -33,7 +33,7 @@
           <li>
             <div class="form-group mb-3">
               <rds-checkbox [label]="translate.instant('Require Lowercase')"
-                [checked]="Seccuritysetting.requireLowercase" [disabled]="disable" [switch]="false" [inline]="false"
+                [checked]="Seccuritysetting.requireLowercase" [disabled]="disable" [switch]="false"
                 [withLabel]="true" [isInputGroup]="false" name="requireLowercase" #requireLowercase="ngModel"
                 [(ngModel)]="Seccuritysetting.requireLowercase" ngDefaultControl
                 (onChange)="selectAllFeature($event,'requireLowercase')" [id]="'requireLower'" (change)="onChange()" >
@@ -44,7 +44,7 @@
           <li>
             <div class="form-group mb-3">
               <rds-checkbox [label]="'Require Non-Alphanumeric'" [checked]="Seccuritysetting.requireAlphaNumeric"
-                [disabled]="disable" [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false"
+                [disabled]="disable" [switch]="false" [withLabel]="true" [isInputGroup]="false"
                 #requireAlphaNumeric="ngModel" [(ngModel)]="Seccuritysetting.requireAlphaNumeric" ngDefaultControl
                 name="requireAlphaNumeric" (onChange)="selectAllFeature($event,'requireAlphaNumeric')"
                 [id]="'requireAlphaNumeric'" (change)="onChange()"></rds-checkbox>
@@ -54,7 +54,7 @@
           <li>
             <div class="form-group mb-3">
               <rds-checkbox [label]="translate.instant('Require Uppercase')"
-                [checked]="Seccuritysetting.requireUppercase" [disabled]="disable" [switch]="false" [inline]="false"
+                [checked]="Seccuritysetting.requireUppercase" [disabled]="disable" [switch]="false"
                 [withLabel]="true" [isInputGroup]="false" [(ngModel)]="Seccuritysetting.requireUppercase"
                 ngDefaultControl name="requireUppercase" #requireUppercase="ngModel"
                 (onChange)="selectAllFeature($event,'requireUppercase')" [id]="'requireUpper'" (change)="onChange()">
@@ -81,7 +81,7 @@
             <rds-label [label]="translate.instant('User Lock Out')"></rds-label>
           </div>
           <rds-checkbox [label]="translate.instant('Enable User Account Locking On Failed Login Attempts')"
-            [checked]="Seccuritysetting.userLockout" [disabled]="false" [switch]="false" [inline]="false"
+            [checked]="Seccuritysetting.userLockout" [disabled]="false" [switch]="false"
             [withLabel]="true" [isInputGroup]="false" [(ngModel)]="Seccuritysetting.userLockout" ngDefaultControl
             name="userLockout" #userLockout="ngModel" (onChange)="selectAllFeature($event,'userLockout')"
             (change)="checkUserLockout()" [id]="'userLockout'" (change)="onChange()"></rds-checkbox>
@@ -120,7 +120,7 @@
             <rds-label [label]="translate.instant('Two Factor Login')"></rds-label>
           </div>
           <rds-checkbox [label]="translate.instant('Enable Two Factor User Login')" [checked]="Seccuritysetting.twoFactorLogin"
-            [disabled]="false" [switch]="false" [inline]="false" [withLabel]="true" [isInputGroup]="false"
+            [disabled]="false" [switch]="false"  [withLabel]="true" [isInputGroup]="false"
             ngDefaultControl name="twoFactorLogin" (onChange)="selectAllFeature($event,'twoFactorLogin')"
             [(ngModel)]="Seccuritysetting.twoFactorLogin" #twoFactorLogin="ngModel" [id]="'twoFactorLogin'" (change)="onChange()">
           </rds-checkbox>
@@ -133,7 +133,7 @@
           </div>
           <rds-checkbox
             [label]="translate.instant('Disable Concurrent Login For A User. If A User Logins With A Second Device, The First Session Is Automatically Closed.')"
-            [checked]="Seccuritysetting.loginPerUser" [disabled]="false" [switch]="false" [inline]="false"
+            [checked]="Seccuritysetting.loginPerUser" [disabled]="false" [switch]="false" 
             name="allowOneConcurrentLoginPerUser" [withLabel]="true" [isInputGroup]="false"
             [(ngModel)]="Seccuritysetting.allowOneConcurrentLoginPerUser" ngDefaultControl
             #allowOneConcurrentLoginPerUser="ngModel"

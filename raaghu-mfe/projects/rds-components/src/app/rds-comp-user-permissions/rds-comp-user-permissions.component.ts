@@ -10,13 +10,10 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { PermissionNode, TreeType } from '../../models/pemission.model';
-import { TreeNode } from '../../models/tree-node.model';
 import { TableHeader } from '../../models/table-header.model';
-import { ComponentLoader } from 'ngx-bootstrap/component-loader';
 import { ComponentLoaderOptions } from 'projects/libs/shared/src/lib/component-loader-options.model';
 import { TableAction } from '../../models/table-action.model';
 import { TranslateService } from '@ngx-translate/core';
-import { OrganizationTreeNode } from '../../models/organization-tree.model';
 import { AlertService } from '@libs/shared';
 
 declare let bootstrap: any;
@@ -24,8 +21,7 @@ declare let bootstrap: any;
 @Component({
   selector: 'rds-comp-user-permissions',
   templateUrl: './rds-comp-user-permissions.component.html',
-  styleUrls: ['./rds-comp-user-permissions.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./rds-comp-user-permissions.component.scss']
 })
 export class RdsCompUserPermissionsComponent implements OnInit {
   actions: TableAction[] = [{ id: 'edit', displayName: 'Edit' }, { id: 'delete', displayName: 'Delete' }]
@@ -42,7 +38,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     featureList: [],
   };
   rdsOrganizationTreeConfig: ComponentLoaderOptions;
-  selectedFilteredPermissions :  any = []
+  selectedFilteredPermissions: any = []
   public navtabsItems: any = [];
   currentAlerts: any = [];
   listItems = [
@@ -78,7 +74,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   @Input() public isEdit: boolean = false;
   @Input() public OrganizationUnit: any = [];
   @Input() organizationTreeList: [];
-  @Input() permissionsList: PermissionNode[] = [];
+  @Input() permissionsList: any[] = [];
   @Input() selectedPermissions: any = [];
   @Input() selectedOrganizations: any = [];
   @Input() listItemsm = [
@@ -103,7 +99,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   PermissionFiltertreeData: any = [];
   selectedRoles: any = [];
   PermissinFilterSelectedata: any = [];
-  viewCanvasFilter : boolean = false;
+  viewCanvasFilter: boolean = false;
   @ViewChild("openFilterByPermission") openFilterByPermission: ElementRef;
   @Input() userHeaders: TableHeader[] = [
     {
@@ -164,7 +160,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     },
   ];
   selectedTreeNode: number;
-  constructor(public translate: TranslateService,  private alertService: AlertService) { }
+  constructor(public translate: TranslateService, private alertService: AlertService) { }
   @Input() orgTreeData = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
   TreeType: TreeType = {
@@ -182,32 +178,14 @@ export class RdsCompUserPermissionsComponent implements OnInit {
   };
   ngOnInit(): void {
     this.activePage = 0;
-    this.rdsOrganizationTreeConfig = {
-      name: 'RdsOrganizationTree',
-      input: {
-        organizationTreeData: this.orgTreeData,
-        nodeColor: this.nodeColors,
-        mutable: true,
-        OrganizationTreeType: this.TreeType,
-        OrganizationTreeLabeles: this.TreeNodeLabeles,
-        ButtonLabel: '',
-      },
-      output: {
-        onSelectAll: (onSelectAllevent) => {
-          console.log(onSelectAllevent);
-        },
-        onSelectnode: (onSelectnodeevent) => {
-          this.selectedTreeNode = onSelectnodeevent.item.data.id;
-        },
-      },
-    };
+
     this.subscribeToAlerts();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const mfeConfig = this.rdsOrganizationTreeConfig;
-    mfeConfig.input.orgTreeData = [...this.orgTreeData];
-    this.rdsOrganizationTreeConfig = mfeConfig;
+    // const mfeConfig = this.rdsOrganizationTreeConfig;
+    // mfeConfig.input.orgTreeData = [...this.orgTreeData];
+    // this.rdsOrganizationTreeConfig = mfeConfig;
     this.selectedOrganizationUnit = [];
   }
 
@@ -242,7 +220,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
       featureList: [],
     };
     this.userinfo = undefined;
-    this.onClose.emit();    var offcanvas = document.getElementById('userOffcanvas');
+    this.onClose.emit(); var offcanvas = document.getElementById('userOffcanvas');
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
     bsOffcanvas.hide();
     this.viewCanvas = false;
@@ -289,11 +267,8 @@ export class RdsCompUserPermissionsComponent implements OnInit {
     ];
     this.CreateOrEditUser.emit({ id: undefined });
     if (event) {
-      this.canvasTitle = this.translate.instant('New User');
-      this.userinfo = undefined;
+      this.canvasTitle = this.translate.instant('NEW USER');
       event.stopPropagation();
-
-
     }
     this.activePage = 0;
   }
@@ -409,7 +384,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
 
   getSelectedUserPermissionFilterList(event: any): void {
     // if (event && event.length > 0) {
-      this.PermissionFiltertreeData = event;
+    this.PermissionFiltertreeData = event;
     // }
   }
   savePermission() {
@@ -508,7 +483,7 @@ export class RdsCompUserPermissionsComponent implements OnInit {
       el.click();
     }
   }
-  openCanvas(canvasId , viewCanvas : boolean): void {
+  openCanvas(canvasId, viewCanvas: boolean): void {
     this.viewCanvas = viewCanvas;
     setTimeout(() => {
       var offcanvas = document.getElementById(canvasId);
@@ -527,10 +502,11 @@ export class RdsCompUserPermissionsComponent implements OnInit {
         sticky: alert.sticky,
       };
       this.currentAlerts.push(currentAlert);
+      this.showLoadingSpinner = false;
     });
   }
 
-  openCanvasFilter(canvasId , viewCanvasFilter : boolean): void{
+  openCanvasFilter(canvasId, viewCanvasFilter: boolean): void {
     this.viewCanvasFilter = viewCanvasFilter;
     this.selectedPermissions = []
     setTimeout(() => {

@@ -13,7 +13,10 @@ export default {
       }),
     ],
     argTypes: {
-         
+      state: {
+        options: ['checkbox', 'errorcheckbox','Indeterminate'],
+        control: { type: 'radio' },
+      },
     },
     excludeStories: /.*Data$/
 } as Meta
@@ -31,13 +34,13 @@ export const actionsData = {
 };
 
 export const Default = Template.bind({})
-Default.parameters = { controls: { include: ['label', 'checked', 'disabled', 'switch', 'inline', 'state', 'id', 'withLabel', 'isInputGroup'] } };
+Default.parameters = { controls: { include: ['label', 'checked', 'disabled', 'switch', 'inline', 'state', 'id', 'withLabel', 'isInputGroup','onClick','onChange'] } };
 Default.args = {
  label:'default checkbox',
  checked:false,
  disabled:false,
  switch:false,
- inline:false,
+//  inline:false,
  state:'checkbox',
  id:"checkboxid",
  withLabel: true,

@@ -30,7 +30,7 @@ export class RdsCompProductListComponent implements OnInit {
 
   @Input() title: string = '';
   @Input() subTitle: string = '';
-  @Input() role: 'withInlinePrice' | 'simple'|'imageWithInfo' = 'withInlinePrice';
+  @Input() role?: 'withInlinePrice' | 'simple'|'imageWithInfo' |'ImageWithTitle' | 'ImageWithInfo'= 'withInlinePrice';
   itemList:any = [];
   recordsPerPage = 6;
   totalRecords: any;
@@ -40,7 +40,7 @@ export class RdsCompProductListComponent implements OnInit {
   changeColor= [];
   
 
-  @Input() productListItems: any[] = [];
+  @Input() productListItems: any = [];
   @Input() productlist: any;
   Items: any[] = [];
 

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { mergeMap, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'rds-address-input',
+  selector: 'rds-comp-address-input',
   templateUrl: './rds-comp-address-input.component.html',
   styleUrls: ['./rds-comp-address-input.component.scss'],
 })

@@ -27,16 +27,16 @@ export class RdsAddressDetailComponent implements OnInit {
     return classes;
   }
 
-   public get cardClasses(): string[] {
-    let custClasses:string[] = []
-    if (this.Cardborder === true) {
-      custClasses.push('card');
-    }else(this.Cardborder === false)
-    {
-      custClasses.push('');
-    }
-    return custClasses
-  }
+  //  public get cardClasses(): string[] {
+  //   let custClasses:string[] = []
+  //   if (this.Cardborder === true) {
+  //     custClasses.push('card');
+  //   }else(this.Cardborder === false)
+  //   {
+  //     custClasses.push('');
+  //   }
+  //   return custClasses
+  // }
 
     public get cardbodyClass(): string[] {
       let custbodyClasses:string[] = []

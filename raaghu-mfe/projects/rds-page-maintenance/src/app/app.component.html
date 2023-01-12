@@ -1,11 +1,15 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <div class="row" >
-    <div class="col-md-12 text-end pb-3">
+  <div class="row">
+    <div class="col-md-8">
+      <!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader> -->
+      <rds-comp-alert [currentAlerts]="currentAlerts" (onAlertHide)="onAlertHide($event)"></rds-comp-alert>
+    </div>
+    <div class="col-md-4 text-end pb-3">
       <div class="d-flex justify-content-end" *ngIf="tabcash && cashedata && cashedata.length>0">
         <div class="desktop-btn">
           <rds-button (click)="deletAllcasheConfirmation()" [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'"
-                      [colorVariant]="'primary'" [label]="translate.instant('CLEAR ALL')">
-            <rds-icon class="me-2" left name="delete" width="15px" height="15px"></rds-icon>
+            [colorVariant]="'primary'" [label]="translate.instant('CLEAR ALL')" icon="delete" iconHeight="14px" iconWidth="14px">
+            <!-- <rds-icon class="me-2" left name="delete" width="15px" height="15px"></rds-icon> -->
           </rds-button>
         </div>
         <div class="mobile-btn position-fixed bottom-0 end-0 my-5 me-5" style="z-index: 1;">
@@ -13,7 +17,8 @@
             [colorVariant]="'primary'" [roundedButton]="true" [label]="''">
             <rds-icon left name="delete" width="22px" height="22px"></rds-icon>
           </rds-button> -->
-          <rds-fab-menu [listItems]="listItems1" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'" [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+          <rds-fab-menu [listItems]="listItems1" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'"
+            [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
         </div>
       </div>
 
@@ -23,14 +28,15 @@
                       icon="refresh" iconHeight="18px" [block]="false" iconWidth="27px" (click)="refreshData()" class="me-2 btn-icon">
           </rds-button> -->
           <!-- <rds-icon name="refresh" width="20px" height="20px" class=" btn btn-primary btn-sm btn-icon"  (click)="refreshData()" text-primary></rds-icon> -->
-          
-                    <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [isFabIcon]="true" icon="refresh"
-                      class="me-2" (click)="refreshData()" iconHeight="18px" iconWidth="26px"  buttonType="iconOnly"  [tooltipPlacement]="'bottom'" [tooltipTitle]="'Refresh'">
-                    </rds-button>
-     
-                    
+
+          <rds-button type="button" [size]="'small'" [colorVariant]="'primary'" [isFabIcon]="true" icon="refresh"
+            class="me-2" (click)="refreshData()" iconHeight="18px" iconWidth="26px" buttonType="iconOnly"
+            [tooltipPlacement]="'bottom'" [tooltipTitle]="'Refresh'">
+          </rds-button>
+
+
           <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-                      (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [isOutline]="true">
+            (click)="exportToExcel()" [label]="translate.instant('DOWNLOAD ALL')" [isOutline]="true">
             <rds-icon left class="me-2" name="download_data" height="12px" width="12px"></rds-icon>
           </rds-button>
         </div>
@@ -42,34 +48,39 @@
             [colorVariant]="'primary'" (click)="exportToExcel()" [label]="''" [outlineButton]="true">
             <rds-icon left name="download-collected-data" height="12px" width="12px"></rds-icon>
           </rds-button> -->
-          <rds-fab-menu [listItems]="listItems2" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'" [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
+          <rds-fab-menu [listItems]="listItems2" [menuicon]="'plus'" [colorVariant]="'primary'" [menuiconWidth]="'12px'"
+            [menuiconHeight]="'12px'" (onSelect)="onSelectMenu($event)"></rds-fab-menu>
         </div>
       </div>
     </div>
-    <div >
-      <div class="col-md-12">
-        <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
-          <rds-nav-tab [navtabsItems]="getNavTabItems()" horizontalAlignment="start" [verticalAlignment]="false"
-                       [pills]="false" [tabs]="true" [fill]="false" [justified]="false" [flex]="false"
-                       (onClicktab)="getnavtabid($event)">
-          </rds-nav-tab>
-          <div naveContent class="tab-content p-4" id="headerbar">
-            <div class="tab-pane fade active show" id="nav-Caches" role="tabpanel" aria-labelledby="nav-Caches">
-              <mfe-loader [config]="rdscacheMfeConfig"></mfe-loader>
-            </div>
-            <div class="tab-pane fade" id="nav-websiteLogs" role="tabpanel" aria-labelledby="nav-websiteLogs">
-              <mfe-loader [config]="rdswebsiteMfeConfig"></mfe-loader>
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
+        <rds-nav-tab [navtabsItems]="getNavTabItems()" horizontalAlignment="start" [verticalAlignment]="false"
+          [pills]="false" [tabs]="true" [fill]="false" [justified]="false" [flex]="false"
+          (onClicktab)="getnavtabid($event)">
+        </rds-nav-tab>
+        <div naveContent class="tab-content p-4" id="headerbar">
+          <div class="tab-pane fade active show" id="nav-Caches" role="tabpanel" aria-labelledby="nav-Caches">
+            <!-- <mfe-loader [config]="rdscacheMfeConfig"></mfe-loader> -->
+            <rds-comp-cache [cashedata]="cashedata" (onClearCache)="onClearCache($event)">
+            </rds-comp-cache>
+          </div>
+          <div class="tab-pane fade" id="nav-websiteLogs" role="tabpanel" aria-labelledby="nav-websiteLogs">
+            <!-- <mfe-loader [config]="rdswebsiteMfeConfig"></mfe-loader> -->
+            <rds-comp-website-log [websiteLogData]="websiteLogData">
+            </rds-comp-website-log>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
+
 </div>
-<mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+<!-- </div> -->
+<rds-comp-alert-popup [alertID]="'deleteAllModal'" [alertData]="alertData" (onSuccess)="onDelete($event)"
+  (onCancel)="onCancel($event)">
+</rds-comp-alert-popup>
+<!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader> -->
 <!--<app-rds-maintenance-shimmer *ngIf="isShimmer"></app-rds-maintenance-shimmer>-->
-
-
-
-

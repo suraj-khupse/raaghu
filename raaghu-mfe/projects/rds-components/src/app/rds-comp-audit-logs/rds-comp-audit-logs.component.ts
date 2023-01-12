@@ -21,6 +21,7 @@ export class RdsCompAuditLogsComponent implements OnInit {
   selectedIndex: any = 0;
   auditCanvasTitle: string = '';
   selectedRowData: any;
+  duration: number | undefined = undefined;
   public navtabsItems: any = [
     {
       label: this.translate.instant('Operation Logs'),
@@ -39,13 +40,14 @@ export class RdsCompAuditLogsComponent implements OnInit {
   @Input() listItem2 = [
     { value: 'Export To Excel', some: 'value', key: 'change-log', icon: 'export_data', iconWidth: '20px', iconHeight: '20px' },
   ];
-  public changeLogsHeaders: TableHeader[] = [];
+  @Input() public changeLogsHeaders: TableHeader[] = [];
   @Input() public operationLogs: any = [];
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() parameterData = new EventEmitter<any>();
   @Output() ChangeLogparameterData = new EventEmitter<any>();
   @Input() public changeLogs: any = [];
   @Input() isShimmer: boolean = false;
+  dateRange: Date[] = [];
   startDate: any = undefined;
   endDate: any = undefined;
   user: any;
@@ -55,9 +57,20 @@ export class RdsCompAuditLogsComponent implements OnInit {
   action: any = '';
   status: any = '';
   browserInfo: any = '';
+  durationTypeList: any = [
+    {
+      value: 'minExecutionDuration',
+      some: 'Greater than/equal to'
+    },
+    {
+      value: 'maxExecutionDuration',
+      some: 'Less than/Equal to'
+    },
+  ]
+  durationType: string = '';
   statusList: any = [
     { value: '', some: 'All' },
-    { value: true, some: 'Sucsses' },
+    { value: true, some: 'Success' },
     { value: false, some: 'HasError' }]
   browserList: any = [
     { value: '', some: 'Select Browser' },
@@ -77,8 +90,8 @@ export class RdsCompAuditLogsComponent implements OnInit {
   changeLogsCanvasTitle: string = this.translate.instant('Change LOG DETAIL');
 
   constructor(private sanitizer: DomSanitizer,
-    private sharedService:SharedService,
-    public translate:TranslateService) { }
+    private sharedService: SharedService,
+    public translate: TranslateService) { }
 
   ngOnInit(): void { }
 
@@ -194,10 +207,11 @@ export class RdsCompAuditLogsComponent implements OnInit {
     }, 100);
   }
 
-  startDateModify(event) {
-
-    this.startDate = event;
-    this.sendParameterData();
+  onDateRageChange(event) {
+    if (event && event.length > 0) {
+      this.dateRange = event;
+      this.sendParameterData();
+    }
 
   }
   endDateModify(event) {
@@ -216,6 +230,16 @@ export class RdsCompAuditLogsComponent implements OnInit {
   toModify(event) {
     this.sendParameterData();
   }
+  onDurationChange(): void {
+    if (this.duration !== undefined && this.duration >= 0) {
+      this.sendParameterData();
+    }
+  }
+  public onDurationTypeChange(event: any): void {
+    this.durationType = event.item.some;
+    this.onDurationChange();
+
+  }
   actionModify(event) {
     this.sendParameterData();
   }
@@ -224,15 +248,39 @@ export class RdsCompAuditLogsComponent implements OnInit {
     this.sendParameterData();
   }
   SelectBroser(event) {
-     this.browserInfo = event.item.some
+    this.browserInfo = event.item.some
     this.sendParameterData();
   }
+
   sendParameterData() {
-    if (this.startDate && this.endDate) {
-      this.parameterData.emit({
-        startDate: this.startDate, endDate: this.endDate, userName: this.user, serviceName: this.service,
-        minExecutionDuration: this.from, maxExecutionDuration: this.to, MethodName: this.action, HasException: this.status, BrowserInfo: this.browserInfo
-      })
+    if (this.dateRange && this.dateRange.length > 0) {
+      let status: boolean | undefined = undefined;
+      if (this.status) {
+        const selected = this.statusList.find((item: any) => item.some === this.status);
+        if (selected) {
+          status = selected.value;
+        }
+      }
+      const data = {
+        startDate: this.dateRange[0],
+        endDate: this.dateRange[1],
+        userName: this.user,
+        serviceName: this.service,
+        // minExecutionDuration: this.from,
+        // maxExecutionDuration: this.to,
+        minExecutionDuration: undefined,
+        maxExecutionDuration: undefined,
+        MethodName: this.action,
+        HasException: status,
+        BrowserInfo: this.browserInfo
+      }
+      if (this.duration !== undefined) {
+        const selected = this.durationTypeList.find((x: any) => x.some == this.durationType);
+        if (selected) {
+          data[selected.value] = +this.duration;
+        }
+      }
+      this.parameterData.emit(data)
     }
   }
   onClose(): void {

@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container border border-1">
     <div class="row">
       <div class="col-md-4">
         <div class="mt-4">
             <h2>
-              <rds-label [label]="'Frequently asked questions'"></rds-label>
+              <b><rds-label [label]="'Frequently asked questions'" class="fs-1"></rds-label></b>
             </h2>
             <div class="text-dark mt-3">
               <rds-label [label]="'Can t find the answer you are looking for? Reach out to our customer support team.'"> </rds-label>
@@ -14,7 +14,7 @@
         <div>
           <div class="mt-4" *ngFor="let item of questionList;">
             <h5>
-              <rds-label [label]="item.question"></rds-label>
+              <b><rds-label [label]="item.question"></rds-label></b>
             </h5>
             <div class="text-muted">
               <rds-label [label]="item.description"></rds-label>

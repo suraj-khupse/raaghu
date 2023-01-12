@@ -26,7 +26,7 @@ const Template: Story<RdsColorComponent> = (args: RdsColorComponent) => ({
 export const Default: Story<RdsColorComponent> = (args) => ({
   props: args,
 });
-Default.parameters = { controls: { include: ['displaytype','header','defaultValue','itemList'] } };
+Default.parameters = { controls: { include: ['displaytype','header','defaultValue','itemList','selectedColor'] } };
 Default.args = {
   displaytype:'rounded',
   header: 'Color',

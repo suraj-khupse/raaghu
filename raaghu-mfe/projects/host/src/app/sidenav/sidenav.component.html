@@ -1,7 +1,21 @@
 <div class="d-flex flex-column flex-root">
   <div class="page d-flex flex-column flex-column-fluid">
     <div class="header align-items-stretch">
-      <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader>
+      <!-- <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader> -->
+      <rds-top-navigation [backgroundColor]="backgroundColor" [selectedMenu]="selectedMenu"
+        [selectedMenuDescription]="selectedMenuDescription" [LoginAttempts]="LoginAttempts" (toggleEvent)="toggle()"
+        [profileData]="profileData" [rdsDeligateTableData]="rdsDeligateTableData" [offCanvasId]="offCanvasId"
+        [logo]="'assets/raaghu_icon.png'" [projectName]="'Raaghu'" [linkedAccountData]="linkedAccountData"
+        [linkedAccountHeaders]="linkedAccountHeaders" [userList]="usernameList" [notificationData]="notifications"
+        [unreadCount]="unreadCount" [languageItems]="languageItems" [selectedLanguage]="selectedLanguage" [showDelegationButtonSpinner]="showDelegationButtonSpinner" [receiveNotifications]="receiveNotifications"
+        [profilePic]="Profileurl" [notificationTypes]="notificationTypes" [tenancy]="tenancy" (onUpdateNotificationSettings)="onUpdateNotificationSettings($event)" 
+        (setNotificationAsRead)="setNotificationAsRead($event)" (deleteDeligateuser)="deleteDeligateuser($event)" (saveDeligate)="saveDeligate($event)"
+        (onProfileSave)="onProfileSave($event)" (deleteLinkaccount)="deleteLinkaccount($event)" (onLoginAttemptsRefresh)="onLoginAttemptsRefresh($event)"
+        (onLanguageSelection)="onLanguageSelection($event)" (onDownloadLink)="onDownloadLink($event)"
+        (setAllNotificationAsRead)="setAllNotificationAsRead($event)" (linkUser)="linkUser($event)"
+         (logoutEmitter)="logoutEmitter($event)" [FixedHeader]="fixedHeader" (backToImpersonateAccount)="backToImpersonateAccount()" (profilePicUpload)="onUploadProfile($event)">
+      
+      </rds-top-navigation>
     </div>
     <div class="
         d-flex
@@ -10,26 +24,19 @@
         container-fluid
         px-0
         main-body
-      "
-      [class.main-body]="FixedHeaderBody" 
-      >
+      " [class.main-body]="FixedHeaderBody">
       <div class="aside" id="aside">
         <div class="mx-2">
-          <rds-side-nav [isPageWrapper]="true" [activepage]="activePage" [activesubmenu]="activesubmenu" [isLightMode]="isLightMode" 
+          <rds-side-nav [isPageWrapper]="true" [activeMenu]="activeMenu" [isLightMode]="isLightMode" 
                         (collapsedState)="onCollapse($event)" [collapseRequired]="collapseRequired" [sidenavItems]="getSideNavItems()"
                         (emitPath)="redirectPath($event)" (selectedMode)="toggleBetweenMode($event)"></rds-side-nav>
         </div>
       </div>
-      <div class="wrapper d-flex flex-column flex-row-fluid rds-scrollable-wrapper pt-3 px-3 "
-           [class.collapsed]="sideMenuCollapsed" id="FixedHeaderOverFlow" >
+      <div class="wrapper d-flex flex-column flex-row-fluid rds-scrollable-wrapper pt-3 px-sm-0 px-lg-3 "
+        [class.collapsed]="sideMenuCollapsed" id="FixedHeaderOverFlow">
         <ng-container *ngIf="currentAlerts && currentAlerts.length > 0">
-          <!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader> -->
         </ng-container>
         <router-outlet></router-outlet>
-        <!--<div [@routeAnimations]="o && o.activatedRouteData
-          && o.activatedRouteData['animation']">
-          <router-outlet #o="outlet"></router-outlet>
-        </div>-->
       </div>
     </div>
   </div>

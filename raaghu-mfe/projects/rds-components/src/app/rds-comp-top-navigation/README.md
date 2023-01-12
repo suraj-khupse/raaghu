@@ -1,6 +1,6 @@
 # Top Navigation
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli)
 <p align="left">
 <img src="../../../../../assets/Top-Navigation.png" alt="Top Navigation"/>
 <p/>

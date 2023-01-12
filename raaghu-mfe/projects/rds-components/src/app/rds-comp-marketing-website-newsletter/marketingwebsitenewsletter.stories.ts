@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsInputModule, } from '@libs/rds-elements';
+import { RdsButtonModule, RdsInputModule, RdsLabelModule, } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompMarketingWebsiteNewsletterComponent } from './rds-comp-marketing-website-newsletter.component';
 
@@ -12,17 +12,16 @@ export default {
         moduleMetadata({
             declarations: [RdsCompMarketingWebsiteNewsletterComponent],
             imports: [
-                FormsModule, ReactiveFormsModule, NgxTranslateModule, RdsButtonModule, RdsInputModule, SharedModule
+                FormsModule, ReactiveFormsModule, NgxTranslateModule, RdsButtonModule, RdsInputModule, SharedModule,RdsLabelModule
             ],
             providers: [
                 FormBuilder,
-
             ],
         })
     ],
     argTypes: {
         templateType: {
-            options: ['Template_1', 'Template_2', 'Template_3', 'Template_4'],
+            options: ['with_image', 'with_CTA', 'with_discount_offer', 'with_email_input'],
             control: { type: 'select' }
         },
     }
@@ -32,23 +31,23 @@ const Template: Story<RdsCompMarketingWebsiteNewsletterComponent> = (args: RdsCo
         ...args
     }
 });
-export const Template1 = Template.bind({});
+export const WithImage = Template.bind({});
 
-Template1.args = {
-    templateType: 'Template_1'
+WithImage.args = {
+    templateType: 'with_image'
 }
-export const Template2 = Template.bind({});
+export const WithCTA = Template.bind({});
 
-Template2.args = {
-    templateType: 'Template_2'
+WithCTA.args = {
+    templateType: 'with_CTA'
 }
-export const Template3 = Template.bind({});
+export const WithDiscountOffer = Template.bind({});
 
-Template3.args = {
-    templateType: 'Template_3'
+WithDiscountOffer.args = {
+    templateType: 'with_discount_offer'
 }
-export const Template4 = Template.bind({});
+export const WithEmailInput = Template.bind({});
 
-Template4.args = {
-    templateType: 'Template_4'
+WithEmailInput.args = {
+    templateType: 'with_email_input'
 }

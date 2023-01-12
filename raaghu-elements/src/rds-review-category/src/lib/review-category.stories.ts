@@ -36,7 +36,7 @@ const Template: Story<RdsReviewCategoryComponent> = (args: RdsReviewCategoryComp
 });
 
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['display_type', 'item'] } };
+Default.parameters = { controls: { include: ['display_type', 'item','likedislikeClick'] } };
 Default.args = {
   display_type:'Basic',
   item: {
@@ -51,7 +51,7 @@ Default.args = {
 }
 
 export const leftAligned = Template.bind({});
-leftAligned.parameters = { controls: { include: ['display_type', 'item'] } };
+leftAligned.parameters = { controls: { include: ['display_type', 'item','likedislikeClick'] } };
 leftAligned.args= {
   display_type:'ReviewType_1',
   item: {
@@ -65,7 +65,7 @@ leftAligned.args= {
   }
 }
 export const centerAligned = Template.bind({});
-centerAligned.parameters = { controls: { include: ['display_type', 'item'] } };
+centerAligned.parameters = { controls: { include: ['display_type', 'item','likedislikeClick'] } };
 centerAligned.args= {
   display_type:'ReviewType_2',
   item: {

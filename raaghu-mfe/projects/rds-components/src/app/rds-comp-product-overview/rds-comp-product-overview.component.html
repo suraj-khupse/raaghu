@@ -1,42 +1,46 @@
 <div [ngSwitch]="productType">
-  <div>
+  <div class="col md-6">
     <!-- product overview 1 -->
     <div *ngSwitchCase="'producroverview1'">
-      <div class="mb-2">
-        <rds-price [discount]="5" [actualPrice]="1000"></rds-price>
-      </div>
-      <div>
-        <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small" [withNoOfReviews]="true"></rds-rating>
-      </div>
-      <div class="mt-3">
-        <rds-label label="Color" [bold]="true"></rds-label>
-        <rds-color [itemList]="itemList" [defaultValue]="1"></rds-color>
-      </div>
-      <div class="mt-3">
-        <rds-label label="Size"></rds-label>
-        <span class="float-end">
-          <rds-label class="text-primary" label="Size guide"></rds-label>
-        </span>
+      <div class="col md-6">
+        <div class="mb-2">
+          <rds-price [discount]="5" [actualPrice]="1000"></rds-price>
+        </div>
         <div>
-          <rds-size [sizeData]="sizeData" [sizeType]="'withoutDescription'"></rds-size>
+          <rds-rating [rating]="3.9" colorVariant="review" [noOfReview]="123" Size="small" [withNoOfReviews]="true"></rds-rating>
         </div>
+        <div class="mt-3">
+          <rds-label label="Color" [bold]="true"></rds-label>
+          <rds-color [itemList]="itemList" [defaultValue]="1"></rds-color>
+        </div>
+        <div class="mt-3">
+          <rds-label label="Size"></rds-label>
+          <span class="float-end">
+            <rds-label class="text-primary" label="Size guide"></rds-label>
+          </span>
+          <div>
+            <rds-size [sizeData]="sizeData" [sizeType]="'withoutDescription'"></rds-size>
+          </div>
+        </div>
+        <div class="mt-3 align-items-center d-flex justify-content-between ms-0">
+          <div class="p-1">
+            <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart" [colorVariant]="'dark'"></rds-icon>
+            <!-- <rds-icon class="position-absolute icon-positionheart" [id]="item.id" [colorVariant]="item.iconColor"
+                     [name]="item.icon" width="20px" height="20px" [stroke]="true" 
+                    [fill]="item.fill"
+                    ></rds-icon> -->
+          </div>
+          <div class="p-1 w-50 sm-100">
+            <rds-button colorVariant="primary" [isOutline]="true" [block]="true" size="medium" label="Add To BAG">
+            </rds-button>
+          </div>
+          <div class="p-1 w-50 sm-97">
+            <rds-button colorVariant="primary" [block]="true" size="medium" label="BUY NOW"></rds-button>
+          </div>
+        </div>
+
       </div>
-      <div class="mt-3 align-items-center d-flex justify-content-between ms-0">
-        <div class="p-1">
-          <rds-icon height="15px" [fill]="false" [stroke]="true" width="15px" name="heart" [colorVariant]="'dark'"></rds-icon>
-          <!-- <rds-icon class="position-absolute icon-positionheart" [id]="item.id" [colorVariant]="item.iconColor"
-                   [name]="item.icon" width="20px" height="20px" [stroke]="true" 
-                  [fill]="item.fill"
-                  ></rds-icon> -->
-        </div>
-        <div class="p-1 w-50 sm-100">
-          <rds-button colorVariant="primary" [isOutline]="true" [block]="true" size="medium" label="Add To BAG">
-          </rds-button>
-        </div>
-        <div class="p-1 w-50 sm-97">
-          <rds-button colorVariant="primary" [block]="true" size="medium" label="BUY NOW"></rds-button>
-        </div>
-      </div>
+      
     </div>
     <!-- product overview 2 -->
     <div *ngSwitchCase="'producroverview2'">

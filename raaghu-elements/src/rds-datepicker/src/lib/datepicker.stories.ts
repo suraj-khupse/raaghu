@@ -26,7 +26,7 @@ const Template1: Story<RdsDatepickerComponent> = (args: RdsDatepickerComponent) 
   props: args,
 });
 export const advanced = Template1.bind({});
-advanced.parameters = { controls: { include: ['datePickerType', 'label', 'placeholder'] } };
+advanced.parameters = { controls: { include: ['datePickerType', 'label', 'placeholder','onShow','onHide','change'] } };
 
 advanced.args = {
   label: 'Date Range',
@@ -42,7 +42,7 @@ const Template: Story<RdsDatepickerComponent> = (args: RdsDatepickerComponent) =
   [TitleType]="TitleType"></rds-datepicker></div></div>`,
 });
 export const Default = Template.bind({});
-Default.parameters = { controls: { include: ['datePickerType', 'datePickerConfig', 'placeholder', 'datesDisabled', 'dateTooltipTexts', 'maxDate', 'placement', 'label', 'TitleType','daysDisabled'] } };
+Default.parameters = { controls: { include: ['datePickerType', 'datePickerConfig', 'placeholder', 'datesDisabled', 'dateTooltipTexts', 'maxDate', 'placement', 'label', 'TitleType','daysDisabled','onShow','onHide','change'] } };
 
 Default.args = {
   datePickerType: 'basic',
@@ -50,7 +50,7 @@ Default.args = {
   placeholder: 'Date',
   datesDisabled: [new Date()],
   dateTooltipTexts: [{ date: new Date(), tooltipText: 'todays Date' }],
-  daysDisabled: [3],
+  daysDisabled: [],
   maxDate: new Date(new Date().setDate(27)),
   placement: 'bottom',
   label: 'Select Date',

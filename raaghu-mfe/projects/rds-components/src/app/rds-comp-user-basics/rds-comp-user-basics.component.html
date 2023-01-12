@@ -22,7 +22,7 @@
               required #name="ngModel" [placeholder]="translate.instant('Name')" [isRequired]=true>
             </rds-input>
             <div class="form-control-feedback" *ngIf="name.errors&&(name.dirty||name.touched)">
-              <span class="text-danger" *ngIf="name.errors.required">{{"Name is required"|translate}}</span>
+              <span class="text-danger" *ngIf="name.errors.required">{{translate.instant("Name is required")}}</span>
             </div>
           </div>
   
@@ -32,7 +32,7 @@
               name="surname" required #surname="ngModel" [isRequired]=true [placeholder]="translate.instant('Surname')">
             </rds-input>
             <div class="form-control-feedback" *ngIf="surname.errors&&(surname.dirty||surname.touched)">
-              <span class="text-danger" *ngIf="surname.errors.required">{{"Surname is required"|translate}}</span>
+              <span class="text-danger" *ngIf="surname.errors.required">{{translate.instant("Surname is required")}}</span>
             </div>
           </div>
         </div>
@@ -46,8 +46,8 @@
               [pattern]="emailPattern" name="email" #email="ngModel" required [isRequired]=true [placeholder]="translate.instant('Email Id')">
             </rds-input>
             <div class="form-control-feedback" *ngIf="email.errors&&(email.dirty||email.touched)">
-              <span class="text-danger" *ngIf="email.errors.required">{{"Email is required"|translate}}</span>
-              <span class="text-danger" *ngIf="email.errors.pattern">{{"Please enter a valid Email"|translate}}</span>
+              <span class="text-danger" *ngIf="email.errors.required">{{translate.instant("Email is required")}}</span>
+              <span class="text-danger" *ngIf="email.errors.pattern">{{translate.instant("Please enter a valid Email")}}</span>
             </div>
           </div>
         </div>
@@ -61,8 +61,8 @@
               [placeholder]="translate.instant('Phone Number')">
             </rds-input>
             <div class="form-control-feedback" *ngIf="phone.errors&&(phone.dirty||phone.touched)">
-              <span class="text-danger" *ngIf="phone.errors.required">{{"Phone Number is required"|translate}}</span>
-              <span class="text-danger" *ngIf="phone.errors.pattern">{{"Please enter a valid phone number"|translate}} </span>
+              <span class="text-danger" *ngIf="phone.errors.required">{{translate.instant("Phone Number is required")}}</span>
+              <span class="text-danger" *ngIf="phone.errors.pattern">{{translate.instant("Please enter a valid phone number")}} </span>
             </div>
           </div>
         </div>
@@ -70,10 +70,10 @@
           <div class="form-group mb-3">
   
             <rds-input [inputType]="'text'" [label]="translate.instant('User name')" [labelPosition]="'top'" autocomplete="off"
-              [(ngModel)]="userData.userName" name="uname" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
+              [(ngModel)]="userData.userName" name="userName" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
             </rds-input>
             <div class="form-control-feedback" *ngIf="userName.errors&&(userName.dirty||userName.touched)">
-              <span class="text-danger" *ngIf="userName.errors.required">{{"User Name is required"|translate}}</span>
+              <span class="text-danger" *ngIf="userName.errors.required">{{translate.instant("User Name is required")}}</span>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@
               [placeholder]="'Confirm Password'">
             </rds-input>
             <div class="form-control-feedback" *ngIf="isPasswordMismatch">
-              <span class="text-danger" *ngIf="isPasswordMismatch">{{"Password mismatch found"|translate}}</span>
+              <span class="text-danger" *ngIf="isPasswordMismatch">{{translate.instant("Password mismatch found")}}</span>
             </div>
           </div>
         </div>
@@ -106,27 +106,27 @@
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Set Random Password')" [checked]="userData.setRandomPassword"
                           [(ngModel)]="userData.setRandomPassword" name="setRandomPassword" [withLabel]="true" [switch]="false"
-                          [inline]="false" [id]="'setRandomPassword'"></rds-checkbox>
+                           [id]="'setRandomPassword'"></rds-checkbox>
           </div>
        </div>
        <div class="col-md-6">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Send activation email')" [checked]="userData.isTwoFactorEnabled"
                           [(ngModel)]="userData.isTwoFactorEnabled" name="isTwoFactorEnabled" [withLabel]="true" [switch]="false"
-                          [inline]="false" [id]="'isTwoFactorEnabled'"></rds-checkbox>
+                           [id]="'isTwoFactorEnabled'"></rds-checkbox>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Lockout enabled')" [checked]="userData.isLockoutEnabled"
                           [(ngModel)]="userData.isLockoutEnabled" name="isLockoutEnabled" [withLabel]="true" [switch]="false"
-                          [inline]="false" [id]="'isLockoutEnabled'"></rds-checkbox>
+                           [id]="'isLockoutEnabled'"></rds-checkbox>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Active')" [checked]="userData.isActive"
-                          [(ngModel)]="userData.isActive" name="isActive" [withLabel]="true" [switch]="false" [inline]="false"
+                          [(ngModel)]="userData.isActive" name="isActive" [withLabel]="true" [switch]="false" 
                           [id]="'isActive'"></rds-checkbox>
           </div>
         </div>
@@ -134,14 +134,14 @@
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Should Change Password On Next Login')"
                           [checked]="userData.shouldChangePasswordOnNextLogin" [(ngModel)]="userData.shouldChangePasswordOnNextLogin"
-                          name="shouldChangePasswordOnNextLogin" [withLabel]="true" [switch]="false" [inline]="false"
+                          name="shouldChangePasswordOnNextLogin" [withLabel]="true" [switch]="false" 
                           [id]="'shouldChangePasswordOnNextLogin'"></rds-checkbox>
           </div>
         </div>
       </div>
     </form>
   </div>
-  <div class="my  footer-buttons">
+  <div class="footer-buttons my-2">
     <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" (click)="onCancelUser()"
       data-bs-dismiss="offcanvas" [size]="'small'">
     </rds-button>
@@ -149,4 +149,5 @@
       (click)="next(userCreationForm)" [size]="'small'">
     </rds-button>
   </div>
+    
   <rds-comp-user-basics-shimmer *ngIf="editShimmer"></rds-comp-user-basics-shimmer>

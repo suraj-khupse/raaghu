@@ -1,25 +1,24 @@
-
-
 <div class="col-md-6">
     <div class="row">
-    <div class="col-md-6 mb-3">
-        <rds-search-input Placeholder="Member" icon="bi bi-search" size="small" (onClick)="SearchMember($event)">
-        </rds-search-input>
+        <div class="col-md-6 mb-3">
+            <rds-search-input [placeholder]="'User'" icon="bi bi-search" size="medium" (onClick)="SearchMember($event)">
+            </rds-search-input>
+        </div>
+        <div class="col-md-6 mb-3">
+            <rds-dropdownlist colorVariant="btn-secondary" [placeholder]="'Roles'" [listItems]="listDropdown"
+                (onSelect)="selectedRole($event)" [listItems]="inputTypeList">
+                <ng-template let-val>
+                    <li><a class="dropdown-item"><i class="bi bi-bootstrap p-1"></i>{{val.value}}</a></li>
+                </ng-template>
+            </rds-dropdownlist>
+        </div>
     </div>
-    <div class="col-md-6 mb-3">
-        <rds-dropdownlist colorVariant="btn-secondary" [placeholder]="'Roles'" [listItems]="listDropdown"
-            (onSelect)="selectedRole($event)" [listItems]="inputTypeList">
-            <ng-template let-val>
-                <li><a class="dropdown-item"><i class="bi bi-bootstrap p-1"></i>{{val.value}}</a></li>
-            </ng-template>
-        </rds-dropdownlist>
-    </div>
-</div>
 </div>
 <div class="col-md-6">
 </div>
 <div class="col-md-12 mt-3">
     <!-- <mfe-loader [config]="rdsMemberActivityTableMfeConfig"></mfe-loader> -->
-    <rds-data-table [tableData]="memberActivityTableData" [inlineEdit]="false" [pagination]="true" [recordsPerPage]="10"
-            [tableHeaders]="memberActivityTableHeader"  ></rds-data-table>
+    <rds-comp-data-table [tableData]="memberActivityTableData" [inlineEdit]="false"
+        [pagination]="memberActivityTableData.length>5?true:false" [recordsPerPage]="10"
+        [tableHeaders]="memberActivityTableHeader"></rds-comp-data-table>
 </div>

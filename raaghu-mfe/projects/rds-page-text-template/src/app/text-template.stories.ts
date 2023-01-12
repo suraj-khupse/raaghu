@@ -55,11 +55,11 @@ const Template: Story<TextTemplate> = (args: TextTemplate) => ({
     ...args,
   },
   template: `
-  <rds-data-table
+  <rds-comp-data-table
   [tableData]="tableDataForTextTemplate"
   [tableHeaders]="tableHeadersForTextTemplate"
   [actions]="actions"
-  ></rds-data-table>
+  ></rds-comp-data-table>
   `,
 });
 

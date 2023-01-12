@@ -1372,7 +1372,7 @@ bs-days-calendar-view .bs-datepicker-head button.current:last-child {
     }
     .custom-today-class {     
       z-index: 1;
-      color: #fff;
+      // color: #fff;
       width: 30px;
       padding:0 5px;
     }
@@ -1417,8 +1417,8 @@ transform: scaleY(1);
 .footerDatepicker {
 position: absolute;
 z-index: 1081;
-top: 170px;
-left: 218px;
+top: 167px;
+left: 208px;
 border: 1px solid #D0D7DD;
 align-self: center;
 padding: 4px;

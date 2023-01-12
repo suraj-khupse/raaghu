@@ -29,7 +29,7 @@ export class RdsTableComponent implements OnInit {
   public get bodyColorClasses(): string[] {
     var bodyClass = ['table table-responsive']
     if (this.showTableBorder === true) {
-      bodyClass.push('table-bordered')
+      bodyClass.push('table-border')
     }
     // if (this.borderColorVariant) {
     //   bodyClass.push('border-' + this.borderColorVariant)

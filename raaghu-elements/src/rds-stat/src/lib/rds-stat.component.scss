@@ -12,10 +12,10 @@
     width: 300px !important;
   }
 
-  div.grow {
-    transition: all 0.2s ease-in-out;
-    transform: translate(0px, 0px);
-  }
-  div.grow:hover {
-    transform: scale(1.5);
-   }
+div.grow, h1.grow {
+  transition: all 0.2s ease-in-out;
+  transform: translate(0px, 0px);
+}
+div.grow:hover, h1.grow:hover {
+  transform: scale(1.5);
+}

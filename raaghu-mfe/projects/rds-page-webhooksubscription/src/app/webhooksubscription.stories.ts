@@ -62,7 +62,7 @@ const Template: Story<WebHookSubscriptionComponent> = (args: WebHookSubscription
         </div>
         <div class="col-md-12">
             <!-- <rds-banner
-        [alignCenter]="false"
+        [textAlign]="false"
         [bannerText]="'Webhooks allow external services to be notified when certain events happen. When the specified events happen, we’ll send a POST request to each of the URLs you provide.'"
         [sticky]="false"
         position="top"
@@ -73,7 +73,7 @@ const Template: Story<WebHookSubscriptionComponent> = (args: WebHookSubscription
             <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
                 <div class="row" *ngIf="!webhookTableData||webhookTableData.length===0">
                     <div class="col-md-12">
-                        <rds-banner [alignCenter]="false"
+                        <rds-banner [textAlign]="false"
                             [bannerText]="'Webhooks allow external services to be notified when certain events happen. When the specified events happen, we’ll send a POST request to each of the URLs you provide.'"
                             [sticky]="false" position="top" colorVariant="primary">
                             <span class="text-white" left>

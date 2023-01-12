@@ -143,7 +143,7 @@ describe('angular-calendar schematics', () => {
     expect(rootModule).contain(
       `import { adapterFactory } from 'angular-calendar/date-adapters/moment';`
     );
-    expect(rootModule).contain(`import * as moment from 'moment';`);
+    expect(rootModule).contain(`import * as moment_ from 'moment'; const moment = moment_;`);
     expect(rootModule).contain(`export function momentAdapterFactory() {
   return adapterFactory(moment);
 }`);

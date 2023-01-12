@@ -8,4 +8,7 @@ addons.setConfig({
     sidebar: {
       showRoots: false,
     },
+    toolbar:{
+      'storybook/background': { hidden: true },
+  }
 });

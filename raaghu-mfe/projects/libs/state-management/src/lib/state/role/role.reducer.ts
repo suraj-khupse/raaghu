@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { getPermission, getPermissionSuccess, getRolByEdit, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess } from "./role.actions";
+import { getPermission, getPermissionSuccess, getRolByEdit, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess, setRoleAlert } from "./role.actions";
 
 
 export interface RolesState {
@@ -9,6 +9,12 @@ export interface RolesState {
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
+export interface RoleAlertState {
+   roleAlert:any
+}
+export const alertInitialState: RoleAlertState = {
+    roleAlert:''
+};
 
 export const roleInitialState: RolesState = {
     roles: null,
@@ -49,4 +55,14 @@ export const RoleReducer = createReducer(
         error: null,
         status: 'success',
     }))
+
+
+)
+
+export const RoleAlertReducer = createReducer(
+    alertInitialState,
+    on(setRoleAlert, (state, { roleAlert }) => ({
+        ...state,
+        roleAlert: roleAlert,
+    })),
 )

@@ -1,14 +1,27 @@
 <div class="row">
-  <div class=" col-md-12 text-end pb-3 desktop-btn d-sm-none d-lg-block">
-    <rds-button [label]="translate.instant('New Language')" type="button" [showLoadingSpinner]="showLoadingSpinner" style="float: right" [size]="'small'"
-      [colorVariant]="'primary'" (click)="openCanvas()" [attr.aria-controls]="'AddLanguage'" [icon]="'plus'"
-      [iconHeight]="'12px'" [iconWidth]="'12px'">
+  <div class="col-md-9">
+    <ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+      <rds-comp-alert [currentAlerts]="currentAlerts" (onAlertHide)="onAlertHide($event)">
+      </rds-comp-alert>
+    </ng-container>
+  </div>
+  <div class=" col-md-3 text-end pb-3 desktop-btn d-sm-none d-lg-block">
+    <rds-button [label]="translate.instant('New Language')" type="button" [showLoadingSpinner]="showLoadingSpinner"
+      style="float: right" [size]="'small'" [colorVariant]="'primary'" (click)="openCanvas()"
+      [attr.aria-controls]="'AddLanguage'" [icon]="'plus'" [iconHeight]="'12px'" [iconWidth]="'12px'">
     </rds-button>
   </div>
+</div>
+<div class="row">
   <div class="col-md-12">
     <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
       <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-        <mfe-loader [config]="rdsLanguageTableMfeConfig"></mfe-loader>
+        <rds-comp-data-table [tableHeaders]="languageTableHeader" [tableStyle]="tableStyle"
+          [tableData]="languageTableData" [recordsPerPage]="recordsPerpage" [width]="100"
+          [pagination]="languageTableData.length>5?true:false" [inlineEdit]="false"
+          noDataTitle='Currently you do not have language' [actions]="actions" [isShimmer]="isShimmer"
+          (onActionSelection)="onActionSelection($event)">
+        </rds-comp-data-table>
       </div>
     </div>
   </div>
@@ -20,6 +33,9 @@
 <ng-container *ngIf="viewCanvas">
   <rds-offcanvas [canvasTitle]="translate.instant(languageCanvasTitle)" [offId]="'AddLanguage'"
     (onClose)="closeCanvas()" [offcanvaswidth]="550" [placement]="'end'">
-    <mfe-loader [config]="rdsNewLanguageMfeConfig"></mfe-loader>
+    <!-- <mfe-loader [config]="rdsNewLanguageMfeConfig"></mfe-loader> -->
+    <rds-comp-new-language [flags]="flags" [languageNames]="languageNames" [selectedLanguage]="selectedLanguage"
+      [EditShimmer]="EditShimmer" (onLanguageSave)="onLanguageSave($event)" (onCloseCanvas)="onCloseCanvas($event)">
+    </rds-comp-new-language>
   </rds-offcanvas>
 </ng-container>

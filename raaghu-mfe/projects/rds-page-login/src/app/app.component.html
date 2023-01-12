@@ -1,6 +1,15 @@
 
 <div class="login-background" *ngIf="!loadingshimmer">
   <div class="align-items-center d-flex justify-content-center login m-auto" style="max-width: 900px; height: 100vh;">
+    <div class="d-flex justify-content-center alertAlignment">
+      <ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+        <!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader> -->
+        <rds-comp-alert
+        [currentAlerts]="currentAlerts"
+        (onAlertHide)="onAlertHide($event)"
+      ></rds-comp-alert>
+      </ng-container>
+</div>
     <div class="container-fluid m-2">
       <div class="bg-white row rounded-3 ">
         <div class="col-md-6">
@@ -11,23 +20,17 @@
                <img src="../assets/raaghu_text_logo.svg" class="img-fluid">
               </div>
             </div>
-            <mfe-loader [config]="rdsLoginMfeConfig"></mfe-loader>
+            <!-- <mfe-loader [config]="rdsLoginMfeConfig"></mfe-loader> -->
+            <rds-comp-login 
+              [tenancyName]="tenancyName" 
+              [buttonSpinner]="buttonSpinner"
+              [buttonSpinnerForChangeTenant]="buttonSpinnerForChangeTenant"
+              (onSwitchTenant)="onSwitchTenant($event)"
+              (onLogin)="onLogin($event)"
+              (onShimmerLoad)="onShimmerLoad($event)"
+            ></rds-comp-login>
           </div>
         </div>
-        <!--<div class="col-md-6 order-1 order-sm-2 rounded-end"
-       style="background-image: url(../assets/Login-card.svg); background-size: cover; background-position: bottom; background-repeat: no-repeat; background-color: #000;">
-  </div>-->
-        <!--<div class="col-md-6 order-1 order-sm-2 rounded-end position-relative p-0"
-  style="background-image: url(../assets/bg_1.png); background-size: cover; background-position: bottom; background-repeat: no-repeat; background-color: #000;">
-     <div class="raghu1" style="background-image: url(../assets/fg_raaghu.png); background-size: cover;"></div>
-     <div class="wrap">
-       <div class="c"></div>
-       <div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div>
-
-       <div class="c2"></div> <div class="c2"></div> <div class="c2"></div> <div class="c2"></div>
-
-     </div>
-   </div>-->
         <div class="col-md-6 order-1 order-sm-2 rounded-end position-relative align-items-center p-0"
              style="background-image: url(../assets/bg_1.png); background-size: cover; background-position: bottom; background-repeat: no-repeat; background-color: #000;">
           <video  id="myVideo" class="video" autoplay muted loop>
@@ -38,7 +41,6 @@
             <div class="c"></div>
             <div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div>
 
-            <!--<div class="c2"></div> <div class="c2"></div> <div class="c2"></div> <div class="c2"></div>-->
 
           </div>
         </div>
@@ -46,9 +48,9 @@
     </div>
   </div>
 </div>
-<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
+<!-- <ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
   <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-</ng-container>
+</ng-container> -->
 <app-login-shimmer *ngIf="loadingshimmer">
-  <mfe-loader [config]="rdsLoginMfeConfig"></mfe-loader>
+  <rds-comp-login></rds-comp-login>
 </app-login-shimmer>

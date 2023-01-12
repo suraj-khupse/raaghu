@@ -134,7 +134,7 @@ export class RdsCompDemouiComponent implements OnInit {
       label: "Child Checkbox 2"
     },
   ]
-  
+
   itemListWithInputGroup = [
     {
       id: 1,
@@ -154,7 +154,7 @@ export class RdsCompDemouiComponent implements OnInit {
     // }
   ];
 
-  itemListWithoutInputGroup =[
+  itemListWithoutInputGroup = [
     {
       id: 1,
       label: "Child Checkbox 1"
@@ -165,7 +165,7 @@ export class RdsCompDemouiComponent implements OnInit {
     },
   ]
 
-  checkboxParentChilditemList=[
+  checkboxParentChilditemList = [
     {
       "id": 1,
       "label": "Parent Checkbox 1",
@@ -420,6 +420,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptions = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 300
+      }
+    },
     "pointStyle": "star",
     "radius": 7,
     "responsive": true,
@@ -598,6 +610,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsArea = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 400
+      }
+    },
     "pointStyle": "star",
     maintainAspectRatio: false,
     "radius": 7,
@@ -802,6 +826,12 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsBool = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     maintainAspectRatio: false,
     "elements": {
       "center": {
@@ -908,6 +938,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsBubble = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 150
+      }
+    },
     "responsive": true,
     "radius": 10,
     "pointStyle": "triangle",
@@ -1042,38 +1084,6 @@ export class RdsCompDemouiComponent implements OnInit {
     }
   }
 
-  // chartDataSetsDoughnut = [
-  //   {
-  //     "label": "Dataset 1",
-  //     "data": [
-  //       20,
-  //       10,
-  //       30,
-  //       40,
-  //       45
-  //     ],
-  //     "backgroundColor": [
-  //       "#ff6384",
-  //       "#ff9f40",
-  //       "#ffcd56",
-  //       "#4bc0c0"
-  //     ],
-  //     "borderColor": [
-  //       "#fff"
-  //     ],
-  //     borderWidth: 1,
-  //     cutout: '80%',
-
-  //   }
-  // ];
-
-  // chartLabelsDoughnut = [
-  //   "Persian Green",
-  //   "Portage",
-  //   "Carrot Orange",
-  //   "Shamrock",
-  //   "Blue"
-  // ];
   chartDataSetsDoughnut = [
     {
       label: 'Dataset 1',
@@ -1098,6 +1108,12 @@ export class RdsCompDemouiComponent implements OnInit {
     "Blue"
   ];
   chartOptionsDoughnut = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -1111,56 +1127,6 @@ export class RdsCompDemouiComponent implements OnInit {
       }
     }
   };
-  // chartOptionsDoughnut = {
-  //   "type": "doughnut",
-  //   maintainAspectRatio: true,
-  //   responsive: true,
-  //   chartWidth: 120,
-  //   "options": {
-  //     "responsive": true,
-  //     "plugins": {
-  //       "legend": {
-  //         "position": "top"
-  //       },
-  //       "title": {
-  //         "display": true,
-  //         // "text": "Chart.js Doughnut Chart"
-  //       }
-  //     }
-  //   },
-  //   plugins: {
-
-  //     series: {
-  //       label: {
-  //         position: "inside",
-  //         text: 'total', // or "inside" | "outside"
-  //         display: false
-  //       }
-  //     },
-  //     doughnutlabel: {
-  //       labels: [{
-  //         text: '550',
-  //         font: {
-  //           size: 20,
-  //           weight: 'bold'
-  //         }
-  //       }, {
-  //         text: 'total'
-  //       }
-  //       ]
-  //     },
-  //     legend: {
-  //       display: true,
-  //       align: "middle",
-  //       position: 'right',
-  //       labels: {
-  //         boxWidth: 15,
-  //         padding: 20
-  //       },
-  //     },
-  //   },
-  //   "scales": {}
-  // };
 
   chartDataSetsLine = [
     {
@@ -1324,7 +1290,6 @@ export class RdsCompDemouiComponent implements OnInit {
   };
 
   // line chart start
-
   chartDataSetsLinechart = [
     {
       label: 'Sales',
@@ -1354,6 +1319,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ]
 
   chartOptionsLineChart = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 220
+      }
+    },
     radius: 0,
     pointStyle: 'circle',
     responsive: true,
@@ -1411,6 +1388,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ]
 
   chartOptionsBarChartThick = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 300
+      }
+    },
     indexAxis: 'x',
     elements: {
       bar: {
@@ -1484,6 +1473,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsChartMixed = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 150
+      }
+    },
     "radius": 10,
     "pointStyle": "triangle",
     "plugins": {
@@ -1650,9 +1651,11 @@ export class RdsCompDemouiComponent implements OnInit {
     maintainAspectRatio: false,
     "circumference": 360,
     "radius": 100,
-    "animation": {
-      "animateRotate": false,
-      "animateScale": true
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
     },
     "responsive": true,
     "plugins": {
@@ -1692,6 +1695,12 @@ export class RdsCompDemouiComponent implements OnInit {
   pieChartMultiLabel = ['Overall Yay', 'Overall Nay', 'Group A Yay', 'Group A Nay', 'Group B Yay', 'Group B Nay', 'Group C Yay', 'Group C Nay'];
 
   pieChartMultiOptions = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     maintainAspectRatio: false,
     responsive: true,
     plugins: {
@@ -1844,9 +1853,11 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsPolar = {
-    "animation": {
-      "animateRotate": true,
-      "animateScale": false
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
     },
     "responsive": true,
     maintainAspectRatio: false,
@@ -2027,6 +2038,12 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsRadar = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
     "responsive": true,
     maintainAspectRatio: false,
     chartWidth: 350,
@@ -2170,6 +2187,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsScatter = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 150
+      }
+    },
     "pointStyle": "triangle",
     "radius": 10,
     "plugins": {
@@ -2431,6 +2460,18 @@ export class RdsCompDemouiComponent implements OnInit {
   ];
 
   chartOptionsStacked = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 200
+      }
+    },
     "radius": 3,
     responsive: true,
     maintainAspectRatio: false,
@@ -2673,7 +2714,7 @@ export class RdsCompDemouiComponent implements OnInit {
     { label: 'UI Components', id: '', icon: 'demo_ui_components', path: 'components' },
   ]
   progressvalues = [{ progressWidth: 50, colorVariant: 'success', stripe: 'progress-bar-striped', animation: 'progress-bar-animated' }, { progressWidth: 20, colorVariant: 'danger', stripe: '', animation: '' }, { progressWidth: 30, colorVariant: 'info', stripe: '', animation: '' }];
-  buttonList= [{ colorVariant: 'primary', label: 'Toggle First Element', id: 'collapseExample', }, { colorVariant: 'primary', label: 'Toggle Second Element', id: 'collapseExample1' }, { colorVariant: 'primary', label: 'Toggle Both Element', id: 'collapseExample,collapseExample1', }];
+  buttonList = [{ colorVariant: 'primary', label: 'Toggle First Element', id: 'collapseExample', }, { colorVariant: 'primary', label: 'Toggle Second Element', id: 'collapseExample1' }, { colorVariant: 'primary', label: 'Toggle Both Element', id: 'collapseExample,collapseExample1', }];
 
 
   onClickShowAlert() {

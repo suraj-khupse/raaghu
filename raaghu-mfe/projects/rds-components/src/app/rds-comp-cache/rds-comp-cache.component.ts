@@ -1,19 +1,19 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
-import { TableHeader } from '../../models/table-header.model';
+// import { ComponentLoaderOptions } from '@libs/shared';
+import { TranslateService } from '@ngx-translate/core';
 declare var $: any;
 @Component({
   selector: 'rds-comp-cache',
   templateUrl: './rds-comp-cache.component.html',
   styleUrls: ['./rds-comp-cache.component.scss']
 })
-export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
+export class RdsCompCacheComponent implements OnInit, DoCheck, OnChanges {
   tempData: any = [];
   dataSource: any = [];
 
-  @Input() cashedata:any=[]
+  @Input() cashedata: any = []
   @Output()
-  onClearCache= new EventEmitter<string>()
+  onClearCache = new EventEmitter<string>()
   @Input() role: any = 'Advanced';
   @Input() alignmentType: any = "end";
   @Input() resetPagination: boolean = false;
@@ -27,27 +27,27 @@ export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
     CancelButtonLabel: "Cancel",
     DeleteButtonLabel: "Delete"
   }
-  public rdsAlertMfeConfig: ComponentLoaderOptions;
+  // public rdsAlertMfeConfig: ComponentLoaderOptions;
   counter: number = 0;
 
-  constructor() { }
-  deletecaheid:any;
+  constructor(public translate: TranslateService) { }
+  deletecaheid: any;
   ngOnInit(): void {
-    this.rdsAlertMfeConfig = {
-      name: 'RdsCompAlertPopup',
-      input: {
-        alertID: 'deleteCacheModal',
-        alertData: this.alertData
-      },
-      output: {
-        onDelete: (event) => {
-          this.deletCashe(event);
-        },
-        onCancel: (event) => {     
-          this.deletecaheid = undefined;
-        }
-      }
-    }
+    // this.rdsAlertMfeConfig = {
+    //   name: 'RdsCompAlertPopup',
+    //   input: {
+    //     alertID: 'deleteCacheModal',
+    //     alertData: this.alertData
+    //   },
+    //   output: {
+    //     onDelete: (event) => {
+    //       this.deleteCache(event);
+    //     },
+    //     onCancel: (event) => {
+    //       this.deletecaheid = undefined;
+    //     }
+    //   }
+    // }
     if (this.cashedata) {
       this.totalRecords = this.cashedata.length;
       // this.dataSource = this.cashedata;
@@ -95,23 +95,23 @@ export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
       this.resetPagination = false;
     }, 1000);
   }
-  deletCashe(event:any){
+  deleteCache(event: any) {
     //this.deletecaheid=event.name;
-    this.onClearCache.emit(this.deletecaheid );
+    this.onClearCache.emit(this.deletecaheid);
     $('#deleteCacheModal').modal('hide');
   }
-  deletAllcasheConfirmation(){
+  deletAllcasheConfirmation() {
     $('#deleteAllModal').modal('show');
-   
-    
+
+
   }
-  deleteConfirmation(id:any){
-    this.deletecaheid=id
+  deleteConfirmation(id: any) {
+    this.deletecaheid = id
     $('#deleteCacheModal').modal('show');
-   
+
   }
-  deletAllcashe(){
-    this.cashedata=[];
+  deletAllcashe() {
+    this.cashedata = [];
     $('#deleteAllModal').modal('hide');
   }
   close(): void {
@@ -119,4 +119,13 @@ export class RdsCompCacheComponent implements OnInit,DoCheck,OnChanges {
     this.deletecaheid = undefined;
 
   }
+
+  onDelete (event){
+    this.deleteCache(event);
+  }
+
+  onCancel (event){     
+    this.deletecaheid = undefined;
+  }
 }
+

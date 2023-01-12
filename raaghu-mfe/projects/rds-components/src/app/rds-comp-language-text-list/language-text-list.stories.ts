@@ -17,16 +17,16 @@ import {
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompLanguageTextListComponent } from './rds-comp-language-text-list.component';
-import { StoreModule } from '@ngrx/store';
 import { RdsCompEditLanguageTextComponent } from '../rds-comp-edit-language-text/rds-comp-edit-language-text.component';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
 import { RdsLabelModule } from '@libs/rds-label';
+import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 export default {
   title: 'Components/language-text-list',
   component: RdsCompLanguageTextListComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompEditLanguageTextComponent, RdsDataTableComponent],
+      declarations: [RdsCompEditLanguageTextComponent],
       imports: [
         RdsOffcanvasModule,
         RdsButtonModule,
@@ -36,9 +36,9 @@ export default {
         RdsFabMenuModule,
         NgxTranslateModule,
         RdsInputModule,
-        StoreModule.forRoot({}),
         RdsSelectListModule,
-        RdsLabelModule
+        RdsLabelModule,
+        RdsCompDataTableModule
       ],
       providers: [FormBuilder],
     }),
@@ -64,6 +64,7 @@ Default.args = {
       sortable: true,
       required: true,
       filterable: true,
+      
     },
     {
       displayName: 'Code',
@@ -144,8 +145,9 @@ Default.args = {
     { value: 'source1', displayText: 'Source 1' },
     { value: 'source2', displayText: 'Source 2' },
   ],
+  baseLanguage:"Base Culture Name",
   listbaseLanguage: [
-    { value: 'baseLanguage1', displayText: 'Base Language 1' },
+    { value: 'baseLanguage1', displayText: 'Base Language 1'},
     { value: 'baseLanguage2', displayText: 'Base Language 2' },
   ],
   listTargetCulturename: [

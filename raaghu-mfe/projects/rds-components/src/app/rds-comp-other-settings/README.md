@@ -1,6 +1,6 @@
 # Other Settings
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.0.
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli)
 <p align="left">
 <img src="../../../../../assets/Other-Settings.png" alt="Other Settings"/>
 <p/>

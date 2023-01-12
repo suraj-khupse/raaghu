@@ -26,15 +26,15 @@
 </div> -->
 <div class="card">
   <div class="p-3 ">
-    <span class="border p-2 rounded">
+    <span class="icon-bg border p-1 rounded d-inline-block">
       <rds-icon [height]="item.iconHeight" [width]="item.iconWidth" [fill]="item.iconFill"
-                [stroke]="item.iconStroke" [name]="item.icon">
+                [stroke]="item.iconStroke" [name]="item.icon"  colorVariant="warning">
       </rds-icon>
     </span>
     <rds-checkbox [checked]="item.selected" [disabled]="false" [switch]="true" [id]="item.icon"
                   [withLabel]="true" [state]="'checkbox'" class="float-end"></rds-checkbox>
   </div>
-  <div class="card-body p-2">
+  <div class="card-body p-2 ps-3">
     <div>
       <label class="fs-5 fw-bold ">
         {{item.title}}
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="border-top pb-4">
-    <a [href]="item.route" class="float-end p-2 fs-6">
+    <a [href]="item.route" class="float-end p-2 fs-6 text-primary">
       View integration
     </a>
   </div>

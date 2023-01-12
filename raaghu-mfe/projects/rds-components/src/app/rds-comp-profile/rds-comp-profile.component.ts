@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Injector, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { DownloadData, LinkedAccount, UserDeligates, LoginAttempts, Profile, success, Account, Deligates, Login } from '../../models/profile.model';
-import { Router } from '@angular/router';
-import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput } from '@libs/shared';
+import { DownloadData, Profile, success } from '../../models/profile.model';
+import { AppSessionService, ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
-import { finalize } from 'rxjs/internal/operators/finalize';
-import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
+// import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 declare var $: any;
 declare var bootstrap: any;
 
@@ -36,6 +36,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() defaultLanguage: string = '';
   selectedData: any;
+  showDownloadPopup: boolean = false;
   deleteConfirmationData: AlertPopupData = {
     iconUrl: "delete",
     colorVariant: "danger",
@@ -80,10 +81,13 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Output() onLoginAttempts = new EventEmitter<any>();
   @Output() onDownloadLink = new EventEmitter<any>();
   @Output() onProfileData = new EventEmitter<any>();
+  @Output() backToAccount = new EventEmitter<any>();
+  @Output() onUploadProfile = new EventEmitter<any>();
   @Input() showLoadingSpinner: boolean = false;
+  // @Input()impersonatorUserId : boolean = false;
   @Input() tenancy: string = 'Host Admin';
   public Profileform = new FormGroup({})
-  offCanvasWidth = 304;
+  offCanvasWidth = 307;
   profileMenu = 1000 + "px";
   profileMenuContent: any;
   @Input() isAnyProfileMenuSelected?: boolean = false;
@@ -128,6 +132,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   requiredFileType: string;
 
   fileName = '';
+  @Output() logout = new EventEmitter<any>();
   ngOnInit(): void {
     this.on('tenancyData').subscribe(res => {
       this.emitEvent('tenancyDataAgain', res);
@@ -145,14 +150,15 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
 
       }
     }
-    this.getProfilePicture();
+    // this.getProfilePicture();
+
 
   }
   constructor(private injector: Injector,
     public translate: TranslateService,
     private router: Router,
-    private http: HttpClient,
-    private _profileService: ProfileServiceProxy) {
+    public sessionService: AppSessionService,
+    private http: HttpClient) {
     super(injector);
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -160,14 +166,14 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   }
 
 
-public getProfilePicture():void{
-  this._profileService.getProfilePicture().subscribe((result)=>{
-    if (result && result.profilePicture) {
-      this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
-      this.onProfilePicUpdate.emit(this.Profileurl);
-  }
-  })
-}
+  // public getProfilePicture(): void {
+  //   this._profileService.getProfilePicture().subscribe((result) => {
+  //     if (result && result.profilePicture) {
+  //       this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
+  //       this.onProfilePicUpdate.emit(this.Profileurl);
+  //     }
+  //   })
+  // }
 
   onclickMenu(item: any) {
 
@@ -178,8 +184,14 @@ public getProfilePicture():void{
       // this.cancelbutton = true;
       // this.isAnyProfileMenuSelected = false;
       this.onClickCloseTabContent();
-      this.onDownloadLink.emit(item)
-      $('#DownloadDatamodal').modal('show');
+      this.onDownloadLink.emit(item);
+      this.showDownloadPopup = true;
+      setTimeout(() => {
+        var element: any = document.getElementById('DownloadDatamodal');
+        var modal = new bootstrap.Modal(element);
+        modal.show();
+      }, 100);
+
     } else {
       this.offCanvasWidth = 1000;
       this.tabisVisible = true;
@@ -201,7 +213,7 @@ public getProfilePicture():void{
     }
   }
   onClickCloseTabContent() {
-    this.offCanvasWidth = 304;
+    this.offCanvasWidth = 307;
     this.isAnyProfileMenuSelected = false;
   }
   onclickCancel() {
@@ -283,59 +295,58 @@ public getProfilePicture():void{
   // }
 
   onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
+    // if (event.target.files && event.target.files[0]) {
 
-      const file: File = event.target.files[0];
+    //   const file: File = event.target.files[0];
 
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('fileType', file.type);
-      formData.append('fileName', 'ProfilePicture');
-      formData.append('fileToken', this.guid());
-  
-      const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
-      this.uploadSub = upload$.subscribe((result: any) => {
-        this.updateProfilePicture(result.result.fileToken);
-       this.onProfileData.emit(result);
-       console.log(result)
+    //   const formData = new FormData();
+    //   formData.append('file', file);
+    //   formData.append('fileType', file.type);
+    //   formData.append('fileName', 'ProfilePicture');
+    //   formData.append('fileToken', this.guid());
 
-      });
+    //   const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
+    //   this.uploadSub = upload$.subscribe((result: any) => {
+    //     this.updateProfilePicture(result.result.fileToken);
+    //     this.onProfileData.emit(result);
+    //     console.log(result)
 
-    }
+    //   });
+
+    // }
+    this.onUploadProfile.emit(event);
   }
 
-  updateProfilePicture(fileToken: string): void {
-    const input = new UpdateProfilePictureInput();
-    input.fileToken = fileToken;
+  // updateProfilePicture(fileToken: string): void {
+  //   const input = new UpdateProfilePictureInput();
+  //   input.fileToken = fileToken;
 
-    this._profileService
-        .updateProfilePicture(input)
-        .subscribe(() => {
-          this.getProfilePicture();
-        });
-}
+  //   this._profileService
+  //     .updateProfilePicture(input)
+  //     .subscribe(() => {
+  //       this.getProfilePicture();
+  //     });
+  // }
 
 
-  reset(): void {
-    throw new Error('Method not implemented.');
-  }
+  // reset(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
-  guid(): string {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
+  // guid(): string {
+  //   function s4() {
+  //     return Math.floor((1 + Math.random()) * 0x10000)
+  //       .toString(16)
+  //       .substring(1);
+  //   }
 
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-  }
+  //   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  // }
 
-  logout() {
+  logoutFunction() {
     this.showLoadingSpinner = true;
     this.islogout = true;
-    this.emitEvent('logout', {
-      islogout: true
-    });
+    this.logout.emit({});
   }
 
 
@@ -345,6 +356,7 @@ public getProfilePicture():void{
     this.ondeleteLinkaccount.emit(event);
   }
   linkToUser(event: any) {
+    debugger
     this.onLinkToUser.emit(event);
   }
 
@@ -383,8 +395,6 @@ public getProfilePicture():void{
 
   downloadText() {
     let showUserData = JSON.parse(localStorage.getItem('userNameInfo'));
-    console.log("Hello");
-    // this.userEmailOrName = this.showUserData.username;
     const data: any = {
       Tenancy_name: JSON.parse(localStorage.getItem('tenantInfo')),
       User_name: showUserData.username,
@@ -398,6 +408,7 @@ public getProfilePicture():void{
     element.setAttribute('download', 'textdocument');
     var event = new MouseEvent("click");
     element.dispatchEvent(event);
+    this.showDownloadPopup = false;
   }
 
   getMenuItems(): any {
@@ -431,5 +442,22 @@ public getProfilePicture():void{
     this.selectedData = undefined;
     this.showConfirmationPopup = false;
   }
+
+  closeDownloadModal(): void {
+    var element: any = document.getElementById('DownloadDatamodal');
+    if (element) {
+      var modal = new bootstrap.Modal(element);
+      modal.hide();
+    }
+    this.showDownloadPopup = false;
+  }
+
+  backAccount(): void {
+    this.backToAccount.emit(true);
+  }
+  // uploadProfile(): void {
+  //   // this.onUploadProfile.emit(true);
+  //   this.onUploadProfile.emit(this.Profileurl);
+  // }
 
 }

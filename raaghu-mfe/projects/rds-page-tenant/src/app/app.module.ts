@@ -3,15 +3,14 @@ import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
-import { RdsButtonModule } from '@libs/rds-elements';
-// export const featureReducersMap = {
-//   tenants: TenantReducer,
-//   tenantInfo: TenantInfoReducer,
-//   editionComboboxItem: EditionComboboxReducer,
-//   tenantFeature: TenantFeatureReducer,
-//   tenantUsers:TenantUsersReducer,
-//   tenantLogin:TenantLoginReducer
-// };
+import { RdsAlertModule, RdsButtonModule, RdsFabMenuModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompTenantInformationModule } from 'projects/rds-components/src/app/rds-comp-tenant-information/rds-comp-tenant-information.module';
+import { RdsCompTenantSettingsModule } from 'projects/rds-components/src/app/rds-comp-tenant-settings/rds-comp-tenant-settings.module';
+import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-permission-tree.module';
+import { CommonModule } from '@angular/common';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,10 +18,18 @@ import { RdsButtonModule } from '@libs/rds-elements';
   imports: [
     AppRoutingModule,
     SharedModule,
+    CommonModule,
     RdsButtonModule,
+    RdsAlertModule,
+    RdsCompDataTableModule,
     NgxTranslateModule.forRoot(),
-    // StoreModule.forFeature('tenants', featureReducersMap),
-    // EffectsModule.forRoot([TenantEffects]),
+    RdsFabMenuModule,
+    RdsOffcanvasModule,
+    RdsNavTabModule,
+    RdsCompTenantInformationModule,
+    RdsCompTenantSettingsModule,
+    RdsPermissionTreeModule,
+    RdsCompAlertModule
   ],
   providers: [
     TranslateService,

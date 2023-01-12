@@ -2,35 +2,39 @@
   <div class="col-md-12">
     <div class="py-2">
       <div class="px-4 border-bottom mb-2">
-        <label class="fw-medium mb-2 mt-1">{{"Pick Best Plan"|translate}}</label>
+        <label class="fw-medium mb-2 mt-1">{{translate.instant("Pick Best Plan")}}</label>
       </div>
       <h6 class="text-muted px-4">
-        {{'Take your desired plan to get access to our content easily,'|translate}}
+        {{translate.instant('Take your desired plan to get access to our content easily,')}}
       </h6>
-      <h6 class="text-muted px-4">{{'we like to offer to our users.'|translate}}</h6>
+      <h6 class="text-muted px-4">{{translate.instant('we like to offer to our users.')}}</h6>
     </div>
   </div>
 </div>
 
 
 <div class="d-flex justify-content-center text-center my-4">
-  <div class="px-2 position-relative mb-3" [ngStyle]="{'top': item.name === 'Premium' ? '-20px' : ''}" *ngFor="let item of Dataset">
+  <div class="px-2 position-relative mb-3" [ngStyle]="{'top': item.name === 'Premium' ? '-20px' : ''}"
+    *ngFor="let item of Dataset">
     <div class="ribbon" *ngIf="item.recommended">
       <span class="ribbon2">
-        <rds-icon [colorVariant]="'light'" [name]="'star'" [fill]="true" [stroke]="false" [height]="'10px'" [width]="'10px'"></rds-icon>
+        <rds-icon [colorVariant]="'light'" [name]="'star'" [fill]="true" [stroke]="false" [height]="'10px'"
+          [width]="'10px'" [isAnimate]="false"></rds-icon>
       </span>
     </div>
-    <span class="bg-recommended text-white rounded px-3 py-1 position-relative top-0" *ngIf="item.recommended">RECOMMENDED
+    <span class="bg-recommended text-white rounded px-3 py-1 position-relative top-0"
+      *ngIf="item.recommended">RECOMMENDED
     </span>
-    <rds-card [showFooter]="true" [borderColor]="item.name | lowercase" [topBottomPadding]="false" [sidePadding]="false">
-      <div class="p-2 subscription-header"  header>
-        <span class="p-2 text-white">{{item.name | uppercase}}</span>
+    <rds-card [showFooter]="true" [borderColor]="item.name | lowercase" [topBottomPadding]="false"
+      [sidePadding]="false">
+      <div class="p-2 subscription-header rounded text-bg-primary" header>
+        <span class="p-2">{{item.name | uppercase}}</span>
       </div>
       <div body class="px-0">
         <div class="row">
-          <rds-icon class="subscription-icon" [colorVariant]="item.name | lowercase" [name]="item.iconurl" [height]="'120px'" [width]="'120px'"
-            
-            [fill]="false" style="stroke-width: 0.3;" class="pt-4 pb-2 px-0"></rds-icon>
+          <rds-icon class="subscription-icon" [colorVariant]="item.name | lowercase" [name]="item.iconurl"
+            [height]="'120px'" [width]="'120px'" [fill]="false" style="stroke-width: 0.3;"
+            class="pt-4 pb-2 px-0"></rds-icon>
           <div class="py-2">
             <h2 class="p-2 pb-0">${{item.price}}</h2>
             <p class="fs-5">{{item.duration}}</p>
@@ -43,13 +47,13 @@
               </li>
             </ul>
           </div>
-          
+
         </div>
       </div>
       <div footer>
         <rds-button (click)="SubscriptionClick($event,item)" [tooltipPlacement]="'bottom'"
           [tooltipTitle]="translate.instant('Upgrade')" [label]="translate.instant('Upgrade')" type="button"
-          [colorVariant]="'primary'" [isOutline]="true" [isFabIcon]="false" [isRounded]="true" label="Upgrade">
+          [colorVariant]="'primary'" [isOutline]="true" [isFabIcon]="false" [isRounded]="false" label="Upgrade">
         </rds-button>
       </div>
     </rds-card>

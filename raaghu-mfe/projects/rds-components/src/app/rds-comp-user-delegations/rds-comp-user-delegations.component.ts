@@ -6,7 +6,7 @@ import { TableHeader } from '../../models/table-header.model';
 import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 declare var bootstrap: any
 @Component({
-  selector: 'rds-user-delegations',
+  selector: 'rds-comp-user-delegations',
   templateUrl: './rds-comp-user-delegations.component.html',
   styleUrls: ['./rds-comp-user-delegations.component.scss']
 })

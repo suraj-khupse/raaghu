@@ -31,17 +31,18 @@ export class RdsCompLoginAttemptsComponent implements OnInit {
 
   @Output() RefreshLoginAttemts = new EventEmitter<any>();
   @Input()
-  listItemsResult: any[] = [{ value: '', some: 'All'},
-  { value: 'Success', some: 'Success'},
-  { value: 'InvalidUserNameOrEmailAddress', some: 'Invalid Username or email Address'},
-  { value: 'InvalidPassword', some: 'Invalid Password'},
-  { value: 'UserIsNotActive', some: 'User is Not Active'},
-  { value: 'InvalidTenancyName', some: 'Invalid Tenancy name'},
-  { value: 'TenantIsNotActive', some: 'Tenant Is Not Active'},
-  { value: 'UserEmailIsNotConfirmed', some: 'User Email Is Not Confirmed'},
-  { value: 'UnknownExternalLogin', some: 'Unknown External Login'},
-  { value: 'LockedOut', some: 'Locked Out'},
-  { value: 'UserPhoneNumberIsNotConfirmed', some: 'User PhoneNumber IsNot Confirmed'} ]
+  listItemsResult: any[] = [
+  { value: '', some: 'All', isSelected:false,iconFill:false, icon:'',iconWidth:0,iconHeight:0,iconStroke:false,isFree:false,},
+  { value: 'Success', some: 'Success', isSelected:false,iconFill:false, icon:'',iconWidth:0,iconHeight:0,iconStroke:false,isFree:false,},
+  { value: 'InvalidUserNameOrEmailAddress', some: 'Invalid Username or email Address', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'InvalidPassword', some: 'Invalid Password', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'UserIsNotActive', some: 'User is Not Active', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'InvalidTenancyName', some: 'Invalid Tenancy name', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'TenantIsNotActive', some: 'Tenant Is Not Active', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'UserEmailIsNotConfirmed', some: 'User Email Is Not Confirmed', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'UnknownExternalLogin', some: 'Unknown External Login', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'LockedOut', some: 'Locked Out', isSelected:false, icon:'',iconFill:false,iconWidth:0,iconStroke:false,isFree:false,},
+  { value: 'UserPhoneNumberIsNotConfirmed', some: 'User PhoneNumber IsNot Confirmed', isSelected:false, icon:'',iconFill:false,conWidth:0,iconStroke:false,isFree:false,} ]
  
   ngOnInit(): void {
     this.rdsLoginTableMfeConfig = {

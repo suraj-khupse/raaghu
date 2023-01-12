@@ -21,7 +21,7 @@ export const deleteTenant = createAction(
 
 export const saveTenant = createAction(
     '[Tenant Page] Save Tenant',
-    (tenant: CreateTenantInput,maxresult:number) => ({ tenant,maxresult })
+    (tenant: CreateTenantInput) => ({ tenant })
 );
 
 export const updateTenantFeatureValues = createAction(

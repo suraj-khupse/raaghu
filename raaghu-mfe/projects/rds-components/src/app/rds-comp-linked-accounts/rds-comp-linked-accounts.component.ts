@@ -34,9 +34,9 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   }
 
   ngOnInit(): void {
-    this.on('tenancyData').subscribe(res => {
-      this.emitEvent('tenancyDataAgain', res);
-    })
+    // this.on('tenancyData').subscribe(res => {
+    //   this.emitEvent('tenancyDataAgain', res);
+    // })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -60,6 +60,7 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   }
 
   saveAllLinkAccount(linkedAccount: NgForm) {
+    debugger
     if (!linkedAccount.valid) {
       return;
     }

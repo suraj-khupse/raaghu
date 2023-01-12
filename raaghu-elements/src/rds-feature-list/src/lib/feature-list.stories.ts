@@ -35,7 +35,7 @@ Default.args = {
     listItems: [
         {
             id: 1, value: 'Only the best materials',
-            listItems: [
+           /*  listItems: [
                 {
                     id: 1, value: 'Only the best materials',
                     listItems: [
@@ -48,7 +48,7 @@ Default.args = {
                         { id: 7, value: 'Water-resistant' },
                     ]
                 }
-            ],
+            ], */
         },
         { id: 2, value: 'Ethically and locally made' },
         { id: 3, value: 'Pre-washed and pre-shrunk' },

@@ -8,28 +8,33 @@ import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RdsCompDataTableModule } from "../../../rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module";
+import { RdsCompAlertModule } from "../../../rds-components/src/app/rds-comp-alert/rds-comp-alert.module";
+import { RdsCompOrganizationTreeModule } from 'projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    //BrowserModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    SharedModule,
-    RdsNavTabModule,
-    RdsInputModule,
-    RdsButtonModule,
-    RdsOffcanvasModule,
-    HttpClientModule,
-    NgxTranslateModule.forRoot(),
-    RdsIconModule
-
-  ],
-  providers: [ArrayToTreeConverterService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    providers: [ArrayToTreeConverterService],
+    bootstrap: [AppComponent],
+    imports: [
+        //BrowserModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        SharedModule,
+        RdsNavTabModule,
+        RdsInputModule,
+        RdsButtonModule,
+        RdsOffcanvasModule,
+        HttpClientModule,
+        NgxTranslateModule.forRoot(),
+        RdsIconModule,
+        RdsCompDataTableModule,
+        RdsCompAlertModule,
+        RdsCompOrganizationTreeModule
+    ]
 })
 export class AppModule { }

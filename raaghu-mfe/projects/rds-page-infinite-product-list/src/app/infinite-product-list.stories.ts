@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsPriceModule,RdsCardModule, RdsColorModule} from '@libs/rds-elements'
+import { RdsPriceModule,RdsCardModule, RdsColorModule, RdsProductImageModule} from '@libs/rds-elements'
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 
@@ -26,7 +26,8 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [
-        RdsCompProductListComponent
+        RdsCompProductListComponent,
+        RdsProductImageModule      
     ],
       imports: [
         RdsButtonModule,
@@ -58,7 +59,7 @@ const Template: Story<RdsCompProductListComponent> = (args: RdsCompProductListCo
 </h4>
 
 <div class="mt-5">
-<app-rds-comp-product-list [productListItems]="productListItems" [role]="'infiniteproductlist'"></app-rds-comp-product-list>
+<rds-comp-product-list [productListItems]="productListItems" [role]="'infiniteproductlist'"></rds-comp-product-list>
 </div>
 
 

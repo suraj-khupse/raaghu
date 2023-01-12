@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RdsAddressDetailModule, RdsCardDetailModule, RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
 import { SharedModule } from '@libs/shared';
+import { RdsCompOrderSummaryModule } from 'projects/rds-components/src/app/rds-comp-order-summary/rds-comp-order-summary.module';
+import { RdsCompShoppingCartProductModule } from 'projects/rds-components/src/app/rds-comp-shopping-cart-product/rds-comp-shopping-cart-product.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +19,9 @@ import { AppComponent } from './app.component';
     RdsLabelModule,
     RdsAddressDetailModule,
     RdsCardDetailModule,
-    RdsIconModule
+    RdsIconModule,
+    RdsCompOrderSummaryModule,
+    RdsCompShoppingCartProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

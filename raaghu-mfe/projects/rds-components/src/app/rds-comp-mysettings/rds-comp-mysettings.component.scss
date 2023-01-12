@@ -4,7 +4,13 @@
 }
 }
 
-.card-height{
-    height: 100vh;
-    overflow: scroll
+.card-height {
+  height: 83vh;
+  overflow: scroll;
+  flex:none;
+}
+.closetabs{
+    position:absolute;
+    top:5px;
+    right:10px;
 }

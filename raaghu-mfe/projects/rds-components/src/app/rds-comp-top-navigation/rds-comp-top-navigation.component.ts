@@ -1,9 +1,10 @@
 import { Component, DoCheck, EventEmitter, Inject, Injector, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
 import { AlertService, ComponentLoaderOptions, MfeBaseComponent, SharedService, ThemeSettingsDto } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from '../../models/table-header.model';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
+import {Dropdown} from 'bootstrap'
 let that: any;
 declare var bootstrap: any;
 @Component({
@@ -14,6 +15,7 @@ declare var bootstrap: any;
 export class RdsTopNavigationComponent extends MfeBaseComponent implements OnInit, DoCheck, OnChanges {
   // rdsProfileMfeConfig: ComponentLoaderOptions;
   showNotification: boolean = false;
+  showNotificationMobile: boolean = false;
   showOffcanvas: boolean = false;
   themes: any = [
 
@@ -28,10 +30,10 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input()
   LoginAttempts: any = {};
   @Input() LinkAccounts: []
-  @Input() logo: string = '/static/media/.storybook/assets/raaghu-logo.svg';
+  @Input() logo: string = '../assets/Raaghu-logo-mfe-black.png';
   @Input() projectName: string = '';
   @Input() sideMenuCollapsed: boolean = false;
-  @Input() isPageWrapper: boolean = false;
+  @Input() isPageWrapper: boolean = true;
   @Input() selectedMenu: string = 'Dashboard';
   @Input() backgroundColor: string = 'rgb(245, 245, 250)';
   @Input() selectedMenuDescription: string = 'Statics and reports';
@@ -39,6 +41,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() languageItems = [];
   @Input() selectedLanguage: any = { language: '', icon: '' };
   @Input() notificationData = [];
+  @Input() notificationDataMobile = [];
   @Input() tenancy: string = 'Host Admin';
   @Input() offCanvasId: string = ''
   @Input() profileLink: string = '';
@@ -47,7 +50,8 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() notificationLink: string = '';
   @Input() profileData: any;
   @Input() rdsDeligateTableData: any = [];
-  @Input() unreadCount: any = 0;
+  @Input() unreadCount: any ;
+  @Input() id: string = 'dropdownMenuLink';
   @Input() notificationTypes: any = [];
   @Input() receiveNotifications: any;
   @Output() deleteLinkaccount = new EventEmitter<any>();
@@ -62,6 +66,8 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Output() onDownloadLink = new EventEmitter<any>();
   @Output() setNotificationAsRead = new EventEmitter<any>();
   @Output() onUpdateNotificationSettings = new EventEmitter<any>();
+  @Output() backToImpersonateAccount = new EventEmitter<any>();
+  @Output() profilePicUpload = new EventEmitter<any>();
   @Input() linkedAccountHeaders: any = [];
   @Input() linkedAccountData: any = [];
   @Input() FixedHeader: boolean = true
@@ -109,6 +115,9 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
 
   @Output() onProfileSave = new EventEmitter<any>();
   @Output() FixedHeaderStyle = new EventEmitter<any>();
+  @Output() logoutEmitter = new EventEmitter<any>();
+  @Output() tenancyDataEmitter= new EventEmitter<any>();
+  show: boolean;
 
   constructor(private router: Router, private injector: Injector,
     private alertService: AlertService,
@@ -145,35 +154,17 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
         x.selected = false;
       })
     })
-    // const existingLinkEl = this.document.getElementById('client-theme') as HTMLLinkElement;
-    // existingLinkEl.href = 'default.css';
-    // let selectedTheme = localStorage.getItem('THEME');
-    // if (selectedTheme === 'light' || selectedTheme === 'dark' || selectedTheme === '' || selectedTheme == undefined || selectedTheme == null || selectedTheme === 'undefined') {
-    //   selectedTheme = 'default';
-    // }
-    // this.selectedTheme = selectedTheme;
-    // // this.onThemeSelect(selectedTheme);
-
-    // this.alertService.themes.subscribe((theme) => {
-    //   if (theme) {
-    //     // this.onThemeSelect(theme);
-    //     this.selectedTheme = theme;
-
-    //   }
-
-    // })
-
-
-
-    this.on('logout').subscribe(r => {
-      this.emitEvent('logout-returns', {});
+    var notificationDropdownMobile = document.getElementById('navbarDropdownMenuLinkMobile')
+    notificationDropdownMobile.addEventListener('hide.bs.dropdown', function () {
+      that.notificationDataMobile.forEach((x: any) => {
+        x.selected = false;
+      })
     })
+    
 
-    this.on('tenancyDataAgain').subscribe(res => {
-      console.log(res);
-      this.emitEvent('tenancyDataReturns', res);
-    })
 
+
+    
 
   }
 
@@ -185,6 +176,14 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   redirect(type: any) {
     this.redirection.emit(type);
   }
+  logout($event) {
+    this.logoutEmitter.emit({});
+  }
+
+  // this.on('tenancyDataAgain').subscribe(res => {
+  //   this.tenancyDataEmitter.emit(res);
+  // })
+
 
 
 
@@ -197,9 +196,9 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   saveLinkUsers(event: any) {
     this.linkUser.emit(event);
   }
-  getProfilePic(event: any): void {
-    this.profilePic = event;
-  }
+  // getProfilePic(event: any): void {
+  //   this.profilePic = event;
+  // }
 
   // onProfileData(event: any){
   //   this.onProfileData.emit(event)
@@ -209,6 +208,19 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     var offcanvas = document.getElementById(this.offCanvasId);
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
     bsOffcanvas.show()
+  }
+
+  opendropdown():void{
+    this.show = !this.show;
+    // this.droparrow = !this.droparrow;
+    var element: any = document.getElementById('language-dropdown');
+    var dropdown = new Dropdown(element)
+    if (this.show) {
+      dropdown.show();
+    } else {
+      dropdown.hide();
+    }
+  
   }
   onLanguageSelect(lan: any): void {
     if (lan && lan.item) {
@@ -238,7 +250,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   // }
   openNotification(): void {
     this.showNotification = !this.showNotification;
-    var element: any = document.getElementById('notification-popup-menu');
+    var element: any = document.getElementById('navbarDropdownMenuLink');
     if (element) {
       var dropdown = new bootstrap.Dropdown(element);
       if (this.showNotification) {
@@ -249,5 +261,27 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     }
 
 
+  }
+
+  openNotificationMobile(): void {
+    this.showNotificationMobile = !this.showNotificationMobile;
+    var element: any = document.getElementById('navbarDropdownMenuLinkMobile');
+    if (element) {
+      var dropdown = new bootstrap.Dropdown(element);
+      if (this.showNotificationMobile) {
+        dropdown.show();
+      } else {
+        dropdown.hide();
+      }
+    }
+
+
+  }
+
+  onBackToAccount(event): void {
+    this.backToImpersonateAccount.emit(event)
+  }
+  onProfileUpload(event): void{
+    this.profilePicUpload.emit(event)
   }
 }

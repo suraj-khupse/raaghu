@@ -18,64 +18,26 @@ import {
 
 export interface DynamicPropertyState {
   properties: DynamicProperty;
+  InputTypeNames: any;
+  EditDynamicProperty: any;
+  EditDynamicPropertSateI: any;
+  DynanmicPermission: any;
   error: string;
   status: 'pending' | 'loading' | 'error' | 'success';
 }
 
 
 export const dynamicPropertyInitialState: DynamicPropertyState = {
-  properties: { items: [] },
-  error: null,
-  status: 'pending',
-};
-export interface InputPropertynameState {
-  InputTypeNames: any;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export const InputPropertynameInitialSate: InputPropertynameState = {
-  InputTypeNames: {},
-  error: null,
-  status: 'pending',
-};
-
-
-export interface EditDynamicPropertySate {
-  EditDynamicProperty: any;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export const EditDynamicPropertyInitialSate: EditDynamicPropertySate = {
+  properties: null,
+  InputTypeNames: null,
   EditDynamicProperty: {},
-  error: null,
-  status: 'pending',
-};
-
-
-export interface EditDynampicPropertState {
-  EditDynamicPropertSateI: any;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-
-export const EditDynampicPropertyInitialSate: EditDynampicPropertState = {
   EditDynamicPropertSateI: {},
+  DynanmicPermission: null,
   error: null,
   status: 'pending',
 };
 
-export interface DynamicPermissionState {
-  DynanmicPermission: DynamicPermissionData;
-  error: string;
-  status: 'pending' | 'loading' | 'error' | 'success';
-}
-export const DynamicPermissionInitialState: DynamicPermissionState = {
-  DynanmicPermission: { items: [] },
-  error: null,
-  status: 'pending',
-};
+
 export const DynamicPropertyReducer = createReducer(
   // Supply the initial state
   dynamicPropertyInitialState,
@@ -92,25 +54,14 @@ export const DynamicPropertyReducer = createReducer(
     ...state,
     error: error,
     status: 'error',
-  }))
-);
-
-// All entity
-
-export const GetInputnameReducer = createReducer(
-  // Supply the initial state
-  InputPropertynameInitialSate,
+  })),
   on(getInputTypeNames, (state) => ({ ...state, status: 'loading' })),
   on(getInputTypeNamesSuccess, (state, { InputTypeNames }) => ({
     ...state,
     InputTypeNames: InputTypeNames,
     error: null,
     status: 'success',
-  }))
-);
-
-export const getDynamicPropertyByEditReducer = createReducer(
-  EditDynampicPropertyInitialSate,
+  })),
   on(getDynamicPropertyByEdit, (state) => ({ ...state, status: 'loading' })),
   on(getDynamicPropertyByEditSuccess, (state, { EditDynamicPropertSateI }) => ({
       ...state,
@@ -122,13 +73,7 @@ export const getDynamicPropertyByEditReducer = createReducer(
       ...state,
       error: error,
       status: 'error',
-  }))
-
-)
-
-export const DynamicPermissionReducer = createReducer(
-  // Supply the initial state
-  DynamicPermissionInitialState,
+  })),
   on(getPermission, (state) => ({ ...state, status: 'loading' })),
   on(getPermissionSuccess, (state, { DynanmicPermission }) => ({
     ...state,

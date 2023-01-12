@@ -38,12 +38,12 @@ title: "Components > data-table"
 <div class="row m-0">
 
 ```html
-<rds-data-table
+<rds-comp-data-table
   [tableData]="tableData"
   [tableHeaders]="tableHeaders"
   [pagination]="true"
   [actions]="actions"
-></rds-data-table>   
+></rds-comp-data-table>   
 ```
 </div>
 </div>

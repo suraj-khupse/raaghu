@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
       (event: RdsStatusChangeEvent) => { 
         
-        if (event.status === 'allow') {
+        if (event.status === 'allow' || event.status === 'deny') {
           this.cookieService.set(IS_COOKIE_ALLOWED, 'true');
           this.ccService.destroy();
         } else {

@@ -46,7 +46,7 @@ title: "Pages > Dynamic-Property-Management"
 <div class="row">
   <div class="col-md-12 pb-3 desktop-btn">
     <rds-button
-      [label]="'NEW DYNAMIC ENTITY PROPERTY'"
+      [label]="'New Dynamic Entity Property'"
       type="button"
       [size]="'small'"
       (click)="openCanvas()"

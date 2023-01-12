@@ -17,5 +17,9 @@ export const selectNotificationSettings = createSelector(
     selectMLA,
     (state: MLAState) => state.notificationSettings
 );
+export const selectBackToImpersonator = createSelector(
+    selectMLA,
+    (state: MLAState) => state.tokenResult
+);
 
 

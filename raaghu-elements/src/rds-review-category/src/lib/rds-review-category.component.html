@@ -2,11 +2,11 @@
   <ng-container [ngSwitch]="display_type">
     <div *ngSwitchCase="'Basic'">
       <div class="row sm-d-flex">
-        <div class="col-md-3">
+        <div class="col-md-3 col-lg-2">
           <div class="d-flex justify-content-start align-items-start flex-column gap-5 sm-gap-0">
             <div>
               <rds-label [label]="item.name" [multiline]="false" [bold]="true" [italic]="false"></rds-label>
-              <p class="mt-2 text-secondary">{{item.date | date:'MMM dd,y'}}</p>
+              <p class="mt-2">{{item.date | date:'MMM dd,y'}}</p>
             </div>
             <div>
               <rds-like-dislike [likeCount]="0" [dislikeCount]="0" (onClick)="onClick($event)">
@@ -25,11 +25,11 @@
           </rds-label>
 
           <rds-label [label]="item.reviewSubTitle" [multiline]="true" [bold]="false" [italic]="false"
-            class="mt-2 text-secondary">
+            class="mt-2">
           </rds-label>
 
           <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"
-            class="text-secondary"></rds-label>
+          ></rds-label>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
         </div>
         <div>
           <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"
-            class="text-secondary"></rds-label>
+           ></rds-label>
         </div>
         <div class="mt-2">
           <rds-like-dislike [likeCount]="0" [dislikeCount]="0" (onClick)="onClick($event)"></rds-like-dislike>
@@ -79,11 +79,11 @@
           </rds-label>
 
           <rds-label [label]="item.reviewSubTitle" [multiline]="true" [bold]="false" [italic]="false"
-            class="mt-2 text-secondary">
+            class="mt-2 ">
           </rds-label>
 
           <rds-label [label]="item.description" [multiline]="true" [bold]="false" [italic]="false"
-            class="text-secondary"></rds-label>
+            ></rds-label>
         </div>
       </div>
     </div>

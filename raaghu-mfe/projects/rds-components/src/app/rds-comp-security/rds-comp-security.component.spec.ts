@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RdsSecurityComponent } from './rds-comp-security.component';
+import { RdsCompSecurityComponent } from './rds-comp-security.component';
 
-describe('RdsSecurityComponent', () => {
-  let component: RdsSecurityComponent;
-  let fixture: ComponentFixture<RdsSecurityComponent>;
+describe('RdsCompSecurityComponent', () => {
+  let component: RdsCompSecurityComponent;
+  let fixture: ComponentFixture<RdsCompSecurityComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RdsSecurityComponent ]
+      declarations: [ RdsCompSecurityComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RdsSecurityComponent);
+    fixture = TestBed.createComponent(RdsCompSecurityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

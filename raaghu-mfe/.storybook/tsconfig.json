@@ -1,18 +1,14 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "strict": false,
-    "noImplicitReturns": false,
     "allowJs": true,
-    "target": "es6",
     "types": [
       "node"
     ],
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
-  	"../projects/test.ts",
+    "../projects/test.ts",
     "../projects/**/*.spec.ts",
     "../projects/**/*.e2e-spec.ts"
   ],
@@ -24,4 +20,3 @@
     "./typings.d.ts"
   ]
 }
-

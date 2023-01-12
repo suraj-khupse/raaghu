@@ -1,8 +1,9 @@
-<div class="row">
-  <rds-data-table [tableData]="DynamicEntityPropertiesTableData" [inlineEdit]="false" [pagination]="true"
-    [recordsPerPage]="10" [actions]="actions" (onActionSelection)="onActionSelect($event)"
-    [tableHeaders]="DynamicEntityPropertiesTableHeader" noDataTitle="Currently you do not have dynamic entities">
-  </rds-data-table>
+<div class="row mt-2">
+  <rds-comp-data-table [tableData]="DynamicEntityPropertiesTableData" [inlineEdit]="false"
+    [pagination]="DynamicEntityPropertiesTableData.length>5?true:false" [recordsPerPage]="10" [actions]="actions"
+    (onActionSelection)="onActionSelect($event)" [tableHeaders]="DynamicEntityPropertiesTableHeader"
+    noDataTitle="Currently you do not have dynamic entities">
+  </rds-comp-data-table>
 </div>
 <rds-offcanvas [canvasTitle]="translate.instant(canvasTitle)" [offId]="'AddEntity'" [placement]="'end'"
   [offcanvaswidth]="600" (onClose)="closeCanvas()">

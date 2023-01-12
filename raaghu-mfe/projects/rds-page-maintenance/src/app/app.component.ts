@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { ComponentLoaderOptions, SharedService } from '@libs/shared';
+import { AlertService, ComponentLoaderOptions, SharedService } from '@libs/shared';
 import { clearcache, deletecache, getmaintenances, getWebsitelog } from 'projects/libs/state-management/src/lib/state/maintenance/maintenance.actions';
 import { selectAllmaintenance, selectAllWebsitelog } from 'projects/libs/state-management/src/lib/state/maintenance/maintenance.selector';
 declare var $: any;
-import { transition, trigger, query, style, animate, } from '@angular/animations';
+import { transition, trigger, query, style, animate, state, } from '@angular/animations';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
 
@@ -13,34 +13,42 @@ import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/st
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 })
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':leave',
+  //         [
+  //           style({ opacity: 1 }),
+  //           animate('0.4s', style({ opacity: 0 }))
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 }),
+  //           animate('0.4s', style({ opacity: 1 }))
+  //         ],
+  //         { optional: true }
+  //       )
+  //     ])
+  //   ])
+  // ]
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('0.4s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('0.4s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
+    ]),
   ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   isAnimation: boolean = true;
 
   title = 'maintenance';
@@ -66,47 +74,51 @@ export class AppComponent implements OnInit{
   cashedata: any = []
   websiteLogData: any[];
   isShimmer: boolean = false;
-  
+  tableData: any = [];
+  currentAlerts: any = [];
+
   constructor(private store: Store,
-    private sharedService:SharedService,
-     public translate: TranslateService) { }
+    private sharedService: SharedService,
+    public translate: TranslateService,
+    private alertService: AlertService) { }
 
- 
-  
- 
+
+
+
   ngOnInit(): void {
-     this.isAnimation = true;
-    this.rdscacheMfeConfig = {
-      name: 'RdsCompCache',
-      input: {
-        cashedata: this.cashedata,
-        // dataSource: this.cashedata
-      },
-      output: {
-        onClearCache: (eventData: any) => {
-          const data: any = {
-            id: eventData
-          }
-          this.store.dispatch(deletecache(data));
-          const index = this.cashedata.findIndex((x: any) => x.name === eventData);
-          if (index !== -1) {
-            this.cashedata.splice(index, 1);
-            const mfeConfig = this.rdscacheMfeConfig
-            mfeConfig.input.tableData = [... this.cashedata];
-            this.rdscacheMfeConfig = { ...mfeConfig };
-          }
-        }
-      }
-    };
-    this.rdswebsiteMfeConfig = {
-      name: 'RdsCompWebsiteLog',
-      input: {
-        websiteLogData: this.websiteLogData
-      },
-      output: {
+    this.subscribeToAlerts();
+    this.isAnimation = true;
+    // this.rdscacheMfeConfig = {
+    //   name: 'RdsCompCache',
+    //   input: {
+    //     cashedata: this.cashedata,
+    //     // dataSource: this.cashedata
+    //   },
+    //   output: {
+    //     onClearCache: (eventData: any) => {
+    //       const data: any = {
+    //         id: eventData
+    //       }
+    //       this.store.dispatch(deletecache(data));
+    //       const index = this.cashedata.findIndex((x: any) => x.name === eventData);
+    //       if (index !== -1) {
+    //         this.cashedata.splice(index, 1);
+    //         const mfeConfig = this.rdscacheMfeConfig
+    //         mfeConfig.input.tableData = [... this.cashedata];
+    //         this.rdscacheMfeConfig = { ...mfeConfig };
+    //       }
+    //     }
+    //   }
+    // };
+    // this.rdswebsiteMfeConfig = {
+    //   name: 'RdsCompWebsiteLog',
+    //   input: {
+    //     websiteLogData: this.websiteLogData
+    //   },
+    //   output: {
 
-      }
-    };
+    //   }
+    // };
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
         this.translate.use(res);
@@ -115,28 +127,48 @@ export class AppComponent implements OnInit{
       }
       this.isShimmer = true;
     })
-    this.rdsAlertMfeConfig = {
-      name: 'RdsCompAlertPopup',
-      input: {
-        alertID: 'deleteAllModal',
-        alertData: this.alertData
-      },
-      output: {
-        onDelete: (event) => {
-          this.deletAllcashe();
-        },
-        onCancel: (event) => {
-          this.deletecaheid = undefined;
-        }
-      }
-    },
+    // this.rdsAlertMfeConfig = {
+    //   name: 'RdsCompAlertPopup',
+    //   input: {
+    //     alertID: 'deleteAllModal',
+    //     alertData: this.alertData
+    //   },
+    //   output: {
+    //     onDelete: (event) => {
+    //       this.deletAllcashe();
+    //     },
+    //     onCancel: (event) => {
+    //       this.deletecaheid = undefined;
+    //     }
+    //   }
+    // },
     this.refreshData();
+    
   }
+
+  onAlertHide(event: any): void {
+    this.currentAlerts = event;
+  } 
+
+  subscribeToAlerts() {
+    this.alertService.alertEvents.subscribe((alert) => {
+      this.currentAlerts = [];
+      const currentAlert: any = {
+        type: alert.type,
+        title: alert.title,
+        message: alert.message,
+        sticky: alert.sticky,
+      };
+      this.currentAlerts.push(currentAlert);
+    });
+  }
+
   getNavTabItems(): any {
     this.navtabItems[0].label = this.translate.instant('Caches');
     this.navtabItems[1].label = this.translate.instant('Website Logs');
     return this.navtabItems;
   }
+
   refreshData() {
     this.store.dispatch(getWebsitelog());
     this.store.select(selectAllWebsitelog).subscribe((res: any) => {
@@ -148,9 +180,9 @@ export class AppComponent implements OnInit{
           this.websiteLogData.push(item);
 
         });
-        const mfeConfig = this.rdswebsiteMfeConfig
-        mfeConfig.input.websiteLogData = [...this.websiteLogData]
-        this.rdswebsiteMfeConfig = mfeConfig;
+        // const mfeConfig = this.rdswebsiteMfeConfig
+        // mfeConfig.input.websiteLogData = [...this.websiteLogData]
+        // this.rdswebsiteMfeConfig = mfeConfig;
       }
       this.isShimmer = false;
     })
@@ -165,10 +197,10 @@ export class AppComponent implements OnInit{
           }
           this.cashedata.push(item);
         });
-        const mfeConfig = this.rdscacheMfeConfig
-        mfeConfig.input.cashedata = [...this.cashedata]
-        // mfeConfig.input.dataSource = [...this.cashedata]
-        this.rdscacheMfeConfig = mfeConfig;
+        // const mfeConfig = this.rdscacheMfeConfig
+        // mfeConfig.input.cashedata = [...this.cashedata]
+        // // mfeConfig.input.dataSource = [...this.cashedata]
+        // this.rdscacheMfeConfig = mfeConfig;
       }
       this.isShimmer = false;
     })
@@ -184,6 +216,7 @@ export class AppComponent implements OnInit{
     { label: this.translate.instant('Caches'), tablink: '#nav-Caches', ariacontrols: 'nav-Caches' },
     { label: this.translate.instant('Website Logs'), tablink: '#nav-websiteLogs', ariacontrols: 'nav-websiteLogs' },
   ]
+
 
 
   deleteConfirmation(id: any): void {
@@ -284,4 +317,24 @@ export class AppComponent implements OnInit{
     }
   }
 
+  onClearCache(eventData: any) {
+    const data: any = {
+      id: eventData
+    }
+    this.store.dispatch(deletecache(data));
+    const index = this.cashedata.findIndex((x: any) => x.name === eventData);
+    if (index !== -1) {
+      this.cashedata.splice(index, 1);
+      // const mfeConfig = this.rdscacheMfeConfig
+      this.tableData = [... this.cashedata];
+      // this.rdscacheMfeConfig = { ...mfeConfig };
+    }
+  }
+
+  onDelete(event) {
+    this.deletAllcashe();
+  }
+  onCancel(event) {
+    this.deletecaheid = undefined;
+  }
 }

@@ -9,8 +9,7 @@
             [(ngModel)]="dynamicPropertiesData.propertyName" floatinginputLabel="" required ngDefaultControl>
           </rds-input>
           <div class="form-control-feedback mt-1" *ngIf="propertyName.errors&&(propertyName.dirty||propertyName.touched)">
-            <h6><span class="text-danger" *ngIf="propertyName.errors.required">{{'Property name is required'|
-                translate}}</span></h6>
+            <h6><span class="text-danger" *ngIf="propertyName.errors.required">{{translate.instant('Property name is required')}}</span></h6>
           </div>
         </div>
       </div>

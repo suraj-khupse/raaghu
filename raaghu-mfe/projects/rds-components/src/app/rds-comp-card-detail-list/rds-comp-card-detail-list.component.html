@@ -1,6 +1,8 @@
 <ng-container *ngFor="let item of listItems">
     <div class="mb-2 card p-3" [ngClass]="{'border-primary': item.radioItems[0].checked===true }">
-        <rds-card-detail [cardData]="item" [IsEditAndDefaultFunctionalityRequired]="true" [IsSelectionRequired]="true" (onSetDefaultcard)="onSetAsDefaultCard($event)" (onSelectPaymentMethod)="onSelectCardForPaymentMethod($event)">
+        <rds-card-detail [cardData]="item" [IsEditAndDefaultFunctionalityRequired]="true" [IsSelectionRequired]="true"
+            (onSetDefaultcard)="onSetAsDefaultCard($event)"
+            (onSelectPaymentMethod)="onSelectCardForPaymentMethod($event)">
         </rds-card-detail>
     </div>
 </ng-container>

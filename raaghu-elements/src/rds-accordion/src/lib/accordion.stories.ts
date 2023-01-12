@@ -38,12 +38,12 @@ export const Default: Story<RdsAccordionComponent> = (args) => ({
   </accordion-item>
 </rds-accordian>`,
 });
-Default.parameters = { controls: { include: ['expanded', 'id'] } };
+Default.parameters = { controls: { include: ['expanded', 'id','accordianClass','accordionIcon'] } };
 Default.args = {
   expanded: false,
   id: "accordionBasic"
 };
-export const withFlush: Story<RdsAccordionComponent> = (args) => ({
+export const Flush: Story<RdsAccordionComponent> = (args) => ({
   props: args,
   template: `
     <rds-accordian [flush]= "flush" [id]="id">
@@ -55,13 +55,13 @@ export const withFlush: Story<RdsAccordionComponent> = (args) => ({
     </accordion-item>
   </rds-accordian>`,
 });
-withFlush.parameters = { controls: { include: ['flush', 'expand', 'id'] } };
-withFlush.args = {
+Flush.parameters = { controls: { include: ['flush', 'expand', 'id','accordianClass','accordionIcon'] } };
+Flush.args = {
   flush: true,
   expand: false,
   id: "accordionWithFlush"
 };
-export const alwaysOpen: Story<RdsAccordionComponent> = (args) => ({
+export const StackOpen: Story<RdsAccordionComponent> = (args) => ({
   props: args,
   template: `
     <rds-accordian [outline]= "true">
@@ -75,15 +75,15 @@ export const alwaysOpen: Story<RdsAccordionComponent> = (args) => ({
       </accordion-item>
     </rds-accordian>`,
 });
-alwaysOpen.parameters = { controls: { include: ['expand', 'alwaysOpen'] } };
-alwaysOpen.args = {
+StackOpen.parameters = { controls: { include: ['expand', 'alwaysOpen','accordianClass','accordionIcon'] } };
+StackOpen.args = {
   expand: false,
   alwaysOpen: true
 };
-export const ProductOverviewAccordion: Story<RdsAccordionComponent> = (args) => ({
+export const StackClosed: Story<RdsAccordionComponent> = (args) => ({
   props: args,
   template: `
-  <rds-accordian  [border]= "true" [outline]= "false" [id]="id">
+  <rds-accordian  [border]= "true" [outline]= "true" [id]="id">
   <accordion-item title="Section 1 title" [parentId]="id" >
   <h3 accordianBody>Custom </h3>
   </accordion-item>
@@ -92,8 +92,8 @@ export const ProductOverviewAccordion: Story<RdsAccordionComponent> = (args) => 
   </accordion-item>
 </rds-accordian>`,
 });
-ProductOverviewAccordion.parameters = { controls: { include: ['expand', 'alwaysOpen', 'flush', 'outline', 'border'] } };
-ProductOverviewAccordion.args = {
+StackClosed.parameters = { controls: { include: ['expand', 'alwaysOpen', 'flush', 'outline', 'border','accordianClass','accordionIcon'] } };
+StackClosed.args = {
   expand: false,
   alwaysOpen: true,
   flush: false,

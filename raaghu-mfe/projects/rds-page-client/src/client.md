@@ -57,11 +57,11 @@ title: "Pages > client"
     </div>
   </h5>
   <div class="card-body">
-    <rds-data-table
+    <rds-comp-data-table
       [tableHeaders]="clientTableHeaders"
       [tableData]="clientList"
       [actions]="actions"
-    ></rds-data-table>
+    ></rds-comp-data-table>
   </div>
 </div>
 

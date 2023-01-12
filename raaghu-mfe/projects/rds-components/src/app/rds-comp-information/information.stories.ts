@@ -1,9 +1,10 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsDropdownlistModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule,RdsDropdownlistModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompInformationComponent } from './rds-comp-information.component';
+import { RdsLabelModule } from '@libs/rds-label';
 
 
 
@@ -19,7 +20,8 @@ export default {
         SharedModule,
         NgxTranslateModule,
         FormsModule,
-        RdsDropdownlistModule
+        RdsDropdownlistModule,
+        RdsLabelModule
         
       ],
       providers: [
@@ -40,9 +42,9 @@ const Template: Story<RdsCompInformationComponent> = (args: RdsCompInformationCo
   Default.args ={
     dynamicPropertiesData: {propertyName:'string', displayName: 'string', inputType: 'string'},
     inputTypeList:[
-      {value: "1", displayText: "Input Type 1", isSelected: false}
-      ,{value: "2", displayText: "Input Type 2", isSelected: false}
-      ,{value: "3", displayText: "Input Type 3", isSelected: false}
-      ,{value: "4", displayText: "Input Type 4", isSelected: false}
+      {value: "Input Type 1", some: "Input Type 1", isSelected: false,}
+      ,{value: "Input Type 2", some: "Input Type 2", isSelected: false,}
+      ,{value: "Input Type 3", some: "Input Type 3", isSelected: false,}
+      ,{value: "Input Type 4", some: "Input Type 4", isSelected: false,}
         ]
   }

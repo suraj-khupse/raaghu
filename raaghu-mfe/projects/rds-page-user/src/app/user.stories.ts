@@ -8,7 +8,7 @@ import { RdsCompAlertComponent } from 'projects/rds-components/src/app/rds-comp-
 import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
 import { RdsCompPermissionTreeComponent } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.component';
 import { RdsCompUserBasicsComponent } from 'projects/rds-components/src/app/rds-comp-user-basics/rds-comp-user-basics.component';
-import { RdsOrganizationTreeComponent } from 'projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.component';
+import { RdsCompOrganizationTreeComponent } from 'projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.component';
 import { StoreModule } from '@ngrx/store';
 import { DatePipe } from '@angular/common';
 
@@ -20,7 +20,7 @@ export default {
             declarations: [
                 RdsCompUserBasicsComponent,
                 RdsCompUserPermissionsComponent,
-                RdsOrganizationTreeComponent,
+                RdsCompOrganizationTreeComponent,
                 RdsDataTableComponent,
                 RdsCompPermissionTreeComponent,
                 RdsCompAlertComponent

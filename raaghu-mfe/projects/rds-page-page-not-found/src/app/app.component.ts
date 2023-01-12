@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
+// import { ComponentLoaderOptions } from '@libs/shared';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { ComponentLoaderOptions } from '@libs/shared';
 })
 export class AppComponent {
   title = 'page-not-found';
-  rdsPageNotFoundMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompPageNotFound'
-  };
+  // rdsPageNotFoundMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompPageNotFound'
+  // };
 }

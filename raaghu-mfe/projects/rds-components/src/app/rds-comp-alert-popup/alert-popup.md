@@ -51,7 +51,7 @@ title: "Components > Alert-Popup"
 <rds-comp-alert-popup
   [alertID]="'deleteModal'"
   (onCancel)="close()"
-  (onDelete)="delete()"
+  (onSuccess)="delete()"
   [alertData]="alertData"
 ></rds-comp-alert-popup>
 ```

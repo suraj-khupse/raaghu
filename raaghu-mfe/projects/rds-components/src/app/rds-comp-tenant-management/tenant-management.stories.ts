@@ -3,7 +3,6 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsDropdownlistModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { StoreModule } from '@ngrx/store';
 import { RdsCompTenantManagementComponent } from './rds-comp-tenant-management.component';
 import { RdsLabelModule } from '@libs/rds-label';
 
@@ -21,11 +20,7 @@ export default {
         SharedModule,
         NgxTranslateModule,
         RdsLabelModule,
-        RdsDropdownlistModule,
-       
-        
-        StoreModule.forRoot({})
-        
+        RdsDropdownlistModule,  
       ],
       providers: [
         FormBuilder

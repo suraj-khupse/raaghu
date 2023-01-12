@@ -254,5 +254,8 @@ export * from '../rds-testimonial/src/public-api'
 // Public API Surface of rds-stepper
 export * from '../rds-stepper/src/public-api';
 
+// Public API Surface of rds-toggle
+export * from '../rds-toggle/src/public-api';
+
 
 

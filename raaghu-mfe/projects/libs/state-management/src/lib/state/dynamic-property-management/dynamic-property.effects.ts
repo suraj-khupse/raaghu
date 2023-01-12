@@ -68,8 +68,8 @@ export class DynamicPropertyEffects {
       ofType(getDynamicPropertyByEdit),
       switchMap(({ id }) => {
         return (this.dynamicPropertyService.get(id)).pipe(
-          map((RoleEditI: any) => {
-            return getDynamicPropertyByEditSuccess({ EditDynamicPropertSateI: RoleEditI })
+          map((EditDynamicPropertSateI: any) => {
+            return getDynamicPropertyByEditSuccess({ EditDynamicPropertSateI: EditDynamicPropertSateI })
           }),
           catchError((error) => of(getDynamicPropertyByEditFailure({ error })))
         )

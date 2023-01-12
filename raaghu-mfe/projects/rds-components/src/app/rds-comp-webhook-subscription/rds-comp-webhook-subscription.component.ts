@@ -35,7 +35,7 @@ export class RdsCompWebhookSubscriptionComponent implements OnInit {
     additionalheadervalue: '',
     name: ''
   }
-  subscriptionData: subscription = {
+  @Input() subscriptionData: subscription = {
     WebhookEndpoint: '',
     WebhookEvents: ''
   }
@@ -46,8 +46,8 @@ export class RdsCompWebhookSubscriptionComponent implements OnInit {
     additionalHeaders: []
   };
   @Input() HeaderTableHeader: TableHeader[] = [
-    { displayName: 'Header key', disabled: true, key: 'additionalheaderKey', dataType: 'text', dataLength: 30, sortable: true, required: true },
-    { displayName: 'Header value', key: 'additionalheadervalue', dataType: 'text', dataLength: 30, required: true, sortable: true },
+    { displayName: this.translate.instant('Header key'), disabled: true, key: 'additionalheaderKey', dataType: 'text', dataLength: 30, sortable: true, required: true },
+    { displayName: this.translate.instant('Header value'), key: 'additionalheadervalue', dataType: 'text', dataLength: 30, required: true, sortable: true },
 
   ]
   ngOnInit(): void {
@@ -90,7 +90,7 @@ export class RdsCompWebhookSubscriptionComponent implements OnInit {
   close(webhookForm: NgForm) {
     webhookForm.resetForm();
     this.additionalheaders = [];
-    this.onCloseCanvas.emit();
+    this.onCloseCanvas.emit(true);
   }
 
 }

@@ -8,6 +8,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { AppSessionService } from '@libs/shared';
+// import { AppSessionService } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { TableAction } from '../../models/table-action.model';
@@ -19,14 +20,13 @@ declare let bootstrap: any;
 })
 export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
   actions: TableAction[] = [{ id: 'edit', displayName: 'Edit' }, { id: 'delete', displayName: 'Delete' }]
-  @Input()
-  DynamicPropertiesTableHeader: any;
-  @Input() DynamicPropertiesTableData: any;
+  @Input() DynamicPropertiesTableHeader: any = [];
+  @Input() DynamicPropertiesTableData: any = [];
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() editPropertyTableRowData = new EventEmitter<any>();
   @Output() createOrUpdateDynamic = new EventEmitter<any>();
   @Input() permissionsList: any = [];
-  @Input() DynamicProperyData: any = {};
+  @Input() DynamicProperyData: any = { propertyName: '', displayName: '', inputType: '' };
   @Input() IsEdit: boolean = false;
   @Input() selectedPermissionList: any = [];
   @Input() inputTypeList: any;
@@ -55,7 +55,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
 
   constructor(public translate: TranslateService, private appSessionService: AppSessionService) { }
   ngOnChanges(changes: SimpleChanges): void {
-    this.DynamicProperyData = undefined;
+    //this.DynamicProperyData = undefined;
     var myOffcanvas = document.getElementById('AddDynamic');
     if (myOffcanvas) {
       myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
@@ -79,7 +79,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
       this.id = undefined;
       this.canvasTitle = this.translate.instant('NEW DYNAMIC PROPERTY');
       event.stopPropagation();
-      this.DynamicProperyData = undefined;
+      //this.DynamicProperyData = undefined;
     } else {
     }
   }
@@ -97,7 +97,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
   editTableRow(event): void {
     this.activePage = 0;
     this.IsEdit = true;
-    this.canvasTitle = this.translate.instant('EDIT DYNAMIC PROPERTY');
+    this.canvasTitle = this.translate.instant('NEW DYNAMIC PROPERTY');
     this.selectedPermissionList = [];
     this.editPropertyTableRowData.emit(event.id);
     this.id = event.id;
@@ -118,6 +118,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
         this.createOrUpdateDynamic.emit(DynamicPropery);
         this.closeCanvas();
         this.editShimmer = true;
+        
       } else {
         const DynamicPropery: any = {
           displayName: this.DynamicProperyData.displayName,

@@ -2,7 +2,7 @@
   <div class="card border-0">
     <div class="card-body">
       <div *ngIf="item">
-        <div class="my-4">
+        <div class="mb-5">
           <h5><rds-label [label]="item.titleHeader" [bold]="true" class="h1"></rds-label></h5>
         </div>
         <div class="row">
@@ -11,7 +11,7 @@
                          [pills]="false" [tabs]="true" [fill]="false" [justified]="false"></rds-nav-tab>
             <div naveContent class="row tab-content" id="nav-tabContent">
               <ng-container *ngFor="let navItem of item.navtabsItems;let i=index">
-                <div class="tab-panel" [ngClass]="{'active': activePage === i}" *ngIf="activePage===i" [attr.id]="navItem.id" role="tabpanel"
+                <div class="tab-panel px-5 pt-4" [ngClass]="{'active': activePage === i}" *ngIf="activePage===i" [attr.id]="navItem.id" role="tabpanel"
                      [attr.aria-labelledby]="navItem.ariacontrols">
                   <ng-container *ngFor="let x of getJobList(navItem.id)">
                     <div class="row mt-4">
@@ -20,10 +20,15 @@
                       </div>
                     </div>
                     <div class="row mt-4">
-                      <div class="col-md-8 mb-3">
+                      <div class="col-md-10 mb-3">
                         <rds-label class="text-muted" [label]="x.roleDescription"></rds-label>
+                        <div class="mt-1">
+                          <rds-label [label]="x.rolePosition"></rds-label>
+                        </div>
+                       
                       </div>
-                      <div class="col-md-4 mb-3">
+                      <div></div>
+                      <div class="col-md-2 mb-3">
                         <rds-button colorVariant="primary" [block]="false"
                                     [size]="'medium'" [submit]="true"
                                     [label]="x.buttonLabel" (click)="openForm()"></rds-button>

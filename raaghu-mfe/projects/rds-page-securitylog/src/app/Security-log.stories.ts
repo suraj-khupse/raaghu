@@ -5,14 +5,14 @@ import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModu
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { AppComponent as SecurityLogs} from './app.component';
 import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
-import { RdsSecurityComponent } from 'projects/rds-components/src/app/rds-comp-security/rds-comp-security.component';
+import { RdsCompSecurityComponent } from 'projects/rds-components/src/app/rds-comp-security/rds-comp-security.component';
 
 export default {
   title: 'Pages/ Security Log',
   component: SecurityLogs ,
   decorators: [
     moduleMetadata({
-      declarations: [RdsDataTableComponent, RdsSecurityComponent],
+      declarations: [RdsDataTableComponent, RdsCompSecurityComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
@@ -29,11 +29,11 @@ const Template: Story<SecurityLogs> = (args: SecurityLogs) => ({
     props:{
       ...args
   },
-  template:`<rds-data-table
+  template:`<rds-comp-data-table
   [tableHeaders]="securityLogsHeaders" 
   [tableData]="securityLogs" 
   [pagination]="true" [recordsPerPage]="'5'"
- ></rds-data-table>`
+ ></rds-comp-data-table>`
 
   });
 
