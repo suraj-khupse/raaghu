@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "15.0.2",
-    "@angular/cli": "15.0.2",
+    "@angular/cli": "15.1.0",
     "@angular/compiler-cli": "15.0.2",
     "@compodoc/compodoc": "1.1.19",
     "@mdx-js/react": "2.1.5",
