@@ -4,6 +4,8 @@ import { ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Account, LinkedAccount } from '../../models/profile.model';
+import { TableAction } from '../../models/table-action.model';
+import { TableHeader } from '../../models/table-header.model';
 
 @Component({
   selector: 'app-rds-linked-accounts',
@@ -18,14 +20,17 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   @Output() onUserSave = new EventEmitter<any>();
   @Output() onCancelLinkedAccounts = new EventEmitter<any>()
   @Input() linkedAccountHeaders: any = [];
-  @Input() linkedAccountData: any = [];
+  @Input() linkedAccountData: any[] = [];
   @Input() manageLinkedAccountsTabOpened: boolean = false;
   public tenancyName: string = '';
   public userName: string = '';
   public password: string = '';
   public showNewLinkAccoutButton: boolean = true;
 
-
+  linkUsersHeaders: TableHeader[] = [
+    { key: 'targetUserName', displayName: 'User Name', dataType: 'text', sortable: true, filterable: true },
+    { key: 'directlyLinked', displayName: 'Directly linked', dataType: 'text', sortable: true, filterable: true },
+  ];
 
   @Output()
   LinkAccountSave = new EventEmitter<{ item: any }>()
@@ -45,7 +50,7 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
     }
   }
   hideandShowaccountform() {
-    this.showNewLinkAccoutButton = false;
+    this.showNewLinkAccoutButton = false;3
     this.password = '';
     this.tenancyName = '';
     this.userName = '';

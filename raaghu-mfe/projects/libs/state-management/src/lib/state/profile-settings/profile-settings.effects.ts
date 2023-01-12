@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { from, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { getProfileSettings, getProfileSettingsError, getProfileSettingsSuccess, saveChangedPassWord, savePersonalInfo, saveProfile, saveProfileScopeFailure, saveProfileScopeSuccess, saveTwoFactor, saveTwoFactorFailure, saveTwoFactorSuccess } from './profile-settings.actions';
+import { getLinkUserData, getLinkUserDataFailure, getLinkUserDataSuccess, getPersonalData, getPersonalDataFailure, getPersonalDataSuccess, getProfileSettings, getProfileSettingsError, getProfileSettingsSuccess, getTwoFactor, getTwoFactorFailure, getTwoFactorSuccess, saveChangedPassWord, savePersonalInfo, saveProfile, saveProfilePicture, saveProfilePictureFailure, saveProfilePictureSuccess, saveProfileScopeFailure, saveProfileScopeSuccess, saveTwoFactor, saveTwoFactorFailure, saveTwoFactorSuccess } from './profile-settings.actions';
 
 @Injectable()
 export class ProfileEffects {
@@ -35,7 +35,7 @@ export class ProfileEffects {
   getProfileSettings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getProfileSettings),
-      switchMap((id) =>
+      switchMap(() =>
         // Call the getTodos method, convert it to an observable
         from(this.clientsService.myProfileGET()).pipe(
           // Take the returned value and return a new success action containing the todos
@@ -50,6 +50,65 @@ export class ProfileEffects {
       )
     )
   );
+
+  getTwoFactor$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getTwoFactor),
+      switchMap((id) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.twoFactorEnabled()).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((twoFactor) => {
+            return getTwoFactorSuccess({
+              twoFactor
+            });
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(getTwoFactorFailure({ error })))
+        )
+      )
+    )
+  );
+
+  getPersonalData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getPersonalData),
+      switchMap(({ id }) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.list(id)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((personalData) => {
+            return getPersonalDataSuccess({
+              personalData
+            });
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(getPersonalDataFailure({ error })))
+        )
+      )
+    )
+  );
+
+  getLinkUserData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getLinkUserData),
+      switchMap(() =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.linkUser()).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((user) => {
+            return getLinkUserDataSuccess({
+              user
+            });
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(getLinkUserDataFailure({ error })))
+        )
+      )
+    )
+  );
+
+
   saveProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(saveProfile),
@@ -68,57 +127,75 @@ export class ProfileEffects {
     )
   );
 
-  saveChangedPassWord$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(saveChangedPassWord),
-    switchMap((data) =>
-      // Call the getTodos method, convert it to an observable
-      from(this.clientsService.changePasswordPOST(data)).pipe(
-        // Take the returned value and return a new success action containing the todos
-        map(() => {
-          // this.store.dispatch(getAllClients());
-          return saveProfileScopeSuccess();
-        }),
-        // Or... if it errors return a new failure action containing the error
-        catchError((error) => of(saveProfileScopeFailure({ error })))
+  saveProfilePicture$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveProfilePicture),
+      switchMap((data) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.profilePicturePOST(2, data)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map(() => {
+            // this.store.dispatch(getAllClients());
+            return saveProfilePictureSuccess();
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(saveProfilePictureFailure({ error })))
+        )
       )
     )
-  )
-);
-saveTwoFactor$ = createEffect(() =>
-this.actions$.pipe(
-  ofType(saveTwoFactor),
-  switchMap(() =>
-    // Call the getTodos method, convert it to an observable
-    from(this.clientsService.twoFactorEnabled()).pipe(
-      // Take the returned value and return a new success action containing the todos
-      map(() => {
-        // this.store.dispatch(getAllClients());
-        return saveTwoFactorSuccess();
-      }),
-      // Or... if it errors return a new failure action containing the error
-      catchError((error) => of(saveTwoFactorFailure({ error })))
-    )
-  )
-)
-);
+  );
 
-savePersonalInfo$ = createEffect(() =>
-this.actions$.pipe(
-  ofType(savePersonalInfo),
-  switchMap(() =>
-    // Call the getTodos method, convert it to an observable
-    from(this.clientsService.myProfilePUT(undefined)).pipe(
-      // Take the returned value and return a new success action containing the todos
-      map(() => {
-        // this.store.dispatch(getAllClients());
-        return saveTwoFactorSuccess();
-      }),
-      // Or... if it errors return a new failure action containing the error
-      catchError((error) => of(saveTwoFactorFailure({ error })))
+  saveChangedPassWord$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveChangedPassWord),
+      switchMap((data) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.changePasswordPOST(data)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map(() => {
+            // this.store.dispatch(getAllClients());
+            return saveProfileScopeSuccess();
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(saveProfileScopeFailure({ error })))
+        )
+      )
     )
-  )
-)
-);
-  
+  );
+  saveTwoFactor$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(saveTwoFactor),
+      switchMap((id) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.setTwoFactorEnabled(id)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map(() => {
+            // this.store.dispatch(getAllClients());
+            return saveTwoFactorSuccess();
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(saveTwoFactorFailure({ error })))
+        )
+      )
+    )
+  );
+
+  savePersonalInfo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(savePersonalInfo),
+      switchMap(() =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.myProfilePUT(undefined)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map(() => {
+            // this.store.dispatch(getAllClients());
+            return saveTwoFactorSuccess();
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(saveTwoFactorFailure({ error })))
+        )
+      )
+    )
+  );
+
 }

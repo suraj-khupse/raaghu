@@ -31,7 +31,7 @@ export interface AppState {
   user:UsersState,
   products: ProductState,
   securityLogs:SecurityState,
-  profileSettings: ProfileState,
+  profile: ProfileState,
   organizationUnit: OrganizationUnitState,
   editions: EditionsState,
   roles: RolesState,

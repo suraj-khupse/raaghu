@@ -21,7 +21,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { DatePipe } from '@angular/common';
 
 import { LanguageTextEffects } from 'projects/libs/state-management/src/lib/state/language-text/language-text.effects';
-import { RdsSideNavModule } from '@libs/rds-elements';
+import { RdsOffcanvasModule, RdsSideNavModule } from '@libs/rds-elements';
 import { LanguageTextReducer } from 'projects/libs/state-management/src/lib/state/language-text/language-text.reducer';
 import demodata from '../assets/appconfig.json';
 import { RdsCookieConsentConfig } from 'projects/libs/rds-cookieconsent/src/lib/service/cookieconsent-config';
@@ -62,6 +62,10 @@ import { SettingEffects } from 'projects/libs/state-management/src/lib/state/set
 import { settingReducer } from 'projects/libs/state-management/src/lib/state/settings/settings.reducer';
 import { EditionReducer } from 'projects/libs/state-management/src/lib/state/edition/edition.reducer';
 import { EditionEffects } from 'projects/libs/state-management/src/lib/state/edition/edition.effects';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompMysettingsModule } from 'projects/rds-components/src/app/rds-comp-mysettings/rds-comp-mysettings.module';
+import { RdsCompLinkedAccountsModule } from 'projects/rds-components/src/app/rds-comp-linked-accounts/rds-comp-linked-accounts.module';
+
 export function getRemoteServiceBaseUrl(): any {
   let URL = demodata.remoteServiceBaseUrl;
   return URL;
@@ -152,7 +156,6 @@ const cookieConfig: RdsCookieConsentConfig = {
       DownloadEffects,
       LoginEffects,
       ManageLinkedAccountsEffects,
-      ProfileEffects,
       OrganizationUnitEffects,
       LoginEffects,
       LanguageTextEffects,
@@ -167,6 +170,10 @@ const cookieConfig: RdsCookieConsentConfig = {
     UserAuthModule,
     BrowserAnimationsModule,
     RdsSideNavModule,
+    RdsOffcanvasModule,
+    RdsCompDataTableModule,
+    RdsCompMysettingsModule,
+    RdsCompLinkedAccountsModule
   ],
   declarations: [
     AppComponent,

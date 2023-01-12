@@ -17,6 +17,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
   @Input() editShimmer: boolean = false;
   @Input() buttonSpinner: boolean = true;
   @Input() roleListItem: any;
+  @Input() orgUnitListItem: any;
   public phonePattern = /^((\\+91-?)|0)?[0-9]{10}$/;
   @ViewChild('userCreationForm') userInfoForm: NgForm;
   constructor(public translate: TranslateService) { }
@@ -86,8 +87,17 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
   }
 
   onRolesSelect(event){
-    debugger
-    console.log(event);
+    this.userData.roles=[];
+    event.item.forEach(element => {
+      this.userData.roles.push(element.some);
+    });
+  }
+  
+  onOrgUnitSelect(event){
+    this.userData.OrgUnit=[];
+    event.item.forEach(element => {
+      this.userData.OrgUnit.push(element.value);
+    });
   }
   getImage(ev: any) {
     let FileImage = ev.target.files[0];

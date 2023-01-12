@@ -40,7 +40,7 @@ module.exports = {
         './RdsSecurity': './projects/rds-components/src/app/rds-comp-security/rds-comp-security.component.ts',
         './RdsUserDelegations': './projects/rds-components/src/app/rds-comp-user-delegations/rds-comp-user-delegations.component.ts',
         './RdsCompProfile': './projects/rds-components/src/app/rds-comp-profile/rds-comp-profile.component.ts',
-        './RdsMysettings': './projects/rds-components/src/app/rds-comp-mysettings/rds-comp-mysettings.component.ts',
+        // './RdsMysettings': './projects/rds-components/src/app/rds-comp-mysettings/rds-comp-mysettings.component.ts',
         './RdsCompLoginAttempts': './projects/rds-components/src/app/rds-comp-login-attempts/rds-comp-login-attempts.component.ts',
         './RdsCompEdition': './projects/rds-components/src/app/rds-comp-edition/rds-comp-edition.component.ts',
         './RdsCompSubscription': './projects/rds-components/src/app/rds-comp-subscription/rds-comp-subscription.component.ts',
