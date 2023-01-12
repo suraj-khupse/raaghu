@@ -1,4 +1,4 @@
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsPriceModule,RdsCardModule, RdsColorModule, RdsProductImageModule} from '@libs/rds-elements'
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
@@ -9,14 +9,10 @@ import { RdsIconModule} from '@libs/rds-icon';
 import { RdsBadgeModule} from '@libs/rds-badge';
 import { RdsButtonModule} from '@libs/rds-button';
 import { RdsCompProductListModule } from 'projects/rds-components/src/app/rds-comp-product-list/rds-comp-product-list.module';
-import { AppComponent } from 'projects/host/src/app/app.component';
 import { CommonModule } from '@angular/common';
-
-
-
-
-
-
+import { RdsCookieConsentConfig, RdsCookieConsentService, WindowService } from 'projects/libs/rds-cookieconsent/src/public-api';
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
 export default {
   title: 'Pages/Infinite Product List',
@@ -39,10 +35,14 @@ export default {
         InfiniteScrollModule,
         RdsBadgeModule,
         RdsColorModule,
-        RdsCompProductListModule       
+        RdsCompProductListModule,
+        RouterModule     
       ],
       providers: [
-        FormBuilder
+        FormBuilder,
+        RdsCookieConsentService,
+        WindowService,
+        RdsCookieConsentConfig
       ],
     })
   ]

@@ -1,32 +1,40 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsRadioButtonModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsDropdownlistModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsRadioButtonModule, RdsSelectListModule } from '@libs/rds-elements';
 
-import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsCompAlertComponent } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component';
-import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
-import { RdsCompFeaturesComponent } from 'projects/rds-components/src/app/rds-comp-features/rds-comp-features.component';
-import { RdsCompPermissionTreeComponent } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.component';
+import { ArrayToTreeConverterService, NgxTranslateModule, SharedModule } from '@libs/shared';
+import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
+import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-permission-tree.module';
 
 export default {
   title: 'Pages/Edition',
-  component: RdsCompFeaturesComponent,
+  component: AppComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompFeaturesComponent,RdsDataTableComponent,RdsCompPermissionTreeComponent,
-        RdsCompAlertComponent],
+      declarations: [AppComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,RdsRadioButtonModule,RdsCounterModule
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,RdsRadioButtonModule,RdsCounterModule,
+        RdsDropdownlistModule,
+        StoreModule.forRoot({}),
+        BrowserAnimationsModule,
+        RdsCompDataTableModule,
+        RdsCompAlertModule,
+        RdsPermissionTreeModule
       ],
       providers: [
-        FormBuilder,       
+        FormBuilder, 
+        ArrayToTreeConverterService      
       ],
     })
   ]
 } as Meta;
-const Template: Story<RdsCompFeaturesComponent> = (args: RdsCompFeaturesComponent) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
   }
@@ -34,6 +42,7 @@ const Template: Story<RdsCompFeaturesComponent> = (args: RdsCompFeaturesComponen
 export const Default = Template.bind({});
 
 Default.args = {
+    isShimmer:false,
     EditionsTableData: [{editionname: 'Standard', price: null, trialPeriod: null, expiringEdition: null, id: 1},
     {editionname: 'apple', price: 2000, trialPeriod: 10, expiringEdition: 'Standard', id: 5},
    {editionname: 'Apple1', price: 20, trialPeriod: 3, expiringEdition: 'Standard', id: 6},
@@ -232,4 +241,21 @@ Default.args = {
         "children": []
     }
 ],
+editionList:[
+    {
+        "value": "Standard",
+        "some": "Standard",
+        "id": 1,           
+    },
+    {
+        "value": "TestOne",
+        "some": "TestOne",
+        "id": 1,     
+    },
+    {
+        "value": "DemoOne",
+        "some": "DemoOne",
+        "id": 1,           
+    },
+]
  }
