@@ -394,7 +394,7 @@ export class SidenavComponent {
     private http: HttpClient,
     private sessionService: SessionServiceProxy,
     private _profileService: ProfileServiceProxy,
-    private theme: RdsThemesService
+    private theme: RdsThemesService,
     @Inject(DOCUMENT) private document: Document
   ) {
 

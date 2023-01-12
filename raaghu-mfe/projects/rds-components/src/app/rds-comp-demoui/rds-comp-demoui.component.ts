@@ -423,12 +423,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 300
       }
     },
@@ -613,12 +613,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 400
       }
     },
@@ -828,7 +828,7 @@ export class RdsCompDemouiComponent implements OnInit {
   chartOptionsBool = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -941,12 +941,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 150
       }
     },
@@ -1110,7 +1110,7 @@ export class RdsCompDemouiComponent implements OnInit {
   chartOptionsDoughnut = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -1322,12 +1322,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 220
       }
     },
@@ -1391,12 +1391,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 300
       }
     },
@@ -1476,12 +1476,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 150
       }
     },
@@ -1653,7 +1653,7 @@ export class RdsCompDemouiComponent implements OnInit {
     "radius": 100,
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -1697,7 +1697,7 @@ export class RdsCompDemouiComponent implements OnInit {
   pieChartMultiOptions = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -1855,7 +1855,7 @@ export class RdsCompDemouiComponent implements OnInit {
   chartOptionsPolar = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -2040,7 +2040,7 @@ export class RdsCompDemouiComponent implements OnInit {
   chartOptionsRadar = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -2190,12 +2190,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 150
       }
     },
@@ -2463,12 +2463,12 @@ export class RdsCompDemouiComponent implements OnInit {
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 200
       }
     },

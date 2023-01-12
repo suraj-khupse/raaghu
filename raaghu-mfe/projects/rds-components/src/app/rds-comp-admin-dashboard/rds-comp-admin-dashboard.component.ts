@@ -159,12 +159,12 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 230
       }
     },
@@ -248,7 +248,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() pschartOptions = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
       animateScale: false
     },
@@ -319,12 +319,12 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     animation: {
       x: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 0
       },
       y: {
         easing: "linear",
-        duration: 3000,
+        duration: 2000,
         from: 240
       }
     },
