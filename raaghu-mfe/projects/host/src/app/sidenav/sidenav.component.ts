@@ -1,7 +1,7 @@
 import { Component, Inject, Injector, Input, OnInit, SimpleChanges } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ComponentLoaderOptions, MfeBaseComponent, SharedService, UserAuthService } from '@libs/shared';
+import { ComponentLoaderOptions, MfeBaseComponent, ServiceProxy, SharedService, UserAuthService } from '@libs/shared';
 import { Store } from '@ngrx/store';
 // import { changePassword, getLanguages, getProfile, selectAllLanguages, selectDefaultLanguage, selectProfileInfo, setDefaultLanguageForUI } from '@libs/state-management';
 // import { deleteDelegations, getDelegations, getUsername, saveDelegations } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
@@ -20,7 +20,12 @@ import { slideInAnimation } from '../animation';
 import { RouterOutlet } from '@angular/router';
 import * as moment from 'moment';
 import { getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
-  import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
+import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
+import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
+import { getSecuritylogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.actions';
+import { selectSecurityLogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.selector';
+import { getLinkUserData, getPersonalData, getProfileSettings, getTwoFactor, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
+import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -67,17 +72,21 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     LoginDatatable: []
   }
   profileData: any = {
-    ProfileName: 'Wai Technologies',
-    emailAddress: 'contact@waiin.com',
-    userName: 'admin',
-    CurrentPassword: '',
-    NewPassword: '',
-    ConFNewPassword: '',
-    name: ''
+    email: '',
+    userName: '',
+    currentPassword: '',
+    newPassword: '',
+    confirmNewPassword: '',
+    name: '',
+    surname: '',
+    phoneNumber: '',
+    concurrencyStamp: '',
+    twoFactorEnabled: false
   }
   rdsDeligateTableData: any = [];
   usernameList: any = []
   FixedHeaderBody: boolean = true;
+  personalDataActions: any = [{ id: 'download', displayName: 'Download' }];
   sideMenuCollapsed: boolean = false;
   headerHeight: any = '110px';
   @Input() AccountLinkedTable: any = [];
@@ -114,7 +123,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         { label: 'Identity Resource', labelTranslationKey: 'Identity Resources', id: '', permissionName: 'IdentityServer.IdentityResource', icon: 'home', path: '/pages/identityResources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
         { label: 'Api Resources', labelTranslationKey: 'Api Resources', id: '', permissionName: 'IdentityServer.ApiResource', icon: 'home', path: '/pages/apiresources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
         { label: 'Api Scopes', id: 'ApiScope', permissionName: 'IdentityServer.ApiScope', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
-
       ],
     },
     {
@@ -149,21 +157,45 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   activePage: any;
   activesubmenu: any;
   languageItems: any = [];
-  linkedAccountData: any = [];
+  linkedAccountData: any[] = [];
   linkedAccountHeaders: any = [{ displayName: 'User Name', key: 'username', dataType: 'text', dataLength: 30, required: true }];
   notifications: any[];
   unreadCount: number = 0;
   selectedMode: any;
   counter: number = 0;
+  canvasTitle: string = 'My Account';
+  showOffcanvas = false;
+  RdsCompMySettings: ComponentLoaderOptions;
+  public securityLogsHeaders: TableHeader[] = [
+    { key: 'time', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
+    { key: 'action', displayName: 'Action', dataType: 'text', sortable: true, filterable: true },
+    { key: 'ipAddress', displayName: 'IP Address', dataType: 'text', sortable: true, filterable: true },
+    { key: 'browser', displayName: 'Browser', dataType: 'html', sortable: true, filterable: true },
+    { key: 'application', displayName: 'Application', dataType: 'html', sortable: true, filterable: true },
+    { key: 'identity', displayName: 'Identity', dataType: 'text', sortable: true, filterable: true },
+    { key: 'username', displayName: 'Users', dataType: 'text', sortable: true, filterable: true },
+  ];
+
+  personalDataHeaders: TableHeader[] = [
+    { key: 'creationTime', displayName: 'Creation Time', dataType: 'date', sortable: true, filterable: true },
+    { key: 'readyTime', displayName: 'Ready Time', dataType: 'date', sortable: true, filterable: true },
+  ];
+
+
+  securityLogs: any[] = [];
+
+  profilePicUrl: any;
+
   constructor(private router: Router,
     private store: Store,
-    
+
     private alertService: AlertService,
     public translate: TranslateService,
     private shared: SharedService,
     private injector: Injector,
     private userAuthService: UserAuthService,
     private theme: ThemesService,
+    private serviceProxies: ServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
     super(injector);
@@ -176,6 +208,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
   tenancyTableData = [];
   sidenavItems = [];
+  personalData: any[] = [];
 
   permissions: any;
 
@@ -188,6 +221,27 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.tenancy = 'Host Admin';
     }
     this.store.dispatch(getLanguages());
+
+    // link user
+    this.store.dispatch(getLinkUserData());
+    this.store.select(selectlinkUser).subscribe(res => {
+      if (res) {
+        this.linkedAccountData = [
+          { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+          { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true }
+        ];
+
+        // this.linkedAccountData = res.items;
+      }
+
+    });
+
+    this.store.dispatch(getPersonalData('6f9f495e-f308-9a83-e524-3a079ce6f2f5'));
+    this.store.select(selectPersonalData).subscribe(res=> {
+      if (res) {
+        this.personalData = res.items;
+      }
+    });
     // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
     //   if (res) {
     //     this.translate.use(res);
@@ -198,6 +252,33 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     //     this.sidenavItems = this.translateMenu(this.sidenavItems);
     //   }
     // });
+
+    this.serviceProxies.profilePictureGET('6f9f495e-f308-9a83-e524-3a079ce6f2f5').subscribe((res: any) => {
+      if (res) {
+        this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
+      }
+
+    });
+
+    this.store.dispatch(getTwoFactor());
+    this.store.select(selectTwoFactor).subscribe(res => {
+      if (res) this.profileData.twoFactorEnabled = true;
+    });
+
+    this.store.dispatch(getProfileSettings());
+    this.store.select(selectAllProfileSettings).subscribe((res: any) => {
+      if (res) {
+        [res].forEach(ele => {
+          this.profileData.name = ele.name;
+          this.profileData.surname = ele.surname;
+          this.profileData.email = ele.email;
+          this.profileData.phoneNumber = ele.phoneNumber;
+          this.profileData.userName = ele.userName;
+          this.profileData.concurrencyStamp = ele.concurrencyStamp
+        });
+      }
+    });
+
 
 
     this.userAuthService.getPermissions().subscribe(res => {
@@ -230,7 +311,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         logo: 'assets/raaghu_icon.png',
         projectName: 'Raaghu',
         linkedAccountData: this.linkedAccountData,
-        linkedAccountHeaders:this.linkedAccountHeaders,
+        linkedAccountHeaders: this.linkedAccountHeaders,
         userList: this.usernameList,
         notificationData: this.notifications,
         unreadCount: this.unreadCount,
@@ -244,7 +325,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           element.style.display = (element.style.display === 'none') ? 'block' : 'none'
         },
         onLanguageSelection: (lan) => {
-           this.translate.use('en');
+          this.translate.use('en');
           //this.store.dispatch(setDefaultLanguageForUI(lan))
 
         },
@@ -304,6 +385,14 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         },
         onUpdateNotificationSettings: (data: any) => {
           //this.store.dispatch(updateNotificationSettings(data));
+        },
+        viewProfileCanvas: (value: string) => {
+          var offcanvas = document.getElementById('profile-canvas');
+          var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+          bsOffcanvas.show();
+          this.canvasTitle = value;
+
+
         }
       }
     }
@@ -416,6 +505,31 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     }
 
 
+
+    this.store.dispatch(getSecuritylogs());
+    this.store.select(selectSecurityLogs).subscribe((res: any) => {
+      if (res && res.items) {
+        res.items.forEach((element: any) => {
+          const item: any = {
+            id: element.id,
+            time: element.creationTime,
+            action: element.action,
+            ipAddress: element.clientIpAddress,
+            browser: element.browserInfo,
+            application: element.applicationName,
+            identity: element.identity,
+            username: element.userName
+          }
+          this.securityLogs.push(item);
+        });
+
+
+      }
+    });
+
+
+
+
     // this.store.dispatch(getProfile());
     // this.store.select(selectProfileInfo).subscribe((res: any) => {
     //   if (res) {
@@ -486,6 +600,23 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.rdsTopNavigationMfeConfig.input.backgroundColor = this.backgroundColor;
 
   }
+
+  onProfileSave(event: any) {
+    console.log('emitted data', event);
+
+    this.store.dispatch(saveProfile(event.myAccount));
+    //this.store.dispatch(saveChangedPassWord(event.changedPassword));
+    //this.store.dispatch(saveTwoFactor(false));
+  }
+
+  getProfilePic(event: any): void {
+    // this.profilePic = event;
+    debugger
+    this.store.dispatch(saveProfilePicture(event));
+  }
+
+  onDownload(event: any) {}
+
   redirectPath(event): void {
     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
     rdsAlertMfeConfig.input.currentAlerts = [];
@@ -506,6 +637,12 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
   onCollapse(event): void {
     this.sideMenuCollapsed = event;
+  }
+
+  close() {
+    var offcanvas = document.getElementById(this.offCanvasId);
+    var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+    bsOffcanvas.hide();
   }
 
   subscribeToAlerts() {
@@ -637,7 +774,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     })
     return sidenavItems
   }
-} 
+}
 
 
 

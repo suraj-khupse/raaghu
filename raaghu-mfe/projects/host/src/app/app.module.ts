@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 
 
 import { LanguageTextEffects } from 'projects/libs/state-management/src/lib/state/language-text/language-text.effects';
-import { RdsSideNavModule } from '@libs/rds-elements';
+import { RdsOffcanvasModule, RdsSideNavModule } from '@libs/rds-elements';
 import { LanguageTextReducer } from 'projects/libs/state-management/src/lib/state/language-text/language-text.reducer';
 import demodata from '../assets/appconfig.json';
 import { RdsCookieConsentConfig } from 'projects/libs/rds-cookieconsent/src/lib/service/cookieconsent-config';
@@ -55,6 +55,9 @@ import { TenantReducer } from 'projects/libs/state-management/src/lib/state/tena
 import { TenantEffects } from 'projects/libs/state-management/src/lib/state/tenant/tenant.effects';
 import { SettingEffects } from 'projects/libs/state-management/src/lib/state/settings/settings.effects';
 import { settingReducer } from 'projects/libs/state-management/src/lib/state/settings/settings.reducer';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompMysettingsModule } from 'projects/rds-components/src/app/rds-comp-mysettings/rds-comp-mysettings.module';
+import { RdsCompLinkedAccountsModule } from 'projects/rds-components/src/app/rds-comp-linked-accounts/rds-comp-linked-accounts.module';
 export function getRemoteServiceBaseUrl(): any {
   let URL = demodata.remoteServiceBaseUrl;
   return URL;
@@ -147,7 +150,6 @@ export function getRemoteServiceBaseUrl(): any {
       DownloadEffects,
       LoginEffects,
       ManageLinkedAccountsEffects,
-      ProfileEffects,
       OrganizationUnitEffects,
       LoginEffects,
       LanguageTextEffects,
@@ -162,6 +164,10 @@ export function getRemoteServiceBaseUrl(): any {
     UserAuthModule,
     BrowserAnimationsModule,
     RdsSideNavModule,
+    RdsOffcanvasModule,
+    RdsCompDataTableModule,
+    RdsCompMysettingsModule,
+    RdsCompLinkedAccountsModule
   ],
   declarations: [
     AppComponent,
