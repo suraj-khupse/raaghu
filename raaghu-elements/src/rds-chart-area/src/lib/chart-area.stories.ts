@@ -18,7 +18,7 @@ Default.args = {
     {
       label: 'Dataset 1',
       data: [0.5, 0.8, 0.4, 0.6, 0.7, 0.2, 0.9],
-      borderColor: 'rgba(75, 192, 192, 0.8)',
+      borderColor: '#7E2EEF',
       fill: true,
       tension: 0.1
     }
@@ -27,7 +27,7 @@ Default.args = {
   chartWidth: 600,
   chartHeight:400,
   chartOptions: {
-    pointStyle: "star",
+    pointStyle: "circle",
     radius: 7,
     responsive: true,
     maintainAspectRatio:false,
