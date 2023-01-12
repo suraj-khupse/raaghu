@@ -218,7 +218,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
 
   close(): void {
     this.viewCanvas = false;
-       this.tenantInfo= undefined,
+    this.tenantInfo= undefined,
     this.tenantData = undefined;
     this.tenantFeaturesList = undefined
     this.buttonSpinnerForSave = false;

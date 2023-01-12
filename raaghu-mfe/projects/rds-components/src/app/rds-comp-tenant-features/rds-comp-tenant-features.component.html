@@ -22,12 +22,12 @@
                     </div>
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Ldap Login')"
                     (onChange)="getCheckboxValue($event,'identity 1')" [withLabel]="true"
-                    [checked]="tenantFeatures[2].value" [switch]="false" [inline]="false"
+                    [checked]="tenantFeatures[2].value" [switch]="false" 
                     [id]="'identity'" ></rds-checkbox>
 
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Enable OAuth Login')"
                     (onChange)="getCheckboxValue($event,'identity 2')" [withLabel]="true"
-                    [checked]="tenantFeatures[3].value" [switch]="false" [inline]="false"
+                    [checked]="tenantFeatures[3].value" [switch]="false" 
                     [id]="'identity'" ></rds-checkbox>
                 </div>
             </div>
@@ -39,12 +39,12 @@
                     <div class="form-group mb-3">
                             <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Settings Management')"
                             (onChange)="getCheckboxValue($event,'settingManagment 1')" [withLabel]="true"
-                            [checked]="tenantFeatures[4].value" [switch]="false" [inline]="false"
+                            [checked]="tenantFeatures[4].value" [switch]="false" 
                             [id]="'settingManagment'" ></rds-checkbox>
 
                             <rds-checkbox [disabled]="false" [label]="translate.instant('Allow tenants to change email settings.')"
                             (onChange)="getCheckboxValue($event,'settingManagment 2')" [withLabel]="true"
-                            [checked]="tenantFeatures[5].value" [switch]="false" [inline]="false"
+                            [checked]="tenantFeatures[5].value" [switch]="false" 
                             [id]="'settingManagment'" ></rds-checkbox>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="form-group mb-3">
                         <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Language Management')"
                         (onChange)="getCheckboxValue($event,'languageManagement')" [withLabel]="true"
-                        [checked]="tenantFeatures[6].value" [switch]="false" [inline]="false"
+                        [checked]="tenantFeatures[6].value" [switch]="false" 
                         [id]="'languageManagement'" ></rds-checkbox>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <div class="form-group mb-3">
                             <rds-checkbox [disabled]="false" [label]="translate.instant('Enable TextTemplate Management')"
                             (onChange)="getCheckboxValue($event,'textTemplateManagement')" [withLabel]="true"
-                            [checked]="tenantFeatures[7].value" [switch]="false" [inline]="false"
+                            [checked]="tenantFeatures[7].value" [switch]="false" 
                             [id]="'textTemplateManagement'" ></rds-checkbox> 
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <div class="form-group mb-3">
                             <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Theme Management')"
                             (onChange)="getCheckboxValue($event,'themeManagement')" [withLabel]="true"
-                            [checked]="tenantFeatures[8].value" [switch]="false" [inline]="false"
+                            [checked]="tenantFeatures[8].value" [switch]="false" 
                             [id]="'themeManagement'" ></rds-checkbox> 
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                     <div class="form-group mb-3">
                         <rds-checkbox [disabled]="false" [label]="translate.instant('Enable auditLoggingPage')"
                             (onChange)="getCheckboxValue($event,'auditLoggingPage')" [withLabel]="true"
-                            [checked]="tenantFeatures[9].value" [switch]="false" [inline]="false"
+                            [checked]="tenantFeatures[9].value" [switch]="false" 
                             [id]="'auditLoggingPage'" ></rds-checkbox>
                     </div>
                 </div>
