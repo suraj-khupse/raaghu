@@ -41,11 +41,11 @@ export class UserAuthService implements OnInit {
     return _observableOf(this.userAuthenticated);
   }
 
-  authenticateUser() {
-    this.userAuthenticated = true;
-    console.log("user is authenticated");
+  // authenticateUser() {
+  //   this.userAuthenticated = true;
+  //   console.log("user is authenticated");
   
-  }
+  // }
 
   getPermissions() {
     return _observableOf(this.permissions);
@@ -57,6 +57,7 @@ export class UserAuthService implements OnInit {
       console.log(result);
         this.permissions = of(result.auth.grantedPolicies);
         localStorage.setItem('storedPermissions', JSON.stringify(result.auth.grantedPolicies));
+        console.log('result.auth.grantedPolicies',result.auth.grantedPolicies)
         // this.localization = result.localization;
         // this.sources=result.localization.sources
             this.language=of(result.localization.languages);
@@ -68,11 +69,11 @@ export class UserAuthService implements OnInit {
       //     this.router.navigateByUrl('/login');
       //   }
       // }
+      this.userAuthenticated = result.currentUser.isAuthenticated;
+      console.log('this.userAuthenticated',this.userAuthenticated);
       if(result.currentUser.isAuthenticated){
-        this.router.navigateByUrl('/pages/dashboard');
+        this.router.navigateByUrl('pages/dashboard');
       }
-      
-
     })
 
   }
