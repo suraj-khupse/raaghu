@@ -33,7 +33,7 @@
     "chart.js": "4.0.1",
     "date-fns": "2.29.3",
     "moment": "2.29.4",
-    "ngx-bootstrap": "9.0.0",
+    "ngx-bootstrap": "10.2.0",
     "ngx-infinite-scroll": "14.0.1",
     "ngx-quill": "20.0.0",
     "ngx-videogular": "13.2.4",
