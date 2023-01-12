@@ -149,7 +149,7 @@
       <ng-container *ngIf="pagination&&tableData && tableData.length > 0">
 
       <rds-pagination (onPageChange)="onPagination($event)" [recordsPerPage]="+recordsPerPage"
-        [totalRecords]="getTotalRecords()" [alignmentType]="alignmentType" [role]="role"></rds-pagination>
+        [totalRecords]="getTotalRecords()" [alignmentType]="alignmentType" [role]="role" [size]="'small'"></rds-pagination>
     </ng-container>
   </ng-container>
 </div>

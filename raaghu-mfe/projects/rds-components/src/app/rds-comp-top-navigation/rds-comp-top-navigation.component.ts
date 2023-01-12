@@ -50,7 +50,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() notificationLink: string = '';
   @Input() profileData: any;
   @Input() rdsDeligateTableData: any = [];
-  @Input() unreadCount: any = 0;
+  @Input() unreadCount: any ;
   @Input() id: string = 'dropdownMenuLink';
   @Input() notificationTypes: any = [];
   @Input() receiveNotifications: any;
@@ -67,6 +67,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Output() setNotificationAsRead = new EventEmitter<any>();
   @Output() onUpdateNotificationSettings = new EventEmitter<any>();
   @Output() backToImpersonateAccount = new EventEmitter<any>();
+  @Output() profilePicUpload = new EventEmitter<any>();
   @Input() linkedAccountHeaders: any = [];
   @Input() linkedAccountData: any = [];
   @Input() FixedHeader: boolean = true
@@ -195,9 +196,9 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   saveLinkUsers(event: any) {
     this.linkUser.emit(event);
   }
-  getProfilePic(event: any): void {
-    this.profilePic = event;
-  }
+  // getProfilePic(event: any): void {
+  //   this.profilePic = event;
+  // }
 
   // onProfileData(event: any){
   //   this.onProfileData.emit(event)
@@ -279,5 +280,8 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
 
   onBackToAccount(event): void {
     this.backToImpersonateAccount.emit(event)
+  }
+  onProfileUpload(event): void{
+    this.profilePicUpload.emit(event)
   }
 }
