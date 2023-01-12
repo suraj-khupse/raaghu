@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsLabelComponent, RdsSelectListComponent, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsIconLabelModule, RdsLabelComponent, RdsLabelModule, RdsSelectListComponent, RdsSelectListModule } from '@libs/rds-elements';
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompAlertComponent } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component';
@@ -18,12 +18,13 @@ export default {
       RdsCompAlertComponent,
       RdsCompOrderSummaryComponent,
       RdsCompShoppingCartProductComponent,
-      RdsLabelComponent,
     ],
       imports: [
         RdsButtonModule,
         NgxTranslateModule,
-        RdsSelectListModule
+        RdsSelectListModule,
+        RdsIconLabelModule,
+        RdsLabelModule
       ],
       providers: [
         FormBuilder

@@ -510,9 +510,11 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     { displayName: 'Issue', key: 'issue', dataType: 'html' },
     { displayName: 'Progress', key: 'progress', dataType: 'html' }
 
-  ]
-  tableStyle: string = 'light';
-
+  ];
+  @Input() tableStyle: string = 'light';
+  @Input() recordsPerPage:number=10;
+  @Input() inlineEdit:boolean=false;
+  @Input() pagination:boolean=true;
   constructor(private injector: Injector, public translate: TranslateService, public alertService: AlertService) { super(injector); }
 
   ngOnInit(): void {
