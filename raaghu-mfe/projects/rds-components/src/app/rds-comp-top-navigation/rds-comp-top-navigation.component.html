@@ -1,8 +1,10 @@
 <nav [class.fixed-top]="FixedHeader" class="navbar navbar-expand-sm p-0">
   <div class="container-fluid mobile-fluid">
     <span class="navbar-brand p-0 m-0" href="#">
-      <img class="image" [src]="logo" width="70" /><span class="title fw-bold text-lowercase"><b>{{ projectName
-          }}</b></span>
+      <a routerLinkActive="routerLinkActive-iconname" [routerLink]="['/pages/dashboard']" class="raaghu_icon">
+        <img class="image" [src]="logo" width="70" /><span class="title fw-bold text-lowercase" ><b>{{ projectName
+        }}</b></span>
+      </a>
     </span>
     <button (click)="onToggleButton()" class="navbar-toggler px-2" id="humbreger-btn" type="button"
       data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -35,7 +37,7 @@
               <rds-button class="position-relative" [isFabIcon]="true" [size]="'small'" [id]="'notification'"
                 [isRounded]="true" [colorVariant]="'default'" type="button">
                 <rds-icon name="notification" width="20px" height="20px"></rds-icon>
-                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
+                <rds-badge *ngIf="unreadCount>0" class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
                   [label]="unreadCount" [positioned]="true">
                 </rds-badge>
               </rds-button>
@@ -73,7 +75,7 @@
               <rds-button class="position-relative" [isFabIcon]="true" [size]="'small'" [id]="'notification_mobile'"
                 [isRounded]="true" [colorVariant]="'default'" type="button">
                 <rds-icon name="notification" width="20px" height="20px"></rds-icon>
-                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
+                <rds-badge *ngIf="unreadCount>0" class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
                   [label]="unreadCount" [positioned]="true">
                 </rds-badge>
               </rds-button>
