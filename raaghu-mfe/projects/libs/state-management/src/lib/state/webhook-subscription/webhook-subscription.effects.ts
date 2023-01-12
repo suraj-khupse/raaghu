@@ -6,7 +6,7 @@ import { LanguageServiceProxy, WebhookSubscriptionServiceProxy } from "projects/
 import { from, of } from "rxjs";
 import { catchError, map, merge, mergeMap, switchMap } from "rxjs/operators";
 import { getWebhookSubscription, getWebhookSubscriptionFailure, getWebhookSubscriptionSuccess, saveWebhookSubscription } from "./webhook-subscription.action";
-
+declare var bootstrap: any;
 
 @Injectable()
 export class WebhookSubscriptionEffects {
@@ -35,8 +35,14 @@ export class WebhookSubscriptionEffects {
       mergeMap((data) =>
         this.webhookSubscriptionService.addSubscription(data.webhookInfo).pipe(map((res: any) => {
           this.store.dispatch(getWebhookSubscription());
-          this.alertService.showAlert('Success', 'Webhook added successfully', 'success')
-
+          this.alertService.showAlert('Success', 'Webhook added successfully', 'success');
+          var offcanvasEl = document.getElementById('addwebhook');
+          if (offcanvasEl) {
+            var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+            if (offcanvas) {
+              offcanvas.hide();
+            }
+          }
         }),
           catchError((error: any) => of(
           ))

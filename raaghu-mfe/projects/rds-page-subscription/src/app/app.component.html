@@ -10,15 +10,34 @@
 
       <div naveContent class="row tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="subscription-information" role="tabpanel" aria-labelledby="nav-home-tab">
-          <mfe-loader [config]="rdsPlanInformationMfeConfig"></mfe-loader>
+          <!-- <mfe-loader [config]="rdsPlanInformationMfeConfig"></mfe-loader> -->
+          <rds-comp-plan-information></rds-comp-plan-information>
         </div>
 
         <div class="tab-pane fade" id="payment-history" role="tabpanel" aria-labelledby="nav-home-tab">
-          <mfe-loader [config]="rdsDataTableForPaymentHistoryMfeConfig"></mfe-loader>
+          <!-- <mfe-loader [config]="rdsDataTableForPaymentHistoryMfeConfig"></mfe-loader> -->
+        <rds-comp-data-table
+        [tableData] = "tableDataForPayment"
+        [tableHeaders] = "tableHeadersForPayment"
+        [recordsPerPage] = "10"
+        [width]="100"
+        [pagination]="true"
+        ></rds-comp-data-table>
         </div>
 
         <div class="tab-pane fade" id="upgrade-subscription" role="tabpanel" aria-labelledby="nav-home-tab">
-          <mfe-loader [config]="rdscompSubscriptionMfeConfig"></mfe-loader>
+          <!-- <mfe-loader [config]="rdscompSubscriptionMfeConfig"></mfe-loader> -->
+          <rds-comp-subscription
+          [subscriptionData]="subscriptionData"
+          HeaderbackGroundColor="#5272C5"
+          bodybackGroundColor= "#DFE5F6"
+          footerbackGroundColor = "#DFE5F6"
+          topLinePadding = "0"
+          cardBorderWidth = "1"
+          [borderRadius] = "2"
+          Paddig = "5"
+          [borderwidth]= "0"
+          ></rds-comp-subscription>
            
         </div>
       </div>

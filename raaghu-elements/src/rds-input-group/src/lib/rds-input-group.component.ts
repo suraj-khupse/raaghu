@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class RdsInputGroupComponent implements OnInit {
   @Input() colorVariant: 'warning' | 'danger' | 'success' | 'info' | 'primary' | 'secondary' | 'dark' | 'light' | undefined = 'secondary';
   @Input() size: 'small' | 'medium' | 'large' = 'medium';
-  @Input() label: string = 'Filed label';
+  @Input() label: string = 'Field Label';
   @Input() outlineButton = false;
   @Input() position: 'top' | 'bottom' = 'top'
   @Input() value: any;

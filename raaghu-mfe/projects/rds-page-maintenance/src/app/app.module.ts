@@ -7,10 +7,13 @@ import { RdsFabMenuModule } from 'projects/libs/rds-elements/src/rds-fab-menu/sr
 
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { CommonModule } from '@angular/common';
+import { RdsCompCacheModule } from 'projects/rds-components/src/app/rds-comp-cache/rds-comp-cache.module';
+import { RdsCompWebsiteLogModule } from 'projects/rds-components/src/app/rds-comp-website-log/rds-comp-website-log.module';
+import { RdsCompAlertPopupModule } from 'projects/rds-components/src/app/rds-comp-alert-popup/rds-comp-alert-popup.module';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
 @NgModule({
   declarations: [
     AppComponent,    
-
   ],
   imports: [
     CommonModule,
@@ -20,7 +23,11 @@ import { CommonModule } from '@angular/common';
     RdsIconModule,
     RdsFabMenuModule,
     NgxShimmerLoadingModule,
-    NgxTranslateModule.forRoot()
+    NgxTranslateModule.forRoot(),
+    RdsCompCacheModule,
+    RdsCompWebsiteLogModule,
+    RdsCompAlertPopupModule,
+    RdsCompAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

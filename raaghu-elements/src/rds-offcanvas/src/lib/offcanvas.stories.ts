@@ -8,7 +8,7 @@ export default {
     onShow: { click: "clicked" },
     onClose: { click: "clicked" },
     backdrop: {
-      options: ['static', true, false],
+      options: ['static', 'true', 'false'],
       control: { type: 'select' },
     },
     placement: {
@@ -16,6 +16,11 @@ export default {
       control: { type: 'select' },
     },
   },
+  parameters: { 
+    actions: {
+      handles: ['hide.bs.offcanvas','hidePrevented.bs.offcanvas','show.bs.offcanvas'],
+     }
+   },
 } as Meta;
 const Template: Story<RdsOffcanvasComponent> = (args: RdsOffcanvasComponent) => ({
   props: args,
@@ -37,11 +42,12 @@ export const Default: Story<RdsOffcanvasComponent> = (args) => ({
   [bodySpacing]="bodySpacing"
   [preventEscapeKey]="preventEscapeKey"
   >
+  Try scrolling the rest of the page to see this option in action.
   </rds-offcanvas> `,
 
 });
 Default.parameters = { controls: { include: ['canvasTitle', 'placement', 'backDrop', 'offId','offcanvaswidth', 'buttonTitle',
-'scrolling','preventEscapeKey','bodySpacing'] } };
+'scrolling','preventEscapeKey','bodySpacing','onShow','onClose','offcanvasheight'] } };
 
 
 Default.args = {
@@ -51,7 +57,7 @@ Default.args = {
   // buttonTitle: 'Button',
   scrolling: false,
   bodySpacing: true,
-  placement: 'top',
+  placement: 'end',
   backDrop: 'static',
   offcanvaswidth:650,
   // preventEscapeKey: true

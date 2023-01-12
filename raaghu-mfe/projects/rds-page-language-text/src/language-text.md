@@ -115,14 +115,14 @@ title: "Pages > Language-Text"
   <div class="row">
     <div class="col-md-12">
       <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
-        <rds-data-table
+        <rds-comp-data-table
           [tableHeaders]="languageTableHeader"
           [tableStyle]="'light'"
           [tableData]="languageTableData"
           [recordsPerPage]="10"
           [pagination]="true"
           [inlineEdit]="false"
-        ></rds-data-table>
+        ></rds-comp-data-table>
       </div>
     </div>
   </div>

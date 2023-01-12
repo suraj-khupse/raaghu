@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { AppState, Validatetenant } from '../../app.interface';
+import { AppState } from '../../app.interface';
 import { ValidateTenantState } from './login.reducer';
 
 

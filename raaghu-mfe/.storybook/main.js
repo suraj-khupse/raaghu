@@ -7,15 +7,19 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/preset-scss"
+    "@storybook/preset-scss",
+    'storybook-addon-themes',
+    "@storybook/addon-actions"
+    
   ],
   "framework": "@storybook/angular",
   "staticDirs": [{"from": './assets', "to": '/assets'}],
   "core": {
-    "builder": "webpack5"
+    "builder": "@storybook/builder-webpack5"
   },
   "features": {
-    "storyStoreV7": false,
+    "babelModeV7": true,
+    "storyStoreV7": true,
     "previewMdx2": true
   }
 }

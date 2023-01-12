@@ -89,8 +89,8 @@
                     [(ngModel)]="model.firstName" #firstName="ngModel" [isRequired]="true"
                     [placeholder]="'Enter First Name'" required></rds-input>
                 <div class="form-control-feedback" *ngIf="firstName.errors&&(firstName.dirty||firstName.touched)">
-                    <span class="text-danger" *ngIf="firstName.errors.required">{{"First Name is
-                        required"|translate}}</span>
+                    <span class="text-danger" *ngIf="firstName.errors.required">{{translate.instant("First Name is
+                        required")}}</span>
                 </div>
             </div>
             <div class="col-md-6 mb-3">
@@ -98,8 +98,8 @@
                     [(ngModel)]="model.lastName" #lastName="ngModel" [isRequired]="true" required
                     [placeholder]="'Enter Last Name'"></rds-input>
                 <div class="form-control-feedback" *ngIf="lastName.errors&&(lastName.dirty||lastName.touched)">
-                    <span class="text-danger" *ngIf="lastName.errors.required">{{"Last Name is
-                        required"|translate}}</span>
+                    <span class="text-danger" *ngIf="lastName.errors.required">{{translate.instant("Last Name is
+                        required")}}</span>
                 </div>
             </div>
         </div>
@@ -115,8 +115,8 @@
                     [placeholder]="'Enter phone'">
                 </rds-input>
                 <div class="form-control-feedback" *ngIf="phone.errors&&(phone.dirty||phone.touched)">
-                    <span class="text-danger" *ngIf="phone.errors.required">{{"Phone Number is
-                        required"|translate}}</span>
+                    <span class="text-danger" *ngIf="phone.errors.required">{{translate.instant("Phone Number is
+                        required")}}</span>
                 </div>
             </div>
         </div>
@@ -126,7 +126,8 @@
                     id="txtAddress" [(ngModel)]="model.address" #address="ngModel" [(ngModel)]="model.phone" required>
                 </rds-input>
                 <div class="form-control-feedback" *ngIf="address.errors&&(address.dirty||address.touched)">
-                    <span class="text-danger" *ngIf="address.errors.required">{{"address is required"|translate}}</span>
+                    <span class="text-danger" *ngIf="address.errors.required">{{translate.instant("address is
+                        required")}}</span>
                 </div>
             </div>
         </div>

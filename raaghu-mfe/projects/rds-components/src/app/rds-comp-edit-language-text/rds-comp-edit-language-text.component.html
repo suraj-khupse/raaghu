@@ -19,13 +19,13 @@
             [(ngModel)]="Languagetext.value" name="targetvalue" required>
           </rds-textarea>
           <div class="form-control-feedback" *ngIf="TargetValue.errors && (TargetValue.dirty || TargetValue.touched)">
-            <span class="text-danger" *ngIf="TargetValue.errors.required">{{"Description is required"|translate}}</span>
+            <span class="text-danger" *ngIf="TargetValue.errors.required">{{translate.instant("Description is required")}}</span>
           </div>
         </div>
       </div>
 
     </div>
-    <div class="row position-absolute bottom-0 w-100 start-0 py-2 px-0 m-0 bg-light">
+    <div class="row position-absolute bottom-0 w-100 start-0 py-2 px-0 m-0">
       <div class="col-md-12 ">
           <rds-button [label]="translate.instant('Close')" type="button" [colorVariant]="'primary'" data-bs-dismiss="offcanvas" [isOutline]="true"
           [size]="'small'" (click)="back()">
@@ -35,6 +35,4 @@
         </rds-button>
       </div>
   </div>
- 
-
 </form>

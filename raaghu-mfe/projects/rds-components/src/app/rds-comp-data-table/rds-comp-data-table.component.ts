@@ -1,15 +1,25 @@
-import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
 import { AlertPopupData } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 declare var bootstrap: any;
 @Component({
-  selector: 'rds-data-table',
+  selector: 'rds-comp-data-table',
   templateUrl: './rds-comp-data-table.component.html',
   styleUrls: ['./rds-comp-data-table.component.scss']
 })
-export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
+export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChecked {
   @Input() tableData: any = [];
   @Input() inlineEdit: boolean = true;
   @Input() enableCheckboxSelection: boolean = false;
@@ -56,37 +66,28 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
   static count: number = 0;
   public id: any = 'table'
 
-  constructor(public translate: TranslateService) {
+  constructor(
+    public translate: TranslateService,
+    private changeDetector: ChangeDetectorRef
+  ) {
     this.id = this.id + RdsDataTableComponent.count++;
 
   }
-  ngDoCheck(): void {
-    if (this.tableData) {
-      this.tempData = JSON.parse(JSON.stringify(this.tableData));
-      this.totalRecords = this.tableData.length;
-      this.tableData.forEach((item: any) => {
-        if (item.id) {
-          const index = this.dataSource.findIndex((x) => x.id === item.id);
-          if (index !== -1) {
-            this.dataSource[index] = item;
-          }
-        }
-      });
-      if (this.refresh) {
-        if (this.pageDetails) {
-          this.onPagination(this.pageDetails);
-          this.refresh = false;
-        }
-      }
-
-    }
-
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.tableData) {
       this.tempData = this.tableData;
       this.totalRecords = this.tableData.length;
+      if (!this.pagination) {
+        this.dataSource = this.tableData;
+      } else {
+        if (this.pageDetails) {
+          this.onPagination({ RecordsPerPage: this.recordsPerPage, currentPage: 1 });
+        }
+      }
     }
   }
 
@@ -95,8 +96,10 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
       this.totalRecords = this.tableData.length;
       this.dataSource = this.tableData;
       this.tempData = this.tableData;
+      if (!this.pagination) {
+        this.dataSource = this.tableData;
+      }
     }
-
   }
 
   deleteConfirmation(data: any): void {
@@ -158,9 +161,69 @@ export class RdsDataTableComponent implements OnInit, DoCheck, OnChanges {
       header.isDecending = !header.isDecending;
     }
     if (!header.isDecending) {
-      this.tableData.sort((a: any, b: any) => (a[header.key].toLowerCase() > b[header.key].toLowerCase()) ? 1 : ((b[header.key].toLowerCase() > a[header.key].toLowerCase()) ? -1 : 0))
+      this.tableData.sort((a: any, b: any) => {
+        if (header.dataType !== 'number') {
+          let _a = a[header.key];
+          let _b = b[header.key];
+          if (a[header.key] !== null && a[header.key] !== '' && a[header.key]) {
+            _a = a[header.key].toLowerCase();
+          } else {
+            _a = '';
+          }
+          if (b[header.key] !== null && b[header.key] !== '' && b[header.key]) {
+            _b = b[header.key].toLowerCase();
+          } else {
+            _b = '';
+          }
+          if (_a > _b) {
+            return 1;
+          } else if (_a < _b) {
+            return -1
+          } else {
+            return 0;
+          }
+        } else {
+          if (a[header.key] > b[header.key]) {
+            return 1;
+          } else if (b[header.key] > a[header.key]) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }
+      })
     } else {
-      this.tableData.sort((a: any, b: any) => (a[header.key].toLowerCase() < b[header.key].toLowerCase()) ? 1 : ((b[header.key].toLowerCase() < a[header.key].toLowerCase()) ? -1 : 0))
+      this.tableData.sort((a: any, b: any) => {
+        if (header.dataType !== 'number') {
+          let _a = a[header.key];
+          let _b = b[header.key];
+          if (a[header.key] !== null && a[header.key] !== '' && a[header.key]) {
+            _a = a[header.key].toLowerCase()
+          } else {
+            _a = '';
+          }
+          if (b[header.key] !== null && b[header.key] !== '' && b[header.key]) {
+            _b = b[header.key].toLowerCase()
+          } else {
+            _b = '';
+          }
+          if (_a < _b) {
+            return 1
+          } else if (_b < _a) {
+            return -1
+          } else {
+            return 0;
+          }
+        } else {
+          if (a[header.key] < b[header.key]) {
+            return 1;
+          } else if (b[header.key] < a[header.key]) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }
+      })
     }
     if (!this.pagination) {
       this.dataSource = this.tableData;

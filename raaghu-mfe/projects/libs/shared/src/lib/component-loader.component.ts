@@ -66,7 +66,7 @@ export class ComponentLoaderComponent implements OnInit, DoCheck, OnChanges {
     }
     if (this.config.output) {
       for (const output of Object.keys(this.config.output)) {
-        this.compRef.instance[output].subscribe(this.config.output[output]);
+        this.compRef.instance[output]?.subscribe(this.config.output[output]);
       }
     }
   }

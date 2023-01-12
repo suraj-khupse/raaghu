@@ -2,5 +2,7 @@
   <rds-label [label]="'Trending Products'" [multiline]="false" [bold]="true" [italic]="false"></rds-label>
 </h4>
 <div class="mt-5">
-  <mfe-loader [config]="RdsCompProductList"></mfe-loader>
+  <!-- <mfe-loader [config]="RdsCompProductList"></mfe-loader> -->
+  <rds-comp-product-list
+  [productListItems]="productListItems"></rds-comp-product-list>
 </div>

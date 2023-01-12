@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RdsCompTenantManagementComponent } from '../../../rds-components/src/app/rds-comp-tenant-management/rds-comp-tenant-management.component';
 import { RdsCompUserManagementComponent } from '../../../rds-components/src/app/rds-comp-user-management/rds-comp-user-management.component';
 import { RdsCompEmailComponent } from '../../../rds-components/src/app/rds-comp-email/rds-comp-email.component';
-import { RdsSecurityComponent } from '../../../rds-components/src/app/rds-comp-security/rds-comp-security.component';
+import { RdsCompSecurityComponent } from '../../../rds-components/src/app/rds-comp-security/rds-comp-security.component';
 import { RdsCompInvoiceComponent } from '../../../rds-components/src/app/rds-comp-invoice/rds-comp-invoice.component';
 import { RdsCompOtherSettingsComponent } from '../../../rds-components/src/app/rds-comp-other-settings/rds-comp-other-settings.component';
 import { EffectsModule } from '@ngrx/effects';
@@ -28,7 +28,7 @@ export default {
         RdsCompTenantManagementComponent,
         RdsCompUserManagementComponent,
         RdsCompEmailComponent,
-        RdsSecurityComponent,
+        RdsCompSecurityComponent,
         RdsCompInvoiceComponent,
         RdsCompOtherSettingsComponent,
         AppComponent

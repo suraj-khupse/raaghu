@@ -30,16 +30,16 @@ export class RdsBadgeComponent implements OnInit {
 
 
     if (this.positioned === true) {
-      clsList.push('position-absolute start-100 top-0 translate-middle')
+      clsList.push('position-absolute badge_icon start-100 translate-middle')
     }
     if (this.badgeType === 'rectangle') {
-      clsList.push('rounded')
+      clsList.push('rounded rectangle')
     }
     if (this.badgeType === 'circle') {
-      clsList.push('rounded-circle')
+      clsList.push('rounded-circle badge-circle')
     }
     if (this.badgeType === 'pill') {
-      clsList.push('rounded-pill')
+      clsList.push('rounded-pill badge-pill')
     }
     if (this.size) {
       clsList.push(this.size)

@@ -19,9 +19,7 @@ export default {
         RdsLabelModule,
         RdsIconModule,
         SharedModule,
-        NgxTranslateModule,
-        StoreModule.forRoot({})
-        
+        NgxTranslateModule,   
       ],
       providers: [
         FormBuilder
@@ -37,7 +35,7 @@ const Template: Story<RdsCompPlanInformationComponent> = (args: RdsCompPlanInfor
   export const Default = Template.bind({});
   Default.args ={
     EditionData: {
-      displayName: 'basic',
+      displayName: 'Premium',
       creationTimeString: '11/16/2021',
       subscriptionDateString: '11/15/2022',
       featureValues: ["Maximum User Count", "Test Check feature", "Test check feature count 1"]

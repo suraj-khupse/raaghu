@@ -1,19 +1,21 @@
-/*------- badge custom properties-------------*/
+// /*------- badge custom properties-------------*/
 
 .badge {
-    padding: $badge-padding-y $badge-padding-x;
-    @include font-size($badge-font-size);
-    font-weight: $font-weight-normal;
-  }
+  padding: $badge-padding-y $badge-padding-x;
+  @include font-size($badge-font-size);
+  font-weight: $font-weight-normal;
+}
 
 .btn {
   .badge {
-    top: 0;
+    top: -7px;   
+    left: 3px;
   }
 }
-.notification-li .badge{
+
+.notification-li .badge {
   top: 0px !important;
-    left: 25px !important;
+  left: 25px !important;
 }
 
 .btn-rounded {
@@ -24,32 +26,26 @@
 html {
   .badge {
     .xlg {
-      // font-size: 2rem;
       font-size: 1.35rem;
     }
 
     .lg {
-      // font-size: 1.5rem;
       font-size: 16px;
     }
 
     .mid {
-      // font-size: 1.17rem;
       font-size: 14px;
     }
 
     .small {
-      // font-size: 1rem;
       font-size: 12px;
     }
 
     .smaller {
-      // font-size: 0.83rem;
       font-size: 10px;
     }
 
     .smallest {
-      // font-size: 0.67rem;
       font-size: 8px;
     }
   }

@@ -8,6 +8,9 @@ import { RdsFabMenuModule } from 'projects/libs/rds-elements/src/rds-fab-menu/sr
 import { RdsWebhooksSubscriptionShimmerComponent } from './rds-webhooks-subscription-shimmer/rds-webhooks-subscription-shimmer.component';
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { CommonModule } from '@angular/common';
+import { RdsCompWebhookSubscriptionModule } from 'projects/rds-components/src/app/rds-comp-webhook-subscription/rds-comp-webhook-subscription.module';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
 
 
 @NgModule({
@@ -22,15 +25,16 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     RdsButtonModule,
-    RdsInputModule,
     RdsFabMenuModule,
-    RdsTextareaModule,
     RdsOffcanvasModule,
     RdsIconModule,
     SharedModule,
     RdsBannerModule,
     NgxShimmerLoadingModule,
     NgxTranslateModule.forRoot(),
+    RdsCompWebhookSubscriptionModule,
+    RdsCompDataTableModule,
+    RdsCompAlertModule
     
   ],
   providers: [],

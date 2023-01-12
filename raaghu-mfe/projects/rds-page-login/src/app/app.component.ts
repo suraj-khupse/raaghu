@@ -1,7 +1,6 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService, AlertTypes, AppSessionService, ComponentLoaderOptions, MfeBaseComponent, TenantServiceProxy, UserAuthService } from '@libs/shared';
+import { AlertService, AlertTypes, AppSessionService, ComponentLoaderOptions, MfeBaseComponent, UserAuthService } from '@libs/shared';
 import { AuthenticateModel, AuthenticateResultModel, TokenAuthServiceProxy } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { XmlHttpRequestHelper } from 'projects/libs/shared/src/lib/XmlHttpRequestHelper';
@@ -16,38 +15,38 @@ declare var bootstrap: any;
 })
 export class AppComponent extends MfeBaseComponent implements OnInit {
   currentAlerts: any = [];
-  public rdsAlertMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompAlert',
-    input: {
-      currentAlerts: this.currentAlerts,
-      alertPosition: 'top'
-    },
-    output: {
-      onAlertHide: (event: any) => {
-        this.currentAlerts = event;
-      }
-    }
-  }
-  rdsLoginMfeConfig: ComponentLoaderOptions;
+  // public rdsAlertMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompAlert',
+  //   input: {
+  //     currentAlerts: this.currentAlerts,
+  //     alertPosition: 'top'
+  //   },
+  //   output: {
+  //     onAlertHide: (event: any) => {
+  //       this.currentAlerts = event;
+  //     }
+  //   }
+  // }
   authenticateModal: AuthenticateModel;
   authenticateResult: AuthenticateResultModel;
   rememberMe: boolean = false;
   loginTokenExpiryDate = 0;
   acessTokenExpiryDate: any;
   refreshTokenExpiryDate: any;
-  loadingshimmer: boolean = true;
+  loadingshimmer: boolean = false;
   tenancyName: string = '';
+  probableTenancyName ='';
+  buttonSpinnerForChangeTenant: boolean;
+  buttonSpinner: boolean;
   constructor(
     private injector: Injector,
     private _userAuthService: UserAuthService,
     private _router: Router,
     private _tokenAuthService: TokenAuthServiceProxy,
     private store: Store,
-    private http: HttpClient,
     private alertService: AlertService,
     private sessionService: AppSessionService,
     private activatedRoute: ActivatedRoute,
-    private tenantService: TenantServiceProxy
   ) {
     super(injector);
     this.authenticateModal = new AuthenticateModel();
@@ -73,38 +72,14 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
     this.tenancyName = tenantInfo && tenantInfo.name ? tenantInfo.name : 'Not Selected';
 
-    this.rdsLoginMfeConfig = {
-      name: 'RdsLogin',
-      input: {
-        rememeberMe: true,
-        TenancyName: this.tenancyName,
-        buttonSpinner: false
-      },
-      output: {
-        onSwitchTenant: (data: any) => {
-          this.insertTenant(data);
-        },
-        onLogin: (data: any) => {
-          this.authenticateModal.userNameOrEmailAddress = data.userEmail;
-          this.authenticateModal.password = data.userPassword;
-          this.authenticateModal.rememberClient = data.rememberme;
-          this.authenticate();
-        },
-        onShimmerLoad: (event: any) => {
-          this.loadingshimmer = false;
-        }
-      }
-    };
     if (this.sessionService.user) {
       this._router.navigateByUrl('pages/dashboard');
     }
     this.store.select(selectTenant).subscribe(res => {
       if (res) {
-        const mfeConfig = this.rdsLoginMfeConfig;
         if (res.state === 1 && res.tenantId !== null) {
-          mfeConfig.input.TenancyName = this.tenancyName;
-          mfeConfig.input.buttonSpinnerForChangeTenant = false;
-          this.rdsLoginMfeConfig = mfeConfig;
+          this.tenancyName = this.probableTenancyName;
+          this.buttonSpinnerForChangeTenant = false;
           if (this.tenancyName && this.tenancyName !== null && this.tenancyName !== 'Not Selected') {
             localStorage.setItem('tenantInfo', JSON.stringify({
               id: res.tenantId,
@@ -119,10 +94,9 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         } else if (res.state === 0 || res.state > 1) {
           this.alertService.showAlert('Failed', 'Tenancy "' + this.tenancyName + '" is not available', AlertTypes.Error)
           localStorage.removeItem('tenantInfo');
-          mfeConfig.input.TenancyName = 'Not Selected';
-          mfeConfig.input.buttonSpinnerForChangeTenant = false;
+          this.tenancyName = 'Not Selected';
+          this.buttonSpinnerForChangeTenant = false;
           // mfeConfig.input.buttonSpinner = false;
-          this.rdsLoginMfeConfig = mfeConfig;
         }
 
       }
@@ -135,17 +109,16 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
       const tenantData: any = {
         tenancyName: data,
       }
-      this.tenancyName = data;
+      this.probableTenancyName = data;
       this.store.dispatch(ValidateTenantName(tenantData));
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig
+      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+      this.currentAlerts=[]
+      // rdsAlertMfeConfig.input.currentAlerts = [];
+      // this.rdsAlertMfeConfig = rdsAlertMfeConfig
     } else {
-      const mfeConfig = this.rdsLoginMfeConfig;
       localStorage.removeItem('tenantInfo');
-      mfeConfig.input.TenancyName = 'Not Selected';
-      mfeConfig.input.buttonSpinnerForChangeTenant = false;
-      this.rdsLoginMfeConfig = mfeConfig;
+      this.tenancyName = 'Not Selected';
+      this.buttonSpinnerForChangeTenant = false;
       var myModalEl = document.getElementById('ChangeTenant');
       var modal = bootstrap.Modal.getInstance(myModalEl)
       modal.hide();
@@ -159,20 +132,31 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         type: alert.type,
         title: alert.title,
         message: alert.message,
+        sticky : false
       };
       this.currentAlerts.push(currentAlert);
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+      // rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
+      // this.rdsAlertMfeConfig = rdsAlertMfeConfig;
     });
     // this.alertService.showAlert('title','Invalid user name or password','danger')
   }
 
-
+  onSwitchTenant(event):void {
+    this.insertTenant(event);
+  }
+  onLogin(event: any):void {
+    this.authenticateModal.userNameOrEmailAddress = event.userEmail;
+    this.authenticateModal.password = event.userPassword;
+    this.authenticateModal.rememberClient = event.rememberme;
+    this.authenticate();
+  }
+  onShimmerLoad(event: any):void {
+    this.loadingshimmer = false;
+  }
 
   authenticate(redirectUrl?: string): void {
-    const mfeConfig = this.rdsLoginMfeConfig
-    mfeConfig.input.buttonSpinner = true;
+    this.buttonSpinner = true;
     this._tokenAuthService.authenticate(this.authenticateModal).subscribe({
       next: (result: AuthenticateResultModel) => {
         this.processAuthenticateResult(result, redirectUrl);
@@ -181,7 +165,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         }));
       },
       error: (err: any) => {
-        mfeConfig.input.buttonSpinner = false;
+        this.buttonSpinner = false;
         this.alertService.showAlert('title', 'Invalid user name or password', 'error')
       },
     });
@@ -203,9 +187,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         refreshTokenExpireDate: refreshTokenExpireDate,
         date: Date.now() + tokenExpireDate
       }));
-      const mfeConfig = this.rdsLoginMfeConfig
-      mfeConfig.input.buttonSpinner = true;
-      this.rdsLoginMfeConfig = mfeConfig;
+      this.buttonSpinner = true;
       this._userAuthService.authenticateUser();
       this.store.dispatch(GetProfilePicture());
       this.store.dispatch(GetSubscriptionExpiringData());
@@ -238,6 +220,10 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         this.processAuthenticateResult(result)
       }
       , this);
+  }
+
+  onAlertHide (event: any) {
+    this.currentAlerts = event;
   }
 }
 

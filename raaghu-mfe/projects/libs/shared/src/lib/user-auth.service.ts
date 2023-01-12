@@ -1,14 +1,11 @@
 import { Inject, Injectable, OnInit, Optional } from '@angular/core';
 import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 'rxjs/operators';
 import { throwError as _observableThrow, of as _observableOf, Observable, Subject } from 'rxjs';
-import { SendPasswordResetCodeInput } from './service-proxies';
-import { LocalStorageService } from './local-storage.service';
+import { API_BASE_URL, SendPasswordResetCodeInput } from './service-proxies';
 import { Router } from '@angular/router';
 import { AppSessionService } from './app-session.service';
 import { Store } from '@ngrx/store';
 import { XmlHttpRequestHelper } from './XmlHttpRequestHelper';
-import { API_BASE_URL } from './service-proxies';
-
 
 @Injectable()
 export class UserAuthService implements OnInit {
@@ -22,7 +19,6 @@ export class UserAuthService implements OnInit {
   sources: Observable<any>;
   index$ = new Subject();
   constructor(
-    private localStorage: LocalStorageService,
     private router: Router,
     private sessionService: AppSessionService,
     private store: Store,
@@ -97,13 +93,13 @@ export class UserAuthService implements OnInit {
     );
   }
 
-  unauthenticateUser(reload?:boolean,returnUrl?:string): void {
+  unauthenticateUser(reload?: boolean, returnUrl?: string): void {
     this.userAuthenticated = false;
     let customHeaders = this.requestHeaders();
     localStorage.removeItem('LoginCredential');
+    localStorage.removeItem('storedPermissions');
     localStorage.removeItem('tenantInfo');
     localStorage.removeItem('THEME');
-    this.sessionService.init();
 
     XmlHttpRequestHelper.ajax(
       'GET',
@@ -111,15 +107,19 @@ export class UserAuthService implements OnInit {
       customHeaders,
       null,
       () => {
-        this.getUserConfiguration('logout'); 
-        if(reload){
+        this.getUserConfiguration('logout');
+        this.sessionService.init();
+        let url = window.location.href;
+        url = url.substring(0, url.indexOf("/pages"));
+        if (reload) {
           if (returnUrl) {
             location.href = returnUrl;
+          } else {
+            location.href = url + "/login";
+          }
         } else {
-            location.href = '';
-        } 
-        }      
-   
+          location.href = url + "/login";
+        }
       }
     );
   }
@@ -136,7 +136,7 @@ export class UserAuthService implements OnInit {
     return _observableOf(this.sources);
   }
 
-  getVisualSettingIndex(value){
+  getVisualSettingIndex(value) {
     this.index$.next(value)
   }
 }

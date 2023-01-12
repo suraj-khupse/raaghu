@@ -121,7 +121,14 @@
         <div class="row pe-0">
           <div class="col-md-6 mb-3 pe-0">
             <div class="from-group">
-              <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'" [submit]="true"
+              <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'" [isOutline]="true" [submit]="true"
+                [label]="'Cancel'" [isDisabled]="!applicantDetailsForm.valid">
+              </rds-button>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 pe-0">
+            <div class="from-group">
+              <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'"  [submit]="true"
                 [label]="'Apply Now'" (click)="openConfirmationPopup()" [isDisabled]="!applicantDetailsForm.valid">
               </rds-button>
             </div>

@@ -38,6 +38,7 @@ module.exports = {
             shared: share({
                 "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+                "@angular/platform-browser/animations": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@angular/forms": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
@@ -47,9 +48,9 @@ module.exports = {
                 "@ngx-translate/http-loader": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "rxjs": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 ...sharedMappings.getDescriptors()
-            })
-
-        }),
+              })
+        
+            }),
         sharedMappings.getPlugin()
     ],
 };

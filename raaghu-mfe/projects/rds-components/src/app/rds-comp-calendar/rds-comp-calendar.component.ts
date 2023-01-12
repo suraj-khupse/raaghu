@@ -36,7 +36,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 import { WeekViewHourSegment } from 'projects/libs/rds-elements/src/rds-calendar/src/calendar-utils';
 import { finalize, takeUntil } from 'rxjs/operators';
-
+import { Dropdown } from 'bootstrap'
 function floorToNearest(amount: number, precision: number) {
   return Math.floor(amount / precision) * precision;
 }
@@ -59,7 +59,6 @@ export class CustomEventTitleFormatter extends CalendarEventTitleFormatter {
     }
   }
 }
-
 
 declare let bootstrap: any;
 @Component({
@@ -99,7 +98,8 @@ export class RdsCompCalendarComponent implements OnInit {
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
   @Output() onContinue = new EventEmitter<any>();
-
+  show: boolean = false;
+  id: string = 'dropdownbutton';
   view: CalendarView = CalendarView.Month;
   viewCanvas: boolean = false;
   canvasTitle: string = '';
@@ -133,10 +133,10 @@ export class RdsCompCalendarComponent implements OnInit {
     },
   ];
 
-   refreshed = new Subject<void>();
+  refreshed = new Subject<void>();
   eventData: CalendarEvent = {
     start: new Date(),
-    end:  new Date(),
+    end: new Date(),
     title: '',
     color: this.colors,
     draggable: true,
@@ -146,12 +146,14 @@ export class RdsCompCalendarComponent implements OnInit {
     },
   };
 
-  @Input() events: CalendarEvent[] = [
-  ];
+  @Input() events: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(public translate: TranslateService , private cdr: ChangeDetectorRef) {}
+  constructor(
+    public translate: TranslateService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {}
 
@@ -175,11 +177,10 @@ export class RdsCompCalendarComponent implements OnInit {
     newStart,
     newEnd,
   }: CalendarEventTimesChangedEvent): void {
-      event.start = newStart;
-      event.end = newEnd;
-      this.refreshed.next();
-    }
-  
+    event.start = newStart;
+    event.end = newEnd;
+    this.refreshed.next();
+  }
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.viewCanvas = true;
@@ -188,8 +189,8 @@ export class RdsCompCalendarComponent implements OnInit {
     if (event) {
       this.canvasTitle = 'EDIT EVENT';
       this.eventData.title = event.title;
-      this.eventData.start =new Date(event.start);
-      debugger
+      this.eventData.start = new Date(event.start);
+      debugger;
       this.eventData.end = new Date(event.end);
     } else {
     }
@@ -204,9 +205,9 @@ export class RdsCompCalendarComponent implements OnInit {
 
   addEvent(eventCreationForm: NgForm): void {
     eventCreationForm.form.markAllAsTouched();
-      const event = this.events.find((x: any) => +x.id === +this.selectedId);
-      event.title = this.eventData.title;
-      event.draggable = true;
+    const event = this.events.find((x: any) => +x.id === +this.selectedId);
+    event.title = this.eventData.title;
+    event.draggable = true;
     this.onContinue.emit(this.events);
     eventCreationForm.reset();
     this.viewCanvas = false;
@@ -217,9 +218,7 @@ export class RdsCompCalendarComponent implements OnInit {
       (event) => +event.id === this.selectedId
     );
     this.events.splice(index, 1);
-    this.events = [
-      ...this.events
-    ];
+    this.events = [...this.events];
     this.selectedId = '';
     eventCreationForm.reset();
     this.viewCanvas = false;
@@ -236,7 +235,6 @@ export class RdsCompCalendarComponent implements OnInit {
   close(eventCreationForm: NgForm): void {
     this.viewCanvas = false;
     eventCreationForm.reset();
-
   }
 
   startDragToCreate(
@@ -259,38 +257,48 @@ export class RdsCompCalendarComponent implements OnInit {
     };
     this.events = [...this.events, dragToSelectEvent];
     const segmentPosition = segmentElement.getBoundingClientRect();
-    this.dragToCreateActive = true; 
+    this.dragToCreateActive = true;
     const endOfView = endOfWeek(this.viewDate, {
       weekStartsOn: this.weekStartsOn,
     });
     fromEvent(document, 'mousemove')
-    .pipe(
-      finalize(() => {
-        delete dragToSelectEvent.meta.tmpEvent;
-        this.dragToCreateActive = false;
+      .pipe(
+        finalize(() => {
+          delete dragToSelectEvent.meta.tmpEvent;
+          this.dragToCreateActive = false;
+          this.refresh();
+        }),
+        takeUntil(fromEvent(document, 'mouseup'))
+      )
+      .subscribe((mouseMoveEvent: MouseEvent) => {
+        const minutesDiff = ceilToNearest(
+          mouseMoveEvent.clientY - segmentPosition.top,
+          30
+        );
+        const daysDiff =
+          floorToNearest(
+            mouseMoveEvent.clientX - segmentPosition.left,
+            segmentPosition.width
+          ) / segmentPosition.width;
+        const newEnd = addDays(addMinutes(segment.date, minutesDiff), daysDiff);
+        if (newEnd > segment.date && newEnd < endOfView) {
+          dragToSelectEvent.end = newEnd;
+        }
         this.refresh();
-      }),
-      takeUntil(fromEvent(document, 'mouseup'))
-    )
-    .subscribe((mouseMoveEvent: MouseEvent) => {
-      const minutesDiff = ceilToNearest(
-        mouseMoveEvent.clientY - segmentPosition.top,
-        30
-      );
-      const daysDiff =
-      floorToNearest(
-        mouseMoveEvent.clientX - segmentPosition.left,
-        segmentPosition.width
-      ) / segmentPosition.width;
-      const newEnd = addDays(addMinutes(segment.date, minutesDiff), daysDiff);
-      if (newEnd > segment.date && newEnd < endOfView) {
-        dragToSelectEvent.end = newEnd;
-      }
-      this.refresh();
-    });
+      });
   }
   private refresh() {
     this.events = [...this.events];
     this.cdr.detectChanges();
+  }
+
+  public get classes() : any[]{
+    return ['btn btn-outline-primary dropdown-toggle']
+  }
+  open(): void {
+    this.show = !this.show;
+    var element: any = document.getElementById(this.id);
+    var dropdown = new Dropdown(element);
+    dropdown.show();
   }
 }

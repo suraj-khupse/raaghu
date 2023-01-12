@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-12  pb-3 desktop-btn">
       <div class="d-flex justify-content-end">
-        <rds-button [tooltipPlacement]="'bottom'" [tooltipTitle]="translate.instant('SAVE ALL')" [id]="'saveAll'"
+        <rds-button  [id]="'saveAll'"
           [label]="translate.instant('SAVE ALL')" [showLoadingSpinner]="showLoadingSpinner" type="button" [size]="'small'" [colorVariant]="'primary'"
-          [isOutline]="false" (click)="onSave()" icon="save" iconHeight="15px" iconWidth="15px"></rds-button>
+          [isOutline]="false" (click)="onSave()" icon="save" iconHeight="13px" iconWidth="13px"></rds-button>
       </div>
     </div>
   </div>
@@ -20,10 +20,6 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card border-0 py-2 px-4 h-100 rounded-0 card-full-stretch ">
-
-          <!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
-          <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-        </ng-container>-->
           <div>
 
           </div>
@@ -34,32 +30,60 @@
             <div class="tab-pane fade show active" id="tenant-management" role="tabpanel"
               aria-labelledby="nav-home-tab">
               <div class="row">
-                <mfe-loader [config]="rdsCompTenantManageMfeConfig"></mfe-loader>
+                <rds-comp-tenant-management [settings]="tenantmanagementData" 
+                  [settingsTenantEditionList]="settingsTenantEditionList"
+                  (tenantManagementData)="tenantManagementData($event)"
+                ></rds-comp-tenant-management>
               </div>
             </div>
             <div class="tab-pane fade" id="user-management" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <mfe-loader [config]="rdsCompUserManagementsMfeConfig"></mfe-loader>
+                <rds-comp-user-management
+                  [Usermanagementsettings]="usermanagementdata"
+                  [editShimmer]="editShimmerForUserMangement"
+                  (UserManagementData)="UserManagementData($event)"
+                ></rds-comp-user-management>
               </div>
             </div>
             <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <mfe-loader [config]="rdsCompSecurityMfeConfig"></mfe-loader>
+                <!-- <mfe-loader [config]="rdsCompSecurityMfeConfig"></mfe-loader> -->
+                <rds-comp-security
+                  [Seccuritysetting]="securityData"
+                  [editShimmer]="editShimmerForSecurity"
+                  (securityData)="securityDataFunction($event)"
+                ></rds-comp-security>
               </div>
             </div>
             <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <mfe-loader [config]="rdsCompEmailMfeConfig"></mfe-loader>
+                <!-- <mfe-loader [config]="rdsCompEmailMfeConfig"></mfe-loader> -->
+                <rds-comp-email
+                  [EmailData]="emailData"
+                  [editShimmer]="editShimmerForEmail"
+                  (EmailDataEmitter)="EmailData($event)"
+                  (SendTestEmailData)="SendTestEmailData($event)"
+                ></rds-comp-email>
               </div>
             </div>
             <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <mfe-loader [config]="rdsCompInvoiceMfeConfig"></mfe-loader>
+                <!-- <mfe-loader [config]="rdsCompInvoiceMfeConfig"></mfe-loader> -->
+                <rds-comp-invoice>
+                  [InvoiceDataForm]="invoiceInfoData"
+                  [editShimmer]="editShimmerForInvoice"
+                  (InvoiceData)="InvoiceData($event)"
+                </rds-comp-invoice>
               </div>
             </div>
             <div class="tab-pane fade" id="other-settings" role="tabpanel" aria-labelledby="nav-home-tab">
               <div class="row">
-                <mfe-loader [config]="rdsCompOtherSettingsMfeConfig"></mfe-loader>
+                <!-- <mfe-loader [config]="rdsCompOtherSettingsMfeConfig"></mfe-loader> -->
+                <rds-comp-other-settings
+                  [OtherSetting]="otherSettingData"
+                  [editShimmer]="editShimmerForOtherSettings"
+                  (OtherSettingData)="OtherSettingData($event)"
+                ></rds-comp-other-settings>
               </div>
             </div>
           </div>

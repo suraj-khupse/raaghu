@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RdsCompMarketingWebsiteNewsletterComponent implements OnInit {
 
-  @Input() templateType: 'Template_1' | 'Template_2' | 'Template_3' | 'Template_4';
+  @Input() templateType: 'with_image' | 'with_CTA' | 'with_discount_offer' | 'with_email_input';
   @Input() companyLogo?: string;
   @Input() EmailID: string;
   @Output() onFindCare = new EventEmitter<any>();

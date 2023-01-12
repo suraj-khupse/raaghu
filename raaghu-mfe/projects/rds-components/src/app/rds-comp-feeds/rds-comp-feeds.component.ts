@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as moment from 'moment';
-
+import * as moment_ from 'moment';
+const moment = moment_;
 
 @Component({
   selector: 'rds-comp-feeds',

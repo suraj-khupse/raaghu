@@ -7,9 +7,11 @@ import { SharedModule, NgxTranslateModule } from '@libs/shared';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RdsSideNavModule } from '@libs/rds-elements';
-import { RdsBigNumberWidgetModule, RdsChartStackedModule, RdsButtonModule, RdsChartBarHorizontalModule, RdsChartBoolModule, RdsChartDoughnutModule, RdsDropdownModule,RdsChartPieModule, RdsChartAreaModule, RdsDatepickerModule, RdsChartLineModule } from '@libs/rds-elements';
-import { RdsWidgetModule } from 'projects/libs/rds-elements/src/rds-widget/src/public-api';
+import {
+  RdsSideNavModule, RdsWidgetModule, RdsBigNumberWidgetModule, RdsChartStackedModule, RdsButtonModule,
+  RdsChartBarHorizontalModule, RdsChartBoolModule, RdsChartDoughnutModule, RdsDropdownModule, RdsChartPieModule, RdsChartAreaModule, RdsDatepickerModule, RdsChartLineModule
+} from '@libs/rds-elements';
+import { RdsCompAdminDashboardModule } from '../../../rds-components/src/app/rds-comp-admin-dashboard/rds-comp-admin-dashboard.module'
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { RdsWidgetModule } from 'projects/libs/rds-elements/src/rds-widget/src/p
     NgxTranslateModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    RdsCompAdminDashboardModule,
     RdsSideNavModule,
     HttpClientModule,
     RdsDropdownModule,

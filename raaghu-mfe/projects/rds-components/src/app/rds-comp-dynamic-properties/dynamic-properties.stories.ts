@@ -1,12 +1,10 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsAccordionModule, RdsAppDetailsComponent, RdsButtonComponent, RdsButtonModule, RdsCardModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
+import {  RdsButtonModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsCheckboxModule } from '@libs/rds-checkbox';
 import { RdsCompDynamicPropertiesComponent } from './rds-comp-dynamic-properties.component';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
-import { RdsCompInformationShimmerComponent } from '../rds-comp-information/rds-comp-information-shimmer/rds-comp-information-shimmer.component';
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
 import { RdsCompInformationComponent } from '../rds-comp-information/rds-comp-information.component';
 import { StoreModule } from '@ngrx/store';
@@ -25,7 +23,8 @@ export default {
         NgxTranslateModule, RdsOffcanvasModule, RdsNavTabModule,
         RdsPaginationModule,
         FormsModule, ReactiveFormsModule,
-        RdsButtonModule, StoreModule.forRoot({}),
+        SharedModule,
+        RdsButtonModule,
         RdsSearchInputModule,
         RdsOffcanvasModule, RdsInputModule, RdsIconModule, RdsSelectListModule,
       ],
@@ -36,7 +35,7 @@ export default {
       ],
 
     })
-  ]
+  ],
 } as Meta;
 
 const Template: Story<RdsCompDynamicPropertiesComponent> = (args: RdsCompDynamicPropertiesComponent) => ({

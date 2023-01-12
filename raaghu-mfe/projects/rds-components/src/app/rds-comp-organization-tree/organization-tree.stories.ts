@@ -2,8 +2,7 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsOffcanvasModule } from '@libs/rds-elements';
-import { RdsOrganizationTreeComponent } from './rds-comp-organization-tree.component';
-import { OrganizationTreeNode, OrganizationTreeLabeles, OrganizationTreeType } from '../../models/organization-tree.model';
+import { RdsCompOrganizationTreeComponent } from './rds-comp-organization-tree.component';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsIconModule } from '@libs/rds-icon';
 import { RdsCompAlertPopupComponent } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
@@ -11,7 +10,7 @@ import { NestGroupDirective } from '../rds-comp-hierarchy/node-label.directive';
 
 export default {
   title: 'Components/Organization Tree',
-  component: RdsOrganizationTreeComponent,
+  component: RdsCompOrganizationTreeComponent,
   decorators: [
     moduleMetadata({
       imports: [
@@ -37,7 +36,7 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsOrganizationTreeComponent> = (args: RdsOrganizationTreeComponent) => ({
+const Template: Story<RdsCompOrganizationTreeComponent> = (args: RdsCompOrganizationTreeComponent) => ({
   props: {
     ...args
 

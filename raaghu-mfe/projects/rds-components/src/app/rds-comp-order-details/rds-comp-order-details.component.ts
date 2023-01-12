@@ -33,7 +33,7 @@ export class RdsCompOrderDetailsComponent implements OnInit {
   @Output()
   onload = new EventEmitter<any>();
 
-  @Input()  itemList:orderDetails[]=[]
+  @Input()  itemList:any[]=[];
   
   
 

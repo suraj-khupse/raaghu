@@ -7,37 +7,33 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 declare var bootstrap: any;
 @Component({
-  selector: 'rds-login-comp',
+  selector: 'rds-comp-login',
   templateUrl: './rds-comp-login.component.html',
   styleUrls: ['./rds-comp-login.component.scss'],
 })
 export class RdsLoginComponent implements OnInit, OnChanges {
-  @Input() userNameData: any;
-  @Input() userPasswordData: any;
-  @Input() rememeberMe: boolean;
-  @Input() TenantNameData: any;
-  @Input() TenancyName: string;
-  @Input() TenantName: string;
-  @Input() UserName: string = 'Email/Username';
-  @Input() Password: string = 'Password';
+  userNameData: any;
+  userPasswordData: any;
+  rememeberMe: boolean;
+  TenantNameData: any;
+  @Input() tenancyName: string;
+  UserName: string = 'Email/Username';
+  Password: string = 'Password';
   buttonLabel: string = 'Login';
   buttonLabelUp: string = 'Signup'
-  @Input() buttonColorType: string = 'secondary';
-  @Input() buttonColorTypeUp: string = 'light';
   checkboxTitle: string = 'Remember me';
-  // @Output() onRememberMeToggle = new EventEmitter<Event>();
-  @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
+  Modallabel : string = 'Switch to the host';
   @Output() onLogin: EventEmitter<any> = new EventEmitter<any>();
   @Output() onSwitchTenant: EventEmitter<any> = new EventEmitter<any>();
   @Output() onShimmerLoad: EventEmitter<any> = new EventEmitter<any>();
-  @Input() tenantdisabled: boolean;
-  @Input() disabledSwitchTenant: boolean = true;
+  tenantdisabled: boolean;
+  disabledSwitchTenant: boolean = true;
 
-  @Input() switchTenant: boolean = false;
+  switchTenant: boolean = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   @Input() buttonSpinner: boolean = false;
   @Input() buttonSpinnerForChangeTenant: boolean = false;
@@ -80,8 +76,10 @@ export class RdsLoginComponent implements OnInit, OnChanges {
 
   switchTenanat(event: any) {
     this.switchTenant = event;
+    this.Modallabel = this.translate.instant('Switch to the tenant');
     if (!event) {
       this.TenantNameData = '';
+      this.Modallabel = this.translate.instant('Switch to the host');
     }
   }
   back() {
@@ -99,6 +97,6 @@ export class RdsLoginComponent implements OnInit, OnChanges {
         this.switchTenant = true;
       }
     }
-
+    
   }
 }

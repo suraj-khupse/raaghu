@@ -45,14 +45,14 @@ Default.args = {
   }
 }
 
-export const LeftAligned = Template.bind({});
-LeftAligned.parameters = { controls: { include: ['display_type', 'item', 'position'] } };
-LeftAligned.args = {
+export const WithIllustrationLeftAlign = Template.bind({});
+WithIllustrationLeftAlign.parameters = { controls: { include: ['display_type', 'item', 'position'] } };
+WithIllustrationLeftAlign.args = {
   display_type: 'Left Aligned',
   item:
   {
     id: 3,
-    icon:"../assets/benefit_type1.svg",
+    icon:"../assets/benefit_type1.png",
     iconHeight: "40px",
     iconWidth: "40px",
     title: "Free delivery all year long",
@@ -60,9 +60,9 @@ LeftAligned.args = {
   },
 }
 
-export const centreAligned = Template.bind({});
-centreAligned.parameters = { controls: { include: ['display_type', 'item'] } };
-centreAligned.args = {
+export const WithIllustrationCentreAlign = Template.bind({});
+WithIllustrationCentreAlign.parameters = { controls: { include: ['display_type', 'item'] } };
+WithIllustrationCentreAlign.args = {
   display_type: 'Centre Aligned',
   item:
   {
@@ -82,7 +82,7 @@ WithLabel.args = {
   item:
   {
     id: 7,
-    icon: "../assets/benefit_type1.svg",
+    icon: "../assets/benefit_type1.png",
     status: 'Active',
     iconHeight: "40px",
     iconWidth: "40px",
@@ -91,9 +91,9 @@ WithLabel.args = {
   }
 }
 
-export const WithoutLabel = Template.bind({});
-WithoutLabel.parameters = { controls: { include: ['display_type', 'item'] } };
-WithoutLabel.args = {
+export const WithHeadingAndLabelCentreAlign = Template.bind({});
+WithHeadingAndLabelCentreAlign.parameters = { controls: { include: ['display_type', 'item'] } };
+WithHeadingAndLabelCentreAlign.args = {
   display_type: 'Without Label',
   item:
   {

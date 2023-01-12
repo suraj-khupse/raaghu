@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
+// import { ComponentLoaderOptions } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 
 export class Secrets {
   public type: any;
-  public value: any; 
+  public value: any;
   public expiration: any;
   public description: any;
 }
@@ -15,11 +15,11 @@ export class Secrets {
   styleUrls: ['./rds-comp-secrets.component.scss']
 })
 export class RdsCompSecretsComponent implements OnInit {
-  rdsApiSecretsTableMfeConfig: ComponentLoaderOptions;
+  // rdsApiSecretsTableMfeConfig: ComponentLoaderOptions;
 
-  constructor() {}
+  constructor() { }
 
-  @Input() secretList:any=[];
+  @Input() secretList: any = [];
 
   @Input() apiSecretTableHeader: TableHeader[] = [
     {
@@ -56,57 +56,76 @@ export class RdsCompSecretsComponent implements OnInit {
     },
   ];
 
-  @Input() apiSecretsTableData: any = ([] = [
-    { type: 'SharedSecrets', value: '1121', expiration:'22/04/2022', description: 'Shared Secret Value' },
+  @Input() tableData: any = ([] = [
+    { type: 'SharedSecrets', value: '1121', expiration: '22/04/2022', description: 'Shared Secret Value' },
     {
       type: 'SharedSecrets',
       value: '1121',
-      expiration:'22/04/2022',
+      expiration: '22/04/2022',
       description: 'Shared Secret Value',
-    },    {
+    }, {
       type: 'SharedSecrets',
       value: '1121',
-      expiration:'22/04/2022',
+      expiration: '22/04/2022',
       description: 'Shared Secret Value',
     },
   ]);
 
-  ngOnInit(): void {
-    this.rdsApiSecretsTableMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.apiSecretTableHeader,
-        tableStyle: 'light',
-        width: '100%',
-        tableData: this.secretList,
-        recordsPerPage: 10,
-        pagination: false,
-        isInlineEdit: false,
-        actions: [{ id: 'delete', displayName: 'Delete' }],
-        noDataTitle:'Currently you do not have secrets'
-      },
-      output: {
-        onActionSelection:(event:any)=>{
-          if(event.actionId==='delete'){
-            const index = this.apiSecretsTableData.findIndex(
-              (x: any) => x.userId === event.selectedData.userId
-            );
-            if (index !== -1) {
-              this.apiSecretsTableData.splice(index, 1);
-              const mfeConfig = this.rdsApiSecretsTableMfeConfig;
-              mfeConfig.input.tableData = [...this.apiSecretsTableData];
-              this.rdsApiSecretsTableMfeConfig = mfeConfig;
-            }
-          }
+  actions: any = [{ id: 'delete', displayName: 'Delete' }];
 
-        }
-      },
-    };
+  ngOnInit(): void {
+    // this.rdsApiSecretsTableMfeConfig = {
+    //   name: 'RdsDataTable',
+    //   input: {
+    //     tableHeaders: this.apiSecretTableHeader,
+    //     tableStyle: 'light',
+    //     width: '100%',
+    //     tableData: this.secretList,
+    //     recordsPerPage: 10,
+    //     pagination: false,
+    //     isInlineEdit: false,
+    //     actions: [{ id: 'delete', displayName: 'Delete' }],
+    //     noDataTitle: 'Currently you do not have secrets'
+    //   },
+    //   output: {
+    //     onActionSelection: (event: any) => {
+    //       if (event.actionId === 'delete') {
+    //         const index = this.tableData.findIndex(
+    //           (x: any) => x.userId === event.selectedData.userId
+    //         );
+    //         if (index !== -1) {
+    //           this.tableData.splice(index, 1);
+    //           const mfeConfig = this.rdsApiSecretsTableMfeConfig;
+    //           mfeConfig.input.tableData = [...this.tableData];
+    //           this.rdsApiSecretsTableMfeConfig = mfeConfig;
+    //         }
+    //       }
+
+    //     }
+    //   },
+    // };
   }
 
-  addSecrets(){
-    this.secretList.push(this.apiSecretsTableData)
-    this.apiSecretsTableData = {
+  onActionSelection(event: any) {
+    {
+      if (event.actionId === 'delete') {
+        const index = this.tableData.findIndex(
+          (x: any) => x.userId === event.selectedData.userId
+        );
+        if (index !== -1) {
+          this.tableData.splice(index, 1);
+          // const mfeConfig = this.rdsApiSecretsTableMfeConfig;
+          // mfeConfig.input.tableData = [...this.tableData];
+          // this.rdsApiSecretsTableMfeConfig = mfeConfig;
+        }
+      }
+
+    }
+  };
+
+  addSecrets() {
+    this.secretList.push(this.tableData)
+    this.tableData = {
       type: '',
       value: '',
       expiration: '',

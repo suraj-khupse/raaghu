@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     subscriptionDateString: '',
     featureValues: []
   };
-  rdsDataTableForPaymentHistoryMfeConfig: ComponentLoaderOptions;
+  // rdsDataTableForPaymentHistoryMfeConfig: ComponentLoaderOptions;
   tableHeadersForPayment: TableHeader[] = [
     {
       displayName: 'Invoice',
@@ -203,16 +203,16 @@ export class AppComponent implements OnInit {
         this.navtabsItems[0].label=this.translate.instant('Subscription Information');
       }
     })
-    this.rdsDataTableForPaymentHistoryMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableData: this.tableDataForPayment,
-        tableHeaders: this.tableHeadersForPayment,
-        recordsPerPage: 10,
-        width: '100%',
-        pagination: true,
-      },
-    };
+    // this.rdsDataTableForPaymentHistoryMfeConfig = {
+    //   name: 'RdsDataTable',
+    //   input: {
+    //     tableData: this.tableDataForPayment,
+    //     tableHeaders: this.tableHeadersForPayment,
+    //     recordsPerPage: 10,
+    //     width: '100%',
+    //     pagination: true,
+    //   },
+    // };
 
 
 
@@ -273,33 +273,33 @@ export class AppComponent implements OnInit {
           }
           this.tableDataForPayment.push(item);
         });
-        const mfeConfig = this.rdsDataTableForPaymentHistoryMfeConfig
-        mfeConfig.input.tableData = [... this.tableDataForPayment];
-        this.rdsDataTableForPaymentHistoryMfeConfig = mfeConfig;
-        console.log(this.tableDataForPayment);
+        // const mfeConfig = this.rdsDataTableForPaymentHistoryMfeConfig
+        // mfeConfig.input.tableData = [... this.tableDataForPayment];
+        // this.rdsDataTableForPaymentHistoryMfeConfig = mfeConfig;
+        // console.log(this.tableDataForPayment);
       }
     })
 
   }
-  rdsPlanInformationMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompPlanInformation',
-  };
+  // rdsPlanInformationMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompPlanInformation',
+  // };
 
 
-  rdscompSubscriptionMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompSubscription',
-    input: {
-      subscriptionData: this.subscriptionData,
-      HeaderbackGroundColor: "#5272C5",
-      bodybackGroundColor: "#DFE5F6",
-      footerbackGroundColor: "#DFE5F6",
-      topLinePadding: "0",
-      cardBorderWidth: "1",
-      borderRadious: "2",
-      Paddig: "5",
-      borderwidth: "0"
-    }
-  };
+  // rdscompSubscriptionMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsCompSubscription',
+  //   input: {
+  //     subscriptionData: this.subscriptionData,
+  //     HeaderbackGroundColor: "#5272C5",
+  //     bodybackGroundColor: "#DFE5F6",
+  //     footerbackGroundColor: "#DFE5F6",
+  //     topLinePadding: "0",
+  //     cardBorderWidth: "1",
+  //     borderRadious: "2",
+  //     Paddig: "5",
+  //     borderwidth: "0"
+  //   }
+  // };
 getNavTabItems():any{
   this.navtabsItems[0].label=this.translate.instant('Subscription Information');
   this.navtabsItems[0].label=this.translate.instant('Payment History');

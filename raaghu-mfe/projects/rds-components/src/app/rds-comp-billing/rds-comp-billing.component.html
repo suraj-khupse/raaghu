@@ -40,9 +40,9 @@
         </rds-button>
     </div>
     <div class="col-lg-12 col-md-12">
-        <rds-data-table [tableData]="billingData" [pagination]="true" [recordsPerPage]="5"
+        <rds-comp-data-table [tableData]="billingData" [pagination]="true" [recordsPerPage]="5"
             (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"
-            [tableHeaders]="billingHeaders" noDataTitle="Currently you do not have billingadata"></rds-data-table>
+            [tableHeaders]="billingHeaders" noDataTitle="Currently you do not have billingadata"></rds-comp-data-table>
     </div>
 </div>
 

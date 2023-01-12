@@ -1,4 +1,4 @@
-<button class="rounded-pill btn btn-icon fab-btn" [attr.id]="id" type="button" (click)="open()" [ngClass]="customClasses"
+<button class="rounded-pill btn btn-icon btn-sm fab-btn" [attr.id]="id" type="button" (click)="open()" [ngClass]="customClasses"
   data-bs-toggle="dropdown" [attr.aria-expanded]="show">
   <rds-icon [name]="menuicon" [width]="menuiconWidth" [height]="menuiconHeight "></rds-icon>
 </button>
@@ -9,4 +9,9 @@
       {{item.value}}
     </a>
   </ng-container>
-</div> 
+  <div class="ps-3 pe-3 border-top">
+    <a href="#"> Click Here </a> <span class="text-muted"> to download sample file. </span>
+  </div>
+</div>
+
+

@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Profile } from '../../models/profile.model';
 
 @Component({
-  selector: 'rds-mysettings',
+  selector: 'rds-comp-mysettings',
   templateUrl: './rds-comp-mysettings.component.html',
   styleUrls: ['./rds-comp-mysettings.component.scss']
 })

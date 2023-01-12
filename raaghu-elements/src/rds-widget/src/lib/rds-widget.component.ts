@@ -11,6 +11,7 @@ export class RdsWidgetComponent implements OnInit {
   @Input() isRefreshRequired: boolean = true;
   @Input() colorVariant: 'primary' | 'success' | 'danger' | 'warning' | 'light' | 'info' | 'secondary' | 'dark' | 'gradient-primary' | '' = '';
   @Output() onRefresh = new EventEmitter<Event>();
+  @Input() isBorder: boolean = true;
   //@Input() cardheight = 'card-stretch';
 
   constructor() { }
@@ -25,7 +26,7 @@ export class RdsWidgetComponent implements OnInit {
 
     const bgColor = 'bg-' + `${this.colorVariant}`;
     classes.push(bgColor);
-    if (`${this.colorVariant}` == 'gradient-primary') {
+    if (`${this.colorVariant}` == 'gradient-primary'||`${this.colorVariant}` == 'primary' ||`${this.colorVariant}` == 'secondary'||`${this.colorVariant}` == 'success'||`${this.colorVariant}` == 'danger'||`${this.colorVariant}` == 'dark'  ) {
       classes.push('text-white');
     } else if (this.colorVariant == '') {
       classes.push('');

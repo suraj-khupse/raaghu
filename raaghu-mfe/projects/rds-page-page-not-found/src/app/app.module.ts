@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '@libs/shared';
+import { RdsCompPageNotFoundModule } from 'projects/rds-components/src/app/rds-comp-page-not-found/rds-comp-page-not-found.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -9,9 +11,11 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    RdsCompPageNotFoundModule
   ],
   providers: [],
   bootstrap: [AppComponent]

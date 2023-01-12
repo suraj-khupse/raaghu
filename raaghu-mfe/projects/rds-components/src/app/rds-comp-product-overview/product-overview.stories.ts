@@ -56,9 +56,9 @@ const Template: Story<RdsCompProductOverviewComponent> = (
   props: args,
 });
 
-export const ProductOverview1 = Template.bind({});
+export const SizesWithCTA = Template.bind({});
 
-ProductOverview1.args = {
+SizesWithCTA.args = {
   productType: 'producroverview1',
   itemList: [
     { id: 1, color: '#FFFFFF' },
@@ -80,9 +80,9 @@ ProductOverview1.args = {
   sizeData : [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'}]
 };
 
-export const ProductOverview2 = Template.bind({});
+export const WithDescriptionAndBadge = Template.bind({});
 
-ProductOverview2.args = {
+WithDescriptionAndBadge.args = {
   productType: 'producroverview2',
   listItems: [
     { id: 1, value: 'Only the best materials', some: 'value' },
@@ -124,7 +124,7 @@ ProductOverview2.args = {
   }
 ]
 };
-export const ProductOverview3 = Template.bind({});
+/* export const ProductOverview3 = Template.bind({});
 
 ProductOverview3.args = {
   productType: 'producroverview3',
@@ -165,4 +165,4 @@ product_overview_description.args = {
     { id: 3, value: 'Pre-washed and pre-shrunk', some: 'value' },
     { id: 4, value: 'Ultra-soft 100% cotton', some: 'value' },
   ]
-}
+} */

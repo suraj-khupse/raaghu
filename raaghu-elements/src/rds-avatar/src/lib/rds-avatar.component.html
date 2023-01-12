@@ -1,9 +1,9 @@
-<div [ngClass]="{ 'd-flex': !verticallyAlligned }">
+<div [ngClass]="{ 'd-flex align-items-center': !verticallyAlligned }">
   <div *ngIf="withProfilePic" class="" [ngClass]="profileClass" >
     <img [src]="profilePic" class="avatar " [ngClass]="classes" [ngStyle]="{'width': width+'px','height':height + 'px'}" />
-    <span class="flex-grow-1 align-items-center ms-2 fw-bold text-decoration-none">
-      <div class="text-center mx-3">
-        <span>{{firstName}}</span>
+    <span class="avatar-initials flex-grow-1 align-items-center ms-2 fw-bold text-decoration-none"  [ngClass]="profileName">
+      <div class="text-center">
+        <span>{{firstName}} {{lastName}}</span>
         <p class="mb-0 text-muted">
           {{subTitle}}
         </p>
@@ -12,7 +12,7 @@
   </div>
   <div *ngIf="!withProfilePic" class="d-flex justify-content-center align-items-center avatar rounded-circle"
     [ngClass]="classes">
-    <div class="flex-shrink-0 d-flex align-items-center">
+    <div class="avatar-initials flex-shrink-0 d-flex align-items-center">
 
       <div *ngIf="(firstName !== '' && firstName !== undefined) ||
       (lastName !== '' && lastName !== undefined)">
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="flex-grow-1 align-items-center d-flex" [ngClass]="{ 'ms-2': !verticallyAlligned }">
+  <div class="avatar-initials flex-grow-1 align-items-center d-flex" [ngClass]="{ 'ms-2': !verticallyAlligned }">
     <ng-content></ng-content>
   </div>
 </div>

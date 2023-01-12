@@ -36,7 +36,7 @@ export class RdsCompIntegrationComponent implements OnInit {
       title: 'Linear', subtitle: 'Build custom automation and intefrations with app', icon: 'linear', route: '/home', selected: true, iconHeight: '25px', iconWidth: '25px', iconStroke: false, iconFill: false
     }];
 
-    @Input () buttonSpinner : boolean =true;
+    @Input () buttonSpinner : boolean =false;
 
   constructor() { }
 

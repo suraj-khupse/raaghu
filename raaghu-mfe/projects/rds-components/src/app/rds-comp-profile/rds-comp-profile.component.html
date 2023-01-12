@@ -16,12 +16,12 @@
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 1 }" id="nav-Deligation"
         role="tabpanel" aria-labelledby="nav-Deligation">
-        <rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader"
+        <rds-comp-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader"
           [buttonSpinner]="showDelegationButtonSpinner" [pagination]="pagination"
           [delegateTabopened]="delegateTabopened" (onDeligateSave)="onSaveDelegate.emit($event)" (onDeleteDeligate)="deleteDelegate($event)"
           [tableWidth]="tableWidth" [tableStyle]="tableStyle" [recordsPerpage]="recordsPerpage" [userList]="userList"
           [rdsDeligateTableData]="rdsDeligateTableData" (onCancelDeligate)="cancelDelegate($event)">
-        </rds-user-delegations>
+        </rds-comp-user-delegations>
       </div>
 
       <div class="tab-pane fade h-100" [ngClass]="{'show active': activePage === 2 }" id="nav-Attempts" role="tabpanel"
@@ -32,33 +32,33 @@
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 3 }" id="nav-Settings" role="tabpanel"
         aria-labelledby="nav-Settings">
-        <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)"
+        <rds-comp-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)"
           (onProfileClose)="onClickCloseTabContent()">
-        </rds-mysettings>
+        </rds-comp-mysettings>
       </div>
       <div class="tab-pane fade h-100" id="nav-DownLoad" role="tabpanel" aria-labelledby="nav-DownLoad">
-        <!-- <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection> -->
+        <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection>
       </div>
 
       <div class="tab-pane fade h-100" id="nav-Attempts" [ngClass]="{ 'show active': activePage === 4 }" role="tabpanel"
         aria-labelledby="nav-Attempts">
-        <app-rds-comp-login-attempts [LoginAttempts]="LoginAttempts"
+        <!-- <app-rds-comp-login-attempts [LoginAttempts]="LoginAttempts"
           (RefreshLoginAttemts)="onLoginAttempts.emit($event)">
-        </app-rds-comp-login-attempts>
+        </app-rds-comp-login-attempts> -->
       </div>
       <div class="tab-pane fade h-100" id="nav-Settings" [ngClass]="{ 'show active': activePage === 5 }" role="tabpanel"
         aria-labelledby="nav-Settings">
-        <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)">
-        </rds-mysettings>
+        <!-- <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)">
+        </rds-mysettings> -->
       </div>
       <!-- <div class="tab-pane fade h-100" id="nav-DownLoad" role="tabpanel" aria-labelledby="nav-DownLoad">
         <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection>
       </div> -->
     </div>
-    <div class="pt-6">
-      <div [ngClass]="NavtabClass" class="h-100">
+    <div class="pt-6"  style="width:307px;">
+      <div [ngClass]="NavtabClass" class="h-100 bg-transparent">
         <div class="card bg-transparent border-0 h-100 w-100">
-          <div class="card-body h-100 p-0 d-grid">
+          <div class="card-body vh-100 p-0 d-grid">
             <div class="justify-content-center d-flex align-items-center">
               <div class="d-inline-block position-relative">
                 <rds-avatar [withProfilePic]="true" [firstName]="tenancy" [subTitle]="ProfileData.userName"  [profilePic]="Profileurl" [roundedPills]="true"
@@ -69,7 +69,6 @@
                     (input)="getValue($event)" name="myfile" style="display: none" />
                   <rds-button class="btn btn-icon upload-icon position-absolute top-50 btn-md rounded-circle" colorVariant="" size="medium" [isFabIcon]="true" tooltipTitle="" tooltipPlacement="right" iconHeight="18px"
                     iconWidth="18px"
-                    [isIconStroke]="true"
                     [isIconFill]="false"
                     buttonType="iconOnly"
                     icon="pencil"
@@ -85,13 +84,19 @@
               </div>
             </div>
 
+            <div class="justify-content-center align-items-center d-flex" *ngIf="sessionService.impersonatorUserId>0">
+              <rds-button [isOutline]="true" [label]="translate.instant('Back To Account')" type="button" [size]="'small'"
+              [colorVariant]="'primary'" (click)="backAccount()">
+              </rds-button>
+            </div>
+
             <rds-nav-tab [navtabsItems]="getMenuItems()" horizontalAlignment="start" [verticalAlignment]="true"
               [pills]="false" [tabs]="false" [fill]="false" [justified]="false" [activeTab]="activePage"
               (onClicktab)="onclickMenu($event)">
             </rds-nav-tab>
             <div class="text-center">
               <rds-button [isOutline]="true" [label]="translate.instant('LOGOUT')" type="button" [size]="'medium'"
-                          [colorVariant]="'primary'" [isIconFill]="false" [isIconStroke]="true"  (click)="logout()" [icon]="'logout'"
+                          [colorVariant]="'primary'" [isIconFill]="false" (click)="logoutFunction()" [icon]="'logout'"
                           [iconHeight]="'15px'" [iconWidth]="'15px'">
               </rds-button>
             </div>
@@ -121,9 +126,15 @@
   </div>
 
 </rds-offcanvas>
-<mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
+
+<!-- <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>-->
 <ng-container *ngIf="showConfirmationPopup">
-  <rds-comp-alert-popup [alertID]="'deleteDelegationModal'" (onCancel)="closeModal()" (onDelete)="delete()"
+  <rds-comp-alert-popup [alertID]="'deleteDelegationModal'" (onCancel)="closeModal()" (onSuccess)="delete()"
     [alertData]="deleteConfirmationData">
+  </rds-comp-alert-popup>
+</ng-container> 
+<ng-container *ngIf="showDownloadPopup">
+  <rds-comp-alert-popup [alertID]="'DownloadDatamodal'" (onCancel)="closeDownloadModal()" (onSuccess)="downloadText()"
+    [alertData]="alertData">
   </rds-comp-alert-popup>
 </ng-container>

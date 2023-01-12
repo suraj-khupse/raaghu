@@ -43,11 +43,11 @@ title: "Pages > Text-Template"
 <div class="row m-0">
 
 ```html
- <rds-data-table
+ <rds-comp-data-table
   [tableData]="tableDataForTextTemplate"
   [tableHeaders]="tableHeadersForTextTemplate"
   [actions]="actions"
-></rds-data-table>
+></rds-comp-data-table>
 ```
 
 </div>

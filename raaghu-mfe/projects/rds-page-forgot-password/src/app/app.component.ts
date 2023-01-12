@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { ComponentLoaderOptions, MfeBaseComponent, AccountServiceProxy, SendPasswordResetCodeInput } from '@libs/shared';
+import { MfeBaseComponent, AccountServiceProxy, SendPasswordResetCodeInput } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
@@ -16,10 +16,10 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   title: string = '';
   message: string = '';
 
-  rdsForgotPasswordMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsForgotPassword',
-  };
-  loadingshimmer:boolean=true;
+  // rdsForgotPasswordMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsForgotPassword',
+  // };
+  loadingshimmer: boolean = true;
   constructor(private injector: Injector,
     private store: Store,
     private _accountService: AccountServiceProxy,
@@ -28,16 +28,16 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rdsForgotPasswordMfeConfig = {
-      name: 'RdsForgotPassword',
-     
-      output: {
-       
-        onShimmerLoad:(event:any)=>{
-          this.loadingshimmer=false;
-        }
-      }
-    }
+    // this.rdsForgotPasswordMfeConfig = {
+    //   name: 'RdsForgotPassword',
+
+    //   output: {
+
+    //     onShimmerLoad:(event:any)=>{
+    //       this.loadingshimmer=false;
+    //     }
+    //   }
+    // }
     this.store.select(selectDefaultLanguage).subscribe((res: any) => {
       if (res) {
         this.translate.use(res);
@@ -51,10 +51,10 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         .subscribe((res) => {
           if (!void (res)) {
             this.message = this.translate.instant('Email Sent Successfully..');
-            this.title = this.translate.instant('Success')+'  !';
+            this.title = this.translate.instant('Success') + '  !';
           } else {
-            this.message = this.translate.instant('Failed')+' ..';
-            this.title = this.translate.instant('Error')+'  !';
+            this.message = this.translate.instant('Failed') + ' ..';
+            this.title = this.translate.instant('Error') + '  !';
           }
 
           const element = document.getElementById('notification');

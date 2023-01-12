@@ -2,6 +2,14 @@
     <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
 </ng-container>-->
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <mfe-loader [config]="rdsvisualsettingsMfeConfig"></mfe-loader>
+  <!-- <mfe-loader [config]="rdsvisualsettingsMfeConfig"></mfe-loader> -->
+  <rds-comp-visual-settings
+  [listskin]="listskin"
+  [listSubmenu]="listSubmenu"
+  [visualsettingsItem]="visualsettingsData"
+  [isShimmer]="isShimmer"
+  (onSaveVisualsettingsData)="onSaveVisualsettingsData($event)"
+  (indexEmitter)="indexEmitter($event)">
+  </rds-comp-visual-settings>
 </div>
 

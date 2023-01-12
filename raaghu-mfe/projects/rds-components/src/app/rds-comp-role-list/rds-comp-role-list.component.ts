@@ -16,17 +16,17 @@ declare let bootstrap: any;
   templateUrl: './rds-comp-role-list.component.html',
   styleUrls: ['./rds-comp-role-list.component.scss']
 })
-export class RdsCompRoleListComponent implements OnInit{
+export class RdsCompRoleListComponent implements OnInit {
   currentAlerts: any = [];
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompAlert',
     input: {
-      currentAlerts: this.currentAlerts,
+      // currentAlerts: this.currentAlerts,
     },
     output: {
-      onAlertHide: (event: any) => {
-        this.currentAlerts = event;
-      },
+      // onAlertHide: (event: any) => {
+      //   this.currentAlerts = event;
+      // },
     },
   };
 
@@ -69,7 +69,6 @@ export class RdsCompRoleListComponent implements OnInit{
   isRoleDataValid: boolean = false;
   RoleFromNewRole: any;
   EnableTreeSave: boolean = true;
-  public tableData: any = [];
 
   public navtabsItems: any = [
     {
@@ -90,16 +89,16 @@ export class RdsCompRoleListComponent implements OnInit{
     public translate: TranslateService,
     private alertService: AlertService,
   ) { }
- 
 
   ngOnInit(): void {
     this.subscribeToAlerts();
     this.activePage = 0;
-     }
-  ngDoCheck(): void {
-
-    this.tableData = [...this.roleList];
   }
+
+  onAlertHide(event: any) {
+    this.currentAlerts = event;
+  }
+
 
   getNavTabItems(): any {
 
@@ -145,16 +144,18 @@ export class RdsCompRoleListComponent implements OnInit{
     }
   }
 
-  newRole(event): void {
+  newRole(isEdit:boolean): void {
     this.selectedId = '';
     this.viewCanvas = true;
     this.SelectedPermissionValues = [];
-    if (event) {
+    if (!isEdit) {
       this.showLoadingSpinner = true;
-      this.canvasTitle = 'NEW ROLE';
-      this.Roles = { RolesData: undefined, permissionsList: [] };
+      this.canvasTitle = this.translate.instant('NEW ROLE'),
+        this.Roles = { RolesData: undefined, permissionsList: [] };
       this.RolesData = undefined;
       this.onnewRole.emit(true);
+    }else{
+      this.canvasTitle = this.translate.instant('EDIT ROLE');
     }
     setTimeout(() => {
       var offcanvas = document.getElementById('RoleOffcanvas')
@@ -162,6 +163,7 @@ export class RdsCompRoleListComponent implements OnInit{
       bsOffcanvas.show()
     }, 100);
     this.activePage = 0;
+
   }
 
   getRoleData(eventdata) {
@@ -202,8 +204,8 @@ export class RdsCompRoleListComponent implements OnInit{
     this.showLoadingSpinner = false;
   }
   editTableRowData(event): void {
-    this.newRole(undefined);
-    this.canvasTitle = 'EDIT ROLE';
+    this.newRole(true);
+    // this.canvasTitle = this.translate.instant('EDIT ROLE');
     this.onEditRole.emit(event.id);
     this.selectedId = event.roleid;
   }
@@ -211,7 +213,7 @@ export class RdsCompRoleListComponent implements OnInit{
   // Filter by permission canvas
   filterByPermission(event): void {
     this.selectedFilterId = '';
-    this.canvasTitle = 'FILTER BY PERMISSIONS';
+    this.canvasTitle = this.translate.instant('Filter By Permission');
     this.RolesData = undefined;
     this.viewCanvas = true;
     setTimeout(() => {
@@ -284,14 +286,16 @@ export class RdsCompRoleListComponent implements OnInit{
         type: alert.type,
         title: alert.title,
         message: alert.message,
+        sticky: alert.sticky,
       };
       this.currentAlerts.push(currentAlert);
-      this.showLoadingSpinner = false;
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+      // this.showLoadingSpinner = false;
+      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+      // rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
+      // this.rdsAlertMfeConfig = rdsAlertMfeConfig;
     });
   }
+
 
   filterPermissions(event): void {
     this.filterPermission(this.permissionsList, event.target.value);
@@ -318,11 +322,11 @@ export class RdsCompRoleListComponent implements OnInit{
     // findParent
     // node.parent.styleClass = '';
     this.permissionsList.forEach((node: any) => {
-        if (node.data.name === _node.data.parentName) {
-          node.styleClass = '';
-        }else{
-          this.findParent(node.children,_node.data.parentName)
-        }
+      if (node.data.name === _node.data.parentName) {
+        node.styleClass = '';
+      } else {
+        this.findParent(node.children, _node.data.parentName)
+      }
     })
 
   }

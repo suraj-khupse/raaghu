@@ -24,7 +24,7 @@ export default {
             control: { type: 'radio' }
         },
         colorVariant: {
-            options: ['warning', 'danger', 'success', 'info', 'primary', 'secondary', 'dark', 'light'],
+            options: ['warning', 'danger', 'success', 'info', 'primary', 'secondary', 'dark'],
             control: { type: 'select' }
         }
 
@@ -34,14 +34,14 @@ export default {
 export const Default: Story<RdsInputGroupComponent> = (args) => ({
     props: args,
 });
-Default.parameters = { controls: { include: ['colorVariant', 'position', 'size', 'buttonLabel', 'placeholder'] } };
+Default.parameters = { controls: { include: ['colorVariant', 'position', 'size', 'buttonLabel', 'placeholder','onClick'] } };
 
 Default.args = {
     size: 'small',
     position: 'top',
     colorVariant: 'primary',
     buttonLabel: 'button',
-    placeholder: 'placeholder'
+    placeholder: 'Placeholder Text'
 }
 
 

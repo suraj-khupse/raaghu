@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsLabelModule, RdsRadioButtonModule, RdsTableModule } from '@libs/rds-elements';
+import { RdsBadgeModule, RdsButtonModule, RdsLabelModule, RdsRadioButtonModule, RdsTableModule } from '@libs/rds-elements';
 import { RdsCompPricingTableComponent } from './rds-comp-pricing-table.component';
 import { RdsLikeDislikeModule } from '../../../../libs/rds-elements/src/rds-like-dislike/src/public-api';
 import { RdsIconModule } from '@libs/rds-icon';
@@ -19,7 +19,8 @@ export default {
         RdsRadioButtonModule,
         RdsLabelModule,
         RdsLikeDislikeModule,
-        RdsIconModule
+        RdsIconModule,
+        RdsBadgeModule
       ],
       providers: [
         FormBuilder,
@@ -112,7 +113,7 @@ Default.args = {
       { id: 7, name: { value: 'Forum support incident count/year', type: 'text' }, regular: { value: '20', type: 'text' }, professional: { value: '50', type: 'text' }, ultimate: { value: 'Unlimited', type: 'text' } },
       { id: 8, name: { value: 'Forum support incident count/year', type: 'text' }, regular: { value: '$199', type: 'text' }, professional: { value: '$99', type: 'text' }, ultimate: { value: 'Free', type: 'text' } },
       { id: 9, name: { value: 'Private ticket & email support', type: 'text' }, regular: { value: 'No', type: 'text' }, professional: { value: 'Yes', type: 'text' }, ultimate: { value: 'Yes', type: 'text' } },
-      { name: { value: '', type: '' }, regular: { value: '<span class="btn btn-info">BUY NOW</span>', type: 'html' }, professional: { value: '<span class="btn btn-info">BUY NOW</span>', type: 'html' }, ultimate: { value: '<span class="btn btn-info">BUY NOW</span>', type: 'html' } },
+      { name: { value: '', type: 'html' }, regular: { value: '<div><span class="btn btn-info">BUY NOW</span></div>', type: 'html' }, professional: { value: '<span class="btn btn-info">BUY NOW</span>', type: 'html' }, ultimate: { value: '<span class="btn btn-info">BUY NOW</span>', type: 'html' } },
 
     ]
 }

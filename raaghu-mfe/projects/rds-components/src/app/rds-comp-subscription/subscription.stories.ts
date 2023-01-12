@@ -33,7 +33,7 @@ Default.args={
     name: "BASIC",
     price: "232",
     duration: "2 Year",
-    iconurl:"subscription_premium",
+    iconurl:"standard_subscription",
     recommended:false,
     features:["Maximum User Count","Test Check feature","Test check feature count 2"]
   }]

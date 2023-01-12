@@ -67,7 +67,7 @@
   <table [ngClass]="bodyColorClasses" id="table">
     <thead *ngIf="showTableHeader">
       <tr>
-        <th *ngFor="let header of tableHeaders" [class]="header.class">{{header['displayName']}}</th>
+        <th [ngClass]="headcolor" *ngFor="let header of tableHeaders" [class]="header.class + ''">{{header['displayName']}}</th>
       </tr>
     </thead>
     <tbody>
@@ -91,7 +91,8 @@
               </ng-template>
             </ng-container>
             <ng-template #individualTypeTemplate>
-              <ng-container *ngIf="item[header.key].type=='html';else iconTemplate">
+              <ng-container *ngIf="item[header.key].type=='text';else iconTemplate">
+                
                 <td [class]="header.class" [innerHTML]="item[header.key].value"></td>
               </ng-container>
               <ng-template #iconTemplate>

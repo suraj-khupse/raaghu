@@ -7,7 +7,9 @@
     </div>
   </div>
   
-  <mfe-loader [config]="rdsOrderDetailsMfeConfig"></mfe-loader>
+  <!-- <mfe-loader [config]="rdsOrderDetailsMfeConfig"></mfe-loader> -->
+  <rds-comp-order-details
+  [itemList]="itemList"></rds-comp-order-details>
 
   <div class="card card1 mb-3  ">
     <div class="card-body pt-0 mt-3" >
@@ -34,7 +36,12 @@
     </div>
   </div>
   <div class="col-md-6 mt-2">
-    <mfe-loader  [config]="rdsCompOrderSummary"></mfe-loader>
+    <!-- <mfe-loader  [config]="rdsCompOrderSummary"></mfe-loader> -->
+    <rds-comp-order-summary
+    [Subtotal]="totalPrice"
+    [Shippingestimate]="9.00"
+    [Taxestimate]="2.30"
+    [isCheckout]="false"></rds-comp-order-summary>
   </div>
   
 </div>

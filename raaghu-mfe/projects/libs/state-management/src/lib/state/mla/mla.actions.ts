@@ -1,6 +1,6 @@
 import { LinkToUserInput, ListResultDtoOfLinkedUserDto, ListResultDtoOfOrganizationUnitDto, PagedResultDtoOfOrganizationUnitRoleListDto, PagedResultDtoOfOrganizationUnitUserListDto, UnlinkUserInput } from "@libs/shared";
 import { createAction, props } from "@ngrx/store";
-import { GetNotificationsOutput, UpdateNotificationSettingsInput } from "projects/libs/shared/src/lib/service-proxies";
+import { GetNotificationsOutput, UpdateNotificationSettingsInput,ImpersonateOutput } from "projects/libs/shared/src/lib/service-proxies";
 
 export const getMLATenancyData = createAction('[MLA Page] Get MLA Tenancy data');
 
@@ -58,5 +58,17 @@ export const getNotificationSettingsFailure = createAction(
 export const updateNotificationSettings = createAction(
     '[MLA Page] update notification settings',
     (data: UpdateNotificationSettingsInput) => ({ data })
+);
+
+export const backToImpersonator = createAction('[MLA Page] Back To Impersonator to Account',);
+
+export const backToImpersonatorSuccess = createAction(
+    '[MLA Page] Back To Impersonator to Account Success',
+    props<{ tokenResult: ImpersonateOutput }>()
+);
+
+export const backToImpersonatorFailure = createAction(
+    '[MLA Page] Back To Impersonator to Account Failure',
+    props<{ error: string }>()
 );
 

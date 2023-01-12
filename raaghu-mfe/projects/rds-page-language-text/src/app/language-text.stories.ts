@@ -103,8 +103,8 @@ const Template: Story<LanguageTextComponent> = (args: LanguageTextComponent) => 
 <div class="row">
   <div class="col-md-12">
     <div class=" card p-2 h-100 border-0 rounded-0 card-full-stretch">
-<rds-data-table [tableHeaders]="languageTableHeader" [tableStyle]="'light'" [tableData]="languageTableData"
-            [recordsPerPage]="10" [pagination]="true" [inlineEdit]="false"></rds-data-table>    </div>
+<rds-comp-data-table [tableHeaders]="languageTableHeader" [tableStyle]="'light'" [tableData]="languageTableData"
+            [recordsPerPage]="10" [pagination]="true" [inlineEdit]="false"></rds-comp-data-table>    </div>
   </div>
 </div>
 <rds-offcanvas [canvasTitle]="'EDIT TEXT'" [offId]="'EditlanguageText'" [offcanvaswidth]="550" [placement]="'end'"

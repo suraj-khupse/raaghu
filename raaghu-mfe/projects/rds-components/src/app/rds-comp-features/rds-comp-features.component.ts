@@ -17,8 +17,9 @@ declare var bootstrap: any;
     DatePipe
   ]
 })
+
 export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
-  actions: TableAction[] = [{ id: 'edit', displayName: this.translate.instant('Edit') }, { id: 'delete', displayName: this.translate.instant('Delete') }, { id: 'moveTenant', displayName: this.translate.instant('Move Tenants to Another Edition') }]
+  actions: TableAction[] = []
   @Input() selectedFeatures = [];
   @Input() selectedEdition: any;
   @Input() EditionsTableHeader: TableHeader[] = [];
@@ -109,8 +110,14 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
   rdsEditionTableMfeConfig: ComponentLoaderOptions;
   // rdshierarchyConfig: ComponentLoaderOptions;
   public Editionform: FormGroup;
+  edit: string;
+  delete: string;
+  move_tenant: string;
 
   constructor(public datepipe: DatePipe, public translate: TranslateService, private alertService: AlertService) {
+    this.edit= this.translate.instant('Edit')
+    this.delete= this.translate.instant('Delete')
+    this.move_tenant= this.translate.instant('Move Tenants to Another Edition')
 
   }
   ngOnChanges(): void {
@@ -126,22 +133,26 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnInit(): void {
 
-    if(this.freeEditionId){
+    if (this.freeEditionId) {
       this.freeEditions.forEach((res: any) => {
-        if (res && +res.value===+this.freeEditionId) {
+        if (res && +res.value === +this.freeEditionId) {
           this.freeEditon = res.some;
         }
       })
     }
 
-    if(this.targetEditionId){
-      this.editionList.forEach((res : any) => {
-        if(res && +res.value===+this.targetEditionId){
-          this.targetEdition= res.some;
+    if (this.targetEditionId) {
+      this.editionList.forEach((res: any) => {
+        if (res && +res.value === +this.targetEditionId) {
+          this.targetEdition = res.some;
         }
       })
     }
     this.subscribeToAlerts();
+
+    this.actions=[
+      { id: 'edit', displayName: this.edit }, { id: 'delete', displayName: this.delete }, { id: 'moveTenant', displayName: this.move_tenant }
+    ]
   }
 
   onAlertHide(event: any): void {
@@ -197,7 +208,7 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
     }
     this.onEditionSave.emit(body);
     this.viewCanvas = false;
-    this.resetPermission();  
+    this.resetPermission();
   }
 
   resetPermission() {
@@ -373,12 +384,12 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
     }
   }
 
-  onFreeListSelect(event : any){
+  onFreeListSelect(event: any) {
     this.freeEditon = event.item.some
     this.freeEditionId = event.item.value;
-    }
+  }
 
-  onTargetListSelect(event : any ){
+  onTargetListSelect(event: any) {
     this.targetEdition = event.item.some
     this.targetEditionId = event.item.value
   }
@@ -393,6 +404,7 @@ export class RdsCompFeaturesComponent implements OnInit, OnChanges, DoCheck {
         sticky: alert.sticky,
       };
       this.currentAlerts.push(currentAlert);
+      this.showLoadingSpinner = false;
     });
   }
 }

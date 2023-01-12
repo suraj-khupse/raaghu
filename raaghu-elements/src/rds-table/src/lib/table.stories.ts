@@ -37,7 +37,7 @@ const Template: Story<RdsTableComponent> = (args: RdsTableComponent) => ({
 export const Default = Template.bind({});
 Default.parameters = { controls: { include: ['colorVariant', 'tableHeaders', 'tableData'] } };
 Default.args = {
-  colorVariant: 'light',
+  colorVariant: 'primary',
   // borderColorVariant: 'secondary',
   tableHeaders: [
     { displayName: 'Name', dataType: 'text', key: 'name' },
@@ -47,14 +47,14 @@ Default.args = {
   ],
   tableData:
     [{ id: 1, name: 'Standard', icon: 'tick', price: '$20', textNumber: '22aa' },
-    { id: 2, name: 'Premium', icon: 'tick', price: '$20' },
-    { id: 3, name: 'Ultimate', icon: 'tick', price: '$20' },
+    { id: 2, name: 'Premium', icon: 'tick', price: '$20',textNumber: '22aa' },
+    { id: 3, name: 'Ultimate', icon: 'tick', price: '$20',textNumber: '22aa' },
     ],
 }
 export const withoutBorder = Template.bind({});
 withoutBorder.parameters = { controls: { include: ['colorVariant', 'showTableBorder', 'tableHeaders', 'tableData'] } };
 withoutBorder.args = {
-  colorVariant: 'light',
+  colorVariant: 'primary',
   showTableBorder: false,
   tableHeaders: [
     { displayName: 'Name', dataType: 'text', key: 'name' },
@@ -64,14 +64,14 @@ withoutBorder.args = {
   ],
   tableData:
     [{ id: 1, name: 'Standard', icon: 'tick', price: '$20', textNumber: '22aa' },
-    { id: 2, name: 'Premium', icon: 'tick', price: '$20' },
-    { id: 3, name: 'Ultimate', icon: 'tick', price: '$20' },
+    { id: 2, name: 'Premium', icon: 'tick', price: '$20',textNumber: '22aa' },
+    { id: 3, name: 'Ultimate', icon: 'tick', price: '$20',textNumber: '22aa' },
     ],
 }
 export const withoutHeader = Template.bind({});
 withoutHeader.parameters = { controls: { include: ['colorVariant', 'showTableHeader', 'tableHeaders', 'tableData'] } };
 withoutHeader.args = {
-  colorVariant: 'light',
+  colorVariant: 'primary',
   showTableHeader: false,
   tableHeaders: [
     { displayName: 'Name', dataType: 'text', key: 'name' },
@@ -81,7 +81,7 @@ withoutHeader.args = {
   ],
   tableData:
     [{ id: 1, name: 'Standard', icon: 'tick', price: '$20', textNumber: '22aa' },
-    { id: 2, name: 'Premium', icon: 'tick', price: '$20' },
-    { id: 3, name: 'Ultimate', icon: 'tick', price: '$20' },
+    { id: 2, name: 'Premium', icon: 'tick', price: '$20',textNumber: '22aa' },
+    { id: 3, name: 'Ultimate', icon: 'tick', price: '$20',textNumber: '22aa' },
     ],
 }

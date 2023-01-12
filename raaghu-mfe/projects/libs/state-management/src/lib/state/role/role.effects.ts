@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
+import { AlertService } from "@libs/shared";
 
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { AlertService } from "projects/libs/shared/src/lib/alert.service";
 import { GetRolesInput, RoleServiceProxy, PermissionServiceProxy } from "projects/libs/shared/src/lib/service-proxies";
 import { from, of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
-import { deleteRole, getPermission, getPermissionSuccess, getRolByEdit, getRolByEditFailure, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess, saveRole } from "./role.actions";
+import { deleteRole, getPermission, getPermissionSuccess, getRolByEdit, getRolByEditFailure, getRolByEditSuccess, getRoleFailure, getRoles, getRoleSuccess, saveRole, setRoleAlert } from "./role.actions";
 
 
 @Injectable()
@@ -54,14 +54,22 @@ export class RoleEffects {
       switchMap((data) =>
         this.roleService.createOrUpdateRole(data.role).pipe(map((res: any) => {
           this.store.dispatch(getRoles([]));
-          if(data.role.role.id !=undefined){
-            this.alertService.showAlert('Success',  'Role Updated successfully', 'success')
+          if (data.role.role.id != undefined) {
+            this.store.dispatch(setRoleAlert({
+              message: 'Role updated successfully',
+              title: 'Success',
+              type: 'success',
+            }))
+            // this.alertService.showAlert('Success',  'Role Updated successfully', 'success')
           }
-          else
-          {
-            this.alertService.showAlert('Success',  'Role added successfully', 'success')
+          else {
+            this.store.dispatch(setRoleAlert({
+              message: 'Role added successfully',
+              title: 'Success',
+              type: 'success',
+            }))
           }
-         }),
+        }),
           catchError((error: any) => of(
           ))
         )
@@ -71,15 +79,18 @@ export class RoleEffects {
       dispatch: false
     }
   );
-  
+
   deleteRole$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(deleteRole),    
+      ofType(deleteRole),
       switchMap(({ id }) =>
         this.roleService.deleteRole(id).pipe(map(() => {
           this.store.dispatch(getRoles([]));
-          this.alertService.showAlert('Success', 'Role deleted successfully', 'success');
-
+          this.store.dispatch(setRoleAlert({
+            message: 'Role deleted successfully',
+            title: 'Success',
+            type: 'success',
+          }))
         }
         ),
           catchError((error) => of())

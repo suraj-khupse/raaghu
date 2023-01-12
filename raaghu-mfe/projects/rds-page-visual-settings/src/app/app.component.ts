@@ -19,6 +19,7 @@ import {
   query,
   style,
   animate,
+  state,
 } from '@angular/animations';
 import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 
@@ -26,27 +27,37 @@ import { selectDefaultLanguage } from 'projects/libs/state-management/src/lib/st
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter', [style({ opacity: 0 })], { optional: true }),
+  //       query(
+  //         ':leave',
+  //         [style({ opacity: 1 }), animate('0.4s', style({ opacity: 0 }))],
+  //         { optional: true }
+  //       ),
+  //       query(
+  //         ':enter',
+  //         [style({ opacity: 0 }), animate('0.4s', style({ opacity: 1 }))],
+  //         { optional: true }
+  //       ),
+  //     ]),
+  //   ]),
+  // ],
   animations: [
     trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter', [style({ opacity: 0 })], { optional: true }),
-        query(
-          ':leave',
-          [style({ opacity: 1 }), animate('0.4s', style({ opacity: 0 }))],
-          { optional: true }
-        ),
-        query(
-          ':enter',
-          [style({ opacity: 0 }), animate('0.4s', style({ opacity: 1 }))],
-          { optional: true }
-        ),
-      ]),
+      state('void', style({
+        opacity: 0
+      })),
+      transition('void <=> *', animate(1000)),
     ]),
-  ],
+  ]
 })
 export class AppComponent implements OnInit {
   isAnimation: boolean = true;
   selectedThemeIndex: any = '0';
+  isShimmer: boolean = false;
+  visualsettingsItem:any=[];
   constructor(
     private store: Store,
     private alertService: AlertService,
@@ -82,10 +93,10 @@ export class AppComponent implements OnInit {
     this.rdsvisualsettingsMfeConfig = {
       name: 'RdsCompVisualSettings',
       input: {
-        listskin: this.listskin,
-        listSubmenu: this.listSubmenu,
-        visualsettingsItem: this.visualsettingsData,
-        isShimmer: true,
+        // listskin: this.listskin,
+        // listSubmenu: this.listSubmenu,
+        // visualsettingsItem: this.visualsettingsData,
+        // isShimmer: true,
       },
       output: {
         onSaveVisualsettingsData: (visualsettingsItem: any) => {
@@ -95,7 +106,7 @@ export class AppComponent implements OnInit {
         },
         indexEmitter: (value: any) => {
           this.userAuthService.getVisualSettingIndex(value);
-          if(value == '12'){
+          if (value == '12') {
             this.theme.theme = 'light'
 
           }
@@ -108,10 +119,12 @@ export class AppComponent implements OnInit {
       if (res && res.length > 0) {
         this.isAnimation = false;
         this.visualsettingsData = res;
-        const mfeConfig = this.rdsvisualsettingsMfeConfig;
-        mfeConfig.input.visualsettingsItem = [...this.visualsettingsData];
-        mfeConfig.input.isShimmer = false;
-        this.rdsvisualsettingsMfeConfig = mfeConfig;
+        this.visualsettingsItem = [...this.visualsettingsData];
+        this.isShimmer = false
+        // const mfeConfig = this.rdsvisualsettingsMfeConfig;
+        // mfeConfig.input.visualsettingsItem = [...this.visualsettingsData];
+        // mfeConfig.input.isShimmer = false;
+        // this.rdsvisualsettingsMfeConfig = mfeConfig;
       }
     });
   }
@@ -134,10 +147,24 @@ export class AppComponent implements OnInit {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+      // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
+      // rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
+      // this.rdsAlertMfeConfig = rdsAlertMfeConfig;
     });
   }
- 
+
+  onSaveVisualsettingsData(visualsettingsItem: any) {
+    if (visualsettingsItem) {
+      this.store.dispatch(UpdateUiManagementSettings(visualsettingsItem));
+    }
+  }
+
+  indexEmitter(value: any) {
+    this.userAuthService.getVisualSettingIndex(value);
+    if (value == '12') {
+      this.theme.theme = 'light'
+
+    }
+  }
+
 }

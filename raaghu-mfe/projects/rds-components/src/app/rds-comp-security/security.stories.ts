@@ -3,12 +3,12 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { RdsCheckboxModule, RdsCounterModule, RdsInputModule,} from '@libs/rds-elements';
  import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsSecurityComponent } from './rds-comp-security.component';
+import { RdsCompSecurityComponent } from './rds-comp-security.component';
 import { RdsLabelModule } from '@libs/rds-label';
     
 export default {
   title: 'Components/Security',
-  component: RdsSecurityComponent,
+  component: RdsCompSecurityComponent,
   decorators: [
     moduleMetadata({
         declarations:[],
@@ -31,7 +31,7 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<RdsSecurityComponent> = (args: RdsSecurityComponent) => ({});
+const Template: Story<RdsCompSecurityComponent> = (args: RdsCompSecurityComponent) => ({});
 
 export const Default= Template.bind({});
 

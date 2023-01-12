@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card p-2 border-0 rounded-0 vh-88">
+      <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list mt-2">
+        <li class="col mb-4" *ngFor="let icon of icons">
+          <a class="d-block text-dark text-decoration-none">
+            <div class="p-3 py-4 mb-2 text-center rounded bg-icon">
+              <rds-icon left name="{{icon.name}}" height="25px" width="25px"></rds-icon>
+            </div>
+            <div class="name text-muted text-decoration-none text-center pt-1">{{icon.name}}</div>
+          </a>
+        </li>
+      </ul>
+      </div>
+</div>
+</div>

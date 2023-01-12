@@ -21,7 +21,7 @@ export class RdsCompEmailComponent implements OnInit {
 
   };
   @Input()  editShimmer: boolean = false;
-  @Output() EmailtData=new EventEmitter<any>();
+  @Output() EmailDataEmitter=new EventEmitter<any>();
   @Output() SendTestEmailData=new EventEmitter<any>();
   @ViewChild('emailForm')Emailformdata: NgForm;
  
@@ -74,7 +74,7 @@ export class RdsCompEmailComponent implements OnInit {
 
   onChange():void{
     if(this.EmailData.defaultFromAddress && this.emailValidator(this.EmailData.defaultFromAddress)){
-      this.EmailtData.emit(this.EmailData);
+      this.EmailDataEmitter.emit(this.EmailData);
     }
   }
 

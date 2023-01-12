@@ -7,7 +7,7 @@
                     required [placeholder]="'Enter ID'">
                 </rds-input>
                 <div class="form-control-feedback" *ngIf="client_id.errors && (client_id.dirty || client_id.touched)">
-                    <span class="text-danger" *ngIf="client_id.errors.required">{{"Client ID is required" | translate}}</span>
+                    <span class="text-danger" *ngIf="client_id.errors.required">{{translate.instant("Client ID is required")}}</span>
                     <span class="text-danger" *ngIf="client_id.errors.pattern">Accept Numbers only</span>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <rds-checkbox [disabled]="false" [label]="'Required Consent'"
                 [checked]="clientBasics.requiredConsent" [(ngModel)]="clientBasics.requiredConsent"
                 name="check-box" [withLabel]="true" [switch]="false"
-                [inline]="false" [id]="'requiredConsent'"></rds-checkbox>
+               [id]="'requiredConsent'"></rds-checkbox>
             </div>
         </div>
     </div>

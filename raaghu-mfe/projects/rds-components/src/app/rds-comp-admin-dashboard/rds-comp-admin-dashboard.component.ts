@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector, Input } from '@angular/core';
-import { ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
+import { AlertService, ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from '../../models/table-header.model';
 export class dashboardData {
@@ -55,7 +55,7 @@ export interface BigNumberWidgetData {
 }
 
 @Component({
-  selector: 'rds-admin-dashboard',
+  selector: 'rds-comp-admin-dashboard',
   templateUrl: './rds-comp-admin-dashboard.component.html',
   styleUrls: ['./rds-comp-admin-dashboard.component.scss']
 })
@@ -107,45 +107,71 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() ProfitShareData: any = [60, 25, 15]
   @Input() userName: string = 'Keanu Foster';
   @Input() memberActivityTableData: any = [
-    { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 38 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">92%</div>" }
-    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 18 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kim</b></p><small class=\"text-muted\">Senior Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 342 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">42%</div>" }
-    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 7 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Jane</b></p><small class=\"text-muted\">Sales Executive </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 5 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">96%</div>" }
-    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 14 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer</small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "rate": "<div class=\"LowRate d-flex align-items-center justify-content-center\">16%</div>" }
-    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 13 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kath</b></p><small class=\"text-muted\">Manager </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 3 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">52%</div>" }
+    { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 38 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">92%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 18 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kim</b></p><small class=\"text-muted\">Senior Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 342 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">42%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 7 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Jane</b></p><small class=\"text-muted\">Sales Executive </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 5 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">96%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 14 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer</small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "rate": "<div class=\"LowRate d-flex align-items-center justify-content-center\">16%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 13 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kath</b></p><small class=\"text-muted\">Manager </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 3 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">52%</div>" }
+  ];
+  @Input() toDoListTableData: any = [
+    { "issue": " Activate your account with others intil June 2023", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Volosoft</b></p><small class=\"text-muted\">Website </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two week</small></div>" }
+    , { "issue": "Your Order @22345678 has been confirmed", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ABP Framework</b></p><small class=\"text-muted\">Modules </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-50 bg-danger\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in one week</small></div>" }
+    , { "issue": "Create a new page for CMS", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ASPNET Zero</b></p><small class=\"text-muted\">Payment Module </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-75 bg-info\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
+    , { "issue": "Activate your account with others intil June 2024", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Volosoft</b></p><small class=\"text-muted\">ABP Framework</small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
+    , { "issue": "Your Order @22345789 has been confirmed", "project": "<div class=\"d-flex align-items-center\"><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>ABP Framework</b></p><small class=\"text-muted\">Website </small></div></div>", "progress": "<div class=\"progress\"><div class=\"progress-bar w-25\" role=\"progressbar\"  aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"> </div></div><div class=\"text-muted\"><small> Due in two days</small></div>" }
   ]
-
 
   @Input() monthlySummaryDataSets = [
     {
       label: 'Sales',
-      data: [600, 462, 405, 362, 350, 350.5, 320.8, 318, 605, 689, 352, 354],
+      data: [800, 425, 280, 700, 490, 200],
       borderColor: '#4DCFFF',
       pointBackgroundColor: '#4DCFFF',
       backgroundColor: '--chart-line-color1',
       fill: true,
-      pointRadius: 3,
+      pointRadius: 2.5,
+      borderWidth: 1,
       // fillColor: "rgba(195, 40, 96, 0.1)",
       tension: 0.4,
     },
     {
       label: 'Revenue',
-      data: [250, 780.2, 780.4, 650, 455, 455.5, 455.8, 456, 610, 455, 250, 254],
+      // data: [400, 750.2, 782.4, 639, 490, 445, 470, 598, 750, 630, 500, 780.2],
+      data: [400, 782.4, 490, 470, 750, 500],
+      strokeColor: "rgba(151,187,205,1)",
+      pointColor: "rgba(151,187,205,1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(151,187,205,1)",
       borderColor: '#863BFF',
       pointBackgroundColor: '#863BFF',
       backgroundColor: '--chart-line-color2',
       fill: true,
-      pointRadius: 3,
+      pointRadius: 2.5,
+      borderWidth: 1,
       tension: 0.4,
     }
   ]
-  @Input() monthlySummaryLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  @Input() monthlySummaryLabels = ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov']
   @Input() monthlySummarychartWidth = 650
   @Input() monthlySummarychartHeight = 250
   @Input() monthlySummarychartOptions = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 230
+      }
+    },
     radius: 0,
     pointStyle: 'circle',
     responsive: true,
-    borderWidth: 2,
+    borderWidth: 1,
     maintainAspectRatio: false,
     plugins: {
       title: {
@@ -178,6 +204,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
         }
       },
       x: {
+        beginAtZero: true,
         grid: {
           display: false
         }
@@ -219,15 +246,21 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() pschartWidth = 255;
   @Input() pschartHeight = 200;
   @Input() pschartOptions = {
-
-    cutoutPercentage: 40,
+    animation: {
+      easing: "easeOutSine",
+      duration: 3000,
+      segmentShowStroke: true,
+      animateScale: false
+    },
+    animationEasing: "easeOutSine",
+    percentageInnerCutout: 60,
+    segmentShowStroke: false,
     legend: {
       display: false
     },
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-
       series: {
         label: {
           position: "inside",
@@ -260,7 +293,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     elements: {
       center: {
         text: [{ text: '32 k', font: '500 1.4rem Poppins' }, { text: 'Profit', font: '400 0.8rem Poppins' }],
-        color: '--chart-doughnut-text-color', // Default is #000000
+        color: '--chart-bool-icon-color', // Default is #000000
         fontStyle: 'Arial', // Default is Arial
         sidePadding: 20, // Default is 20 (as a percentage)
         lineHeight: 25 // Default is 25 (in px), used for when text wraps
@@ -283,6 +316,18 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() barHrChartWidth = 300;
   @Input() barHrchartHeight = 300;
   @Input() barHrChartOptions = {
+    animation: {
+      x: {
+        easing: "linear",
+        duration: 3000,
+        from: 0
+      },
+      y: {
+        easing: "linear",
+        duration: 3000,
+        from: 240
+      }
+    },
     indexAxis: 'x',
     elements: {
       bar: {
@@ -396,7 +441,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
         '--chartColor7'
 
       ],
-      iconColor:'--chart-icon-color',
+      iconColor: '--chart-icon-color',
       borderColor: [
         '#fff',
       ],
@@ -460,9 +505,15 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     { displayName: 'Closed', key: 'closed', dataType: 'html' },
     { displayName: 'Rate', key: 'rate', dataType: 'html' }
   ]
+  toDoListTableHeader: TableHeader[] = [
+    { displayName: 'Project', key: 'project', dataType: 'html' },
+    { displayName: 'Issue', key: 'issue', dataType: 'html' },
+    { displayName: 'Progress', key: 'progress', dataType: 'html' }
+
+  ]
   tableStyle: string = 'light';
 
-  constructor(private injector: Injector, public translate: TranslateService) { super(injector); }
+  constructor(private injector: Injector, public translate: TranslateService, public alertService: AlertService) { super(injector); }
 
   ngOnInit(): void {
     this.rdsMemberActivityTableMfeConfig = {
@@ -492,5 +543,15 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   }
   LoadMemberActivityTable() {
 
+  }
+  LoadToDoListTable() {
+
+  }
+  getMode(): string {
+    const mode: string = localStorage.getItem('THEME');
+    if (mode == null || mode == '' || !mode) {
+      return 'light';
+    }
+    return mode;
   }
 }

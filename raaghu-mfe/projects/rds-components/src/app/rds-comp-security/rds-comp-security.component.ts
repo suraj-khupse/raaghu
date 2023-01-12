@@ -20,11 +20,11 @@ export interface SeccuritySetting {
 
 
 @Component({
-  selector: 'rds-security',
+  selector: 'rds-comp-security',
   templateUrl: './rds-comp-security.component.html',
   styleUrls: ['./rds-comp-security.component.scss']
 })
-export class RdsSecurityComponent implements OnInit {
+export class RdsCompSecurityComponent implements OnInit {
   @Output() securityData = new EventEmitter<any>();
   @ViewChild('Scurityform') securityformdata: NgForm;
   disable: boolean;

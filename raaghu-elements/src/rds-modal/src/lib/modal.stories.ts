@@ -11,6 +11,11 @@ export default {
       control: 'radio'
     },
   },
+  parameters: { 
+    actions: {
+      handles: ['hide.bs.modal','hidePrevented.bs.modal','show.bs.modal',],
+     }
+   },
 } as Meta;
 export const Default: Story<RdsModalComponent> = (args) => ({
   props: args,
@@ -34,7 +39,7 @@ export const Default: Story<RdsModalComponent> = (args) => ({
   </rds-modal>
 `,
 });
-Default.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'preventEscapeKey'] } };
+Default.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'preventEscapeKey','onShow','onClose'] } };
 Default.args = {
   showModalFooter: true,
   showModalHeader: true,
@@ -61,7 +66,7 @@ export const verticallyCenterd: Story<RdsModalComponent> = (args) => ({
           </rds-modal>
       `,
 });
-verticallyCenterd.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'verticallyCenterd', 'preventEscapeKey'] } };
+verticallyCenterd.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'verticallyCenterd', 'preventEscapeKey','onShow','onClose'] } };
 verticallyCenterd.args = {
   showModalFooter: true,
   showModalHeader: true,
@@ -89,7 +94,7 @@ export const staticBackdropModal: Story<RdsModalComponent> = (args) => ({
           </rds-modal>
       `,
 });
-staticBackdropModal.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'modalBackdrop', 'preventEscapeKey'] } };
+staticBackdropModal.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'modalBackdrop', 'preventEscapeKey','onShow','onClose'] } };
 staticBackdropModal.args = {
   showModalFooter: true,
   showModalHeader: true,
@@ -118,7 +123,7 @@ Long Content Modal
 </rds-modal>
 `,
 });
-longContentModal.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'scrollable', 'preventEscapeKey'] } };
+longContentModal.parameters = { controls: { include: ['showModalFooter', 'showModalHeader', 'scrollable', 'preventEscapeKey','onShow','onClose'] } };
 longContentModal.args = {
   showModalFooter: true,
   showModalHeader: true,

@@ -3,7 +3,7 @@
     <div class="card h-100 w-100 border" *ngFor="let item of statItems; let i = index">
           <div class="card-body align-items-center d-flex justify-content-center">
         <div>
-            <div class="grow mt-4 text-center">
+            <div class="grow mt-4 d-flex justify-content-center">
               <rds-icon
               [name]="item.icon"
               [fill]="item.iconFill"
@@ -11,11 +11,14 @@
               [height]="item.iconHeight"
               [width]="item.iconWidth"
               colorVariant="primary"
-              class="fs-6 me-2">
+              class="fs-6">
             </rds-icon>
           </div>   
-        <h1 class="fw-bold mt-4 text-center">
+        <!-- <h1 class="fw-bold mt-4 text-center">
           {{ item.value }}
+        </h1> -->
+        <h1>
+          <label class="fw-bold  mt-4 text-primary text-center">{{ item.value }}</label>
         </h1>
         <div>
           <label class="fs-5 text-muted text-center">
@@ -40,8 +43,9 @@
           stathover
         "
       >
-        <div class="d-block text-center">
-          <h1 class="fw-bold py-2 titlehover">
+        <div class="d-block text-center text-primary">
+          <h1 class="d-flex justify-content-center grow">
+          <label class="fw-bold py-2 titlehover text-primary"></label>
             {{ item.value }}
           </h1>
           <div>

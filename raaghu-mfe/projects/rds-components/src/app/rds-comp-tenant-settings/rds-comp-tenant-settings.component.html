@@ -1,4 +1,4 @@
-<div class="tab-content py-3">
+<div class="tab-content py-3 p-2">
 
     <form #tenantSettingsForm="ngForm">
         <div class="row" *ngIf="showEditData">
@@ -6,7 +6,7 @@
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Use Host Database')"
                         (onChange)="getCheckboxValue($event,'host')" [withLabel]="true"
-                        [checked]="tenantSettingsInfo.useHostDatabase" [switch]="false" [inline]="false"
+                        [checked]="tenantSettingsInfo.useHostDatabase" [switch]="false"
                         [id]="'useHostDatabase'"></rds-checkbox>
                 </div>
             </div>
@@ -51,44 +51,44 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 sm-p-0" *ngIf="showEditData">
+            <div class="col-md-12 pb-2 sm-p-0" *ngIf="showEditData">
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Set Random Password')"
                         [withLabel]="true" (onChange)="getCheckboxValue($event,'ramdomPassword')"
-                        [checked]="tenantSettingsInfo.setRandomPassword" [switch]="false" [inline]="false"
+                        [checked]="tenantSettingsInfo.setRandomPassword" [switch]="false" 
                         [id]="'setRandomPassword'"></rds-checkbox>
                 </div>
             </div>
-            <div class="col-md-12 sm-p-0" *ngIf="showEditData">
+            <div class="col-md-12 pb-2 sm-p-0" *ngIf="showEditData">
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Should Change Password On Next Login')"
                         [checked]="tenantSettingsInfo.changePasswordOnNextLogin" [withLabel]="true" [switch]="false"
-                        [inline]="false" [id]="'changePasswordOnNextLogin'"
+                         [id]="'changePasswordOnNextLogin'"
                         (onChange)="getCheckboxValue($event,'changePassword')">
                     </rds-checkbox>
                 </div>
             </div>
-            <div class="col-md-12 sm-p-0" *ngIf="showEditData">
+            <div class="col-md-12 pb-2 sm-p-0" *ngIf="showEditData">
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [checked]="tenantSettingsInfo.sendActivationEmail"
                         [label]="translate.instant('Send Activation Email')"
                         (onChange)="getCheckboxValue($event,'sendEmail')" [withLabel]="true" [switch]="false"
-                        [inline]="false" [id]="'sendActivationEmail'">
+                         [id]="'sendActivationEmail'">
                     </rds-checkbox>
                 </div>
             </div>
-            <div class="col-md-12 sm-p-0">
+            <div class="col-md-12 pb-2 sm-p-0">
                 <div class="form-group mb-3">
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Activate')"
                         [checked]="tenantSettingsInfo.isActive" [(ngModel)]="tenantSettingsInfo.isActive"
-                        name="isActive" [withLabel]="true" [switch]="false" [inline]="false" [id]="'active'">
+                        name="isActive" [withLabel]="true" [switch]="false"  [id]="'active'">
                     </rds-checkbox>
                 </div>
             </div>
         </div>
     </form>
 </div>
-<div class="my-2">
+<div class="p-4 footer-buttons">
 
     <rds-button [label]="translate.instant('Cancel')" [isOutline]="true" [colorVariant]="'primary'" [size]="'small'"
         (click)="onCancelSetting()" data-bs-dismiss="offcanvas">
