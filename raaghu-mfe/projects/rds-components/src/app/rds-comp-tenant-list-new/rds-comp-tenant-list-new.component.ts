@@ -154,7 +154,6 @@ export class RdsCompTenantListNewComponent implements OnInit {
   }
 
   newTenantHost(event: any): void {
-    debugger
     this.selectedId = '';
     this.viewCanvas = true;
     this.getHostFeatureEmitter.emit(true);
@@ -172,7 +171,6 @@ export class RdsCompTenantListNewComponent implements OnInit {
   }
 
   newTenant(event): void {
-    debugger
     this.buttonSpinnerForNewUser = true;
     this.buttonSpinnerForSave = false;
     this.selectedId = '';

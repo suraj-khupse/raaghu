@@ -197,7 +197,7 @@ export class UserEffects {
         ofType(getUserPermission),
         switchMap(({ id }) =>
           // Call the getTodos method, convert it to an observable
-          from(this.userService.permissionsGET("T",id)).pipe(
+          from(this.userService.permissionsGET("U",id)).pipe(
             // Take the returned value and return a new success action containing the todos
             map((UserPermissionI) => {
               return getUserPermissionSuccess({ UserPermissionI })

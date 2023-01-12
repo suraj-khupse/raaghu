@@ -51,7 +51,7 @@
     <span class="text-muted" *ngIf="!entity || checkedCategoryList.length < 1">{{(value)? value:placeholder}}</span>
     <span *ngIf="entity && checkedCategoryList.length > 0">
       <rds-badge *ngFor="let title of badgeList" (onClose)="initAllSelect($event, title)" class="mx-1" size="small"
-        [colorVariant]="'primary'" [label]="title.value" [showClose]="true"></rds-badge>
+        [colorVariant]="'primary'" [label]="title.some" [showClose]="true"></rds-badge>
     </span>
   </span>
 

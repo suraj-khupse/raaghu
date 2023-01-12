@@ -227,7 +227,6 @@ export class AppComponent implements OnInit {
     this.store
       .select(selectClaimsTypeByRole)
       .subscribe((res: any) => {
-        debugger
         if (res) {
           this.claimDisplayArray = []
             res.forEach((element) => {
