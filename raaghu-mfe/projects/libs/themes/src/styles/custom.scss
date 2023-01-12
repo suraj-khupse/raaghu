@@ -455,6 +455,17 @@ html[theme="light"] {
   padding-bottom: 60px !important;
 }
 
+@media (max-width: 767px) and (-webkit-device-pixel-ratio : 3){
+  .rds-scrollable-wrapper {
+    padding-bottom: 150px !important;
+  }
+}
+@media (max-width: 767px) and (-webkit-device-pixel-ratio : 2){
+  .rds-scrollable-wrapper {
+    padding-bottom: 150px !important;
+  }
+}
+
 // /* btn-icon */
 .btn-icon span.btn-text {
   display: none;
