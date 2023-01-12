@@ -59,6 +59,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     this.oauthService.setupAutomaticSilentRefresh();
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
+
   //   this.oauthService.tryLogin({
   //     onTokenReceived: context => {
   //         console.debug("logged in");

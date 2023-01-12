@@ -9,7 +9,7 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'pages/dashboard',
+    redirectTo: 'login',
   },
 
   {
@@ -55,7 +55,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.dashboard.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-          data: { permission: 'Pages.Administration' },
+          data: { permission: 'BookStore.Dashboard.Host' },
 
       },
       {
