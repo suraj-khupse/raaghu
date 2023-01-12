@@ -8,33 +8,33 @@
         aria-label="Close"></button>
       <div class="tab-pane active h-100" [ngClass]="{ 'show active': activePage === 0 }" id="nav-LinkAccount"
         role="tabpanel" aria-labelledby="nav-LinkAccount">
-        <app-rds-linked-accounts [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData"
+        <!-- <app-rds-linked-accounts [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData"
           (ondelete)="ondeleteLinkaccount.emit($event)" [manageLinkedAccountsTabOpened]="manageLinkedAccountsTabOpened"
           [pagination]="pagination" [recordsPerpage]="recordsPerpage" (deleteEvent)="deleteLinkaccount($event)"
           (onUserSave)="linkToUser($event)" (onCancelLinkedAccounts)="onClickCloseTabContent()">
-        </app-rds-linked-accounts>
+        </app-rds-linked-accounts> -->
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 1 }" id="nav-Deligation"
         role="tabpanel" aria-labelledby="nav-Deligation">
-        <rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader"
+        <!-- <rds-user-delegations [rdsDeligateTableHeader]="rdsDeligateTableHeader"
           [buttonSpinner]="showDelegationButtonSpinner" [pagination]="pagination"
           [delegateTabopened]="delegateTabopened" (onDeligateSave)="onSaveDelegate.emit($event)" (onDeleteDeligate)="deleteDelegate($event)"
           [tableWidth]="tableWidth" [tableStyle]="tableStyle" [recordsPerpage]="recordsPerpage" [userList]="userList"
           [rdsDeligateTableData]="rdsDeligateTableData" (onCancelDeligate)="cancelDelegate($event)">
-        </rds-user-delegations>
+        </rds-user-delegations> -->
       </div>
 
       <div class="tab-pane fade h-100" [ngClass]="{'show active': activePage === 2 }" id="nav-Attempts" role="tabpanel"
         aria-labelledby="nav-Attempts">
-        <app-rds-comp-login-attempts [LoginAttempts]="LoginAttempts"
+        <!-- <app-rds-comp-login-attempts [LoginAttempts]="LoginAttempts"
           (RefreshLoginAttemts)="onLoginAttempts.emit($event)">
-        </app-rds-comp-login-attempts>
+        </app-rds-comp-login-attempts> -->
       </div>
       <div class="tab-pane fade h-100" [ngClass]="{ 'show active': activePage === 3 }" id="nav-Settings" role="tabpanel"
         aria-labelledby="nav-Settings">
-        <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)"
+        <!-- <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)"
           (onProfileClose)="onClickCloseTabContent()">
-        </rds-mysettings>
+        </rds-mysettings> -->
       </div>
       <div class="tab-pane fade h-100" id="nav-DownLoad" role="tabpanel" aria-labelledby="nav-DownLoad">
         <!-- <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection> -->
@@ -48,8 +48,8 @@
       </div>
       <div class="tab-pane fade h-100" id="nav-Settings" [ngClass]="{ 'show active': activePage === 5 }" role="tabpanel"
         aria-labelledby="nav-Settings">
-        <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)">
-        </rds-mysettings>
+        <!-- <rds-mysettings [ProfileData]="ProfileData" (onProfileSave)="onProfileSave.emit($event)">
+        </rds-mysettings> -->
       </div>
       <!-- <div class="tab-pane fade h-100" id="nav-DownLoad" role="tabpanel" aria-labelledby="nav-DownLoad">
         <rds-comp-download-collection [DownloadTable]="DownloadTable"></rds-comp-download-collection>

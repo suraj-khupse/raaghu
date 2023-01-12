@@ -224,19 +224,22 @@ export class AppComponent implements OnInit {
       }
     });
     this.store.dispatch(getClaimTypes(this.emitClaimData.id));
-    this.store.select(selectClaimsTypeByRole).subscribe((res: any) => {
-      debugger;
-      if (res) {
-        this.claimDisplayArray = [];
-        res.forEach((element) => {
-          this.claimDisplayArray.push({
-            id: element.roleId,
-            claimType: element.claimType,
-            claimValue: element.claimValue,
-          });
-        });
-      }
-    });
+
+    this.store
+      .select(selectClaimsTypeByRole)
+      .subscribe((res: any) => {
+        if (res) {
+          this.claimDisplayArray = []
+            res.forEach((element) => {
+              this.claimDisplayArray.push({
+                id:element.roleId,
+                claimType: element.claimType,
+                claimValue: element.claimValue,
+              });
+            });
+        }
+      });
+
 
     this.store.select(selectRoleForEdit).subscribe((res: any) => {
       if (res) {

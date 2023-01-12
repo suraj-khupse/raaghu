@@ -105,6 +105,9 @@ export class AppComponent {
   isAssigned: boolean;
   isShimmer: boolean;
   roleListItem: any[];
+  orgUnitListItem: any[];
+  roleNamePermissionTree: string;
+  adminId: any;
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -163,20 +166,15 @@ export class AppComponent {
             email: element.email,
             surName:element.surname,
           }
+          if(element.userName == 'admin'){
+            this.adminId = element.id;
+          }
           this.userList.push(item);
         });
         //this.isShimmer = false;
       }
     });
  
-    this.store.dispatch(getUserPermission('admin'));
-    this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
-      if (res && res.groups) {
-        this.permissionTreeData = res.groups;
-        this.isEdit = false;
-      }
-    });
-
     this.store.dispatch(assignableRoles());
     this.store.select(selectAssignableRoles).subscribe((res: any) => {
       if (res && res.items) {
@@ -196,43 +194,21 @@ export class AppComponent {
     this.store.dispatch(availbleOrganizationUnit());
     this.store.select(selectAvailableOrgUnit).subscribe((res: any) => {
       if (res && res.items) {
-        this.orgTreeData =  [];
-        this.isAnimation = false;
-    this.organizationTreeList = this._arrayToTreeConverterService.createTree(
-      res.items,
-      'parentId',
-      'code',
-      null,
-      'children',
-      [
-        {
-          target: 'label',
-          source: 'displayName',
-        },
-        {
-          target: 'expandedIcon',
-          value: 'fa fa-folder-open text-warning',
-        },
-        {
-          target: 'collapsedIcon',
-          value: 'fa fa-folder text-warning',
-        },
-        {
-          target: 'expanded',
-          value: true,
-        },
-      ],
-      1
-    );
-  }
+        debugger
+        this.orgUnitListItem =  [];
+            this.isAnimation = false;
+            res.items.forEach((element: any) => {
+            const item: any = {
+            some: element.displayName,
+            value:element.code,
+            isSelected:false
+          }
+          this.orgUnitListItem.push(item);
+        });
+      }
+      
     });
 
-  
-    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-    //   if (res) {
-    //     this.translate.use(res);
-    //   }
-    // })
 
  
     this.rdsUserMfeConfig = {
@@ -274,6 +250,16 @@ export class AppComponent {
 
   }
 
+
+  getPermissionEmitter(id=this.adminId){
+    this.store.dispatch(getUserPermission(id));
+    this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
+      if (res && res.groups) {
+        this.permissionTreeData = res.groups;
+        this.isEdit = false;
+      }
+    });
+  }
   Saveuserinfo(user: any ){
     if(user && user.userInfo ){
       if(user.userInfo.id){
@@ -309,8 +295,7 @@ export class AppComponent {
     }
    
   }
-  CreateOrEditUser (user: any) {
-    console.log(user);
+  getEditUser (user: any) {
     this.store.dispatch(getUserForEdit(user));
     this.store.select(selectUserForEdit).subscribe(res=>{
       const data: any = {

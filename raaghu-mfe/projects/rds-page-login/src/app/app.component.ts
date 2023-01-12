@@ -116,6 +116,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
             id: res.tenantId,
             name: this.tenancyName
           }));
+        
           var myModalEl = document.getElementById('ChangeTenant');
           var modal = bootstrap.Modal.getInstance(myModalEl)
           modal.hide();

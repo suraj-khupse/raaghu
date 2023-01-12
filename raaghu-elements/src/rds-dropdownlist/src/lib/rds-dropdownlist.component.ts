@@ -136,7 +136,10 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
     if (this.multiSelect) {
       selecteditem.isSelected = !selecteditem.isSelected;
       this.isAllSelected();
-      this.onSelect.emit({ item: selecteditem });
+      let newItems = this.listItems.filter(x=>
+        x.isSelected == selecteditem.isSelected
+      )
+      this.onSelect.emit({ item: newItems });
     }
     else {
       // this.placeholder = selecteditem.some;
@@ -150,7 +153,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
     this.badgeList = [];
     for (var i = 0; i < this.listItems.length; i++) {
       if (this.listItems[i].isSelected) {
-        this.checkedCategoryList.push(" " + this.listItems[i].value);
+        this.checkedCategoryList.push(" " + this.listItems[i].some);
         this.badgeList.push(this.listItems[i]);
       }
     }

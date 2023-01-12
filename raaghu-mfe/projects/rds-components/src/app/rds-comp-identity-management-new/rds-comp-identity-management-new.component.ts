@@ -53,9 +53,7 @@ export class RdsCompIdentityManagementNewComponent implements OnInit {
     }
   }
   selectIdentity(e: boolean, type: string) {
-debugger
-    this.identityData.emit(this.identityData);
-    
+    this.identityData.emit(this.identityData);    
    }
    onSaveIdentity(){
 //     const data :any = {

@@ -21,10 +21,10 @@ import { RdsCompHierarchyComponent } from './rds-comp-hierarchy/rds-comp-hierarc
 import { RdsCompLoginAttemptsComponent } from './rds-comp-login-attempts/rds-comp-login-attempts.component';
 import { RdsCompSubscriptionComponent } from './rds-comp-subscription/rds-comp-subscription.component';
 import { RdsUserDelegationsComponent } from './rds-comp-user-delegations/rds-comp-user-delegations.component';
-import { RdsMysettingsComponent } from './rds-comp-mysettings/rds-comp-mysettings.component';
+// import { RdsMysettingsComponent } from './rds-comp-mysettings/rds-comp-mysettings.component';
 import { RdsCompDownloadCollectionComponent } from './rds-comp-download-collection/rds-comp-download-collection.component';
 // import { RdsCompAlertPopupComponent } from './rds-comp-alert-popup/rds-comp-alert-popup.component';
-import { RdsLinkedAccountsComponent } from './rds-comp-linked-accounts/rds-comp-linked-accounts.component';
+// import { RdsLinkedAccountsComponent } from './rds-comp-linked-accounts/rds-comp-linked-accounts.component';
 import { RdsCompAuditLogsComponent } from './rds-comp-audit-logs/rds-comp-audit-logs.component';
 import { RdsCompTenantListComponent } from './rds-comp-tenant-list/rds-comp-tenant-list.component';
 import { RdsCompTenantInformationComponent } from './rds-comp-tenant-information/rds-comp-tenant-information.component';
@@ -169,7 +169,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsNotificationComponent,
     RdsSecurityComponent,
     RdsUserDelegationsComponent,
-    RdsMysettingsComponent,
+    // RdsMysettingsComponent,
     RdsCompLoginAttemptsComponent,
     RdsCompEditionComponent,
     NestGroupDirective,
@@ -177,7 +177,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompHierarchyComponent,
     RdsCompDownloadCollectionComponent,
     // RdsCompAlertPopupComponent,
-    RdsLinkedAccountsComponent,
+    // RdsLinkedAccountsComponent,
     RdsCompAuditLogsComponent,
     RdsCompTenantListComponent,
     RdsCompTenantInformationComponent,
