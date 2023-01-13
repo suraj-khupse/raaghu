@@ -18,7 +18,7 @@ export class UserAuthService implements OnInit {
   // Observable<{[key: string]: boolean;}>;
   localization: Observable<any>;
   baseUrl: string;
-  userAuthenticated: boolean = false;
+  userAuthenticated: boolean = true;
   language: Observable<LanguageInfo[]>;
   sources: Observable<any>;
   lang: LanguageInfo[];
