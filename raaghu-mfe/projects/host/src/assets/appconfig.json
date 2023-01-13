@@ -1,8 +1,5 @@
 {
-     "remoteServiceBaseUrl": "https://abpdemoapi.raaghu.io",
-
-     "appBaseUrl": "https://abpdemoui.raaghu.io",
-
+     "remoteServiceBaseUrl": "https://localhost:44330",
+     "appBaseUrl": "http://localhost:8080",
      "replaceUrl": "true"
-
 }

@@ -235,11 +235,11 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     bsOffcanvas.show();
   }
   onLanguageSelect(lan: any): void {
-    if (lan && lan.item) {
+   
       this.selectedLanguage.language = lan.item.some;
       this.selectedLanguage.icon = lan.item.icon;
       this.onLanguageSelection.emit(lan.item.name)
-    }
+   
   }
   onToggleButton(): void {
     this.toggleEvent.emit();
@@ -274,4 +274,21 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
 
 
   }
+  // openLanguageDropdown():void{
+  //   this.showNotification = !this.showNotification;
+  //   var element: any = document.getElementById('language-dropdown');
+  //   if (element) {
+  //     var dropdown = new bootstrap.Dropdown(element);
+  //     if (this.showNotification) {
+  //       dropdown.show();
+  //     } else {
+  //       dropdown.hide();
+  //     }
+  //   }
+  
+  
+  // }
 }
+
+
+
