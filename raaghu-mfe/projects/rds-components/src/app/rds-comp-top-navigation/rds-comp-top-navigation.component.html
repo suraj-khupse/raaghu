@@ -139,8 +139,8 @@
   (onLinkToUser)="saveLinkUsers($event)" (onProfileSave)="onProfileSave.emit($event)"
   (onLoginAttempts)="onLoginAttemptsRefresh.emit($event)" (onDownloadLink)="onDownloadLink.emit($event)"
   [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData" (logout)="logout($event)"
-  (onProfilePicUpdate)="getProfilePic($event)" [showDelegationButtonSpinner]="showDelegationButtonSpinner"
-  [tenancy]="tenancy" (backToAccount)="onBackToAccount($event)">
+  [showDelegationButtonSpinner]="showDelegationButtonSpinner"
+  [tenancy]="tenancy" (backToAccount)="onBackToAccount($event)" (onUploadProfile)="onProfileUpload($event)">
 </rds-comp-profile>
 <rds-comp-notification-settings [notificationTypes]="notificationTypes" [receiveNotifications]="receiveNotifications"
   (onUpdateNotificationSettings)="onUpdateNotificationSettings.emit($event)"></rds-comp-notification-settings>
