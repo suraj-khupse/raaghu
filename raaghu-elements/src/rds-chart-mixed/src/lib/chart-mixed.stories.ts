@@ -25,7 +25,7 @@ Default.args = {
       type: 'bar',
       label: 'Bar Dataset',
       data: [0,37, -12, 70, 35,-32,85,-24],
-      backgroundColor: 'rgb(248, 188, 198)',
+      backgroundColor: 'rgba(160, 97, 247, 1)',
       borderColor:'rgb(248, 188, 198)',
       order: 0
     },
@@ -33,8 +33,8 @@ Default.args = {
       type: 'line',
       label: 'Line Dataset',
       data: [-10,18, -60, -90, -44,-91,-83,46],
-      borderColor: 'blue',
-      backgroundColor:'blue',
+      borderColor: 'rgba(239, 130, 46, 1)',
+      backgroundColor:'rgba(239, 130, 46, 1)',
       order: 1
     }
   ],
@@ -44,7 +44,7 @@ Default.args = {
   chartHeight: 400,
   chartOptions: {
     radius: 10,
-    pointStyle: 'triangle',
+    pointStyle: 'circle',
     plugins: {
       legend: {
         position: 'top',

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Injector, Input, OnInit, Output, SimpleChanges
 import { FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DownloadData, Profile, success } from '../../models/profile.model';
-import { ComponentLoaderOptions, MfeBaseComponent, ProfileServiceProxy, UpdateProfilePictureInput, AppSessionService, } from '@libs/shared';
+import { AppSessionService, ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { TableHeader } from '../../models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -82,7 +82,9 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   @Output() onDownloadLink = new EventEmitter<any>();
   @Output() onProfileData = new EventEmitter<any>();
   @Output() backToAccount = new EventEmitter<any>();
+  @Output() onUploadProfile = new EventEmitter<any>();
   @Input() showLoadingSpinner: boolean = false;
+  // @Input()impersonatorUserId : boolean = false;
   @Input() tenancy: string = 'Host Admin';
   public Profileform = new FormGroup({})
   offCanvasWidth = 307;
@@ -148,15 +150,15 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
 
       }
     }
-    this.getProfilePicture();
+    // this.getProfilePicture();
+
 
   }
   constructor(private injector: Injector,
     public translate: TranslateService,
     private router: Router,
-    private http: HttpClient,
-    private _profileService: ProfileServiceProxy,
-    public sessionService: AppSessionService,) {
+    public sessionService: AppSessionService,
+    private http: HttpClient) {
     super(injector);
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -164,14 +166,14 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   }
 
 
-  public getProfilePicture(): void {
-    this._profileService.getProfilePicture().subscribe((result) => {
-      if (result && result.profilePicture) {
-        this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
-        this.onProfilePicUpdate.emit(this.Profileurl);
-      }
-    })
-  }
+  // public getProfilePicture(): void {
+  //   this._profileService.getProfilePicture().subscribe((result) => {
+  //     if (result && result.profilePicture) {
+  //       this.Profileurl = 'data:image/jpeg;base64,' + result.profilePicture;
+  //       this.onProfilePicUpdate.emit(this.Profileurl);
+  //     }
+  //   })
+  // }
 
   onclickMenu(item: any) {
 
@@ -293,52 +295,53 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   // }
 
   onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
+    // if (event.target.files && event.target.files[0]) {
 
-      const file: File = event.target.files[0];
+    //   const file: File = event.target.files[0];
 
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('fileType', file.type);
-      formData.append('fileName', 'ProfilePicture');
-      formData.append('fileToken', this.guid());
+    //   const formData = new FormData();
+    //   formData.append('file', file);
+    //   formData.append('fileType', file.type);
+    //   formData.append('fileName', 'ProfilePicture');
+    //   formData.append('fileToken', this.guid());
 
-      const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
-      this.uploadSub = upload$.subscribe((result: any) => {
-        this.updateProfilePicture(result.result.fileToken);
-        this.onProfileData.emit(result);
-        console.log(result)
+    //   const upload$ = this.http.post("https://anzdemoapi.raaghu.io/Profile/UploadProfilePicture", formData);
+    //   this.uploadSub = upload$.subscribe((result: any) => {
+    //     this.updateProfilePicture(result.result.fileToken);
+    //     this.onProfileData.emit(result);
+    //     console.log(result)
 
-      });
+    //   });
 
-    }
+    // }
+    this.onUploadProfile.emit(event);
   }
 
-  updateProfilePicture(fileToken: string): void {
-    const input = new UpdateProfilePictureInput();
-    input.fileToken = fileToken;
+  // updateProfilePicture(fileToken: string): void {
+  //   const input = new UpdateProfilePictureInput();
+  //   input.fileToken = fileToken;
 
-    this._profileService
-      .updateProfilePicture(input)
-      .subscribe(() => {
-        this.getProfilePicture();
-      });
-  }
+  //   this._profileService
+  //     .updateProfilePicture(input)
+  //     .subscribe(() => {
+  //       this.getProfilePicture();
+  //     });
+  // }
 
 
-  reset(): void {
-    throw new Error('Method not implemented.');
-  }
+  // reset(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
-  guid(): string {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
+  // guid(): string {
+  //   function s4() {
+  //     return Math.floor((1 + Math.random()) * 0x10000)
+  //       .toString(16)
+  //       .substring(1);
+  //   }
 
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-  }
+  //   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  // }
 
   logoutFunction() {
     this.showLoadingSpinner = true;
@@ -452,5 +455,9 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   backAccount(): void {
     this.backToAccount.emit(true);
   }
+  // uploadProfile(): void {
+  //   // this.onUploadProfile.emit(true);
+  //   this.onUploadProfile.emit(this.Profileurl);
+  // }
 
 }

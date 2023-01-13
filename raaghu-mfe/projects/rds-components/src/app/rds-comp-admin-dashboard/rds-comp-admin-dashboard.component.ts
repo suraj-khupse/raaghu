@@ -158,16 +158,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() monthlySummarychartHeight = 250
   @Input() monthlySummarychartOptions = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 3000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 3000,
-        from: 230
-      }
+      duration: 2900
     },
     radius: 0,
     pointStyle: 'circle',
@@ -249,8 +240,9 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() pschartOptions = {
     animation: {
       easing: "easeOutSine",
-      duration: 3000,
+      duration: 2000,
       segmentShowStroke: true,
+      animateRotate: true,
       animateScale: false
     },
     animationEasing: "easeOutSine",
@@ -318,16 +310,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() barHrchartHeight = 300;
   @Input() barHrChartOptions = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 3000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 3000,
-        from: 240
-      }
+      duration: 2900
     },
     indexAxis: 'x',
     elements: {
@@ -389,6 +372,13 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() ClientCallschartLabels = ['Total Client calls connected', 'Total Client calls disconnected'];
   @Input() ClientCallschartWidth = 200;
   @Input() ClientCallschartOptions = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 2000,
+      segmentShowStroke: true,
+      animateRotate: true,
+      animateScale: false
+    },
     elements: {
       center: {
         text: '50%'  //set as you wish
@@ -458,6 +448,13 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() ConnectedCallschartLabels = ['Total Connected calls', 'Total calls'];
   @Input() ConnectedCallschartWidth = 200;
   @Input() ConnectedCallschartOptions = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 2000,
+      segmentShowStroke: true,
+      animateRotate: true,
+      animateScale: false
+    },
     elements: {
       center: {
         text: '50%'  //set as you wish

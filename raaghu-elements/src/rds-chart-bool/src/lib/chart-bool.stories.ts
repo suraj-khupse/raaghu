@@ -25,7 +25,7 @@ Default.args = {
       fillStyle: 'blue',
       fillRect: [200, 100, 40, 10],
       backgroundColor: [
-        '#01AE9D',
+        '#A061F7',
         '#E1E1E1'
 
       ],

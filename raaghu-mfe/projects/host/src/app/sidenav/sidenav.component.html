@@ -1,22 +1,22 @@
+<div class="header align-items-stretch">
+  <!-- <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader> -->
+  <rds-top-navigation [backgroundColor]="backgroundColor" [selectedMenu]="selectedMenu"
+    [selectedMenuDescription]="selectedMenuDescription" [LoginAttempts]="LoginAttempts" (toggleEvent)="toggle()"
+    [profileData]="profileData" [rdsDeligateTableData]="rdsDeligateTableData" [offCanvasId]="offCanvasId"
+    [logo]="'assets/raaghu_icon.png'" [projectName]="'Raaghu'" [linkedAccountData]="linkedAccountData"
+    [linkedAccountHeaders]="linkedAccountHeaders" [userList]="usernameList" [notificationData]="notifications"
+    [unreadCount]="unreadCount" [languageItems]="languageItems" [selectedLanguage]="selectedLanguage" [showDelegationButtonSpinner]="showDelegationButtonSpinner" [receiveNotifications]="receiveNotifications"
+    [notificationTypes]="notificationTypes" [tenancy]="tenancy" (onUpdateNotificationSettings)="onUpdateNotificationSettings($event)" 
+    (setNotificationAsRead)="setNotificationAsRead($event)" (deleteDeligateuser)="deleteDeligateuser($event)" (saveDeligate)="saveDeligate($event)"
+    (onProfileSave)="onProfileSave($event)" (deleteLinkaccount)="deleteLinkaccount($event)" (onLoginAttemptsRefresh)="onLoginAttemptsRefresh($event)"
+    (onLanguageSelection)="onLanguageSelection($event)" (onDownloadLink)="onDownloadLink($event)"
+    (setAllNotificationAsRead)="setAllNotificationAsRead($event)" (linkUser)="linkUser($event)"
+     (logoutEmitter)="logoutEmitter($event)" [FixedHeader]="fixedHeader" (backToImpersonateAccount)="backToImpersonateAccount()">
+  
+  </rds-top-navigation>
+</div>
 <div class="d-flex flex-column flex-root">
   <div class="page d-flex flex-column flex-column-fluid">
-    <div class="header align-items-stretch">
-      <!-- <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader> -->
-      <rds-top-navigation [backgroundColor]="backgroundColor" [selectedMenu]="selectedMenu"
-        [selectedMenuDescription]="selectedMenuDescription" [LoginAttempts]="LoginAttempts" (toggleEvent)="toggle()"
-        [profileData]="profileData" [rdsDeligateTableData]="rdsDeligateTableData" [offCanvasId]="offCanvasId"
-        [logo]="'assets/raaghu_icon.png'" [projectName]="'Raaghu'" [linkedAccountData]="linkedAccountData"
-        [linkedAccountHeaders]="linkedAccountHeaders" [userList]="usernameList" [notificationData]="notifications"
-        [unreadCount]="unreadCount" [languageItems]="languageItems" [selectedLanguage]="selectedLanguage" [showDelegationButtonSpinner]="showDelegationButtonSpinner" [receiveNotifications]="receiveNotifications"
-        [notificationTypes]="notificationTypes" [tenancy]="tenancy" (onUpdateNotificationSettings)="onUpdateNotificationSettings($event)" 
-        (setNotificationAsRead)="setNotificationAsRead($event)" (deleteDeligateuser)="deleteDeligateuser($event)" (saveDeligate)="saveDeligate($event)"
-        (onProfileSave)="onProfileSave($event)" (deleteLinkaccount)="deleteLinkaccount($event)" (onLoginAttemptsRefresh)="onLoginAttemptsRefresh($event)"
-        (onLanguageSelection)="onLanguageSelection($event)" (onDownloadLink)="onDownloadLink($event)"
-        (setAllNotificationAsRead)="setAllNotificationAsRead($event)" (linkUser)="linkUser($event)"
-         (logoutEmitter)="logoutEmitter($event)" [FixedHeader]="fixedHeader" (backToImpersonateAccount)="backToImpersonateAccount()">
-      
-      </rds-top-navigation>
-    </div>
     <div class="
         d-flex
         flex-column-fluid

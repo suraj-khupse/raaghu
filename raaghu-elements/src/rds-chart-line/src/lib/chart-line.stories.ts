@@ -26,7 +26,7 @@ Default.args = {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56, 55],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       tension: 0.1,
 
     }
@@ -80,7 +80,7 @@ MultiAxis.args = {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56, 55],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       tension: 0.1,
 
     },
@@ -88,7 +88,7 @@ MultiAxis.args = {
       label: 'My Second Dataset',
       data: [50, 89, 299, 40, 120, 100],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       tension: 0.1,
     }
   ],
@@ -136,7 +136,7 @@ Stepped.args = {
       label: 'My First Dataset',
       data: [20, -40, 80, 90, 0, -55],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       // tension: 0.1,
       // Change the stepped mode to explore different stepped chart options
       // false: no stepping
@@ -175,14 +175,14 @@ LineStyling.args = {
       label: 'Unfilled',
       data: [65, 59, 80, 81, 56, 55],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
 
 
     }, {
       label: 'Dashed',
       fill: false,
       backgroundColor: 'red',
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       borderDash: [5, 5],
       data: [10, 20, 30, 40, 50, 60],
     }, {
@@ -237,7 +237,7 @@ LineChartWithAnimation.args = {
       label: 'My First Dataset',
       data: [65, 59, 80, 81, 56, 55],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       tension: 0.1,
       animations: {
         y: {
@@ -251,7 +251,7 @@ LineChartWithAnimation.args = {
       label: 'My Second Dataset',
       data: [60, 50, 70, 61, 26, 85],
       fill: false,
-      borderColor: 'rgb(75, 192, 192)',
+      borderColor: 'rgba(126, 46, 239, 1)',
       tension: 0.1,
     }
   ],

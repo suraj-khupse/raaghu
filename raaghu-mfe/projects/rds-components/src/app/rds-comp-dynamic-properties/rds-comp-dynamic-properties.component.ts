@@ -7,8 +7,7 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import { AppSessionService } from '@libs/shared';
-// import { AppSessionService } from '@libs/shared';
+
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { TableAction } from '../../models/table-action.model';
@@ -51,9 +50,10 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
       ariacontrols: 'permission',
     },
   ];
+  tenantId: any = null;
 
 
-  constructor(public translate: TranslateService, private appSessionService: AppSessionService) { }
+  constructor(public translate: TranslateService,) { }
   ngOnChanges(changes: SimpleChanges): void {
     //this.DynamicProperyData = undefined;
     var myOffcanvas = document.getElementById('AddDynamic');
@@ -112,7 +112,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
           inputType: this.DynamicProperyInfo.dynamicProperties.inputType[0],
           permission: this.selectedPermissions,
           propertyName: this.DynamicProperyInfo.dynamicProperties.propertyName,
-          tenantId: this.appSessionService.tenantId,
+          tenantId: this.tenantId,
           id: this.id,
         };
         this.createOrUpdateDynamic.emit(DynamicPropery);
@@ -125,7 +125,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
           inputType: this.DynamicProperyData.inputType,
           permission: this.selectedPermissions,
           propertyName: this.DynamicProperyData.propertyName,
-          tenantId: this.appSessionService.tenantId,
+          tenantId: this.tenantId,
           id: this.id,
         };
         this.closeCanvas();

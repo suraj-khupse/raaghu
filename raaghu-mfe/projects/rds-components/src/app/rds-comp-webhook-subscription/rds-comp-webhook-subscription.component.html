@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
       <div class="form-group mb-3">
         <rds-input size="medium" name="headerValue" required #header_value="ngModel"
           [value]="additionalheader.additionalheadervalue" [placeholder]="translate.instant('Header Value')"
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
       <rds-button [id]="'yes'" [size]="'medium'" [isDisabled]="headerForm.invalid" [colorVariant]="'primary'"
         [label]="translate.instant('Add')" (click)="addWebhookHeaders(headerForm)">
       </rds-button>
