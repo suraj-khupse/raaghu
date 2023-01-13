@@ -42,7 +42,7 @@ Default.args = {
     responsive: true,
     radius: 10,
     maintainAspectRatio: false,
-    pointStyle: 'triangle',
+    pointStyle: 'circle',
     plugins: {
 
       legend: {
