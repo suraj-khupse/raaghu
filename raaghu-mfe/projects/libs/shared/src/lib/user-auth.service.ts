@@ -21,13 +21,17 @@ export class UserAuthService implements OnInit {
   language: Observable<LanguageInfo[]>;
   sources: Observable<any>;
   constructor(
-    private localStorage: LocalStorageService,
     private router: Router,
     private store: Store,
     private abpserviceProxy: ServiceProxy,
     @Optional() @Inject(API_BASE_URL) baseUrl?: string
   ) {
-    this.getApplicationConfiguration();
+    const temp = JSON.parse(localStorage.getItem('userAuthenticated'));
+
+    if(temp){
+      this.userAuthenticated = temp.value;
+    }
+    this.getApplicationConfiguration()
   }
 
   ngOnInit(): void {
@@ -69,17 +73,20 @@ export class UserAuthService implements OnInit {
       //     this.router.navigateByUrl('/login');
       //   }
       // }
-      this.userAuthenticated = result.currentUser.isAuthenticated;
-      console.log('this.userAuthenticated',this.userAuthenticated);
-      if(result.currentUser.isAuthenticated){
-        this.router.navigateByUrl('pages/dashboard');
-      }
+      localStorage.setItem('userAuthenticated',JSON.stringify({value:result.currentUser.isAuthenticated}));
+       if(result.currentUser.isAuthenticated){ 
+        if(this.router.url == '/login'){       
+          this.router.navigateByUrl('pages/dashboard');
+        }
+       }else{
+        this.router.navigateByUrl('/login');
+       }
     })
 
   }
 
-
-
+                                               
+                                               
   unauthenticateUser(): void {
     this.userAuthenticated = false;
     localStorage.removeItem('LoginCredential');
@@ -90,7 +97,7 @@ export class UserAuthService implements OnInit {
   }
 
   getLocalization() {
-    return _observableOf(this.localization);
+    return _observableOf(this.localization);   
   }
   getLanguages(){
     return _observableOf(this.language);
