@@ -109,7 +109,7 @@
             </rds-dropdownlist>
           </div>
         </div>
-        <div class="row mt-4 ">
+        <div class="row mt-4">
           <rds-comp-data-table [tableData]="auditLogsTableData" [pagination]="auditLogsTableData.length>5?true:false"
             [noDataTitle]="translate.instant('Currently you do not have operation log')" [recordsPerPage]="10"
             (onActionSelection)="onActionSelect($event)" [showNodataSubtitle]="false" [actions]="actions"

@@ -421,16 +421,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptions = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 300
-      }
+      duration: 2900
     },
     "pointStyle": "star",
     "radius": 7,
@@ -611,16 +602,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptionsArea = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 400
-      }
+      duration: 2900
     },
     "pointStyle": "star",
     maintainAspectRatio: false,
@@ -939,16 +921,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptionsBubble = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 150
-      }
+      duration: 2000
     },
     "responsive": true,
     "radius": 10,
@@ -1320,16 +1293,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptionsLineChart = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 220
-      }
+      duration: 2900
     },
     radius: 0,
     pointStyle: 'circle',
@@ -1389,16 +1353,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptionsBarChartThick = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 300
-      }
+      duration: 2900
     },
     indexAxis: 'x',
     elements: {
@@ -1474,16 +1429,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptionsChartMixed = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 150
-      }
+      duration: 2900
     },
     "radius": 10,
     "pointStyle": "triangle",
@@ -1857,6 +1803,7 @@ export class RdsCompDemouiComponent implements OnInit {
       easing: "easeOutSine",
       duration: 2000,
       segmentShowStroke: true,
+      animateRotate: true,
       animateScale: false
     },
     "responsive": true,
@@ -2188,16 +2135,7 @@ export class RdsCompDemouiComponent implements OnInit {
 
   chartOptionsScatter = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 150
-      }
+      duration: 2000
     },
     "pointStyle": "triangle",
     "radius": 10,

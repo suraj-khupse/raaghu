@@ -106,6 +106,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() ClientCallsData: any = [65, 100 - 65];
   @Input() ProfitShareData: any = [60, 25, 15]
   @Input() userName: string = 'Keanu Foster';
+  @Input() noDataTitle:string='Currently you do not have member activity';
   @Input() memberActivityTableData: any = [
     { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 38 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">92%</div>" }
     , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 18 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kim</b></p><small class=\"text-muted\">Senior Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 342 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">42%</div>" }
@@ -157,16 +158,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() monthlySummarychartHeight = 250
   @Input() monthlySummarychartOptions = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 230
-      }
+      duration: 2900
     },
     radius: 0,
     pointStyle: 'circle',
@@ -250,6 +242,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
       easing: "easeOutSine",
       duration: 2000,
       segmentShowStroke: true,
+      animateRotate: true,
       animateScale: false
     },
     animationEasing: "easeOutSine",
@@ -317,16 +310,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() barHrchartHeight = 300;
   @Input() barHrChartOptions = {
     animation: {
-      x: {
-        easing: "linear",
-        duration: 2000,
-        from: 0
-      },
-      y: {
-        easing: "linear",
-        duration: 2000,
-        from: 240
-      }
+      duration: 2900
     },
     indexAxis: 'x',
     elements: {
@@ -388,6 +372,13 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() ClientCallschartLabels = ['Total Client calls connected', 'Total Client calls disconnected'];
   @Input() ClientCallschartWidth = 200;
   @Input() ClientCallschartOptions = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 2000,
+      segmentShowStroke: true,
+      animateRotate: true,
+      animateScale: false
+    },
     elements: {
       center: {
         text: '50%'  //set as you wish
@@ -457,6 +448,13 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() ConnectedCallschartLabels = ['Total Connected calls', 'Total calls'];
   @Input() ConnectedCallschartWidth = 200;
   @Input() ConnectedCallschartOptions = {
+    animation: {
+      easing: "easeOutSine",
+      duration: 2000,
+      segmentShowStroke: true,
+      animateRotate: true,
+      animateScale: false
+    },
     elements: {
       center: {
         text: '50%'  //set as you wish
@@ -510,9 +508,11 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     { displayName: 'Issue', key: 'issue', dataType: 'html' },
     { displayName: 'Progress', key: 'progress', dataType: 'html' }
 
-  ]
-  tableStyle: string = 'light';
-
+  ];
+  @Input() tableStyle: string = 'light';
+  @Input() recordsPerPage:number=10;
+  @Input() inlineEdit:boolean=false;
+  @Input() pagination:boolean=true;
   constructor(private injector: Injector, public translate: TranslateService, public alertService: AlertService) { super(injector); }
 
   ngOnInit(): void {
