@@ -24,8 +24,8 @@ import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { getSecuritylogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.actions';
 import { selectSecurityLogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.selector';
-import { getLinkUserData, getPersonalData, getProfileSettings, getTwoFactor, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
-import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
+import { deletePersonalData, downloadData, getLinkUserData, getPersonalData, getProfilePictureData, getProfileSettings, getTwoFactor, logout, requestPersonalData, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
+import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectProfilePictureData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -39,6 +39,10 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+  profilePicId = {
+    id: '6f9f495e-f308-9a83-e524-3a079ce6f2f5'
   }
 
   toggleSideNav: boolean = false;
@@ -85,7 +89,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
   rdsDeligateTableData: any = [];
   usernameList: any = [];
-  personalDataActions: any = [{ id: 'download', displayName: 'Download' }];
+
   sideMenuCollapsed: boolean = false;
   headerHeight: any = '110px';
   @Input() AccountLinkedTable: any = [];
@@ -166,10 +170,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { key: 'username', displayName: 'Users', dataType: 'text', sortable: true, filterable: true },
   ];
 
-  personalDataHeaders: TableHeader[] = [
-    { key: 'creationTime', displayName: 'Creation Time', dataType: 'date', sortable: true, filterable: true },
-    { key: 'readyTime', displayName: 'Ready Time', dataType: 'date', sortable: true, filterable: true },
-  ];
+
 
 
   securityLogs: any[] = [];
@@ -194,7 +195,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   ngAfterViewInit() {
   }
   getdata() {
-    //this.store.select(selectTenancyData).subscribe(res => console.log(res));
   }
   tenancyTableData = [];
   sidenavItems = [];
@@ -211,66 +211,10 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.tenancy = 'Host Admin';
     }
     this.store.dispatch(getLanguages());
-
-    // link user
-    this.store.dispatch(getLinkUserData());
-    this.store.select(selectlinkUser).subscribe(res => {
-      if (res) {
-        this.linkedAccountData = [
-          { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
-          { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true }
-        ];
-
-        // this.linkedAccountData = res.items;
-      }
-
+    this.store.dispatch(getProfilePictureData(this.profilePicId));
+    this.store.select(selectProfilePictureData).subscribe(res => {
+      if (res) this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
     });
-
-    this.store.dispatch(getPersonalData('6f9f495e-f308-9a83-e524-3a079ce6f2f5'));
-    this.store.select(selectPersonalData).subscribe(res=> {
-      if (res) {
-        this.personalData = res.items;
-      }
-    });
-    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-    //   if (res) {
-    //     this.translate.use(res);
-    //     let htmlTag = this.document.getElementsByTagName('html')[0] as HTMLHtmlElement;
-    //     if (htmlTag) {
-    //       htmlTag.dir = res === 'ar' ? 'rtl' : 'ltr';
-    //     }
-    //     this.sidenavItems = this.translateMenu(this.sidenavItems);
-    //   }
-    // });
-
-    this.serviceProxies.profilePictureGET('6f9f495e-f308-9a83-e524-3a079ce6f2f5').subscribe((res: any) => {
-      if (res) {
-        this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
-      }
-
-    });
-
-    this.store.dispatch(getTwoFactor());
-    this.store.select(selectTwoFactor).subscribe(res => {
-      if (res) this.profileData.twoFactorEnabled = true;
-    });
-
-    this.store.dispatch(getProfileSettings());
-    this.store.select(selectAllProfileSettings).subscribe((res: any) => {
-      if (res) {
-        [res].forEach(ele => {
-          this.profileData.name = ele.name;
-          this.profileData.surname = ele.surname;
-          this.profileData.email = ele.email;
-          this.profileData.phoneNumber = ele.phoneNumber;
-          this.profileData.userName = ele.userName;
-          this.profileData.concurrencyStamp = ele.concurrencyStamp
-        });
-      }
-    });
-
-
-
     this.userAuthService.getPermissions().subscribe(res => {
       if (res) {
         this.filterNavItems(this.sidenavItemsOriginal, res, this.sidenavItems);
@@ -364,7 +308,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           // });
         },
         linkUser: (data: any) => {
-          console.log(data);
           //this.store.dispatch(linkToUser(data))
         },
         setAllNotificationAsRead: () => {
@@ -381,54 +324,72 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
           bsOffcanvas.show();
           this.canvasTitle = value;
+          if (value == 'My Accounts') {
+            this.store.dispatch(getProfileSettings());
+            this.store.select(selectAllProfileSettings).subscribe((res: any) => {
+              if (res) {
+                [res].forEach(ele => {
+                  this.profileData.name = ele.name;
+                  this.profileData.surname = ele.surname;
+                  this.profileData.email = ele.email;
+                  this.profileData.phoneNumber = ele.phoneNumber;
+                  this.profileData.userName = ele.userName;
+                  this.profileData.concurrencyStamp = ele.concurrencyStamp
+                });
+              }
+            });
+            this.store.dispatch(getTwoFactor());
+            this.store.select(selectTwoFactor).subscribe(res => {
+              if (res) this.profileData.twoFactorEnabled = true;
+            });
+          } else if (value == 'Security Logs') {
+            this.store.dispatch(getSecuritylogs());
+            this.store.select(selectSecurityLogs).subscribe((res: any) => {
+              if (res && res.items) {
+                res.items.forEach((element: any) => {
+                  const item: any = {
+                    id: element.id,
+                    time: element.creationTime,
+                    action: element.action,
+                    ipAddress: element.clientIpAddress,
+                    browser: element.browserInfo,
+                    application: element.applicationName,
+                    identity: element.identity,
+                    username: element.userName
+                  }
+                  this.securityLogs.push(item);
+                });
+              }
+            });
+          } else if (value == 'Linked Accounts') {
+            this.store.dispatch(getLinkUserData());
+            this.store.select(selectlinkUser).subscribe(res => {
+              if (res) {
+                this.linkedAccountData = [
+                  { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+                  { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true }
+                ];
+                // this.linkedAccountData = res.items;
+              }
+            });
+          } else if (value == 'Personal Data') {
+            this.store.dispatch(getPersonalData('6f9f495e-f308-9a83-e524-3a079ce6f2f5'));
+            this.store.select(selectPersonalData).subscribe(res => {
+              if (res) {
+                this.personalData = res.items;
+              }
+            });
+          }
 
-
+        },
+        onLogout: () => {
+          // this.store.dispatch(logout());
+          this.router.navigate(['/login']);
         }
       }
     }
-    //this.store.dispatch(getNotificationSettings());
-    // this.store.select(selectNotificationSettings).subscribe((res: any) => {
-    //   if (res && res !== null) {
-    //     this.receiveNotifications = res.receiveNotifications;
-    //     this.notificationTypes = [];
-    //     res.notifications.forEach((notification: any) => {
-    //       const data: any = {
-    //         name: notification.name,
-    //         displayName: notification.displayName,
-    //         isSubscribed: notification.isSubscribed
-    //       };
-    //       this.notificationTypes.push(data);
-    //     })
-    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
-    //     mfeConfig.input.receiveNotifications = this.receiveNotifications;
-    //     mfeConfig.input.notificationTypes = [...this.notificationTypes];
-
-    //     this.rdsTopNavigationMfeConfig = mfeConfig;
-    //   }
-    // })
-
-    //this.store.dispatch(getUserNotification());
-
-    // this.store.select(selectAllNotification).subscribe((res: any) => {
-    //   if (res && res.items && res.items.length) {
-    //     this.unreadCount = res.unreadCount;
-    //     this.notifications = [];
-    //     res.items.forEach((element: any) => {
-    //       this.notifications.push(this.format(element));
-    //     });
-    //     this.notifications.sort(function (a, b) {
-    //       return a.state - b.state;
-    //     });
-    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
-    //     mfeConfig.input.notificationData = [...this.notifications];
-    //     mfeConfig.input.unreadCount = this.unreadCount;
-    //     this.rdsTopNavigationMfeConfig = mfeConfig;
-    //   }
-    // });
-
 
     this.store.select(selectAllLanguages).subscribe((res: any) => {
-      console.log(res);
     })
     this.on('tenancyDataAgain').subscribe(res => {
     })
@@ -496,26 +457,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
 
 
-    this.store.dispatch(getSecuritylogs());
-    this.store.select(selectSecurityLogs).subscribe((res: any) => {
-      if (res && res.items) {
-        res.items.forEach((element: any) => {
-          const item: any = {
-            id: element.id,
-            time: element.creationTime,
-            action: element.action,
-            ipAddress: element.clientIpAddress,
-            browser: element.browserInfo,
-            application: element.applicationName,
-            identity: element.identity,
-            username: element.userName
-          }
-          this.securityLogs.push(item);
-        });
 
-
-      }
-    });
 
 
 
@@ -592,20 +534,39 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   onProfileSave(event: any) {
-    console.log('emitted data', event);
-
-    this.store.dispatch(saveProfile(event.myAccount));
-    //this.store.dispatch(saveChangedPassWord(event.changedPassword));
-    //this.store.dispatch(saveTwoFactor(false));
+    if (event.changedPassword.currentPassword != '' && event.changedPassword.newPassword != '') this.store.dispatch(saveChangedPassWord(event));
+    else {
+      this.store.dispatch(saveProfile(event));
+      this.store.dispatch(saveTwoFactor(event));
+      this.close();
+    }
   }
 
   getProfilePic(event: any): void {
-    // this.profilePic = event;
-    debugger
-    this.store.dispatch(saveProfilePicture(event));
+    const item: any = {
+      data: event,
+      id: '6f9f495e-f308-9a83-e524-3a079ce6f2f5'
+    };
+    this.store.dispatch(saveProfilePicture(item));
+    this.store.select(selectProfilePictureData).subscribe(res => {
+      if (res) this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
+    });
   }
 
-  onDownload(event: any) {}
+  onDownloadData(event: any) {
+    const item = {
+      id: localStorage.getItem('currentUser')
+    }
+    this.store.dispatch(downloadData(item));
+  }
+
+  onRequestData() {
+    this.store.dispatch(requestPersonalData());
+  }
+
+  onDeleteData() {
+    this.store.dispatch(deletePersonalData())
+  }
 
   redirectPath(event): void {
     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;

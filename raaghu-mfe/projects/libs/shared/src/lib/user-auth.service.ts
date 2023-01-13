@@ -43,8 +43,6 @@ export class UserAuthService implements OnInit {
 
   authenticateUser() {
     this.userAuthenticated = true;
-    console.log("user is authenticated");
-  
   }
 
   getPermissions() {
@@ -57,6 +55,7 @@ export class UserAuthService implements OnInit {
       console.log(result);
         this.permissions = of(result.auth.grantedPolicies);
         localStorage.setItem('storedPermissions', JSON.stringify(result.auth.grantedPolicies));
+        localStorage.setItem('userId', result.currentUser.id);
         // this.localization = result.localization;
         // this.sources=result.localization.sources
             this.language=of(result.localization.languages);

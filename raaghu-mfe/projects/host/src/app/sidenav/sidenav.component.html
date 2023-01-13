@@ -45,7 +45,7 @@
     </div>
     <div *ngIf="canvasTitle == 'My Accounts'">
       <rds-mysettings [ProfileData]="profileData" (onProfileSave)="onProfileSave($event)" [profileUrl]="profilePicUrl"
-        (onProfilePicUpdate)="getProfilePic($event)">
+        (onProfilePicUpdate)="getProfilePic($event)" (onProfileClose)="close()">
       </rds-mysettings>
     </div>
     <div *ngIf="canvasTitle == 'Security Logs'">
@@ -54,10 +54,8 @@
       </rds-data-table>
     </div>
     <div *ngIf="canvasTitle == 'Personal Data'">
-      <rds-data-table [tableHeaders]="personalDataHeaders" [actions]="personalDataActions" [tableStyle]="'light'"
-        [tableData]="personalData" [recordsPerPage]="5" [pagination]="true" (onActionSelection)="onDownload($event)"
-        [noDataTitle]="'Currently you do not have Personal Data'">
-      </rds-data-table>
+      <rds-comp-personal-data [personalData]="personalData" (onDownloadData)="onDownloadData($event)"
+        (onRequestData)="onRequestData()" (onDeleteData)="onDeleteData()"></rds-comp-personal-data>
     </div>
   </div>
 </rds-offcanvas>

@@ -70,6 +70,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Output() onDownloadLink = new EventEmitter<any>();
   @Output() setNotificationAsRead = new EventEmitter<any>();
   @Output() onUpdateNotificationSettings = new EventEmitter<any>();
+  @Output() onLogout = new EventEmitter();
   @Input() linkedAccountHeaders: any = [];
   @Input() linkedAccountData: any = [];
   @Input() FixedHeader: boolean = true
@@ -115,12 +116,11 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   ];
 
   profileItems: any = [
-    { id: 1, value: 'Welcome Admin', some: 'Welcome Admin'},
-    { id: 2, value: 'Linked Accounts', some: 'Linked Accounts'},
-    { id: 3, value: 'My Accounts', some: 'My Accounts'},
-    { id: 4, value: 'Security Logs', some: 'Security Logs'},
-    { id: 5, value: 'Log out', some: 'Log out'},
-    { id: 6, value: 'Personal Data', some: 'Personal Data'},
+    { id: 1, value: 'Linked Accounts', some: 'Linked Accounts'},
+    { id: 2, value: 'My Accounts', some: 'My Accounts'},
+    { id: 3, value: 'Security Logs', some: 'Security Logs'},
+    { id: 4, value: 'Log out', some: 'Log out'},
+    { id: 5, value: 'Personal Data', some: 'Personal Data'},
   ];
 
   showProfileDropdown = false;
@@ -206,8 +206,9 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     this.redirection.emit(type);
   }
 
-  onProfileSelect(event: any) {
-    this.viewProfileCanvas.next(event.item.value);
+  onProfileSelect(item: any) {
+    if (item.value != 'Log out') this.viewProfileCanvas.next(item.value);
+    else this.onLogout.emit();
   }
 
 

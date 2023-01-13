@@ -104,15 +104,23 @@
               <div class="col-md-12 sm-p-0">
                 <div class="form-group mb-4">
                   <rds-input size="medium" [disabled]="false" [isRequired]=true [iconCursor]="'pointer'" [icon]="'eye'"
-                    [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'"
-                    [label]="translate.instant('Current Password')" [inputType]="'password'" required
+                    [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'" (ngModelChange)="isIncorrect = false"
+                    [label]="translate.instant('Current Password')" [inputType]="'password'" required [pattern]="passwordPattern"
                     [placeholder]="translate.instant('Current Password')" [(ngModel)]="ProfileData.currentPassword"
-                    #currentPassword="ngModel" ngDefaultControl name="currentPassword">
+                    #currentPassword="ngModel" ngDefaultControl name="currentPassword" >
                   </rds-input>
                   <div class="form-control-feedback"
                     *ngIf="currentPassword.errors && (currentPassword.dirty || currentPassword.touched)">
                     <small class="text-danger" *ngIf="currentPassword.errors.required">
                       {{"Current Password is Required"|translate}}
+                    </small>
+                    <small class="text-danger" *ngIf="currentPassword.errors.pattern">
+                      {{"Please include length more than 6, 1 number, 1 special character, 1 lowercase & 1 uppercase letter"|translate}}
+                    </small>
+                  </div>
+                  <div class="form-control-feedback" *ngIf="isIncorrect">
+                    <small class="text-danger">
+                      {{ 'Incorrect Password' | translate}}
                     </small>
                   </div>
                 </div>
@@ -121,7 +129,7 @@
                 <div class="form-group mb-4">
                   <rds-input size="medium" [inputType]="'password'" [isRequired]=true [iconCursor]="'pointer'"
                     [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'"
-                    [label]="translate.instant('New Password')" [placeholder]="translate.instant('New Password')"
+                    [label]="translate.instant('New Password')" [placeholder]="translate.instant('New Password')" [pattern]="passwordPattern"
                     [(ngModel)]="ProfileData.newPassword" #newPassword="ngModel" ngDefaultControl name="newPassword"
                     (keyup)='confirmPassword()' required>
                   </rds-input>
@@ -129,6 +137,9 @@
                     *ngIf="newPassword.errors && (newPassword.dirty || newPassword.touched)">
                     <small class="text-danger" *ngIf="newPassword.errors.required">
                       {{"New Password is Required"|translate}}
+                    </small>
+                    <small class="text-danger" *ngIf="newPassword.errors.pattern">
+                      {{"Please include length more than 6, 1 number, 1 special character, 1 lowercase & 1 uppercase letter"|translate}}
                     </small>
                   </div>
                 </div>
@@ -169,10 +180,10 @@
   <div class="row">
     <div class="col-sm-12">
       <rds-button [submit]="false" [block]="false" [size]="'small'" [isDisabled]="false" [isOutline]="true"
-        [colorVariant]="'primary'" [isFabIcon]="false" (click)="onCancel()" [label]="translate.instant('Cancel')">
+        [colorVariant]="'primary'" [isFabIcon]="false" (click)="onProfileClose.emit()" [label]="translate.instant('Cancel')">
       </rds-button>
       <rds-button [label]="translate.instant('Save')" type="button" [showLoadingSpinner]="buttonSpinner"
-        [size]="'small'" class="px-2" [colorVariant]="'primary'"
+        [size]="'small'" class="px-2" [colorVariant]="'primary'" [isDisabled]="disableSave()"
         (click)="saveProfile(accountForm, changePasswordForm, ProfileData.twoFactorEnabled)">
       </rds-button>
     </div>

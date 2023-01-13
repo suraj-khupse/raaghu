@@ -58,6 +58,7 @@ import { settingReducer } from 'projects/libs/state-management/src/lib/state/set
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompMysettingsModule } from 'projects/rds-components/src/app/rds-comp-mysettings/rds-comp-mysettings.module';
 import { RdsCompLinkedAccountsModule } from 'projects/rds-components/src/app/rds-comp-linked-accounts/rds-comp-linked-accounts.module';
+import { RdsCompPersonalDataModule } from 'projects/rds-components/src/app/rds-comp-personal-data/rds-comp-personal-data.module';
 export function getRemoteServiceBaseUrl(): any {
   let URL = demodata.remoteServiceBaseUrl;
   return URL;
@@ -167,7 +168,8 @@ export function getRemoteServiceBaseUrl(): any {
     RdsOffcanvasModule,
     RdsCompDataTableModule,
     RdsCompMysettingsModule,
-    RdsCompLinkedAccountsModule
+    RdsCompLinkedAccountsModule,
+    RdsCompPersonalDataModule
   ],
   declarations: [
     AppComponent,
