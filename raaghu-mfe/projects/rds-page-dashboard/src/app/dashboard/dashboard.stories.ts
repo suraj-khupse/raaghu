@@ -2,12 +2,11 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsBigNumberWidgetModule, RdsButtonModule, RdsCardModule, RdsChartBarHorizontalModule, RdsChartBoolModule, RdsChartDoughnutModule, RdsChartLineModule, RdsCheckboxModule, RdsDatepickerModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsPaginationModule, RdsSelectListModule, RdsTextareaModule, RdsWidgetModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard.component';
-import { RdsAdminDashboardComponent } from '../../../../rds-components/src/app/rds-comp-admin-dashboard/rds-comp-admin-dashboard.component';
-import { RdsCompTenantDashboardComponent } from '../../../../rds-components/src/app/rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component';
-import { RdsDataTableComponent } from '../../../../rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
 import { CommonModule } from '@angular/common';
+import { RdsCompAdminDashboardModule } from 'projects/rds-components/src/app/rds-comp-admin-dashboard/rds-comp-admin-dashboard.module';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompTenantDashboardModule } from 'projects/rds-components/src/app/rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.module';
 
 export default {
   title: 'Pages/Dashboard',
@@ -15,10 +14,7 @@ export default {
   decorators: [
     moduleMetadata({
       declarations: [
-        DashboardComponent,
-        RdsAdminDashboardComponent,
-        RdsCompTenantDashboardComponent,
-        RdsDataTableComponent
+        DashboardComponent,            
       ],
       imports: [
         FormsModule,
@@ -36,6 +32,9 @@ export default {
         RdsPaginationModule,
         RdsInputModule,
         RdsIconModule,
+        RdsCompDataTableModule,
+        RdsCompAdminDashboardModule,
+        RdsCompTenantDashboardModule
       ],
       providers: [
         FormBuilder
@@ -51,10 +50,10 @@ const Template: Story<DashboardComponent> = (args: DashboardComponent) => ({
                 <rds-comp-tenant-dashboard></rds-comp-tenant-dashboard>
             </div>
           <div *ngIf="!istenant">
-            <rds-admin-dashboard [tableHeaders]="memberActivityTableHeader"
-                [tableStyle]="'light'" [tableData]="memberActivityTableData"
+            <rds-comp-admin-dashboard [memberActivityTableHeader]="memberActivityTableHeader"
+                [tableStyle]="'light'" [memberActivityTableData]="memberActivityTableData"
                 [recordsPerPage]="10" [pagination]="true" [inlineEdit]="false" >              
-            </rds-admin-dashboard>
+            </rds-comp-admin-dashboard>
           </div>`
 });
 
@@ -74,5 +73,6 @@ Default.args = {
     , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 7 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Jane</b></p><small class=\"text-muted\">Sales Executive </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 5 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">96%</div>" }
     , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 14 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer</small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "rate": "<div class=\"LowRate d-flex align-items-center justify-content-center\">16%</div>" }
     , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 13 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=../assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kath</b></p><small class=\"text-muted\">Manager </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 3 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">52%</div>" }
-  ]
+  ],
+
 }

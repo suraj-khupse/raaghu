@@ -1,35 +1,29 @@
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsPriceModule,RdsCardModule, RdsColorModule, RdsProductImageModule} from '@libs/rds-elements'
-
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-
-
-import { RdsCompProductListComponent } from 'projects/rds-components/src/app/rds-comp-product-list/rds-comp-product-list.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { AppComponent as infiniteproduct } from './app.component';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsRatingModule} from '@libs/rds-rating';
 import { RdsIconModule} from '@libs/rds-icon';
 import { RdsBadgeModule} from '@libs/rds-badge';
 import { RdsButtonModule} from '@libs/rds-button';
-
-
-
-
-
-
+import { RdsCompProductListModule } from 'projects/rds-components/src/app/rds-comp-product-list/rds-comp-product-list.module';
+import { CommonModule } from '@angular/common';
+import { RdsCookieConsentConfig, RdsCookieConsentService, WindowService } from 'projects/libs/rds-cookieconsent/src/public-api';
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
 export default {
   title: 'Pages/Infinite Product List',
-  component: RdsCompProductListComponent,
+  component: AppComponent,
   decorators: [
     moduleMetadata({
       declarations: [
-        RdsCompProductListComponent,
-        RdsProductImageModule      
+        AppComponent
     ],
       imports: [
+        CommonModule,
         RdsButtonModule,
         NgxTranslateModule,
         SharedModule,
@@ -40,31 +34,23 @@ export default {
         RdsCardModule,
         InfiniteScrollModule,
         RdsBadgeModule,
-        RdsColorModule
-        
+        RdsColorModule,
+        RdsCompProductListModule,
+        RouterModule     
       ],
       providers: [
-        FormBuilder
+        FormBuilder,
+        RdsCookieConsentService,
+        WindowService,
+        RdsCookieConsentConfig
       ],
     })
   ]
 } as Meta;
-const Template: Story<RdsCompProductListComponent> = (args: RdsCompProductListComponent) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
     },
-  template:`
-  <h4>
-  <rds-label [label]="'Trending Products'" [multiline]="false" [bold]="true" [italic]="false"></rds-label>
-</h4>
-
-<div class="mt-5">
-<rds-comp-product-list [productListItems]="productListItems" [role]="'infiniteproductlist'"></rds-comp-product-list>
-</div>
-
-
-  
-  `
   });
 
   export const Default= Template.bind({})
