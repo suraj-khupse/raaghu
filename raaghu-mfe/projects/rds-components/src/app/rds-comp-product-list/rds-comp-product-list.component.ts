@@ -30,7 +30,7 @@ export class RdsCompProductListComponent implements OnInit {
 
   @Input() title: string = '';
   @Input() subTitle: string = '';
-  @Input() role?: 'withInlinePrice' | 'simple'|'imageWithInfo' |'ImageWithTitle' | 'ImageWithInfo'= 'withInlinePrice';
+  @Input() role?: 'withInlinePrice' | 'simple'|'imageWithInfo' |'ImageWithTitle' | 'ImageWithInfo' | 'infiniteproductlist'= 'withInlinePrice';
   itemList:any = [];
   recordsPerPage = 6;
   totalRecords: any;

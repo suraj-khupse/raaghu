@@ -11,7 +11,7 @@ import {
 } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.actions';
 import { selectAllVisualsettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.selector';
 import { TranslateService } from '@ngx-translate/core';
-import { RdsThemesComponent } from 'raaghu-themes/rds-themes';
+import { RdsThemesService } from 'raaghu-themes/rds-themes';
 
 import {
   transition,
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     private store: Store,
     private alertService: AlertService,
     public translate: TranslateService,
-    public theme: RdsThemesComponent,
+    private theme: RdsThemesService,
     private userAuthService: UserAuthService
   ) {
 
@@ -107,9 +107,8 @@ export class AppComponent implements OnInit {
         indexEmitter: (value: any) => {
           this.userAuthService.getVisualSettingIndex(value);
           if (value == '12') {
-            // this.theme.theme = 'light'
+            // this.theme.theme = 'light';
             this.theme.setThemeMode('light');
-
           }
         },
       },
@@ -163,8 +162,8 @@ export class AppComponent implements OnInit {
   indexEmitter(value: any) {
     this.userAuthService.getVisualSettingIndex(value);
     if (value == '12') {
+      // this.theme.theme = 'light';
       this.theme.setThemeMode('light');
-
     }
   }
 

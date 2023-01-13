@@ -1,33 +1,37 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsDropdownlistModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
 
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsCompAlertComponent } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component';
-import { RdsCompAuditLogsComponent } from 'projects/rds-components/src/app/rds-comp-audit-logs/rds-comp-audit-logs.component';
-import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
+import { StoreModule } from '@ngrx/store';
 
 export default {
   title: 'Pages/Audit Log',
-  component: RdsCompAuditLogsComponent,
+  component: AppComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompAuditLogsComponent, RdsDataTableComponent,
-      RdsCompAlertComponent],
+      declarations: [
+        AppComponent,
+      ],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
         RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,BsDatepickerModule.forRoot(), BrowserAnimationsModule,
+        RdsCompDataTableModule,RdsCompAlertModule,RdsDropdownlistModule,
+        StoreModule.forRoot({}),
       ],
       providers: [
-        FormBuilder
+        FormBuilder,       
       ],
     })
   ]
 } as Meta;
-const Template: Story<RdsCompAuditLogsComponent> = (args: RdsCompAuditLogsComponent) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
   }
@@ -36,6 +40,7 @@ const Template: Story<RdsCompAuditLogsComponent> = (args: RdsCompAuditLogsCompon
 export const Default = Template.bind({});
 
 Default.args = {
+  isShimmer:false,
     operationLogsHeaders: [{ key: 'userName', displayName:'User Name', dataType: 'text', sortable: true, filterable: true },
     { key: 'serviceName', displayName: 'Service', dataType: 'text', sortable: true, filterable: true },
     { key: 'methodName', displayName: 'Action', dataType: 'text', sortable: true, filterable: true},
@@ -48,7 +53,7 @@ Default.args = {
   { key: 'userName', displayName: 'User Name', dataType: 'text', sortable: true, filterable: true },
   { key: 'changeTime', displayName: 'Time', dataType: 'text', sortable: true, filterable: true },
   ],
-    operationLogs : [
+  auditLogsTableData : [
         {
             "parameters": "{\"input\":{\"maxResultCount\":10,\"skipCount\":0,\"sorting\":null}}",
             "userName": "admin",
@@ -87,6 +92,6 @@ Default.args = {
         },
        
     ],
-   
+    
  
 }
