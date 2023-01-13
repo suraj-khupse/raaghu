@@ -127,6 +127,9 @@ export class AppComponent implements OnInit {
     { id: 'setDefaultLanguage', displayName: 'Set as default language' },
     { id: 'delete', displayName: 'Delete' },
   ]
+  @Input() icon: string = '';
+  @Input() iconHeight: string = '10px';
+  @Input() iconWidth: string = '10px';
   constructor(
     public datepipe: DatePipe,
     public translate: TranslateService,

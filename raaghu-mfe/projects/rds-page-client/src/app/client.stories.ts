@@ -1,153 +1,153 @@
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Meta, moduleMetadata,Story } from '@storybook/angular';
-import { RdsAccordionModule, RdsButtonModule, RdsCheckboxModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsTextareaModule,} from '@libs/rds-elements';
-import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { AppComponent as Client } from './app.component';
-import { RdsCompClientBasicsComponent } from 'projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component';
-import { RdsCompClientResourcesComponent } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.component';
-import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
-import { RdsLabelModule } from '@libs/rds-label';
+// import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { Meta, moduleMetadata,Story } from '@storybook/angular';
+// import { RdsAccordionModule, RdsButtonModule, RdsCheckboxModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsTextareaModule,} from '@libs/rds-elements';
+// import { NgxTranslateModule, SharedModule } from '@libs/shared';
+// import { AppComponent as Client } from './app.component';
+// import { RdsCompClientBasicsComponent } from 'projects/rds-components/src/app/rds-comp-client-basics/rds-comp-client-basics.component';
+// import { RdsCompClientResourcesComponent } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.component';
+// import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
+// import { RdsLabelModule } from '@libs/rds-label';
 
-export default {
-  title: 'Pages/Client',
-  component: Client,
-  decorators: [
-    moduleMetadata({
-      declarations: [RdsCompClientBasicsComponent, RdsDataTableComponent, RdsCompClientResourcesComponent],
-      imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsLabelModule, RdsNavTabModule, RdsOffcanvasModule, RdsIconModule,
-        SharedModule, NgxTranslateModule, RdsCheckboxModule, RdsAccordionModule, RdsInputModule,RdsTextareaModule
-      ],
-      providers: [
-        FormBuilder,
-      ],
-    })
-  ]
-} as Meta;
-const Template: Story<Client> = (args: Client) => ({
-  props: {
-    ...args
-  },
+// export default {
+//   title: 'Pages/Client',
+//   component: Client,
+//   decorators: [
+//     moduleMetadata({
+//       declarations: [RdsCompClientBasicsComponent, RdsDataTableComponent, RdsCompClientResourcesComponent],
+//       imports: [
+//         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsLabelModule, RdsNavTabModule, RdsOffcanvasModule, RdsIconModule,
+//         SharedModule, NgxTranslateModule, RdsCheckboxModule, RdsAccordionModule, RdsInputModule,RdsTextareaModule
+//       ],
+//       providers: [
+//         FormBuilder,
+//       ],
+//     })
+//   ]
+// } as Meta;
+// const Template: Story<Client> = (args: Client) => ({
+//   props: {
+//     ...args
+//   },
 
-  template: `
-   <div class="card border-0">
-    <h5 class="card-header border-0 bg-transparent d-flex justify-content-between">
-      <div class="card-title fs-3">Client</div>
-      <div class="card-toolbar">
-        <rds-button
-          [id]="'yes'"
-          [size]="'small'"
-          [tooltipPlacement]="'top'"
-          [colorVariant]="'primary'"
-          [label]="'NEW Client'"
-          [attr.data-bs-toggle]="'offcanvas'"
-          [attr.data-bs-target]="'#addnewapiresource'"
-          [attr.aria-controls]="'addnewapiresource'"
-        >
-        </rds-button>
-      </div>
-    </h5>
-  <div class="card-body">
-    <rds-comp-data-table [tableHeaders]="clientTableHeaders" [tableData]="clientList" 
-      [actions]="actions"></rds-comp-data-table>
-   </div>
-  </div>
+//   template: `
+//    <div class="card border-0">
+//     <h5 class="card-header border-0 bg-transparent d-flex justify-content-between">
+//       <div class="card-title fs-3">Client</div>
+//       <div class="card-toolbar">
+//         <rds-button
+//           [id]="'yes'"
+//           [size]="'small'"
+//           [tooltipPlacement]="'top'"
+//           [colorVariant]="'primary'"
+//           [label]="'NEW Client'"
+//           [attr.data-bs-toggle]="'offcanvas'"
+//           [attr.data-bs-target]="'#addnewapiresource'"
+//           [attr.aria-controls]="'addnewapiresource'"
+//         >
+//         </rds-button>
+//       </div>
+//     </h5>
+//   <div class="card-body">
+//     <rds-comp-data-table [tableHeaders]="clientTableHeaders" [tableData]="clientList" 
+//       [actions]="actions"></rds-comp-data-table>
+//    </div>
+//   </div>
 
-  <rds-offcanvas [canvasTitle]="'New Client'" [offId]="'addnewapiresource'" [offcanvaswidth]="550"
-    [placement]="'end'" >
-    <rds-nav-tab [navtabsItems]="navtabsItems" [activepage]="activePage" [horizontalAlignment]="'start'"
-      [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
-      <div naveContent class="row tab-content m-2" id="nav-tabContent">
-         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
-           aria-labelledby="nav-home-tab">
-          <rds-comp-client-basics></rds-comp-client-basics>
-          </div>
-         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="secrets" role="tabpanel"
-           aria-labelledby="nav-home-tab">
-            <div class="row">
-             <div class="col-md-12">
-               <rds-button [label]="'New Secrets'" [colorVariant]="'primary'" (click)="addSecrets()">
-                 <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
-               </rds-button>
-             </div>
-           </div>
-         </div>
-         <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
-           aria-labelledby="nav-home-tab">
-            <rds-comp-client-resources></rds-comp-client-resources>
-         </div>
-      </div>
-    </rds-nav-tab>
+//   <rds-offcanvas [canvasTitle]="'New Client'" [offId]="'addnewapiresource'" [offcanvaswidth]="550"
+//     [placement]="'end'" >
+//     <rds-nav-tab [navtabsItems]="navtabsItems" [activepage]="activePage" [horizontalAlignment]="'start'"
+//       [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false">
+//       <div naveContent class="row tab-content m-2" id="nav-tabContent">
+//          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
+//            aria-labelledby="nav-home-tab">
+//           <rds-comp-client-basics></rds-comp-client-basics>
+//           </div>
+//          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="secrets" role="tabpanel"
+//            aria-labelledby="nav-home-tab">
+//             <div class="row">
+//              <div class="col-md-12">
+//                <rds-button [label]="'New Secrets'" [colorVariant]="'primary'" (click)="addSecrets()">
+//                  <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
+//                </rds-button>
+//              </div>
+//            </div>
+//          </div>
+//          <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
+//            aria-labelledby="nav-home-tab">
+//             <rds-comp-client-resources></rds-comp-client-resources>
+//          </div>
+//       </div>
+//     </rds-nav-tab>
 
-  </rds-offcanvas>
+//   </rds-offcanvas>
 
-`
+// `
 
-});
-export const Default = Template.bind({});
+// });
+// export const Default = Template.bind({});
 
-Default.args = {
-  clientTableHeaders: [
-  {
-    displayName: 'Client ID', key: 'clientId', dataType: 'text', filterable: false, sortable: true
-  },
-  {
-    displayName: 'Name', key: 'clientName', dataType: 'text', filterable: false, sortable: true
-  },
-  { displayName: 'Description', key: 'description', dataType: 'text' }
-  ],
+// Default.args = {
+//   clientTableHeaders: [
+//   {
+//     displayName: 'Client ID', key: 'clientId', dataType: 'text', filterable: false, sortable: true
+//   },
+//   {
+//     displayName: 'Name', key: 'clientName', dataType: 'text', filterable: false, sortable: true
+//   },
+//   { displayName: 'Description', key: 'description', dataType: 'text' }
+//   ],
 
-  clientList: [
-    {
-      id: 1,
-      clientId: '1234',
-      clientName: 'Abp_value',
-      description: 'description about client here'
-    },
-    {
-      id: 2,
-      clientId: '1235',
-      clientName: 'Abp_dualtone',
-      description: 'Address as described as the documents'
-    },
-    {
-      id: 3,
-      clientId: '1246',
-      clientName: 'Containervalue',
-      description: 'Email id associated'
-    },
-    {
-      id: 4,
-      clientId: '2134',
-      clientName: 'Make_value',
-      description: 'Contact number to this account'
-    },
-    {
-      id: 5,
-      clientId: '3241',
-      clientName: 'Your_profile',
-      description: 'image as per request'
-    },
+//   clientList: [
+//     {
+//       id: 1,
+//       clientId: '1234',
+//       clientName: 'Abp_value',
+//       description: 'description about client here'
+//     },
+//     {
+//       id: 2,
+//       clientId: '1235',
+//       clientName: 'Abp_dualtone',
+//       description: 'Address as described as the documents'
+//     },
+//     {
+//       id: 3,
+//       clientId: '1246',
+//       clientName: 'Containervalue',
+//       description: 'Email id associated'
+//     },
+//     {
+//       id: 4,
+//       clientId: '2134',
+//       clientName: 'Make_value',
+//       description: 'Contact number to this account'
+//     },
+//     {
+//       id: 5,
+//       clientId: '3241',
+//       clientName: 'Your_profile',
+//       description: 'image as per request'
+//     },
 
-  ],
-  actions: [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }],
-  navtabsItems: [
-    {
-      label: 'Basics',
-      tablink: '#basics',
-      ariacontrols: 'basics',
-    },
-    {
-      label: 'Secrets',
-      tablink: '#secrets',
-      ariacontrols: 'secrets',
-    },
-    {
-      label: 'Resources',
-      tablink: '#resources',
-      ariacontrols: 'resources',
-    },
-  ],
-  activePage: 0,
+//   ],
+//   actions: [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }],
+//   navtabsItems: [
+//     {
+//       label: 'Basics',
+//       tablink: '#basics',
+//       ariacontrols: 'basics',
+//     },
+//     {
+//       label: 'Secrets',
+//       tablink: '#secrets',
+//       ariacontrols: 'secrets',
+//     },
+//     {
+//       label: 'Resources',
+//       tablink: '#resources',
+//       ariacontrols: 'resources',
+//     },
+//   ],
+//   activePage: 0,
 
-}
+// }

@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompNewLanguageModule } from 'projects/rds-components/src/app/rds-comp-new-language/rds-comp-new-language.module';
-
 export default {
   title: 'Pages/Language',
   component: LanguageComponent,
@@ -68,17 +67,17 @@ Default.args = {
   languageTableHeader: [
     { displayName: 'Language Name', key: 'languagename', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
     { displayName: 'Code', key: 'countryCode', dataType: 'text', dataLength: 30, required: true, sortable: true },
-    { displayName: 'Is enabled', key: 'statusTemplate', dataType: 'icon', dataLength: 30, required: true, sortable: true },
+    { displayName: 'Is enabled', key: 'icon', dataType: 'icon', dataLength: 30, required: true, sortable: true },
     { displayName: 'Creation Time', key: 'creationTime', dataType: 'text', dataLength: 30, required: true, sortable: true }
   ],
   languageTableData: [
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'true', creationTime: '12-10-1992'},
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'true', creationTime: '12-10-1992' },
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'true', creationTime: '12-10-1992' },
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'false', creationTime: '12-10-1992' },
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'false', creationTime: '12-10-1992' },
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'false', creationTime: '12-10-1992' },
-    { languagename: 'India', countryCode: 'IND', statusTemplate: 'true', creationTime: '12-10-1992' }
+    { languagename: 'India', countryCode: 'IND', icon:'tick' ,iconWidth: '20px', iconHeight: '25px', creationTime: '12-10-1992'},
+    { languagename: 'India', countryCode: 'IND', icon: 'true',iconWidth: '20px', iconHeight: '25px', creationTime: '12-10-1992' },
+    { languagename: 'India', countryCode: 'IND', icon: 'true', creationTime: '12-10-1992' },
+    { languagename: 'India', countryCode: 'IND', icon: 'false', creationTime: '12-10-1992' },
+    { languagename: 'India', countryCode: 'IND', icon: 'false', creationTime: '12-10-1992' },
+    { languagename: 'India', countryCode: 'IND', icon: 'false', creationTime: '12-10-1992' },
+    { languagename: 'India', countryCode: 'IND', icon: 'true', creationTime: '12-10-1992' }
   ],
   recordsPerpage: 10,
   tableStyle: 'light',
@@ -101,8 +100,5 @@ languageNames:[
     ,{value: "agq", some: "Aghem (agq)", isSelected: false}
     ,{value: "agq-CM", some: "Aghem (Cameroon) (agq-CM)", isSelected: false}
     ,{value: "ak", some: "Akan (ak)", isSelected: false}
-]
- 
-             
-        
+],        
 }
