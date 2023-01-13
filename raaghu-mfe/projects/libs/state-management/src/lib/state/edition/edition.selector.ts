@@ -12,6 +12,12 @@ export const selectEditionInfo = createSelector(
   selectEditions,
     (state: EditionsState) => state.editionInfo
 );
+
+export const selectEditionPlan = createSelector (
+  selectEditions,
+  (state: EditionsState) => state.planLookup
+)
+
 export const selectEditionFeatures = createSelector(
   selectEditions,
   (state: EditionsState) => state.feature

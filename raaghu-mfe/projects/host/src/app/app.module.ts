@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { APP_ROUTES } from './app.routes';
 import { NotFoundComponent } from './not-found.component';
@@ -10,10 +10,15 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule, UserAuthModule, NgxTranslateModule, API_BASE_URL, UserAuthService } from '@libs/shared';
+import {
+  SharedModule,
+  UserAuthModule,
+  NgxTranslateModule,
+  API_BASE_URL,
+  UserAuthService,
+} from '@libs/shared';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DatePipe } from '@angular/common';
-
 
 import { LanguageTextEffects } from 'projects/libs/state-management/src/lib/state/language-text/language-text.effects';
 import { RdsOffcanvasModule, RdsSideNavModule } from '@libs/rds-elements';
@@ -55,6 +60,8 @@ import { TenantReducer } from 'projects/libs/state-management/src/lib/state/tena
 import { TenantEffects } from 'projects/libs/state-management/src/lib/state/tenant/tenant.effects';
 import { SettingEffects } from 'projects/libs/state-management/src/lib/state/settings/settings.effects';
 import { settingReducer } from 'projects/libs/state-management/src/lib/state/settings/settings.reducer';
+import { EditionReducer } from 'projects/libs/state-management/src/lib/state/edition/edition.reducer';
+import { EditionEffects } from 'projects/libs/state-management/src/lib/state/edition/edition.effects';
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompMysettingsModule } from 'projects/rds-components/src/app/rds-comp-mysettings/rds-comp-mysettings.module';
 import { RdsCompLinkedAccountsModule } from 'projects/rds-components/src/app/rds-comp-linked-accounts/rds-comp-linked-accounts.module';
@@ -63,10 +70,10 @@ export function getRemoteServiceBaseUrl(): any {
   let URL = demodata.remoteServiceBaseUrl;
   return URL;
 }
- const cookieConfig: RdsCookieConsentConfig = {
+const cookieConfig: RdsCookieConsentConfig = {
   cookie: {
     domain: location.hostname,
-    name: 'rds_cookie_status'
+    name: 'rds_cookie_status',
   },
   position: 'bottom',
   theme: 'classic',
@@ -81,17 +88,17 @@ export function getRemoteServiceBaseUrl(): any {
       border: 'transparent',
     },
   },
-  type:'opt-in',
+  type: 'opt-in',
   elements: {
     messagelink: `
       <img class="pe-3" src="{{image}}" width=\"80px\" ></img>
       <span id="cookieconsent:desc" class="cc-message">{{message}} </span>
-      `,  
+      `,
   },
-  content: {    
+  content: {
     policy: 'Rds Cookies',
-    image: '../assets/cookie.svg',   
-  } 
+    image: '../assets/cookie.svg',
+  },
 };
 @NgModule({
   imports: [
@@ -110,13 +117,11 @@ export function getRemoteServiceBaseUrl(): any {
       tenants:TenantReducer,
       // dynamicProperty: DynamicPropertyReducer,
       // dynamicEntity: DynamicEntityReducer,
-      profile: ProfileReducer,
-      // Entities: GetAllDynamicProperty,
-      // PropertiesEntitie: GetAllDynamicPropertyEntites,
+        profile: ProfileReducer,
+        editions: EditionReducer,
       organizationUnit: OrganizationUnitReducer,
       roles: RoleReducer,
-     texTemplate:TextTemplateReducer,
-      // mla: MLAReducer,
+      texTemplate: TextTemplateReducer,
       validateTenant: ValidateTenantReducer,
       identityResources: IdentityResourcesReducer,
       apiResources: ApiResourcesReducer,
@@ -124,10 +129,9 @@ export function getRemoteServiceBaseUrl(): any {
       securityLogs: SecurityLogsReducer,
       clients: ClientsReducer,
       languageText: LanguageTextReducer,
-      // defaultLanguage: DefaultLanguageReducer,
-      user:UserReducer,
-       downloadData: downloadReducer,
-       claimTypes: ClaimTypesReducer
+      user: UserReducer,
+      downloadData: downloadReducer,
+      claimTypes: ClaimTypesReducer,
     }),
 
     StoreDevtoolsModule.instrument({
@@ -138,14 +142,15 @@ export function getRemoteServiceBaseUrl(): any {
       ProductEffects,
       ProfileEffects,
       ApiScopeEffects,
+      EditionEffects,
       SecurityLogEffects,
       TextTemplateEffects,
       IdentityResourcesEffects,
       ApiResourcesEffects,
       ClientsEffects,
       ClaimTypesEffects,
-      OrganizationUnitEffects, 
-      LanguageTextEffects, 
+      OrganizationUnitEffects,
+      LanguageTextEffects,
       RoleEffects,
       TenantEffects,
       DownloadEffects,
@@ -179,12 +184,12 @@ export function getRemoteServiceBaseUrl(): any {
   ],
 
   providers: [
-    DatePipe, 
+    DatePipe,
     OAuthService,
     { provide: API_BASE_URL, useFactory: getRemoteServiceBaseUrl },
     UserAuthService,
     OAuthModule,
-    ],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

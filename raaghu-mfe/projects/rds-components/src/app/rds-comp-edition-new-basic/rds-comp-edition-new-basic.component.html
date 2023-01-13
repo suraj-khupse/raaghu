@@ -3,24 +3,21 @@
         <div class="col-md-6 mb-3">   
             <div class="form-group">
                 <rds-input [inputType]="'text'"  [label]="'Edition Name'" [labelPosition]="'top'"
-                    [isRequired]=true [placeholder]="'Edition Name'" required name="editionName"
+                    [isRequired]="true" [placeholder]="'Edition Name'" required name="editionName"
                     [(ngModel)]="editionData.editionName" #editionName="ngModel"
                     ngDefaultControl>
                 </rds-input>
+                
             </div>
         </div>
         <div class="col-md-6 mb-3">
             <div class="form-group">
                 <label for="Plan" class="mb-2">Plan <span class="text-danger">*</span></label>
-                <rds-select-list
-                    [isRequired]=true  ngDefaultControl
-                    name="edition" [itemList]="PlanList" [placeholder]="'Select Plan'"
-                    [(ngModel)]="editionData.editionPlan" #editionPlan="ngModel">
-               
-
-                </rds-select-list>
+                <rds-dropdownlist
+                [value]="editionData.editionPlan" [listItems]="PlanList" [placeholder]="'Select Plan'"
+                (onSelect)="onEditionSelect($event)" required
+                ></rds-dropdownlist>
             </div>
         </div>
     </div>
-    
 </form>

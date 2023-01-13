@@ -136,7 +136,6 @@ export class RdsCompTenantFeaturesComponent implements OnInit, DoCheck {
     this.onCancel.emit(true);
   }
   save(event: NgForm): void {
-    debugger
     console.log('FeatureList', event.form.value);
     this.buttonSpinnerForSave = true;
     this.buttonSpinnerForNewUser = false;

@@ -72,9 +72,9 @@
           <div class="form-group mb-3">
             <div class="mb-2">
               <rds-label [label]="'Role'"></rds-label>
-          </div>
+            </div>
             <rds-dropdownlist [id]="'rolesForUser'" [listItems]="roleListItem" [placeholder]="'Select Roles'" [size]="'small'"
-            name="rolesForUser" [(ngModel)]="userData.roles" [value]="userData.roles" [id]="'rolesForUser'" [multiSelect]="true"
+            name="rolesForUser" [(ngModel)]="userData.roles" [id]="'rolesForUser'" [multiSelect]="true"
             [borderDropdown]="true" (onSelect)="onRolesSelect($event)" ngDefaultControl></rds-dropdownlist>
           </div>
         </div>
@@ -97,6 +97,14 @@
               name="isTwoFactorEnabled" [withLabel]="true" [switch]="false"
               [id]="'isTwoFactorEnabled'"></rds-checkbox>
             </div>
+          </div>
+          <div class="form-group mb-3 pt-2">
+            <div class="mb-2">
+              <rds-label [label]="'Organization Units'"></rds-label>
+            </div>
+            <rds-dropdownlist [id]="'OrgForUser'" [listItems]="orgUnitListItem" [placeholder]="'Select Organization Unit'" [size]="'small'"
+            name="orgUnitForUser" [(ngModel)]="userData.organizationUnits" [id]="'orgUnitForUser'" [multiSelect]="true"
+            [borderDropdown]="true" (onSelect)="onOrgUnitSelect($event)" ngDefaultControl></rds-dropdownlist>
           </div>
         </div>
         <div class="col-md-6 sm-p">

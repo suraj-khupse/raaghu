@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnInit, Optional } from '@angular/core';
 import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 'rxjs/operators';
-import { throwError as _observableThrow, of as _observableOf, Observable, of } from 'rxjs';
+import { throwError as _observableThrow, of as _observableOf, Observable, of, Subject } from 'rxjs';
 // import { SendPasswordResetCodeInput } from './service-proxies';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
@@ -14,20 +14,26 @@ import { ServiceProxy, API_BASE_URL, LanguageInfo } from './service-proxies';
 export class UserAuthService implements OnInit {
   // model: SendPasswordResetCodeInput = new SendPasswordResetCodeInput();
   loggedOut: boolean = false;
-  permissions: Observable<{[key: string]: boolean;}>;
+  permissions$ = new Subject<any>();
+  // Observable<{[key: string]: boolean;}>;
   localization: Observable<any>;
   baseUrl: string;
   userAuthenticated: boolean = false;
   language: Observable<LanguageInfo[]>;
   sources: Observable<any>;
+  lang: LanguageInfo[];
   constructor(
-    private localStorage: LocalStorageService,
     private router: Router,
     private store: Store,
     private abpserviceProxy: ServiceProxy,
     @Optional() @Inject(API_BASE_URL) baseUrl?: string
   ) {
-    this.getApplicationConfiguration();
+    const temp = JSON.parse(localStorage.getItem('userAuthenticated'));
+
+    if(temp){
+      this.userAuthenticated = temp.value;
+    }
+    this.getApplicationConfiguration()
   }
 
   ngOnInit(): void {
@@ -41,24 +47,15 @@ export class UserAuthService implements OnInit {
     return _observableOf(this.userAuthenticated);
   }
 
-  authenticateUser() {
-    this.userAuthenticated = true;
-  }
-
-  getPermissions() {
-    return _observableOf(this.permissions);
-  }
 
   
   getApplicationConfiguration(){
     this.abpserviceProxy.applicationConfiguration().subscribe(result=>{
-      console.log(result);
-        this.permissions = of(result.auth.grantedPolicies);
         localStorage.setItem('storedPermissions', JSON.stringify(result.auth.grantedPolicies));
-        localStorage.setItem('userId', result.currentUser.id);
-        // this.localization = result.localization;
-        // this.sources=result.localization.sources
-            this.language=of(result.localization.languages);
+        console.log('result.auth.grantedPolicies',result.auth.grantedPolicies)
+        this.localization = of(result.localization.languages);
+        this.language=of(result.localization.languages);
+           
       //   if (login == 'login') {
       //     this.router.navigateByUrl('/pages/dashboard');
       //   }
@@ -67,17 +64,20 @@ export class UserAuthService implements OnInit {
       //     this.router.navigateByUrl('/login');
       //   }
       // }
-      if(result.currentUser.isAuthenticated){
-        this.router.navigateByUrl('/pages/dashboard');
-      }
-      
-
+      localStorage.setItem('userAuthenticated',JSON.stringify({value:result.currentUser.isAuthenticated}));
+       if(result.currentUser.isAuthenticated){ 
+        if(this.router.url == '/login'){       
+          this.router.navigateByUrl('pages/dashboard');
+        }
+       }else{
+        this.router.navigateByUrl('/login');
+       }
     })
 
   }
 
-
-
+                                               
+                                               
   unauthenticateUser(): void {
     this.userAuthenticated = false;
     localStorage.removeItem('LoginCredential');
@@ -88,7 +88,7 @@ export class UserAuthService implements OnInit {
   }
 
   getLocalization() {
-    return _observableOf(this.localization);
+    return _observableOf(this.localization);   
   }
   getLanguages(){
     return _observableOf(this.language);

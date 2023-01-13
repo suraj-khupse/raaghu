@@ -175,7 +175,6 @@ onSaveTenantHost(featureHost : any){
     this.store.dispatch(getEditionComboboxItems())
     this.store.select(selectEditionComboboxItems).subscribe((res: any) => {
       if (res) {
-        debugger
         this.editionList = [];
           res.items.forEach((element: any) => {
           const item: any = {

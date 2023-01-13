@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { from, of } from "rxjs";
 import { catchError, map, mergeMap, switchMap } from "rxjs/operators";
-import { deleteEdition, deleteEditionFailure, getEditionFailure, getEditionFeature, getEditionFeatureFailure, getEditionFeatureSuccess, getEditionInfo, getEditionInfoFailure, getEditionInfoSuccess, getEditions, getEditionSuccess, getplanLookupInfo, saveEdition, updateEdition } from "./edition.action";
+import { deleteEdition, deleteEditionFailure, getEditionFailure, getEditionFeature, getEditionFeatureFailure, getEditionFeatureSuccess, getEditionInfo, getEditionInfoFailure, getEditionInfoSuccess, getEditions, getEditionSuccess, getPlanLookupFailure, getplanLookupInfo, getPlanLookupSuccess, saveEdition, updateEdition, updateEditionFeatureValues } from "./edition.action";
 
 @Injectable()
 export class EditionEffects {
@@ -29,10 +29,10 @@ export class EditionEffects {
       ofType(getplanLookupInfo),
       switchMap(() => {
         return (this.commonService.planLookup()).pipe(
-          map((editions: any) => {
-            return getEditionSuccess({ editions: editions })
+          map((planLookup: any) => {
+            return getPlanLookupSuccess({ planLookup })
           }),
-          catchError((error) => of(getEditionFailure({ error })))
+          catchError((error) => of(getPlanLookupFailure({ error })))
         )
       }
       )
@@ -58,7 +58,7 @@ export class EditionEffects {
     this.actions$.pipe(
       ofType(getEditionFeature),
       switchMap(({id}) => {
-        return (this.commonService.featuresGET("T",id)).pipe(
+        return (this.commonService.featuresGET("E",id)).pipe(
           map((feature) => {
             return getEditionFeatureSuccess({ feature })
           }),
@@ -111,8 +111,8 @@ export class EditionEffects {
   updateEdition$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateEdition),
-      mergeMap((data) =>
-        this.commonService.editionsPUT(data.edition, data.edition).pipe(map((res: any) => {
+      mergeMap(({data}) =>
+        this.commonService.editionsPUT(data.id, data.body).pipe(map((res: any) => {
           this.store.dispatch(getEditions());
           this.alertService.showAlert('Success', 'Edition updated successfully', 'success')
 
@@ -126,6 +126,41 @@ export class EditionEffects {
       dispatch: false
     }
   );
+
+//   updateEditionFeatureValues$ = createEffect(() =>
+//   this.actions$.pipe(
+//     ofType(updateEditionFeatureValues),
+//     mergeMap(({data}) =>
+//       this.commonService.featuresPUT("E",data.id ,data.feature ).pipe(map((res: any) => {
+//         this.alertService.showAlert('Success', 'Edition features updated successfully', 'success');
+
+//         this.store.dispatch(getEditions());
+//       }),
+//         catchError((error: any) => of(
+//         ))
+//       )
+//     )
+//   ),
+//   {
+//     dispatch: false
+//   }
+// );
+
+
+
+updateEditionFeatureValues$ = createEffect(() =>
+this.actions$.pipe(
+  ofType(updateEditionFeatureValues),
+  switchMap(({data}) => {
+    return (this.commonService.featuresPUT("E",data.id, data.body)).pipe(
+      map((feature) => {
+        return getEditionFeatureSuccess({ feature })
+      }),
+      catchError((error) => of(getEditionInfoFailure({ error })))
+    )}
+  )
+)
+);
  
 }
 

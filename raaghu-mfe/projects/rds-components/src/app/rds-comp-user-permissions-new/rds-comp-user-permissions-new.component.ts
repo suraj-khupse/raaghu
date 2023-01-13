@@ -27,16 +27,16 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     userInfo: undefined,
     userSettings: undefined,
     featureList: [],
-    
   };
   rdsOrganizationTreeConfig: ComponentLoaderOptions;
   public navtabsItems: any = [];
- 
+  
   @Input() public userList: any = [];
   @Input() public userinfo: any;
   // @Input() isShimmer: boolean = false;
   // @Input() editShimmer: boolean = false;
   @Input() public isEdit: boolean = false;
+  @Input() orgUnitListItem:any;
   @Input() public OrganizationUnit: any = [];
   @Input() organizationTreeList: [];
   @Input() permissionsList: PermissionNode[] = [];
@@ -51,7 +51,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     { value: 'New User', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' }
   ];
   @Output() Saveuserinfo = new EventEmitter<{ item: any }>();
-  @Output() CreateOrEditUser = new EventEmitter<{ id: any }>();
+  @Output() EditUserEmitter = new EventEmitter<{ id: any }>();
   @Output() UpdateUserPermission = new EventEmitter<{
     Permission: any;
     id: any;
@@ -97,6 +97,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
       }
     ]
   selectedTreeNode: number;
+  @Output() getPermissionEmitter= new EventEmitter<any>();
   constructor(public translate: TranslateService) { }
  // @Input() orgTreeData = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
@@ -193,6 +194,8 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   newUser(event): void {
+    
+    this.getPermissionEmitter.emit(true);
     this.buttonSpinnerForNewUser = true;
     this.selectedId = '';
     this.viewCanvas = true;
@@ -214,7 +217,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
       },
       
     ];
-    //this.CreateOrEditUser.emit({ id: undefined });
     if (event) {
       this.canvasTitle = 'NEW USER';
       this.userinfo = undefined;
@@ -246,7 +248,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   editTableRowData(event): void {
     this.canvasTitle = 'EDIT USER';
     this.selectedId = event.id;
-
+    this.getPermissionEmitter.emit(this.selectedId);
     this.viewCanvas = true;
     if (event) {
       this.canvasTitle = 'EDIT USER';
@@ -257,9 +259,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
           ariacontrols: 'basics',
         },
         {
-          label: this.translate.instant('Roles'),
-          tablink: '#claims',
-          ariacontrols: 'claims',
+          label: this.translate.instant('Permisssions'),
+          tablink: '#permissions',
+          ariacontrols: 'permissions',
         },
         {
           label: this.translate.instant('Organization Units'),
@@ -287,7 +289,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
 
     this.activePage = 0;
     // this.newUser(undefined);
-    this.CreateOrEditUser.emit(this.selectedId);
+    this.EditUserEmitter.emit(this.selectedId);
 
   }
   // getSelectedRoles() {
@@ -312,7 +314,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   getSelectedorganizationunits(event: any): void {
-    debugger
     this.organizationtreeData = event;
     let organizationList = [];
     if (this.organizationtreeData && this.organizationtreeData.length > 0) {
@@ -376,12 +377,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     }
   }
 
-  getNavTabItems(): any {
-    this.navtabsItems[0].label = this.translate.instant('Basic');
-    this.navtabsItems[1].label = this.translate.instant('Roles');
-    this.navtabsItems[2].label = this.translate.instant('Organization Units');
-    return this.navtabsItems;
-  }
+
 
   // fabmenu mobile ts
 

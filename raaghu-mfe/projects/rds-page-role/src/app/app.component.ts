@@ -224,10 +224,10 @@ export class AppComponent implements OnInit {
       }
     });
     this.store.dispatch(getClaimTypes(this.emitClaimData.id));
+
     this.store
       .select(selectClaimsTypeByRole)
       .subscribe((res: any) => {
-        debugger
         if (res) {
           this.claimDisplayArray = []
             res.forEach((element) => {
@@ -239,6 +239,7 @@ export class AppComponent implements OnInit {
             });
         }
       });
+
 
     this.store.select(selectRoleForEdit).subscribe((res: any) => {
       if (res) {
@@ -295,6 +296,7 @@ export class AppComponent implements OnInit {
         this.Roledetails = undefined;
       });
     }
+    this.activePage = 0;
   }
 
   RoleInfo(eventdata: any): void {
@@ -322,37 +324,35 @@ export class AppComponent implements OnInit {
 
   addClaim(data: any): void {
     if (this.actionId == 'edit') {
-      this.emitClaimData.id=this.selectedId ;
+      this.emitClaimData.id = this.selectedId;
     }
     this.claimDisplayArray.push(data);
   }
   deleteClaim(event: any): void {
-    this.emitClaimData.id=this.selectedId;
+    this.emitClaimData.id = this.selectedId;
     this.claimDisplayArray = event;
     this.onClaimSave();
   }
   onClaimSave() {
-    this.emitClaimData.claimData = this.claimDisplayArray
+    this.emitClaimData.claimData = this.claimDisplayArray;
     this.store.dispatch(saveClaims(this.emitClaimData));
-    this.viewCreateOrganisationCanvas= false;
+    this.viewCreateOrganisationCanvas = false;
   }
   saveAndNext() {
     if (this.selectedId) {
-        const itemRole: any = {
-          name: this.Roledetails.name,
-          id: this.Roledetails.id,
-          isDefault: this.Roledetails.isDefault,
-          isPublic: this.Roledetails.isPublic,
-        };
-        this.store.dispatch(updateRole(itemRole));
-        this.store.dispatch(savePermissions(this.emitPermissionsData));
-        this.emitPermissionsData = {
-          name: undefined,
-          permissions: { permissions: [] },
-        };
-        this.viewCreateOrganisationCanvas = false;
-        
-      
+      const itemRole: any = {
+        name: this.Roledetails.name,
+        id: this.Roledetails.id,
+        isDefault: this.Roledetails.isDefault,
+        isPublic: this.Roledetails.isPublic,
+      };
+      this.store.dispatch(updateRole(itemRole));
+      this.store.dispatch(savePermissions(this.emitPermissionsData));
+      this.emitPermissionsData = {
+        name: undefined,
+        permissions: { permissions: [] },
+      };
+      this.viewCreateOrganisationCanvas = false;
     } else {
       if (!this.isSaved && this.emitRoleData) {
         this.store.dispatch(saveRole(this.emitRoleData));
@@ -373,9 +373,9 @@ export class AppComponent implements OnInit {
       }
       this.viewCreateOrganisationCanvas = false;
     }
-    this.selectedId= undefined;
+    this.selectedId = undefined;
     this.emitRoleData = undefined;
-        this.Roledetails = undefined;
+    this.Roledetails = undefined;
   }
 
   onDeleteNode(data: any): void {
@@ -384,7 +384,8 @@ export class AppComponent implements OnInit {
 
   getSelectedParent(parent): void {
     // this.selectedParent = parent;
-    this.selectedId= undefined;
+    this.activePage = 0;
+    this.selectedId = undefined;
     this.canvasTitle = 'New Role';
     this.isEdit = false;
     this.entityDisplayName = 'admin';
@@ -410,6 +411,7 @@ export class AppComponent implements OnInit {
 
   // Edit Action click
   onNodeEdit(node: any): void {
+    this.activePage = 0;
     this.selectedId = node.data.id;
     this.emitPermissionsData.name = node.data.displayName;
     this.store.dispatch(getPermission(this.emitPermissionsData.name));
@@ -434,10 +436,10 @@ export class AppComponent implements OnInit {
       },
     ];
     this.store.dispatch(getRolByEdit(node.data.id));
-     this.store.dispatch(getClaimTypes(this.selectedId));
+    this.store.dispatch(getClaimTypes(this.selectedId));
 
-     this.viewCreateOrganisationCanvas = true;
-     setTimeout(() => {
+    this.viewCreateOrganisationCanvas = true;
+    setTimeout(() => {
       this.openCanvas();
     }, 100);
   }

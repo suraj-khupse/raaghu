@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RdsButtonModule, RdsCardModule } from '@libs/rds-elements';
+import { RdsLabelModule } from '@libs/rds-label';
 import { NgxTranslateModule } from '@libs/shared';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -11,10 +14,6 @@ import { SharedModule } from '../../../libs/shared/src/lib/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-export const featureReducersMap = {
-  editions: EditionReducer,
-  //tenantCount: TenantCountReducer
-};
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +21,7 @@ export const featureReducersMap = {
   imports: [
     AppRoutingModule,
     SharedModule,
-    NgxTranslateModule.forRoot(),
-    StoreModule.forFeature('editions', featureReducersMap
-    ),
-    EffectsModule.forRoot([EditionEffects]),
-    RdsCompFeaturesListNewModule
+    RdsCompFeaturesListNewModule,
   ],
   providers: [ArrayToTreeConverterService],
   bootstrap: [AppComponent]

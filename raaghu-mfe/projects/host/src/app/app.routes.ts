@@ -9,7 +9,7 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'pages/dashboard',
+    redirectTo: 'login',
   },
 
   {
@@ -55,7 +55,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.dashboard.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-          data: { permission: 'Pages.Administration' },
+          data: { permission: 'BookStore.Dashboard.Host' },
 
       },
       {
@@ -67,7 +67,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.language.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.Languages' },
+        data: { permission: 'LanguageManagement.Languages' },
       },
       {
         path: 'role',
@@ -77,7 +77,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.role.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.Roles' },
+        data: { permission: 'AbpIdentity.Roles' },
       },
       {
         path: 'user',
@@ -87,7 +87,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.user.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.Users' }
+        data: { permission: 'AbpIdentity.Users' }
       },
       {
         path: 'audit-logs',
@@ -97,7 +97,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.auditlogs.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.AuditLogs' },
+        data: { permission: 'AuditLogging.AuditLogs' },
       }, 
       {
         path: 'organization-unit',
@@ -107,7 +107,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.organizationunit.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.OrganizationUnits' },
+        data: { permission: 'AbpIdentity.OrganizationUnits' },
       },
       {
         path: 'dynamic-property-management',
@@ -167,6 +167,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.Claimtype.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'AbpIdentity.ClaimTypes' },
       },
       {
         path: 'settings',
@@ -175,7 +176,8 @@ export const APP_ROUTES: Routes = [
             type: 'module',
             remoteEntry: MfeConfig.settings.url,
             exposedModule: './AppModule',
-          }).then((m) => m.AppModule)
+          }).then((m) => m.AppModule),
+          data: { permission: 'AbpIdentity.SettingManagement' },
       },
          // {
       //   path: 'cart',
@@ -196,7 +198,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.tenant.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Tenants' },
+        data: { permission: 'Saas.Tenants' },
 
       },
       {
@@ -207,6 +209,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.Securitylog.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'AbpIdentity.SecurityLogs' },
       },
       {
         path: 'edition',
@@ -216,7 +219,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.edition.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Editions' },
+        data: { permission: 'Saas.Editions' },
       },
       {
         path: 'store-front',
@@ -246,6 +249,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.client.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'IdentityServer.Client' },
       },
       {
         path: 'identityResources',
@@ -255,6 +259,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.identiyresources.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'IdentityServer.IdentityResource' },
       },
       {
         path: 'apiresources',
@@ -264,6 +269,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.apiresources.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'IdentityServer.ApiResource' },
       },
       {
         path: 'apiScope',
@@ -273,6 +279,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.apiscope.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'IdentityServer.ApiScope' },
       },
       // {
       //   path: 'cart',
@@ -304,6 +311,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.texttemplate.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
+          data: { permission: 'TextTemplateManagement.TextTemplates' },
       },
       {
         path: 'memberactivity',
@@ -331,7 +339,7 @@ export const APP_ROUTES: Routes = [
             remoteEntry: MfeConfig.languagetext.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
-        data: { permission: 'Pages.Administration.Languages.ChangeTexts' },
+        data: { permission: 'LanguageManagement.LanguageTexts' },
       },
       {
         path: 'pagenotfound',

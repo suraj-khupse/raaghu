@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { deleteEdition, deleteEditionFailure, deleteEditionSuccess, getEditionFailure, getEditionFeature, getEditionFeatureFailure, getEditionFeatureSuccess, getEditionInfo, getEditionInfoFailure, getEditionInfoSuccess,    getEditions, getEditionSuccess,  getPlanLookupFailure, getplanLookupInfo, getPlanLookupSuccess, saveEdition, saveEditionFailure, saveEditionSuccess, updateEdition, updateEditionFailure, updateEditionSuccess } from "./edition.action";
+import { deleteEdition, deleteEditionFailure, deleteEditionSuccess, getEditionFailure, getEditionFeature, getEditionFeatureFailure, getEditionFeatureSuccess, getEditionInfo, getEditionInfoFailure, getEditionInfoSuccess,    getEditions, getEditionSuccess,  getPlanLookupFailure, getplanLookupInfo, getPlanLookupSuccess, saveEdition, saveEditionFailure, saveEditionSuccess, updateEdition, updateEditionFailure, updateEditionFeatureValues, updateEditionFeatureValuesSuccess, updateEditionSuccess } from "./edition.action";
 import { Edition, EditionItem } from "./edition.model";
 
 
@@ -73,6 +73,14 @@ export const EditionReducer = createReducer(
         ...state,
         error: error,
         status: 'error',
+    })),
+
+    on(updateEditionFeatureValues, (state) => ({ ...state, status: 'loading' })),
+
+    on(updateEditionFeatureValuesSuccess, (state) => ({
+        ...state,
+        error: null,
+        status: 'success',
     })),
 
     on(updateEdition, (state) => ({ ...state, status: 'loading' })),

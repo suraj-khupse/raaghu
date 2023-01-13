@@ -184,17 +184,12 @@ export class RdsCompCalendarComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent): void {
     this.viewCanvas = true;
     this.selectedId = event.id;
-
     if (event) {
       this.canvasTitle = 'EDIT EVENT';
       this.eventData.title = event.title;
       this.eventData.start =new Date(event.start);
-      debugger
       this.eventData.end = new Date(event.end);
-    } else {
     }
-    console.log('event', event);
-
     setTimeout(() => {
       var offcanvas = document.getElementById('calendarOffcanvas');
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);

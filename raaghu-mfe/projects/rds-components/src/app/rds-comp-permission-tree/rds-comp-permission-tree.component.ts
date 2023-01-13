@@ -14,7 +14,7 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
   // Input Decorators
   @Input() treeData: PermissionNode[] = [];
   @Input() selectAllLabel: string = 'Select All';
-  @Input() roleName!: string;
+  @Input() roleName: string = '';
   @Input() isEdit: boolean = false;
 
   // Output Decorators
@@ -29,14 +29,12 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
 
   constructor(public translate: TranslateService) { }
  
-  ngOnChanges(changes: SimpleChanges): void {
-   console.log('this.treeData', this.treeData);
-   debugger
-   
+
+  ngOnChanges(changes: SimpleChanges): void { 
    if (this.treeData && this.demoTreeData!= this.treeData) {
     const resPermission: any[] = [];
     this.treeData.forEach(element => {
-      const item = {
+      const item = { 
         name: element.name,
         displayName: element.displayName,
         permissions: element.permissions
@@ -62,10 +60,11 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
     this.modifiedtreeData = resPermission;
   }
 
-  this.demoTreeData = this.treeData;
+  this.demoTreeData = this.treeData;             
  }
   ngOnInit(): void {
     // Convert data into editable format
+    debugger
     if (this.treeData) {
       const resPermission: any[] = [];
       this.treeData.forEach(element => {
