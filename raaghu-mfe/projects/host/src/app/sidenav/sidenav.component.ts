@@ -15,17 +15,18 @@ import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ThemesService } from 'projects/libs/themes/src/public-api';
 import { PrepareCollectedData } from 'projects/libs/state-management/src/lib/state/DownloadData/download-data.action';
-import { DOCUMENT } from '@angular/common';
+import { DatePipe, DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
 import { RouterOutlet } from '@angular/router';
-import * as moment from 'moment';
-import { getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
-import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
+import * as moment from 'moment'
+
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { getSecuritylogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.actions';
 import { selectSecurityLogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.selector';
 import { getLinkUserData, getPersonalData, getProfileSettings, getTwoFactor, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
 import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
+import { getCultureList, getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
+import { selectCultureList } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -112,7 +113,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         // { label: 'Webhook Subscriptions', labelTranslationKey: 'Webhook Subscriptions', id: '', permissionName: 'Pages.Administration.WebhookSubscription', icon: 'webhook_subscription', path: '/pages/webhooksubscription', description: 'Webhook Subsubscription Info', descriptionTranslationKey: 'Statistics and reports' },
         // { label: 'Dynamic Properties', labelTranslationKey: 'Dynamic Properties', id: 'Pages.Administration.DynamicProperties', permissionName: '', icon: 'dynamic_properties', path: '/pages/dynamic-property-management', descriptionTranslationKey: '' },
         // //{ label: 'Settings', labelTranslationKey: 'Settings', id: '', permissionName: '', icon: 'setting', path: '/pages/settings', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
-        { label: 'Security-logs', labelTranslationKey: 'Cart', id: 'cart', permissionName: 'AbpIdentity.SecurityLogs' ,icon: 'tenant', path: '/pages/security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
+        { label: 'Security-logs', labelTranslationKey: 'Cart', id: 'cart', permissionName: 'AbpIdentity.SecurityLogs', icon: 'tenant', path: '/pages/security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
 
       ],
     },
@@ -136,7 +137,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { label: 'Audit logs', labelTranslationKey: 'Audit logs', id: '', permissionName: 'AuditLogging.AuditLogs', icon: 'audit_logs', path: '/pages/audit-logs', descriptionTranslationKey: '' },
     // { label: 'UI Components', labelTranslationKey: 'UI Components', id: '', permissionName: '', icon: 'demo_ui', path: '/pages/demo-ui', description: '', descriptionTranslationKey: '' },
     { label: 'Settings', labelTranslationKey: 'Settings', id: '', permissionName: 'AbpIdentity.SettingManagement', icon: 'setting', path: '/pages/settings', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
-   
+
   ];
 
 
@@ -188,7 +189,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
   constructor(private router: Router,
     private store: Store,
-
+    public datepipe: DatePipe,
     private alertService: AlertService,
     public translate: TranslateService,
     private shared: SharedService,
@@ -237,7 +238,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     });
 
     this.store.dispatch(getPersonalData('6f9f495e-f308-9a83-e524-3a079ce6f2f5'));
-    this.store.select(selectPersonalData).subscribe(res=> {
+    this.store.select(selectPersonalData).subscribe(res => {
       if (res) {
         this.personalData = res.items;
       }
@@ -279,22 +280,12 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       }
     });
 
-
-
-    this.userAuthService.getPermissions().subscribe(res => {
-      if (res) {
-        this.filterNavItems(this.sidenavItemsOriginal, res, this.sidenavItems);
-      }
-      else {
-
-        const storedPermission = localStorage.getItem('storedPermissions');
-        const parsedPermission = JSON.parse(storedPermission);
-        if (parsedPermission) {
-          this.permissions = parsedPermission;
-          this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
-        }
-      }
-    });
+    const storedPermission = localStorage.getItem('storedPermissions');
+    const parsedPermission = JSON.parse(storedPermission);
+    if (parsedPermission) {
+      this.permissions = parsedPermission;
+      this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
+    }
     this.subscribeToAlerts();
     this.rdsTopNavigationMfeConfig = {
       name: 'RdsTopNavigation',
@@ -326,8 +317,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         },
         onLanguageSelection: (lan) => {
           this.translate.use('en');
-          //this.store.dispatch(setDefaultLanguageForUI(lan))
-
+          //this.store.dispatch(setDefaultLanguageForUI(lan));
         },
         deleteDeligateuser: (data: any) => {
           if (data) {
@@ -436,10 +426,18 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     //   }
     // });
 
+    this.userAuthService.localization;
+    console.log('display localization.', this.userAuthService);
+     
 
-    this.store.select(selectAllLanguages).subscribe((res: any) => {
-      console.log(res);
-    })
+
+
+
+    // this.isShimmer = false;
+
+
+
+
     this.on('tenancyDataAgain').subscribe(res => {
     })
     if (this.router.url) {
@@ -462,6 +460,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           }
         })
       }
+
       this.rdsTopNavigationMfeConfig.input.selectedMenu = this.selectedMenu;
       this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = this.selectedMenuDescription;
     }
@@ -615,7 +614,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.store.dispatch(saveProfilePicture(event));
   }
 
-  onDownload(event: any) {}
+  onDownload(event: any) { }
 
   redirectPath(event): void {
     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
