@@ -4,12 +4,12 @@
             <div class="position-absolute  end-0 desktop-btn">
                 <rds-button #operationlog class="action mb-0" *ngIf="selectedIndex==0" [colorVariant]="'primary'"
                     [isOutline]="true" [size]="'small'" (click)="exportToExcel('operation-logs')"
-                    [label]="translate.instant('Export To Excel')"   iconHeight="15px" iconWidth="15px" [isIconFill]="false" icon="export_data">
+                    [label]="translate.instant('Export To Excel')" iconHeight="15px" iconWidth="15px" [isIconFill]="false" icon="export_data">
                     <!-- <rds-icon left name="export_data" height="15px" width="15px" class="me-2"></rds-icon> -->
                 </rds-button>
                 <rds-button #changelog class="action" [isOutline]="true" *ngIf="selectedIndex==1"
                     [colorVariant]="'primary'" [size]="'small'" (click)="exportToExcel('change-logs')"
-                    [label]="translate.instant('Export To Excel')">
+                    [label]="translate.instant('Export To Excel')" iconHeight="15px" iconWidth="15px" [isIconFill]="false" icon="export_data">
                     <!-- <rds-icon left name="export_data" width="15px" class="me-2" height="18px"></rds-icon> -->
                 </rds-button>
             </div>
