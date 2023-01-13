@@ -41,6 +41,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   refreshTokenExpiryDate: any;
   loadingshimmer: boolean = true;
   tenancyName: string = '';
+  buttonSpinner: boolean = false;
   constructor(
     private injector: Injector,
     private _userAuthService: UserAuthService,
@@ -84,7 +85,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
       input: {
         rememeberMe: true,
         TenancyName: tenancyName,
-        buttonSpinner: true
+        buttonSpinner: this.buttonSpinner
       },
       output: {
         onSwitchTenant: (data: any) => {
@@ -95,6 +96,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
           this.authenticateModal.password = data.userPassword;
           this.authenticateModal.rememberMe = data.rememberme;
           this.authenticate();
+          this.buttonSpinner= true;
         },
         onShimmerLoad: (event: any) => {
           this.loadingshimmer = false;

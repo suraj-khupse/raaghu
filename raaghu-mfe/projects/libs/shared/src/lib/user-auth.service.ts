@@ -20,6 +20,7 @@ export class UserAuthService implements OnInit {
   userAuthenticated: boolean = false;
   language: Observable<LanguageInfo[]>;
   sources: Observable<any>;
+  userName: string = '';
   constructor(
     private router: Router,
     private store: Store,
@@ -27,9 +28,11 @@ export class UserAuthService implements OnInit {
     @Optional() @Inject(API_BASE_URL) baseUrl?: string
   ) {
     const temp = JSON.parse(localStorage.getItem('userAuthenticated'));
-
+const userName = JSON.parse(localStorage.getItem('userName'));
+this.userName = userName;
     if(temp){
       this.userAuthenticated = temp.value;
+      
     }
     this.getApplicationConfiguration()
   }
@@ -64,6 +67,7 @@ export class UserAuthService implements OnInit {
         console.log('result.auth.grantedPolicies',result.auth.grantedPolicies)
         // this.localization = result.localization;
         // this.sources=result.localization.sources
+            // this.userName = result.currentUser.userName;
             this.language=of(result.localization.languages);
       //   if (login == 'login') {
       //     this.router.navigateByUrl('/pages/dashboard');
@@ -73,6 +77,7 @@ export class UserAuthService implements OnInit {
       //     this.router.navigateByUrl('/login');
       //   }
       // }
+      localStorage.setItem('userName',JSON.stringify(result.currentUser.userName));
       localStorage.setItem('userAuthenticated',JSON.stringify({value:result.currentUser.isAuthenticated}));
        if(result.currentUser.isAuthenticated){ 
         if(this.router.url == '/login'){       

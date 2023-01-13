@@ -153,7 +153,8 @@
 					"polyfills": "projects/rds-components/src/polyfills.ts",
 					"tsConfig": "projects/rds-components/tsconfig.app.json",
 					"allowedCommonJsDependencies": [
-						"moment"
+						"moment",
+						"fast-sha256"
 					  ],
 					"inlineStyleLanguage": "scss",
 					"assets": [
@@ -290,37 +291,10 @@
 				}
 			  ],
 			  "styles": [
-				"./node_modules/bootstrap/dist/css/bootstrap.min.css",
-				"projects/libs/themes/src/styles/quillEditor.scss",
-				"projects/libs/themes/src/styles/default.scss",
-				"projects/libs/themes/src/styles/responsive.scss",
 				"projects/host/src/styles.css",
-				"./node_modules/ngx-videogular/fonts/videogular.css",
-				{
-				  "input": "projects/libs/themes/src/styles/default.scss",
-				  "bundleName": "default",
-				  "inject": false
-				},
-				{
-				  "input": "projects/libs/themes/src/styles/accessible.scss",
-				  "bundleName": "accessible",
-				  "inject": false
-				},
-				{
-				  "input": "projects/libs/themes/src/styles/blue.scss",
-				  "bundleName": "blue",
-				  "inject": false
-				},
-				{
-				  "input": "projects/libs/themes/src/styles/green.scss",
-				  "bundleName": "green",
-				  "inject": false
-				},
-				{
-				  "input": "projects/libs/themes/src/styles/orange.scss",
-				  "bundleName": "orange",
-				  "inject": false
-				}
+				"./node_modules/raaghu-themes/rds-themes/styles/default.scss",
+				"./node_modules/ngx-videogular/fonts/videogular.css"
+				 
 			  ],
 			  "scripts": [
 				"./node_modules/bootstrap/dist/js/bootstrap.min.js",
