@@ -9,5 +9,6 @@
   [offcanvaswidth]="600" (onClose)="closeCanvas()">
   <!-- <b>New Dynamic Entity Property</b> -->
   <rds-comp-new-dynamic-entity-property [entityNames]="entityNames" [reset]="reset" [parameterList]="parameterList"
-    (createOrUpdateDynamicEntity)="createorupdatedynamicEntityproperty($event)"></rds-comp-new-dynamic-entity-property>
+    (createOrUpdateDynamicEntity)="createorupdatedynamicEntityproperty($event)"
+    (closeCanvasEmitter)="closeCanvas()"></rds-comp-new-dynamic-entity-property>
 </rds-offcanvas>

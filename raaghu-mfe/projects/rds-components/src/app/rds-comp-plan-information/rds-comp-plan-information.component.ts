@@ -21,7 +21,8 @@ export class RdsCompPlanInformationComponent implements OnInit {
     displayName: '',
     creationTimeString: '',
     subscriptionDateString: '',
-    featureValues: []
+    featureValues: ["Maximum User Count","Test Check feature","Unlimited Subscription"]
+    
   };
 
   constructor(public translate:TranslateService) { }

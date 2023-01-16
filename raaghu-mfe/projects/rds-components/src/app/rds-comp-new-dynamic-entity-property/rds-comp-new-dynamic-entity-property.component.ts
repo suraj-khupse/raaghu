@@ -32,6 +32,9 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
   @ViewChild('dynamicEntityForm') dynamicEntityInfoForm: NgForm;
   resetFormSubject: Subject<boolean> = new Subject<boolean>();
   dynamicEntityDataSelect: any[] = [];
+
+  @Output() closeCanvasEmitter = new EventEmitter<any>();
+
   // isHostLogin: boolean = true;
   constructor(public translate: TranslateService) { }
   ngOnChanges(changes: SimpleChanges): void {
@@ -98,6 +101,7 @@ export class RdsCompNewDynamicEntityPropertyComponent implements OnInit, OnChang
     this.Placeholder = "Select Property Name";
     this.dynamicEntityData = { entityFullName: '', PropertyID: '' };
     this.resetDropdownList();
+    this.closeCanvasEmitter.emit();
   }
 
   resetDropdownList() {

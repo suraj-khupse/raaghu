@@ -51,6 +51,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     },
   ];
   tenantId: any = null;
+  @Output() closeCanvasEmitter = new EventEmitter<any>();
 
 
   constructor(public translate: TranslateService,) { }
@@ -84,6 +85,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     }
   }
   closeCanvas(): void {
+    debugger
     this.activePage = 0;
     this.DynamicProperyData = {};
     this.DynamicProperyInfo = undefined;
@@ -93,6 +95,7 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     this.IsEdit = false;
     this.selectedPermissionList = [];
     this.viewCanvas = false;
+    this.closeCanvasEmitter.emit();
   }
   editTableRow(event): void {
     this.activePage = 0;
