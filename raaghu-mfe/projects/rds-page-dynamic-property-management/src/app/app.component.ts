@@ -199,6 +199,7 @@ export class AppComponent implements OnInit {
   // };
   isEdit: boolean = false;
   temp: any = [];
+buttonSpinner: boolean=false;
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -550,6 +551,8 @@ export class AppComponent implements OnInit {
     }
   }
   openCanvas(): void {
+    this.buttonSpinner=true;
+
     if (this.selectedTabIndex === 0) {
       this.openDynamicCanvas();
     } else {
@@ -604,7 +607,10 @@ export class AppComponent implements OnInit {
     this.editShimmer = true;
   }
   closeCanvas(): void {
+    debugger
     this.viewCanvas = false;
+    this.buttonSpinner=false;
+    
   }
 
 

@@ -107,6 +107,8 @@ export class AppComponent implements OnInit {
     }];
 
   currentAlerts: any = [];
+
+  buttonSpinner: boolean;
   // public rdsAlertMfeConfig: ComponentLoaderOptions = {
   //   name: 'RdsCompAlert',
   //   input: {
@@ -551,7 +553,7 @@ export class AppComponent implements OnInit {
     this.viewCanvas = true;
     this.selectedPermissionValues = [];
     if (!isEdit) {
-      this.showLoadingSpinner = true;
+      this.buttonSpinner = true;
       this.canvasTitle = this.translate.instant('NEW ROLE'),
         this.Roles = { RolesData: undefined, permissionsList: [] };
       this.RolesData = undefined;
@@ -585,7 +587,7 @@ export class AppComponent implements OnInit {
     this.RolesData = undefined;
     this.onReset(true);
     this.isRoleDataValid = false;
-    this.showLoadingSpinner = false;
+    this.buttonSpinner = false;
   }
 
   getNavTabItems(): any {
