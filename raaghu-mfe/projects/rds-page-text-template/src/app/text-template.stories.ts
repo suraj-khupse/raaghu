@@ -14,20 +14,20 @@ import {
   RdsPopoverModule,
   RdsSelectListModule,
 } from '@libs/rds-elements';
-import { AppComponent as TextTemplate } from './app.component';
+import { AppComponent, AppComponent as TextTemplate } from './app.component';
 import {
   NgxTranslateModule,
   SharedModule,
 } from '../../../libs/shared/src/public-api';
 import { StoreModule } from '@ngrx/store';
-import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 
 export default {
   title: 'Pages/Text-Template',
-  component: TextTemplate,
+  component: AppComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsDataTableComponent],
+      declarations: [AppComponent],
       imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -45,12 +45,13 @@ export default {
         RdsCheckboxModule,
         RdsDatepickerModule,
         StoreModule.forRoot({}),
+        RdsCompDataTableModule
       ],
       providers: [FormBuilder],
     }),
   ],
 } as Meta;
-const Template: Story<TextTemplate> = (args: TextTemplate) => ({
+const Template: Story<TextTemplate> = (args: AppComponent) => ({
   props: {
     ...args,
   },

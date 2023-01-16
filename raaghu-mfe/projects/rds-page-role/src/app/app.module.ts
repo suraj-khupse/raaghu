@@ -11,6 +11,7 @@ import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-com
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     AppRoutingModule,
+    FormsModule,
     CommonModule,
     SharedModule,
     RdsButtonModule,
