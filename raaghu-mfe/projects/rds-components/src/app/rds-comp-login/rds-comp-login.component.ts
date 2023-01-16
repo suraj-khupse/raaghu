@@ -18,7 +18,7 @@ declare var bootstrap: any;
 export class RdsLoginComponent implements OnInit, OnChanges {
   userNameData: any;
   userPasswordData: any;
-  rememeberMe: boolean;
+  rememberMe: boolean;
   TenantNameData: any;
   @Input() tenancyName: string;
   UserName: string = 'Email/Username';
@@ -51,7 +51,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
 
   //for getting remebrme value
   onChangeRememberme(event: any) {
-    this.rememeberMe = event.detail;
+    this.rememberMe = event.detail;
   }
 
   submit(loginForm: NgForm) {
@@ -59,7 +59,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
     this.onLogin.emit({
       userEmail: this.userNameData,
       userPassword: this.userPasswordData,
-      rememberme: this.rememeberMe,
+      rememberMe: this.rememberMe,
     })
   }
 
