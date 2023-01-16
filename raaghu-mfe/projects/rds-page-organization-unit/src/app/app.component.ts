@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   rolecanvasTitle: string = 'Select Role';
   selectedTreeNode: number = 0;
   public currentAlerts: any = [];
-  canvasTitle: string = 'New Organization Unit';
+  canvasTitle: string = 'NEW ORGANIZATION UNIT';
   navtabsItems: any = [
     {
       label: this.translate.instant('Members'),

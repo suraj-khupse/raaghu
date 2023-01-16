@@ -13,6 +13,7 @@ export class RdsCompDynamicEnityPropertiesComponent implements OnInit, OnChanges
   @Input()
   DynamicEntityPropertiesTableHeader: any;
 
+  @Output() closeCanvasEmitter = new EventEmitter<any>();
   @Input() reset: boolean = true;
   @Input() DynamicEntityPropertiesTableData: any;
   @Output() deleteEvent = new EventEmitter<any>();
@@ -32,6 +33,7 @@ export class RdsCompDynamicEnityPropertiesComponent implements OnInit, OnChanges
   closeCanvas(): void {
     this.viewCanvas = false;
     this.DynamicEntityData = {};
+    this.closeCanvasEmitter.emit();
   }
   ngOnChanges(changes: SimpleChanges): void {
     // this.DynamicEntityData = undefined;

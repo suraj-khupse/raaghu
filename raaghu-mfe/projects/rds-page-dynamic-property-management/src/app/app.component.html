@@ -9,7 +9,7 @@
     <div class="col-md-3 pb-3 desktop-btn">
       <rds-button [label]="translate.instant(btnLabel)" type="button" [size]="'small'" (click)="openCanvas()"
         style="float: right" [colorVariant]="'primary'" [attr.aria-controls]="'AddDynamic'" [icon]="'plus'"
-        [iconHeight]="'12px'" iconWidth="12px">
+        [iconHeight]="'12px'" iconWidth="12px" [showLoadingSpinner]="buttonSpinner">
       </rds-button>
     </div>
   </div>
@@ -49,8 +49,9 @@
                 [DynamicProperyData]="DynamicProperyData"
                 [selectedPermissionList]="selectedDynamicPermission"
                 [inputTypeList]="inputTypeList" [permissionsList]="permissionsList" [isShimmer]="isShimmer"
-                [editShimmer]="editShimmer" (deleteEvent)="deleteDynamic($event)"
-                (createOrUpdateDynamic)="createDynamic($event)" (editPropertyTableRowData)="updateDynamic($event)">
+                [editShimmer]="editShimmer" (deleteEvent)="deleteDynamic($event)" 
+                (createOrUpdateDynamic)="createDynamic($event)" (editPropertyTableRowData)="updateDynamic($event)"
+                (closeCanvasEmitter)="closeCanvas()">
               </app-rds-comp-dynamic-properties>
             </div>
           </div>
@@ -63,8 +64,8 @@
                 [DynamicEntityPropertiesTableHeader]="DynamicEntityPropertiesTableHeader"
                 [entityNames]="entityNames" [parameterList]="parameterList" [isShimmer]="isShimmer"
                 (deleteEvent)="deleteDynamicEntity($event)"
-                (createOrUpdateDynamicEntitydata)="createDynamicEntity($event)">
-
+                (createOrUpdateDynamicEntitydata)="createDynamicEntity($event)"
+                (closeCanvasEmitter)="closeCanvas()">
               </app-rds-comp-dynamic-enity-properties>
             </div>
           </div>
