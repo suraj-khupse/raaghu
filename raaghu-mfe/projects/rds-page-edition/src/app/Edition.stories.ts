@@ -257,5 +257,9 @@ editionList:[
         "some": "DemoOne",
         "id": 1,           
     },
-]
+],
+actions:[   
+     { id: 'delete', displayName: 'Delete' },
+      { id: 'moveTenant', displayName: 'Move Tenants to Another Edition' }]
+
  }
