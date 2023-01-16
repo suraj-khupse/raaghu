@@ -9,7 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SharedModule, NgxTranslateModule, HttpLoaderFactory } from '@libs/shared';
 // import { RdsDataTableComponent } from './rds-comp-data-table/rds-comp-data-table.component';
 import { RdsTopNavigationComponent } from './rds-comp-top-navigation/rds-comp-top-navigation.component';
-import { RdsAdminDashboardComponent } from './rds-comp-admin-dashboard/rds-comp-admin-dashboard.component';
+// import { RdsAdminDashboardComponent } from './rds-comp-admin-dashboard/rds-comp-admin-dashboard.component';
 import { RdsForgotPasswordComponent } from './rds-comp-forgot-password/rds-comp-forgot-password.component';
 import { RdsNotificationComponent } from './rds-comp-notification/rds-comp-notification.component';
 
@@ -71,7 +71,7 @@ import { RdsCompVisualSettingsComponent } from './rds-comp-visual-settings/rds-c
 import { RdcCompApiScopeBasicsComponent } from './rdc-comp-api-scope-basics/rdc-comp-api-scope-basics.component';
 import { RdcCompApiScopeResourcesComponent } from './rdc-comp-api-scope-resources/rdc-comp-api-scope-resources.component';
 // import { RdsCompPermissionTreeComponent } from './rds-comp-permission-tree/rds-comp-permission-tree.component';
-import { RdsCompTenantDashboardComponent } from './rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component';
+// import { RdsCompTenantDashboardComponent } from './rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component';
 import { RdsCompAlertComponent } from './rds-comp-alert/rds-comp-alert.component';
 import { RdsCompRoleListComponent } from './rds-comp-role-list/rds-comp-role-list.component';
 import { RdsCompInformationComponent } from './rds-comp-information/rds-comp-information.component';
@@ -163,7 +163,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsAddressInputComponent,
     // RdsDataTableComponent,
     RdsTopNavigationComponent,
-    RdsAdminDashboardComponent,
+    // RdsAdminDashboardComponent,
     RdsCompProfileComponent,
     RdsForgotPasswordComponent,
     RdsNotificationComponent,
@@ -211,7 +211,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdcCompApiScopeBasicsComponent,
     RdcCompApiScopeResourcesComponent,
     // RdsCompPermissionTreeComponent,
-    RdsCompTenantDashboardComponent,
+    // RdsCompTenantDashboardComponent,
     RdsCompAlertComponent,
     RdsCompRoleListComponent,
     RdsCompInformationComponent,
