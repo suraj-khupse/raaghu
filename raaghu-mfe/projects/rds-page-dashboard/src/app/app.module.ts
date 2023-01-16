@@ -10,6 +10,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RdsSideNavModule } from '@libs/rds-elements';
 import { RdsBigNumberWidgetModule, RdsChartStackedModule, RdsButtonModule, RdsChartBarHorizontalModule, RdsChartBoolModule, RdsChartDoughnutModule, RdsDropdownModule,RdsChartPieModule, RdsChartAreaModule, RdsDatepickerModule, RdsChartLineModule } from '@libs/rds-elements';
 import { RdsWidgetModule } from 'projects/libs/rds-elements/src/rds-widget/src/public-api';
+import { RdsCompAdminDashboardModule } from 'projects/rds-components/src/app/rds-comp-admin-dashboard/rds-comp-admin-dashboard.module';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompTenentDashboardModule } from 'projects/rds-components/src/app/rds-comp-tenant-dashboard/rds-comp-tenent-dashboard.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { RdsWidgetModule } from 'projects/libs/rds-elements/src/rds-widget/src/p
     RdsDatepickerModule,
     RdsChartStackedModule,
     RdsChartLineModule,
-    RdsWidgetModule
+    RdsWidgetModule,
+    RdsCompAdminDashboardModule,
+    RdsCompDataTableModule,
+    RdsCompTenentDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

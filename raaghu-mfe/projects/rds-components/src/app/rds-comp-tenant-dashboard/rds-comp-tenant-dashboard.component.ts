@@ -2,6 +2,38 @@ import { Component, OnInit, Injector, Input } from '@angular/core';
 import { ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 import { TableHeader } from '../../models/table-header.model';
+export class dashboardData {
+  SalesPrice: string
+  SalesProfit: string
+  RevenuePrice: string
+  RevenueProfit: string
+  ProfitSharePrice: string
+  DailySalesGrowth: string
+  SalesGrowthLoss: string
+  ConnectedCallsData: []
+  ClientCallsData: []
+  ProfitShareData: []
+  monthlySummaryDataSets: []
+  monthlySummaryLabels: []
+  monthlySummarychartWidth: number
+  monthlySummarychartOptions: []
+  ProfitShareChartDataSets: []
+  ProfitSharechartLabels: []
+  ProfitSharechartWidth: number
+  ProfitSharechartOptions: []
+  ConnectedCallschartDatasets: []
+  ConnectedCallschartLabels: []
+  ConnectedCallschartWidth: number
+  ConnectedCallschartOptions: []
+  ClientCallschartDatasets: []
+  ClientCallschartLabels: []
+  ClientCallschartWidth: number
+  ClientCallschartOptions: []
+  barHrChartDatasets: []
+  barHrChartLabels: []
+  barHrChartWidth: number
+  barHrChartOptions: []
+}
 export interface MonthlySummaryData {
   monthlySummaryDataSets: [],
   monthlySummaryLabels: [],
@@ -23,12 +55,43 @@ export interface BigNumberWidgetData {
 }
 
 @Component({
-  selector: 'rds-comp-tenant-dashboard',
+  selector: 'rds-tenant-dashboard',
   templateUrl: './rds-comp-tenant-dashboard.component.html',
   styleUrls: ['./rds-comp-tenant-dashboard.component.scss']
 })
-export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements OnInit {
+export class  RdsCompTenantDashboardComponent extends MfeBaseComponent implements OnInit {
 
+  dashBoardData: dashboardData = {
+    SalesPrice: '3,32,230.00', SalesProfit: '',
+    RevenuePrice: '',
+    RevenueProfit: '',
+    ProfitSharePrice: '',
+    DailySalesGrowth: '',
+    SalesGrowthLoss: '',
+    ConnectedCallsData: [],
+    ClientCallsData: [],
+    ProfitShareData: [],
+    monthlySummaryDataSets: [],
+    monthlySummaryLabels: [],
+    monthlySummarychartWidth: 0,
+    monthlySummarychartOptions: [],
+    ProfitShareChartDataSets: [],
+    ProfitSharechartLabels: [],
+    ProfitSharechartWidth: 0,
+    ProfitSharechartOptions: [],
+    ConnectedCallschartDatasets: [],
+    ConnectedCallschartLabels: [],
+    ConnectedCallschartWidth: 0,
+    ConnectedCallschartOptions: [],
+    ClientCallschartDatasets: [],
+    ClientCallschartLabels: [],
+    ClientCallschartWidth: 0,
+    ClientCallschartOptions: [],
+    barHrChartDatasets: [],
+    barHrChartLabels: [],
+    barHrChartWidth: 0,
+    barHrChartOptions: []
+  };
   @Input() borderRadious?: number = 8;
   @Input() SalesPrice?: string = '3,32,230.00';
   @Input() SalesProfit?: string = '2203.00';
@@ -41,40 +104,56 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
   @Input() TotalConnectedCalls?: string = '93';
   @Input() ConnectedCallsData: any = [80, 100 - 80];
   @Input() ClientCallsData: any = [65, 100 - 65];
-  @Input() ProfitShareData: any = [10, 25, 30]
+  @Input() ProfitShareData: any = [60, 25, 15]
   @Input() userName: string = 'Keanu Foster';
   @Input() memberActivityTableData: any = [
-    { "cases": 10, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"50px\" ></div><div class=\"ms-2 mt-2\"><b>Brian</b><div>Software Developer </div></div></div>", "active": 38, "closed": 10, "rate": "<div class=\"HighRate\">92</div>" }
-    , { "cases": 18, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"50px\" ></div><div class=\"ms-2 mt-2\"><b>Kim</b><div>Senior Developer </div></div></div>", "active": 342, "closed": 25, "rate": "<div class=\"MidRate\">42</div>" }
-    , { "cases": 7, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"50px\" ></div><div class=\"ms-2 mt-2\"><b>Jane</b><div>Sales Executive </div></div></div>", "active": 25, "closed": 5, "rate": "<div class=\"HighRate\">96</div>" }
-    , { "cases": 14, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"50px\" ></div><div class=\"ms-2 mt-2\"><b>Brian</b><div>Software Developer</div></div></div>", "active": 42, "closed": 42, "rate": "<div class=\"LowRate\">16</div>" }
-    , { "cases": 23, "member": "<div class=\"d-flex\"><div> <img src=../assets/user1_icon.png width=\"50px\" ></div><div class=\"ms-2 mt-2\">Kath</b><div>Manager </div></div></div>", "active": 10, "closed": 3, "rate": "<div class=\"MidRate\">52</div>" }
+    { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 38 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">92%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 18 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kim</b></p><small class=\"text-muted\">Senior Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 342 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">42%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 7 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Jane</b></p><small class=\"text-muted\">Sales Executive </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 5 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">96%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 14 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer</small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "rate": "<div class=\"LowRate d-flex align-items-center justify-content-center\">16%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 13 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kath</b></p><small class=\"text-muted\">Manager </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 3 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">52%</div>" }
+  ];
+  @Input() toDoListTableData: any = [
+    { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 38 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">92%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 18 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kim</b></p><small class=\"text-muted\">Senior Developer </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 342 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">42%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 7 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Jane</b></p><small class=\"text-muted\">Sales Executive </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 25 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 5 </div></div>", "rate": "<div class=\"HighRate d-flex align-items-center justify-content-center\">96%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 14 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Brian</b></p><small class=\"text-muted\">Software Developer</small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 42 </div></div>", "rate": "<div class=\"LowRate d-flex align-items-center justify-content-center\">16%</div>" }
+    , { "cases": "<div class=\"d-flex align-items-center justify-content-center\"><div> 13 </div></div>", "member": "<div class=\"d-flex align-items-center\"><div> <img src=https://anzstageui.raaghu.io/assets/dashboard-data.png width=\"40px\" ></div><div class=\"ms-2 mt-2\"><p class=\"mb-0\"><b>Kath</b></p><small class=\"text-muted\">Manager </small></div></div>", "active": "<div class=\"d-flex align-items-center justify-content-center\"><div> 10 </div></div>", "closed": "<div class=\"d-flex align-items-center justify-content-center\"><div> 3 </div></div>", "rate": "<div class=\"MidRate d-flex align-items-center justify-content-center\">52%</div>" }
   ]
+
 
   @Input() monthlySummaryDataSets = [
     {
       label: 'Sales',
-      data: [100, 120, 130, 140, 145, 150, 150, 157, 160, 168, 165, 158],
-      borderColor: '#928AE0',
-      backgroundColor: 'rgba(179, 134, 224, 0.8)',
+      data: [600, 462, 405, 362, 350, 350.5, 320.8, 318, 605, 689, 352, 354],
+      borderColor: '#4DCFFF',
+      pointBackgroundColor: '#4DCFFF',
+      backgroundColor: '--chart-line-color1',
       fill: true,
-      // tension: 0.1,
+      pointRadius: 3,
+      // fillColor: "rgba(195, 40, 96, 0.1)",
+      tension: 0.4,
     },
-    // {
-    //   label: 'Revenue',
-    //   data: [290, 262, 205, 162, 150, 280, 206, 220, 260, 300, 275, 211],
-    //   borderColor: '#EDB371',
-    //   backgroundColor: 'rgba(75, 192, 192, 0.8)',
-    //   fill: true,
-    //   tension: 0.1,
-    // }
+    {
+      label: 'Revenue',
+      data: [250, 780.2, 780.4, 650, 455, 455.5, 455.8, 456, 610, 455, 250, 254],
+      borderColor: '#863BFF',
+      pointBackgroundColor: '#863BFF',
+      backgroundColor: '--chart-line-color2',
+      fill: true,
+      pointRadius: 3,
+      tension: 0.4,
+    }
   ]
   @Input() monthlySummaryLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  @Input() monthlySummarychartWidth = 1000
+  @Input() monthlySummarychartWidth = 650
+  @Input() monthlySummarychartHeight = 250
   @Input() monthlySummarychartOptions = {
     radius: 0,
     pointStyle: 'circle',
     responsive: true,
+    borderWidth: 2,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: false,
@@ -85,16 +164,38 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
         pointStyle: "circle",
         labels: {
           usePointStyle: true,
+          boxWidth: 8,
+          padding: 30,
+          height: 10
         },
       },
       tooltip: { enabled: true },
     },
-
+    scales:
+    {
+      y: {
+        beginAtZero: true,
+        legend: {
+          labels: {
+            maxheight: 10
+          },
+        },
+        grid: {
+          display: false
+        }
+      },
+      x: {
+        grid: {
+          display: false
+        }
+      },
+    },
     tooltip: {
       display: true,
       usePointStyle: true,
     },
   }
+
 
   // DOUGHNUT WITH BOOL
   @Input() pschartDatasets = [
@@ -102,9 +203,9 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
       label: 'Dataset 1',
       data: this.ProfitShareData,
       backgroundColor: [
-        '#ff6384',
-        '#ffcd56',
-        '#4bc0c0'
+        '--chart-doughnut-color1',
+        '--chart-doughnut-color2',
+        '--chart-doughnut-color3'
       ],
       fillStyle: 'blue',
       fillRect: [200, 100, 140, 100],
@@ -113,7 +214,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
         '#fff',
       ],
       borderWidth: 0,
-      cutout: '85%',
+      cutout: '80%',
       title: {
         text: "Doughnut Chart",
         verticalAlign: "center",
@@ -121,15 +222,17 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
       },
     }
   ];
-  @Input() pschartLabels = ['Total Sales', 'Revenue', 'Expenses']
-  @Input() pschartWidth = 200;
+  @Input() pschartLabels = ['Total Sales - 60%', 'Revenue - 25%', 'Expenses - 15%']
+  @Input() pschartWidth = 255;
+  @Input() pschartHeight = 200;
   @Input() pschartOptions = {
 
-    cutoutPercentage: 75,
+    cutoutPercentage: 40,
     legend: {
       display: false
     },
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
 
       series: {
@@ -155,7 +258,20 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
         display: true,
         align: "middle",
         position: 'right',
+        labels: {
+          boxWidth: 15,
+          padding: 15
+        },
       },
+    },
+    elements: {
+      center: {
+        text: [{ text: '32 k', font: '500 1.4rem Poppins' }, { text: 'Profit', font: '400 0.8rem Poppins' }],
+        color: '--chart-doughnut-text-color', // Default is #000000
+        fontStyle: 'Arial', // Default is Arial
+        sidePadding: 20, // Default is 20 (as a percentage)
+        lineHeight: 25 // Default is 25 (in px), used for when text wraps
+      }
     }
   }
 
@@ -163,16 +279,16 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
   @Input() barHrChartDatasets = [
     {
       label: 'Sales Growth',
-      data: [15, 67, 34, 78, 45, 87, 76, 32, 50],
-      backgroundColor: 'rgba(54, 162, 235, 1)',
-      borderColor: 'rgba(54, 162, 245, 1)',
-      borderWidth: 2,
-      borderRadius: 5,
-      borderSkipped: false,
+      data: [15, 67, 34, 78, 45, 87, 76, 32, 50, 14, 35, 22],
+      backgroundColor: ['--chart-bar-horizontal-color'],
+      borderRadius: 10,
+      barThickness: 7,
+      borderSkipped: false
     }
   ];
-  @Input() barHrChartLabels = ['10k', '20k', '30k', '40k', '50k', '60k', '70k', '80k', '90k'];
-  @Input() barHrChartWidth = 255;
+  @Input() barHrChartLabels = ['10k', '20k', '25k', '30k', '40k', '50k', '60k', '70k', '75k', '80k', '90k', '95k'];
+  @Input() barHrChartWidth = 300;
+  @Input() barHrchartHeight = 300;
   @Input() barHrChartOptions = {
     indexAxis: 'x',
     elements: {
@@ -182,6 +298,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
       }
     },
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: '',
@@ -190,12 +307,18 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
           usePointStyle: true
         }
       },
+      scales:
+      {
+        y: {
+          beginAtZero: true,
+        }
+      },
       tooltip: {
         usePointStyle: true,
       },
       title: {
         display: false,
-        text: 'Monthly Summary'
+        text: 'Daily Sales Growth'
       }
     },
   };
@@ -205,18 +328,18 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
     {
       label: 'Dataset 1',
       data: this.ClientCallsData,
-      fillStyle: 'blue',
+      fillStyle: '#D0D7DD',
       fillRect: [200, 100, 40, 10],
       backgroundColor: [
-        '#E30707',
-        '#E1E1E1'
+        '--chartColor9',
+        '--chartColor7'
 
       ],
       borderColor: [
         '#fff',
       ],
-      borderWidth: 1,
-      cutout: '90%',
+      borderWidth: 0,
+      cutout: '80%',
       title: {
         text: "Doughnut Chart",
         verticalAlign: "center",
@@ -237,6 +360,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
       display: false
     },
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       series: {
         label: {
@@ -261,6 +385,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
         display: false,
         align: "start",
         position: 'right',
+        "fontSize": 20,
       },
       tooltip: { enabled: false },
     },
@@ -271,17 +396,19 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
     {
       label: 'Dataset 1',
       data: this.ConnectedCallsData,
-      fillStyle: 'blue',
+      fillStyle: '#E1E1E1',
       fillRect: [200, 100, 40, 10],
       backgroundColor: [
-        '#07E33F',
-        '#E1E1E1'
+        '--chartColor1',
+        '--chartColor7'
+
       ],
+      iconColor:'--chart-icon-color',
       borderColor: [
         '#fff',
       ],
-      borderWidth: 1,
-      cutout: '90%',
+      borderWidth: 0,
+      cutout: '80%',
       title: {
         text: "Doughnut Chart",
         verticalAlign: "center",
@@ -301,6 +428,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
     legend: {
       display: false
     },
+    maintainAspectRatio: false,
     responsive: true,
     plugins: {
       series: {
@@ -331,12 +459,18 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
     }
   }
 
-  rdsMemberActivityTableMfeConfig: ComponentLoaderOptions;
   memberActivityTableHeader: TableHeader[] = [
     { displayName: 'Member', key: 'member', dataType: 'html' },
-    { displayName: 'Cases', key: 'cases', dataType: 'text' },
-    { displayName: 'Active', key: 'active', dataType: 'text' },
-    { displayName: 'Closed', key: 'closed', dataType: 'text' },
+    { displayName: 'Cases', key: 'cases', dataType: 'html' },
+    { displayName: 'Active', key: 'active', dataType: 'html' },
+    { displayName: 'Closed', key: 'closed', dataType: 'html' },
+    { displayName: 'Rate', key: 'rate', dataType: 'html' }
+  ]
+  toDoListTableHeader: TableHeader[] = [
+    { displayName: 'Member', key: 'member', dataType: 'html' },
+    { displayName: 'Cases', key: 'cases', dataType: 'html' },
+    { displayName: 'Active', key: 'active', dataType: 'html' },
+    { displayName: 'Closed', key: 'closed', dataType: 'html' },
     { displayName: 'Rate', key: 'rate', dataType: 'html' }
   ]
   tableStyle: string = 'light';
@@ -344,18 +478,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
   constructor(private injector: Injector, public translate: TranslateService) { super(injector); }
 
   ngOnInit(): void {
-    this.rdsMemberActivityTableMfeConfig = {
-      name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.memberActivityTableHeader,
-        tableStyle: this.tableStyle,
-        width: '100%',
-        tableData: this.memberActivityTableData,
-        pagination: false,
-        recordsPerPage: 10,
-        noDataTitle: 'Currently you do not have member activity'
-      },
-    };
+
   }
   LoadSalesData() {
 
@@ -372,5 +495,7 @@ export class RdsCompTenantDashboardComponent extends MfeBaseComponent implements
   LoadMemberActivityTable() {
 
   }
+  LoadToDoListTable() {
 
+  }
 }

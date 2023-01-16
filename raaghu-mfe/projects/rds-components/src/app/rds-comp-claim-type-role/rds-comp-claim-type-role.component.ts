@@ -39,12 +39,9 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
   ];
 
   sampleDelete: any
-
   constructor(public translate: TranslateService) { }
-
   ngOnInit(): void {
   }
-
 
   onActionSelection(event: any) :void {
     if (event && event.selectedData) {
@@ -72,7 +69,8 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
         claimType: this.ClaimData.claimType,
         claimValue: claimForm.form.value.claimValue
       }
-      this.addClaim.next(item);
+      this.addClaim.emit(item);
+      this.onClaimSave.next(null);
       claimForm.reset();
     }
   }
@@ -90,7 +88,7 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
   }
 
   saveClaim(claimForm: NgForm) {
-    this.onClaimSave.next(null);
+    this.onClaimSave.next(this.claimDisplayArray);
   }
 
 }

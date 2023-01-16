@@ -18,9 +18,10 @@ export class UserAuthService implements OnInit {
   // Observable<{[key: string]: boolean;}>;
   localization: Observable<any>;
   baseUrl: string;
-  userAuthenticated: boolean = false;
+  userAuthenticated: boolean = true;
   language: Observable<LanguageInfo[]>;
   sources: Observable<any>;
+  userName: string = '';
   lang: LanguageInfo[];
   constructor(
     private router: Router,
@@ -29,9 +30,11 @@ export class UserAuthService implements OnInit {
     @Optional() @Inject(API_BASE_URL) baseUrl?: string
   ) {
     const temp = JSON.parse(localStorage.getItem('userAuthenticated'));
-
+const userName = JSON.parse(localStorage.getItem('userName'));
+this.userName = userName;
     if(temp){
       this.userAuthenticated = temp.value;
+      
     }
     this.getApplicationConfiguration()
   }
@@ -64,6 +67,7 @@ export class UserAuthService implements OnInit {
       //     this.router.navigateByUrl('/login');
       //   }
       // }
+      localStorage.setItem('userName',JSON.stringify(result.currentUser.userName));
       localStorage.setItem('userAuthenticated',JSON.stringify({value:result.currentUser.isAuthenticated}));
        if(result.currentUser.isAuthenticated){ 
         if(this.router.url == '/login'){       

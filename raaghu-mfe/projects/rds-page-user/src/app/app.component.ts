@@ -10,6 +10,7 @@ import {
   assignableRoles,
   availbleOrganizationUnit,
   deleteUser,
+  getAllClaimTypes,
   getUserForEdit,
   getUserPermission,
   getUserPermissionFilterList,
@@ -18,12 +19,12 @@ import {
   UpdateUserPermission,
 } from 'projects/libs/state-management/src/lib/state/user/user.actions';
 import {
+  selectAllClaimTypes,
   selectAllUserFilterPermissions,
   selectAllUsers,
   selectAssignableRoles,
   selectAvailableOrgUnit,
   selectUserForEdit,
-  selectUserPermissionEdit,
 } from 'projects/libs/state-management/src/lib/state/user/user.selector';
 import {
   AlertService,
@@ -133,6 +134,7 @@ export class AppComponent {
   resOrganizationUnit:any=[];
   SelectedOrganizationUnit: any = [];
   selectedOrganizations:any = [];
+  claimValueData: any[] = [];
   Selectedata:any=[];
   navtabsItems: any = [];
   Selecteorganizationdata:any=[];
@@ -194,13 +196,12 @@ export class AppComponent {
     this.store.dispatch(availbleOrganizationUnit());
     this.store.select(selectAvailableOrgUnit).subscribe((res: any) => {
       if (res && res.items) {
-        debugger
         this.orgUnitListItem =  [];
             this.isAnimation = false;
             res.items.forEach((element: any) => {
             const item: any = {
             some: element.displayName,
-            value:element.code,
+            value:element.id,
             isSelected:false
           }
           this.orgUnitListItem.push(item);
@@ -208,6 +209,22 @@ export class AppComponent {
       }
       
     });
+    this.store.dispatch(getAllClaimTypes());
+    this.store
+      .select(selectAllClaimTypes)
+      .subscribe((res) => {
+        if (res) {
+          this.claimValueData = [];
+          res.forEach((element) => {
+            const data: any = {
+              id: element.id,
+              value: element.name,
+              some: element.name,
+            };
+            this.claimValueData.push(data);
+          });
+        }
+      });
 
 
  
@@ -260,6 +277,10 @@ export class AppComponent {
       }
     });
   }
+  
+  getClaimsEmitter(id=this.adminId){
+    
+  }
   Saveuserinfo(user: any ){
     if(user && user.userInfo ){
       if(user.userInfo.id){
@@ -277,19 +298,7 @@ export class AppComponent {
          console.log(getUserForEdit(data));
       }
         else{
-
-          const data: any = {
-            email : user.userInfo.email,
-            isActive:user.userInfo.isActive,
-            name:user.userInfo.name,
-            password:user.userInfo.password,
-            surname:user.userInfo.surname,
-            userName:user.userInfo.userName,
-            phoneNumber:user.userInfo.phoneNumber,
-            //roleNames:user.roles.name
-           };
-          this.store.dispatch(saveUser(data));
-        console.log(saveUser(data));
+          this.store.dispatch(saveUser(user.userInfo));
      }
      
     }

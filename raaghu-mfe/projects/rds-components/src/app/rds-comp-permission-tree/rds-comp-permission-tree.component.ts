@@ -64,7 +64,6 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
  }
   ngOnInit(): void {
     // Convert data into editable format
-    debugger
     if (this.treeData) {
       const resPermission: any[] = [];
       this.treeData.forEach(element => {

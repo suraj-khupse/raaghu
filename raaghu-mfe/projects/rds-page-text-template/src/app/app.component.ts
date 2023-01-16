@@ -46,8 +46,8 @@ export class AppComponent implements OnInit {
   }
   tableHeadersForTextTemplate: TableHeader[] = [
     { key: 'templateName', displayName: 'Template Name', dataType: 'text', filterable: true, sortable: true, required: false, },
-    { key: 'inlineLocalized', displayName: 'Inline Localized', dataType: 'html', filterable: true, sortable: true, required: false, },
-    { key: 'layoutStatus', displayName: 'Layout Status', dataType: 'html', filterable: true, sortable: true, required: false, },
+    { key: 'inlineLocalized', displayName: 'Inline Localized', dataType: 'icon', filterable: true, sortable: true, required: false, },
+    { key: 'layoutStatus', displayName: 'Layout Status', dataType: 'icon', filterable: true, sortable: true, required: false, },
     { key: 'layoutDetails', displayName: 'Layout Details', dataType: 'html', filterable: true, sortable: true, required: false, },
 
   ];
@@ -56,121 +56,7 @@ export class AppComponent implements OnInit {
   
   constructor(private store: Store) { }
   tableDataForTextTemplate = [];
-  // tableDataForTextTemplate = [
-  //   {
-  //     id: 1,
-  //     templateName: 'Default Email Layout Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 2,
-  //     templateName: 'Simple Message Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 3,
-  //     templateName: 'Default Email Layout Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.PasswordResetTemplate',
-  //   },
-  //   {
-  //     id: 4,
-  //     templateName: 'Password Reset Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 5,
-  //     templateName: 'Simple Message Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.PasswordResetTemplate',
-  //   },
-  //   {
-  //     id: 6,
-  //     templateName: 'Email Confirmation Template',
-  //     inlineLocalized: false,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.SecurityCodeTemplate',
-  //   },
-  //   {
-  //     id: 7,
-  //     templateName: 'Default Email Layout Template',
-  //     inlineLocalized: false,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.EmailConfirmationTemplate',
-  //   },
-  //   {
-  //     id: 8,
-  //     templateName: 'Email Confirmation Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 9,
-  //     templateName: 'Password Reset Template',
-  //     inlineLocalized: false,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.EmailConfirmationTemplate',
-  //   },
-  //   {
-  //     id: 10,
-  //     templateName: 'Simple Message Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.SecurityCodeTemplate',
-  //   },
-  //   {
-  //     id: 11,
-  //     templateName: 'Default Email Layout Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.EmailConfirmationTemplate',
-  //   },
-  //   {
-  //     id: 12,
-  //     templateName: 'Password Reset Template',
-  //     inlineLocalized: false,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 13,
-  //     templateName: 'Simple Message Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.PasswordResetTemplate',
-  //   },
-  //   {
-  //     id: 14,
-  //     templateName: 'Default Email Layout Template',
-  //     inlineLocalized: false,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 15,
-  //     templateName: 'Default Email Layout Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: true,
-  //     layoutDetails: 'abp.EmailLayoutTemplate',
-  //   },
-  //   {
-  //     id: 16,
-  //     templateName: 'Simple Message Template',
-  //     inlineLocalized: true,
-  //     layoutStatus: false,
-  //     layoutDetails: 'abp.SecurityCodeTemplate',
-  //   },
-  // ];
-
+ 
   ngOnInit(): void {
     this.store.dispatch(getTemplateDefinition());
     this.store.select(selectAllTT).subscribe((res: any) => {
@@ -178,18 +64,46 @@ export class AppComponent implements OnInit {
       if (res && res.allTextTemplate) {
         res.allTextTemplate.allTextTemplate.items.forEach((element: any) => {
           let statusTemplate;
-          // if (element.isActive) {
-          //   statusTemplate = `<div> <span class="badge badge-success">Active</span></div>`;
-          // } else {
-          //   statusTemplate = `<div><span class="badge badge-secondary">Inactive</span></div>`;
-          // }
+          if (element.isActive) {
+            statusTemplate = `<div> <span class="badge badge-success">Active</span></div>`;
+          } else {
+            statusTemplate = `<div><span class="badge badge-secondary">Inactive</span></div>`;
+          }
+
+          const inlineLocalized: any = element.isInlineLocalized
+          ? {
+            icon: 'tick',
+            width: '24px',
+            height: '16px',
+            colorVariant: 'success',
+          }
+          : {
+            icon: 'close',
+            width: '24px',
+            height: '16px',
+            colorVariant: 'danger',
+          };
+
+          const isLayout: any = element.isLayout
+          ? {
+            icon: 'tick',
+            width: '24px',
+            height: '16px',
+            colorVariant: 'success',
+          }
+          : {
+            icon: 'close',
+            width: '24px',
+            height: '16px',
+            colorVariant: 'danger',
+          };
 
           const item: any = {
             // id:element.id,
             name: element.name,
             templateName: element.displayName,
-            inlineLocalized: element.isInlineLocalized,
-            layoutStatus: element.isLayout,
+            inlineLocalized:inlineLocalized,
+            layoutStatus: isLayout,
             layoutDetails: element.layout
 
           }

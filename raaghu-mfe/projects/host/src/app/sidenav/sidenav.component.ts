@@ -569,6 +569,9 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.store.dispatch(downloadData(item));
   }
 
+  getProfilePic(event: any): void {
+    // this.profilePic = event;
+    this.store.dispatch(saveProfilePicture(event));
   onRequestData() {
     this.store.dispatch(requestPersonalData());
   }
