@@ -39,8 +39,7 @@
   (onClose)="close()">
   <div>
     <div *ngIf="canvasTitle == 'Linked Accounts'">
-      <app-rds-linked-accounts [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData"
-        [manageLinkedAccountsTabOpened]="" [pagination]="" [recordsPerpage]="">
+      <app-rds-linked-accounts [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData">
       </app-rds-linked-accounts>
     </div>
     <div *ngIf="canvasTitle == 'My Accounts'">

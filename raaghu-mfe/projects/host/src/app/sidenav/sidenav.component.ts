@@ -15,7 +15,7 @@ import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ThemesService } from 'projects/libs/themes/src/public-api';
 import { PrepareCollectedData } from 'projects/libs/state-management/src/lib/state/DownloadData/download-data.action';
-import { DatePipe, DOCUMENT } from '@angular/common';
+import { DatePipe, DOCUMENT, formatDate } from '@angular/common';
 import { slideInAnimation } from '../animation';
 import { RouterOutlet } from '@angular/router';
 import * as moment from 'moment'
@@ -25,6 +25,9 @@ import { getSecuritylogs } from 'projects/libs/state-management/src/lib/state/se
 import { selectSecurityLogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.selector';
 import { deletePersonalData, downloadData, getLinkUserData, getPersonalData, getProfilePictureData, getProfileSettings, getTwoFactor, logout, requestPersonalData, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
 import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectProfilePictureData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
+import { format } from 'date-fns';
+import { getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
+import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -177,6 +180,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { key: 'identity', displayName: 'Identity', dataType: 'text', sortable: true, filterable: true },
     { key: 'username', displayName: 'Users', dataType: 'text', sortable: true, filterable: true },
   ];
+  FixedHeaderBody: boolean = false;
 
 
 
@@ -374,6 +378,10 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
               if (res) {
                 this.linkedAccountData = [
                   { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+                  { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true },
+                  { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+                  { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true },
+                  { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
                   { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true }
                 ];
                 // this.linkedAccountData = res.items;
@@ -390,8 +398,16 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
         },
         onLogout: () => {
-          // this.store.dispatch(logout());
+          this.store.dispatch(logout());
+          this.userAuthService.unauthenticateUser();
+          localStorage.removeItem('storedPermissions');
+          localStorage.removeItem('userName');
+          localStorage.removeItem('userId');
+          localStorage.removeItem('userNameInfo');
+          localStorage.setItem('userAuthenticated', JSON.stringify({ value: false }));
           this.router.navigate(['/login']);
+         
+          
         }
       }
     }
@@ -568,10 +584,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     }
     this.store.dispatch(downloadData(item));
   }
-
-  getProfilePic(event: any): void {
-    // this.profilePic = event;
-    this.store.dispatch(saveProfilePicture(event));
   onRequestData() {
     this.store.dispatch(requestPersonalData());
   }

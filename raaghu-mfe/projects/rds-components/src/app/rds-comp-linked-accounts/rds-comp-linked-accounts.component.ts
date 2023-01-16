@@ -15,7 +15,6 @@ import { TableHeader } from '../../models/table-header.model';
 export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnInit {
   public actions: any = [{ id: 'delete', displayName: 'Delete' }];
   @Input() recordsPerpage: number = 3;
-  @Input() pagination: boolean = false;
   @Output() ondelete = new EventEmitter<any>();
   @Output() onUserSave = new EventEmitter<any>();
   @Output() onCancelLinkedAccounts = new EventEmitter<any>()

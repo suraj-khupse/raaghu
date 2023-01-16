@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AlertService, ServiceProxy, SharedService } from '@libs/shared';
+import { Router } from '@angular/router';
+import { AlertService, ServiceProxy, SharedService, UserAuthService } from '@libs/shared';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { from, of } from 'rxjs';
@@ -13,7 +14,9 @@ export class ProfileEffects {
     private clientsService: ServiceProxy,
     private alertService: AlertService,
     private store: Store,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private userAuthService: UserAuthService,
+    private router: Router
   ) { }
   // getAllApiScope$ = createEffect(() =>
   //   this.actions$.pipe(
