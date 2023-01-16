@@ -85,7 +85,6 @@ export class RdsCompDynamicPropertiesComponent implements OnInit, OnChanges {
     }
   }
   closeCanvas(): void {
-    debugger
     this.activePage = 0;
     this.DynamicProperyData = {};
     this.DynamicProperyInfo = undefined;
