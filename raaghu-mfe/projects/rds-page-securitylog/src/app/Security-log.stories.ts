@@ -3,20 +3,20 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
 import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { AppComponent as SecurityLogs} from './app.component';
-import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
-import { RdsCompSecurityComponent } from 'projects/rds-components/src/app/rds-comp-security/rds-comp-security.component';
+import { AppComponent, AppComponent as SecurityLogs} from './app.component';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompSecurityModule } from 'projects/rds-components/src/app/rds-comp-security/rds-comp-security.module';
 
 export default {
   title: 'Pages/ Security Log',
-  component: SecurityLogs ,
+  component: AppComponent ,
   decorators: [
     moduleMetadata({
-      declarations: [RdsDataTableComponent, RdsCompSecurityComponent],
+      declarations: [AppComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,RdsCompDataTableModule,RdsCompSecurityModule
       ],
       providers: [
         FormBuilder
@@ -25,7 +25,7 @@ export default {
     })
   ]
 } as Meta;
-const Template: Story<SecurityLogs> = (args: SecurityLogs) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
   },

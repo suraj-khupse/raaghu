@@ -11,12 +11,19 @@ import { RdsCompFeaturesComponent } from '../rds-comp-features/rds-comp-features
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
 
 export default {
-  title: 'Components/User Permissions', component: RdsCompUserPermissionsComponent,
+  title: 'Components/User Permissions', 
+  component: RdsCompUserPermissionsComponent,
   decorators: [moduleMetadata({
     declarations: [
       RdsCompUserBasicsComponent,
       RdsDataTableComponent, RdsCompPermissionTreeComponent, RdsCompAlertComponent]
-    , imports: [FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, RdsIconModule, SharedModule, RdsFabMenuModule, NgxTranslateModule, RdsInputModule, RdsOffcanvasModule, RdsNavTabModule, RdsSelectListModule, RdsCheckboxModule, RdsDatepickerModule, RdsRadioButtonModule, RdsCounterModule], providers: [FormBuilder,],
+    , imports: [
+      FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, 
+      RdsIconModule, SharedModule, RdsFabMenuModule, NgxTranslateModule, RdsInputModule, 
+      RdsOffcanvasModule, RdsNavTabModule, RdsSelectListModule, RdsCheckboxModule,
+       RdsDatepickerModule, RdsRadioButtonModule, RdsCounterModule,RdsSearchInputModule
+      ], 
+       providers: [FormBuilder,],
   })]
 } as Meta;
 
