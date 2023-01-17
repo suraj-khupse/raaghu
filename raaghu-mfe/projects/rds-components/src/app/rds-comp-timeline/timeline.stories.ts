@@ -68,7 +68,7 @@ advanced.args = {
     {
       text: 'Renewed account with premium plan',
       date: '04 Mar 2020, 08:24 am',
-      icon: 'premium_subscription',
+      icon: 'aircraft',
       colorVariant: 'primary'
     },
     {
@@ -92,7 +92,7 @@ advanced.args = {
     {
       text: 'User deleted from organization',
       date: '04 Mar 2020, 08:24 am',
-      icon: 'users',
+      icon: 'person ',
       colorVariant: 'info'
     },
   ],
