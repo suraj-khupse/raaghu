@@ -227,20 +227,14 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.store.select(selectProfilePictureData).subscribe(res => {
       if (res) this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
     });
-    this.userAuthService.getPermissions().subscribe(res => {
-      if (res) {
-        this.filterNavItems(this.sidenavItemsOriginal, res, this.sidenavItems);
-      }
-      else {
+  
 
-        const storedPermission = localStorage.getItem('storedPermissions');
-        const parsedPermission = JSON.parse(storedPermission);
-        if (parsedPermission) {
-          this.permissions = parsedPermission;
-          this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
-        }
-      }
-    });
+    const storedPermission = localStorage.getItem('storedPermissions');
+    const parsedPermission = JSON.parse(storedPermission);
+    if (parsedPermission) {
+      this.permissions = parsedPermission;
+      this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
+    }
     this.subscribeToAlerts();
     this.rdsTopNavigationMfeConfig = {
       name: 'RdsTopNavigation',
