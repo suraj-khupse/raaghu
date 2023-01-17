@@ -25,3 +25,13 @@ export const selectPersonalData = createSelector(
     selectProfile,
     (state: ProfileState) => state.personalData
 );
+
+export const selectDownloadlData = createSelector(
+    selectProfile,
+    (state: ProfileState) => state.downloadData
+);
+
+export const selectProfilePictureData = createSelector(
+    selectProfile,
+    (state: ProfileState) => state.profilePicData
+);

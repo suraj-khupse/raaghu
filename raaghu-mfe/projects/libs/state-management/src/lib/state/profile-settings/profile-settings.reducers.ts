@@ -1,10 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { getLinkUserData, getLinkUserDataFailure, getLinkUserDataSuccess, getPersonalData, getPersonalDataFailure, getPersonalDataSuccess, getProfileSettings, getProfileSettingsError, getProfileSettingsSuccess, getTwoFactor, getTwoFactorFailure, getTwoFactorSuccess, saveChangedPassWord, saveChangedPassWordFailure, saveChangedPassWordSuccess, savePersonalInfo, savePersonalInfoFailure, savePersonalInfoSuccess, saveProfile, saveProfileScopeFailure, saveProfileScopeSuccess, saveTwoFactor, saveTwoFactorFailure, saveTwoFactorSuccess } from "./profile-settings.actions";
+import { downloadData, downloadDataFailure, downloadDataSuccess, getLinkUserData, getLinkUserDataFailure, getLinkUserDataSuccess, getPersonalData, getPersonalDataFailure, getPersonalDataSuccess, getProfilePictureData, getProfilePictureDataFailure, getProfilePictureDataSuccess, getProfileSettings, getProfileSettingsError, getProfileSettingsSuccess, getTwoFactor, getTwoFactorFailure, getTwoFactorSuccess, requestPersonalData, requestPersonalDataFailure, requestPersonalDataSuccess, saveChangedPassWord, saveChangedPassWordFailure, saveChangedPassWordSuccess, saveProfile, saveProfileScopeFailure, saveProfileScopeSuccess, saveTwoFactor, saveTwoFactorFailure, saveTwoFactorSuccess } from "./profile-settings.actions";
 
 export interface ProfileState {
     profile:any;
     user: any;
+    profilePicData: any;
     personalData: any;
+    downloadData: any;
     twoFactor: boolean;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
@@ -14,6 +16,8 @@ export interface ProfileState {
 export const ProfileInitialState: ProfileState = {
     profile:null,
     user: null,
+    profilePicData: null,
+    downloadData: null,
     personalData: null,
     twoFactor: false,
     error: null,
@@ -33,6 +37,36 @@ export const ProfileReducer = createReducer(
     })),
     // Handle todos load failure
     on(getProfileSettingsError, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+
+    on(getProfilePictureData, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(getProfilePictureDataSuccess, (state, { profilePicData }) => ({
+        ...state,
+        profilePicData: profilePicData,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(getProfilePictureDataFailure, (state, { error }) => ({
+        ...state,
+        error: error,
+        status: 'error',
+    })),
+
+    on(downloadData, (state) => ({ ...state, status: 'loading' })),
+    // Handle successfully loaded todos
+    on(downloadDataSuccess, (state, { downloadData }) => ({
+        ...state,
+        downloadData: downloadData,
+        error: null,
+        status: 'success',
+    })),
+    // Handle todos load failure
+    on(downloadDataFailure, (state, { error }) => ({
         ...state,
         error: error,
         status: 'error',
@@ -108,13 +142,13 @@ export const ProfileReducer = createReducer(
     })),
 
     
-    on(savePersonalInfo, (state) => ({ ...state, status: 'loading' })),
-    on(savePersonalInfoSuccess, (state) => ({
+    on(requestPersonalData, (state) => ({ ...state, status: 'loading' })),
+    on(requestPersonalDataSuccess, (state) => ({
         ...state,
         error: null,
         status: 'success',
     })),
-    on(savePersonalInfoFailure, (state, { error }) => ({
+    on(requestPersonalDataFailure, (state, { error }) => ({
         ...state,
         error: error,
         status: 'error',
