@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, Input, OnInit } from '@angular/core';
 // import { ComponentLoaderOptions, MfeBaseComponent } from '@libs/shared';
 import { BreadcrumbsItems } from 'projects/libs/rds-elements/src/rds-breadcrumb/src/public-api';
 
@@ -24,7 +24,7 @@ export class AppComponent  implements OnInit {
   { name: 'Basic Tees', route: '/Contact', icon: 'dashboard', iconWidth: '15px', iconHeight: '15px', disabled: true }];
 
 
-  itemListOne = [
+ @Input() itemListOne = [
     "https://www.waiin.com/wp-content/uploads/2021/07/Framework-Expertise_01.png",
     "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
     "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
@@ -40,26 +40,26 @@ export class AppComponent  implements OnInit {
   // {"title": "Basic Tee 2", "subTitle": "White 2","price": "$40", "badgeLabel": ""},
   // {"title": "Basic Tee 3", "subTitle": "White 2","price": "$45", "badgeLabel": "Quality Assured"},]
 
-  productListItems = [
+  @Input() productListItems = [
     { "title": "Basic Tee", "subTitle": "White", "price": "$35", "badgeLabel": "Quality Assured", imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU'},
     { "title": "Basic Tee 2", "subTitle": "White 2", "price": "$40", "badgeLabel": "" , imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU'},
     { "title": "Basic Tee 2", "subTitle": "White 2", "price": "$40", "badgeLabel": "" , imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU'},
     { "title": "Basic Tee 3", "subTitle": "White 2", "price": "$45", "badgeLabel": "Quality Assured" , imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLXV_IPvYFWoOnAfO3IGGxcCrM3Y2Bfgfciw&usqp=CAU' }
   ]
 
-  listItems= [
+  @Input()listItems= [
     { id: 1, value: 'Only the best materials', some: 'value' },
     { id: 2, value: 'Ethically and locally made', some: 'value' },
     { id: 3, value: 'Pre-washed and pre-shrunk', some: 'value' },
     { id: 4, value: 'Machine wash cold with similar colors', some: 'value' },
   ]
-  itemList= [
+  @Input() itemList= [
     { id: 1, color: '#F88AAC' },
     { id: 2, color: '#6F6F6F' },
     { id: 3, color: '#16BE36' },
   ]
-  sizeData = [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'},{value:'XXS'}]
-  itemListbenefit= [{
+  @Input() sizeData = [{value: 'XXS'},{value:'S'},{value:'M'},{value:'L'},{value:'XL'},{value:'2XL'},{value:'3XL'},{value:'XXS'}]
+  @Input()itemListbenefit= [{
     display_type: "Basic",
     colSize: 6,
     items: [
@@ -86,7 +86,7 @@ export class AppComponent  implements OnInit {
   }
 ]
 
-itemBenifitList= [
+@Input() itemBenifitList= [
   {
       name: 'Jems Rock',
       date: new Date(),

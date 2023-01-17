@@ -7,7 +7,7 @@
       <div>
         <div class="card p-2 vh-88 rounded-0 border-0" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
           <div class="card-header bg-transparent">
-            <h5 class="card-title">{{'Organization Tree'| translate}}</h5>
+            <h5 class="card-title">{{translate.instant('Organization Tree')}}</h5>
           </div>
           <div class="card-body overflow-auto vh-75">
             <rds-comp-organization-tree [organizationTreeData]="organizationTreeData" [nodeColor]="nodeColors"
@@ -20,7 +20,7 @@
     <div class="col-md-6 gutter-b">
       <div class="card p-2  vh-88 rounded-0 border-0">
         <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
-          <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
+          <h5 class="card-title">{{translate.instant('Select an organization unit to see members')}}</h5>
         </div>
         <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
           <div class="">
