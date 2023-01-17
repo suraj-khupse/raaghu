@@ -125,7 +125,7 @@ timeline.args = {
       title: 'Launch',
       subTitle: 'Lorem ipsum dummy text',
       date: '04 Mar 2020, 08:24 am',
-      icon: 'premium_subscription',
+      icon: 'aircraft',
     }
   ],
 };
