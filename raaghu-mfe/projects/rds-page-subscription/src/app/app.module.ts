@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsButtonModule, RdsCardModule, RdsIconModule, RdsNavTabModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCardModule, RdsNavTabModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RdsLabelModule } from 'projects/libs/rds-elements/src/rds-label/src/public-api';

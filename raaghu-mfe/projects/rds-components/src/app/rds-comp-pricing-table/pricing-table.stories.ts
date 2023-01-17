@@ -3,7 +3,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsBadgeModule, RdsButtonModule, RdsLabelModule, RdsRadioButtonModule, RdsTableModule } from '@libs/rds-elements';
 import { RdsCompPricingTableComponent } from './rds-comp-pricing-table.component';
 import { RdsLikeDislikeModule } from '../../../../libs/rds-elements/src/rds-like-dislike/src/public-api';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 export default {
   title: 'Components/Pricing Table',

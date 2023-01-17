@@ -1,5 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsLabelModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsCompPageNotFoundComponent } from './rds-comp-page-not-found.component';
 

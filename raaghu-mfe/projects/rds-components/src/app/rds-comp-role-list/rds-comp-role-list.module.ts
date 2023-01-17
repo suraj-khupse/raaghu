@@ -8,7 +8,7 @@ import { RdsPermissionTreeModule } from '../rds-comp-permission-tree/rds-permiss
 import { RdsCompNewRoleModule } from '../rds-comp-new-role/rds-comp-new-role.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RdsCompAlertModule } from '../rds-comp-alert/rds-comp-alert.module';
-import { RdsIconModule } from '@libs/rds-icon';
+//import { RdsIconModule } from '@libs/rds-icon';
 //import { RdsCompNewRoleShimmerComponent } from '../rds-comp-new-role/rds-comp-new-role-shimmer/rds-comp-new-role-shimmer.component';
 // import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 

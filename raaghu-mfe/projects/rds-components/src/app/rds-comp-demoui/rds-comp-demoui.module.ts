@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 // import { FormsModule } from '@angular/forms';
 import { RdsCompDemouiComponent } from './rds-comp-demoui.component';
 import {
-  RdsAccordionModule, RdsButtonModule, RdsAlertModule, RdsAvatarModule, RdsBadgeModule, RdsIconModule,
+  RdsAccordionModule, RdsButtonModule, RdsAlertModule, RdsAvatarModule, RdsBadgeModule,
   RdsBannerModule, RdsWidgetModule, RdsBigNumberWidgetModule, RdsButtonGroupModule, RdsBreadcrumbModule,
   RdsCardModule, RdsCarouselModule, RdsCheckboxModule, RdsCheckboxGroupsModule, RdsCheckboxParentChildModule,
   RdsCollapseModule, RdsColorPickerModule, RdsDatepickerModule, RdsDoubleRangeModule, RdsDropdownlistModule,
@@ -15,6 +15,7 @@ import {
   RdsChartDoughnutModule, RdsChartPieModule, RdsChartPolarAreaModule, RdsChartRadarModule, RdsChartScatterModule,
   RdsChartLineModule, RdsChartStackedModule, RdsVideoPlayerModule
 } from "@libs/rds-elements";
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 
 
 @NgModule({

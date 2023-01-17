@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsBenefitModule, RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsBenefitModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RdsCompBenefitComponent } from './rds-comp-benefit.component';
 import { CommonModule } from '@angular/common';
  

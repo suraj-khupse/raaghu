@@ -4,7 +4,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsOffcanvasModule } from '@libs/rds-elements';
 import { RdsCompOrganizationTreeComponent } from './rds-comp-organization-tree.component';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsCompAlertPopupComponent } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
 import { NestGroupDirective } from '../rds-comp-hierarchy/node-label.directive';
 

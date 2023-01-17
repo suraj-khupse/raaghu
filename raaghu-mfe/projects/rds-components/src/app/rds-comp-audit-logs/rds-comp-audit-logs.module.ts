@@ -4,9 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RdsCompAuditLogsComponent } from './rds-comp-audit-logs.component';
 import { RdsCompDataTableModule } from "../rds-comp-data-table/rds-comp-data-table.module";
 import {
-  RdsButtonModule, RdsInputModule, RdsDropdownlistModule, RdsIconModule, RdsNavTabModule, RdsDatepickerModule,
+  RdsButtonModule, RdsInputModule, RdsDropdownlistModule, RdsNavTabModule, RdsDatepickerModule,
   RdsCheckboxModule, RdsFabMenuModule, RdsOffcanvasModule, RdsBadgeModule
 } from "@libs/rds-elements";
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
+
 
 
 @NgModule({

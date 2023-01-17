@@ -1,7 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsStatComponent } from './rds-stat.component';
 
 
@@ -10,7 +10,9 @@ import { RdsStatComponent } from './rds-stat.component';
   declarations: [
     RdsStatComponent
   ],
-  imports: [RdsIconModule,CommonModule
+  imports: [
+    RdsIconModule,
+    CommonModule
   ],
   exports: [
     RdsStatComponent

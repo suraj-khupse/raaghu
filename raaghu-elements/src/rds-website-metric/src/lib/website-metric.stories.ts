@@ -1,7 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { RdsButtonModule } from '@libs/rds-button';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 import { Story, Meta } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
@@ -38,7 +38,10 @@ Default.args = {
     item: {
         title: '510+',
         link: 'Learn more',
-        subtitle: 'Clients Worked with'
+        subtitle: 'Clients Worked with',
+        icon:'',
+        iconHeight:'',
+        iconWidth:''
     }
 }
 
@@ -49,8 +52,10 @@ withTopBorder.args = {
     item: {
         title: '510+',
         link: 'Learn more',
-        subtitle: 'Clients Worked with'
-
+        subtitle: 'Clients Worked with',
+        icon:'',
+        iconHeight:'',
+        iconWidth:''
     }
 }
 
@@ -104,6 +109,9 @@ centerAligned.args = {
         title: '510+',
         link: 'Learn more',
         subtitle: 'Clients Worked with',
-        description: 'We have successfully onboard more than 510 clients as of now. Amazing work experience with them'
+        description: 'We have successfully onboard more than 510 clients as of now. Amazing work experience with them',
+        icon:'',
+        iconHeight:'',
+        iconWidth:''
     }
 }

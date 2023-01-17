@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompDownloadCollectionComponent } from './rds-comp-download-collection.component';
-import { RdsIconModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsPaginationModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule } from '@libs/shared';
 
 

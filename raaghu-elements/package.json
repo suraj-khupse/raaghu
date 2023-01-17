@@ -39,6 +39,7 @@
     "ngx-videogular": "13.2.4",
     "positioning": "2.0.1",
     "quill": "1.3.7",
+    "raaghu-themes": "^0.0.8",
     "rxjs": "7.5.0",
     "tslib": "2.3.0",
     "zone.js": "~0.12.0"

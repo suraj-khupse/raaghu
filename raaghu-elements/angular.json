@@ -26,38 +26,7 @@
 					}
 				}
 			}
-		},
-		"rds-icon": {
-			"projectType": "library",
-			"root": "src/rds-icon",
-			"sourceRoot": "src/rds-icon/src",
-			"prefix": "lib",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "src/rds-icon/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "src/rds-icon/tsconfig.lib.prod.json"
-						},
-						"development": {
-							"tsConfig": "src/rds-icon/tsconfig.lib.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "src/rds-icon/src/test.ts",
-						"tsConfig": "src/rds-icon/tsconfig.spec.json",
-						"karmaConfig": "src/rds-icon/karma.conf.js"
-					}
-				}
-			}
-		},
+		},		
 		"rds-icon-label": {
 			"projectType": "library",
 			"root": "src/rds-icon-label",

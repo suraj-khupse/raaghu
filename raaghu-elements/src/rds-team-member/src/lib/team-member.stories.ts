@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RdsAvatarModule } from '@libs/rds-avatar';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsProductImageModule } from '@libs/rds-product-image';
 import { RdsTeamMemberComponent } from '@libs/rds-team-member';

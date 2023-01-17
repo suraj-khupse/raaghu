@@ -1,6 +1,7 @@
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsIconModule, RdsLabelModule, RdsLikeDislikeModule, RdsRatingModule } from '@libs/rds-elements';
+import { RdsLabelModule, RdsLikeDislikeModule, RdsRatingModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { CommonModule } from '@angular/common';
 import { RdsCompReviewCategoryComponent } from './rds-comp-review-category.component';
 import { RdsReviewCategoryModule } from 'projects/libs/rds-elements/src/rds-review-category/src/lib/rds-review-category.module';

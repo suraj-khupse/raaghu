@@ -1,6 +1,7 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsAvatarModule, RdsButtonModule, RdsDropdownlistModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsAvatarModule, RdsButtonModule, RdsDropdownlistModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompProfileComponent } from './rds-comp-profile.component';
 

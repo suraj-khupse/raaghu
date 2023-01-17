@@ -12,12 +12,12 @@ import {
   DateAdapter,
   RdsButtonModule,
   RdsColorPickerModule,
-  RdsDatepickerModule,
-  RdsIconModule,
+  RdsDatepickerModule,  
   RdsInputModule,
   RdsOffcanvasModule,
   RdsSelectListModule,
 } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { CommonModule } from '@angular/common';
 
 export default {
