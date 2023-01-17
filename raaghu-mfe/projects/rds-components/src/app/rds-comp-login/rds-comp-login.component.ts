@@ -24,9 +24,9 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   UserName: string = 'Email/Username';
   Password: string = 'Password';
   buttonLabel: string = 'Login';
-  buttonLabelUp: string = 'Signup'
+  buttonLabelUp: string = 'Signup';
   checkboxTitle: string = 'Remember me';
-  Modallabel : string = 'Switch to the host';
+  Modallabel: string = 'Switch to the host';
   @Output() onLogin: EventEmitter<any> = new EventEmitter<any>();
   @Output() onSwitchTenant: EventEmitter<any> = new EventEmitter<any>();
   @Output() onShimmerLoad: EventEmitter<any> = new EventEmitter<any>();
@@ -34,24 +34,42 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   disabledSwitchTenant: boolean = true;
 
   switchTenant: boolean = false;
-  emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  emailPattern: any =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   @Input() buttonSpinner: boolean = false;
   @Input() buttonSpinnerForChangeTenant: boolean = false;
-  constructor(private formBuilder: FormBuilder, public translate: TranslateService) {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    public translate: TranslateService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.onShimmerLoad.emit(false);
   }
 
   ngOnInit(): void {
-    this.onShimmerLoad.emit(false);
 
+    this.onShimmerLoad.emit(false);
+    this.rememberMe = localStorage.getItem('rememberMe') == 'true' ? true : false;
+    if (this.rememberMe) {
+      this.userNameData = localStorage.getItem('Username') || '';
+      this.userPasswordData = localStorage.getItem('Password') || '';
+    }
   }
 
   //for getting remebrme value
   onChangeRememberme(event: any) {
-    this.rememberMe = event.detail;
+    // this.rememberMe = event.detail;
+    
+    if (event) {
+      localStorage.setItem('Username', this.userNameData);
+      localStorage.setItem('Password', this.userPasswordData);
+      localStorage.setItem('rememberMe', event.toString());
+    } else {
+      localStorage.removeItem('Username');
+      localStorage.removeItem('Password');
+      localStorage.removeItem('rememberMe');
+    }
   }
 
   submit(loginForm: NgForm) {
@@ -60,7 +78,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
       userEmail: this.userNameData,
       userPassword: this.userPasswordData,
       rememberMe: this.rememberMe,
-    })
+    });
   }
 
   ChangeTenant(tenantForm: NgForm) {
@@ -88,7 +106,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
 
   openTenantModal(): void {
     var myModalEl = document.getElementById('ChangeTenant');
-    var modal = new bootstrap.Modal(myModalEl)
+    var modal = new bootstrap.Modal(myModalEl);
     modal.show();
     const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
     if (tenancy) {
@@ -97,6 +115,5 @@ export class RdsLoginComponent implements OnInit, OnChanges {
         this.switchTenant = true;
       }
     }
-    
   }
 }

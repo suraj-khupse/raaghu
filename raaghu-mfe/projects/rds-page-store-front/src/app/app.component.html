@@ -1,54 +1,51 @@
 <div class="container-fluid">
-  <div class="w-100 border">
-    <!-- <mfe-loader [config]="rdsCompBackgroundImageMfeConfig"></mfe-loader> -->
+  <div class="w-100 border" *ngFor="let item of backgroundImage">
     <rds-comp-background-image
-      [imageUrl]="'../assets/storefront.png'"
-      [title]="'New arrivals are here'"
-      [subtitle]="'The new arrivals have, well newly arrived. Check out the latest options from our summer small-batch release while they are still in stock.'"
-      [btnLabel]="'CHECK NEW ARRIVALS HERE'"
-      [backgroundRepeat]="'no-repeat'"
-      [backgroundSize]="'cover'"
+      [imageUrl]="item.imageUrl"
+      [title]="item.title"
+      [subtitle]="item.subtitle"
+      [btnLabel]="item.btnLabel"
+      [backgroundRepeat]="item.backgroundRepeat"
+      [backgroundSize]="item.backgroundSize"
     ></rds-comp-background-image>
     <div class="text-center section">
       <div>
         <rds-label [label]="section2Title" class="fs-2"></rds-label>
       </div>
-      <rds-label [label]="section2Description" class="fs-5"></rds-label>
+        <rds-label [label]="section2Description" class="fs-5"></rds-label>
     </div>
-    <div class="container mt-4">
-      <!-- <mfe-loader [config]="rdsCompProductListMfeConfig"></mfe-loader> -->
+    <div class="container mt-4 mb-5">
       <rds-comp-product-list
-      [productListItems]="productListItemsOne"
+      [productListItems]="productListItems"
       [role]="'ImageWithInfo'">        
       </rds-comp-product-list>
     </div>
-    <div class="section">
-      <!-- <mfe-loader [config]="rdsCompBackgroundImageMfeConfig1"></mfe-loader> -->
+    <!-- <div class="section">
       <rds-comp-background-image
-      [imageUrl]="'../assets/storefront1.png'"
-      [title]="'Level up your desk'"
-      [subtitle]="'Make your desk beautiful and organized. Post a picture to social media and watch it get more like than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.'"
-      [btnLabel]="'SHOP WORK DESKS NOW'"
-      [backgroundRepeat]="'no-repeat'"
-      [backgroundSize]="'cover'"></rds-comp-background-image>
-    </div>
-    <div class="container section">
-    <rds-label [label]="'Shop by Category'" class="fs-2"></rds-label>
-      <!-- <mfe-loader [config]="rdsCompProductListMfeConfig1"></mfe-loader> -->
-      <rds-comp-product-list
-      [role]="'ImageWithTitle'"
-      [productListItems]="productListItemsTwo">
-      </rds-comp-product-list>
-    </div>
-    <div class="section container">
-      <!-- <mfe-loader [config]="rdsCompBackgroundImageMfeConfig2"></mfe-loader> -->
+      [imageUrl]="item.imageUrl1"
+      [title]="item.title1"
+      [subtitle]="item.subtitle1"
+      [btnLabel]="item.btnLabel"
+      [backgroundRepeat]="item.backgroundRepeat1"
+      [backgroundSize]="item.backgroundSize1"></rds-comp-background-image>
+    </div> -->
+    <!-- <div class="section container">
       <rds-comp-background-image
-      [imageUrl]="'../assets/storefront2.png'"
-      [title]="'Feel like luxury home décor'"
-      [subtitle]="'Mark of luxury items is here, live life as the king size with us. Royal finish luxury product bring you to top of the world. Try this once and be a Royal treatment yourself.'"
-      [btnLabel]="'SHOP HOME DÉCOR NOW'"
-      [backgroundRepeat]="'no-repeat'"
-      [backgroundSize]="'cover'"></rds-comp-background-image>
-    </div>
+      [imageUrl]="item.imageUrl2"
+      [title]="item.title2"
+      [subtitle]="item.subtitle2"
+      [btnLabel]="item.btnLabel2"
+      [backgroundRepeat]="item.backgroundRepeat2"
+      [backgroundSize]="item.backgroundSize2"></rds-comp-background-image>
+    </div> -->
   </div>
+  <div class="section mb-4 border" *ngFor="let item of backgroundImage1">
+      <rds-comp-background-image
+      [imageUrl]="item.imageUrl2"
+      [title]="item.title2"
+      [subtitle]="item.subtitle2"
+      [btnLabel]="item.btnLabel2"
+      [backgroundRepeat]="item.backgroundRepeat2"
+      [backgroundSize]="item.backgroundSize2"></rds-comp-background-image>
+    </div>
 </div>
