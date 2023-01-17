@@ -212,7 +212,7 @@ export class UserEffects {
       this.actions$.pipe(
         ofType(UpdateUserPermission),
         switchMap((data) =>
-          this.userService.permissionsPUT("T",undefined, data.Permissions).pipe(map((res: any) => {
+          this.userService.permissionsPUT("U",undefined, data.Permissions).pipe(map((res: any) => {
             this.alertService.showAlert('Success', 'User permission updated successfully', 'success');
 
           }),

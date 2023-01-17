@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AlertService, ServiceProxy } from '@libs/shared';
+import { Router } from '@angular/router';
+import { AlertService, ServiceProxy, SharedService, UserAuthService } from '@libs/shared';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { from, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { getLinkUserData, getLinkUserDataFailure, getLinkUserDataSuccess, getPersonalData, getPersonalDataFailure, getPersonalDataSuccess, getProfileSettings, getProfileSettingsError, getProfileSettingsSuccess, getTwoFactor, getTwoFactorFailure, getTwoFactorSuccess, saveChangedPassWord, savePersonalInfo, saveProfile, saveProfilePicture, saveProfilePictureFailure, saveProfilePictureSuccess, saveProfileScopeFailure, saveProfileScopeSuccess, saveTwoFactor, saveTwoFactorFailure, saveTwoFactorSuccess } from './profile-settings.actions';
+import { deletePersonalData, deletePersonalDataFailure, deletePersonalDataSuccess, downloadData, downloadDataFailure, downloadDataSuccess, getLinkUserData, getLinkUserDataFailure, getLinkUserDataSuccess, getPersonalData, getPersonalDataFailure, getPersonalDataSuccess, getProfilePictureData, getProfilePictureDataFailure, getProfilePictureDataSuccess, getProfileSettings, getProfileSettingsError, getProfileSettingsSuccess, getTwoFactor, getTwoFactorFailure, getTwoFactorSuccess, logout, logoutFailure, logoutSuccess, requestPersonalData, requestPersonalDataFailure, requestPersonalDataSuccess, saveChangedPassWord, saveProfile, saveProfilePicture, saveProfilePictureFailure, saveProfilePictureSuccess, saveProfileScopeFailure, saveProfileScopeSuccess, saveTwoFactor, saveTwoFactorFailure, saveTwoFactorSuccess } from './profile-settings.actions';
 
 @Injectable()
 export class ProfileEffects {
@@ -12,7 +13,10 @@ export class ProfileEffects {
     private actions$: Actions,
     private clientsService: ServiceProxy,
     private alertService: AlertService,
-    private store: Store
+    private store: Store,
+    private sharedService: SharedService,
+    private userAuthService: UserAuthService,
+    private router: Router
   ) { }
   // getAllApiScope$ = createEffect(() =>
   //   this.actions$.pipe(
@@ -40,9 +44,7 @@ export class ProfileEffects {
         from(this.clientsService.myProfileGET()).pipe(
           // Take the returned value and return a new success action containing the todos
           map((profile) => {
-            return getProfileSettingsSuccess({
-              profile
-            });
+            return getProfileSettingsSuccess({ profile });
           }),
           // Or... if it errors return a new failure action containing the error
           catchError((error) => of(getProfileSettingsError({ error })))
@@ -114,10 +116,9 @@ export class ProfileEffects {
       ofType(saveProfile),
       switchMap((data) =>
         // Call the getTodos method, convert it to an observable
-        from(this.clientsService.myProfilePUT(data)).pipe(
+        from(this.clientsService.myProfilePUT(data.myAccount)).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
             return saveProfileScopeSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
@@ -132,14 +133,31 @@ export class ProfileEffects {
       ofType(saveProfilePicture),
       switchMap((data) =>
         // Call the getTodos method, convert it to an observable
-        from(this.clientsService.profilePicturePOST(2, data)).pipe(
+        from(this.clientsService.profilePicturePOST(2, data.data)).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
+            this.store.dispatch(getProfilePictureData(data));
             return saveProfilePictureSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
           catchError((error) => of(saveProfilePictureFailure({ error })))
+        )
+      )
+    )
+  );
+
+  getProfilePictureData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getProfilePictureData),
+      switchMap((data) =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.profilePictureGET(data.id)).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map((profilePicData) => {
+            return getProfilePictureDataSuccess({ profilePicData });
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(getProfilePictureDataFailure({ error })))
         )
       )
     )
@@ -150,14 +168,17 @@ export class ProfileEffects {
       ofType(saveChangedPassWord),
       switchMap((data) =>
         // Call the getTodos method, convert it to an observable
-        from(this.clientsService.changePasswordPOST(data)).pipe(
+        from(this.clientsService.changePasswordPOST(data.changedPassword)).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
+            this.store.dispatch(saveTwoFactor(data));
             return saveProfileScopeSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
-          catchError((error) => of(saveProfileScopeFailure({ error })))
+          catchError((error) => {
+            this.sharedService.setPasswordStatus(error);
+            return of(saveProfileScopeFailure({ error }))
+          })
         )
       )
     )
@@ -165,12 +186,12 @@ export class ProfileEffects {
   saveTwoFactor$ = createEffect(() =>
     this.actions$.pipe(
       ofType(saveTwoFactor),
-      switchMap((id) =>
+      switchMap((value) =>
         // Call the getTodos method, convert it to an observable
-        from(this.clientsService.setTwoFactorEnabled(id)).pipe(
+        from(this.clientsService.setTwoFactorEnabled(value.twoFactorEnabled)).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
+            this.store.dispatch(saveProfile(value));
             return saveTwoFactorSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
@@ -180,22 +201,72 @@ export class ProfileEffects {
     )
   );
 
-  savePersonalInfo$ = createEffect(() =>
+  requestPersonalData$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(savePersonalInfo),
+      ofType(requestPersonalData),
       switchMap(() =>
         // Call the getTodos method, convert it to an observable
-        from(this.clientsService.myProfilePUT(undefined)).pipe(
+        from(this.clientsService.prepareData()).pipe(
           // Take the returned value and return a new success action containing the todos
           map(() => {
-            // this.store.dispatch(getAllClients());
-            return saveTwoFactorSuccess();
+            return requestPersonalDataSuccess();
           }),
           // Or... if it errors return a new failure action containing the error
-          catchError((error) => of(saveTwoFactorFailure({ error })))
+          catchError((error) => of(requestPersonalDataFailure({ error })))
         )
       )
     )
   );
+
+  deletePersonalData$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deletePersonalData),
+      switchMap(() =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.requests()).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map(() => {
+            return deletePersonalDataSuccess();
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(deletePersonalDataFailure({ error })))
+        )
+      )
+    )
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(logout),
+      switchMap(() =>
+        // Call the getTodos method, convert it to an observable
+        from(this.clientsService.logout()).pipe(
+          // Take the returned value and return a new success action containing the todos
+          map(() => {
+            return logoutSuccess();
+          }),
+          // Or... if it errors return a new failure action containing the error
+          catchError((error) => of(logoutFailure({ error })))
+        )
+      )
+    )
+  );
+
+  //   downloadData$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(downloadData),
+  //     switchMap((data) =>
+  //       // Call the getTodos method, convert it to an observable
+  //       from(this.clientsService.data(data.id)).pipe(
+  //         // Take the returned value and return a new success action containing the todos
+  //         map((downloadData) => {
+  //           return downloadDataSuccess(downloadData);
+  //         }),
+  //         // Or... if it errors return a new failure action containing the error
+  //         catchError((error) => of(downloadDataFailure({ error })))
+  //       )
+  //     )
+  //   )
+  // );
 
 }

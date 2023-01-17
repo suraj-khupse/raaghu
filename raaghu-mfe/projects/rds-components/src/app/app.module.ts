@@ -151,6 +151,7 @@ import { RdsCompLanguageTextListComponent } from './rds-comp-language-text-list/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { RdsCompClientAdvancedComponent } from './rds-comp-client-advanced/rds-comp-client-advanced.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+// import { RdsCompPersonalDataComponent } from './rds-comp-personal-data/rds-comp-personal-data.component';
 // import { RdsCompEntityChangesComponent } from './rds-comp-entity-changes/rds-comp-entity-changes.component';
 // import { RdsCompClientAdvancedComponent } from './rds-comp-client-advanced/rds-comp-client-advanced.component';
 
@@ -280,7 +281,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdsCompApplyForPositionComponent,
     RdsCompOpenPositionComponent,
     RdsCompNotificationSettingsComponent,
-    RdsCompLanguageNewComponent
+    RdsCompLanguageNewComponent,
+    // RdsCompPersonalDataComponent
   ],
   imports: [
     StoreModule,

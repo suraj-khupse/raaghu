@@ -34,13 +34,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     }
 
     if (this._userAuthService.userAuthenticated) {
-      if (!route.data || !route.data['permission']) {
-        return of(true);
-      }
-      if (this.permissions[route.data['permission']]) {
-        return of(true);
-      }
-      return of(false);
+      // if (!route.data || !route.data['permission']) {
+      //   return of(true);
+      // }
+      // if (this.permissions[route.data['permission']]) {
+      //   return of(true);
+      // }
+      return of(true);
     }
     else {
       return of(false);

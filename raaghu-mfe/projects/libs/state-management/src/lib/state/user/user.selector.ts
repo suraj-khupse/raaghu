@@ -22,13 +22,10 @@ export const selectAssignableRoles = createSelector(
     Userselector,
     (state: UsersState) => state.assignableRoles
 );
-export const selectUserPermissionEdit = createSelector(
-    Userselector,
-    (state: UsersState) => state.UserPermissionStateI
-);
+
 export const selectAllUserFilterPermissions = createSelector(
     Userselector,
-    (state: UsersState) => state.UserPermissionFilterI
+    (state: UsersState) => state.UserPermissionI
 );
 export const selectAllClaimTypes = createSelector(
     Userselector,

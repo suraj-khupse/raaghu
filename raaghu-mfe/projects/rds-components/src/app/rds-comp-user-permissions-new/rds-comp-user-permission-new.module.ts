@@ -7,6 +7,8 @@ import { RdsCompUserBasicProfileRightModule } from '../rds-comp-user-basic-profi
 import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompPermissionTreeModule } from '../rds-comp-permission-tree/rds-comp-permission-tree.module';
 import { RdsCompTreeStructureModule } from '../rds-comp-tree-structure/rds-comp-tree-structure.module';
+import { RdsCompClaimsModule } from '../rds-comp-claims/rds-comp-claims.module';
+import { RdsCompClaimsTypeRoleModule } from '../rds-comp-claim-type-role/rds-comp-claims-type-role.module';
 @NgModule({
   declarations: [RdsCompUserPermissionsNewComponent],
   exports:[RdsCompUserPermissionsNewComponent],
@@ -21,7 +23,8 @@ import { RdsCompTreeStructureModule } from '../rds-comp-tree-structure/rds-comp-
     RdsCompUserBasicProfileRightModule,
     RdsCompPermissionTreeModule,
     RdsCompTreeStructureModule,
-    RdsCompDataTableModule
+    RdsCompDataTableModule,
+    RdsCompClaimsTypeRoleModule
   ]
 })
 export class RdsCompUserPermissionNewModule { }

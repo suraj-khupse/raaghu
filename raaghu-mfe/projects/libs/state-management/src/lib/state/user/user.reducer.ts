@@ -13,7 +13,7 @@ export interface UsersState {
     claimTypes:any;
     allClaimTypes:any;
     UserPermissionStateI: any;
-    UserPermissionFilterI:any;
+    UserPermissionI:any;
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
@@ -28,7 +28,7 @@ export const userInitialState: UsersState = {
     claimTypes:null,
     allClaimTypes:null,
     UserPermissionStateI: null,
-    UserPermissionFilterI:null,
+    UserPermissionI:null,
     error: null,
     status: 'pending',
 };
@@ -166,13 +166,7 @@ export const UserReducer = createReducer(
         error: null,
         status: 'success',
     })),
-    on(getUserPermissionFilterList, (state) => ({ ...state, status: 'loading' })),
-    on(getUserPermissionListSuccess, (state, { UserPermissionFilterI }) => ({
-        ...state,
-        UserPermissionFilterI: UserPermissionFilterI,
-        error: null,
-        status: 'success',
-    })),
+    
 )
 
 

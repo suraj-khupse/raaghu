@@ -32,12 +32,12 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   public navtabsItems: any = [];
   
   @Input() public userList: any = [];
-  @Input() public userinfo: any;
-  // @Input() isShimmer: boolean = false;
-  // @Input() editShimmer: boolean = false;
-  @Input() public isEdit: boolean = false;
+  @Input() userinfo: any;
+  @Input() claimValueData: any;
+  @Input() claimDisplayArray: any = [];        
+  @Input() isEdit: boolean = false;
   @Input() orgUnitListItem:any;
-  @Input() public OrganizationUnit: any = [];
+  @Input() OrganizationUnit: any = [];
   @Input() organizationTreeList: [];
   @Input() permissionsList: PermissionNode[] = [];
   @Input() selectedPermissions: any = [];
@@ -64,6 +64,12 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   treeData: [] = [];
   organizationtreeData: [] = [];
   PermissionFiltertreeData: [] = [];
+  claims_actions: any = [
+    {
+      id: 'delete',
+      displayName: 'Delete',
+    },
+  ];
   selectedRoles: any = [];
   PermissinFilterSelectedata: any = [];
   @Input() userHeaders: TableHeader[] = [
@@ -98,6 +104,10 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     ]
   selectedTreeNode: number;
   @Output() getPermissionEmitter= new EventEmitter<any>();
+  @Output() addClaimEmmiter = new EventEmitter<any>();
+  @Output() onClaimSaveEmmiter = new EventEmitter<any>();
+  @Output() deleteClaimEmmiter = new EventEmitter<any>();
+
   constructor(public translate: TranslateService) { }
  // @Input() orgTreeData = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
@@ -116,33 +126,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   };
   ngOnInit(): void {
     this.activePage = 0;
-    this.rdsOrganizationTreeConfig = {
-      name: 'RdsOrganizationTree',
-      input: {
-        organizationTreeData: this.orgTreeData,
-        nodeColor: this.nodeColors,
-        mutable: true,
-        OrganizationTreeType: this.TreeType,
-        OrganizationTreeLabeles: this.TreeNodeLabeles,
-        ButtonLabel: '',
-      },
-      output: {
-        onSelectAll: (onSelectAllevent) => {
-          console.log(onSelectAllevent);
-        },
-        onSelectnode: (onSelectnodeevent) => {
-          this.selectedTreeNode = onSelectnodeevent.item.data.id;
-        },
-      },
-    };
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const mfeConfig = this.rdsOrganizationTreeConfig;
-    mfeConfig.input.orgTreeData = [...this.orgTreeData];
-    this.rdsOrganizationTreeConfig = mfeConfig;
-    this.selectedOrganizationUnit = [];
-    
   }
   getSelectedNavTab(event: any): void {
     this.activePage = event;
@@ -155,15 +138,21 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     return 'Next';
   }
 
+  addClaim(data:any){
+    if (this.selectedId) {
+      //this.emitClaimData.id = this.selectedId;
+    }
+    this.claimDisplayArray.push(data);
+    this.user.claimsData = this.claimDisplayArray;
+  }
+  
+  deleteClaim(event){
+    this.claimDisplayArray = event;
+    this.user.claimsData = this.claimDisplayArray;
+  }
+
   save(): void {
-    this.checkSelectedOrganizationUnits();
-    const user: any = {
-      userInfo: this.user.userInfo,
-      roles: this.selectedRoles,
-      organizationUnits: this.orgTreeData,
-    };
-    this.Saveuserinfo.emit(user);
-    this.isReset = true;
+    this.Saveuserinfo.emit(this.user);
     this.activePage = 0;
     this.close();
     var offcanvas = document.getElementById('userOffcanvas');
@@ -177,7 +166,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     if (event.next) {
       this.activePage = 1;
     }
-    console.log('Save Data',event.user)
+    debugger
     this.user.userInfo = event.user;
   }
   getUserSettings(event: any): void {
@@ -186,15 +175,12 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     }
     this.user.userSettings = event.settings;
   }
-  getSelectedFeaturesList(event: any): void {
-    this.user.featureList = event;
-  }
+  
   getAllselectedPermissions(event:any){
     this.user.permissionList = event;
   }
 
   newUser(event): void {
-    
     this.getPermissionEmitter.emit(true);
     this.buttonSpinnerForNewUser = true;
     this.selectedId = '';
@@ -292,14 +278,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     this.EditUserEmitter.emit(this.selectedId);
 
   }
-  // getSelectedRoles() {
-  //   this.selectedRoles = [];
-  //   this.roles.forEach((item: any) => {
-  //     if (item.isAssigned) {
-  //       this.selectedRoles.push(item.name);
-  //     }
-  //   });
-  // }
+
   getSelectedPermissionsList(event: any): void {
     this.treeData = event;
     let permissionlist = [];
@@ -309,21 +288,10 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
         permissionlist
       );
     }
-     //console.log(permissionlist);
 
   }
 
-  getSelectedorganizationunits(event: any): void {
-    this.organizationtreeData = event;
-    let organizationList = [];
-    if (this.organizationtreeData && this.organizationtreeData.length > 0) {
-      this.Selecteorganizationdata = this.iterateSelectedOrganizationUnits(
-        this.organizationtreeData,
-        organizationList
-      );
-    }
-    console.log(organizationList);
-  }
+  
   iterateSelectedPermissions(arr: any, permissionList): any {
     arr.forEach((item: any) => {
       if (item.selectedChildren && item.selectedChildren.length > 0) {
@@ -333,24 +301,13 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     });
     return permissionList;
   }
-  iterateSelectedOrganizationUnits(arr: any, organizationList): any {
-    arr.forEach((item: any) => {
-      if (item.selected) {
-        organizationList.push(item.data.id);
-      }
-      if (item.children && item.children.length > 0) {
-        this.iterateSelectedOrganizationUnits(item.children, organizationList);
-      }
-    });
-    return organizationList;
-  }
-
-
+  
   getSelectedUserPermissionFilterList(event: any): void {
     if (event && event.length > 0) {
       this.PermissionFiltertreeData = event;
     }
   }
+
   savePermission() {
     this.UpdateUserPermission.emit({
       Permission: this.Selectedata,
@@ -376,10 +333,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
       this.deleteUser.emit(event.selectedData);
     }
   }
-
-
-
-  // fabmenu mobile ts
 
 
   onSelectMenu(event: any) {

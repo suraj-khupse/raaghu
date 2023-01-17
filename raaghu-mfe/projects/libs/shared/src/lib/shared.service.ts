@@ -28,4 +28,15 @@ export class SharedService {
   }
 
   subjects: { [key: string]: Subject<any> } = {};
+
+  // Incorrect password
+  public getPasswordStatus$: BehaviorSubject<boolean> = new BehaviorSubject(null);
+
+  getPasswordStatus(): Observable<any> {
+    return this.getPasswordStatus$.asObservable();
+  }
+
+  setPasswordStatus(status: any) {
+    this.getPasswordStatus$.next(status);
+  }
 }

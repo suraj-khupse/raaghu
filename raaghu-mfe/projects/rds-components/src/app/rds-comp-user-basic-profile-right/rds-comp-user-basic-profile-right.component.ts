@@ -30,11 +30,9 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
       this.userData['email'] = '';
       this.userData['phoneNumber'] = '';
       this.userData['password'] = '';
-      // this.userData['isTwoFactorEnabled'] = false;
+      this.userData['lockoutEnabled'] = false;
       this.userData['isActive'] = true;
       this.userData['surname'] = '';
-      this.userData['imageUrl'] = '../assets/edit-profile.png';
-      this.userData['roles'] = '';
     }
      setTimeout(() => {
     if (this.userData && this.userInfoForm) {
@@ -44,30 +42,23 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
         }
       });
     }
-
      }, 100);
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.userData || this.userData.id == null || !this.userData.id) {
-      if (this.userInfoForm) {
-        this.userInfoForm.resetForm();
-        this.userData = {};
-        this.userData['name'] = '';
+    if (!this.userData) {
+      this.userInfoForm.resetForm();
+      this.userData = {};
+      this.userData['name'] = '';
       this.userData['userName'] = '';
       this.userData['email'] = '';
       this.userData['phoneNumber'] = '';
       this.userData['password'] = '';
-      // this.userData['isTwoFactorEnabled'] = false;
+      this.userData['lockoutEnabled'] = false;
       this.userData['isActive'] = true;
       this.userData['surname'] = '';
-      this.userData['imageUrl'] = '../assets/edit-profile.png';
       }
-    }
-    else {
-      this.userData['imageUrl'] = '../assets/edit-profile.png'
-    }
   }
 
   next(userCreationForm: NgForm): void {
@@ -78,27 +69,21 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
     }
     this.userInfo.emit({ user: this.userData, next: true });
   }
-  getCheckboxValue(event: any): void {
-    this.userData.unlimitedSubscription = event;
-  }
-
-  onEditionSelect(event: any): void {
-    this.userData.edition = event.item.value;
-  }
 
   onRolesSelect(event){
-    this.userData.roles=[];
+    this.userData.roleNames=[];
     event.item.forEach(element => {
-      this.userData.roles.push(element.some);
+      this.userData.roleNames.push(element.some);
     });
   }
   
   onOrgUnitSelect(event){
-    this.userData.OrgUnit=[];
+    this.userData.organizationUnitIds=[];
     event.item.forEach(element => {
-      this.userData.OrgUnit.push(element.value);
+      this.userData.organizationUnitIds.push(element.value);
     });
   }
+
   getImage(ev: any) {
     let FileImage = ev.target.files[0];
     var reader = new FileReader();
@@ -107,6 +92,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
     }
     reader.readAsDataURL(FileImage);
   }
+
   onCancelUser() {
     this.buttonSpinner = false;
     this.onCancel.emit(true);
