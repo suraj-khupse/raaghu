@@ -50,59 +50,7 @@ const Template: Story<WebHookSubscriptionComponent> = (args: WebHookSubscription
   props: {
     ...args
   },
-  template:`
- 
-    <div class="row">
-        <div class="col-md-12 text-end pb-3 desktop-btn">
-            <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-                [label]="'NEW WEBHOOK SUBSCRIPTION'" [showLoadingSpinner]="buttonSpinnerForNewWebhook" (click)="openCanvas()"
-                [attr.data-bs-target]="'#addwebhook'" [attr.aria-controls]="'addwebhook'" icon="plus" iconHeight="12px"
-                iconWidth="12px">
-            </rds-button>
-        </div>
-        <div class="col-md-12">
-            <!-- <rds-banner
-        [textAlign]="false"
-        [bannerText]="'Webhooks allow external services to be notified when certain events happen. When the specified events happen, we’ll send a POST request to each of the URLs you provide.'"
-        [sticky]="false"
-        position="top"
-        colorVariant="primary"
-      ></rds-banner> -->
-        </div>
-        <div class="col-md-12">
-            <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
-                <div class="row" *ngIf="!webhookTableData||webhookTableData.length===0">
-                    <div class="col-md-12">
-                        <rds-banner [textAlign]="false"
-                            [bannerText]="'Webhooks allow external services to be notified when certain events happen. When the specified events happen, we’ll send a POST request to each of the URLs you provide.'"
-                            [sticky]="false" position="top" colorVariant="primary">
-                            <span class="text-white" left>
-                                <rds-icon name="info" class="pe-1 " [width]="'20px'" [stroke]="true" [height]="'20px'">
-                                </rds-icon>
-                            </span>
-                        </rds-banner>
-                    </div>
-                </div>
-
-               
-            </div>
-        </div>
-    </div>
-
-    
-
-    <rds-offcanvas [canvasTitle]="'NEW WEBHOOK SUBSCRIPTION'" [offId]="'addwebhook'"
-        *ngIf="viewCanvas" [placement]="'end'"  [offcanvaswidth]="600" (onClose)="closeCanvas()">
-        <app-webhooksubscription (onSubcriptionSave)="Addsubcription($event)"
-          [tableData]="additionalheaders" [tableHeaders]="HeaderTableHeader" [pagination]="true"
-          [recordsPerPage]="10"[actions]=" [{ id: 'edit', displayName: 'Edit' }]"></app-webhooksubscription>
-    </rds-offcanvas>
-
-<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
-    <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-</ng-container>
-
-`
+  
 });
 
 export const Default = Template.bind({});
@@ -118,5 +66,18 @@ Default.args = {
       tablink: '#dynamic-entity-properties',
       ariacontrols: 'dynamic-entity-properties',
     },   
-  ]
+  ],
+  webhookTableHeader:  [
+    { displayName: 'Webhook Endpoint', key: 'WebhookEndpoint', dataType: 'text', dataLength: 30, sortable: true, required: true, filterable: true },
+    { displayName: 'Webhook Events', key: 'webhooksEvent', dataType: 'html', dataLength: 30, required: true, sortable: true },
+    { displayName: 'Active', key: 'statusTemplate', dataType: 'html', dataLength: 30, required: true, sortable: true },
+  ],
+  webhookTableData:[
+    {WebhookEndpoint: 'https://anzstageui.raaghu.io/pages/webhooksubscription777	', webhooksEvent: 'test21', statusTemplate: '<div> <span class="badge badge-info">Yes</span></div>'},
+    {WebhookEndpoint: 'https://anzstageui.raaghu.io/pages/webhooksubscription44		', webhooksEvent: 'test21', statusTemplate: '<div> <span class="badge badge-info">Yes</span></div>'},
+    {WebhookEndpoint: 'https://anzstageui.com		', webhooksEvent: 'test21', statusTemplate: '<div> <span class="badge badge-info">Yes</span></div>'},
+    {WebhookEndpoint: 'http://localhost:8080/dgdr		', webhooksEvent: 'test21', statusTemplate: '<div> <span class="badge badge-info">Yes</span></div>'},
+
+  ],
+  showLoadingSpinner:false
 }

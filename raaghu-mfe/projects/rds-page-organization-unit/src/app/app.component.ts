@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AlertService, ComponentLoaderOptions, FindOrganizationUnitRolesInput, FindOrganizationUnitUsersInput, OrganizationUnitServiceProxy } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   rolecanvasTitle: string = 'Select Role';
   selectedTreeNode: number = 0;
   public currentAlerts: any = [];
-  canvasTitle: string = 'New Organization Unit';
+  canvasTitle: string = 'NEW ORGANIZATION UNIT';
   navtabsItems: any = [
     {
       label: this.translate.instant('Members'),
@@ -132,7 +132,7 @@ export class AppComponent implements OnInit {
     }
   ];
   public tableDataForRolesAdd = [];
-  public tableHeadersForUserAdd = [
+ @Input() public tableHeadersForUserAdd = [
     {
       displayName: 'Users',
       key: 'name',

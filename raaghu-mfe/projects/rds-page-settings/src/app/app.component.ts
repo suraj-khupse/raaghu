@@ -48,14 +48,17 @@ import { selectAllSettings, selectSettingsTenantPageComboboxItems } from 'projec
   ]
 })
 export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   isAnimation: boolean = true;
   currentAlerts: any = [];
-  editShimmer: boolean = true;
-  editShimmerForUserMangement:boolean = true;
-  editShimmerForSecurity: boolean = true;
-  editShimmerForEmail:boolean = true;
-  editShimmerForInvoice: boolean = true;
-  editShimmerForOtherSettings: boolean = true;
+  @Input() editShimmer: boolean = true;
+  @Input()editShimmerForUserMangement:boolean = true;
+  @Input()editShimmerForSecurity: boolean = true;
+  @Input()editShimmerForEmail:boolean = true;
+  @Input()editShimmerForInvoice: boolean = true;
+  @Input() editShimmerForOtherSettings: boolean = true;
   @Input() showLoadingSpinner: boolean = false;
   public rdsAlertMfeConfig: ComponentLoaderOptions = {
     name: 'RdsCompAlert',
