@@ -44,7 +44,7 @@ export const Default = Template.bind({});
 Default.args = {
     isShimmer:false,
     EditionsTableData: [{editionname: 'Standard', price: null, trialPeriod: null, expiringEdition: null, id: 1},
-    {editionname: 'apple', price: 2000, trialPeriod: 10, expiringEdition: 'Standard', id: 5},
+   {editionname: 'apple', price: 2000, trialPeriod: 10, expiringEdition: 'Standard', id: 5},
    {editionname: 'Apple1', price: 20, trialPeriod: 3, expiringEdition: 'Standard', id: 6},
    {editionname: 'google', price: 1200, trialPeriod: 2, expiringEdition: null, id: 16}
   ],
