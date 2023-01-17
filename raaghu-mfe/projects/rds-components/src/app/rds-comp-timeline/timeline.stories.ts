@@ -92,7 +92,7 @@ advanced.args = {
     {
       text: 'User deleted from organization',
       date: '04 Mar 2020, 08:24 am',
-      icon: 'person ',
+      icon: 'person',
       colorVariant: 'info'
     },
   ],
