@@ -9,14 +9,14 @@ import { Router, RouterModule } from '@angular/router';
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RdsCompTenantManagementComponent } from '../../../rds-components/src/app/rds-comp-tenant-management/rds-comp-tenant-management.component';
-import { RdsCompUserManagementComponent } from '../../../rds-components/src/app/rds-comp-user-management/rds-comp-user-management.component';
-import { RdsCompEmailComponent } from '../../../rds-components/src/app/rds-comp-email/rds-comp-email.component';
-import { RdsCompSecurityComponent } from '../../../rds-components/src/app/rds-comp-security/rds-comp-security.component';
-import { RdsCompInvoiceComponent } from '../../../rds-components/src/app/rds-comp-invoice/rds-comp-invoice.component';
-import { RdsCompOtherSettingsComponent } from '../../../rds-components/src/app/rds-comp-other-settings/rds-comp-other-settings.component';
 import { EffectsModule } from '@ngrx/effects';
 import { SettingEffects} from '@libs/state-management';
+import { RdsCompEmailModule } from 'projects/rds-components/src/app/rds-comp-email/rds-comp-email.module';
+import { RdsCompSecurityModule } from 'projects/rds-components/src/app/rds-comp-security/rds-comp-security.module';
+import { RdsCompInvoiceModule } from 'projects/rds-components/src/app/rds-comp-invoice/rds-comp-invoice.module';
+import { RdsCompOtherSettingsModule } from 'projects/rds-components/src/app/rds-comp-other-settings/rds-comp-other-settings.module';
+import { RdsCompTenantManagementModule } from 'projects/rds-components/src/app/rds-comp-tenant-management/rds-comp-tenant-management.module';
+import { RdsCompUserManagementModule } from 'projects/rds-components/src/app/rds-comp-user-management/rds-comp-user-management.module';
 
 
 export default {
@@ -24,16 +24,10 @@ export default {
   component: AppComponent,
   decorators: [
     moduleMetadata({
-      declarations: [
-        RdsCompTenantManagementComponent,
-        RdsCompUserManagementComponent,
-        RdsCompEmailComponent,
-        RdsCompSecurityComponent,
-        RdsCompInvoiceComponent,
-        RdsCompOtherSettingsComponent,
+      declarations: [        
         AppComponent
       ],
-      imports: [ 
+      imports: [       
         FormsModule,
         ReactiveFormsModule,
         RdsIconModule,
@@ -56,14 +50,15 @@ export default {
         RdsFabMenuModule,
         EffectsModule.forRoot([SettingEffects]),
         RdsTextareaModule,
-        RdsCounterModule
-        
+        RdsCounterModule,
+        RdsCompTenantManagementModule,
+        RdsCompEmailModule,
+        RdsCompSecurityModule,
+        RdsCompInvoiceModule,
+        RdsCompOtherSettingsModule,
+        RdsCompUserManagementModule        
       ],
-      providers: [
-        {
-          provide: APP_BASE_HREF,
-          useValue: '/',
-        },
+      providers: [      
       ],      
     })
   ]
@@ -72,79 +67,17 @@ export default {
 const Template: Story<AppComponent> = (args: AppComponent) => ({
   props: {
     ...args
-  },
-  template:
-    `
-  <div class="row">
-    <div class="col-md-12  pb-3 desktop-btn">
-      <div class="d-flex justify-content-end">
-        <rds-button [tooltipPlacement]="'bottom'" [tooltipTitle]="'SAVE ALL'"
-          [label]="'SAVE ALL'" type="button" [size]="'small'" [colorVariant]="'primary'"
-          [outlineButton]="false" (click)="onSave()" icon="save" iconHeight="15px" iconWidth="15px"></rds-button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card border-0 py-2 px-4 h-100 rounded-0 card-full-stretch ">
-
-          <!--<ng-container *ngIf="currentAlerts&&currentAlerts.length>0">
-          <mfe-loader [config]="rdsAlertMfeConfig"></mfe-loader>
-        </ng-container>-->
-          <div>
-
-          </div>
-          <rds-nav-tab [navtabsItems]="navtabsItems" [horizontalAlignment]="'start'" [verticalAlignment]="false"
-            [pills]="false" [tabs]="true" [fill]="false" [justified]="false"></rds-nav-tab>
-
-          <div naveContent class="row tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="tenant-management" role="tabpanel"
-              aria-labelledby="nav-home-tab">
-              <div class="row">
-                <rds-comp-tenant-management [settingsTenantEditionList]="settingsTenantEditionList"></rds-comp-tenant-management>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="user-management" role="tabpanel" aria-labelledby="nav-home-tab">
-              <div class="row">
-                  <rds-comp-user-management></rds-comp-user-management>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="nav-home-tab">
-              <div class="row">
-                <rds-security></rds-security>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="nav-home-tab">
-              <div class="row">
-                <app-rds-comp-email></app-rds-comp-email>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="nav-home-tab">
-              <div class="row">
-                <rds-comp-invoice></rds-comp-invoice>
-
-              </div>
-            </div>
-            <div class="tab-pane fade" id="other-settings" role="tabpanel" aria-labelledby="nav-home-tab">
-              <div class="row">
-               <rds-comp-other-settings></rds-comp-other-settings>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-`
+  },  
 });
 
 export const Default = Template.bind({});
 Default.args = {
+  editShimmer:false,
+  editShimmerForUserMangement:false,
+  editShimmerForSecurity:false,
+  editShimmerForEmail:false,
+  editShimmerForInvoice:false,
+  editShimmerForOtherSettings:false,
   navtabsItems:  [
     {
       label: 'Tenant Management',

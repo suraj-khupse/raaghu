@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsRadioButtonModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsRadioButtonModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompUserPermissionsComponent } from './rds-comp-user-permissions.component';
 import { RdsCompUserBasicsComponent } from '../rds-comp-user-basics/rds-comp-user-basics.component';
@@ -10,12 +10,19 @@ import { RdsCompFeaturesComponent } from '../rds-comp-features/rds-comp-features
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
 
 export default {
-  title: 'Components/User Permissions', component: RdsCompUserPermissionsComponent,
+  title: 'Components/User Permissions', 
+  component: RdsCompUserPermissionsComponent,
   decorators: [moduleMetadata({
     declarations: [
       RdsCompUserBasicsComponent,
       RdsDataTableComponent, RdsCompPermissionTreeComponent, RdsCompAlertComponent]
-    , imports: [FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, RdsIconModule, SharedModule, RdsFabMenuModule, NgxTranslateModule, RdsInputModule, RdsOffcanvasModule, RdsNavTabModule, RdsSelectListModule, RdsCheckboxModule, RdsDatepickerModule, RdsRadioButtonModule, RdsCounterModule], providers: [FormBuilder,],
+    , imports: [
+      FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, 
+      RdsIconModule, SharedModule, RdsFabMenuModule, NgxTranslateModule, RdsInputModule, 
+      RdsOffcanvasModule, RdsNavTabModule, RdsSelectListModule, RdsCheckboxModule,
+       RdsDatepickerModule, RdsRadioButtonModule, RdsCounterModule,RdsSearchInputModule
+      ], 
+       providers: [FormBuilder,],
   })]
 } as Meta;
 

@@ -1,37 +1,43 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSelectListModule } from '@libs/rds-elements';
-
-import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsCompAlertComponent } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component';
-import { RdsDataTableComponent } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.component';
-import { RdsCompTenantInformationComponent } from 'projects/rds-components/src/app/rds-comp-tenant-information/rds-comp-tenant-information.component';
-import { RdsCompTenantListComponent } from 'projects/rds-components/src/app/rds-comp-tenant-list/rds-comp-tenant-list.component';
-import { RdsCompTenantSettingsComponent } from 'projects/rds-components/src/app/rds-comp-tenant-settings/rds-comp-tenant-settings.component';
+import { AppSessionService, NgxTranslateModule, SharedModule, UserAuthService } from '@libs/shared';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
+import { RdsCompTenantInformationModule } from 'projects/rds-components/src/app/rds-comp-tenant-information/rds-comp-tenant-information.module';
+import { RdsCompTenantSettingsModule } from 'projects/rds-components/src/app/rds-comp-tenant-settings/rds-comp-tenant-settings.module';
+import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-permission-tree.module';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { TranslateService, TranslateStore } from '@ngx-translate/core';
+import { StoreModule } from '@ngrx/store';
 
 
 export default {
   title: 'Pages/Tenant',
-  component: RdsCompTenantListComponent,
+  component: AppComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompTenantListComponent, RdsDataTableComponent,
-        RdsCompTenantInformationComponent,RdsCompTenantSettingsComponent,
-      RdsCompAlertComponent],
+      declarations: [AppComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,BsDatepickerModule.forRoot(), BrowserAnimationsModule, 
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,BsDatepickerModule.forRoot(), BrowserAnimationsModule,
+        RdsCompTenantInformationModule,RdsCompTenantSettingsModule,RdsPermissionTreeModule,RdsCompAlertModule,
+        RdsCompDataTableModule, StoreModule.forRoot({}),
       ],
       providers: [
-        FormBuilder
+        FormBuilder,
+        TranslateService,
+        TranslateStore,
+        UserAuthService,
+        AppSessionService
       ],
     })
   ]
 } as Meta;
-const Template: Story<RdsCompTenantListComponent> = (args: RdsCompTenantListComponent) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
   }
@@ -40,6 +46,7 @@ const Template: Story<RdsCompTenantListComponent> = (args: RdsCompTenantListComp
 export const Default = Template.bind({});
 
 Default.args = {
+  isShimmer:false,
   tenantSettingsInfo : {  },
   tenantData: {},
   tenantList: [{tenantInfoTemplate: '<div class=""><div><div><span>Default</span></div><span class="text-muted">Default </span></div></div>', statusTemplate: '<div><span class="badge badge-secondary">Inactive</span></div>', editionDisplayName: 'Standard', editionTemplate: '<div class="d-flex align-items-center"><div class=…tandard"></div><div class="">Standard</div></div>', id: 1},

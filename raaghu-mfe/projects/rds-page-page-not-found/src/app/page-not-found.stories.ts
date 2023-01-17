@@ -1,14 +1,15 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsCompPageNotFoundComponent } from 'projects/rds-components/src/app/rds-comp-page-not-found/rds-comp-page-not-found.component';
+import { AppComponent } from './app.component';
+import { RdsCompPageNotFoundModule } from 'projects/rds-components/src/app/rds-comp-page-not-found/rds-comp-page-not-found.module';
 
 export default {
     title: 'Pages/Page Not Found',
-    component: RdsCompPageNotFoundComponent,
+    component: AppComponent,
     decorators: [
         moduleMetadata({
-            declarations: [RdsCompPageNotFoundComponent],
+            declarations: [AppComponent],
             imports: [
-
+                RdsCompPageNotFoundModule
             ],
             providers: [
 
@@ -16,7 +17,7 @@ export default {
         })
     ]
 } as Meta;
-const Template: Story<RdsCompPageNotFoundComponent> = (args: RdsCompPageNotFoundComponent) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props: {
         ...args
     }
