@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { RdsLoginComponent } from './rds-comp-login/rds-comp-login.component';
 
 const routes: Routes = [
   {
@@ -9,10 +8,7 @@ const routes: Routes = [
     pathMatch: 'full',
     component: AppComponent,
   },
-  {
-    path:'login',
-    component:RdsLoginComponent
-  }
+  
 ];
 
 @NgModule({

@@ -30,7 +30,6 @@ module.exports = {
       name: "rds-components",
       filename: "remoteEntry.js",
       exposes: {
-        './RdsLogin': './projects/rds-components/src/app/rds-comp-login/rds-comp-login.component.ts',
         './RdsAddressInput': './projects/rds-components/src/app/rds-comp-address-input/rds-comp-address-input.component.ts',
         
         './RdsTopNavigation': './projects/rds-components/src/app/rds-comp-top-navigation/rds-comp-top-navigation.component.ts',
@@ -76,7 +75,7 @@ module.exports = {
         './RdsCompVisualSettings': './projects/rds-components/src/app/rds-comp-visual-settings/rds-comp-visual-settings.component.ts',
         // './RdsCompPermissionTree': './projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.component.ts',
         // './RdsCompTenantDashboard': './projects/rds-components/src/app/rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component.ts',
-        './RdsCompAlert': './projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component.ts',
+        // './RdsCompAlert': './projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component.ts',
         './RdsCompRoleList': './projects/rds-components/src/app/rds-comp-role-list/rds-comp-role-list.component.ts',
         './RdsCompInformation': './projects/rds-components/src/app/rds-comp-information/rds-comp-information.component.ts',
         './RdsCompPlanInformation': './projects/rds-components/src/app/rds-comp-plan-information/rds-comp-plan-information.component.ts',

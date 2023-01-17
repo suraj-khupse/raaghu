@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RdsLoginComponent } from './rds-comp-login/rds-comp-login.component';
 import { RdsAddressInputComponent } from './rds-comp-address-input/rds-comp-address-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -72,7 +71,7 @@ import { RdcCompApiScopeBasicsComponent } from './rdc-comp-api-scope-basics/rdc-
 import { RdcCompApiScopeResourcesComponent } from './rdc-comp-api-scope-resources/rdc-comp-api-scope-resources.component';
 // import { RdsCompPermissionTreeComponent } from './rds-comp-permission-tree/rds-comp-permission-tree.component';
 // import { RdsCompTenantDashboardComponent } from './rds-comp-tenant-dashboard/rds-comp-tenant-dashboard.component';
-import { RdsCompAlertComponent } from './rds-comp-alert/rds-comp-alert.component';
+// import { RdsCompAlertComponent } from './rds-comp-alert/rds-comp-alert.component';
 import { RdsCompRoleListComponent } from './rds-comp-role-list/rds-comp-role-list.component';
 import { RdsCompInformationComponent } from './rds-comp-information/rds-comp-information.component';
 import { RdsCompNewDynamicEntityPropertyComponent } from './rds-comp-new-dynamic-entity-property/rds-comp-new-dynamic-entity-property.component';
@@ -159,7 +158,6 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [	
     AppComponent,
-    RdsLoginComponent,
     RdsAddressInputComponent,
     // RdsDataTableComponent,
     RdsTopNavigationComponent,
@@ -212,7 +210,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     RdcCompApiScopeResourcesComponent,
     // RdsCompPermissionTreeComponent,
     // RdsCompTenantDashboardComponent,
-    RdsCompAlertComponent,
+    // RdsCompAlertComponent,
     RdsCompRoleListComponent,
     RdsCompInformationComponent,
     RdsCompNewDynamicEntityPropertyComponent,
