@@ -129,7 +129,7 @@ export class ServiceProxy {
     /**
      * @return Success
      */
-    applicationConfiguration(): Observable<ApplicationConfigurationDto> {
+    applicationConfiguration(language:string): Observable<ApplicationConfigurationDto> {
         let url_ = this.baseUrl + "/api/abp/application-configuration";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -137,7 +137,8 @@ export class ServiceProxy {
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
-                "Accept": "text/plain"
+                "Accept": "text/plain",
+                "accept-language":language?language:"en"
             })
         };
 

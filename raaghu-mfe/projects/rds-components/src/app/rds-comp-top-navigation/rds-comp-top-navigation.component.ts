@@ -236,11 +236,11 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
     bsOffcanvas.show();
   }
   onLanguageSelect(lan: any): void {
-   
+   debugger
       this.selectedLanguage.language = lan.item.some;
       this.selectedLanguage.icon = lan.item.icon;
-      this.onLanguageSelection.emit(lan.item.name)
-   
+      this.onLanguageSelection.emit(lan.item)
+      
   }
   onToggleButton(): void {
     this.toggleEvent.emit();

@@ -39,21 +39,21 @@ export class LoginEffects {
     //         )
     //     )
     // );
-    getCurrentLoginInformation$ = createEffect(() =>
-        this.actions$.pipe(
-            ofType(getCurrentLoginInformation),
-            switchMap(() =>
+    // getCurrentLoginInformation$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(getCurrentLoginInformation),
+    //         switchMap(() =>
 
-                // Call the getTodos method, convert it to an observable
-                from(this.AccountService.applicationConfiguration()).pipe(
-                    // Take the returned value and return a new success action containing the todos
-                    map((getCurrentLoginInformationResult) => {
-                        return getCurrentLoginInformationSuccess({ getCurrentLoginInformationResult })
-                    }),
-                    // Or... if it errors return a new failure action containing the error
-                    catchError((error) => of(ValidateTenantNameFailure({ error })))
-                )
-            )
-        )
-    );
+    //             // Call the getTodos method, convert it to an observable
+    //             from(this.AccountService.applicationConfiguration()).pipe(
+    //                 // Take the returned value and return a new success action containing the todos
+    //                 map((getCurrentLoginInformationResult) => {
+    //                     return getCurrentLoginInformationSuccess({ getCurrentLoginInformationResult })
+    //                 }),
+    //                 // Or... if it errors return a new failure action containing the error
+    //                 catchError((error) => of(ValidateTenantNameFailure({ error })))
+    //             )
+    //         )
+    //     )
+    // );
 }
