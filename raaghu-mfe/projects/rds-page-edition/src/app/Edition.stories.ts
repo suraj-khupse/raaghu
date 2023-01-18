@@ -54,6 +54,10 @@ Default.args = {
     { displayName: 'Trial Period', key: 'trialPeriod', dataType: 'text', dataLength: 30, sortable: true, required: true },
     { displayName: 'Expiring Edition', key: 'expiringEdition', dataType: 'text', dataLength: 30, sortable: true, required: true },
   ],
+  actions: [   
+     { id: 'delete', displayName: 'Delete' },
+    { id: 'moveTenant', displayName: 'Move Tenants to Another Edition'}
+    ],
   recordsPerpage:10,
   EditionName:"",
   AnnualPrice:200,
