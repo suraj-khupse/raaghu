@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RdsCompCacheComponent } from './rds-comp-cache.component';
 import { RdsCompCacheShimmerComponent } from './rds-comp-cache-shimmer/rds-comp-cache-shimmer.component';
 import { RdsCompAlertPopupModule } from '../rds-comp-alert-popup/rds-comp-alert-popup.module';
-import { RdsIconModule, RdsButtonModule, RdsPaginationModule } from "@libs/rds-elements";
+import { RdsButtonModule, RdsPaginationModule } from "@libs/rds-elements";
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { NgxTranslateModule } from '@libs/shared';
 

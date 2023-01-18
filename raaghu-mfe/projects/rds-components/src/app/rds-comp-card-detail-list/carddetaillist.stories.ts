@@ -2,7 +2,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompCardDetailListComponent } from './rds-comp-card-detail-list.component';
 import { RdsCardDetailModule } from 'projects/libs/rds-elements/src/rds-card-detail/src/public-api';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsRadioButtonModule } from '@libs/rds-elements';
 
 export default {

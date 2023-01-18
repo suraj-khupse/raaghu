@@ -3,7 +3,7 @@ import { moduleMetadata } from "@storybook/angular";
 import { Meta, Story } from "@storybook/angular";
 import { ScrollspyItemComponent } from "./scrollspy-item/scrollspy-item.component";
 import { RdsScrollspyComponent } from "./rds-scrollspy.component";
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 export default {
     title: 'Elements/Scrollspy',

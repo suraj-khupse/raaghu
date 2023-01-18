@@ -1,5 +1,6 @@
 import { FormBuilder, FormsModule } from '@angular/forms';
-import { RdsIconModule, RdsLabelModule, RdsTeamMemberModule } from '@libs/rds-elements';
+import { RdsLabelModule, RdsTeamMemberModule } from '@libs/rds-elements';
+import {RdsIconModule} from 'raaghu-themes/rds-icons'
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsCompTeamsComponent } from './rds-comp-teams.component';
 

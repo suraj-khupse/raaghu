@@ -1,7 +1,7 @@
 import { style } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { RdsIconComponent } from '@libs/rds-icon';
+//import { RdsIconComponent } from '@libs/rds-icon';
 
 @Component({
   selector: 'rds-comp-product-list',

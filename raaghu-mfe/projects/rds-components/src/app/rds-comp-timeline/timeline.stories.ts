@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { RdsColorModule } from '@libs/rds-elements';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsCompTimelineComponent } from './rds-comp-timeline.component';

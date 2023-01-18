@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsAddressDetailComponent, RdsBenefitModule, RdsDropdownlistModule, RdsDropdownModule, RdsIconModule, RdsLabelModule, RdsSearchInputModule } from '@libs/rds-elements';
+import { RdsAddressDetailComponent, RdsBenefitModule, RdsDropdownlistModule, RdsDropdownModule, RdsLabelModule, RdsSearchInputModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RdsCompMemberActivityComponent } from './rds-comp-member-activity.component';
 import { CommonModule } from '@angular/common';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';

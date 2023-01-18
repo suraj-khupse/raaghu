@@ -1,7 +1,7 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import {  RdsButtonModule, RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
-
+import { RdsButtonModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompDynamicPropertiesComponent } from './rds-comp-dynamic-properties.component';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';

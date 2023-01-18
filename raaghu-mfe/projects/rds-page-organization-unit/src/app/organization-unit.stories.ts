@@ -3,8 +3,9 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import {  
   RdsButtonModule,
    RdsCheckboxModule,
-  RdsIconModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsSelectListModule, 
+  RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsSelectListModule,
 } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { CommonModule } from '@angular/common';
 import { AppComponent as OrganizationUnit} from './app.component';

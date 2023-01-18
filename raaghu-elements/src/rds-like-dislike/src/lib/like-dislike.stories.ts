@@ -1,5 +1,5 @@
 
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsLabelModule } from '../../../rds-label/src/lib/rds-label.module';
 import { RdsLikeDislikeComponent } from './rds-like-dislike.component';

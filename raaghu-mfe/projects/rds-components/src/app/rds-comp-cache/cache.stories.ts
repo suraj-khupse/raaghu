@@ -1,6 +1,7 @@
 import { FormBuilder } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsIconModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompCacheComponent } from './rds-comp-cache.component';
 

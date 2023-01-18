@@ -5,7 +5,6 @@ import {
   RdsCheckboxModule,
   RdsDatepickerModule,
   RdsFabMenuModule,
-  RdsIconModule,
   RdsInputModule,
   RdsModalModule,
   RdsNavTabModule,

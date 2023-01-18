@@ -1,6 +1,6 @@
 
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsAlertComponent } from './rds-alert.component';
 
 export default {

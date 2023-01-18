@@ -1,46 +1,50 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsFabMenuModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsRadioButtonModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsDropdownlistModule, RdsFabMenuModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsRadioButtonModule, RdsSelectListModule } from '@libs/rds-elements';
 import { RdsIconModule } from 'raaghu-themes/rds-icons'
-import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
-import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsCompAlertComponent } from '../rds-comp-alert/rds-comp-alert.component';
-import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
-import { RdsCompFeaturesComponent } from './rds-comp-features.component';
-import { RdsCompAlertModule } from '../rds-comp-alert/rds-comp-alert.module';
-import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
+import { ArrayToTreeConverterService, NgxTranslateModule, SharedModule } from '@libs/shared';
+import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
+import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-permission-tree.module';
 
 export default {
-  title: 'Components/Features',
-  component: RdsCompFeaturesComponent,
+  title: 'Pages/Edition',
+  component: AppComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RdsCompFeaturesComponent,RdsCompPermissionTreeComponent,
-    ],
+      declarations: [AppComponent],
       imports: [
         FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule,RdsIconModule, 
         SharedModule,RdsFabMenuModule,NgxTranslateModule,RdsInputModule,RdsOffcanvasModule,RdsNavTabModule,
-        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,RdsRadioButtonModule,RdsCounterModule,RdsNavTabModule,
-        RdsCompAlertModule,RdsCompDataTableModule
+        RdsSelectListModule,RdsCheckboxModule,RdsDatepickerModule,RdsRadioButtonModule,RdsCounterModule,
+        RdsDropdownlistModule,
+        StoreModule.forRoot({}),
+        BrowserAnimationsModule,
+        RdsCompDataTableModule,
+        RdsCompAlertModule,
+        RdsPermissionTreeModule
       ],
       providers: [
-        FormBuilder,
-       
+        FormBuilder, 
+        ArrayToTreeConverterService      
       ],
     })
   ]
 } as Meta;
-const Template: Story<RdsCompFeaturesComponent> = (args: RdsCompFeaturesComponent) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
   }
   });
-  export const Default = Template.bind({});
+export const Default = Template.bind({});
 
-  Default.args = {
-    editShimmer:false,
+Default.args = {
+    isShimmer:false,
     EditionsTableData: [{editionname: 'Standard', price: null, trialPeriod: null, expiringEdition: null, id: 1},
-    {editionname: 'apple', price: 2000, trialPeriod: 10, expiringEdition: 'Standard', id: 5},
+   {editionname: 'apple', price: 2000, trialPeriod: 10, expiringEdition: 'Standard', id: 5},
    {editionname: 'Apple1', price: 20, trialPeriod: 3, expiringEdition: 'Standard', id: 6},
    {editionname: 'google', price: 1200, trialPeriod: 2, expiringEdition: null, id: 16}
   ],
@@ -50,6 +54,10 @@ const Template: Story<RdsCompFeaturesComponent> = (args: RdsCompFeaturesComponen
     { displayName: 'Trial Period', key: 'trialPeriod', dataType: 'text', dataLength: 30, sortable: true, required: true },
     { displayName: 'Expiring Edition', key: 'expiringEdition', dataType: 'text', dataLength: 30, sortable: true, required: true },
   ],
+  actions: [   
+     { id: 'delete', displayName: 'Delete' },
+    { id: 'moveTenant', displayName: 'Move Tenants to Another Edition'}
+    ],
   recordsPerpage:10,
   EditionName:"",
   AnnualPrice:200,
@@ -237,4 +245,21 @@ const Template: Story<RdsCompFeaturesComponent> = (args: RdsCompFeaturesComponen
         "children": []
     }
 ],
+editionList:[
+    {
+        "value": "Standard",
+        "some": "Standard",
+        "id": 1,           
+    },
+    {
+        "value": "TestOne",
+        "some": "TestOne",
+        "id": 1,     
+    },
+    {
+        "value": "DemoOne",
+        "some": "DemoOne",
+        "id": 1,           
+    },
+]
  }

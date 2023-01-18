@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RdsCompProductListComponent } from './rds-comp-product-list.component';
 import {
-  RdsLabelModule, RdsCardModule, RdsIconModule, RdsPriceModule, RdsBadgeModule, RdsButtonModule, RdsRatingModule,
+  RdsLabelModule, RdsCardModule, RdsPriceModule, RdsBadgeModule, RdsButtonModule, RdsRatingModule,
   RdsColorModule, RdsProductImageModule
 } from "@libs/rds-elements";
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
+
 
 
 @NgModule({

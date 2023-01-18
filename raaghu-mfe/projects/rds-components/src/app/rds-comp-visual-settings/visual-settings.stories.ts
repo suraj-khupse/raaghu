@@ -1,5 +1,6 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsIconModule, RdsNavTabModule, RdsSelectListModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsNavTabModule, RdsSelectListModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompVisualSettingsComponent } from './rds-comp-visual-settings.component';
 import { CommonModule } from '@angular/common';

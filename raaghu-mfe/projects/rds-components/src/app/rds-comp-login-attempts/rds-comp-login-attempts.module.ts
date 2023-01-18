@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompLoginAttemptsComponent } from './rds-comp-login-attempts.component';
 import { FormsModule } from '@angular/forms';
-import { RdsDatepickerModule, RdsDropdownlistModule, RdsIconModule } from '@libs/rds-elements';
+import { RdsDatepickerModule, RdsDropdownlistModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 import { NgxTranslateModule } from '@libs/shared';
 

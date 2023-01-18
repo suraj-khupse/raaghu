@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompPlanInformationComponent } from './rds-comp-plan-information.component';
-import { RdsButtonModule, RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule } from '@libs/shared';
 
 

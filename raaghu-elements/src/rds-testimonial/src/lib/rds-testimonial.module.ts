@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsTestimonialComponent } from './rds-testimonial.component';
 
 
@@ -9,7 +9,9 @@ import { RdsTestimonialComponent } from './rds-testimonial.component';
   declarations: [
     RdsTestimonialComponent
   ],
-  imports: [ RdsIconModule,CommonModule
+  imports: [ 
+    RdsIconModule,
+    CommonModule
   ],
   exports: [
     RdsTestimonialComponent
