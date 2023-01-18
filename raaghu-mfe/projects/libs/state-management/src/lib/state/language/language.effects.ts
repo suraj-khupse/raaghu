@@ -115,6 +115,7 @@ export class LanguageEffects {
     this.actions$.pipe(
       ofType(setDefaultLanguage),
       switchMap((data) =>
+      
         this.languageService.setAsDefault(data.id).pipe(map(() => {
           this.store.dispatch(getLanguages());
           this.alertService.showAlert('Success', 'Set default language successfully', 'success')

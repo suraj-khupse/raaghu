@@ -58,8 +58,8 @@ export class UserAuthService implements OnInit {
     return _observableOf(this.userAuthenticated);
   }
 
-  getApplicationConfiguration() {
-    this.abpserviceProxy.applicationConfiguration().subscribe((result) => {
+  getApplicationConfiguration(language="en",navigate=true) {
+    this.abpserviceProxy.applicationConfiguration(language).subscribe((result) => {
       localStorage.setItem(
         'storedPermissions',
         JSON.stringify(result.auth.grantedPolicies)
@@ -68,14 +68,6 @@ export class UserAuthService implements OnInit {
       this.localization = of(result.localization.languages);
       this.language = of(result.localization.languages);
 
-      //   if (login == 'login') {
-      //     this.router.navigateByUrl('/pages/dashboard');
-      //   }
-      //   if (login == 'logout') {
-      //     localStorage.removeItem('storedPermissions');
-      //     this.router.navigateByUrl('/login');
-      //   }
-      // }
       localStorage.setItem(
         'userName',
         JSON.stringify(result.currentUser.userName)
@@ -86,7 +78,7 @@ export class UserAuthService implements OnInit {
       );
       this.userAuthenticated = result.currentUser.isAuthenticated;
       if (result.currentUser.isAuthenticated) {
-        if (this.router.url == '/login') {
+        if (navigate && this.router.url == '/login') {
           this.router.navigateByUrl('pages/dashboard');
         }
       } else {

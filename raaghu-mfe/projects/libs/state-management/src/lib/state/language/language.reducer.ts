@@ -9,7 +9,9 @@ export interface LanguagesState {
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }
-
+export interface DefaultLanguageState {
+    defaultLanguage: string;
+}
 export const languageInitialState: LanguagesState = {
     languages: null,
     cultureList: null,
