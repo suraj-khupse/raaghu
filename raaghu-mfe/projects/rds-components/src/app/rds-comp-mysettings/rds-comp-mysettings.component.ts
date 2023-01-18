@@ -43,6 +43,10 @@ export class RdsMysettingsComponent implements OnInit, OnChanges {
   @Input() profileUrl = 'https://anzstageui.raaghu.io/assets/profile-picture-circle.svg';
   fileArray: any[] = [];
   isIncorrect = false;
+  validationMessages: string[] = ["Passwords must have at least one digit ('0'-'9').",
+  "Passwords must have at least one uppercase ('A'-'Z').",
+  "Passwords must have at least one non alphanumeric character.",
+  "This field must be a string or array type with a minimum length of 6."];
 
   selectedProfilePicture: any
 

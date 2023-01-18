@@ -96,72 +96,78 @@
               </div>
             </form>
           </div>
-          <div class="mb-3 mt-3">
+          <div class="mb-3 mt-3 border-bottom">
             <h5>{{"Change Password"|translate}}</h5>
           </div>
           <form #changePasswordForm="ngForm">
             <div class="row">
-              <div class="col-md-12 sm-p-0">
-                <div class="form-group mb-4">
-                  <rds-input size="medium" [disabled]="false" [isRequired]=true [iconCursor]="'pointer'" [icon]="'eye'"
-                    [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'" (ngModelChange)="isIncorrect = false"
-                    [label]="translate.instant('Current Password')" [inputType]="'password'" required [pattern]="passwordPattern"
-                    [placeholder]="translate.instant('Current Password')" [(ngModel)]="ProfileData.currentPassword"
-                    #currentPassword="ngModel" ngDefaultControl name="currentPassword" >
-                  </rds-input>
-                  <div class="form-control-feedback"
-                    *ngIf="currentPassword.errors && (currentPassword.dirty || currentPassword.touched)">
-                    <small class="text-danger" *ngIf="currentPassword.errors.required">
-                      {{"Current Password is Required"|translate}}
-                    </small>
-                    <small class="text-danger" *ngIf="currentPassword.errors.pattern">
-                      {{"Please include length more than 6, 1 number, 1 special character, 1 lowercase & 1 uppercase letter"|translate}}
-                    </small>
+              <div class="col-md-12 sm-p-0 d-flex align-items-end">
+                <div class="col-md-6">
+                  <div class="form-group mb-4">
+                    <rds-input size="medium" [disabled]="false" [isRequired]=true [iconCursor]="'pointer'" [icon]="'eye'"
+                      [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'" (ngModelChange)="isIncorrect = false"
+                      [label]="translate.instant('Current Password')" [inputType]="'password'" required [pattern]="passwordPattern"
+                      [placeholder]="translate.instant('Current Password')" [(ngModel)]="ProfileData.currentPassword"
+                      #currentPassword="ngModel" ngDefaultControl name="currentPassword" >
+                    </rds-input>
+                    <div class="form-control-feedback"
+                      *ngIf="currentPassword.errors && (currentPassword.dirty || currentPassword.touched)">
+                      <small class="text-danger" *ngIf="currentPassword.errors.required">
+                        {{"Current Password is Required"|translate}}
+                      </small>
+                      <small class="text-danger" *ngIf="currentPassword.errors.pattern">
+                        {{"Please include length more than 6, 1 number, 1 special character, 1 lowercase & 1 uppercase letter"|translate}}
+                      </small>
+                    </div>
+                    <div class="form-control-feedback" *ngIf="isIncorrect">
+                      <small class="text-danger">
+                        {{ 'Incorrect Password' | translate}}
+                      </small>
+                    </div>
                   </div>
-                  <div class="form-control-feedback" *ngIf="isIncorrect">
-                    <small class="text-danger">
-                      {{ 'Incorrect Password' | translate}}
-                    </small>
+                  <div class="form-group mb-4">
+                    <rds-input size="medium" [inputType]="'password'" [isRequired]=true [iconCursor]="'pointer'" [icon]="'eye'"
+                      [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'" [label]="translate.instant('New Password')"
+                      [placeholder]="translate.instant('New Password')" [pattern]="passwordPattern" [(ngModel)]="ProfileData.newPassword"
+                      #newPassword="ngModel" ngDefaultControl name="newPassword" required>
+                    </rds-input>
+                   
+                    <div class="form-control-feedback" *ngIf="newPassword.errors && (newPassword.dirty || newPassword.touched)">
+                      <small class="text-danger" *ngIf="newPassword.errors.required">
+                        {{"New Password is Required"|translate}}
+                      </small>
+                      <small class="text-danger" *ngIf="newPassword.errors.pattern">
+                        {{"Please include password as per the required pattern"|translate}}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="form-group mb-4">
+                    <rds-input size="medium" [inputType]="'password'" [isRequired]=true [iconCursor]="'pointer'"
+                      [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'"
+                      [label]="translate.instant('Confirm new Password')" required
+                      [placeholder]="translate.instant('Confirm Password')" [(ngModel)]="ProfileData.confirmNewPassword"
+                      #confirmNewPassword="ngModel" ngDefaultControl name="confirmNewPassword"
+                      (keyup)='confirmPassword()'>
+                    </rds-input>
+                    <div class="form-control-feedback"
+                      *ngIf="confirmNewPassword.errors && (confirmNewPassword.dirty || confirmNewPassword.touched)">
+                      <small class="text-danger" *ngIf="confirmNewPassword.errors.required">
+                        {{"Confirm Password is required"|translate}}
+                      </small>
+                    </div>
+                    <small class="text-danger" *ngIf="isPasswordMismatch">{{"Password mismatch found"|translate}}</small>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-12 sm-p-0">
-                <div class="form-group mb-4">
-                  <rds-input size="medium" [inputType]="'password'" [isRequired]=true [iconCursor]="'pointer'"
-                    [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'"
-                    [label]="translate.instant('New Password')" [placeholder]="translate.instant('New Password')" [pattern]="passwordPattern"
-                    [(ngModel)]="ProfileData.newPassword" #newPassword="ngModel" ngDefaultControl name="newPassword"
-                    (keyup)='confirmPassword()' required>
-                  </rds-input>
-                  <div class="form-control-feedback"
-                    *ngIf="newPassword.errors && (newPassword.dirty || newPassword.touched)">
-                    <small class="text-danger" *ngIf="newPassword.errors.required">
-                      {{"New Password is Required"|translate}}
-                    </small>
-                    <small class="text-danger" *ngIf="newPassword.errors.pattern">
-                      {{"Please include length more than 6, 1 number, 1 special character, 1 lowercase & 1 uppercase letter"|translate}}
-                    </small>
-                  </div>
+                
+                <div class="col-md-6">
+                  <ul>
+                    <li class="text-muted" *ngFor="let item of validationMessages">
+                      <small>{{item}}</small>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div class="col-md-12 sm-p-0">
-                <div class="form-group mb-4">
-                  <rds-input size="medium" [inputType]="'password'" [isRequired]=true [iconCursor]="'pointer'"
-                    [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'"
-                    [label]="translate.instant('Confirm new Password')" required
-                    [placeholder]="translate.instant('Confirm Password')" [(ngModel)]="ProfileData.confirmNewPassword"
-                    #confirmNewPassword="ngModel" ngDefaultControl name="confirmNewPassword"
-                    (keyup)='confirmPassword()'>
-                  </rds-input>
-                  <div class="form-control-feedback"
-                    *ngIf="confirmNewPassword.errors && (confirmNewPassword.dirty || confirmNewPassword.touched)">
-                    <small class="text-danger" *ngIf="confirmNewPassword.errors.required">
-                      {{"Confirm Password is required"|translate}}
-                    </small>
-                  </div>
-                  <small class="text-danger" *ngIf="isPasswordMismatch">{{"Password mismatch found"|translate}}</small>
-                </div>
-              </div>
+             
             </div>
           </form>
           <div class="col-md-12 sm-p-0">
