@@ -17,7 +17,7 @@ export class RdsCompBenefitComponent implements OnInit {
       items: [
         {
           id: 1,
-          icon: 'globe',
+          icon: 'countries',
           iconHeight: "35px",
           iconWidth: "35px",
           title: "International delivery",

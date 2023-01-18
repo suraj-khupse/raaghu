@@ -35,7 +35,7 @@
     <div class="pt-1" *ngSwitchCase="'Centre Aligned'">
       <div class="border p-4 text-center rounded">
           <div>
-            <span class="rounded-circle p-2 bg-secondary bg-opacity-10 d-inline-block">
+            <span class="rounded-circle p-2 bg-primary bg-opacity-10 d-inline-block">
               <rds-icon [name]="item.icon" [height]="item.iconHeight" [width]="item.iconWidth"></rds-icon>
             </span>
           </div>
@@ -72,14 +72,14 @@
       <div class="pt-1" *ngSwitchCase="'Without Label'">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center">
-            <span class="rounded-circle p-2 bg-secondary bg-opacity-10">
+            <span class="rounded-circle p-2 bg-primary bg-opacity-10">
               <rds-icon [name]="item.icon" [height]="item.iconHeight" [width]="item.iconWidth"></rds-icon>
             </span>
           </div>
           <div class="ms-3">
             <div>
               <rds-label [label]="item.title" [bold]="true"></rds-label>
-            </div>
+            </div> 
             <div class="pe-5">
               <rds-label [label]="item.description"></rds-label>
             </div>
@@ -91,7 +91,7 @@
       <div class="pt-1" *ngSwitchCase="'Heading With Icon'">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center">
-            <span class="rounded-circle p-2 bg-secondary bg-opacity-10">
+            <span class="rounded-circle p-2 bg-primary bg-opacity-10">
               <rds-icon [name]="item.icon" [height]="item.iconHeight" [width]="item.iconWidth"></rds-icon>
             </span>
           </div>
