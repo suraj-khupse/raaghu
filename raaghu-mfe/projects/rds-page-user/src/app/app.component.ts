@@ -13,9 +13,10 @@ import {
   getAllClaimTypes,
   getUserForEdit,
   getUserPermission,
-  getUserPermissionFilterList,
   getUsers,
+  saveClaims,
   saveUser,
+  updateUser,
   UpdateUserPermission,
 } from 'projects/libs/state-management/src/lib/state/user/user.actions';
 import {
@@ -54,7 +55,7 @@ import { selectOrganizationUnitTree } from 'projects/libs/state-management/src/l
         query(':enter',
           [
             style({ opacity: 0 })
-          ],
+          ],                      
           { optional: true }
         ),
         query(':leave',
@@ -109,6 +110,10 @@ export class AppComponent {
   orgUnitListItem: any[];
   roleNamePermissionTree: string;
   adminId: any;
+  savePermissionData: any;
+  saveClaimData: any;
+  userNameToSearch: string;
+  userId: any;
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -146,6 +151,17 @@ export class AppComponent {
   orgTreeData: any = [];
   UserTableData: any = [];
   entityDisplayName: string = '';
+
+  searchUserId(){
+    if(this.userNameToSearch)
+    this.userList.forEach(ele=>{
+      if(ele.name == this.userNameToSearch){
+        this.userId = ele.id;
+
+      }
+    })
+    this.userNameToSearch = undefined;
+  }
   
   ngOnInit(): void {
     this.store.dispatch(getUsers());
@@ -173,7 +189,7 @@ export class AppComponent {
           }
           this.userList.push(item);
         });
-        //this.isShimmer = false;
+        if(this.userNameToSearch)this.searchUserId();
       }
     });
  
@@ -225,46 +241,6 @@ export class AppComponent {
           });
         }
       });
-
-
- 
-    this.rdsUserMfeConfig = {
-      name: 'RdsCompUserPermissionsNew',
-      input: {
-        roles: this.roles,
-        userinfo:this.userinfo,
-        organizationTreeList:this.organizationTreeList,
-        // organizationUnits:this.organizationUnits,
-        // permissionsList:this.permissionsList,
-         orgTreeData:this.orgTreeData,
-         isAssigned: this.isAssigned,
-         selectedPermissions:this.selectedPermissions,
-         selectedOrganizations:this.selectedOrganizations,
-         Selectedata:this.Selectedata,
-         Selecteorganizationdata:this.Selecteorganizationdata,
-         treeData:this.treeData,
-       // organizationtreeData:this.organizationtreeData,
-         PermissionFiltertreeData:this.PermissionFiltertreeData,
-         listItemsm:this.listItemsm,
-        selectedRoles:this.selectedRoles,
-        //  isShimmer:false,
-        //  editShimmer:false
-      },
-    
-    };
-   
-    
-    this.store.dispatch(getUserPermissionFilterList());
-    this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
-      if (res && res.UserPermissionFilterI && res.UserPermissionFilterI.items)
-        this.UserPermissionFiltertreeData = this.ConvertArraytoTreedata(
-          res.UserPermissionFilterI.items
-        );
-     
-    });
-
-    this.updateOrganizationTree();
-
   }
 
 
@@ -278,32 +254,37 @@ export class AppComponent {
     });
   }
   
-  getClaimsEmitter(id=this.adminId){
-    
-  }
-  Saveuserinfo(user: any ){
-    if(user && user.userInfo ){
-      if(user.userInfo.id){
-        const data: any = {
-          email : user.userInfo.email,
-          isActive:user.userInfo.isActive,
-          name:user.userInfo.name,
-          password:user.userInfo.password,
-          surname:user.userInfo.surname,
-          id:user.userInfo.id,
-          userName:user.userInfo.userName,
-          phoneNumber:user.userInfo.phoneNumber
-         };
-         this.store.dispatch(getUserForEdit(data));
-         console.log(getUserForEdit(data));
+  Saveuserinfo(user?: any){
+    this.savePermissionData = user? user.permissionList: this.savePermissionData;
+    this.saveClaimData = user? user.claimsData: this.saveClaimData;
+   if(this.userId || user.userInfo.id){
+    this.userId = user?.userinfo.id? user.userInfo.id:this.userId;
+    let tempClaimData = [];
+    this.saveClaimData.forEach((ele)=>{
+      const item = {
+        claimType:ele.claimType,
+        claimValue:ele.claimValue,
+        userId:this.userId
       }
-        else{
-          this.store.dispatch(saveUser(user.userInfo));
-     }
-     
+      tempClaimData.push(item);
+    })
+    this.store.dispatch(saveClaims(tempClaimData))
+    const data = {
+      id:this.userId,
+      body:{permissions:this.savePermissionData}
     }
-   
+    this.store.dispatch(UpdateUserPermission(data));
+   }
+  if(user && user.userInfo.id){
+      this.store.dispatch(updateUser({id:user.userInfo.id,body:user.userInfo}));
   }
+  else{
+      this.userNameToSearch = user.userInfo.userName;
+      this.store.dispatch(saveUser(user.userInfo));
+  }
+    
+  }   
+
   getEditUser (user: any) {
     this.store.dispatch(getUserForEdit(user));
     this.store.select(selectUserForEdit).subscribe(res=>{
@@ -320,13 +301,10 @@ export class AppComponent {
        };
      console.log(res);
    })  
-
-   // this.store.dispatch(getTenantFesaturesForEdit(selectedTenant))
-
   }
   
   onClose(event: any){
-  this.userinfo = undefined;  
+    this.userinfo = undefined;
   }
   deleteUser(eventData: any){
     this.store.dispatch(deleteUser(eventData.id));

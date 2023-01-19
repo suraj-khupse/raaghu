@@ -65,13 +65,19 @@ export const availbleOrganizationUnitFailure = createAction(
     '[User Page] Get Available Organization Unit Failure',
     props<{ error: string }>()
 );
-
 export const saveUser = createAction(
     '[User Page] Save User',
     (user: any) => ({ user })
 );
 export const saveUseruccess = createAction(
     '[User Page] Save User Success', props<{ user: any }>()
+);
+export const updateUser = createAction(
+    '[User Page] Update User',
+    (data: any) => ({ data })
+);
+export const updateUseruccess = createAction(
+    '[User Page] Update User Success', props<{ user: any }>()
 );
 
 export const getUserForEdit = createAction('[User Page] Get getUserForEdit',
@@ -85,6 +91,7 @@ export const getUserEditFailure = createAction(
     '[User Page] get User Edit Failure',
     props<{ error: string }>()
 );
+
 export const getUserPermission = createAction('[User Page] Get getUser Permission For Edit',
 (id: any) => ({ id }));
 
@@ -98,7 +105,7 @@ export const getUsePermissionsFailure = createAction(
 );
 export const UpdateUserPermission = createAction(
     '[User Page] Update User Permission',
-    (Permissions: any) => ({ Permissions })
+    (data: any) => ({ data })
 );
 export const UpdateUserPermissionSuccess = createAction(
     '[User Page] Update User Permission Success', props<{ Permissions: any }>()
@@ -106,12 +113,6 @@ export const UpdateUserPermissionSuccess = createAction(
 export const deleteUser = createAction(
     '[User Page] Delete Language',
     (id: any) => ({ id })
-);
-export const getUserPermissionFilterList = createAction('[User Page] Get Permissions For Filter');
-
-export const getUserPermissionListSuccess = createAction(
-    '[Role Page] get Permission Success',
-    props<{ UserPermissionFilterI: any }>()
 );
 
 export const getAllClaimTypes = createAction('[User Page] Get All Claim Types');

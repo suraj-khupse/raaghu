@@ -122,6 +122,8 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
       this.listItems[i].isSelected = this.isMasterSel;
     }
     this.getCheckedItemList();
+   
+    this.onSelect.emit({ item: this.listItems });
   }
 
 
@@ -133,6 +135,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
   }
 
   initAllSelect(event: any, selecteditem: any) {
+    //let newItems = [...this.listItems];
     if (this.multiSelect) {
       selecteditem.isSelected = !selecteditem.isSelected;
       this.isAllSelected();
