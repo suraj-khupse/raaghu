@@ -1,7 +1,20 @@
 <div class="d-flex flex-column flex-root">
   <div class="page d-flex flex-column flex-column-fluid">
     <div class="header align-items-stretch">
-      <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader>
+      <!-- <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader> -->
+      <rds-comp-top-navigation
+        [projectName]= "'Raaghu'"
+        [selectedMenu]="this.selectedMenu"
+        [selectedMenuDescription]="this.selectedMenuDescription"
+        [languageItems]="languageItems"
+        [profilePic]="profilePic"
+        [logo]="logo"
+        (viewProfileCanvas)="viewProfileCanvas($event)"
+        (onLogout)="onLogout()"
+        (onLanguageSelection)="onLanguageSelection"
+        (toggleEvent)="toggleEvent()"
+
+      ></rds-comp-top-navigation>
     </div>
     <div class="
         d-flex

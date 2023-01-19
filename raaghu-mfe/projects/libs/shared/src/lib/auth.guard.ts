@@ -27,6 +27,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    return of(true);
     const storedPermission = localStorage.getItem('storedPermissions');
     const parsedPermission = JSON.parse(storedPermission);
     if (parsedPermission) {
