@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AccountServiceProxy, NgxTranslateModule, SharedModule } from '@libs/shared'
+import { NgxTranslateModule, SharedModule } from '@libs/shared'
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

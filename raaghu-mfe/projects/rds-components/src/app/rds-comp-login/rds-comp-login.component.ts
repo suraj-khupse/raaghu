@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { L } from 'chart.js/dist/chunks/helpers.core';
 declare var bootstrap: any;
 @Component({
   selector: 'rds-comp-login',
@@ -21,7 +22,8 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   @Input() userPasswordData: any;
   @Input() rememberMe: boolean;
   TenantNameData: any;
-  @Input() tenancyName: string;
+  @Input() tenancyName: string = 'NOT Selected';
+
   UserName: string = 'Email/Username';
   Password: string = 'Password';
   buttonLabel: string = 'Login';
@@ -47,7 +49,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.onShimmerLoad.emit(false);
-
+    console.log(this.tenancyName);
   }
 
   //for getting remebrme value

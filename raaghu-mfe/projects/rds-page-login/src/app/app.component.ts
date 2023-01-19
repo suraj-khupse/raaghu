@@ -69,9 +69,9 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   // }
   ngOnInit(): void {
     const userLoginInfo = JSON.parse(localStorage.getItem('userInfo'));
-    this.userNameData = userLoginInfo.userName;
-    this.userPasswordData = userLoginInfo.password;
-    this.rememberMe = userLoginInfo.rememberMe;
+    this.userNameData = userLoginInfo?.userName;
+    this.userPasswordData = userLoginInfo?.password;
+    this.rememberMe = userLoginInfo?.rememberMe;
     // this.oauthService.initCodeFlow();
     this.subscribeToAlerts();
     const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
