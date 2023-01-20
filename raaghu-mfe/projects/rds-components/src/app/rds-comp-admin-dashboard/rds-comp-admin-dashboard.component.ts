@@ -513,6 +513,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
   @Input() recordsPerPage:number=10;
   @Input() inlineEdit:boolean=false;
   @Input() pagination:boolean=true;
+  @Input() tenancy:string='';
   constructor(private injector: Injector, public translate: TranslateService, public alertService: AlertService) { super(injector); }
 
   ngOnInit(): void {
