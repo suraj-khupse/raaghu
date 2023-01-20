@@ -6,7 +6,7 @@
         class="d-inline-flex align-items-center text-decoration-none text-uppercase" role="button"
         aria-expanded="false">
         <rds-icon [name]="item.icon+''" [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="iconHeight"
-          [width]="iconWidth" [class.pe-3]="!collapsed"></rds-icon>
+          [width]="iconWidth" [class.pe-3]="!collapsed" [title]="collapsed?item.label:''"></rds-icon>
         <span data-bs-toggle="tooltip" data-bs-placement="auto" [ngClass]="{ 'd-none' : collapsed }">
           {{item.label}}
         </span>
@@ -17,7 +17,7 @@
       <div class="mb-3 sidenav-footer">
         <div *ngIf="collapseRequired" class="d-flex justify-content-center mb-2 mt-5">
           <rds-icon [name]="'grid_square'" height="23px" [stroke]="true" width="23px" data-bs-toggle="tooltip"
-            data-bs-placement="auto" title="collapse menu" (click)="onCollapse()" class="cursor-pointer"
+            data-bs-placement="auto" title="Collapse Menu" (click)="onCollapse()" class="cursor-pointer"
             id="sidenavCollapsed"></rds-icon>
         </div>
         <div class="btn-container d-flex justify-content-center ">
@@ -40,7 +40,7 @@
     [attr.id]="item.label+index">
     <rds-icon [name]="item.icon" *ngIf="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke"
       [height]="iconHeight" [width]="iconWidth" [class.pe-3]="!collapsed" data-bs-toggle="tooltip"
-      data-bs-placement="auto" [title]="item.label">
+      data-bs-placement="auto" >
     </rds-icon><span [ngClass]="{ 'd-none' : collapsed }">{{item.label}}</span>
   </a>
   <div class="collapse pt-2" [id]="'menuWithChildren'+index" *ngIf="item.children&&!collapsed"
@@ -60,7 +60,7 @@
     <a type="button" data-bs-toggle="dropdown" [attr.id]="'side-dropdown'+index" data-bs-offset="3,25" data-bs-auto-close="outside"
       aria-expanded="false" (click)="openSideDropdown('side-dropdown'+index,item)" [ngClass]="{ 'active' : item.active }">
       <rds-icon [name]="item.icon" *ngIf="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke"
-        [height]="iconHeight" [width]="iconWidth" data-bs-toggle="tooltip" data-bs-placement="auto">
+        [height]="iconHeight" [width]="iconWidth" data-bs-toggle="tooltip" data-bs-placement="auto" [title]="item.label">
       </rds-icon>
     </a>
     <ul class="dropdown-menu shadow p-3" [attr.aria-labelledby]="'side-dropdown'+index">
