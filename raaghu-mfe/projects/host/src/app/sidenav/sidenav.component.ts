@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ThemesService } from 'projects/libs/themes/src/public-api';
 import { PrepareCollectedData } from 'projects/libs/state-management/src/lib/state/DownloadData/download-data.action';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
@@ -180,7 +179,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     private shared: SharedService,
     private injector: Injector,
     private userAuthService: UserAuthService,
-    private theme: ThemesService,
     private serviceProxies: ServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -205,7 +203,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.theme.theme = 'light'
     const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
     if (tenancy) {
       this.tenancy = tenancy.name;
@@ -532,23 +529,23 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     return '';
   }
 
-  public currentTheme(): string {
-    return this.theme.current;
+  public currentTheme() {
+    //return this.theme.current;
   }
   public selectTheme(value: string): void {
-    this.theme.current = value;
+    //this.theme.current = value;
   }
   set dark(enabled: boolean) {
-    this.theme.theme = enabled ? 'dark' : null;
+    //this.theme.theme = enabled ? 'dark' : null;
   }
 
   toggleBetweenMode(event: any) {
     let checked = event;
     if (!checked) {
-      this.theme.theme = 'dark';
+      //this.theme.theme = 'dark';
     }
     else {
-      this.theme.theme = 'light';
+      //this.theme.theme = 'light';
     }
   }
 
