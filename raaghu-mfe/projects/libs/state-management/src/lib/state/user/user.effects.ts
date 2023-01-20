@@ -231,8 +231,6 @@ export class UserEffects {
         ofType(UpdateUserPermission),
         switchMap(({data}) =>
           this.userService.permissionsPUT("U",data.id, data.body).pipe(map((res: any) => {
-            this.alertService.showAlert('Success', 'User permission updated successfully', 'success');
-
           }),
             catchError((error: any) => of(
             ))
@@ -300,7 +298,6 @@ export class UserEffects {
       switchMap(({data}) =>
         this.userService.claims2(data.id, data.permissions).pipe(map((res: any) => {
           this.store.dispatch(getUsers());
-          this.alertService.showAlert('Success',  'Role added successfully', 'success')
         }),
           catchError((error: any) => of(
           ))

@@ -29,7 +29,7 @@ import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-ale
           allowedUrls: ['http://localhost:8080/'],
           sendAccessToken: true
       }
-  })
+    })
   ], 
   providers: [],
   bootstrap: [AppComponent]

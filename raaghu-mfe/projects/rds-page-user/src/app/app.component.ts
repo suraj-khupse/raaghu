@@ -114,6 +114,7 @@ export class AppComponent {
   saveClaimData: any;
   userNameToSearch: string;
   userId: any;
+  claimDisplayArray: any[] = [];
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -157,7 +158,7 @@ export class AppComponent {
     this.userList.forEach(ele=>{
       if(ele.name == this.userNameToSearch){
         this.userId = ele.id;
-
+        this.Saveuserinfo(undefined);
       }
     })
     this.userNameToSearch = undefined;
@@ -225,7 +226,14 @@ export class AppComponent {
       }
       
     });
-    this.store.dispatch(getAllClaimTypes());
+    
+  }
+
+  getClaimsEmitter(id=this.adminId){
+    if(id == this.adminId)
+      this.store.dispatch(getAllClaimTypes());
+    else
+      this.store.dispatch
     this.store
       .select(selectAllClaimTypes)
       .subscribe((res) => {
@@ -243,12 +251,17 @@ export class AppComponent {
       });
   }
 
-
   getPermissionEmitter(id=this.adminId){
     this.store.dispatch(getUserPermission(id));
     this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
       if (res && res.groups) {
         this.permissionTreeData = res.groups;
+        if(id == this.adminId){
+          this.entityDisplayName = 'admin';
+        }
+        else{
+          this.entityDisplayName = '';
+        }
         this.isEdit = false;
       }
     });
@@ -260,7 +273,7 @@ export class AppComponent {
    if(this.userId || user.userInfo.id){
     this.userId = user?.userinfo.id? user.userInfo.id:this.userId;
     let tempClaimData = [];
-    this.saveClaimData.forEach((ele)=>{
+    this.saveClaimData?.forEach((ele)=>{
       const item = {
         claimType:ele.claimType,
         claimValue:ele.claimValue,
@@ -274,6 +287,9 @@ export class AppComponent {
       body:{permissions:this.savePermissionData}
     }
     this.store.dispatch(UpdateUserPermission(data));
+    this.saveClaimData = undefined;
+    this.savePermissionData = undefined;
+    this.claimDisplayArray = [];
    }
   if(user && user.userInfo.id){
       this.store.dispatch(updateUser({id:user.userInfo.id,body:user.userInfo}));
@@ -309,83 +325,7 @@ export class AppComponent {
   deleteUser(eventData: any){
     this.store.dispatch(deleteUser(eventData.id));
   }
-
-
-  updateOrganizationTree() {
-    this.store.dispatch(getOrganizationUnitTree());
-    this.store.select(selectOrganizationUnitTree).subscribe((res: any) => {
-      if (res && res.items) {
-        this.treeData1 = this._arrayToTreeConverterService.createTree(
-          res.items,
-          'parentId',
-          'code',
-          null,
-          'children',
-          [
-            {
-              target: 'label',
-              source: 'displayName',
-            },
-            {
-              target: 'expandedIcon',
-              value: 'fa fa-folder-open text-warning',
-            },
-            {
-              target: 'collapsedIcon',
-              value: 'fa fa-folder text-warning',
-            },
-            {
-              target: 'expanded',
-              value: true,
-            },
-          ],
-          1
-        );
-      }
-    });
-  }
-  checkSelectedNodes(treeData: any, node: any) {
-    treeData.forEach((item: any) => {
-      if (item.data.name === node) {
-        const selecteditem: any = {
-          name: node,
-          value: 'true',
-        };
-        // this.selectedPermissions.push(selecteditem);
-      } else {
-        this.checkSelectedNodes(item.children, node);
-      }
-    });
-  }
-  ConvertArraytoTreedata(tredata: any) {
-    const treedaTA = this._arrayToTreeConverterService.createTree(
-      tredata,
-      'parentName',
-      'name',
-      null,
-      'children',
-      [
-        {
-          target: 'label',
-          source: 'displayName',
-        },
-        {
-          target: 'expandedIcon',
-          value: 'fa fa-folder-open text-warning',
-        },
-        {
-          target: 'collapsedIcon',
-          value: 'fa fa-folder text-warning',
-        },
-        {
-          target: 'expanded',
-          value: true,
-        },
-      ],
-      1
-    );
-    return treedaTA;
-  }
+  
   subscribeToAlerts() {
     this.alertService.alertEvents.subscribe((alert) => {
       this.currentAlerts = [];
@@ -395,25 +335,9 @@ export class AppComponent {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig;
     });
   }
-  FilterselectedPermissions(event: any) {
-    this.selectedFilterPermissions = [];
-    for (const n of this.UserPermissionFiltertreeData) {
-      this.selectedPermissionname(n, event);
-    }
-  }
-  selectedPermissionname(node: any, checked: boolean) {
-    if (node.selected == true) {
-      this.selectedFilterPermissions.push(node.data.name);
-    }
-    for (const n of node.children) {
-      this.selectedPermissionname(n, checked);
-    }
-  }
+
  
    
 }

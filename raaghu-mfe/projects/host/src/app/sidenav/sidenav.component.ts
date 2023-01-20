@@ -323,7 +323,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     element.style.display = (element.style.display === 'none') ? 'block' : 'none'
   }
   onLogout(){
-    this.store.dispatch(logout());
     this.userAuthService.unauthenticateUser();
     localStorage.removeItem('storedPermissions');
     localStorage.removeItem('userName');

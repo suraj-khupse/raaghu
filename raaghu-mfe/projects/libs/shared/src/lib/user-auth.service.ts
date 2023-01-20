@@ -31,6 +31,7 @@ export class UserAuthService implements OnInit {
   sources: Observable<any>;
   lang: LanguageInfo[];
   userName: string = '';
+  logoutSubject$ = new Subject();
   constructor(
     private router: Router,
     private store: Store,
@@ -91,7 +92,8 @@ export class UserAuthService implements OnInit {
     this.userAuthenticated = false;
     localStorage.removeItem('LoginCredential');
     localStorage.removeItem('tenantInfo');
-    //this.sessionService.init();
+    debugger
+    this.logoutSubject$.next(true);
   }
 
   getLocalization() {
