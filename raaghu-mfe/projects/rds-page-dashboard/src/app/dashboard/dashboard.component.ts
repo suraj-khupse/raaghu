@@ -9,6 +9,7 @@ import { ComponentLoaderOptions } from '@libs/shared';
 export class DashboardComponent implements OnInit {
 
   @Input() istenant:boolean=false;
+  @Input() tenancy: string = 'Host Admin';
 
   // rdsAdminDashboardMfeConfig: ComponentLoaderOptions = {
   //   name: 'RdsAdminDashboard',
@@ -20,7 +21,12 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   
+    const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
+    if (tenancy) {
+      this.tenancy = tenancy.name;
+    } else {
+      this.tenancy = 'Host Admin';
+    }
   }
 
 }
