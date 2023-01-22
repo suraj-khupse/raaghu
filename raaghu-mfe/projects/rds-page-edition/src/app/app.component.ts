@@ -142,7 +142,7 @@ export class AppComponent implements OnInit {
       if (res && res.groups) {
         this.newEditionFeature = [];
         this.featuresData = res.groups;
-        this.featuresName
+        // this.featuresName
         this.isEdit = false;
       }
     });

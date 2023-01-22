@@ -5,6 +5,7 @@ import { RdsButtonModule, RdsFabMenuModule, RdsNavTabModule, RdsOffcanvasModule 
 import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompTenantBasicProfileRightModule } from '../rds-comp-tenant-basic-profile-right/rds-comp-tenant-basic-profile-right.module';
 import { RdsCompTenantFeaturesModule } from '../rds-comp-tenant-features/rds-comp-tenant-features.module';
+import { RdsCompEditionNewFeaturesModule } from '../rds-comp-edition-new-features/rds-comp-edition-new-features.module';
 
 
 
@@ -20,7 +21,7 @@ import { RdsCompTenantFeaturesModule } from '../rds-comp-tenant-features/rds-com
     RdsNavTabModule,
     RdsCompTenantBasicProfileRightModule,
     RdsCompTenantFeaturesModule,
-    
+    RdsCompEditionNewFeaturesModule
     
   ]
 })

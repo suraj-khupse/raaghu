@@ -26,7 +26,7 @@ export const saveTenant = createAction(
 
 export const updateTenantFeatureValues = createAction(
     '[Tenant Page] Update Tenant Feature Values',
-    (data: any) => (data )
+    (data: any) => ({data} )
 );
 
 export const updateTenant = createAction(

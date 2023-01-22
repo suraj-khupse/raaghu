@@ -133,8 +133,8 @@ export class TenantEffects {
   updateTenantFeatureValues$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateTenantFeatureValues),
-      mergeMap((data) =>
-        this.tenantService.featuresPUT("T",data.id ,data.feature ).pipe(map((res: any) => {
+      mergeMap(({data}) =>
+        this.tenantService.featuresPUT("T",data.id ,data.body ).pipe(map((res: any) => {
           this.alertService.showAlert('Success', 'Tenant features updated successfully', 'success');
 
           // this.store.dispatch(getTenants())
@@ -148,5 +148,6 @@ export class TenantEffects {
       dispatch: false
     }
   );
+
 
 }

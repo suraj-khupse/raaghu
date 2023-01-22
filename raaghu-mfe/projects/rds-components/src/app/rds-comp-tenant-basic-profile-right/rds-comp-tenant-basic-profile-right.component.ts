@@ -15,70 +15,104 @@ export class RdsCompTenantBasicProfileRightComponent implements OnInit, OnChange
   @Output() onCancel = new EventEmitter<any>();
   @Input() tenantData: any;
   @ViewChild('tenantCreationForm') tenantInfoForm: NgForm;
+  @Output() onValidForm = new EventEmitter<any>();
   @Input() editShimmer: boolean = false;
-  @Input() buttonSpinner: boolean =true;
+  @Input() buttonSpinner: boolean =false;
+  radioItem: any = [
+    { label: 'Shared Database', checked: true, name: "Radio-Button" , id:1},
+    { label: 'Separated Database', checked: false, name: "Radio-Button" , id:2},
+];
 
+ActiveList = [
+  { value: 0, some: 'Active' },
+  { value: 1, some: 'Active with Limited Time' },
+  { value: 2, some: 'Passive' },
+];
+@Input() isTenantBasic: boolean = false;
+  targetId =undefined;
+  targetActiveId = undefined;
+  DatabaseUrl: boolean = false;
+  activationEndDate: boolean = false;
 
   constructor(public translate: TranslateService) { }
+
+
+  ngAfterViewInit(): void {
+    if (this.tenantData && this.tenantInfoForm) {
+      this.tenantInfoForm.statusChanges.subscribe((res) => {
+        if (res === 'VALID') {
+          this.onValidForm.emit(this.tenantData);
+        } else {
+          // this.onValidForm.emit(undefined);
+        }
+      });
+    }
+  }
+
 
   ngOnInit(): void {
     if (!this.tenantData) {
       this.tenantData = {};
       this.tenantData['name'] = '';
       this.tenantData['adminEmailAddress'] = '';
-      this.tenantData['editionId'] = [];
+      this.tenantData['targetId'] = '';
       this.tenantData['adminPassword'] = '' ;
-      this.tenantData['activationState'] = 1 ;
+      this.tenantData['targetActiveId'] = '' ;
       this.tenantData['imageUrl'] = '../assets/edit-pic.png';
-      // this.tenantData['connectionStrings'] = '';
+      this.tenantData['activationEndDate']= '';
     }
-    setTimeout(() => {
-      if (this.tenantData && this.tenantInfoForm) {
-        this.tenantInfoForm.statusChanges.subscribe(res => {
-          if (res === 'VALID') {
-            this.tenantInfo.emit({ tenant: this.tenantData, next: false });
-          } else {
-            this.tenantInfo.emit({ tenant: undefined, next: false });
-          }
-        });
-      }
-
-    }, 100);
 
   }
+  // activationState
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.tenantData) {
       this.tenantData = {};
       this.tenantData['name'] = '';
       this.tenantData['adminEmailAddress'] = '';
-      this.tenantData['editionId'] = [];
+      this.tenantData['targetId'] = '';
       this.tenantData['adminPassword'] = '' ;
-      this.tenantData['activationState'] = 1 ;
+      this.tenantData['targetActiveId'] = '' ;
       this.tenantData['imageUrl'] = '../assets/edit-pic.png';
+      this.tenantData['activationEndDate']= '';
       // this.tenantData['connectionStrings'] = '';
+    }
+
+    if(this.tenantData && this.tenantData.targetId){
+      this.editionList.forEach((res:any) => {
+        if(res && +res.value===+this.tenantData.targetId){
+          this.tenantData.editionId = res.some;
+        }
+      })
+    }
+
+    if(this.tenantData && this.tenantData.targetActiveId){
+      this.ActiveList.forEach((res:any) => {
+        if(res && +res.value===+this.tenantData.targetActiveId){
+          this.tenantData.activationState = res.some;
+        }
+      })
     }
 
   }
 
   next(tenantCreationForm: NgForm): void {
     tenantCreationForm.form.markAllAsTouched();
-    this.buttonSpinner=true;
+    this.buttonSpinner=false;
 
-    if (!tenantCreationForm || tenantCreationForm.invalid) {
-      
+    if (!tenantCreationForm || tenantCreationForm.invalid) {    
       return;
     }
-    this.tenantInfo.emit({ tenant: this.tenantData, next: true });
+    this.tenantInfo.emit(this.tenantData);
     // tenantCreationForm.reset()
 
   }
-  getCheckboxValue(event: any): void {
-    this.tenantData.activationState = event;
-    if (event) {
-      this.tenantData.activationState = null;
-    }
-  }
+  // getCheckboxValue(event: any): void {
+  //   this.tenantData.activationState = event;
+  //   if (event) {
+  //     this.tenantData.activationState = null;
+  //   }
+  // }
   
   getImage(ev: any) {
     let FileImage = ev.target.files[0];
@@ -89,7 +123,8 @@ export class RdsCompTenantBasicProfileRightComponent implements OnInit, OnChange
     reader.readAsDataURL(FileImage);
   }
   onEditionSelect(event: any): void {
-    this.tenantData.edition = event.item.value;
+    this.tenantData.editionId = event.item.some;
+    this.tenantData.targetId = event.item.value;
   }
 
   onCanceled(){ 
@@ -98,4 +133,29 @@ export class RdsCompTenantBasicProfileRightComponent implements OnInit, OnChange
 
   }
 
+  setDatabase(event: any): void {
+    this.tenantData.connectionStrings = event.item
+
+    if(event.item == 'Separated Database'){
+      this.DatabaseUrl = true;
+    }else {
+      this.DatabaseUrl = false;
+    }
+  }
+
+  getSelectedValue(event){
+    this.tenantData.activationState = event.item.some;
+     this.tenantData.targetActiveId= event.item.value;
+
+     if(this.tenantData.targetActiveId == 1){
+      this.activationEndDate = true;
+     }
+     else {
+      this.activationEndDate = false;
+     }
+  }
+
+  ActivationStateDate(event) {
+    this.tenantData.activationEndDate = event;
+  }
 }
