@@ -54,13 +54,6 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
 
-    //   this.oauthService.tryLogin({
-    //     onTokenReceived: context => {
-    //         console.debug("logged in");
-    //         console.debug(context);
-    //         this._router.navigateByUrl('/pages/dashboard');
-    //     }
-    // });
   }
   // refreshLogin(){
   //   this.oauthService.refreshToken().catch(()=>{
@@ -79,15 +72,21 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
 
 
     const userLoginInfo = JSON.parse(localStorage.getItem('userInfo'));
-    this.userNameData = userLoginInfo.userName;
-    this.userPasswordData = userLoginInfo.password;
-    this.rememberMe = userLoginInfo.rememberMe;
+    this.userNameData = userLoginInfo?.userName;
+    this.userPasswordData = userLoginInfo?.password;
+    this.rememberMe = userLoginInfo?.rememberMe;
     // this.oauthService.initCodeFlow();
     this.subscribeToAlerts();
     const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
     var tenancyName = tenantInfo ? tenantInfo.name : 'Not Selected';
     this.tenancyName = tenancyName;
-debugger
+
+
+    this._userAuthService.logoutSubject$.subscribe(res=>{
+      debugger
+      this.oauthService.revokeTokenAndLogout();
+    })
+
     this.store.select(selectTenant).subscribe((res) => {
       if (res) {
         if (res.state === 1 && res.tenantId !== null) {

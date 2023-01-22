@@ -3,31 +3,22 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ComponentLoaderOptions, MfeBaseComponent, ServiceProxy, SharedService, UserAuthService } from '@libs/shared';
 import { Store } from '@ngrx/store';
-// import { changePassword, getLanguages, getProfile, selectAllLanguages, selectDefaultLanguage, selectProfileInfo, setDefaultLanguageForUI } from '@libs/state-management';
-// import { deleteDelegations, getDelegations, getUsername, saveDelegations } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
-// import { selectDelegationsInfo, selectUserFilter } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.selector';
-// import { selectAllLoginAttempts } from 'projects/libs/state-management/src/lib/state/login-attempts/login-attempts.selector';
 import { DateTime } from 'luxon';
-// import { getLoginAttempts } from 'projects/libs/state-management/src/lib/state/login-attempts/login-attempts.actions';
-// import { deleteAccount, getMLATenancyData, getNotificationSettings, getUserNotification, linkToUser, SetAllNotificationsAsRead, SetNotificationRead, updateNotificationSettings } from 'projects/libs/state-management/src/lib/state/mla/mla.actions';
-// import { selectAllNotification, selectNotificationSettings, selectTenancyData } from 'projects/libs/state-management/src/lib/state/mla/mla.selector';
 import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ThemesService } from 'projects/libs/themes/src/public-api';
 import { PrepareCollectedData } from 'projects/libs/state-management/src/lib/state/DownloadData/download-data.action';
-import { DatePipe, DOCUMENT, formatDate } from '@angular/common';
+import { DatePipe, DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
 import { RouterOutlet } from '@angular/router';
 import * as moment from 'moment'
-
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { getSecuritylogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.actions';
 import { selectSecurityLogs } from 'projects/libs/state-management/src/lib/state/security-logs/security-logs.selector';
-import { deletePersonalData, downloadData, getLinkUserData, getPersonalData, getProfilePictureData, getProfileSettings, getTwoFactor, logout, requestPersonalData, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
-import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectProfilePictureData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
-import { format } from 'date-fns';
+import { deletePersonalData, downloadData, getProfilePictureData, logout, requestPersonalData } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
+import { selectProfilePictureData } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
+import { getLinkUserData, getPersonalData, getProfileSettings, getTwoFactor, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
+import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
 import { getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
-import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state/language/language.selector';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -102,7 +93,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { label: 'Dashboard', labelTranslationKey: 'Dashboard', id: '', permissionName: 'BookStore.Dashboard.Tenant', icon: 'home', path: '/pages/dashboard', description: 'Statistics and reports', descriptionTranslationKey: 'Statistics and reports' },
     { label: 'Tenants', labelTranslationKey: 'Tenants', id: 'tenants', permissionName: 'Saas.Tenants', icon: 'tenant', path: '/pages/tenant', description: 'Manage your tenants', descriptionTranslationKey: 'Manage your tenants' },
     { label: 'Editions', labelTranslationKey: 'Editions', id: '', permissionName: 'Saas.Editions', icon: 'editions', path: '/pages/edition', description: 'Manage editions and features of the application', descriptionTranslationKey: 'Manage editions and features of the application' },
-
     {
       label: 'Identity Management', labelTranslationKey: 'Identity Management', id: 'admin', permissionName: '', icon: 'administration', path: '',
       children: [
@@ -110,15 +100,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         { label: 'Roles', labelTranslationKey: 'Roles', id: '', permissionName: 'AbpIdentity.Roles', icon: 'roles', path: '/pages/role', description: 'Use roles to group permissions', descriptionTranslationKey: 'Use roles to group permissions' },
         { label: 'Users', labelTranslationKey: 'Users', id: '', permissionName: 'AbpIdentity.Users', icon: 'users', path: '/pages/user', description: 'Manage users and permissions', descriptionTranslationKey: 'Manage users and permissions' },
         { label: 'Claim Types', labelTranslationKey: 'Claim Types', id: '', permissionName: 'AbpIdentity.ClaimTypes', icon: 'users', path: '/pages/user', description: 'Manage users and permissions', descriptionTranslationKey: 'Manage users and permissions' },
-
-        // { label: 'subscription', labelTranslationKey: 'subscription', id: '', permissionName: 'Pages.Administration.Tenant.SubscriptionManagement', icon: 'subscription', path: '/pages/subscription', descriptionTranslationKey: '' },
-        // { label: 'Maintenance', labelTranslationKey: 'Maintenance', id: '', permissionName: 'Pages.Administration.Host.Maintenance', icon: 'maintenance', path: '/pages/maintenance', description: 'Statistics and reports', descriptionTranslationKey: 'Statistics and reports' },
-        // { label: 'Visual Settings', labelTranslationKey: 'Visual Settings', id: '', permissionName: '', icon: 'visual_settings', path: '/pages/visualsettings', description: 'Change the look of UI', descriptionTranslationKey: 'Change the look of UI' },
-        // { label: 'Webhook Subscriptions', labelTranslationKey: 'Webhook Subscriptions', id: '', permissionName: 'Pages.Administration.WebhookSubscription', icon: 'webhook_subscription', path: '/pages/webhooksubscription', description: 'Webhook Subsubscription Info', descriptionTranslationKey: 'Statistics and reports' },
-        // { label: 'Dynamic Properties', labelTranslationKey: 'Dynamic Properties', id: 'Pages.Administration.DynamicProperties', permissionName: '', icon: 'dynamic_properties', path: '/pages/dynamic-property-management', descriptionTranslationKey: '' },
-        // //{ label: 'Settings', labelTranslationKey: 'Settings', id: '', permissionName: '', icon: 'setting', path: '/pages/settings', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
-        { label: 'Security-logs', labelTranslationKey: 'Cart', id: 'cart', permissionName: 'AbpIdentity.SecurityLogs', icon: 'tenant', path: '/pages/security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
-
+        { label: 'Security-logs', labelTranslationKey: 'Security-logs', id: '', permissionName: 'AbpIdentity.SecurityLogs', icon: 'tenant', path: '/pages/security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
       ],
     },
     {
@@ -127,7 +109,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         { label: 'Client', labelTranslationKey: 'Client', id: '', permissionName: 'IdentityServer.Client', icon: 'users', path: '/pages/client', description: 'Manage clients and permissions', descriptionTranslationKey: 'Manage users and permissions' },
         { label: 'Identity Resource', labelTranslationKey: 'Identity Resources', id: '', permissionName: 'IdentityServer.IdentityResource', icon: 'home', path: '/pages/identityResources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
         { label: 'Api Resources', labelTranslationKey: 'Api Resources', id: '', permissionName: 'IdentityServer.ApiResource', icon: 'home', path: '/pages/apiresources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
-        { label: 'Api Scopes', id: 'ApiScope', permissionName: 'IdentityServer.ApiScope', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
+        { label: 'Api Scopes', id: 'ApiScope',labelTranslationKey: 'Api Scopes', permissionName: 'IdentityServer.ApiScope', icon: 'settings', path: '/pages/apiScope', description: 'Home > Identity Server > Api Scope' },
       ],
     },
     {
@@ -145,14 +127,14 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   ];
 
 
-  logo: string = 'https://www.carlogos.org/logo/Volkswagen-logo-2019-640x500.jpg';
+  logo: 'assets/raaghu_icon.png';
   logoWithName: string = 'https://www.sydneydieselcentre.com.au/wp-content/uploads/2015/10/volkswagen-cars-logo-300x275.jpg';
   color: string = '#8d9ba9';
   backgroundColor: string = '#F5F5FA';
   collapsedHeaderHeight: any = '40px';
   profilePic: string = '../assets/profile-picture-circle.svg';
   offCanvasId: string = 'profileOffCanvas'
-  collapseRequired: any = true;
+  collapseRequired: any = true; 
   @Input() tenancy: string = 'Host Admin';
   selectedMenu: string = '';
   selectedMenuDescription: string = '';
@@ -197,7 +179,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     private shared: SharedService,
     private injector: Injector,
     private userAuthService: UserAuthService,
-    private theme: ThemesService,
     private serviceProxies: ServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -213,9 +194,15 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   personalData: any[] = [];
 
   permissions: any;
+  onLanguageSelection(lan){
+    this.translate.use(lan.icon);
+    this.userAuthService.getApplicationConfiguration(lan.icon,false);
+  }
+  onDownloadLink (data: any){
+    this.store.dispatch(PrepareCollectedData());
+  }
 
   ngOnInit(): void {
-    this.theme.theme = 'light'
     const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
     if (tenancy) {
       this.tenancy = tenancy.name;
@@ -240,175 +227,41 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       name: 'RdsTopNavigation',
       input: {
         backgroundColor: this.backgroundColor,
-        selectedMenu: this.selectedMenu,
-        selectedMenuDescription: this.selectedMenuDescription,
         LoginAttempts: this.LoginAttempts,
         isPageWrapper: true,
         profilePic: this.profilePic,
         profileData: this.profileData,
         rdsDeligateTableData: this.rdsDeligateTableData,
         offCanvasId: this.offCanvasId,
-        logo: 'assets/raaghu_icon.png',
-        projectName: 'Raaghu',
-        linkedAccountData: this.linkedAccountData,
-        linkedAccountHeaders: this.linkedAccountHeaders,
-        userList: this.usernameList,
+        
+        
         notificationData: this.notifications,
         unreadCount: this.unreadCount,
         receiveNotifications: this.receiveNotifications,
         notificationTypes: this.notificationTypes,
-        tenancy: this.tenancy
+        tenancy: this.tenancy,
       },
       output: {
-        toggleEvent: () => {
-          var element = document.getElementById("sidebar");
-          element.style.display = (element.style.display === 'none') ? 'block' : 'none'
-        },
-        onLanguageSelection: (lan) => {
-          this.translate.use('en');
-          //this.store.dispatch(setDefaultLanguageForUI(lan));
-        },
-        deleteDeligateuser: (data: any) => {
-          if (data) {
-            //this.store.dispatch(deleteDelegations(data.id))
-          }
-        },
-        saveDeligate: (data: any) => {
-          if (data) {
-            //this.store.dispatch(saveDelegations(data))
-          }
-        },
-        onProfileSave: (passwordInfo: any) => {
-          if (passwordInfo) {
-            //this.store.dispatch(changePassword(passwordInfo));
-          }
-        },
-        deleteLinkaccount: (data: any) => {
-          //this.store.dispatch(deleteAccount(data))
-
-        },
-        onDownloadLink: (data: any) => {
-          this.store.dispatch(PrepareCollectedData());
-        },
-        onLoginAttemptsRefresh: (data: any) => {
-          // this.store.dispatch(getLoginAttempts(data));
-          // this.store.select(selectAllLoginAttempts).subscribe((res: any) => {
-          //   if (res && res.items) {
-          //     res.items.forEach((element: any) => {
-          //       const item: any = {
-          //         browserInfo: element.browserInfo,
-          //         clientIpAddress: element.clientIpAddress,
-          //         clientName: element.clientName,
-          //         creationTime: element.creationTime,
-          //         result: element.result,
-          //         tenancyName: element.tenancyName,
-          //         userNameOrEmail: element.userNameOrEmail,
-          //       }
-          //       this.LoginAttempts.LoginDatatable.push(item);
-          //     });
-          //     const mfeConfig = this.rdsTopNavigationMfeConfig
-          //     mfeConfig.input.LoginAttempts = { ... this.LoginAttempts };
-          //     this.rdsTopNavigationMfeConfig = mfeConfig;
-          //   }
-          // });
-        },
-        linkUser: (data: any) => {
-          //this.store.dispatch(linkToUser(data))
-        },
-        setAllNotificationAsRead: () => {
-          //this.store.dispatch(SetAllNotificationsAsRead());
-        },
-        setNotificationAsRead: (data: any) => {
-          //this.store.dispatch(SetNotificationRead({ id: data.userNotificationId }));
-        },
-        onUpdateNotificationSettings: (data: any) => {
-          //this.store.dispatch(updateNotificationSettings(data));
-        },
-        viewProfileCanvas: (value: string) => {
-          var offcanvas = document.getElementById('profile-canvas');
-          var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-          bsOffcanvas.show();
-          this.canvasTitle = value;
-          if (value == 'My Accounts') {
-            this.store.dispatch(getProfileSettings());
-            this.store.select(selectAllProfileSettings).subscribe((res: any) => {
-              if (res) {
-                [res].forEach(ele => {
-                  this.profileData.name = ele.name;
-                  this.profileData.surname = ele.surname;
-                  this.profileData.email = ele.email;
-                  this.profileData.phoneNumber = ele.phoneNumber;
-                  this.profileData.userName = ele.userName;
-                  this.profileData.concurrencyStamp = ele.concurrencyStamp
-                });
-              }
-            });
-            this.store.dispatch(getTwoFactor());
-            this.store.select(selectTwoFactor).subscribe(res => {
-              if (res) this.profileData.twoFactorEnabled = true;
-            });
-          } else if (value == 'Security Logs') {
-            this.store.dispatch(getSecuritylogs());
-            this.store.select(selectSecurityLogs).subscribe((res: any) => {
-              if (res && res.items) {
-                res.items.forEach((element: any) => {
-                  const item: any = {
-                    id: element.id,
-                    time: element.creationTime,
-                    action: element.action,
-                    ipAddress: element.clientIpAddress,
-                    browser: element.browserInfo,
-                    application: element.applicationName,
-                    identity: element.identity,
-                    username: element.userName
-                  }
-                  this.securityLogs.push(item);
-                });
-              }
-            });
-          } else if (value == 'Linked Accounts') {
-            this.store.dispatch(getLinkUserData());
-            this.store.select(selectlinkUser).subscribe(res => {
-              if (res) {
-                this.linkedAccountData = [
-                  { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
-                  { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true },
-                  { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
-                  { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true },
-                  { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
-                  { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true }
-                ];
-                // this.linkedAccountData = res.items;
-              }
-            });
-          } else if (value == 'Personal Data') {
-            this.store.dispatch(getPersonalData('6f9f495e-f308-9a83-e524-3a079ce6f2f5'));
-            this.store.select(selectPersonalData).subscribe(res => {
-              if (res) {
-                this.personalData = res.items;
-              }
-            });
-          }
-
-        },
-        onLogout: () => {
-          this.store.dispatch(logout());
-          this.userAuthService.unauthenticateUser();
-          localStorage.removeItem('storedPermissions');
-          localStorage.removeItem('userName');
-          localStorage.removeItem('userId');
-          localStorage.removeItem('userNameInfo');
-          localStorage.setItem('userAuthenticated', JSON.stringify({ value: false }));
-          this.router.navigate(['/login']);
-         
-          
-        }
+        
       }
     }
-      this.userAuthService.localization;
-      console.log('display localization.', this.userAuthService);
-    this.store.select(selectAllLanguages).subscribe((res: any) => {
+
+  
+    this.userAuthService.localization.subscribe((ele:any ) => {
+      ele.forEach((element:any) => {
+        const data :any = {
+          value: element.displayName,
+          some: element.displayName,
+          id : element.id,
+          icon: element.flagIcon,
+          iconWidth: '21px',
+          iconHeight: '14px',
+        }
+        this.languageItems.push(data);
+      })
+     
     })
+  
     this.on('tenancyDataAgain').subscribe(res => {
     })
     if (this.router.url) {
@@ -431,33 +284,9 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           }
         })
       }
-
       this.rdsTopNavigationMfeConfig.input.selectedMenu = this.selectedMenu;
       this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = this.selectedMenuDescription;
     }
-
-    //this.store.dispatch(getMLATenancyData());
-
-    // this.store.select(selectTenancyData).subscribe(res => {
-    //   this.linkedAccountData = [];
-    //   if (res && res.items) {
-    //     const data: any = [];
-    //     res.items.forEach((item: any) => {
-    //       const _item: any = {
-    //         id: item.id,
-    //         username: item.username,
-    //         tenancyName: item.tenancyName,
-    //         tenantId: item.tenantId
-    //       }
-    //       this.linkedAccountData.push(_item);
-    //     });
-    //     const mfe = this.rdsTopNavigationMfeConfig;
-    //     mfe.input.linkedAccountData = [ ...this.linkedAccountData ];
-    //     this.rdsTopNavigationMfeConfig = mfe;
-
-    //   }
-
-    // });
 
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -473,84 +302,33 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         this.selectedMenuDescription = this.sidenavItems[0].description;
       }
     }
-
-
-
-
-
-
-
-
-    // this.store.dispatch(getProfile());
-    // this.store.select(selectProfileInfo).subscribe((res: any) => {
-    //   if (res) {
-    //     this.profileData = res;
-    //     const mfe = this.rdsTopNavigationMfeConfig;
-    //     mfe.input.profileData = { ...this.profileData };
-    //     this.rdsTopNavigationMfeConfig = mfe;
-    //   }
-    // })
-
-
-    // this.store.dispatch(getDelegations());
-    // this.store.select(selectDelegationsInfo).subscribe((res: any) => {
-    //   if (res && res.items && res.items.length) {
-    //     res.items.forEach((element: any) => {
-    //       const item: any = {
-    //         username: element.username,
-    //         startTime: element.startTime,
-    //         endTime: element.endTime,
-    //         id: element.id,
-    //       };
-    //       this.rdsDeligateTableData.push(item);
-    //     });
-    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
-    //     mfeConfig.input.rdsDeligateTableData = [...this.rdsDeligateTableData];
-    //     this.rdsTopNavigationMfeConfig = mfeConfig;
-    //   }
-
-    // });
     const UsernameFilter: any = {
       excludeCurrentUser: true,
       filter: '',
       maxResultCount: 10,
       skipCount: 0
     }
-    // this.store.dispatch(getUsername(UsernameFilter));
-    // this.store.select(selectUserFilter).subscribe((res: any) => {
-    //   if (res && res.items && res.items.length) {
-    //     res.items.forEach((element: any) => {
-    //       const item: any = {
-    //         value: element.value,
-    //         displayText: element.name,
-    //       };
-    //       this.usernameList.push(item);
-    //     });
-    //     const mfeConfig = this.rdsTopNavigationMfeConfig;
-    //     mfeConfig.input.userList = [...this.usernameList];
-    //     this.rdsTopNavigationMfeConfig = mfeConfig;
-    //   }
-    // })
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
       }
     })
 
-
-    this.on('logout-returns').subscribe(r => {
-      if (this.counter < 1) {
-        this.userAuthService.unauthenticateUser();
-        this.counter++;
-      }
-
-    })
-
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.rdsTopNavigationMfeConfig.input.backgroundColor = this.backgroundColor;
-
+  toggleEvent() {
+    var element = document.getElementById("sidebar");
+    element.style.display = (element.style.display === 'none') ? 'block' : 'none'
   }
+  onLogout(){
+    this.userAuthService.unauthenticateUser();
+    localStorage.removeItem('storedPermissions');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userNameInfo');
+    localStorage.setItem('userAuthenticated', JSON.stringify({ value: false }));
+    this.router.navigate(['/login']);
+  }
+ 
 
   onProfileSave(event: any) {
     if (event.changedPassword.currentPassword != '' && event.changedPassword.newPassword != '') this.store.dispatch(saveChangedPassWord(event));
@@ -601,7 +379,73 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.shared.setTopNavTitle('');
 
   }
-  redirect(event): void {
+
+  viewProfileCanvas(value: string){
+    var offcanvas = document.getElementById('profile-canvas');
+    var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+    bsOffcanvas.show();
+    this.canvasTitle = value;
+    if (value == 'My Accounts') {
+      this.store.dispatch(getProfileSettings());
+      this.store.select(selectAllProfileSettings).subscribe((res: any) => {
+        if (res) {
+          [res].forEach(ele => {
+            this.profileData.name = ele.name;
+            this.profileData.surname = ele.surname;
+            this.profileData.email = ele.email;
+            this.profileData.phoneNumber = ele.phoneNumber;
+            this.profileData.userName = ele.userName;
+            this.profileData.concurrencyStamp = ele.concurrencyStamp
+          });
+        }
+      });
+      this.store.dispatch(getTwoFactor());
+      this.store.select(selectTwoFactor).subscribe(res => {
+        if (res) this.profileData.twoFactorEnabled = true;
+      });
+    } else if (value == 'Security Logs') {
+      this.store.dispatch(getSecuritylogs());
+      this.store.select(selectSecurityLogs).subscribe((res: any) => {
+        if (res && res.items) {
+          res.items.forEach((element: any) => {
+            const item: any = {
+              id: element.id,
+              time: element.creationTime,
+              action: element.action,
+              ipAddress: element.clientIpAddress,
+              browser: element.browserInfo,
+              application: element.applicationName,
+              identity: element.identity,
+              username: element.userName
+            }
+            this.securityLogs.push(item);
+          });
+        }
+      });
+    } else if (value == 'Linked Accounts') {
+      this.store.dispatch(getLinkUserData());
+      this.store.select(selectlinkUser).subscribe(res => {
+        if (res) {
+          this.linkedAccountData = [
+            { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+            { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true },
+            { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+            { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true },
+            { targetUserId: '1', targetUserName: 'sample', targetTenantId: '1.1', targetTenantName: 'set', directlyLinked: false },
+            { targetUserId: '2', targetUserName: 'test', targetTenantId: '2.1', targetTenantName: 'get', directlyLinked: true }
+          ];
+          // this.linkedAccountData = res.items;
+        }
+      });
+    } else if (value == 'Personal Data') {
+      this.store.dispatch(getPersonalData('6f9f495e-f308-9a83-e524-3a079ce6f2f5'));
+      this.store.select(selectPersonalData).subscribe(res => {
+        if (res) {
+          this.personalData = res.items;
+        }
+      });
+    }
+
   }
 
   onCollapse(event): void {
@@ -685,23 +529,23 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     return '';
   }
 
-  public currentTheme(): string {
-    return this.theme.current;
+  public currentTheme() {
+    //return this.theme.current;
   }
   public selectTheme(value: string): void {
-    this.theme.current = value;
+    //this.theme.current = value;
   }
   set dark(enabled: boolean) {
-    this.theme.theme = enabled ? 'dark' : null;
+    //this.theme.theme = enabled ? 'dark' : null;
   }
 
   toggleBetweenMode(event: any) {
     let checked = event;
     if (!checked) {
-      this.theme.theme = 'dark';
+      //this.theme.theme = 'dark';
     }
     else {
-      this.theme.theme = 'light';
+      //this.theme.theme = 'light';
     }
   }
 
@@ -730,7 +574,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   public getSideNavItems(): any {
-    // this.sidenavItems = this.translateMenu(this.sidenavItems);
+    this.sidenavItems = this.translateMenu(this.sidenavItems);
     return this.sidenavItems;
   }
 

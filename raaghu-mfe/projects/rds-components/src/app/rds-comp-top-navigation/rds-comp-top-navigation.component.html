@@ -23,69 +23,14 @@
 
     <div class="collapse navbar-collapse ps-5 ms-4 py-0 m-0" id="navbarSupportedContent1" dropdownHeight>
       <ul class="navbar-nav d-flex align-items-center ms-auto">
-        <rds-dropdownlist class="ms-2" [id]="'language-dropdown'" [placeholder]="'Languages'"
+        <rds-dropdownlist class="ms-2" [id]="'languageDropdown'" [placeholder]="'Languages'"
           [value]="selectedLanguage.language" [xOffset]="'-90'" [yOffset]="'0'" [icon]="selectedLanguage.icon"
           [borderDropdown]="false" [iconHeight]="'18px'" [iconWidth]="'18px'" [listItems]="languageItems"
           [dropdownHeight]="'500'" (onSelect)="onLanguageSelect($event)">
         </rds-dropdownlist>
-        <!-- <li class="nav-item dropdown pe-3 ps-2 me-1">
-          <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <span>
-              <rds-button class="position-relative" [isFabIcon]="true" [size]="'small'" [id]="'notification'"
-                [isRounded]="true" [colorVariant]="'default'" type="button">
-                <rds-icon name="notification" width="20px" height="20px"></rds-icon>
-                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
-                  [label]="unreadCount" [positioned]="true">
-                </rds-badge>
-              </rds-button>
-            </span>
-          </a>
-          <div aria-labelledby="navbarDropdownMenuLink" class="
-              dropdown-menu dropdown-menu-right
-              notifications-dropdown
-              w-md-375px
-              border-0
-              mt-2
-              p-0
-            ">
-            <rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"
-              (setAsReadOutput)="setNotificationAsRead.emit($event)"
-              (setAllReadOutput)="setAllNotificationAsRead.emit($event)"></rds-notification>
-          </div>
-        </li> -->
-        <!-- <li class="nav-item border-end border-start px-3"> -->
-        <!-- <a href="#" this.router.navigate(['/link']);><rds-icon width="20px" height="20px" name="gear"></rds-icon></a> -->
-        <!-- <a routerLinkActive="routerLinkActive-name" [routerLink]="['/pages/settings']" class="setting">
-            <rds-icon width="20px" height="20px" name="gear"></rds-icon>
-          </a>
-        </li> -->
       </ul>
     </div>
-    <div class="mobile-ms">
       <ul class="navbar-nav d-flex align-items-center flex-row gap-2">
-        <li class="nav-item dropdown px-2 mobile-notification">
-          <a class="nav-link py-0" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <span>
-              <rds-button class="position-relative" [size]="'small'" [id]="'notification'" [isRounded]="true"
-                [colorVariant]="'default'" type="button">
-                <rds-icon name="notification" width="20px" height="20px"></rds-icon>
-                <rds-badge class="notification-li" right size="smallest" badgeType="circle" colorVariant="primary"
-                  [label]="unreadCount" [positioned]="true">
-                </rds-badge>
-              </rds-button>
-              <!-- <rds-icon name="notifications" width="20px"></rds-icon> -->
-            </span>
-          </a>
-          <!-- <div aria-labelledby="navbarDropdownMenuLink"
-            class="dropdown-menu dropdown-menu-right notifications-dropdown w-md-375px border-0 mt-2 p-0">
-            <rds-notification [notifications]="notificationData" [unreadCount]="unreadCount"
-              (setAsReadOutput)="setNotificationAsRead.emit($event)"
-              (setAllReadOutput)="setAllNotificationAsRead.emit($event)"></rds-notification>
-          </div> -->
-        </li>
-
         <li class="nav-item cursor-pointer">
           <div class="nav-link align-items-center">
             <div class="dropdown ms-2">
@@ -102,7 +47,6 @@
                       <p class="mb-0 ps-2">
                         Wai Technologies
                       </p>
-                      <!-- <p class="text-muted ps-2">Admin</p> -->
                     </div>
                   </div>
                 </div>
@@ -113,9 +57,10 @@
                       <span class="fw-bold">Welcome</span><br>
                       <span>Admin</span>
                     </div>
-                  </a></li>
+                  </a>
+                </li>
                 <ng-container *ngFor="let item of profileItems">
-                  <li><a class="dropdown-item" [ngClass]="{'text-danger': item.value == 'Log out'}"
+                  <li class="dropdown-item"><a  [ngClass]="{'text-danger': item.value == 'Log out'}"
                       (click)="onProfileSelect(item)">{{item.value}}</a></li>
                 </ng-container>
               </ul>
@@ -123,20 +68,5 @@
           </div>
         </li>
       </ul>
-    </div>
   </div>
 </nav>
-<!-- <rds-comp-profile [MenuItems]="navtabItems" [Profileurl]="profilePic" [viewCanvas]="showOffcanvas"
-  [tableWidth]="tableWidth" [id]="offCanvasId" [userList]="userList" [languageItems]="languageItems"
-  [listItemsResult]="listusename" [DownloadTable]="dounloadata" [tableStyle]="tableStyle"
-  [LoginAttempts]="LoginAttempts" [ProfileData]="profileData" [selectedLanguage]="selectedLanguage"
-  [rdsDeligateTableHeader]="rdsDeligateTableHeader" [rdsDeligateTableData]="rdsDeligateTableData"
-  (onSaveDelegate)="saveDeligate.emit($event)" [recordsPerpage]="recordsPerpage" [pagination]="pagination"
-  (onDeleteDeligate)="deleteDeligateuser.emit($event)" (ondeleteLinkaccount)="deleteLinkaccount.emit($event)"
-  (onLinkToUser)="saveLinkUsers($event)" (onProfileSave)="onProfileSave.emit($event)"
-  (onLoginAttempts)="onLoginAttemptsRefresh.emit($event)" (onDownloadLink)="onDownloadLink.emit($event)"
-  [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData" (onProfilePicUpdate)="getProfilePic($event)"
-  [showDelegationButtonSpinner]="showDelegationButtonSpinner" [tenancy]="tenancy">
-</rds-comp-profile> -->
-<!-- <rds-comp-notification-settings [notificationTypes]="notificationTypes" [receiveNotifications]="receiveNotifications"
-  (onUpdateNotificationSettings)="onUpdateNotificationSettings.emit($event)"></rds-comp-notification-settings> -->

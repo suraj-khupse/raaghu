@@ -34,17 +34,18 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
       this.userData['isActive'] = true;
       this.userData['surname'] = '';
     }
-     setTimeout(() => {
-    if (this.userData && this.userInfoForm) {
-      this.userInfoForm.statusChanges.subscribe(res => {
-        if (res === 'VALID') {
-          this.userInfo.emit({ user: this.userData, next: false });
-        }
-      });
+    setTimeout(() => {
+      if (this.userData && this.userInfoForm) {
+        this.userInfoForm.statusChanges.subscribe(res => {
+          if (res === 'VALID') {
+            this.userInfo.emit({ user: this.userData, next: false });
+          }
+        });
+      }
+       }, 100);
+  
     }
-     }, 100);
 
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.userData) {
@@ -75,6 +76,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
     event.item.forEach(element => {
       this.userData.roleNames.push(element.some);
     });
+    this.userInfo.emit({ user: this.userData, next: false });
   }
   
   onOrgUnitSelect(event){
@@ -82,6 +84,7 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
     event.item.forEach(element => {
       this.userData.organizationUnitIds.push(element.value);
     });
+    this.userInfo.emit({ user: this.userData, next: false });
   }
 
   getImage(ev: any) {

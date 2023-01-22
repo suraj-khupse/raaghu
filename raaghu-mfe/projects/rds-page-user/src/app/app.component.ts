@@ -13,9 +13,10 @@ import {
   getAllClaimTypes,
   getUserForEdit,
   getUserPermission,
-  getUserPermissionFilterList,
   getUsers,
+  saveClaims,
   saveUser,
+  updateUser,
   UpdateUserPermission,
 } from 'projects/libs/state-management/src/lib/state/user/user.actions';
 import {
@@ -54,7 +55,7 @@ import { selectOrganizationUnitTree } from 'projects/libs/state-management/src/l
         query(':enter',
           [
             style({ opacity: 0 })
-          ],
+          ],                      
           { optional: true }
         ),
         query(':leave',
@@ -109,6 +110,11 @@ export class AppComponent {
   orgUnitListItem: any[];
   roleNamePermissionTree: string;
   adminId: any;
+  savePermissionData: any;
+  saveClaimData: any;
+  userNameToSearch: string;
+  userId: any;
+  claimDisplayArray: any[] = [];
   constructor(
     public datepipe: DatePipe,
     private store: Store,
@@ -146,6 +152,17 @@ export class AppComponent {
   orgTreeData: any = [];
   UserTableData: any = [];
   entityDisplayName: string = '';
+
+  searchUserId(){
+    if(this.userNameToSearch)
+    this.userList.forEach(ele=>{
+      if(ele.name == this.userNameToSearch){
+        this.userId = ele.id;
+        this.Saveuserinfo(undefined);
+      }
+    })
+    this.userNameToSearch = undefined;
+  }
   
   ngOnInit(): void {
     this.store.dispatch(getUsers());
@@ -173,7 +190,7 @@ export class AppComponent {
           }
           this.userList.push(item);
         });
-        //this.isShimmer = false;
+        if(this.userNameToSearch)this.searchUserId();
       }
     });
  
@@ -209,7 +226,14 @@ export class AppComponent {
       }
       
     });
-    this.store.dispatch(getAllClaimTypes());
+    
+  }
+
+  getClaimsEmitter(id=this.adminId){
+    if(id == this.adminId)
+      this.store.dispatch(getAllClaimTypes());
+    else
+      this.store.dispatch
     this.store
       .select(selectAllClaimTypes)
       .subscribe((res) => {
@@ -225,85 +249,58 @@ export class AppComponent {
           });
         }
       });
-
-
- 
-    this.rdsUserMfeConfig = {
-      name: 'RdsCompUserPermissionsNew',
-      input: {
-        roles: this.roles,
-        userinfo:this.userinfo,
-        organizationTreeList:this.organizationTreeList,
-        // organizationUnits:this.organizationUnits,
-        // permissionsList:this.permissionsList,
-         orgTreeData:this.orgTreeData,
-         isAssigned: this.isAssigned,
-         selectedPermissions:this.selectedPermissions,
-         selectedOrganizations:this.selectedOrganizations,
-         Selectedata:this.Selectedata,
-         Selecteorganizationdata:this.Selecteorganizationdata,
-         treeData:this.treeData,
-       // organizationtreeData:this.organizationtreeData,
-         PermissionFiltertreeData:this.PermissionFiltertreeData,
-         listItemsm:this.listItemsm,
-        selectedRoles:this.selectedRoles,
-        //  isShimmer:false,
-        //  editShimmer:false
-      },
-    
-    };
-   
-    
-    this.store.dispatch(getUserPermissionFilterList());
-    this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
-      if (res && res.UserPermissionFilterI && res.UserPermissionFilterI.items)
-        this.UserPermissionFiltertreeData = this.ConvertArraytoTreedata(
-          res.UserPermissionFilterI.items
-        );
-     
-    });
-
-    this.updateOrganizationTree();
-
   }
-
 
   getPermissionEmitter(id=this.adminId){
     this.store.dispatch(getUserPermission(id));
     this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
       if (res && res.groups) {
         this.permissionTreeData = res.groups;
+        if(id == this.adminId){
+          this.entityDisplayName = 'admin';
+        }
+        else{
+          this.entityDisplayName = '';
+        }
         this.isEdit = false;
       }
     });
   }
   
-  getClaimsEmitter(id=this.adminId){
-    
-  }
-  Saveuserinfo(user: any ){
-    if(user && user.userInfo ){
-      if(user.userInfo.id){
-        const data: any = {
-          email : user.userInfo.email,
-          isActive:user.userInfo.isActive,
-          name:user.userInfo.name,
-          password:user.userInfo.password,
-          surname:user.userInfo.surname,
-          id:user.userInfo.id,
-          userName:user.userInfo.userName,
-          phoneNumber:user.userInfo.phoneNumber
-         };
-         this.store.dispatch(getUserForEdit(data));
-         console.log(getUserForEdit(data));
+  Saveuserinfo(user?: any){
+    this.savePermissionData = user? user.permissionList: this.savePermissionData;
+    this.saveClaimData = user? user.claimsData: this.saveClaimData;
+   if(this.userId || user.userInfo.id){
+    this.userId = user?.userinfo.id? user.userInfo.id:this.userId;
+    let tempClaimData = [];
+    this.saveClaimData?.forEach((ele)=>{
+      const item = {
+        claimType:ele.claimType,
+        claimValue:ele.claimValue,
+        userId:this.userId
       }
-        else{
-          this.store.dispatch(saveUser(user.userInfo));
-     }
-     
+      tempClaimData.push(item);
+    })
+    this.store.dispatch(saveClaims(tempClaimData))
+    const data = {
+      id:this.userId,
+      body:{permissions:this.savePermissionData}
     }
-   
+    this.store.dispatch(UpdateUserPermission(data));
+    this.saveClaimData = undefined;
+    this.savePermissionData = undefined;
+    this.claimDisplayArray = [];
+   }
+  if(user && user.userInfo.id){
+      this.store.dispatch(updateUser({id:user.userInfo.id,body:user.userInfo}));
   }
+  else{
+      this.userNameToSearch = user.userInfo.userName;
+      this.store.dispatch(saveUser(user.userInfo));
+  }
+    
+  }   
+
   getEditUser (user: any) {
     this.store.dispatch(getUserForEdit(user));
     this.store.select(selectUserForEdit).subscribe(res=>{
@@ -320,94 +317,15 @@ export class AppComponent {
        };
      console.log(res);
    })  
-
-   // this.store.dispatch(getTenantFesaturesForEdit(selectedTenant))
-
   }
   
   onClose(event: any){
-  this.userinfo = undefined;  
+    this.userinfo = undefined;
   }
   deleteUser(eventData: any){
     this.store.dispatch(deleteUser(eventData.id));
   }
-
-
-  updateOrganizationTree() {
-    this.store.dispatch(getOrganizationUnitTree());
-    this.store.select(selectOrganizationUnitTree).subscribe((res: any) => {
-      if (res && res.items) {
-        this.treeData1 = this._arrayToTreeConverterService.createTree(
-          res.items,
-          'parentId',
-          'code',
-          null,
-          'children',
-          [
-            {
-              target: 'label',
-              source: 'displayName',
-            },
-            {
-              target: 'expandedIcon',
-              value: 'fa fa-folder-open text-warning',
-            },
-            {
-              target: 'collapsedIcon',
-              value: 'fa fa-folder text-warning',
-            },
-            {
-              target: 'expanded',
-              value: true,
-            },
-          ],
-          1
-        );
-      }
-    });
-  }
-  checkSelectedNodes(treeData: any, node: any) {
-    treeData.forEach((item: any) => {
-      if (item.data.name === node) {
-        const selecteditem: any = {
-          name: node,
-          value: 'true',
-        };
-        // this.selectedPermissions.push(selecteditem);
-      } else {
-        this.checkSelectedNodes(item.children, node);
-      }
-    });
-  }
-  ConvertArraytoTreedata(tredata: any) {
-    const treedaTA = this._arrayToTreeConverterService.createTree(
-      tredata,
-      'parentName',
-      'name',
-      null,
-      'children',
-      [
-        {
-          target: 'label',
-          source: 'displayName',
-        },
-        {
-          target: 'expandedIcon',
-          value: 'fa fa-folder-open text-warning',
-        },
-        {
-          target: 'collapsedIcon',
-          value: 'fa fa-folder text-warning',
-        },
-        {
-          target: 'expanded',
-          value: true,
-        },
-      ],
-      1
-    );
-    return treedaTA;
-  }
+  
   subscribeToAlerts() {
     this.alertService.alertEvents.subscribe((alert) => {
       this.currentAlerts = [];
@@ -417,25 +335,9 @@ export class AppComponent {
         message: alert.message,
       };
       this.currentAlerts.push(currentAlert);
-      const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      rdsAlertMfeConfig.input.currentAlerts = [...this.currentAlerts];
-      this.rdsAlertMfeConfig = rdsAlertMfeConfig;
     });
   }
-  FilterselectedPermissions(event: any) {
-    this.selectedFilterPermissions = [];
-    for (const n of this.UserPermissionFiltertreeData) {
-      this.selectedPermissionname(n, event);
-    }
-  }
-  selectedPermissionname(node: any, checked: boolean) {
-    if (node.selected == true) {
-      this.selectedFilterPermissions.push(node.data.name);
-    }
-    for (const n of node.children) {
-      this.selectedPermissionname(n, checked);
-    }
-  }
+
  
    
 }

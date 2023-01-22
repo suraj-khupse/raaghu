@@ -1,6 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, changePasswordUserSuccess, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getTemplateContent, getTemplateContentFailure, getTemplateContentSuccess, getTemplateDefinition, getTemplateDefinitionFailure, getTemplateDefinitionSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionFilterList, getUserPermissionListSuccess, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims } from "./user.actions";
-import { User } from "./user.models";
+import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, changePasswordUserSuccess, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getTemplateContent, getTemplateContentFailure, getTemplateContentSuccess, getTemplateDefinition, getTemplateDefinitionFailure, getTemplateDefinitionSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims } from "./user.actions";
 
 
 export interface UsersState {

@@ -36,13 +36,12 @@ import {
   getUserForEdit,
   getUserForEditSuccess,
   getUserPermission,
-  getUserPermissionFilterList,
-  getUserPermissionListSuccess,
   getUserPermissionSuccess,
   getUsers,
   getUserSuccess,
   saveClaims,
   saveUser,
+  updateUser,
   UpdateUserPermission,
 } from './user.actions';
 
@@ -176,6 +175,25 @@ export class UserEffects {
         dispatch: false
       }
     );
+    upateUser$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(updateUser),
+        switchMap(({data}) =>
+          this.userService.usersPUT(data.id,data.body).pipe(map((res: any) => {
+            this.store.dispatch(getUsers());
+            this.alertService.showAlert('Success', 'User added successfully', 'success');
+
+          }),
+            catchError((error: any) => of(
+            ))
+          )
+        )
+      ),
+      {
+        dispatch: false
+      }
+    );
+
     getUserForEdit$ = createEffect(() =>
       this.actions$.pipe(
         ofType(getUserForEdit),
@@ -211,10 +229,8 @@ export class UserEffects {
     UpdateUserPermission$ = createEffect(() =>
       this.actions$.pipe(
         ofType(UpdateUserPermission),
-        switchMap((data) =>
-          this.userService.permissionsPUT("U",undefined, data.Permissions).pipe(map((res: any) => {
-            this.alertService.showAlert('Success', 'User permission updated successfully', 'success');
-
+        switchMap(({data}) =>
+          this.userService.permissionsPUT("U",data.id, data.body).pipe(map((res: any) => {
           }),
             catchError((error: any) => of(
             ))
@@ -282,7 +298,6 @@ export class UserEffects {
       switchMap(({data}) =>
         this.userService.claims2(data.id, data.permissions).pipe(map((res: any) => {
           this.store.dispatch(getUsers());
-          this.alertService.showAlert('Success',  'Role added successfully', 'success')
         }),
           catchError((error: any) => of(
           ))

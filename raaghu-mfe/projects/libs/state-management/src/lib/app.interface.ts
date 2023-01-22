@@ -7,7 +7,7 @@ import { LanguageTextsState } from './state/language-text/language-text.reducer'
 import { downloadState } from './state/DownloadData/download-data.reducer';
 
 import { ValidateTenantState } from "./state/login/login.reducer";
-import { LanguagesState } from './state/language/language.reducer';
+import { DefaultLanguageState, LanguagesState } from './state/language/language.reducer';
 import { EditionsState } from './state/edition/edition.reducer';
 import { TenantState } from './state/tenant/tenant.reducer';
 import { RolesState } from './state/role/role.reducer';
@@ -36,6 +36,7 @@ export interface AppState {
   editions: EditionsState,
   roles: RolesState,
   languages: LanguagesState,
+  defaultLanguage:DefaultLanguageState
   ManageLinkedAccounts: ManageLinkedAccountsState,
   // loginAttempts: LoginAttemptsState,
   settings: SettingsState,

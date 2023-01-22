@@ -1,6 +1,6 @@
 <div class="text-center">
   <!--<p class="pb-3">Current tenant:{{TenancyName}} (<a href="#" data-bs-toggle="modal" class="link-primary" data-bs-target="#ChangeTenant">Change</a>)</p>-->
-  <h2 c> <b> Log in </b> </h2>
+  <h2 c> <b> Login </b> </h2>
   <h6>
     <rds-label [label]="translate.instant('Please Login for an account')"></rds-label>
   </h6>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <a class="link-primary text-decoration-none float-end" [href]="['/forgot-password']">
+            <a class="link-primary text-decoration-none float-end" [href]="['../forgot-password']">
               {{translate.instant("Forgot password?")}}</a>
           </div>
         </div>

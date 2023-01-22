@@ -1,8 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { ComponentLoaderOptions, MfeBaseComponent, AccountServiceProxy, SendPasswordResetCodeInput } from '@libs/shared';
-import { selectDefaultLanguage } from '@libs/state-management';
+import { ComponentLoaderOptions, MfeBaseComponent, ServiceProxy,SendPasswordResetCodeDto } from '@libs/shared';
+import {  } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { setDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.actions';
 
 declare var bootstrap: any
 @Component({
@@ -11,7 +12,7 @@ declare var bootstrap: any
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends MfeBaseComponent implements OnInit {
-  model: SendPasswordResetCodeInput = new SendPasswordResetCodeInput();
+  model: SendPasswordResetCodeDto = new SendPasswordResetCodeDto();
 
   title: string = '';
   message: string = '';
@@ -21,8 +22,8 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   };
   loadingshimmer:boolean=true;
   constructor(private injector: Injector,
-    private store: Store,
-    private _accountService: AccountServiceProxy,
+    
+    private _accountService: ServiceProxy,
     private translate: TranslateService) {
     super(injector)
   }
@@ -38,13 +39,13 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         }
       }
     }
-    this.store.select(selectDefaultLanguage).subscribe((res: any) => {
+    this.store.select(setDefaultLanguage).subscribe((res: any) => {
       if (res) {
         this.translate.use(res);
       }
     })
     this.on('forgetpassword').subscribe(r => {
-      this.model.emailAddress = r.emailAddress;
+      this.model.email= r.emailAddress;
       // var email =r.emailAddress
 
       this._accountService.sendPasswordResetCode(this.model)

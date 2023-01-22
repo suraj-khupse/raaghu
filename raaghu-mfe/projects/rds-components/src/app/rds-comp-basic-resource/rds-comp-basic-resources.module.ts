@@ -23,7 +23,7 @@ import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
     RdsLabelModule,
     RdsCheckboxModule,
     RdsButtonModule,
-    NgxTranslateModule
+  
   ],
   exports: [
     RdsCompBasicResourceComponent

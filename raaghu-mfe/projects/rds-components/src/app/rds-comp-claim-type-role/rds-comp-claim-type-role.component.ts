@@ -6,7 +6,7 @@ import { TableAction } from '../../models/table-action.model';
 import { TableHeader } from '../../models/table-header.model';
 
 export class claims {
-  roleId: any;
+  id: any;
   claimType: string;
   claimValue: string;
 }
@@ -19,7 +19,7 @@ export class claims {
 export class RdsCompClaimTypeRoleComponent implements OnInit {
 
   ClaimData: claims = {
-    roleId: undefined,
+    id: undefined,
     claimType: '',
     claimValue: '',
   };
@@ -65,7 +65,7 @@ export class RdsCompClaimTypeRoleComponent implements OnInit {
     if (claimForm.form.value && claimForm.valid) {
       
       const item: any = {
-        roleId: this.claimDisplayArray.length + 1,
+        id: this.claimDisplayArray.length + 1,
         claimType: this.ClaimData.claimType,
         claimValue: claimForm.form.value.claimValue
       }
