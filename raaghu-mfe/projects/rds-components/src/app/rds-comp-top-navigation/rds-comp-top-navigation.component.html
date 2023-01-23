@@ -140,7 +140,9 @@
   (onLoginAttempts)="onLoginAttemptsRefresh.emit($event)" (onDownloadLink)="onDownloadLink.emit($event)"
   [linkedAccountHeaders]="linkedAccountHeaders" [linkedAccountData]="linkedAccountData" (logout)="logout($event)"
   [showDelegationButtonSpinner]="showDelegationButtonSpinner"
-  [tenancy]="tenancy" (backToAccount)="onBackToAccount($event)" (onUploadProfile)="onProfileUpload($event)">
+  [tenancy]="tenancy" (backToAccount)="onBackToAccount($event)" (onUploadProfile)="onProfileUpload($event)"
+  [impersonateUserId]="impersonateUserId"
+  >
 </rds-comp-profile>
 <rds-comp-notification-settings [notificationTypes]="notificationTypes" [receiveNotifications]="receiveNotifications"
   (onUpdateNotificationSettings)="onUpdateNotificationSettings.emit($event)"></rds-comp-notification-settings>

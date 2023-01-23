@@ -37,6 +37,7 @@ export const Default = Template.bind({});
 Default.args = {
   userData: [],
   editShimmer: false,
-  buttonSpinner: true
+  buttonSpinner: true,
+  userinfo : []
 }
 

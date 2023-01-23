@@ -84,7 +84,7 @@
               </div>
             </div>
 
-            <div class="justify-content-center align-items-center d-flex" *ngIf="sessionService.impersonatorUserId>0">
+            <div class="justify-content-center align-items-center d-flex" *ngIf="impersonateUserId>0">
               <rds-button [isOutline]="true" [label]="translate.instant('Back To Account')" type="button" [size]="'small'"
               [colorVariant]="'primary'" (click)="backAccount()">
               </rds-button>
