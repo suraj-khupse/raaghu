@@ -190,7 +190,6 @@ export class RdsCompCalendarComponent implements OnInit {
       this.canvasTitle = 'EDIT EVENT';
       this.eventData.title = event.title;
       this.eventData.start = new Date(event.start);
-      debugger;
       this.eventData.end = new Date(event.end);
     } else {
     }

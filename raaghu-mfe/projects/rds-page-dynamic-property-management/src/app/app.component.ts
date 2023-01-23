@@ -414,7 +414,6 @@ buttonSpinner: boolean=false;
   }
 
   subscribeToAlerts() {
-    // debugger;
     this.alertService.alertEvents.subscribe((alert) => {
       this.currentAlerts = [];
       const currentAlert: any = {
@@ -607,10 +606,8 @@ buttonSpinner: boolean=false;
     this.editShimmer = true;
   }
   closeCanvas(): void {
-    debugger
     this.viewCanvas = false;
     this.buttonSpinner=false;
-    
   }
 
 
