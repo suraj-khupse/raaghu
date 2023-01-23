@@ -72,6 +72,7 @@ export class RdsTopNavigationComponent extends MfeBaseComponent implements OnIni
   @Input() linkedAccountData: any = [];
   @Input() FixedHeader: boolean = true
   @Input() showDelegationButtonSpinner: boolean = true;
+  @Input() impersonateUserId:any;
   tabName: string = '';
   navtabItems: any = [
     { label: 'Manage Linked Accounts', translationKey: 'Manage Linked Accounts', tablink: '#nav-LinkAccount', ariacontrols: 'nav-LinkAccount', Image: 'bi bi-pencil-fill', icon: 'manage_linked', subText: 'Manage accounts linked to your account', subtextTranslationKey: 'Manage accounts linked to your account', showoffcanvas: true },

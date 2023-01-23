@@ -21,7 +21,7 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    //this.modifyUserData();
+    this.modifyUserData();
     // setTimeout(() => {
     if (this.userData && this.userInfoForm) {
       this.userInfoForm.statusChanges.subscribe(res => {
@@ -36,23 +36,23 @@ export class RdsCompUserBasicsComponent implements OnInit, OnChanges {
   }
 
   modifyUserData(){
-  //   if (!this.userData || this.userData.id == null) {
-  //     this.userInfoForm.resetForm();
-  //     this.userData = {};
-  //     this.userData['name'] = '';
-  //     this.userData['userName'] = '';
-  //     this.userData['emailAddress'] = '';
-  //     this.userData['phoneNumber'] = '';
-  //     this.userData['password'] = '';
-  //     this.userData['confirmPass'] = '';
-  //     this.userData['setRandomPassword'] = true;
-  //     this.userData['shouldChangePasswordOnNextLogin'] = true;
-  //     this.userData['isTwoFactorEnabled'] = true;
-  //     this.userData['isActive'] = true;
-  //     this.userData['isLockoutEnabled'] = true;
-  //     this.userData['surname'] = '';
-  //     this.userData['imageUrl'] = '../assets/edit-profile.png'
-  // }
+    if (!this.userData) {
+      // this.userInfoForm.resetForm();
+      this.userData = {};
+      this.userData['name'] = '';
+      this.userData['userName'] = '';
+      this.userData['emailAddress'] = '';
+      this.userData['phoneNumber'] = '';
+      this.userData['password'] = '';
+      this.userData['confirmPass'] = '';
+      this.userData['setRandomPassword'] = true;
+      this.userData['shouldChangePasswordOnNextLogin'] = true;
+      this.userData['isTwoFactorEnabled'] = true;
+      this.userData['isActive'] = true;
+      this.userData['isLockoutEnabled'] = true;
+      this.userData['surname'] = '';
+      this.userData['imageUrl'] = '../assets/edit-profile.png'
+  }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

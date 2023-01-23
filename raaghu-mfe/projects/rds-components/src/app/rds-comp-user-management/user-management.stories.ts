@@ -3,6 +3,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsCheckboxModule, RdsInputModule } from '@libs/rds-elements';
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompUserManagementComponent } from './rds-comp-user-management.component';
+import { RdsLabelModule } from '@libs/rds-label';
 
 export default {
   title: 'Components/User Management',
@@ -15,7 +16,8 @@ export default {
         RdsButtonModule,
         RdsInputModule,
         RdsCheckboxModule,
-        NgxTranslateModule.forRoot()
+        NgxTranslateModule.forRoot(),
+        RdsLabelModule
       ],
       providers: [
         FormBuilder

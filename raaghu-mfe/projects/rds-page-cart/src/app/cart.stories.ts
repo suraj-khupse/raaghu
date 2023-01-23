@@ -1,30 +1,30 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsIconLabelModule, RdsLabelComponent, RdsLabelModule, RdsSelectListComponent, RdsSelectListModule } from '@libs/rds-elements';
-
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsCompAlertComponent } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.component';
-import { AppComponent as CartApp } from './app.component';
-import { RdsCompOrderSummaryComponent } from 'projects/rds-components/src/app/rds-comp-order-summary/rds-comp-order-summary.component';
-import { RdsCompShoppingCartProductComponent } from 'projects/rds-components/src/app/rds-comp-shopping-cart-product/rds-comp-shopping-cart-product.component';
+import { AppComponent, AppComponent as CartApp } from './app.component';
+import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
+import { RdsCompOrderSummaryModule } from 'projects/rds-components/src/app/rds-comp-order-summary/rds-comp-order-summary.module';
+import { RdsCompShoppingCartProductModule } from 'projects/rds-components/src/app/rds-comp-shopping-cart-product/rds-comp-shopping-cart-product.module';
 
 
 export default {
   title: 'Pages/Cart',
-  component: CartApp,
+  component: AppComponent,
   decorators: [
     moduleMetadata({
       declarations: [
-      RdsCompAlertComponent,
-      RdsCompOrderSummaryComponent,
-      RdsCompShoppingCartProductComponent,
+        AppComponent
     ],
       imports: [
         RdsButtonModule,
         NgxTranslateModule,
         RdsSelectListModule,
         RdsIconLabelModule,
-        RdsLabelModule
+        RdsLabelModule,
+        RdsCompAlertModule,
+        RdsCompOrderSummaryModule,
+        RdsCompShoppingCartProductModule
       ],
       providers: [
         FormBuilder
@@ -32,19 +32,10 @@ export default {
     })
   ]
 } as Meta;
-const Template: Story<CartApp> = (args: CartApp) => ({
+const Template: Story<AppComponent> = (args: AppComponent) => ({
     props:{
       ...args
-    },
-  template : `<div class="row">
-  <div class="col-md-8">
-  <rds-comp-shopping-cart-product  [itemList]="itemList"></rds-comp-shopping-cart-product>
-   
-  </div>
-  <div class="col-md-4">
-  <rds-comp-order-summary ></rds-comp-order-summary>
-  </div>
-  </div>`
+    }
   });
 
   export const Default = Template.bind({ });

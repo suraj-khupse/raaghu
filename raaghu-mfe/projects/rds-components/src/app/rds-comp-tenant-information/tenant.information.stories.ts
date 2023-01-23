@@ -34,9 +34,11 @@ const Template: Story<RdsCompTenantInformationComponent> = (args: RdsCompTenantI
 
   Default.args = {
     tenantData: {},
-    editionList:[{isFree: null, value: '', some: 'Not assigned', isSelected: true},
-    {isFree: true, value: '1', some: 'Standard', isSelected: false},
-    {isFree: false, value: '5', some: 'apple', isSelected: false},
-    {isFree: false, value: '6', some: 'Apple1', isSelected: false},
+    editionList:[
+    {value: "", some: "Not assigned", isSelected: false}
+    ,{value: "1", some: "Standard", isSelected: false}
+    ,{value: "2", some: "apple", isSelected: false}
     ],
+
+    
 }

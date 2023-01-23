@@ -119,6 +119,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   navtabcontentClass: string = "d-none";
   firstcontent: boolean = false;
   cancelbutton: boolean = true;
+  @Input() impersonateUserId:any;
   public classlists = [];
   @Input()
   listItemsResult: any[] = []
@@ -137,6 +138,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     this.on('tenancyData').subscribe(res => {
       this.emitEvent('tenancyDataAgain', res);
     })
+   console.log("imposonate id is",this.impersonateUserId)
     this.rdsAlertMfeConfig = {
       name: 'RdsCompAlertPopup',
       input: {
@@ -157,7 +159,6 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   constructor(private injector: Injector,
     public translate: TranslateService,
     private router: Router,
-    public sessionService: AppSessionService,
     private http: HttpClient) {
     super(injector);
   }
