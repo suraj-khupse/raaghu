@@ -325,34 +325,4 @@ export class UserEffects {
       dispatch: false
     }
   );
-  //   getUserPermissionFilter$ = createEffect(() =>
-  //     this.actions$.pipe(
-  //       ofType(getUserPermissionFilterList),
-  //       switchMap(() =>
-  //         // Call the getTodos method, convert it to an observable
-  //         from(this.permissionService.getAllPermissions()).pipe(
-  //           // Take the returned value and return a new success action containing the todos
-  //           map((UserPermissionFilter) => {
-  //             return getUserPermissionListSuccess({ UserPermissionFilterI: UserPermissionFilter })
-  //           }),
-  //           // Or... if it errors return a new failure action containing the error
-  //           catchError((error) => of(getUsePermissionsFailure({ error })))
-  //         )
-  //       )
-  //     )
-  //   );
 }
-
-// export class TextTemplateEffects {
-//   constructor(
-//     private actions$: Actions,
-//     private textTemplateService: ServiceProxy,
-//     private alertService: AlertService,
-//     private store: Store
-//   ) { }
-  
-
-  
- 
-
-//         }

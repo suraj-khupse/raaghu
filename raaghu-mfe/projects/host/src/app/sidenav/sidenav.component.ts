@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { DateTime } from 'luxon';
 import { AlertService } from 'projects/libs/shared/src/lib/alert.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ThemesService } from 'projects/libs/themes/src/public-api';
 import { PrepareCollectedData } from 'projects/libs/state-management/src/lib/state/DownloadData/download-data.action';
 import { DatePipe, DOCUMENT } from '@angular/common';
 import { slideInAnimation } from '../animation';
@@ -38,6 +37,8 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   profilePicId = {
     id: '6f9f495e-f308-9a83-e524-3a079ce6f2f5'
   }
+
+  tenantName = 'Admin';
 
   toggleSideNav: boolean = false;
   currentAlerts: any = [];
@@ -140,7 +141,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   selectedMenu: string = '';
   selectedMenuDescription: string = '';
   sub: Subscription
-  rdsTopNavigationMfeConfig: ComponentLoaderOptions;
   accountPage = true;
   activePage: any;
   activesubmenu: any;
@@ -180,7 +180,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     private shared: SharedService,
     private injector: Injector,
     private userAuthService: UserAuthService,
-    private theme: ThemesService,
     private serviceProxies: ServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -196,16 +195,17 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   personalData: any[] = [];
 
   permissions: any;
-  onLanguageSelection(lan){
+
+  onLanguageSelection(lan: any){
     this.translate.use(lan.icon);
     this.userAuthService.getApplicationConfiguration(lan.icon,false);
   }
+
   onDownloadLink (data: any){
     this.store.dispatch(PrepareCollectedData());
   }
 
   ngOnInit(): void {
-    this.theme.theme = 'light'
     const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
     if (tenancy) {
       this.tenancy = tenancy.name;
@@ -215,9 +215,25 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     this.store.dispatch(getLanguages());
     this.store.dispatch(getProfilePictureData(this.profilePicId));
     this.store.select(selectProfilePictureData).subscribe(res => {
-      if (res) this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
+      if (res) {
+        this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
+        this.profilePic = 'data:image/jpeg;base64,' + res.fileContent;
+      };
     });
-  
+    this.store.dispatch(getProfileSettings());
+    this.store.select(selectAllProfileSettings).subscribe((res: any) => {
+      if (res) {
+        [res].forEach(ele => {
+          this.tenantName = ele.name;
+          this.profileData.name = ele.name;
+          this.profileData.surname = ele.surname;
+          this.profileData.email = ele.email;
+          this.profileData.phoneNumber = ele.phoneNumber;
+          this.profileData.userName = ele.userName;
+          this.profileData.concurrencyStamp = ele.concurrencyStamp
+        });
+      }
+    });
 
     const storedPermission = localStorage.getItem('storedPermissions');
     const parsedPermission = JSON.parse(storedPermission);
@@ -226,28 +242,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
     }
     this.subscribeToAlerts();
-    this.rdsTopNavigationMfeConfig = {
-      name: 'RdsTopNavigation',
-      input: {
-        backgroundColor: this.backgroundColor,
-        LoginAttempts: this.LoginAttempts,
-        isPageWrapper: true,
-        profilePic: this.profilePic,
-        profileData: this.profileData,
-        rdsDeligateTableData: this.rdsDeligateTableData,
-        offCanvasId: this.offCanvasId,
-        
-        
-        notificationData: this.notifications,
-        unreadCount: this.unreadCount,
-        receiveNotifications: this.receiveNotifications,
-        notificationTypes: this.notificationTypes,
-        tenancy: this.tenancy,
-      },
-      output: {
-        
-      }
-    }
 
   
     this.userAuthService.localization.subscribe((ele:any ) => {
@@ -287,8 +281,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           }
         })
       }
-      this.rdsTopNavigationMfeConfig.input.selectedMenu = this.selectedMenu;
-      this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = this.selectedMenuDescription;
     }
 
     this.sub = this.router.events.subscribe(event => {
@@ -316,7 +308,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
       }
     })
-
   }
   toggleEvent() {
     var element = document.getElementById("sidebar");
@@ -368,18 +359,18 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   redirectPath(event): void {
+    console.log('event path', event);
+    localStorage.setItem('topnavTitle', event.label);
     const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
     rdsAlertMfeConfig.input.currentAlerts = [];
     this.rdsAlertMfeConfig = rdsAlertMfeConfig;
-    this.rdsTopNavigationMfeConfig.input.selectedMenu = event.label;
-    this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = event.description;
     this.router.navigate([event.path]);
     var alertNode = document.querySelector('.alert');
     if (alertNode) {
       var alert = bootstrap.Alert.getInstance(alertNode);
       alert.close();
     }
-    this.shared.setTopNavTitle('');
+    this.shared.setTopNavTitle(event.label);
 
   }
 
@@ -532,23 +523,23 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     return '';
   }
 
-  public currentTheme(): string {
-    return this.theme.current;
+  public currentTheme() {
+    //return this.theme.current;
   }
   public selectTheme(value: string): void {
-    this.theme.current = value;
+    //this.theme.current = value;
   }
   set dark(enabled: boolean) {
-    this.theme.theme = enabled ? 'dark' : null;
+    //this.theme.theme = enabled ? 'dark' : null;
   }
 
   toggleBetweenMode(event: any) {
     let checked = event;
     if (!checked) {
-      this.theme.theme = 'dark';
+      //this.theme.theme = 'dark';
     }
     else {
-      this.theme.theme = 'light';
+      //this.theme.theme = 'light';
     }
   }
 

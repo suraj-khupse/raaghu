@@ -285,7 +285,7 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     },
     elements: {
       center: {
-        text: [{ text: '32 k', font: '500 1.4rem Poppins' }, { text: 'Profit', font: '400 0.8rem Poppins' }],
+        text: [{ text: '35 K', font: '500 1.4rem arial' }, { text: 'Profit', font: '400 0.8rem arial' }],
         color: '--chart-bool-icon-color', // Default is #000000
         fontStyle: 'Arial', // Default is Arial
         sidePadding: 20, // Default is 20 (as a percentage)
