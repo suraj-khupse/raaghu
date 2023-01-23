@@ -260,8 +260,6 @@
 				"projects/host/src/assets"
 			  ],
 			  "styles": [
-				"projects/libs/themes/src/styles/custom.scss",
-				"projects/host/src/styles.css"
 			  ],
 			  "scripts": []
 			}
@@ -296,7 +294,6 @@
 				"projects/rds-page-product/src/assets"
 			  ],
 			  "styles": [
-				"projects/libs/themes/src/styles/custom.scss",
 				"projects/rds-page-product/src/styles.scss"
 			  ],
 			  "scripts": [],
@@ -419,7 +416,6 @@
 				"projects/rds-page-dashboard/src/assets"
 			  ],
 			  "styles": [
-				"projects/libs/themes/src/styles/custom.scss",
 				"projects/rds-page-dashboard/src/styles.scss"
 			  ],
 			  "scripts": [

@@ -59,32 +59,32 @@ export class UserAuthService implements OnInit {
     return _observableOf(this.userAuthenticated);
   }
 
-  getApplicationConfiguration(language="en",navigate=true) {
-    this.abpserviceProxy.applicationConfiguration(language).subscribe((result) => {
-      localStorage.setItem(
-        'storedPermissions',
-        JSON.stringify(result.auth.grantedPolicies)
-      );
-      console.log('result.auth.grantedPolicies', result.auth.grantedPolicies);
-      this.localization = of(result.localization.languages);
-      this.language = of(result.localization.languages);
+  getApplicationConfiguration(language?:string,navigate=true) {
+    if(!language){
+      let languageTemp = JSON.parse(localStorage.getItem('savedDefaultLanguage'))
+      language = languageTemp? languageTemp.value: 'en';
+    }
+    else{
+      localStorage.setItem('setDefaultLanguge',JSON.stringify({value:language}))
+    }
 
-      localStorage.setItem(
-        'userName',
-        JSON.stringify(result.currentUser.userName)
-      );
-      localStorage.setItem(
-        'userAuthenticated',
-        JSON.stringify({ value: result.currentUser.isAuthenticated })
-      );
-      this.userAuthenticated = result.currentUser.isAuthenticated;
-      if (result.currentUser.isAuthenticated) {
-        if (navigate && this.router.url == '/login') {
-          this.router.navigateByUrl('pages/dashboard');
+    this.abpserviceProxy.applicationConfiguration(language).subscribe(
+      (result) => {
+
+        localStorage.setItem('storedPermissions',JSON.stringify(result.auth.grantedPolicies));
+        
+        this.localization = of(result.localization.languages);
+        localStorage.setItem('userName',JSON.stringify(result.currentUser.userName));
+        localStorage.setItem('userAuthenticated',  JSON.stringify({ value: result.currentUser.isAuthenticated })
+        );
+        this.userAuthenticated = result.currentUser.isAuthenticated;
+        if (result.currentUser.isAuthenticated) {
+          if (navigate && this.router.url == '/login') {
+            this.router.navigateByUrl('pages/dashboard');
+          }
+        } else {
+          this.router.navigateByUrl('/login');
         }
-      } else {
-        this.router.navigateByUrl('/login');
-      }
     });
   }
 
