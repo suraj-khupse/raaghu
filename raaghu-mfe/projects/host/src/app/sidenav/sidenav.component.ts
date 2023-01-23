@@ -28,7 +28,7 @@ declare var bootstrap: any;
     slideInAnimation
   ],
 })
-export class SidenavComponent extends MfeBaseComponent implements OnInit {
+export class SidenavComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
@@ -178,16 +178,13 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     private alertService: AlertService,
     public translate: TranslateService,
     private shared: SharedService,
-    private injector: Injector,
     private userAuthService: UserAuthService,
     private serviceProxies: ServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
-    super(injector);
   }
 
-  ngAfterViewInit() {
-  }
+  
   getdata() {
   }
   tenancyTableData = [];
@@ -195,10 +192,9 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   personalData: any[] = [];
 
   permissions: any;
-
-  onLanguageSelection(lan: any){
-    this.translate.use(lan.icon);
-    this.userAuthService.getApplicationConfiguration(lan.icon,false);
+  onLanguageSelection(lan){
+    this.translate.use(lan);
+    this.userAuthService.getApplicationConfiguration(lan,false);
   }
 
   onDownloadLink (data: any){
@@ -206,13 +202,11 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
-    if (tenancy) {
-      this.tenancy = tenancy.name;
-    } else {
-      this.tenancy = 'Host Admin';
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
     }
-    this.store.dispatch(getLanguages());
+
+    
     this.store.dispatch(getProfilePictureData(this.profilePicId));
     this.store.select(selectProfilePictureData).subscribe(res => {
       if (res) {
@@ -241,9 +235,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.permissions = parsedPermission;
       this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
     }
-    this.subscribeToAlerts();
 
-  
     this.userAuthService.localization.subscribe((ele:any ) => {
       ele.forEach((element:any) => {
         const data :any = {
@@ -258,11 +250,10 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       })
      
     })
-  
-    this.on('tenancyDataAgain').subscribe(res => {
-    })
+
     if (this.router.url) {
       let matchRoute: any;
+      debugger
       const index = this.getMatchedRoute(this.sidenavItems);
       if (index !== -1) {
         this.activePage = index;
@@ -288,21 +279,15 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
       }
     })
-    if (this.sidenavItems && this.sidenavItems.length > 0) {
-      if (this.sidenavItems[0].children && this.sidenavItems[0].children.length > 0) {
-        this.selectedMenu = this.sidenavItems[0].children[0].label;
-        this.selectedMenuDescription = this.sidenavItems[0].children[0].description;
-      } else {
-        this.selectedMenu = this.sidenavItems[0].label;
-        this.selectedMenuDescription = this.sidenavItems[0].description;
-      }
-    }
-    const UsernameFilter: any = {
-      excludeCurrentUser: true,
-      filter: '',
-      maxResultCount: 10,
-      skipCount: 0
-    }
+    // if (this.sidenavItems && this.sidenavItems.length > 0) {
+    //   if (this.sidenavItems[0].children && this.sidenavItems[0].children.length > 0) {
+    //     this.selectedMenu = this.sidenavItems[0].children[0].label;
+    //     this.selectedMenuDescription = this.sidenavItems[0].children[0].description;
+    //   } else {
+    //     this.selectedMenu = this.sidenavItems[0].label;
+    //     this.selectedMenuDescription = this.sidenavItems[0].description;
+    //   }
+    // }
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
@@ -361,9 +346,8 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   redirectPath(event): void {
     console.log('event path', event);
     localStorage.setItem('topnavTitle', event.label);
-    const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-    rdsAlertMfeConfig.input.currentAlerts = [];
-    this.rdsAlertMfeConfig = rdsAlertMfeConfig;
+    this.selectedMenu = event.label;
+    this.selectedMenuDescription = event.description;
     this.router.navigate([event.path]);
     var alertNode = document.querySelector('.alert');
     if (alertNode) {

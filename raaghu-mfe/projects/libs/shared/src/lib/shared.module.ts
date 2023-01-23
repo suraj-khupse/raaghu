@@ -10,5 +10,5 @@ import { ServiceProxyModule } from './service-proxy.module';
   providers:[]
 })
 export class SharedModule {
-  
+
 }

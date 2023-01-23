@@ -101,11 +101,10 @@ export class RdsTopNavigationComponent implements OnInit {
 
 
   onLanguageSelect(lan: any): void {
-    console.log('lan', lan);
-    
     this.selectedLanguage.language = lan.item.some;
     this.selectedLanguage.icon = lan.item.icon;
-    this.onLanguageSelection.emit(lan.item)
+    this.onLanguageSelection.emit(lan.item.icon)
+    
   }
 
   onToggleButton() {

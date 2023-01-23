@@ -11,11 +11,8 @@ import {
   Subject,
 } from 'rxjs';
 // import { SendPasswordResetCodeInput } from './service-proxies';
-import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
-import { AppSessionService } from './app-session.service';
 import { Store } from '@ngrx/store';
-import { XmlHttpRequestHelper } from './XmlHttpRequestHelper';
 import { ServiceProxy, API_BASE_URL, LanguageInfo } from './service-proxies';
 import { SharedService } from './shared.service';
 
@@ -32,7 +29,10 @@ export class UserAuthService implements OnInit {
   sources: Observable<any>;
   lang: LanguageInfo[];
   userName: string = '';
+  currentLanguage:string='en';
   logoutSubject$ = new Subject();
+  languageObservable$ = new Subject();
+
   constructor(
     private router: Router,
     private store: Store,
@@ -67,14 +67,15 @@ export class UserAuthService implements OnInit {
       language = languageTemp? languageTemp.value: 'en';
     }
     else{
-      localStorage.setItem('setDefaultLanguge',JSON.stringify({value:language}))
+      localStorage.setItem('savedDefaultLanguage',JSON.stringify({value:language}))
     }
+    this.currentLanguage = language;
+    this.languageObservable$.next(language);
 
     this.abpserviceProxy.applicationConfiguration(language).subscribe(
       (result) => {
 
         localStorage.setItem('storedPermissions',JSON.stringify(result.auth.grantedPolicies));
-        
         this.localization = of(result.localization.languages);
         localStorage.setItem('userName',JSON.stringify(result.currentUser.userName));
         localStorage.setItem('userAuthenticated',  JSON.stringify({ value: result.currentUser.isAuthenticated })
