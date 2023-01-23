@@ -30,7 +30,7 @@ export const updateTenantFeatureValues = createAction(
 );
 
 export const updateTenant = createAction(
-    '[Tenant Page] Update Tenant',
+    '[Tenant Page] Update Tenants ',
     (tenant: any) => (tenant)
 );
 

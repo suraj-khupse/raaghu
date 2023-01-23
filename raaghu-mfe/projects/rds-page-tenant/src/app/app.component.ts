@@ -5,7 +5,6 @@ import { } from '@libs/state-management';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
-import { fadeAnimation } from '../../../libs/shared/src/lib/animation';
 import {
   transition,
   trigger,
@@ -79,7 +78,7 @@ export class AppComponent {
           editionId: tenant.tenantInfo.editionId[0],
           activationState : tenant.tenantInfo.activationState
         };      
-        let body = {body:data,id:this.tenantId};      
+        const body = {body:data,id:this.tenantId};      
         this.store.dispatch(updateTenant(body))
         let body1 = {
         feature : tenant.featureValues,
