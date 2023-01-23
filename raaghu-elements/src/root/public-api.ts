@@ -101,8 +101,6 @@ export * from '../rds-dropdownlist/src/public-api';
 // Public API Surface of rds-file-uploader
 export * from '../rds-file-uploader/src/public-api';
 
-// Public API Surface of rds-icon
-export * from '../rds-icon/src/public-api';
 
 // Public API Surface of rds-illustration
 export * from '../rds-illustration/src/public-api';

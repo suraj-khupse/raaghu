@@ -14,10 +14,6 @@
       "@libs/state-management": [
         "projects/libs/state-management/src/public-api.ts"
       ],
-      "@libs/rds-icon": [
-        "rds-elements/rds-icon/public-api",
-        "rds-elements/rds-icon"
-      ],
       "@libs/rds-badge": [
         "rds-elements/rds-badge/public-api",
         "rds-elements/rds-badge"
