@@ -4,7 +4,7 @@ import { RdsAdminDashboardComponent } from './rds-comp-admin-dashboard.component
 import { RdsCompDataTableModule } from "../rds-comp-data-table/rds-comp-data-table.module";
 import {
   RdsWidgetModule, RdsChartLineModule, RdsBigNumberWidgetModule, RdsChartDoughnutModule,
-  RdsChartBoolModule, RdsChartBarHorizontalModule
+  RdsChartBoolModule, RdsChartBarHorizontalModule, RdsLabelModule
 } from "@libs/rds-elements";
 
 @NgModule({
@@ -22,7 +22,8 @@ import {
     RdsChartDoughnutModule,
     RdsChartBoolModule,
     RdsChartBarHorizontalModule,
-    RdsCompDataTableModule
+    RdsCompDataTableModule,
+    RdsLabelModule
   ]
 })
 export class RdsCompAdminDashboardModule { }

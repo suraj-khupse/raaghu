@@ -82,7 +82,7 @@
                           *ngIf="(numberField.dirty || numberField.touched)&&column.required&&(data[column.key]===''||data[column.key]===undefined)">
                           {{translate.instant(column.displayName)}} {{translate.instant('is required')}}</small>
                       </ng-container>
-                      <ng-container *ngSwitchCase="'text'">
+                      <ng-container *ngSwitchCase="'text'" >
                         <rds-input required [(ngModel)]="data[column.key]" [value]="data[column.key]"
                           [disabled]="column.disabled" [placeholder]=column.displayName #textField="ngModel"
                           [inputType]="'text'" ngDefaultControl></rds-input>
@@ -90,6 +90,14 @@
                           *ngIf="(textField.dirty || textField.touched)&&column.required&&(data[column.key]===''||!data[column.key])">
                           {{translate.instant(column.displayName)}} {{translate.instant('is required')}}</small>
 
+                      </ng-container>
+                      <ng-container *ngSwitchCase="'radio'">                        
+                        <rds-radio-button
+                        [(ngModel)]="data[column.key]"  
+                        [itemList]="column.options"
+                        display_type="Horizontal"                        
+                        #radioField="ngModel"
+                        ngDefaultControl></rds-radio-button>                       
                       </ng-container>
                       <ng-container *ngSwitchCase="'html'">
                         <rds-input required [(ngModel)]="data[column.key]" [value]="data[column.key]"

@@ -1,7 +1,7 @@
 <div *ngIf="istenant">
-  <rds-comp-admin-dashboard></rds-comp-admin-dashboard>
+  <rds-comp-admin-dashboard [tenancy]="tenancy"></rds-comp-admin-dashboard>
 </div>
 <div *ngIf="!istenant">
   <!-- <mfe-loader [config]="rdsAdminDashboardMfeConfig"></mfe-loader> -->
-  <rds-comp-admin-dashboard></rds-comp-admin-dashboard>
+  <rds-comp-admin-dashboard [tenancy]="tenancy"></rds-comp-admin-dashboard>
 </div>
