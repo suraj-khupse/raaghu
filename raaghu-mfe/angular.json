@@ -260,6 +260,7 @@
 				"projects/host/src/assets"
 			  ],
 			  "styles": [
+				"projects/host/src/styles.css"
 			  ],
 			  "scripts": []
 			}

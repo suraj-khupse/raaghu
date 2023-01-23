@@ -17,6 +17,7 @@ import { AppSessionService } from './app-session.service';
 import { Store } from '@ngrx/store';
 import { XmlHttpRequestHelper } from './XmlHttpRequestHelper';
 import { ServiceProxy, API_BASE_URL, LanguageInfo } from './service-proxies';
+import { SharedService } from './shared.service';
 
 @Injectable()
 export class UserAuthService implements OnInit {
@@ -36,6 +37,7 @@ export class UserAuthService implements OnInit {
     private router: Router,
     private store: Store,
     private abpserviceProxy: ServiceProxy,
+    private sharedService: SharedService,
     @Optional() @Inject(API_BASE_URL) baseUrl?: string
   ) {
     const temp = JSON.parse(localStorage.getItem('userAuthenticated'));
@@ -81,6 +83,7 @@ export class UserAuthService implements OnInit {
         if (result.currentUser.isAuthenticated) {
           if (navigate && this.router.url == '/login') {
             this.router.navigateByUrl('pages/dashboard');
+            this.sharedService.setTopNavTitle('Dashboard');
           }
         } else {
           this.router.navigateByUrl('/login');
