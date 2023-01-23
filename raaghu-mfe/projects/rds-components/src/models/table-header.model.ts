@@ -8,4 +8,5 @@ export interface TableHeader {
     filterable?: boolean;
     colWidth?: string;
     disabled?: boolean;
+    options?:any;
 }
