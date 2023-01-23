@@ -95,7 +95,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { label: 'Tenants', labelTranslationKey: 'Tenants', id: 'tenants', permissionName: 'Saas.Tenants', icon: 'tenant', path: '/pages/tenant', description: 'Manage your tenants', descriptionTranslationKey: 'Manage your tenants' },
     { label: 'Editions', labelTranslationKey: 'Editions', id: '', permissionName: 'Saas.Editions', icon: 'editions', path: '/pages/edition', description: 'Manage editions and features of the application', descriptionTranslationKey: 'Manage editions and features of the application' },
     {
-      label: 'Identity Management', labelTranslationKey: 'Identity Management', id: 'admin', permissionName: '', icon: 'administration', path: '',
+      label: 'Identity Management', labelTranslationKey: 'Identity Management', id: 'admin', permissionName: '', icon: 'identity-management', path: '',
       children: [
         { label: 'Organization Units', labelTranslationKey: 'Organization Units', id: '', permissionName: 'AbpIdentity.OrganizationUnits', icon: 'organization', path: '/pages/organization-unit', description: 'Use organization units to organize users and entities', descriptionTranslationKey: 'Use organization units to organize users and entities' },
         { label: 'Roles', labelTranslationKey: 'Roles', id: '', permissionName: 'AbpIdentity.Roles', icon: 'roles', path: '/pages/role', description: 'Use roles to group permissions', descriptionTranslationKey: 'Use roles to group permissions' },
@@ -105,7 +105,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       ],
     },
     {
-      label: 'Identity Server', labelTranslationKey: 'Identity Server', id: 'admin', permissionName: '', icon: 'administration', path: '',
+      label: 'Identity Server', labelTranslationKey: 'Identity Server', id: 'admin', permissionName: '', icon: 'identity-server', path: '',
       children: [
         { label: 'Client', labelTranslationKey: 'Client', id: '', permissionName: 'IdentityServer.Client', icon: 'users', path: '/pages/client', description: 'Manage clients and permissions', descriptionTranslationKey: 'Manage users and permissions' },
         { label: 'Identity Resource', labelTranslationKey: 'Identity Resources', id: '', permissionName: 'IdentityServer.IdentityResource', icon: 'home', path: '/pages/identityResources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
@@ -120,7 +120,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         { label: 'Language-Text', labelTranslationKey: 'Language-Text', id: '', permissionName: 'LanguageManagement.LanguageTexts', icon: 'languages', path: '/pages/languagetext', description: 'Manage user interface languagesText', descriptionTranslationKey: 'Statistics and reports' },
       ],
     },
-    { label: 'Text Template', labelTranslationKey: 'Text Template', id: '', permissionName: 'TextTemplateManagement.TextTemplates', icon: 'home', path: '/pages/text-template', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
+    { label: 'Text Template', labelTranslationKey: 'Text Template', id: '', permissionName: 'TextTemplateManagement.TextTemplates', icon: 'text_template', path: '/pages/text-template', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
     { label: 'Audit logs', labelTranslationKey: 'Audit logs', id: '', permissionName: 'AuditLogging.AuditLogs', icon: 'audit_logs', path: '/pages/audit-logs', descriptionTranslationKey: '' },
     // { label: 'UI Components', labelTranslationKey: 'UI Components', id: '', permissionName: '', icon: 'demo_ui', path: '/pages/demo-ui', description: '', descriptionTranslationKey: '' },
     { label: 'Settings', labelTranslationKey: 'Settings', id: '', permissionName: 'AbpIdentity.SettingManagement', icon: 'setting', path: '/pages/settings', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
