@@ -1,6 +1,6 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ArrayToTreeConverterService, ComponentLoaderOptions } from '@libs/shared';
+import { ArrayToTreeConverterService, ComponentLoaderOptions, UserAuthService } from '@libs/shared';
 import { } from '@libs/state-management';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
@@ -68,7 +68,11 @@ export class AppComponent {
   tenantTableData: any = []
   isShimmer: boolean= true;
   editShimmer: boolean =false;
-  constructor(public datepipe: DatePipe, private store: Store, private translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService) { }
+  constructor(public datepipe: DatePipe, 
+    private store: Store,
+    private userAuthService:UserAuthService, 
+    private translate: TranslateService,
+    private _arrayToTreeConverterService: ArrayToTreeConverterService) { }
   
   onSaveTenant(tenant: any) {        
     if (tenant.id) {
@@ -126,11 +130,14 @@ onSaveTenantHost(featureHost : any){
   ngOnInit(): void {
     this.isAnimation = true;
 
-    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-    //   if (res) {
-    //     this.translate.use(res);
-    //   }
-    // });
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
 
     this.store.dispatch(getTenants());
     this.store.select(selectAllTenants).subscribe((res: any) => {

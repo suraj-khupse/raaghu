@@ -102,10 +102,6 @@
         "rds-elements/rds-toggle/public-api",
         "rds-elements/rds-toggle"
       ],
-      "@libs/rds-icons-label": [
-        "rds-elements/rds-icon-label/public-api",
-        "rds-elements/rds-icon-label"
-      ]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
