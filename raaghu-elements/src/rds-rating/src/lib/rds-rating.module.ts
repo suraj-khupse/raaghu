@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsRatingComponent } from './rds-rating.component';
 
 

@@ -6,7 +6,7 @@ import { RdsLabelModule } from '@libs/rds-label';
 import { RdsAvatarModule } from '@libs/rds-avatar';
 import { RdsLikeDislikeModule } from '@libs/rds-like-dislike';
 import { RdsFeedComponent } from './rds-feed.component';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsRatingModule } from '@libs/rds-rating';
 
 

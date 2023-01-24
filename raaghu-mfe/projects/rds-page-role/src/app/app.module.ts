@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RdsBannerModule, RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsNavTabModule, RdsOffcanvasModule, RdsSearchInputModule } from '@libs/rds-elements';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-to-tree-converter.service';
 import { RdsCompClaimsTypeRoleModule } from 'projects/rds-components/src/app/rds-comp-claim-type-role/rds-comp-claims-type-role.module';

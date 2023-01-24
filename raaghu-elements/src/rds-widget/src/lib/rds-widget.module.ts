@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RdsWidgetComponent } from './rds-widget.component';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 
 

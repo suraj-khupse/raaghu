@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsButtonModule } from '@libs/rds-button';
 import { RdsCardModule, RdsInputModule } from '@libs/rds-elements';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsRadioButtonModule } from '@libs/rds-radio-button';
 import { NgxTranslateModule } from '@libs/shared';

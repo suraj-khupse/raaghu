@@ -11,7 +11,6 @@ const filesToReplace = [
     'tsconfig.json'
 ];
 const dependentElements = [
-    'rds-icon',
     'rds-label',
     'rds-toggle',
     'rds-icon-label',
@@ -53,16 +52,7 @@ function mergeTSConfigJson() {
         };
         changesDone = true;
     };
-    if (ngElementsFile.compilerOptions.paths["@libs/rds-icon"] == undefined) {
-        ngElementsFile.compilerOptions.paths = {
-            ...ngElementsFile.compilerOptions.paths,
-            "@libs/rds-icon": [
-                "rds-elements/rds-icon/public-api",
-                "rds-elements/rds-icon"
-            ]
-        };
-        changesDone = true;
-    };
+    
     if (ngElementsFile.compilerOptions.paths["@libs/rds-toggle"] == undefined) {
         ngElementsFile.compilerOptions.paths = {
             ...ngElementsFile.compilerOptions.paths,

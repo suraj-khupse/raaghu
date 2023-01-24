@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RdsCompSecretsComponent } from './rds-comp-secrets.component';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsButtonModule, RdsDatepickerModule, RdsDropdownlistModule, RdsIllustrationModule, RdsInputModule } from '@libs/rds-elements';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { FormsModule } from '@angular/forms';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';

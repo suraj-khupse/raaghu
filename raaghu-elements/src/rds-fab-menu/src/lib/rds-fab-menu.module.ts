@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RdsFabMenuComponent } from './rds-fab-menu.component';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { CommonModule } from '@angular/common';
 
 @NgModule({

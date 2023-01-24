@@ -1,6 +1,6 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsPaginationComponent } from './rds-pagination.component';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

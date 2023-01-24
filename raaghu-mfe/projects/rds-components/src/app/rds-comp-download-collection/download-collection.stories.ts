@@ -3,7 +3,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsButtonModule, RdsInputModule, RdsNavTabModule, RdsPaginationModule } from '@libs/rds-elements';
 import { RdsCompDownloadCollectionComponent } from './rds-comp-download-collection.component';
 import { NgxTranslateModule } from '@libs/shared';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 export default {
   title: 'Components/Download Collection',
