@@ -3,7 +3,7 @@ import * as moment_ from 'moment';
 const moment = moment_;
 import { DateTime } from 'luxon';
 import { Subscription } from 'rxjs';
-import { ComponentLoaderOptions, ProfileServiceProxy, SessionServiceProxy, SharedService, UpdateProfilePictureInput, UserAuthService, } from '@libs/shared';
+import { AppSessionService, ComponentLoaderOptions, ProfileServiceProxy, SessionServiceProxy, SharedService, UpdateProfilePictureInput, UserAuthService, } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { deleteDelegations, getDelegations, getUsername, saveDelegations, } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
 import { selectDelegationsInfo, selectUserFilter, } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.selector';
@@ -51,6 +51,7 @@ export class SidenavComponent {
   currentAlerts: any = [];
   selectedLanguage: any = { language: '', icon: '' };
   severity = ['info', 'error', 'success', 'warn', 'fatal'];
+  impersonateUserId:any
   LoginAttempts: any = {
     TableHeader: [
       {
@@ -395,6 +396,7 @@ export class SidenavComponent {
     private sessionService: SessionServiceProxy,
     private _profileService: ProfileServiceProxy,
     private theme: RdsThemesService,
+    private appSessionService: AppSessionService,
     @Inject(DOCUMENT) private document: Document
   ) {
 
@@ -425,6 +427,10 @@ export class SidenavComponent {
       }
 
     });
+    this.appSessionService.impersonateId$.subscribe(res=>{
+      debugger
+      this.impersonateUserId = res;
+    })
 
 
     // this.selectAllvisualSettings()

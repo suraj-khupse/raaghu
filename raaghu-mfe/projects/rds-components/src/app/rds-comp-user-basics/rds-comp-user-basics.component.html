@@ -18,7 +18,7 @@
         <div class="col-md-9">
           <div class="form-group mb-3">
   
-            <rds-input [inputType]="'text'" [label]="translate.instant('Name')" [(ngModel)]="userData.name" [labelPosition]="'top'" name="username"
+            <rds-input [inputType]="'text'" [label]="translate.instant('Name')" [(ngModel)]="userData.name" [labelPosition]="'top'"
               required #name="ngModel" [placeholder]="translate.instant('Name')" [isRequired]=true>
             </rds-input>
             <div class="form-control-feedback" *ngIf="name.errors&&(name.dirty||name.touched)">

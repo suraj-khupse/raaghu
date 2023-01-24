@@ -11,7 +11,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsCardModule, RdsBadgeModule, NgxTranslateModule, RdsIconModule
+        FormsModule,RdsButtonModule, ReactiveFormsModule, RdsButtonModule, RdsCardModule, RdsBadgeModule, NgxTranslateModule, RdsIconModule,RdsBadgeModule
       ],
       providers: [
         FormBuilder
