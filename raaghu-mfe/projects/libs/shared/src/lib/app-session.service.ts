@@ -78,7 +78,7 @@ export class AppSessionService {
                         this._theme = result.theme;
                         this._impersonatorTenant = result.impersonatorTenant;
                         this._impersonatorUser = result.impersonatorUser;
-                        this.impersonateId$.next(result.impersonatorUser.id)
+                        this.impersonateId$.next(result.impersonatorUser?.id)
                         resolve(result.theme);
                     },
                     (err) => {
