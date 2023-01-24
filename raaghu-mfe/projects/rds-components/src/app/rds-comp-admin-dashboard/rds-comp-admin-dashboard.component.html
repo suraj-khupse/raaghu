@@ -1,6 +1,6 @@
 <div class="dark">
   <div class="mb-3">
-    <h5><rds-label [label]="'Hello ,'+tenancy +' !'" [bold]="true"></rds-label>
+    <h5><rds-label [label]="'Hello' + (tenancy ? ', ' + tenancy : '') + ' !'" [bold]="true"></rds-label>
     </h5>
   </div>
   <div class="row">
