@@ -428,7 +428,6 @@ export class SidenavComponent {
 
     });
     this.appSessionService.impersonateId$.subscribe(res=>{
-      debugger
       this.impersonateUserId = res;
     })
 
@@ -694,7 +693,6 @@ export class SidenavComponent {
   }
 
   linkUser(data: any) {
-    debugger
     this.store.dispatch(linkToUser(data));
   }
   setAllNotificationAsRead($event) {

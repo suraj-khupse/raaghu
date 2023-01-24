@@ -357,7 +357,6 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
     this.ondeleteLinkaccount.emit(event);
   }
   linkToUser(event: any) {
-    debugger
     this.onLinkToUser.emit(event);
   }
 
