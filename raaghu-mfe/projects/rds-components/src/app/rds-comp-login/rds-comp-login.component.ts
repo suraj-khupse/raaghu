@@ -73,14 +73,12 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   }
 
   submit(loginForm: NgForm) {
-    // if (!loginForm.invalid) {
-      this.buttonSpinner = true;
-      this.onLogin.emit({
-        userEmail: this.userNameData,
-        userPassword: this.userPasswordData,
-        rememberMe: this.rememberMe,
-      });
-    // } 
+    this.buttonSpinner = true;
+    this.onLogin.emit({
+      userEmail: this.userNameData,
+      userPassword: this.userPasswordData,
+      rememberMe: this.rememberMe,
+    });
   }
 
   ChangeTenant(tenantForm: NgForm) {

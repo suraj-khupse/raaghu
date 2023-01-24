@@ -18,7 +18,8 @@
           [iconWidth]="'18px'" [inputType]="'password'" [label]="translate.instant(Password)" [labelPosition]="'top'"
           [placeholder]="translate.instant(Password)" floatinginputLabel="" id="txtPassword"
           [(ngModel)]="userPasswordData" [isRequired]=true ngDefaultControl required #userPassword="ngModel"
-          name="txtPassword" [hasErrors]="(userPassword.errors && (userPassword.dirty && userPassword.touched)) && userPassword.errors.required"
+          name="txtPassword"
+          [hasErrors]="(userPassword.errors && (userPassword.dirty && userPassword.touched)) && userPassword.errors.required"
           [errors]="translate.instant('Password is required')"></rds-input>
         <div class="row d-flex justify-content-between mt-2">
           <div class="col-md-6">
@@ -38,7 +39,7 @@
       </div>
       <div class="pb-3">
         <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'" [submit]="true"
-          [showLoadingSpinner]="buttonSpinner" [label]="translate.instant(buttonLabel)" (click)="submit(loginForm)"
+          [showLoadingSpinner]="buttonSpinner" [label]="translate.instant(buttonLabel)" (onClick)="submit(loginForm)"
           [isDisabled]="loginForm.invalid">
         </rds-button>
       </div>
