@@ -10,7 +10,7 @@ const filesToReplace = [
     '.gitignore',
     'tsconfig.json'
 ];
-const dependentElements = [
+const dependentElements = [   
     'rds-label',
     'rds-toggle',
     'rds-icon-label',
@@ -51,8 +51,7 @@ function mergeTSConfigJson() {
             ]
         };
         changesDone = true;
-    };
-    
+    };   
     if (ngElementsFile.compilerOptions.paths["@libs/rds-toggle"] == undefined) {
         ngElementsFile.compilerOptions.paths = {
             ...ngElementsFile.compilerOptions.paths,
@@ -295,7 +294,7 @@ function buildDependentElements() {
     console.log('Building dependent \x1b[32m' + dependentElements.toString() + '\x1b[0m elements...');
     // let commandline = 'concurrently ';
     for (const element of dependentElements) {
-        execSync(`npm run build ${element} > output.log &`, { cwd: ngElementsDir, stdio: 'inherit' });
+        execSync(`npm run build ${element}`, { cwd: ngElementsDir, stdio: 'inherit' });
         // commandline = commandline + ' \"npm run build ' + element + '\"';
     }
     // execSync(`${commandline}`, { cwd: ngElementsDir, stdio: 'inherit' });
