@@ -41,7 +41,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   constructor(
     private formBuilder: FormBuilder,
     public translate: TranslateService
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.onShimmerLoad.emit(false);
@@ -60,7 +60,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   //for getting remebrme value
   onChangeRememberme(event: any) {
     // this.rememberMe = event.detail;
-    
+
     if (event) {
       localStorage.setItem('Username', this.userNameData);
       localStorage.setItem('Password', this.userPasswordData);
@@ -73,12 +73,14 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   }
 
   submit(loginForm: NgForm) {
-    this.buttonSpinner = true;
-    this.onLogin.emit({
-      userEmail: this.userNameData,
-      userPassword: this.userPasswordData,
-      rememberMe: this.rememberMe,
-    });
+    // if (!loginForm.invalid) {
+      this.buttonSpinner = true;
+      this.onLogin.emit({
+        userEmail: this.userNameData,
+        userPassword: this.userPasswordData,
+        rememberMe: this.rememberMe,
+      });
+    // } 
   }
 
   ChangeTenant(tenantForm: NgForm) {
