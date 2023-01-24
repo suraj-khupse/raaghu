@@ -16,7 +16,7 @@ export class RdsCompTenantBasicProfileRightComponent implements OnInit, OnChange
   @Input() tenantData: any;
   @ViewChild('tenantCreationForm') tenantInfoForm: NgForm;
   @Input() editShimmer: boolean = false;
-  @Input() buttonSpinner: boolean =true;
+  @Input() buttonSpinner: boolean =false;
 
 
   constructor(public translate: TranslateService) { }

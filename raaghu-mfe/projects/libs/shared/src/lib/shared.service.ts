@@ -39,4 +39,14 @@ export class SharedService {
   setPasswordStatus(status: any) {
     this.getPasswordStatus$.next(status);
   }
+
+  public getLanguage$: BehaviorSubject<any> = new BehaviorSubject(null);
+
+  getLanguageStatus(): Observable<any> {
+    return this.getLanguage$.asObservable();
+  }
+
+  setLanguageStatus(status: any) {
+    this.getLanguage$.next(status);
+  }
 }

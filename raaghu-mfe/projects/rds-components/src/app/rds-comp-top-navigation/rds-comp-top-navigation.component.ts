@@ -84,10 +84,12 @@ export class RdsTopNavigationComponent implements OnInit {
         this.shared.setSideBarStatus(false);
       }
     });
-    // const language: any = {
-    //   item: { icon: "gb", iconHeight: "14px", iconWidth: "21px", id: undefined, some: "English", value: "English" }
-    // }
-    // this.onLanguageSelect(language);
+    this.shared.getLanguageStatus().subscribe(res => {
+      if (res) {
+        this.selectedLanguage.language = res.englishName;
+        this.selectedLanguage.icon = "gb";
+      }
+    });
   }
 
   onProfileSelect(item: any) {
