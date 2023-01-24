@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompAlertPopupComponent } from './rds-comp-alert-popup.component';
-import { RdsButtonModule, RdsIconModule, RdsLabelModule, RdsModalModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsLabelModule, RdsModalModule } from '@libs/rds-elements';
 import { NgxTranslateModule } from '@libs/shared';
 import { FormsModule } from '@angular/forms';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 @NgModule({
   declarations: [

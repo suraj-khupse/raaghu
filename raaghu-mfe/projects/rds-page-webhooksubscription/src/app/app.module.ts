@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RdsAlertModule, RdsBannerModule, RdsButtonModule, RdsIconModule, RdsInputModule, RdsOffcanvasModule, RdsTextareaModule } from '@libs/rds-elements';
+import { RdsAlertModule, RdsBannerModule, RdsButtonModule, RdsInputModule, RdsOffcanvasModule, RdsTextareaModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { RdsWebhooksSubscriptionShimmerComponent } from './rds-webhooks-subscrip
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 
 @NgModule({

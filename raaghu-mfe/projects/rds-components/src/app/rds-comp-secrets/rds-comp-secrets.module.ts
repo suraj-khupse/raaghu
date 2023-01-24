@@ -7,6 +7,7 @@ import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { FormsModule } from '@angular/forms';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
+import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 
 
 

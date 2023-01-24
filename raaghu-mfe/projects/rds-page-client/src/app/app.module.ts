@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RdsButtonModule, RdsIconModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { RdsCompClientBasicsModule } from 'projects/rds-components/src/app/rds-c
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-comp-permission-tree.module';
 import { RdsCompSecretsModule } from 'projects/rds-components/src/app/rds-comp-secrets/rds-comp-secrets.module';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 @NgModule({
   declarations: [

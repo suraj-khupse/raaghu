@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RdsBadgeModule, RdsButtonModule, RdsIconModule, RdsModalModule, RdsNavTabModule } from '@libs/rds-elements';
+import { RdsBadgeModule, RdsButtonModule, RdsModalModule, RdsNavTabModule } from '@libs/rds-elements';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { RdsFabMenuModule } from 'projects/libs/rds-elements/src/rds-fab-menu/sr
 
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { CommonModule } from '@angular/common';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 export const MaintenanceReducersMap = {
   maintenances: MaintenanceReducer,
   Websitelogs: WebsitelogReducer,
