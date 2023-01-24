@@ -100,10 +100,8 @@ export class RdsButtonComponent implements AfterViewInit, OnInit ,OnChanges{
   }
 
   buttonClick(evt: any) {
-    if (!this.showLoadingSpinner && !this.isDisabled) {
+    if (!(this.showLoadingSpinner || this.isDisabled)) {
       this.onClick.emit(evt);
     }
   }
-
-
 }
