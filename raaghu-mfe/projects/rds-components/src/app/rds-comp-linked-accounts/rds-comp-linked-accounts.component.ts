@@ -60,7 +60,6 @@ export class RdsLinkedAccountsComponent extends MfeBaseComponent implements OnIn
   }
 
   saveAllLinkAccount(linkedAccount: NgForm) {
-    debugger
     if (!linkedAccount.valid) {
       return;
     }

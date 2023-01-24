@@ -1,6 +1,6 @@
 <div class="dark">
   <div class="mb-3">
-    <h4><rds-label [label]="'Hello ,'+tenancy +' !'" [bold]="true"></rds-label>
+    <h4><rds-label [label]="'Hello' + (tenancy ? ', ' + tenancy : '') + ' !'" [bold]="true"></rds-label>
     </h4>
   </div>
   <div class="row">
@@ -32,8 +32,8 @@
               [colorVariant]="'gradient-primary'" cardheight='card-stretch-half'>
               <div body>
                 <rds-big-number-widget [iconFill]="true" [iconStroke]="true" [bigNumber]="'$' +RevenuePrice"
-                                       [textAlign]="'text-start'" subTitleColorVariant="warning"                                       [subText]="'-$' +RevenueProfit" [icon]="'triangle_down'" [iconHeight]="'12px'"
-                                       [iconWidth]="'12px'"></rds-big-number-widget>
+                  [textAlign]="'text-start'" subTitleColorVariant="warning" [subText]="'-$' +RevenueProfit"
+                  [icon]="'triangle_down'" [iconHeight]="'12px'" [iconWidth]="'12px'"></rds-big-number-widget>
               </div>
             </rds-widget>
           </div>
