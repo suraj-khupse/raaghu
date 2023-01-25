@@ -28,4 +28,8 @@ export class RdsCompIconComponent {
     }
     return this.searchText;
   }
+
+  // clipboradfun(event){
+  //   console.log(event.target)
+  // }
 }
