@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RdsButtonModule,RdsIconModule,RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { RdsButtonModule,RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { RdsCompBasicResourcesModule } from 'projects/rds-components/src/app/rds
 import { RdsCompClientResourcesModule } from 'projects/rds-components/src/app/rds-comp-client-resources/rds-comp-client-resources.module';
 import { RdsCompPropertiesModule } from 'projects/rds-components/src/app/rds-comp-properties/rds-comp-properties.module';
 import { RdsCompSecretsModule } from 'projects/rds-components/src/app/rds-comp-secrets/rds-comp-secrets.module';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 @NgModule({
   declarations: [

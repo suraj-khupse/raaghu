@@ -76,6 +76,7 @@ export class UserAuthService implements OnInit {
       (result) => {
 
         localStorage.setItem('storedPermissions',JSON.stringify(result.auth.grantedPolicies));
+        this.sharedService.setLanguageStatus(result.localization.currentCulture)
         this.localization = of(result.localization.languages);
         localStorage.setItem('userName',JSON.stringify(result.currentUser.userName));
         localStorage.setItem('userAuthenticated',  JSON.stringify({ value: result.currentUser.isAuthenticated })
