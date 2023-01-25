@@ -34,17 +34,7 @@ export class AppComponent implements OnInit {
     cultureName:null
   };
   
-  public rdsAlertMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompAlert',
-    input: {
-      currentAlerts: this.currentAlerts
-    },
-    output: {
-      onAlertHide: (event: any) => {
-        this.currentAlerts = event;
-      }
-    }
-  }
+
   tableHeadersForTextTemplate: TableHeader[] = [
     { key: 'templateName', displayName: 'Template Name', dataType: 'text', filterable: true, sortable: true, required: false, },
     { key: 'inlineLocalized', displayName: 'Inline Localized', dataType: 'icon', filterable: true, sortable: true, required: false, },
