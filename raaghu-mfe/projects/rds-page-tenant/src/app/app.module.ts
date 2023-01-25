@@ -10,7 +10,7 @@ import { RdsCompTenantSettingsModule } from 'projects/rds-components/src/app/rds
 import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-comp-permission-tree/rds-permission-tree.module';
 import { CommonModule } from '@angular/common';
 import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
-import { RdsCompIconModule } from "../../../rds-components/src/app/rds-comp-icon/rds-comp-icon.module";
+
 
 @NgModule({
     declarations: [
@@ -35,8 +35,7 @@ import { RdsCompIconModule } from "../../../rds-components/src/app/rds-comp-icon
         RdsCompTenantInformationModule,
         RdsCompTenantSettingsModule,
         RdsPermissionTreeModule,
-        RdsCompAlertModule,
-        RdsCompIconModule
+        RdsCompAlertModule
     ]
 })
 export class AppModule { }
