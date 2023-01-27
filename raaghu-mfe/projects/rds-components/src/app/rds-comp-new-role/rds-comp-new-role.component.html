@@ -1,8 +1,8 @@
 <div *ngIf="!EditShimmer">
-  <div class="tab-content py-4 px-3 navsm-p-0">
+  <div class="tab-content py-4 navsm-p-0">
     <form #Roleform="ngForm">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 px-3">
           <div class="form-group mb-3">
             <rds-input [inputType]="'text'" [label]="translate.instant('Role Name')" [(ngModel)]="roleData.name"
               [labelPosition]="'top'" name="name" required #name="ngModel" [placeholder]="translate.instant('Role Name')"
@@ -13,14 +13,11 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="form-group mb-3">
+        <div class="col-md-12 d-flex px-3">
+          <div class="form-group mb-3 me-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Default Role')" [checked]="roleData.isDefault"
               [(ngModel)]="roleData.isDefault" name="isDefault" [withLabel]="true" [switch]="false" 
               [id]="'isDefault'"></rds-checkbox>
-            <div class="fw-normal opacity-50">
-              <rds-label [label]="translate.instant('Assign to new users by default')"></rds-label>
-            </div>
           </div>
           <div class="form-group mb-3">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Available For Public')" [checked]="roleData.isPublic"
@@ -28,11 +25,11 @@
               [id]="'isPublic'"></rds-checkbox>
           </div>
         </div>
-        <div class="col-md-12 pt-4">
+        <!-- <div class="col-md-12 pt-4">
           <rds-banner
             [bannerText]="translate.instant('If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!')"
             [sticky]="false" position="bottom" colorVariant="primary"></rds-banner>
-        </div>
+        </div> -->
       </div>
     </form>
   </div>
