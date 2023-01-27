@@ -21,8 +21,8 @@
           name="txtPassword"
           [hasErrors]="(userPassword.errors && (userPassword.dirty && userPassword.touched)) && userPassword.errors.required"
           [errors]="translate.instant('Password is required')"></rds-input>
-        <div class="row d-flex justify-content-between mt-2">
-          <div class="col-md-6">
+        <div class="d-flex justify-content-between mt-2">
+          <div>
             <div class="form-group mb-3">
               <rds-checkbox (onChange)="onChangeRememberme($event)" [disabled]="false"
                 [label]="translate.instant(checkboxTitle)" [checked]="rememberMe" [withLabel]="true" [switch]="false"
@@ -30,7 +30,7 @@
               </rds-checkbox>
             </div>
           </div>
-          <div class="col-md-6">
+          <div>
             <a class="link-primary text-decoration-none float-end" [href]="['/forgot-password']">
               {{translate.instant("Forgot password?")}}</a>
           </div>
