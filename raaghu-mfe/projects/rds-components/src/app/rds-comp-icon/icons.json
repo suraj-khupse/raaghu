@@ -1,0 +1,689 @@
+[
+  {
+    "name": "action"
+  },
+  {
+    "name": "administration"
+  },
+  {
+    "name": "api_referances"
+  },
+  {
+    "name": "arrow_down"
+  },
+  {
+    "name": "arrow_left"
+  },
+  {
+    "name": "arrow_right"
+  },
+  {
+    "name": "arrow_up"
+  },
+  {
+    "name": "audit_logs"
+  },
+  {
+    "name": "award"
+  },
+  {
+    "name": "bag"
+  },
+  {
+    "name": "bar_chart"
+  },
+  {
+    "name": "basic_subscription"
+  },
+  {
+    "name": "blog"
+  },
+  {
+    "name": "book"
+  },
+  {
+    "name": "brush"
+  },
+  {
+    "name": "calendar"
+  },
+  {
+    "name": "camera"
+  },
+  {
+    "name": "cancel"
+  },
+  {
+    "name": "card_data"
+  },
+  {
+    "name": "card_image"
+  },
+  {
+    "name": "careers"
+  },
+  {
+    "name": "cc"
+  },
+  {
+    "name": "check"
+  },
+  {
+    "name": "check_square"
+  },
+  {
+    "name": "chevron_down"
+  },
+  {
+    "name": "chevron_right"
+  },
+  {
+    "name": "chevron_left"
+  },
+  {
+    "name": "chevron_up"
+  },
+  {
+    "name": "circle"
+  },
+  {
+    "name": "arrow_left"
+  },
+  {
+    "name": "clipboard"
+  },
+  {
+    "name": "clipboard_check"
+  },
+  {
+    "name": "clipboard_data"
+  },
+  {
+    "name": "clock"
+  },
+  {
+    "name": "close"
+  },
+  {
+    "name": "close_circle"
+  },
+  {
+    "name": "cloud_download"
+  },
+  {
+    "name": "cloud_upload"
+  },
+  {
+    "name": "code"
+  },
+  {
+    "name": "code_computer"
+  },
+  {
+    "name": "code_square"
+  },
+  {
+    "name": "computer"
+  },
+  {
+    "name": "cookies"
+  },
+  {
+    "name": "countries"
+  },
+  {
+    "name": "crop"
+  },
+  {
+    "name": "currency_dollar"
+  },
+  {
+    "name": "currency_dollar_circle"
+  },
+  {
+    "name": "customer"
+  },
+  {
+    "name": "daily_sales"
+  },
+  {
+    "name": "dashboard_settings"
+  },
+  {
+    "name": "date_picker"
+  },
+  {
+    "name": "delete"
+  },
+  {
+    "name": "delete_file"
+  },
+  {
+    "name": "demo_ui"
+  },
+  {
+    "name": "direction"
+  },
+  {
+    "name": "dislike"
+  },
+  {
+    "name": "dollar"
+  },
+  {
+    "name": "down"
+  },
+  {
+    "name": "down_arrow"
+  },
+  {
+    "name": "download"
+  },
+  {
+    "name": "download_data"
+  },
+  {
+    "name": "download_receipt"
+  },
+  {
+    "name": "dynamic_properties"
+  },
+  {
+    "name": "edit"
+  },
+  {
+    "name": "editions"
+  },
+  {
+    "name": "empty_states_add_section"
+  },
+  {
+    "name": "empty_states_add_nodes"
+  },
+  {
+    "name": "empty_states_add_card"
+  },
+  {
+    "name": "empty_states_add_records"
+  },
+  {
+    "name": "empty_states_add_screens"
+  },
+  {
+    "name": "envelope"
+  },
+  {
+    "name": "exchange"
+  },
+  {
+    "name": "exclamation_circle"
+  },
+  {
+    "name": "exclamation_diamond"
+  },
+  {
+    "name": "exclamation_triangle"
+  },
+  {
+    "name": "export"
+  },
+  {
+    "name": "export_data"
+  },
+  {
+    "name": "eye"
+  },
+  {
+    "name": "eye_slash"
+  },
+  {
+    "name": "featured"
+  },
+  {
+    "name": "features"
+  },
+  {
+    "name": "file"
+  },
+  {
+    "name": "file_data"
+  },
+  {
+    "name": "file_plus"
+  },
+  {
+    "name": "filter"
+  },
+  {
+    "name": "folder"
+  },
+  {
+    "name": "folder_search"
+  },
+  {
+    "name": "fullscreen"
+  },
+  {
+    "name": "fullscreen_square"
+  },
+  {
+    "name": "funnel"
+  },
+  {
+    "name": "gear"
+  },
+  {
+    "name": "general_stats"
+  },
+  {
+    "name": "github"
+  },
+  {
+    "name": "globe"
+  },
+  {
+    "name": "grid"
+  },
+  {
+    "name": "grid_square"
+  },
+  {
+    "name": "hand_pointer"
+  },
+  {
+    "name": "headset"
+  },
+  {
+    "name": "heart"
+  },
+  {
+    "name": "help"
+  },
+  {
+    "name": "home"
+  },
+  {
+    "name": "information"
+  },
+  {
+    "name": "keypad"
+  },
+  {
+    "name": "languages"
+  },
+  {
+    "name": "layout"
+  },
+  {
+    "name": "leaf"
+  },
+  {
+    "name": "left"
+  },
+  {
+    "name": "left_arrow"
+  },
+  {
+    "name": "like"
+  },
+  {
+    "name": "link"
+  },
+  {
+    "name": "link_circle"
+  },
+  {
+    "name": "linkedin"
+  },
+  {
+    "name": "list"
+  },
+  {
+    "name": "location"
+  },
+  {
+    "name": "login_attempts"
+  },
+  {
+    "name": "export"
+  },
+  {
+    "name": "logout"
+  },
+  {
+    "name": "maintenance"
+  },
+  {
+    "name": "manage_authority"
+  },
+  {
+    "name": "manage_linked"
+  },
+  {
+    "name": "member_activity"
+  },
+  {
+    "name": "minus"
+  },
+  {
+    "name": "mobile"
+  },
+  {
+    "name": "money"
+  },
+  {
+    "name": "money_bag"
+  },
+  {
+    "name": "my_settings"
+  },
+  {
+    "name": "no_data"
+  },
+  {
+    "name": "no_date"
+  },
+  {
+    "name": "no_folder"
+  },
+  {
+    "name": "notification"
+  },
+  {
+    "name": "notification_bell"
+  },
+  {
+    "name": "organization"
+  },
+  {
+    "name": "page_settings"
+  },
+  {
+    "name": "pencil"
+  },
+  {
+    "name": "person"
+  },
+  {
+    "name": "person_circle"
+  },
+  {
+    "name": "phone"
+  },
+  {
+    "name": "phone_square"
+  },
+  {
+    "name": "picture_edit"
+  },
+  {
+    "name": "pie_chart_plus"
+  },
+  {
+    "name": "play"
+  },
+  {
+    "name": "play_btn"
+  },
+  {
+    "name": "play_video"
+  },
+  {
+    "name": "plus"
+  },
+  {
+    "name": "premium_subscription"
+  },
+  {
+    "name": "privacy"
+  },
+  {
+    "name": "professional_subscription"
+  },
+  {
+    "name": "profile_picture"
+  },
+  {
+    "name": "profile_picture_circle"
+  },
+  {
+    "name": "profile_picture_square"
+  },
+  {
+    "name": "profit_share"
+  },
+  {
+    "name": "question"
+  },
+  {
+    "name": "question_chat"
+  },
+  {
+    "name": "quote"
+  },
+  {
+    "name": "quote_right"
+  },
+  {
+    "name": "redo"
+  },
+  {
+    "name": "refresh"
+  },
+  {
+    "name": "refresh_circle"
+  },
+  {
+    "name": "refresh_data"
+  },
+  {
+    "name": "refresh_sync"
+  },
+  {
+    "name": "regional_stats"
+  },
+  {
+    "name": "right"
+  },
+  {
+    "name": "right_arrow"
+  },
+  {
+    "name": "right_arrow_1"
+  },
+  {
+    "name": "roles"
+  },
+  {
+    "name": "rotate"
+  },
+  {
+    "name": "sales_summary"
+  },
+  {
+    "name": "save"
+  },
+  {
+    "name": "screen_settings"
+  },
+  {
+    "name": "search"
+  },
+  {
+    "name": "setting"
+  },
+  {
+    "name": "share"
+  },
+  {
+    "name": "shield_check"
+  },
+  {
+    "name": "shield_dollar"
+  },
+  {
+    "name": "skip_end"
+  },
+  {
+    "name": "speaker"
+  },
+  {
+    "name": "standard_subscription"
+  },
+  {
+    "name": "star"
+  },
+  {
+    "name": "subscription"
+  },
+  {
+    "name": "subscription_premium"
+  },
+  {
+    "name": "symmetry_horizontal"
+  },
+  {
+    "name": "symmetry_vertical"
+  },
+  {
+    "name": "tag"
+  },
+  {
+    "name": "tenant"
+  },
+  {
+    "name": "text"
+  },
+  {
+    "name": "three_dots"
+  },
+  {
+    "name": "three_dots_horizontal"
+  },
+  {
+    "name": "tick"
+  },
+  {
+    "name": "tick_circle"
+  },
+  {
+    "name": "triangle_down"
+  },
+  {
+    "name": "triangle_up"
+  },
+  {
+    "name": "truck"
+  },
+  {
+    "name": "twitter"
+  },
+  {
+    "name": "undo"
+  },
+  {
+    "name": "up"
+  },
+  {
+    "name": "up_down_arrow"
+  },
+  {
+    "name": "upload"
+  },
+  {
+    "name": "upload_data"
+  },
+  {
+    "name": "users"
+  },
+  {
+    "name": "vimeo"
+  },
+  {
+    "name": "visual_settings"
+  },
+  {
+    "name": "webhook_subscription"
+  },
+  {
+    "name": "xd"
+  },
+  {
+    "name": "youtube"
+  },
+  {
+    "name": "zapier"
+  },
+  {
+    "name": "dropbox_colored"
+  },
+  {
+    "name": "github_colored"
+  },
+  {
+    "name": "jira_colored"
+  },
+  {
+    "name": "linear_colored"
+  },
+  {
+    "name": "linkedin_colored"
+  },
+  {
+    "name": "mastercard_colored"
+  },
+  {
+    "name": "notion_colored"
+  },
+  {
+    "name": "slack_colored"
+  },
+  {
+    "name": "twitter_colored"
+  },
+  {
+    "name": "vimeo_colored"
+  },
+  {
+    "name": "visa_colored"
+  },
+  {
+    "name": "xd_colored"
+  },
+  {
+    "name": "youtube_colored"
+  },
+  {
+    "name": "zapier_colored"
+  },
+  {
+    "name": "dropdown_colored"
+  },
+  {
+    "name": "figma_colored"
+  },
+  {
+    "name": "apps"
+  },
+  {
+    "name": "pages"
+  },
+  {
+    "name": "icons"
+  },
+  {
+    "name": "tag"
+  },
+  {
+    "name": "tenant"
+  },
+  {
+    "name": "text"
+  },
+  {
+    "name": "three_dots"
+  },
+  {
+    "name": "three_dots_horizontal"
+  }
+]  
