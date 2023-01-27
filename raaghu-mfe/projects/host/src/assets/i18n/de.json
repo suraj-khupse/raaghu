@@ -270,7 +270,7 @@
   "Header key is required": "Kopfzeilenschlüssel ist erforderlich",
   "Header Value": "Kopfzeilenwert",
   "Header Value is required": "Kopfzeilenwert ist erforderlich",
-  "Host Admin": "Host-Admin",
+  "Host Admin": "Host-Administrator",
   "Icon": "Symbol",
   "If you are changing your own permissions, you may need to refresh page (F5) to take effect of permission changes on your own screen!": "Wenn Sie Ihre eigenen Berechtigungen ändern, müssen Sie möglicherweise die Seite (F5) aktualisieren, um die Berechtigungsänderungen auf Ihrem eigenen Bildschirm zu übernehmen!",
   "If You Disable This, New Tenants Will Not Be Active (And Can Not Login) Until Admin Manually Activates The Account": "Wenn Sie dies deaktivieren, sind neue Mandanten nicht aktiv (und können sich nicht anmelden), bis der Administrator das Konto manuell aktiviert",
