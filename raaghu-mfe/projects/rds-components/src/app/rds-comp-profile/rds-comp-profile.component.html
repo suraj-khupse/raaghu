@@ -61,7 +61,7 @@
           <div class="card-body vh-100 p-0 d-grid">
             <div class="justify-content-center d-flex align-items-center">
               <div class="d-inline-block position-relative">
-                <rds-avatar [withProfilePic]="true" [firstName]="tenancy" [subTitle]="ProfileData.userName"  [profilePic]="Profileurl" [roundedPills]="true"
+                <rds-avatar [withProfilePic]="true" [firstName]="translate.instant(tenancy)" [subTitle]="ProfileData.userName"  [profilePic]="Profileurl" [roundedPills]="true"
                   [verticallyAlligned]="true" [roundedAvatar]="true"  [profileContentAlign]="false" [width] ="'130'" [height]="'120'"></rds-avatar>
                 <div class="text-center" *ngIf="ProfileData">
                   <!-- {{ ProfileData.userName }} -->
@@ -94,10 +94,10 @@
               [pills]="false" [tabs]="false" [fill]="false" [justified]="false" [activeTab]="activePage"
               (onClicktab)="onclickMenu($event)">
             </rds-nav-tab>
-            <div class="text-center">
+            <div class=" footer text-center ">
               <rds-button [isOutline]="true" [label]="translate.instant('LOGOUT')" type="button" [size]="'medium'"
                           [colorVariant]="'primary'" [isIconFill]="false" (click)="logoutFunction()" [icon]="'logout'"
-                          [iconHeight]="'15px'" [iconWidth]="'15px'">
+                          [iconHeight]="'13px'" [iconWidth]="'15px'">
               </rds-button>
             </div>
 
