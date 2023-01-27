@@ -1,6 +1,6 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsTableComponent } from './rds-table.component';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { CommonModule } from '@angular/common';
 import { RdsLikeDislikeModule } from '../../../rds-like-dislike/src/public-api';
 

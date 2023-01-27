@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsButtonModule, RdsCardModule,  RdsCheckboxModule,  RdsCounterModule,  RdsInputModule, RdsLabelModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsSelectListModule } from '@libs/rds-select-list';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';

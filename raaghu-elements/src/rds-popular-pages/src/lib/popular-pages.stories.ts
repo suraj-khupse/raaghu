@@ -1,6 +1,6 @@
 
 import { Input } from '@angular/core';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsPopularPagesComponent } from './rds-popular-pages.component';
 

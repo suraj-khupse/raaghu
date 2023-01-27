@@ -43,11 +43,11 @@ export class AppComponent implements OnInit {
   };
   constructor(private store: Store, private translate: TranslateService) { }
   ngOnInit(): void {
-    this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-      if (res) {
-        this.translate.use(res);
-      }
-    })
+    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
+    //   if (res) {
+    //     this.translate.use(res);
+    //   }
+    // })
   }
 
 }

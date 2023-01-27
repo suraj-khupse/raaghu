@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RdsAddressDetailModule, RdsCardDetailModule, RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsAddressDetailModule, RdsCardDetailModule, RdsLabelModule } from '@libs/rds-elements';
 import { SharedModule } from '@libs/shared';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

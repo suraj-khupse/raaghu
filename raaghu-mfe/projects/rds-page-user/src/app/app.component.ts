@@ -30,6 +30,7 @@ import {
 import {
   AlertService,
   ComponentLoaderOptions,
+  UserAuthService,
 } from '../../../libs/shared/src/public-api';
 import {
   transition,
@@ -121,7 +122,7 @@ export class AppComponent {
     private alertService: AlertService,
     private _arrayToTreeConverterService: ArrayToTreeConverterService,
     public translate:TranslateService,
-    
+    public userAuthService:UserAuthService
   ) { }
   public rdsUserMfeConfig: ComponentLoaderOptions={ name:'RdsCompUserPermissionsNew'}
   UserPermissionFiltertreeData: any = [];
@@ -165,6 +166,14 @@ export class AppComponent {
   }
   
   ngOnInit(): void {
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
     this.store.dispatch(getUsers());
     this.store.select(selectAllUsers).subscribe((res: any) => {
       this.userList = [];

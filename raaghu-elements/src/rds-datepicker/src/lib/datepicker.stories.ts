@@ -3,7 +3,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RdsDatepickerComponent } from './rds-datepicker.component';
 import { FormsModule } from '@angular/forms';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 export default {
   title: 'Elements/Datepicker',

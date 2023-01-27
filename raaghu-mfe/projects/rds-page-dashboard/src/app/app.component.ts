@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from '@libs/shared';
 //import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,14 +13,17 @@ import { selectAllLanguages } from 'projects/libs/state-management/src/lib/state
 })
 export class AppComponent implements OnInit {
 
-  constructor(private store: Store, private translate: TranslateService ) { }
+  constructor(private store: Store, private translate: TranslateService, private userAuthService: UserAuthService) { }
 
   ngOnInit(): void {
-    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-    //   if (res) {
-    //     this.translate.use(res);
-    //   }
-    // }) 
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
   }
   newapicall(){
     this.store.dispatch(getLanguages());

@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsDropdownlistComponent } from './rds-dropdownlist.component';
 
 export default {

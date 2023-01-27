@@ -53,7 +53,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
     {displayText : 'Forced', value : 'Forced'}
   ];
   buttonSpinnerForNewUser : boolean = false;
-  buttonSpinnerForSave : boolean = true;
+  buttonSpinnerForSave : boolean = false;
 
   currentAlerts: any = [];
   offCanvasId = 'tenantOffcanvashost';

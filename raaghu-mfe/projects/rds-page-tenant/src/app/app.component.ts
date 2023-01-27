@@ -1,11 +1,10 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ArrayToTreeConverterService, ComponentLoaderOptions } from '@libs/shared';
+import { ArrayToTreeConverterService, ComponentLoaderOptions, UserAuthService } from '@libs/shared';
 import { } from '@libs/state-management';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
-import { fadeAnimation } from '../../../libs/shared/src/lib/animation';
 import {
   transition,
   trigger,
@@ -69,7 +68,11 @@ export class AppComponent {
   tenantTableData: any = []
   isShimmer: boolean= true;
   editShimmer: boolean =false;
-  constructor(public datepipe: DatePipe, private store: Store, private translate: TranslateService, private _arrayToTreeConverterService: ArrayToTreeConverterService) { }
+  constructor(public datepipe: DatePipe, 
+    private store: Store,
+    private userAuthService:UserAuthService, 
+    private translate: TranslateService,
+    private _arrayToTreeConverterService: ArrayToTreeConverterService) { }
   
   onSaveTenant(tenant: any) {        
     if (tenant.id) {
@@ -79,7 +82,7 @@ export class AppComponent {
           editionId: tenant.tenantInfo.editionId[0],
           activationState : tenant.tenantInfo.activationState
         };      
-        let body = {body:data,id:this.tenantId};      
+        const body = {body:data,id:this.tenantId};      
         this.store.dispatch(updateTenant(body))
         let body1 = {
         feature : tenant.featureValues,
@@ -127,11 +130,14 @@ onSaveTenantHost(featureHost : any){
   ngOnInit(): void {
     this.isAnimation = true;
 
-    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-    //   if (res) {
-    //     this.translate.use(res);
-    //   }
-    // });
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
 
     this.store.dispatch(getTenants());
     this.store.select(selectAllTenants).subscribe((res: any) => {

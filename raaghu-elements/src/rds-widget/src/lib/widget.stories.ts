@@ -1,6 +1,6 @@
 
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsWidgetComponent } from './rds-widget.component';
 import { RdsBigNumberWidgetModule } from '@libs/rds-big-number-widget';
 import { RdsChartLineModule } from '@libs/rds-chart-line';
