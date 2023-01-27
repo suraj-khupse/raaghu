@@ -26,16 +26,7 @@ export class RdsTopNavigationComponent implements OnInit {
   @Input() tenantName: string = '';
   tabName = 'Dashboard';
 
-  breadcrumbsItems: any[] = [
-    {
-      name: "Pages",
-      disabled: true
-    },
-    {
-      name: "Dashboard",
-      disabled: true
-    }
-  ]
+ 
 
 
   profileItems: any = [
@@ -60,16 +51,11 @@ export class RdsTopNavigationComponent implements OnInit {
     const topNavTitle = localStorage.getItem('topnavTitle')
     if (topNavTitle != null) {
       this.tabName = topNavTitle;
-      this.breadcrumbsItems[1].name = topNavTitle;
+      
     }
     this.UserName = this.userService.userName;
     this.shared.getTopNavTitle().subscribe((res: any) => {
-      if (res != '') {
-        this.tabName = res;
-        this.breadcrumbsItems[1].name = res;
-      } else {
-        this.tabName = 'Dashboard'
-      }
+    res != '' ? this.tabName = res : this.tabName = 'Dashboard';
     });
     this.shared.getSideBarStatus().subscribe((res: any) => {
       if (res === true) {
