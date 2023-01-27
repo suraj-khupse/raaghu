@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import iconsData from './icons.json';
+import { compose } from '@ngrx/store';
 
 interface Icon {
 
@@ -32,4 +33,16 @@ export class RdsCompIconComponent {
   // clipboradfun(event){
   //   console.log(event.target)
   // }
+
+  copyFun(event) :void{
+    
+// console.log(event.children[0]);
+const elem = document.querySelector('#elem1');
+const clone = elem.cloneNode(true);
+//  clone.id = 'elem1';
+// clone.classList.add('text-large');
+  }
+
+
+
 }

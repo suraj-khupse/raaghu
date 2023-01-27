@@ -3,7 +3,7 @@ import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsCompIconComponent } from './rds-comp-icon.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsIconModule } from 'raaghu-themes/rds-icons';
-import { RdsSearchInputModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsSearchInputModule } from '@libs/rds-elements';
 // import { FilterPipe } from './filter.pipe';
 
 export default {
@@ -12,7 +12,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule,RdsIconModule,RdsSearchInputModule
+        FormsModule, ReactiveFormsModule,RdsIconModule,RdsSearchInputModule,RdsButtonModule
       ],
       providers: [
      
