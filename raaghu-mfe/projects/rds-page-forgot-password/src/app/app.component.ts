@@ -22,7 +22,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   };
   loadingshimmer:boolean=true;
   constructor(private injector: Injector,
-    
+    public store:Store,
     private _accountService: ServiceProxy,
     private translate: TranslateService) {
     super(injector)
