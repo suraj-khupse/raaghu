@@ -35,6 +35,7 @@ export class RdsCompIconComponent {
   // }
 
   copyFun(event) :void{
+    console.log(event.target)
     
 // console.log(event.children[0]);
 const elem = document.querySelector('#elem1');
