@@ -9,42 +9,48 @@
 
         </div>
         <div class="col-md-9 sm-p-0">
-          <div class="form-group mb-3">
+          <div class="form-group ">
             <rds-input [inputType]="'text'" [label]="translate.instant('Tenancy Name')" [labelPosition]="'top'"
               [(ngModel)]="tenantData.tenancyName" name="tenancy_name" required
-              [placeholder]="translate.instant('Tenancy Name')" [isRequired]=true #tenancyName="ngModel">
+              [placeholder]="translate.instant('Tenancy Name')" [isRequired]=true #tenancyName="ngModel"
+              [hasErrors]="(tenancyName.errors && (tenancyName.dirty || tenancyName.touched)) && tenancyName.errors.required" [errors]="'Tenancy Name is
+              required'">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="tenancyName.errors && (tenancyName.dirty || tenancyName.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="tenancyName.errors && (tenancyName.dirty || tenancyName.touched)">
               <span class="text-danger" *ngIf="tenancyName.errors.required">{{"Tenancy Name is
                 required"|translate}}</span>
-            </div>
+            </div> -->
           </div>
-          <div class="form-group mb-3">
+          <div class="form-group ">
             <rds-input [inputType]="'text'" [label]="translate.instant('Tenant Name')" [labelPosition]="'top'"
               [(ngModel)]="tenantData.tenantName" name="tenant_name" required
-              [placeholder]="translate.instant('Tenant Name')" [isRequired]=true #tenantName="ngModel">
+              [placeholder]="translate.instant('Tenant Name')" [isRequired]=true #tenantName="ngModel"
+              [hasErrors]="(tenantName.errors && (tenantName.dirty || tenantName.touched)) && tenantName.errors.required" [errors]="'Tenant Name is
+              required'">>
             </rds-input>
-            <div class="form-control-feedback" *ngIf="tenantName.errors && (tenantName.dirty || tenantName.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="tenantName.errors && (tenantName.dirty || tenantName.touched)">
               <span class="text-danger" *ngIf="tenantName.errors.required">{{"Tenant Name is
                 required"|translate}}</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 sm-p-0" *ngIf="showEmail">
-          <div class="form-group mb-3">
+          <div class="form-group ">
             <rds-input [inputType]="'email'" [label]="translate.instant('Admin Email')" [labelPosition]="'top'"
               [(ngModel)]="tenantData.adminEmailAddress" [pattern]="emailPattern" name="email"
-              [placeholder]="translate.instant('Admin Email')" #adminEmailAddress="ngModel" [isRequired]=true required>
+              [placeholder]="translate.instant('Admin Email')" #adminEmailAddress="ngModel" [isRequired]=true required
+              [hasErrors]="(adminEmailAddress.errors && (adminEmailAddress.dirty || adminEmailAddress.touched)) && (adminEmailAddress.errors.required || adminEmailAddress.errors.pattern)" 
+              [errors]=" adminEmailAddress.errors?'Admin email is required':'Please enter valid admin email'">
             </rds-input>
-            <div class="form-control-feedback"
+            <!-- <div class="form-control-feedback"
               *ngIf="adminEmailAddress.errors && (adminEmailAddress.dirty || adminEmailAddress.touched)">
               <span class="text-danger" *ngIf="adminEmailAddress.errors.required">{{"Admin email is
                 required"|translate}}</span>
               <span class="text-danger" *ngIf="adminEmailAddress.errors.pattern">{{"Please enter valid admin
                 email"|translate}}</span>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-6 sm-p-0">
@@ -54,7 +60,8 @@
             </div>
             <rds-dropdownlist [placeholder]="translate.instant('Select Edition')" [borderDropdown]="true"
               class="text-dark" [id]="'edition-dropdown'" [(ngModel)]="tenantData.displayText" [listItems]="editionList"
-              required [value]="tenantData.displayText" (onSelect)="onEditionSelect($event)" ngDefaultControl name="edition">
+              required [value]="tenantData.displayText" (onSelect)="onEditionSelect($event)" ngDefaultControl name="edition"
+              [hasErrors]=" (submitted && ( tenantData.displayText === ''|| !tenantData.displayText))" [errors]="'Edition is required'">
             </rds-dropdownlist>
           </div>
         </div>

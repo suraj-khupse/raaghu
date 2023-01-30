@@ -5,21 +5,24 @@
       <rds-input size="medium" name="endpoint" [label]="translate.instant('Webhook Endpoint')"
         [placeholder]="translate.instant('Webhook Endpoint')" [labelPosition]="'top'" [pattern]="urlPattern"
         [value]="subscriptionData.WebhookEndpoint" #url="ngModel" inputType="text"
-        [(ngModel)]="subscriptionData.WebhookEndpoint" [isRequired]=true required ngDefaultControl>
+        [(ngModel)]="subscriptionData.WebhookEndpoint" [isRequired]=true required ngDefaultControl [hasErrors]="(url.errors && (url.dirty || url.touched)) && url.errors.required"
+        [errors]="translate.instant('Endpoint is required')">
       </rds-input>
-      <div class="form-control-feedback" *ngIf="url.errors && (url.dirty || url.touched)">
+      <!-- <div class="form-control-feedback" *ngIf="url.errors && (url.dirty || url.touched)">
         <span class="text-danger" *ngIf="url.errors.required">{{'Endpoint is required' |translate}}</span>
         <span class="text-danger" *ngIf="url.errors.pattern">{{'Enter valid url'| translate}}</span>
-      </div>
+      </div> -->
     </div>
     <div class="form-group col-sm-12 mb-3">
       <rds-textarea #description="ngModel" [placeholderText]="translate.instant('Webhook Event')"
         [label]="translate.instant('Webhook Event')" [value]="subscriptionData.WebhookEvents"
-        [(ngModel)]="subscriptionData.WebhookEvents" name="desc" required [isRequired]=true #event="ngModel">
+        [(ngModel)]="subscriptionData.WebhookEvents" name="desc" required [isRequired]=true #event="ngModel"
+        [hasErrors]="(event.errors && (event.dirty || event.touched)) && event.errors.required" 
+        [errors]="translate.instant('Event is required')">
       </rds-textarea>
-      <div class="form-control-feedback" *ngIf="event.errors && (event.dirty || event.touched)">
+      <!-- <div class="form-control-feedback" *ngIf="event.errors && (event.dirty || event.touched)">
         <span class="text-danger" *ngIf="event.errors.required">{{'Event is required' |translate}}</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </form>
@@ -34,22 +37,26 @@
       <div class="form-group mb-3">
         <rds-input size="medium" [value]="additionalheader.additionalheaderKey" #header_key="ngModel"
           [placeholder]="translate.instant('Header Key')" name="headerKey" inputType="text"
-          [(ngModel)]="additionalheader.additionalheaderKey" required ngDefaultControl>
+          [(ngModel)]="additionalheader.additionalheaderKey" required ngDefaultControl
+          [hasErrors]="(header_key.errors && (header_key.dirty || header_key.touched)) && header_key.errors.required"
+          [errors] = "translate.instant('Header key is required')">
         </rds-input>
-        <div class="form-control-feedback" *ngIf="header_key.errors && (header_key.dirty || header_key.touched)">
+        <!-- <div class="form-control-feedback" *ngIf="header_key.errors && (header_key.dirty || header_key.touched)">
           <span class="text-danger" *ngIf="header_key.errors.required">{{'Header key is required'|translate}}</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="col-md-5">
       <div class="form-group mb-3">
         <rds-input size="medium" name="headerValue" required #header_value="ngModel"
           [value]="additionalheader.additionalheadervalue" [placeholder]="translate.instant('Header Value')"
-          inputType="text" [(ngModel)]="additionalheader.additionalheadervalue" ngDefaultControl>
+          inputType="text" [(ngModel)]="additionalheader.additionalheadervalue" ngDefaultControl
+          [hasErrors]="(header_value.errors && (header_value.dirty || header_value.touched)) && header_value.errors.required"
+          [errors]="translate.instant('Header Value is required')">
         </rds-input>
-        <div class="form-control-feedback" *ngIf="header_value.errors && (header_value.dirty || header_value.touched)">
+        <!-- <div class="form-control-feedback" *ngIf="header_value.errors && (header_value.dirty || header_value.touched)">
           <span class="text-danger" *ngIf="header_value.errors.required">{{'Header Value is required'|translate}}</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="col-md-2">

@@ -39,36 +39,70 @@
             <div class="row py-2" *ngIf="!contentOnEdit">
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <rds-input size="medium" [inputType]="'text'" [label]="translate.instant('Edition Name')"
-                    [labelPosition]="'top'" #edition_name="ngModel" [isRequired]="true"
-                    [placeholder]="translate.instant('Edition Name')" required [(ngModel)]="EditionName" name="edition"
-                    ngDefaultControl>
+                 {{EditionName}} <rds-input
+                    size="medium"
+                    [inputType]="'text'"
+                    [label]="translate.instant('Edition Name')"
+                    [labelPosition]="'top'"
+                    #edition_name="ngModel"
+                    [isRequired]="true"
+                    [placeholder]="translate.instant('Edition Name')"
+                    required
+                    [(ngModel)]="EditionName"
+                    name="edition"
+                    ngDefaultControl [hasErrors]="(edition_name.errors && (edition_name.dirty || edition_name.touched)) && edition_name.errors.required "
+                    [errors]="'Edition is required'"
+                  >
                   </rds-input>
-                  <div class="form-control-feedback" *ngIf="
+                  <!-- <div
+                    class="form-control-feedback"
+                    *ngIf="
                       edition_name.errors &&
                       (edition_name.dirty || edition_name.touched)
-                    ">
-                    <span class="text-danger" *ngIf="edition_name.errors.required">{{ "Edition is required" | translate
-                      }}</span>
-                  </div>
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="edition_name.errors.required"
+                      >{{ "Edition is required" | translate }}</span
+                    >
+                  </div> -->
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group mb-3">
-                  <rds-input size="medium" [placeholder]="'$ ' + translate.instant('Annual Price')"
-                    [labelPosition]="'top'" [label]="translate.instant('Annual Price')" #annual_price="ngModel"
-                    [(ngModel)]="AnnualPrice" [isRequired]="true" name="annual" required ngDefaultControl
-                    onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
+                  <rds-input
+                    size="medium"
+                    [placeholder]="'$ ' + translate.instant('Annual Price')"
+                    [labelPosition]="'top'"
+                    [label]="translate.instant('Annual Price')"
+                    #annual_price="ngModel"
+                    [(ngModel)]="AnnualPrice"
+                    [isRequired]="true"
+                    name="annual"
+                    required
+                    ngDefaultControl
+                    onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                    [hasErrors]="(annual_price.errors && (annual_price.dirty || annual_price.touched)) && annual_price.errors.required " 
+                    [errors]="'Annual Price is required'"
+                  >
                   </rds-input>
-                  <div class="form-control-feedback" *ngIf="
+                  <!-- <div
+                    class="form-control-feedback"
+                    *ngIf="
                       annual_price.errors &&
                       (annual_price.dirty || annual_price.touched)
-                    ">
-                    <span class="text-danger" *ngIf="annual_price.errors.required">{{
-                      "Annual Price is
-                      required" | translate
-                      }}</span>
-                  </div>
+                    "
+                  >
+                    <span
+                      class="text-danger"
+                      *ngIf="annual_price.errors.required"
+                      >{{
+                        "Annual Price is
+                  required" | translate
+                      }}</span
+                    >
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -77,15 +111,17 @@
                 <div class="form-group mb-3 py-2">
                   <rds-input size="medium" [inputType]="'text'" [labelPosition]="'top'"
                     [label]="translate.instant('Edition Name')" #edition_name="ngModel" [isRequired]="true"
-                    [placeholder]="'Edition name'" required [(ngModel)]="EditionName" name="edition" ngDefaultControl>
+                    [placeholder]="'Edition name'" required [(ngModel)]="EditionName" name="edition" ngDefaultControl
+                    [hasErrors]="(edition_name.errors && (edition_name.dirty || edition_name.touched)) && edition_name.errors.required"
+                    [errors]="translate.instant('Edition is required')">
                   </rds-input>
-                  <div class="form-control-feedback" *ngIf="edition_name.errors &&
+                  <!-- <div class="form-control-feedback" *ngIf="edition_name.errors &&
                       (edition_name.dirty || edition_name.touched)">
                     <span class="text-danger" *ngIf="edition_name.errors.required">{{
                       "Edition is
                       required" | translate
                       }}</span>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

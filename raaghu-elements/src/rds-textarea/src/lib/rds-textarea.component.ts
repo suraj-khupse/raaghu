@@ -31,6 +31,8 @@ export class RdsTextareaComponent implements AfterViewInit, ControlValueAccessor
   @Input() tooltipPlacement: 'top' | 'bottom' | 'right' | 'left' = 'bottom';
   @Input() labelPosition: 'top' | 'bottom' = 'top';
   @Input() id: string = 'textareaId';
+  @Input() hasErrors: boolean = false;
+  @Input() errors: any = "";
 
   constructor() {
     this.id = this.id + RdsTextareaComponent.count++;
