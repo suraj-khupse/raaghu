@@ -438,6 +438,7 @@ export class AppComponent implements OnInit {
         this.store.dispatch(saveRole(data));
       }
     }
+    this.buttonSpinner = false;
   }
   onEditRole(event: any) {
 
@@ -515,6 +516,7 @@ export class AppComponent implements OnInit {
     this.RolesData = undefined;
     this.onReset(true);
     this.isRoleDataValid = false;
+    this.buttonSpinner = false;
     // this.close();
   }
   getRoles() {
@@ -707,6 +709,7 @@ export class AppComponent implements OnInit {
     var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
     bsOffcanvas.hide();
     this.viewCanvas = false;
+    this.buttonSpinner = false;
   }
 
   onchangeRoldate(event): void {

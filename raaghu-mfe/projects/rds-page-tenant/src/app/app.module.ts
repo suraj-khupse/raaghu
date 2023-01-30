@@ -11,30 +11,31 @@ import { RdsPermissionTreeModule } from 'projects/rds-components/src/app/rds-com
 import { CommonModule } from '@angular/common';
 import { RdsCompAlertModule } from 'projects/rds-components/src/app/rds-comp-alert/rds-comp-alert.module';
 
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    SharedModule,
-    CommonModule,
-    RdsButtonModule,
-    RdsAlertModule,
-    RdsCompDataTableModule,
-    NgxTranslateModule.forRoot(),
-    RdsFabMenuModule,
-    RdsOffcanvasModule,
-    RdsNavTabModule,
-    RdsCompTenantInformationModule,
-    RdsCompTenantSettingsModule,
-    RdsPermissionTreeModule,
-    RdsCompAlertModule
-  ],
-  providers: [
-    TranslateService,
-    TranslateStore
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    providers: [
+        TranslateService,
+        TranslateStore
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        AppRoutingModule,
+        SharedModule,
+        CommonModule,
+        RdsButtonModule,
+        RdsAlertModule,
+        RdsCompDataTableModule,
+        NgxTranslateModule.forRoot(),
+        RdsFabMenuModule,
+        RdsOffcanvasModule,
+        RdsNavTabModule,
+        RdsCompTenantInformationModule,
+        RdsCompTenantSettingsModule,
+        RdsPermissionTreeModule,
+        RdsCompAlertModule
+    ]
 })
 export class AppModule { }
