@@ -41,6 +41,7 @@ export class RdsCompIconComponent {
 
 public copyToClipboardWithParameter(value: any): void {
   const text: string = "<rds-icon name='" + value + "' height='20px' width='20px' colorVariant='primary'></rds-icon>";
+  
   // console.log(text);
   const successful = this.clipboard.copy(text);
 }
