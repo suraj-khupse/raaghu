@@ -4,6 +4,7 @@ import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RdsCompIconComponent } from './rds-comp-icon.component';
 import { RdsButtonModule, RdsSearchInputModule } from '@libs/rds-elements';
 import { FormsModule } from '@angular/forms';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     RdsIconModule,
     RdsSearchInputModule,
-    RdsButtonModule
+    RdsButtonModule,
+    ClipboardModule
   ],
   providers: [],
 })
