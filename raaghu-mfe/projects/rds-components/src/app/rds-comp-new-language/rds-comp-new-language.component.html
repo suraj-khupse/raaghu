@@ -11,8 +11,9 @@
               <rds-dropdownlist [borderDropdown]="true" class="text-dark" [id]="'select-language-dropdown'"
                 [placeholder]="translate.instant('Select Language')" [value]="selectedLanguage.languageName" required
                 [multiSelect]="false" [selectAll]="false" [entity]="false" [listItems]="languageNames"
-                (onSelect)="onLanguageSelect($event)"></rds-dropdownlist>
-              <div class="form-control-feedback" *ngIf="
+                (onSelect)="onLanguageSelect($event)" [hasErrors]=" submitted &&(selectedLanguage.languageName === '' || !selectedLanguage.languageName)"
+                [errors]="'Language is required'"></rds-dropdownlist>
+              <!-- <div class="form-control-feedback" *ngIf="
               submitted &&
               (selectedLanguage.languageName === '' || !selectedLanguage.languageName)
             ">
@@ -21,7 +22,7 @@
                   required"
                   | translate
                   }}</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

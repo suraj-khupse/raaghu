@@ -6,11 +6,13 @@
           <rds-input size="medium" [label]="translate.instant('Property Name')" [disabled]="false" [readonly]="false"
             [labelPosition]="'top'" value="" name="propertyName" [isRequired]=true inputType="text"
             [placeholder]="translate.instant('Property Name')" #propertyName="ngModel"
-            [(ngModel)]="dynamicPropertiesData.propertyName" floatinginputLabel="" required ngDefaultControl>
+            [(ngModel)]="dynamicPropertiesData.propertyName" floatinginputLabel="" required ngDefaultControl
+            [hasErrors]="(propertyName.errors&&(propertyName.dirty||propertyName.touched)) && propertyName.errors.required"
+            [errors]="translate.instant('Property name is required')">
           </rds-input>
-          <div class="form-control-feedback mt-1" *ngIf="propertyName.errors&&(propertyName.dirty||propertyName.touched)">
+          <!-- <div class="form-control-feedback mt-1" *ngIf="propertyName.errors&&(propertyName.dirty||propertyName.touched)">
             <h6><span class="text-danger" *ngIf="propertyName.errors.required">{{translate.instant('Property name is required')}}</span></h6>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col-md-6 pr-0">
