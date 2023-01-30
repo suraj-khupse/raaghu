@@ -23,5 +23,5 @@ import { AuthConfig } from 'angular-oauth2-oidc';
     // The first four are defined by OIDC.
     // Important: Request offline_access to get a refresh token
     // The api scope is a usecase specific one
-    scope: 'openid profile role phone email BookStore',
+    scope: 'openid email address phone BookStore offline_access',
   };
