@@ -7,4 +7,6 @@
   <label *ngIf="isFloatingInputLabel&&label" for="exampleFormControlTextarea1">{{label}}<span class="text-danger" *ngIf="isRequired"> *</span></label>
 </div>
 <label for="exampleFormControlTextarea1" class="form-label mt-2" *ngIf="!isFloatingInputLabel&&label&&labelPosition==='bottom'">{{label}}<span class="text-danger" *ngIf="isRequired"> *</span></label>
-
+<div class="form-control-feedback">
+  <span class="text-danger" *ngIf="hasErrors==true">{{errors}}</span>
+</div>

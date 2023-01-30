@@ -16,94 +16,102 @@
 
         </div>
         <div class="col-md-9">
-          <div class="form-group mb-3">
+          <div class="form-group ">
   
-            <rds-input [inputType]="'text'" [label]="translate.instant('Name')" [(ngModel)]="userData.name" [labelPosition]="'top'"
-              required #name="ngModel" [placeholder]="translate.instant('Name')" [isRequired]=true>
+             <rds-input [inputType]="'text'" [label]="translate.instant('Name')" [(ngModel)]="userData.name" [labelPosition]="'top'"
+            required #name="ngModel" [placeholder]="translate.instant('Name')" [isRequired]=true name="name" [hasErrors]="(name.errors&&(name.dirty||name.touched)) && (name.errors.required)"
+            [errors]="translate.instant('Name is required')">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="name.errors&&(name.dirty||name.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="name.errors&&(name.dirty||name.touched)">
               <span class="text-danger" *ngIf="name.errors.required">{{translate.instant("Name is required")}}</span>
-            </div>
+            </div> -->
           </div>
   
-          <div class="form-group mb-3">
+          <div class="form-group ">
   
             <rds-input [inputType]="'text'" [label]="translate.instant('Surname')" [labelPosition]="'top'" [(ngModel)]="userData.surname"
-              name="surname" required #surname="ngModel" [isRequired]=true [placeholder]="translate.instant('Surname')">
+              name="surname" required #surname="ngModel" [isRequired]=true [placeholder]="translate.instant('Surname')"
+              [hasErrors]="(surname.errors&&(surname.dirty||surname.touched)) && surname.errors.required" [errors]="translate.instant('Surname is required')">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="surname.errors&&(surname.dirty||surname.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="surname.errors&&(surname.dirty||surname.touched)">
               <span class="text-danger" *ngIf="surname.errors.required">{{translate.instant("Surname is required")}}</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
   
       <div class="row">
         <div class="col-md-12">
-          <div class="form-group mb-3">
+          <div class="form-group ">
   
             <rds-input [inputType]="'email'" [labelPosition]="'top'" [label]="translate.instant('Email Id')" [(ngModel)]="userData.emailAddress"
-              [pattern]="emailPattern" name="email" #email="ngModel" required [isRequired]=true [placeholder]="translate.instant('Email Id')">
+              [pattern]="emailPattern" name="email" #email="ngModel" required [isRequired]=true [placeholder]="translate.instant('Email Id')"
+              [hasErrors]="(email.errors&&(email.dirty||email.touched)) && (email.errors.required || email.errors.pattern)"
+              [errors]="translate.instant('Email is required')">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="email.errors&&(email.dirty||email.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="email.errors&&(email.dirty||email.touched)">
               <span class="text-danger" *ngIf="email.errors.required">{{translate.instant("Email is required")}}</span>
               <span class="text-danger" *ngIf="email.errors.pattern">{{translate.instant("Please enter a valid Email")}}</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group mb-3">
+          <div class="form-group">
   
             <rds-input [label]="translate.instant('Phone Number')" [labelPosition]="'top'"
               [(ngModel)]="userData.phoneNumber" name="phone" required [isRequired]=true #phone="ngModel" [pattern]="phonePattern"
-              [placeholder]="translate.instant('Phone Number')">
+              [placeholder]="translate.instant('Phone Number')" [hasErrors]="(phone.errors&&(phone.dirty||phone.touched)) &&(phone.errors.required || phone.errors.pattern)"
+              [errors]="translate.instant('Phone Number is required')">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="phone.errors&&(phone.dirty||phone.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="phone.errors&&(phone.dirty||phone.touched)">
               <span class="text-danger" *ngIf="phone.errors.required">{{translate.instant("Phone Number is required")}}</span>
               <span class="text-danger" *ngIf="phone.errors.pattern">{{translate.instant("Please enter a valid phone number")}} </span>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group mb-3">
+          <div class="form-group ">
   
             <rds-input [inputType]="'text'" [label]="translate.instant('User name')" [labelPosition]="'top'" autocomplete="off"
-              [(ngModel)]="userData.userName" name="userName" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')">
+              [(ngModel)]="userData.userName" name="userName" required [isRequired]=true #userName="ngModel" [placeholder]="translate.instant('User Name')"
+              [hasErrors]="(userName.errors&&(userName.dirty||userName.touched)) && userName.errors.required" [errors]="translate.instant('User Name is required')">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="userName.errors&&(userName.dirty||userName.touched)">
+            <!-- <div class="form-control-feedback" *ngIf="userName.errors&&(userName.dirty||userName.touched)">
               <span class="text-danger" *ngIf="userName.errors.required">{{translate.instant("User Name is required")}}</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group mb-3">
+          <div class="form-group ">
   
-            <rds-input [inputType]="'password'" [labelPosition]="'top'" [label]="translate.instant('Password')" [(ngModel)]="userData.password"
+            <rds-input [inputType]="'password'" [labelPosition]="'top'" [label]="translate.instant('Password')" [(ngModel)]="userData.password" #password="ngModel"
               [iconCursor]="'pointer'" [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'"[iconWidth]="'18px'"
-              name="pwd" autocomplete="off" required [isRequired]=true (keyup)='confirmPassword()' [placeholder]="'Password'">
+              name="pwd" autocomplete="off" required [isRequired]=true (keyup)='confirmPassword()' [placeholder]="'Password'"
+              [hasErrors]="(password.errors && (password.dirty || password.touched)) && password.errors.required"
+              [errors]="translate.instant('Password is required')">
             </rds-input>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group mb-3">
+          <div class="form-group ">
             <rds-input [inputType]="'password'" [labelPosition]="'top'" [label]="translate.instant('Confirm Password')"
               [iconCursor]="'pointer'" [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'"[iconWidth]="'18px'"
               [(ngModel)]="userData.confirmPass" name="confirmPass" [isRequired]=true (keyup)='confirmPassword()'
-              [placeholder]="'Confirm Password'">
+              [placeholder]="'Confirm Password'" [hasErrors]="isPasswordMismatch" [errors]="'Password mismatch found'">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="isPasswordMismatch">
+            <!-- <div class="form-control-feedback" *ngIf="isPasswordMismatch">
               <span class="text-danger" *ngIf="isPasswordMismatch">{{translate.instant("Password mismatch found")}}</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group mb-3">
+          <div class="form-group">
             <rds-checkbox [disabled]="false" [label]="translate.instant('Set Random Password')" [checked]="userData.setRandomPassword"
                           [(ngModel)]="userData.setRandomPassword" name="setRandomPassword" [withLabel]="true" [switch]="false"
                            [id]="'setRandomPassword'"></rds-checkbox>

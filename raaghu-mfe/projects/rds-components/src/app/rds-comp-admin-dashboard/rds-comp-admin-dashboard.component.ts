@@ -504,9 +504,9 @@ export class RdsAdminDashboardComponent extends MfeBaseComponent implements OnIn
     { displayName: 'Rate', key: 'rate', dataType: 'html' }
   ]
   toDoListTableHeader: TableHeader[] = [
-    { displayName: 'Project', key: 'project', dataType: 'html' },
-    { displayName: 'Issue', key: 'issue', dataType: 'html' },
-    { displayName: 'Progress', key: 'progress', dataType: 'html' }
+    { displayName: this.translate.instant('Project'), key: 'project', dataType: 'html' },
+    { displayName: this.translate.instant('Issue'), key: 'issue', dataType: 'html' },
+    { displayName: this.translate.instant('Progress'), key: 'progress', dataType: 'html' }
 
   ];
   @Input() tableStyle: string = 'light';
