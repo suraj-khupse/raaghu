@@ -17,6 +17,7 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
   @Input() showEmail: boolean = true;
   @Input() editShimmer: boolean = false;
   @Input() buttonSpinner: boolean = true;
+  @Input() public submitted: boolean = false;
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
@@ -63,12 +64,13 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
         }
       })
     }
+    
   }
 
   next(tenantCreationForm: NgForm): void {
     tenantCreationForm.form.markAllAsTouched();
     this.buttonSpinner = true;
-
+    this.submitted =true;
     if (!tenantCreationForm || tenantCreationForm.invalid) {
 
       return;
@@ -86,6 +88,7 @@ export class RdsCompTenantInformationComponent implements OnInit, OnChanges {
     console.log(event);
     this.tenantData.displayText = event.item.some;
     this.tenantData.edition = event.item.value;
+    this.submitted =true;
   }
   getImage(ev: any) {
     let FileImage = ev.target.files[0];
