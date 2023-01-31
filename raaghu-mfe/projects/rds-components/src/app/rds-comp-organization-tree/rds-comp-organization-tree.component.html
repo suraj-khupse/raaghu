@@ -33,8 +33,8 @@
 
 
   </div>
-  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && list&&list.length>0&&  !list[0].data.parentId"
-    [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}">
+  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && list && list.length >= 0 &&  !list[0]?.data.parentId"
+    [ngStyle]="{'margin-left': list[0]?.level === 1 ? '0px' : '30px'}">
     <rds-button [colorVariant]="'primary'" type="button" class="" [label]="translate.instant('New-Root-Unit')"
       [isFabIcon]="false" [size]="'small'" (click)="addNode(list)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
     </rds-button>
