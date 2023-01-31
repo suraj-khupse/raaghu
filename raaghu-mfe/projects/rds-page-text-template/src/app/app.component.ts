@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
 
   actions = [{ id: 'edit', displayName: 'Edit' }];
   
-  constructor(private store: Store,private translate:TranslateService, private userAuthService:UserAuthService) { }
+  constructor(private store: Store,public translate:TranslateService, private userAuthService:UserAuthService) { }
   tableDataForTextTemplate = [];
  
   ngOnInit(): void {

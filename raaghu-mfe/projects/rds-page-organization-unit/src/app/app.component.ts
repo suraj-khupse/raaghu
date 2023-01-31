@@ -82,11 +82,11 @@ export class AppComponent implements OnInit {
 
   tableHeadersForMember: TableHeader[] = [{ displayName: 'Users', key: 'userName', dataType: 'text', dataLength: 30, filterable: true, required: true, sortable: true },
   { displayName: 'Addition Time', key: 'additionTime', dataType: 'text', dataLength: 5, required: true, sortable: true },];
-  tableDataForMember = [];
+  tableDataForMember: any = [];
 
   tableHeadersForRoles: TableHeader[] = [{ displayName: 'Role', key: 'roles', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true },
   { displayName: 'Addition Time', key: 'additionTime', dataType: 'date', dataLength: 5, required: true, sortable: true },];
-  tableDataForRoles = [];
+  tableDataForRoles: any = [];
 
   tableHeadersForRolesAdd = [{ displayName: 'Roles', key: 'displayName', dataType: 'text', dataLength: 5, required: false, filterable: true, sortable: true, checkbox: true },];
   tableDataForRolesAdd = [];
@@ -178,6 +178,7 @@ export class AppComponent implements OnInit {
   node: string = '';
   selectedParent: any = null;
   selectedNodeInfo: any;
+  actions=[{ id: 'delete', displayName: 'Delete' }]
   constructor(
     private store: Store,
     private _arrayToTreeConverterService: ArrayToTreeConverterService,

@@ -9,8 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsIconModule } from 'raaghu-themes/rds-icons';
-import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 import { RdsCompOrganizationTreeModule } from 'projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.module';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 
 @NgModule({
   declarations: [
@@ -28,10 +28,10 @@ import { RdsCompOrganizationTreeModule } from 'projects/rds-components/src/app/r
     RdsButtonModule,
     RdsOffcanvasModule,
     HttpClientModule,
-    NgxTranslateModule.forRoot(),
-    RdsIconModule,
+    RdsCompOrganizationTreeModule,
     RdsCompDataTableModule,
-    RdsCompOrganizationTreeModule
+    //NgxTranslateModule.forRoot(),
+    RdsIconModule
 
   ],
   providers: [ArrayToTreeConverterService],

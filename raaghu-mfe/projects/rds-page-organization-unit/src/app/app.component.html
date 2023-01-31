@@ -6,14 +6,14 @@
           <div class="card p-2 border-0 rounded-0 vh-88" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
 
             <div class="card-header bg-transparent">
-              <h5 class="card-title">'Organization Tree'</h5>
+              <h5 class="card-title">Organization Tree</h5>
             </div>
             <div class="card-body overflow-auto vh-75">
               <rds-comp-organization-tree 
               [organizationTreeData]="this.treeData1"
               [nodeColor]="this.nodeColors"
               [mutable]="true"
-              [ButtonLabel="''"
+           
               (onDeleteNode)="onDeleteNode($event)"
               (getSelectedParent)="getSelectedParent($event)"
               (onSelectnode)="onSelectnode($event)"
@@ -200,7 +200,7 @@
             </div>
           </div>
         </form>
-      </div>
+      </div> 
     </div>
   </div>
   <div class="footer-buttons my-2">
