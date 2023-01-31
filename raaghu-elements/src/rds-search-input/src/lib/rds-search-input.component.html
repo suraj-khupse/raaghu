@@ -1,8 +1,9 @@
 
-  <label class="form-label" *ngIf="label&&position==='top'">{{label}}</label>
-  <div class="form-group has-search position-relative" [class]="classes">
-    <rds-icon name="search" height="12px" width="12px" class="icon-position"></rds-icon>
-    <input type="text" class="form-control" placeholder="{{placeholder}}" (keyup)="sendkeyup($event)"
-           (keyup.enter)="send($event)" [(ngModel)]="value" [value]="value" name="value">
-  </div> 
-  <label *ngIf="label&&position==='bottom'" class="mt-2">{{label}}</label>
+<label class="form-label" *ngIf="label&&position==='top'">{{label}}</label>
+<div class="input-group align-items-center border rounded bg-white" [class]="classes">
+<input type="search" placeholder="{{placeholder}}"
+aria-describedby="button-addon1" class="form-control border-0" (keyup)="sendkeyup($event)"
+(keyup.enter)="send($event)" [(ngModel)]="value" [value]="value" name="value">
+<div class="input-group-append"><rds-icon name="search" class="p-3" height="13px" width="13px"></rds-icon></div>
+</div>
+<label *ngIf="label&&position==='bottom'" class="mt-2">{{label}}</label>
