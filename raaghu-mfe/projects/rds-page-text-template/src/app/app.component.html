@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 ">
-    <div class="card p-2 h-100 border-0  rounded-0 card-full-stretch">
+    <div class="card p-2 h-100 border-0  rounded-0 card-full-stretch mt-3">
     <rds-data-table [tableData]="templateList" [tableHeaders]="tableHeadersForTextTemplate" [recordsPerPage]="5"
       [pagination]="true" [actions]="actions" [inlineEdit]="false" [noDataTitle]="'Currently no text template'"
       (onActionSelection)="onActionSelection($event)"></rds-data-table>
@@ -12,30 +12,27 @@
     (onClose)="close()">
     <div class="section">
       <div class="row m-1" *ngIf="selectedData">
-        <div class="col-md-12">
           <div class="form-group mb-3">
-            <span>Name : {{ selectedData.templateName }}</span>
+            <rds-label [label]="translate.instant('Name')"></rds-label> :
+            {{ selectedData.templateName }}
           </div>
-        </div>
-        <div class="col-md-12 mt-3">
           <div class="form-group">
-            <rds-textarea #description="ngModel" [placeholderText]="'Enter Content Here'" [label]="'Template Content'"
-              [(ngModel)]="selectedData.content" name="content" required>
+            <rds-textarea #description="ngModel" [placeholderText]="translate.instant('Enter Content Here')" [label]="translate.instant('Template Content')"
+              [(ngModel)]="selectedData.content" name="content" [rows]="'8'" required>
             </rds-textarea>
           </div>
-        </div>
       </div>
     </div>
-    <div class="d-flex justify-content-between m-3">
-      <div>
-        <rds-button class="p-2" [label]="'Cancel'" [size]="'small'" [colorVariant]="'primary'" (click)="close()"
-          data-bs-dismiss="offcanvas" aria-label="Close">
-        </rds-button>
-        <rds-button [label]="'Save'" [size]="'small'" [colorVariant]="'primary'" (click)="save()">
-        </rds-button>
+    <div class="footer-buttons d-flex py-4">
+      <div class="me-auto">
+          <rds-button class="p-2" [label]="'Cancel'" [isOutline]="true" [size]="'small'" [colorVariant]="'primary'" (click)="close()"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+          </rds-button>
+          <rds-button [label]="'Save'" [size]="'small'" [colorVariant]="'primary'" (click)="save()">
+          </rds-button>
       </div>
-      <div>
-        <rds-button class="p-2" (click)="restore($event)">Restore To Default</rds-button>
+      <div class="text-primary">
+        <rds-label [label]="translate.instant('Restore To Default')" (click)="restore($event)"></rds-label>
       </div>
     </div>
   </rds-offcanvas>

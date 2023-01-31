@@ -3,20 +3,20 @@
     <div class="col-md-12 mt-3">
       <div class="form-group">
         <rds-label [label]="translate.instant('Key')"></rds-label><br>
-       <label>{{Languagetext.key}}</label>
+       <rds-label>[label]="translate.instant(Languagetext.key)"</rds-label>
       </div>
     </div>
     <div class="col-md-12 mt-3">
         <div class="form-group">
           <rds-textarea #BaseValue="ngModel" [label]="translate.instant('Base Language')" [placeholderText]="translate.instant('Enter Base Value')"
-            [(ngModel)]="Languagetext.baseValue" name="basevalue" [disabled]="true">
+            [(ngModel)]="Languagetext.baseValue" name="basevalue" [disabled]="true" [rows]="'5'">
           </rds-textarea>
         </div>
       </div>
       <div class="col-md-12 mt-3">
         <div class="form-group">
           <rds-textarea #TargetValue="ngModel" [label]="translate.instant('Target Language')" [placeholderText]="translate.instant('Enter Target Value')"
-            [(ngModel)]="Languagetext.value" name="targetvalue" required>
+            [(ngModel)]="Languagetext.value" name="targetvalue" [rows]="'5'" required>
           </rds-textarea>
           <div class="form-control-feedback" *ngIf="TargetValue.errors && (TargetValue.dirty || TargetValue.touched)">
             <span class="text-danger" *ngIf="TargetValue.errors.required">{{"Description is required"|translate}}</span>

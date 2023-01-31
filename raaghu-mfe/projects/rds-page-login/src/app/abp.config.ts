@@ -2,7 +2,7 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 
   export const authCodeFlowConfig: AuthConfig = {
     // Url of the Identity Provider
-    issuer: 'https://abpdemoapi.raaghu.io',
+    issuer: 'https://localhost:44330',
 
     // URL of the SPA to redirect the user to after login
     //redirectUri: window.location.origin + '.html',
@@ -23,5 +23,5 @@ import { AuthConfig } from 'angular-oauth2-oidc';
     // The first four are defined by OIDC.
     // Important: Request offline_access to get a refresh token
     // The api scope is a usecase specific one
-    scope: 'openid profile role phone email BookStore'
+    scope: 'openid profile role phone email BookStore',
   };
