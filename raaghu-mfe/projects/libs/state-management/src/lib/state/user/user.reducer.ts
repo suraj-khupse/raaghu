@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, changePasswordUserSuccess, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getTemplateContent, getTemplateContentFailure, getTemplateContentSuccess, getTemplateDefinition, getTemplateDefinitionFailure, getTemplateDefinitionSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims } from "./user.actions";
+import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, changePasswordUserSuccess, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getTemplateContent, getTemplateContentFailure, getTemplateContentSuccess, getTemplateDefinition, getTemplateDefinitionFailure, getTemplateDefinitionSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserRolesForEdit, getUserRolesForEditSuccess, getUserPermission, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims, getUserOrgForEdit, getUserOrgForEditSuccess } from "./user.actions";
 
 
 export interface UsersState {
@@ -9,6 +9,8 @@ export interface UsersState {
     templateContent:any;
     availableOrgUnit: any;
     assignableRoles:any;
+    rolesOfUser:any;
+    orgOfuser:any;
     claimTypes:any;
     allClaimTypes:any;
     UserPermissionStateI: any;
@@ -22,6 +24,8 @@ export const userInitialState: UsersState = {
     UserEditI:null,
     availableOrgUnit: null,
     assignableRoles:null,
+    rolesOfUser:null,
+    orgOfuser:null,
     allTextTemplate:null,
     templateContent:null,
     claimTypes:null,
@@ -158,6 +162,23 @@ export const UserReducer = createReducer(
         error: null,
         status: 'success',
     })),
+
+    on(getUserRolesForEdit, (state) => ({ ...state, status: 'loading' })),
+    on(getUserRolesForEditSuccess, (state, { rolesOfUser }) => ({
+        ...state,
+        rolesOfUser: rolesOfUser,
+        error: null,
+        status: 'success',
+    })),
+
+    on(getUserOrgForEdit, (state) => ({ ...state, status: 'loading' })),
+    on(getUserOrgForEditSuccess, (state, {orgOfUser }) => ({
+        ...state,
+        orgOfUser: orgOfUser,
+        error: null,
+        status: 'success',
+    })),
+
     on(getUserPermission, (state) => ({ ...state, status: 'loading' })),
     on(getUserPermissionSuccess, (state, { UserPermissionI }) => ({
         ...state,

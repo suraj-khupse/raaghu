@@ -12,8 +12,18 @@ export const selectAllUsers = createSelector(
 );
 export const selectUserForEdit = createSelector(
     Userselector,
-    (state: UsersState) => state.UserEditI
+    (state: UsersState) => state.rolesOfUser
 );
+
+export const selectUserRolesForEdit = createSelector(
+    Userselector,
+    (state: UsersState) => state.rolesOfUser
+);
+export const selectUserOrgForEdit = createSelector(
+    Userselector,
+    (state: UsersState) => state.orgOfuser
+);
+
 export const selectAvailableOrgUnit = createSelector(
     Userselector,
     (state: UsersState) => state.availableOrgUnit
