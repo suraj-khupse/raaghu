@@ -19,11 +19,11 @@
               </div>
           </div>
           <div class="col-md-3 text-center cursor-pointer sm-p-0 position-relative ">
-            <img width="100" src="../assets/edit-pic.png" >
+            <img width="100" src="../assets/edit-pic.png" (click)="selectFile.click()">
             <input type="file" (change)="getImage($event)" accept="image/*" style="display: none" #selectFile>
           </div>
         </div>
-        <div class="mt-3 border-bottom text-muted">
+        <div class="mt-3 pb-2 border-bottom text-muted">
           <rds-label [label]="'Admin Details'"></rds-label>
         </div>
         

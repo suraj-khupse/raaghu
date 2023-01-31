@@ -1,14 +1,16 @@
-<div class="row m-1">
-  <div class="col-md-12 client-btn">
-    <rds-button [label]="'New Client'" [colorVariant]="'primary'" (click)="openCanvas('new', $event)">
-      <rds-icon left name="plus" height="12px" width="12px"></rds-icon>
+<div class="row">
+  <div class="col-md-12 text-end pb-3">
+    <rds-button [label]="'New Client'" [colorVariant]="'primary'" (click)="openCanvas('new', $event)" [icon]="'plus'"
+      [iconHeight]="'12px'" [iconWidth]="'12px'">
     </rds-button>
   </div>
-  <div class="col-md-12 m-1">
-    <rds-data-table [tableData]="clientList" [tableHeaders]="clientTableHeaders" [recordsPerPage]="10"
-      [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="dataTableActions"
-      [noDataTitle]="'Currently you do not have client'" (onActionSelection)="tableActionSelection($event)">
-    </rds-data-table>
+  <div class="row card p-2 h-100 border-0 rounded-0 card-full-stretch">
+    <div class="col-md-12">
+      <rds-data-table [tableData]="clientList" [tableHeaders]="clientTableHeaders" [recordsPerPage]="10"
+        [inlineEdit]="false" [pagination]="true" [isShimmer]="false" [actions]="dataTableActions"
+        [noDataTitle]="'Currently you do not have client'" (onActionSelection)="tableActionSelection($event)">
+      </rds-data-table>
+    </div>
   </div>
 </div>
 <ng-container *ngIf="viewCanvas">
@@ -18,29 +20,29 @@
       [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
       [justified]="false">
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
+        <div class="tab-pane fade px-1 mt-2" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <rds-comp-client-basics #clientBasicsComponent [clientBasics]="clientBasics" [isEdit]="isEdit"
             [clientId]="clientId" (clientBasicInfo)="clientBasicInfo($event)"></rds-comp-client-basics>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="secrets" role="tabpanel"
+        <div class="tab-pane fade px-1 mt-2" [ngClass]="{'show active': activePage === 1}" id="secrets" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <rds-comp-secrets (secretDataInfo)="secretData($event)" [apiSecretsTableData]="apiSecretsTableData">
           </rds-comp-secrets>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
+        <div class="tab-pane fade px-1 mt-2" [ngClass]="{'show active': activePage === 2}" id="resources" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <rds-comp-client-resources [showType]="true" [typeData]="sourceList" [resourceData]="clientResourceData"
             (selectedData)="selectedResourceData($event)" (onOptionSelection)="selectedResourceOption($event)">
           </rds-comp-client-resources>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 3}" id="permissions" role="tabpanel"
+        <div class="tab-pane fade px-1 mt-2" [ngClass]="{'show active': activePage === 3}" id="permissions" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <rds-comp-permission-tree [treeData]="permissionTreeData" [isEdit]="isEdit" [roleName]="roleName"
             (getAllselectedPermissions)="selectedPermissions($event)">
           </rds-comp-permission-tree>
         </div>
-        <div class="tab-pane fade" *ngIf="actionId == 'edit'" [ngClass]="{'show active': activePage === 4}"
+        <div class="tab-pane fade px-1 mt-2" *ngIf="actionId == 'edit'" [ngClass]="{'show active': activePage === 4}"
           id="advanced" role="tabpanel" aria-labelledby="nav-home-tab">
           <rds-comp-client-advanced [clientAdvancedObj]="clientAdvancedObj" (advancedData)="getAdvancedData($event)">
           </rds-comp-client-advanced>

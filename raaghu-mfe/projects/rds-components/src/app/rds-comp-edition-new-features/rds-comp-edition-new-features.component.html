@@ -17,7 +17,7 @@
                       </div>
                       <div  *ngIf="child.name !== 'Identity.TwoFactor' && child.name !== 'Identity.MaxUserCount'">
                           <rds-checkbox [disabled]="false" [label]="child.displayName"  (change)="onSelectChild()" [(ngModel)]="child.value"  [withLabel]="true" [checked]="child.value"
-                            [id]="child.id" >
+                            [id]="child.name" >
                           </rds-checkbox>
                       </div>     
                    </div>

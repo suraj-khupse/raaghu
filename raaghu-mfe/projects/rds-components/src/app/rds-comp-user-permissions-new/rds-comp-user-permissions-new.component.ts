@@ -22,7 +22,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   viewCanvas: boolean = false;
   selectedId: any = '';
   selectedOrganizationUnit: any = [];
-  buttonSpinnerForNewUser: boolean = false;
   public user: any = {
     userInfo: undefined,
     userSettings: undefined,
@@ -181,8 +180,14 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   newUser(event): void {
+    setTimeout(() => {
+      var offcanvas = document.getElementById('userOffcanvas');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 100);
+
+    this.activePage = 0;
     this.getPermissionEmitter.emit(true);
-    this.buttonSpinnerForNewUser = true;
     this.selectedId = '';
     this.viewCanvas = true;
     this.navtabsItems = [
@@ -210,13 +215,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
 
     } else {
     }
-    setTimeout(() => {
-      var offcanvas = document.getElementById('userOffcanvas');
-      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.show();
-    }, 100);
-
-    this.activePage = 0;
   }
 
   close(): void {
@@ -228,7 +226,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     };
     this.userinfo = undefined;
     this.onClose.emit();
-    this.buttonSpinnerForNewUser = false;
   }
 
   editTableRowData(event): void {
