@@ -253,7 +253,6 @@ export class SidenavComponent implements OnInit {
 
     if (this.router.url) {
       let matchRoute: any;
-      debugger
       const index = this.getMatchedRoute(this.sidenavItems);
       if (index !== -1) {
         this.activePage = index;
