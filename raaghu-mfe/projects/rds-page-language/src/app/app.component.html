@@ -31,6 +31,17 @@
 <ng-container *ngIf="viewCanvas">
   <rds-offcanvas [canvasTitle]="translate.instant(languageCanvasTitle)" [offId]="'AddLanguage'"
     (onClose)="closeCanvas()" [offcanvaswidth]="550" [placement]="'end'">
-    <mfe-loader [config]="rdsNewLanguageMfeConfig"></mfe-loader>
+    <rds-comp-new-language
+    [flags]="flags"
+    [languageNames]="languageNames"
+    [selectedLanguage]="selectedLanguage"
+    [cultureList]="cultureList"
+    [uiCultureList]="uiCultureList"
+    [editOffCanvas]="editOffCanvas"
+    (LanguageInfo)="LanguageInfo($event)"
+    (LanguageInfoEdit)="LanguageInfoEdit($event)"
+    (onCloseCanvas)="onCloseCanvas($event)"
+    ></rds-comp-new-language>
+    <!-- <mfe-loader [config]="rdsNewLanguageMfeConfig"></mfe-loader> -->
   </rds-offcanvas>
 </ng-container>

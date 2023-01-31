@@ -1,1 +1,5 @@
-<mfe-loader [config]="rdsEditLanguagetextMfeConfig"></mfe-loader>
+<!-- <mfe-loader [config]="rdsEditLanguagetextMfeConfig"></mfe-loader> -->
+<rds-comp-edit-language-text
+[Languagetext]="Languagetext"
+(onLanguageTextSave)="onLanguageTextsSave($event)"
+></rds-comp-edit-language-text>
