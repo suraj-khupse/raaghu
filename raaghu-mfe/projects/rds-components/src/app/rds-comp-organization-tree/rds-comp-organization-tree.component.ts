@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
 import { TranslateService } from '@ngx-translate/core';
 declare var bootstrap: any;
 @Component({
-  selector: 'rds-organization-tree',
+  selector: 'rds-comp-organization-tree',
   templateUrl: './rds-comp-organization-tree.component.html',
   styleUrls: ['./rds-comp-organization-tree.component.scss']
 })

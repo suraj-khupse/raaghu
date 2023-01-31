@@ -9,7 +9,18 @@
               <h5 class="card-title">{{'Organization Tree'| translate}}</h5>
             </div>
             <div class="card-body overflow-auto vh-75">
-              <mfe-loader [config]="rdsOrganizationTreeConfig"></mfe-loader>
+              <rds-comp-organization-tree 
+              [organizationTreeData]="this.treeData1"
+              [nodeColor]="this.nodeColors"
+              [mutable]="true"
+              [OrganizationTreeType]="this.TreeType"
+              [OrganizationTreeLabeles]="this.TreeNodeLabeles"
+              [ButtonLabel="''"
+              (onDeleteNode)="onDeleteNode($event)"
+              (getSelectedParent)="getSelectedParent($event)"
+              (onSelectnode)="onSelectnode($event)"
+              ></rds-comp-organization-tree>
+              <!-- <mfe-loader [config]="rdsOrganizationTreeConfig"></mfe-loader> -->
             </div>
           </div>
         </div>
@@ -53,12 +64,30 @@
                     <div class="tab-pane fade show active" id="Members" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''"></div>
                       <div class="row">
-                        <mfe-loader [config]="rdsDataTableForMemberMfeConfig"></mfe-loader>
+                        <rds-comp-data-table>
+                          [tableData]="tableDataForMember"
+                          [tableHeaders]="tableHeadersForMember"
+                          [recordsPerPage]="10"
+                          [pagination]="true"
+                          [actions]="[{ id: 'delete', displayName: 'Delete' }]"
+                          [noDataTitle]="'Currently you do not have member'"
+                          (onActionSelection)="onActionSelectionForMembers($event)"
+                        </rds-comp-data-table>
+                        <!-- <mfe-loader [config]="rdsDataTableForMemberMfeConfig"></mfe-loader> -->
                       </div>
                     </div>
                     <div class="tab-pane fade" id="Roles" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div class="row">
-                        <mfe-loader [config]="rdsDataTableForRoleMfeConfig"></mfe-loader>
+                        <rds-comp-data-table>
+                          [tableData]="tableDataForRoles"
+                          [tableHeaders]="tableHeadersForRoles"
+                          [recordsPerPage]="10"
+                          [pagination]="true"
+                          [actions]="[{ id: 'delete', displayName: 'Delete' }]"
+                          [noDataTitle]="'Currently you do not have member'"
+                          (onActionSelection)="onActionSelectionFoRoles($event)"
+                        </rds-comp-data-table>
+                        <!-- <mfe-loader [config]="rdsDataTableForRoleMfeConfig"></mfe-loader> -->
                       </div>
                     </div>
                   </div>
@@ -81,8 +110,16 @@
       <div class="tab-content">
         <div class="form-group mb-3">
           <div class="col-md-12  mt-2">
-            <!-- (deleteEvent)="deleteUsers.emit($event)" -->
-            <mfe-loader [config]="rdsDataTableForUserListMfeConfig"></mfe-loader>
+            <rds-comp-data-table>
+              [tableData]="tableDataForUserAdd"
+              [tableHeaders]="tableHeadersForUserAdd"
+              [recordsPerPage]="10"
+              [pagination]="true"
+              [enableCheckboxSelection]="true"
+              [noDataTitle]="'Currently you do not have role'"
+              (getAllCheckedItems)="getAllCheckedItemsForUser($event)"
+            </rds-comp-data-table>
+            <!-- <mfe-loader [config]="rdsDataTableForUserListMfeConfig"></mfe-loader> -->
           </div>
         </div>
       </div>
@@ -113,8 +150,17 @@
       <div class="tab-content">
         <div class="form-group mb-3">
           <div class="col-md-12 mt-3">
-            <!-- (deleteEvent)="deleteRoles.emit($event)" -->
-            <mfe-loader [config]="rdsDataTableForRoleListMfeConfig"></mfe-loader>
+
+            <rds-comp-data-table>
+              [tableData]="tableDataForRolesAdd"
+              [tableHeaders]="tableHeadersForRolesAdd"
+              [recordsPerPage]="10"
+              [pagination]="true"
+              [enableCheckboxSelection]="true"
+              [noDataTitle]="'Currently you do not have role'"
+              (getAllCheckedItems)="getAllCheckedItems($event)"
+            </rds-comp-data-table>
+            <!-- <mfe-loader [config]="rdsDataTableForRoleListMfeConfig"></mfe-loader> -->
           </div>
         </div>
       </div>
