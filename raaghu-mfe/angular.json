@@ -419,7 +419,6 @@
 				"projects/rds-page-dashboard/src/assets"
 			  ],
 			  "styles": [
-				"projects/libs/themes/src/styles/custom.scss",
 				"projects/rds-page-dashboard/src/styles.scss"
 			  ],
 			  "scripts": [
