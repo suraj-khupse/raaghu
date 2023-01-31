@@ -49,7 +49,6 @@ export class RdsCompUserBasicProfileRightComponent implements OnInit, OnChanges 
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.userData) {
-      this.userInfoForm.resetForm();
       this.userData = {};
       this.userData['name'] = '';
       this.userData['userName'] = '';

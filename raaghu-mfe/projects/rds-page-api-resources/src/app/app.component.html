@@ -54,7 +54,7 @@
   >
     <div naveContent class="row tab-content m-2" id="nav-tabContent">
       <div
-        class="tab-pane fade"
+        class="tab-pane fade px-1"
         [ngClass]="{ 'show active': activeTab === 0 }"
         id="Basics"
         role="tabpanel"
@@ -69,7 +69,7 @@
         ></rds-comp-basic-resource>
       </div>
       <div
-        class="tab-pane fade"
+        class="tab-pane fade px-2"
         [ngClass]="{ 'show active': activeTab === 1 }"
         id="Claims"
         role="tabpanel"
@@ -103,7 +103,7 @@
         </div>
       </div>
       <div
-        class="tab-pane fade"
+        class="tab-pane fade px-2"
         [ngClass]="{ 'show active': activeTab === 2 }"
         id="secrets"
         role="tabpanel"
@@ -113,7 +113,7 @@
           [apiSecretsTableData]="secrets"
           (secretDataInfo)="onSecretsChange($event)"
         ></rds-comp-secrets>
-        <div class="footer-buttons my-2 d-flex bottom-0">
+        <div class="footer-buttons d-flex bottom-0">
           <rds-button
             [label]="'Cancel'"
             [id]="'secrets-cancel'"
@@ -137,7 +137,7 @@
         </div>
       </div>
       <div
-        class="tab-pane fade"
+        class="tab-pane fade px-2"
         [ngClass]="{ 'show active': activeTab === 3 }"
         id="properties"
         rosle="tabpanel"

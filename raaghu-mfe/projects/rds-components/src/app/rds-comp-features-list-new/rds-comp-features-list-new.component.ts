@@ -25,8 +25,8 @@ export interface EditionItem {
 export class RdsCompFeaturesListNewComponent implements OnInit {
   public viewCanvas: boolean = false;
   @Input() canvasTitle: string = 'NEW EDITION';
-  @Input() public PlanList: any = [];
-  @Input() editionData: any = {};
+  @Input() PlanList: any = [];
+  @Input() editionData: any[] = [];
   @Input() public EditionList: any = [];
   @Input() public featuresData: any = [];
   @Input() editionDataInfo: any = {};
