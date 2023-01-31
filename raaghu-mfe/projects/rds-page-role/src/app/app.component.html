@@ -7,7 +7,7 @@
           </div>
           <div class="card-body overflow-auto vh-75 pt-0">
             <!-- <mfe-loader [config]="rdsOrganizationTreeConfig"></mfe-loader> -->
-            <rds-organization-tree
+            <rds-comp-organization-tree
                (onDeleteNode)="onDeleteNode($event)" 
                (getSelectedParent)="getSelectedParent($event)" 
                (onNodeEdit)="onNodeEdit($event)" 
@@ -15,7 +15,7 @@
                [nodeColor]="nodeColors" 
                [mutable]="true" 
                [isRoles]="false"
-               ></rds-organization-tree>
+               ></rds-comp-organization-tree>
           </div>
       </div>
     </div>
