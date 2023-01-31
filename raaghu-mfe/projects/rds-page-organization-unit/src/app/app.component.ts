@@ -66,6 +66,7 @@ export class AppComponent implements OnInit {
   selectedTreeNode: number = 0;
   offcanvasId: string = 'org_canvas';
   canvasTitle: string = 'New Organization Unit';
+  actions=[{ id: 'delete', displayName: 'Delete' }]
   navtabsItems: any = [
     {
       label: this.translate.instant('Members'),

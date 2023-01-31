@@ -6,15 +6,13 @@
           <div class="card p-2 border-0 rounded-0 vh-88" [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
 
             <div class="card-header bg-transparent">
-              <h5 class="card-title">{{'Organization Tree'| translate}}</h5>
+              <h5 class="card-title">'Organization Tree'</h5>
             </div>
             <div class="card-body overflow-auto vh-75">
               <rds-comp-organization-tree 
               [organizationTreeData]="this.treeData1"
               [nodeColor]="this.nodeColors"
               [mutable]="true"
-              [OrganizationTreeType]="this.TreeType"
-              [OrganizationTreeLabeles]="this.TreeNodeLabeles"
               [ButtonLabel="''"
               (onDeleteNode)="onDeleteNode($event)"
               (getSelectedParent)="getSelectedParent($event)"
@@ -30,7 +28,7 @@
       <div class="col-md-6 gutter-b">
         <div class="card p-2 border-0 rounded-0 vh-88">
           <div class="card-header bg-transparent" *ngIf="selectedTreeNode == 0">
-            <h5 class="card-title">{{'Select an organization unit to see members' | translate}}</h5>
+            <h5 class="card-title">Select an organization unit to see members</h5>
           </div>
 
           <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
@@ -64,29 +62,29 @@
                     <div class="tab-pane fade show active" id="Members" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''"></div>
                       <div class="row">
-                        <rds-comp-data-table>
+                        <rds-data-table>
                           [tableData]="tableDataForMember"
                           [tableHeaders]="tableHeadersForMember"
                           [recordsPerPage]="10"
                           [pagination]="true"
-                          [actions]="[{ id: 'delete', displayName: 'Delete' }]"
+                          [actions]="actions"
                           [noDataTitle]="'Currently you do not have member'"
                           (onActionSelection)="onActionSelectionForMembers($event)"
-                        </rds-comp-data-table>
+                        </rds-data-table>
                         <!-- <mfe-loader [config]="rdsDataTableForMemberMfeConfig"></mfe-loader> -->
                       </div>
                     </div>
                     <div class="tab-pane fade" id="Roles" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div class="row">
-                        <rds-comp-data-table>
+                        <rds-data-table>
                           [tableData]="tableDataForRoles"
                           [tableHeaders]="tableHeadersForRoles"
                           [recordsPerPage]="10"
                           [pagination]="true"
-                          [actions]="[{ id: 'delete', displayName: 'Delete' }]"
+                          [actions]="actions"
                           [noDataTitle]="'Currently you do not have member'"
                           (onActionSelection)="onActionSelectionFoRoles($event)"
-                        </rds-comp-data-table>
+                        </rds-data-table>
                         <!-- <mfe-loader [config]="rdsDataTableForRoleMfeConfig"></mfe-loader> -->
                       </div>
                     </div>
@@ -110,7 +108,7 @@
       <div class="tab-content">
         <div class="form-group mb-3">
           <div class="col-md-12  mt-2">
-            <rds-comp-data-table>
+            <rds-data-table>
               [tableData]="tableDataForUserAdd"
               [tableHeaders]="tableHeadersForUserAdd"
               [recordsPerPage]="10"
@@ -118,7 +116,7 @@
               [enableCheckboxSelection]="true"
               [noDataTitle]="'Currently you do not have role'"
               (getAllCheckedItems)="getAllCheckedItemsForUser($event)"
-            </rds-comp-data-table>
+            </rds-data-table>
             <!-- <mfe-loader [config]="rdsDataTableForUserListMfeConfig"></mfe-loader> -->
           </div>
         </div>
@@ -151,7 +149,7 @@
         <div class="form-group mb-3">
           <div class="col-md-12 mt-3">
 
-            <rds-comp-data-table>
+            <rds-data-table>
               [tableData]="tableDataForRolesAdd"
               [tableHeaders]="tableHeadersForRolesAdd"
               [recordsPerPage]="10"
@@ -159,7 +157,7 @@
               [enableCheckboxSelection]="true"
               [noDataTitle]="'Currently you do not have role'"
               (getAllCheckedItems)="getAllCheckedItems($event)"
-            </rds-comp-data-table>
+            </rds-data-table>
             <!-- <mfe-loader [config]="rdsDataTableForRoleListMfeConfig"></mfe-loader> -->
           </div>
         </div>
@@ -198,7 +196,7 @@
               #nodeName="ngModel">
             </rds-input>
             <div class="form-control-feedback" *ngIf="nodeName.errors && (nodeName.dirty || nodeName.touched)">
-              <span class="text-danger" *ngIf="nodeName.errors.required">{{"Name is required"|translate}}</span>
+              <span class="text-danger" *ngIf="nodeName.errors.required">Name is required</span>
             </div>
           </div>
         </form>
