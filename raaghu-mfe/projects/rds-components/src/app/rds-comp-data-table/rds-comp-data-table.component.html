@@ -311,6 +311,7 @@
                     [icon]="'close'"
                     [iconHeight]="'10px'"
                     [iconWidth]="'15px'"
+                  
                   >
                   </rds-button>
                 </div>
@@ -321,7 +322,8 @@
         </tbody>
       </table>
     </div>
-    <ng-container *ngIf="pagination && tableData && tableData.length > 0">
+    <ng-container *ngIf="pagination && tableData && tableData.length >5">
+      
       <rds-pagination
         (onPageChange)="onPagination($event)"
         [recordsPerPage]="+recordsPerPage"
