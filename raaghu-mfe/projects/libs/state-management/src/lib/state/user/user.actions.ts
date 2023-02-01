@@ -144,11 +144,11 @@ export const saveClaims = createAction('[User Page] Save Claims',
 (data: any) => ({ data }));
 
 export const changePasswordUser = createAction('[User Page] Change Password User',
-(data) => (data));
+(data) => ({data}));
 
-export const changePasswordUserSuccess = createAction(
-    '[User Page] Get Change Password User Success',
-);
-export const changePasswordUserFailure = createAction(
-    '[User Page] Change Password User Failure',
-);
+// export const changePasswordUserSuccess = createAction(
+//     '[User Page] Get Change Password User Success',
+// );
+// export const changePasswordUserFailure = createAction(
+//     '[User Page] Change Password User Failure',
+// );

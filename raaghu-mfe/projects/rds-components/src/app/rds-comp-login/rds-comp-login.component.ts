@@ -23,7 +23,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   @Input() rememberMe: boolean;
   TenantNameData: any;
   @Input() tenancyName: string = 'NOT Selected';
-
+  
   UserName: string = 'Email/Username';
   Password: string = 'Password';
   buttonLabel: string = 'Login';

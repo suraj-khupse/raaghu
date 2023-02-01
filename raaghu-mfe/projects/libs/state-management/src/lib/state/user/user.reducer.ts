@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, changePasswordUserSuccess, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getTemplateContent, getTemplateContentFailure, getTemplateContentSuccess, getTemplateDefinition, getTemplateDefinitionFailure, getTemplateDefinitionSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims } from "./user.actions";
+import { assignableRoles, assignableRolesFailure, assignableRolesSuccess, availbleOrganizationUnit, availbleOrganizationUnitFailure, availbleOrganizationUnitSuccess, changePasswordUser, getAllClaimTypes, getAllClaimTypesFailure, getAllClaimTypesSuccess, getClaimTypes, getClaimTypesFailure, getClaimTypesSuccess, getTemplateContent, getTemplateContentFailure, getTemplateContentSuccess, getTemplateDefinition, getTemplateDefinitionFailure, getTemplateDefinitionSuccess, getUserFailure, getUserForEdit, getUserForEditSuccess, getUserPermission, getUserPermissionSuccess, getUsers, getUserSuccess, saveClaims } from "./user.actions";
 
 
 export interface UsersState {
@@ -145,11 +145,11 @@ export const UserReducer = createReducer(
         error: null,
         status: 'loading',
     })),
-    on(changePasswordUserSuccess, (state) => ({
-        ...state,
-        error: null,
-        status: 'success',
-    })),
+    // on(changePasswordUserSuccess, (state) => ({
+    //     ...state,
+    //     error: null,
+    //     status: 'success',
+    // })),
 
     on(getUserForEdit, (state) => ({ ...state, status: 'loading' })),
     on(getUserForEditSuccess, (state, { UserEditI }) => ({

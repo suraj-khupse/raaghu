@@ -9,6 +9,7 @@ import { ArrayToTreeConverterService } from 'projects/libs/shared/src/lib/array-
 import {
   assignableRoles,
   availbleOrganizationUnit,
+  changePasswordUser,
   deleteUser,
   getAllClaimTypes,
   getUserForEdit,
@@ -275,7 +276,9 @@ export class AppComponent {
       }
     });
   }
-  
+  savepassword(event){
+    this.store.dispatch(changePasswordUser(event));
+  }
   Saveuserinfo(user?: any){
     this.savePermissionData = user? user.permissionList: this.savePermissionData;
     this.saveClaimData = user? user.claimsData: this.saveClaimData;

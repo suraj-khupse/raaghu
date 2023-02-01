@@ -132,6 +132,7 @@ export class AppComponent {
           claims.left = false;
         }
       })
+      this.isEdit = true;
       this.EditIdentyresource(event)
       this.selectId = event.selectedData.id;
       this.store.dispatch(getIdentityResource(event.selectedData.id));
@@ -237,6 +238,7 @@ export class AppComponent {
   openCanvas(edit: boolean = false): void {
     this.viewCanvas = true;
     this.showLoadingSpinner=true;
+    this.isEdit = false;
     this.offCanvasTitle="New Identity Resources";
     this.basicInfo= {}
     this.ResourceData.forEach((claims)=>{
@@ -267,6 +269,7 @@ export class AppComponent {
   
   EditIdentyresource(event): void {
     this.viewCanvas = true;
+    this.isEdit = true;
     this.offCanvasTitle = 'Edit Identity Resources';
     this.navtabsItems = [{
       label: 'Basics',
@@ -379,5 +382,10 @@ export class AppComponent {
 
   }
   
-
+  getBtnName(): string {
+    if (this.selectId) {
+      return 'Update';
+    }
+    return 'Create';
+  }
 }

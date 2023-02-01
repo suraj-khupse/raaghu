@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompUserPermissionsNewComponent } from './rds-comp-user-permissions-new.component';
-import { RdsButtonModule, RdsCheckboxModule, RdsFabMenuModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsFabMenuModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule } from '@libs/rds-elements';
 import { FormsModule } from '@angular/forms';
 import { RdsCompUserBasicProfileRightModule } from '../rds-comp-user-basic-profile-right/rds-comp-user-basic-profile-right.module';
 import { RdsCompDataTableModule } from '../rds-comp-data-table/rds-comp-data-table.module';
@@ -24,7 +24,9 @@ import { RdsCompClaimsTypeRoleModule } from '../rds-comp-claim-type-role/rds-com
     RdsCompPermissionTreeModule,
     RdsCompTreeStructureModule,
     RdsCompDataTableModule,
-    RdsCompClaimsTypeRoleModule
+    RdsCompClaimsTypeRoleModule,
+    RdsModalModule,
+    RdsInputModule
   ]
 })
 export class RdsCompUserPermissionNewModule { }
