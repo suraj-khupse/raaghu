@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCounterComponent } from './rds-counter.component';
 import { FormsModule } from '@angular/forms';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 
 @NgModule({

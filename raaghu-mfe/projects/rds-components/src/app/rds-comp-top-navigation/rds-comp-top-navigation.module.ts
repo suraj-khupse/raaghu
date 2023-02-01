@@ -4,7 +4,8 @@ import { RdsTopNavigationComponent } from './rds-comp-top-navigation.component';
 import { RdsCompNotificationModule } from '../rds-comp-notification/rds-comp-notification.module';
 import { RdsCompNotificationSettingsModule } from '../rds-comp-notification-settings/rds-comp-notification-settings.module';
 import { RdsCompProfileModule } from '../rds-comp-profile/rds-comp-profile.module';
-import { RdsDropdownlistModule, RdsButtonModule, RdsIconModule, RdsBadgeModule, RdsAvatarModule } from "@libs/rds-elements";
+import { RdsDropdownlistModule, RdsButtonModule, RdsBadgeModule, RdsAvatarModule } from "@libs/rds-elements";
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RouterModule } from '@angular/router';
 
 @NgModule({

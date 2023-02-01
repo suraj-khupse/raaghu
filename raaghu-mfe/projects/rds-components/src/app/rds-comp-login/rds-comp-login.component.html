@@ -1,42 +1,36 @@
 <div class="text-center">
   <!--<p class="pb-3">Current tenant:{{TenancyName}} (<a href="#" data-bs-toggle="modal" class="link-primary" data-bs-target="#ChangeTenant">Change</a>)</p>-->
-  <h2 c> <b> Log in </b> </h2>
-  <h6>
-    <rds-label [label]="translate.instant('Please Login for an account')"></rds-label>
-  </h6>
+  <h2> <b> Login </b> </h2>
   <small class="pb-5">{{translate.instant("Current Tenant")}} : {{tenancyName}} (<a href="#" data-bs-toggle="modal"
       class="link-primary" (click)="openTenantModal()">{{translate.instant("Change")}}</a>)</small>
   <div class="pt-5">
     <form #loginForm="ngForm">
-      <div class="form-group mb-3 text-start">
+      <div class="form-group text-start">
         <rds-input size="medium" [inputType]="'email'" [label]="translate.instant(UserName)" [labelPosition]="'top'"
           [placeholder]="translate.instant(UserName)" id="txtUsername" floatinginputLabel="" [(ngModel)]="userNameData"
-          [isRequired]=true required #username="ngModel" ngDefaultControl name="userName">
+          [isRequired]=true required #username="ngModel" ngDefaultControl name="txtUsername"
+          [hasErrors]="(username.errors && (username.dirty && username.touched)) && username.errors.required"
+          [errors]="translate.instant('Username is required')">
         </rds-input>
-        <div class="form-control-feedback" *ngIf="username.errors && (username.dirty || username.touched)">
-          <span class="text-danger" *ngIf="username.errors.required">{{"Username is required"|translate}}</span>
-          <!-- <span class="text-danger" *ngIf="username.errors.pattern">{{"Please enter valid username"|translate}}</span> -->
-        </div>
       </div>
-      <div class="form-group mb-3 text-start">
-        <rds-input size="medium" [iconCursor]="'pointer'" [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'"
+      <div class="form-group text-start">
+        <rds-input size="medium" [iconCursor]="' pointer'" [icon]="'eye'" [iconOpacity]="'0.4'" [iconHeight]="'18px'"
           [iconWidth]="'18px'" [inputType]="'password'" [label]="translate.instant(Password)" [labelPosition]="'top'"
           [placeholder]="translate.instant(Password)" floatinginputLabel="" id="txtPassword"
           [(ngModel)]="userPasswordData" [isRequired]=true ngDefaultControl required #userPassword="ngModel"
-          name="password"></rds-input>
-        <div class="form-control-feedback" *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)">
-          <span class="text-danger" *ngIf="userPassword.errors.required">{{"Password is required"|translate}}</span>
-        </div>
-        <div class="row d-flex justify-content-between mt-2">
-          <div class="col-md-6">
+          name="txtPassword"
+          [hasErrors]="(userPassword.errors && (userPassword.dirty && userPassword.touched)) && userPassword.errors.required"
+          [errors]="translate.instant('Password is required')"></rds-input>
+        <div class="d-flex justify-content-between mt-2">
+          <div>
             <div class="form-group mb-3">
               <rds-checkbox (onChange)="onChangeRememberme($event)" [disabled]="false"
-                [label]="translate.instant(checkboxTitle)" [checked]="rememberMe" [withLabel]="true" [switch]="false" [(ngModel)]="rememberMe"
-                [id]="checkboxTitle">
+                [label]="translate.instant(checkboxTitle)" [checked]="rememberMe" [withLabel]="true" [switch]="false"
+                [(ngModel)]="rememberMe" [id]="checkboxTitle">
               </rds-checkbox>
             </div>
           </div>
-          <div class="col-md-6">
+          <div>
             <a class="link-primary text-decoration-none float-end" [href]="['/forgot-password']">
               {{translate.instant("Forgot password?")}}</a>
           </div>
@@ -45,7 +39,8 @@
       </div>
       <div class="pb-3">
         <rds-button class="d-grid mb-3" colorVariant="primary" [block]="false" [size]="'medium'" [submit]="true"
-          [showLoadingSpinner]="buttonSpinner" [label]="translate.instant(buttonLabel)" (click)="submit(loginForm)">
+          [showLoadingSpinner]="buttonSpinner" [label]="translate.instant(buttonLabel)" (onClick)="submit(loginForm)"
+          [isDisabled]="loginForm.invalid">
         </rds-button>
       </div>
     </form>
@@ -75,12 +70,10 @@
             <rds-input size="medium" [class.disabled]="!switchTenant" [inputType]="'text'"
               [placeholder]="translate.instant('Tenancy Name')" id="txtTenantName" [(ngModel)]="TenantNameData"
               #TenantName="ngModel" required="true" ngDefaultControl [isRequired]=true name="TenantName"
-              [labelPosition]="'top'" [label]="translate.instant('Tenancy Name')">
+              [labelPosition]="'top'" [label]="translate.instant('Tenancy Name')"
+              [hasErrors]="(TenantName.errors && (TenantName.dirty && TenantName.touched)) && (switchTenant && TenantName.errors.required)"
+              [errors]="translate.instant('Tenancy is required')">
             </rds-input>
-            <div class="form-control-feedback" *ngIf="TenantName.errors && (TenantName.dirty || TenantName.touched)">
-              <span class="text-danger" *ngIf="switchTenant&&TenantName.errors.required">{{"Tenancy is
-                required"|translate}}</span>
-            </div>
           </div>
         </div>
       </div>

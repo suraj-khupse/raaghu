@@ -1,5 +1,5 @@
 
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { RdsAppDetailsComponent } from './rds-app-details.component';
 import { RdsCheckboxModule } from '@libs/rds-checkbox';

@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsBadgeModule } from '@libs/rds-badge';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsBenefitComponent } from './rds-benefit.component';

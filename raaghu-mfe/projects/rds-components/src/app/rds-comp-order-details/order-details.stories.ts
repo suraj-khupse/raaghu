@@ -5,7 +5,7 @@ import { RdsAddressDetailModule, RdsButtonModule, RdsCheckboxModule, RdsInputMod
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsLabelModule } from '@libs/rds-label';
 import { CommonModule } from '@angular/common';
-import { RdsIconComponent, RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 
 export default {

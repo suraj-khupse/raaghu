@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsBadgeModule, RdsButtonModule, RdsCardModule, RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
+import { RdsBadgeModule, RdsButtonModule, RdsCardModule, RdsLabelModule } from '@libs/rds-elements';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompOrderSummaryComponent } from './rds-comp-order-summary.component';
 

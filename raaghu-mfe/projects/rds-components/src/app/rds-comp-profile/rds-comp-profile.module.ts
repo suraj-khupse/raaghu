@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RdsCompProfileComponent } from './rds-comp-profile.component';
 import { RdsCompLinkedAccountsModule } from "../rds-comp-linked-accounts/rds-comp-linked-accounts.module";
 import {
-  RdsIconModule, RdsLabelModule, RdsButtonModule, RdsModalModule, RdsOffcanvasModule,
+   RdsLabelModule, RdsButtonModule, RdsModalModule, RdsOffcanvasModule,
   RdsAvatarModule, RdsNavTabModule, RdsDropdownlistModule
 } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RdsCompUserDelegationsModule } from '../rds-comp-user-delegations/rds-comp-user-delegations.module';
 import { RdsCompLoginAttemptsModule } from '../rds-comp-login-attempts/rds-comp-login-attempts.module';
 import { RdsCompMysettingsModule } from '../rds-comp-mysettings/rds-comp-mysettings.module';

@@ -2,9 +2,10 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import {
   RdsAvatarModule, RdsBadgeModule, RdsButtonModule, RdsCardModule, RdsCheckboxModule, RdsDatepickerModule, RdsDropdownlistModule,
-  RdsDropdownModule, RdsIconModule, RdsLabelModule, RdsModalModule,
+  RdsDropdownModule, RdsLabelModule, RdsModalModule,
   RdsNavTabModule, RdsOffcanvasModule, RdsSelectListModule
 } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { RdsTopNavigationComponent } from './rds-comp-top-navigation.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompTestimonialsComponent } from './rds-comp-testimonials.component';
-import { RdsCarouselModule, RdsIconModule, RdsLabelModule, RdsTestimonialModule } from '@libs/rds-elements';
+import { RdsCarouselModule, RdsLabelModule, RdsTestimonialModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
+
 
 
 

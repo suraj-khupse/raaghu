@@ -1,6 +1,7 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsDatepickerModule, RdsDropdownlistModule, RdsIconModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsDatepickerModule, RdsDropdownlistModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule } from '@libs/shared';
 import { RdsCompLoginAttemptsComponent } from './rds-comp-login-attempts.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';

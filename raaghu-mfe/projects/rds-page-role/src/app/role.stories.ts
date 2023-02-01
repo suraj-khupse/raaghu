@@ -1,7 +1,8 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsBannerModule, RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsBannerModule, RdsButtonModule, RdsCheckboxModule, RdsDatepickerModule, RdsFabMenuModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsPopoverModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
 import { ArrayToTreeConverterService, NgxTranslateModule, SharedModule } from '@libs/shared';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { AppComponent } from './app.component';
 import { RdsCompRoleListModule } from 'projects/rds-components/src/app/rds-comp-role-list/rds-comp-role-list.module';
 import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';

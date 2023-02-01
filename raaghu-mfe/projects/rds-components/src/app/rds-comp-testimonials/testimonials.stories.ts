@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { RdsCarouselModule, RdsIconModule, RdsTestimonialModule } from '@libs/rds-elements';
+import { RdsCarouselModule, RdsTestimonialModule } from '@libs/rds-elements';
+import {RdsIconModule} from 'raaghu-themes/rds-icons'
 import { RdsLabelModule } from '@libs/rds-label';
 import { SharedModule } from '@libs/shared';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';

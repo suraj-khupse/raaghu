@@ -4,8 +4,7 @@ import {
   RdsButtonModule,
   RdsCheckboxModule,
   RdsDatepickerModule,
-  RdsFabMenuModule,
-  RdsIconModule,
+  RdsFabMenuModule,  
   RdsInputModule,
   RdsModalModule,
   RdsNavTabModule,
@@ -14,6 +13,7 @@ import {
   RdsPopoverModule,
   RdsSelectListModule,
 } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { AppComponent, AppComponent as TextTemplate } from './app.component';
 import {
   NgxTranslateModule,

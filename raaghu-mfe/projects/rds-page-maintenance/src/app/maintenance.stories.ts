@@ -1,5 +1,6 @@
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsBadgeModule, RdsButtonModule, RdsCheckboxModule, RdsFabMenuModule, RdsIconModule, RdsModalModule, RdsNavTabModule, RdsPaginationModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsBadgeModule, RdsButtonModule, RdsCheckboxModule, RdsFabMenuModule, RdsModalModule, RdsNavTabModule, RdsPaginationModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';

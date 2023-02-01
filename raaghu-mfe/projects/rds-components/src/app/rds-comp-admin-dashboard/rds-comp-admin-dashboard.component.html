@@ -1,4 +1,8 @@
 <div class="dark">
+  <div class="mb-3 pt-2">
+    <h5><rds-label [label]="'Hello' + (tenancy ? ', ' + tenancy : '') + ' !'" [bold]="true"></rds-label>
+    </h5>
+  </div>
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xl-6 col-xxl-6">
       <rds-widget [isRefreshRequired]="true" [isBorder]="false" [headerTitle]="translate.instant('Monthly Summary')"
@@ -28,8 +32,8 @@
               [colorVariant]="'gradient-primary'" cardheight='card-stretch-half'>
               <div body>
                 <rds-big-number-widget [iconFill]="true" [iconStroke]="true" [bigNumber]="'$' +RevenuePrice"
-                                       [textAlign]="'text-start'" subTitleColorVariant="warning"                                       [subText]="'-$' +RevenueProfit" [icon]="'triangle_down'" [iconHeight]="'12px'"
-                                       [iconWidth]="'12px'"></rds-big-number-widget>
+                  [textAlign]="'text-start'" subTitleColorVariant="warning" [subText]="'-$' +RevenueProfit"
+                  [icon]="'triangle_down'" [iconHeight]="'12px'" [iconWidth]="'12px'"></rds-big-number-widget>
               </div>
             </rds-widget>
           </div>

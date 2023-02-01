@@ -2,7 +2,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsBadgeModule, RdsButtonModule, RdsCardModule, RdsColorModule, RdsFeedModule, RdsLabelModule, RdsPriceModule, RdsProductImageModule, RdsRatingModule } from '@libs/rds-elements';
 import { RdsCompProductListComponent } from './rds-comp-product-list.component';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export default {

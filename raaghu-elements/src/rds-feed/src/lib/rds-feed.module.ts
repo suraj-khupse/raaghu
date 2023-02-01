@@ -5,7 +5,7 @@ import { RdsFeedComponent } from './rds-feed.component';
 import { RdsAvatarModule } from '@libs/rds-avatar';
 import { RdsLikeDislikeModule } from '@libs/rds-like-dislike';
 import { RdsRatingModule } from '@libs/rds-rating';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 
 @NgModule({

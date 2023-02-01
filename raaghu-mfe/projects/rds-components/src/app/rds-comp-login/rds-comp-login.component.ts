@@ -41,7 +41,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   constructor(
     private formBuilder: FormBuilder,
     public translate: TranslateService
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.onShimmerLoad.emit(false);
@@ -60,7 +60,7 @@ export class RdsLoginComponent implements OnInit, OnChanges {
   //for getting remebrme value
   onChangeRememberme(event: any) {
     // this.rememberMe = event.detail;
-    
+
     if (event) {
       localStorage.setItem('Username', this.userNameData);
       localStorage.setItem('Password', this.userPasswordData);

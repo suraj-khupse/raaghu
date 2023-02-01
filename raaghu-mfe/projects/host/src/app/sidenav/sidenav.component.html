@@ -4,7 +4,7 @@
     [selectedMenuDescription]="selectedMenuDescription" [LoginAttempts]="LoginAttempts" (toggleEvent)="toggle()"
     [profileData]="profileData" [rdsDeligateTableData]="rdsDeligateTableData" [offCanvasId]="offCanvasId"
     [logo]="'assets/raaghu_icon.png'" [projectName]="'Raaghu'" [linkedAccountData]="linkedAccountData"
-    [linkedAccountHeaders]="linkedAccountHeaders" [userList]="usernameList" [notificationData]="notifications"
+    [linkedAccountHeaders]="linkedAccountHeaders" [userList]="usernameList" [notificationData]="notifications" [impersonateUserId]="impersonateUserId"
     [unreadCount]="unreadCount" [languageItems]="languageItems" [selectedLanguage]="selectedLanguage" [showDelegationButtonSpinner]="showDelegationButtonSpinner" [receiveNotifications]="receiveNotifications"
     [notificationTypes]="notificationTypes" [tenancy]="tenancy" (onUpdateNotificationSettings)="onUpdateNotificationSettings($event)" 
     (setNotificationAsRead)="setNotificationAsRead($event)" (deleteDeligateuser)="deleteDeligateuser($event)" (saveDeligate)="saveDeligate($event)"
@@ -15,7 +15,7 @@
   
   </rds-top-navigation>
 </div>
-<div class="d-flex flex-column flex-root">
+<div class="d-flex flex-column flex-root pt-5 mt-3">
   <div class="page d-flex flex-column flex-column-fluid">
     <div class="
         d-flex
@@ -32,7 +32,7 @@
                         (emitPath)="redirectPath($event)" (selectedMode)="toggleBetweenMode($event)"></rds-side-nav>
         </div>
       </div>
-      <div class="wrapper d-flex flex-column flex-row-fluid rds-scrollable-wrapper pt-3 px-sm-0 px-lg-3 "
+      <div class="wrapper d-flex flex-column flex-row-fluid rds-scrollable-wrapper pt-3 px-lg-3 "
         [class.collapsed]="sideMenuCollapsed" id="FixedHeaderOverFlow">
         <ng-container *ngIf="currentAlerts && currentAlerts.length > 0">
         </ng-container>

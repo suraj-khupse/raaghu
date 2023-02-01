@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsCompPageNotFoundComponent } from './rds-comp-page-not-found.component';
-import { RdsIconModule, RdsLabelModule } from '@libs/rds-elements';
-
+import { RdsLabelModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 
 
 @NgModule({

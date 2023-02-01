@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import {
     ApplicationInfoDto,
     GetCurrentLoginInformationsOutput,
@@ -17,7 +17,7 @@ export class AppSessionService {
     private _impersonatorTenant: TenantLoginInfoDto;
     private _application: ApplicationInfoDto;
     private _theme: UiCustomizationSettingsDto;
-
+    impersonateId$ = new Subject();
     constructor(
         private _sessionService: SessionServiceProxy,
     ) {
@@ -78,6 +78,7 @@ export class AppSessionService {
                         this._theme = result.theme;
                         this._impersonatorTenant = result.impersonatorTenant;
                         this._impersonatorUser = result.impersonatorUser;
+                        this.impersonateId$.next(result.impersonatorUser?.id)
                         resolve(result.theme);
                     },
                     (err) => {
@@ -116,6 +117,7 @@ export class AppSessionService {
         return this._impersonatorUser;
     }
     get impersonatorUserId(): number {
+        
         return this.impersonatorUser ? this.impersonatorUser.id : null;
     }
     get impersonatorTenant(): TenantLoginInfoDto {

@@ -8,8 +8,7 @@
         <div *ngIf="node.level !== 1" class="horizontal-dotted-line dottedstyle"></div>
       </div>
       <span #nodeLabel class="mt-1 node-label d-flex ">
-        <span class="mr-5" (click)="onClicknode(node)" [class.text-primary]="node.selected">{{ node.data?.displayName
-          }}</span>
+        <span class="mr-5" (click)="onClicknode(node)" [class.text-primary]="node.selected">{{ node.data?.displayName}}</span>
         <rds-icon height="15px" [nestGroup]="nodeLabel" [fill]="false" [stroke]="true" width="15px" name="plus"
           (click)="addNestedNode(node)" class="pl-3 mx-2"></rds-icon>
         <rds-icon height="15px" [nestGroup]="nodeLabel" [fill]="false" [stroke]="true" width="15px" name="pencil"
@@ -25,16 +24,15 @@
       </ng-container>
     </div>
   </div>
-  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && list&&list.length>0&& list[0].data.parentId"
+  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && list && list.length > 0 && list[0].data.parentId"
     [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}">
     <rds-button [colorVariant]="'primary'" type="button" class="" [label]="translate.instant('Sub-Unit')"
       [isFabIcon]="false" [size]="'small'" (click)="addNode(list)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
     </rds-button>
-
-
   </div>
-  <div class="position-relative btn p-0 mt-3" *ngIf="mutable === true && list&&list.length>0&&  !list[0].data.parentId"
-    [ngStyle]="{'margin-left': list[0].level === 1 ? '0px' : '30px'}">
+  <div class="position-relative btn p-0 mt-3"
+    *ngIf="mutable === true && list && list.length >= 0 &&  !list[0]?.data.parentId"
+    [ngStyle]="{'margin-left': list[0]?.level === 1 ? '0px' : '30px'}">
     <rds-button [colorVariant]="'primary'" type="button" class="" [label]="translate.instant('New-Root-Unit')"
       [isFabIcon]="false" [size]="'small'" (click)="addNode(list)" [icon]="'plus'" iconHeight="12px" iconWidth="12px">
     </rds-button>

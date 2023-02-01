@@ -3,11 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./out-tsc",
-    "paths": {
-      "@libs/rds-icon": [
-        "rds-elements/rds-icon/public-api",
-        "rds-elements/rds-icon"
-      ],
+    "paths": {      
       "@libs/rds-badge": [
         "rds-elements/rds-badge/public-api",
         "rds-elements/rds-badge"

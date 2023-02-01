@@ -3,7 +3,7 @@ import * as moment_ from 'moment';
 const moment = moment_;
 import { DateTime } from 'luxon';
 import { Subscription } from 'rxjs';
-import { ComponentLoaderOptions, ProfileServiceProxy, SessionServiceProxy, SharedService, UpdateProfilePictureInput, UserAuthService, } from '@libs/shared';
+import { AppSessionService, ComponentLoaderOptions, ProfileServiceProxy, SessionServiceProxy, SharedService, UpdateProfilePictureInput, UserAuthService, } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { deleteDelegations, getDelegations, getUsername, saveDelegations, } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.action';
 import { selectDelegationsInfo, selectUserFilter, } from 'projects/libs/state-management/src/lib/state/authority-delegations/authority-delegations.selector';
@@ -51,6 +51,7 @@ export class SidenavComponent {
   currentAlerts: any = [];
   selectedLanguage: any = { language: '', icon: '' };
   severity = ['info', 'error', 'success', 'warn', 'fatal'];
+  // impersonateUserId:any
   LoginAttempts: any = {
     TableHeader: [
       {
@@ -92,7 +93,7 @@ export class SidenavComponent {
   headerHeight: any = '110px';
   @Input() AccountLinkedTable: any = [];
   @Input() Profileurl: string = 'https://anzstageui.raaghu.io/assets/profile-picture-circle.svg';
-  @Input() impersonatorUserId : boolean = false;
+  @Input() impersonateUserId : boolean = false;
   receiveNotifications: any;
   notificationTypes: any = [];
   sidenavItemsOriginal: any = [
@@ -395,6 +396,7 @@ export class SidenavComponent {
     private sessionService: SessionServiceProxy,
     private _profileService: ProfileServiceProxy,
     private theme: RdsThemesService,
+    private appSessionService: AppSessionService,
     @Inject(DOCUMENT) private document: Document
   ) {
 
@@ -425,6 +427,13 @@ export class SidenavComponent {
       }
 
     });
+    if(this.appSessionService.impersonatorUserId > 0){
+      this.impersonateUserId=true;
+    }
+    // this.appSessionService.impersonatorUserId>0;
+    // this.appSessionService.impersonateId$.subscribe(res=>{
+    //   this.impersonateUserId = res;
+    // })
 
 
     // this.selectAllvisualSettings()
@@ -688,7 +697,6 @@ export class SidenavComponent {
   }
 
   linkUser(data: any) {
-    debugger
     this.store.dispatch(linkToUser(data));
   }
   setAllNotificationAsRead($event) {

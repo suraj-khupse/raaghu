@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsNotificationComponent } from './rds-comp-notification.component';
-import { RdsButtonModule, RdsCardModule, RdsIconModule, RdsBadgeModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCardModule, RdsBadgeModule, RdsOffcanvasModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 
 @NgModule({
   declarations: [

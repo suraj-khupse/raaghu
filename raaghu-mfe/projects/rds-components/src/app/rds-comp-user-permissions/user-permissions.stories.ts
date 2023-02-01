@@ -1,13 +1,14 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsFabMenuModule, RdsIconModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsRadioButtonModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsCheckboxModule, RdsCounterModule, RdsDatepickerModule, RdsFabMenuModule, RdsInputModule, RdsModalModule, RdsNavTabModule, RdsOffcanvasModule, RdsPaginationModule, RdsRadioButtonModule, RdsSearchInputModule, RdsSelectListModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { RdsCompUserPermissionsComponent } from './rds-comp-user-permissions.component';
 import { RdsCompUserBasicsComponent } from '../rds-comp-user-basics/rds-comp-user-basics.component';
 import { RdsCompAlertComponent } from '../rds-comp-alert/rds-comp-alert.component';
 import { RdsDataTableComponent } from '../rds-comp-data-table/rds-comp-data-table.component';
-import { RdsCompFeaturesComponent } from '../rds-comp-features/rds-comp-features.component';
 import { RdsCompPermissionTreeComponent } from '../rds-comp-permission-tree/rds-comp-permission-tree.component';
+import { RdsLabelModule } from '@libs/rds-label';
 
 export default {
   title: 'Components/User Permissions', 
@@ -20,7 +21,8 @@ export default {
       FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, 
       RdsIconModule, SharedModule, RdsFabMenuModule, NgxTranslateModule, RdsInputModule, 
       RdsOffcanvasModule, RdsNavTabModule, RdsSelectListModule, RdsCheckboxModule,
-       RdsDatepickerModule, RdsRadioButtonModule, RdsCounterModule,RdsSearchInputModule
+       RdsDatepickerModule, RdsRadioButtonModule, RdsCounterModule,RdsSearchInputModule,
+       RdsLabelModule
       ], 
        providers: [FormBuilder,],
   })]
@@ -484,5 +486,6 @@ Default.args = {
       roleId: 4,
       roleName: "19bffedb2db041d1ad3e4f6907356e52"
     }
-  ]
+  ],
+  userinfo : []
 }

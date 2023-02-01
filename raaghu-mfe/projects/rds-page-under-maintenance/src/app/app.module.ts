@@ -5,7 +5,7 @@ import { NgxTranslateModule } from '@libs/shared';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateService, TranslateStore } from '@ngx-translate/core';
-import { RdsIconModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 
 @NgModule({
   declarations: [

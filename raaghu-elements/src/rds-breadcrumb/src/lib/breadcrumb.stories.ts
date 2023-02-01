@@ -3,7 +3,7 @@ import { RdsBreadcrumbComponent } from './rds-breadcrumb.component';
 // import { RdsIconModule } from '@libs/rds-elements';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 export default {
 
   title: 'Elements/Breadcrumbs',

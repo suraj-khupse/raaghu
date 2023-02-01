@@ -1,4 +1,5 @@
-import { RdsButtonModule, RdsColorModule, RdsIconModule, RdsLabelModule, RdsPriceModule, RdsRatingModule, RdsSizeModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsColorModule, RdsLabelModule, RdsPriceModule, RdsRatingModule, RdsSizeModule } from '@libs/rds-elements';
+import { RdsIconModule } from 'raaghu-themes/rds-icons'
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsCompProductOverviewComponent } from 'projects/rds-components/src/app/rds-comp-product-overview/rds-comp-product-overview.component';
 

@@ -35,7 +35,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   refreshTokenExpiryDate: any;
   loadingshimmer: boolean = false;
   tenancyName: string = '';
-  probableTenancyName ='';
+  probableTenancyName = '';
   buttonSpinnerForChangeTenant: boolean;
   buttonSpinner: boolean;
   constructor(
@@ -56,7 +56,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
 
   ngOnInit(): void {
     let tenantId = this.activatedRoute.snapshot.queryParams.tenantId;
-    let tenantName = this.activatedRoute.snapshot.queryParams.tenancyName;
+    let tenantName = tenantId == "1" ? "Host Admin" : this.activatedRoute.snapshot.queryParams.tenancyName;
     let impersonationToken = this.activatedRoute.snapshot.queryParams.impersonationToken;
 
     if (tenantId && impersonationToken) {
@@ -66,7 +66,6 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
       }));
       this.impersonatedAuthenticate(impersonationToken, Number.parseInt(tenantId), () => { });
     }
-
 
     this.subscribeToAlerts();
     const tenantInfo = JSON.parse(localStorage.getItem('tenantInfo'));
@@ -112,7 +111,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
       this.probableTenancyName = data;
       this.store.dispatch(ValidateTenantName(tenantData));
       // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-      this.currentAlerts=[]
+      this.currentAlerts = []
       // rdsAlertMfeConfig.input.currentAlerts = [];
       // this.rdsAlertMfeConfig = rdsAlertMfeConfig
     } else {
@@ -132,7 +131,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         type: alert.type,
         title: alert.title,
         message: alert.message,
-        sticky : false
+        sticky: false
       };
       this.currentAlerts.push(currentAlert);
       // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
@@ -142,16 +141,16 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     // this.alertService.showAlert('title','Invalid user name or password','danger')
   }
 
-  onSwitchTenant(event):void {
+  onSwitchTenant(event): void {
     this.insertTenant(event);
   }
-  onLogin(event: any):void {
+  onLogin(event: any): void {
     this.authenticateModal.userNameOrEmailAddress = event.userEmail;
     this.authenticateModal.password = event.userPassword;
     this.authenticateModal.rememberClient = event.rememberme;
     this.authenticate();
   }
-  onShimmerLoad(event: any):void {
+  onShimmerLoad(event: any): void {
     this.loadingshimmer = false;
   }
 
@@ -175,7 +174,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
     this.authenticateResult = authenticateResult;
     this.store.dispatch(getCurrentLoginInformation());
 
-    let tokenExpireDate = this.authenticateResult?.expireInSeconds? new Date().getTime() + 1000 * this.authenticateResult?.expireInSeconds : undefined;
+    let tokenExpireDate = this.authenticateResult?.expireInSeconds ? new Date().getTime() + 1000 * this.authenticateResult?.expireInSeconds : undefined;
     let refreshTokenExpireDate = this.authenticateResult?.refreshTokenExpireInSeconds ? new Date().getTime() + 1000 * this.authenticateResult?.refreshTokenExpireInSeconds : undefined;
 
     if (authenticateResult?.accessToken != undefined) {
@@ -222,7 +221,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
       , this);
   }
 
-  onAlertHide (event: any) {
+  onAlertHide(event: any) {
     this.currentAlerts = event;
   }
 }

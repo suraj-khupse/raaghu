@@ -5,7 +5,7 @@ import { NgxTranslateModule, SharedModule } from '@libs/shared';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RdsLabelModule } from '@libs/rds-label';
 import { RdsRatingModule} from '@libs/rds-rating';
-import { RdsIconModule} from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsBadgeModule} from '@libs/rds-badge';
 import { RdsButtonModule} from '@libs/rds-button';
 import { RdsCompProductListModule } from 'projects/rds-components/src/app/rds-comp-product-list/rds-comp-product-list.module';
@@ -80,4 +80,3 @@ Default.args = {
 
 
 
-   

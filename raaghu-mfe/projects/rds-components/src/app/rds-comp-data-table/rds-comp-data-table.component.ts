@@ -64,7 +64,7 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
   }
   selectedData: any;
   RecordPerPage: any;
-
+  
   static count: number = 0;
   public id: any = 'table'
 
@@ -454,4 +454,6 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
     this.radioEvent.emit(this.dataSource);
   }
 }
+ 
+
 
