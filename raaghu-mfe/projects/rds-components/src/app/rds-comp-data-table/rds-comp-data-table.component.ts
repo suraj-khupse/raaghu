@@ -28,7 +28,7 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
   showConfirmationPopup: boolean = false;
   filteredArray: any = [];
   tempData: any = [];
-  dataSource: any = [];
+  dataSource: any[] = [];
   rowData: any;
   @Input() tableHeaders: TableHeader[] = [];
   @Input() width = 400;
@@ -47,10 +47,12 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
   @Input() noDataSubTitle?: string = 'Click on the button above to add';
   isFilterOn: boolean = false;
   @Input() showNodataSubtitle = true;
+  @Input() isDisabled = false;
   @Output() deleteEvent = new EventEmitter<any>();
   @Output() updateEvent = new EventEmitter<any>();
   @Output() onDownload = new EventEmitter<any>();
   @Output() onSelectedData = new EventEmitter<any>();
+  @Output() radioEvent = new EventEmitter<any>();
   pageDetails: any;
   alertData: AlertPopupData = {
     iconUrl: "delete",
@@ -66,6 +68,26 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
   static count: number = 0;
   public id: any = 'table'
 
+   @Input() radioBtnList: any[] =[
+    {
+      "id": 1,
+      "label": "Radio Button 1 ",
+      "checked": false,
+      "name": "Radio-Button"
+    },
+    {
+      "id": 2,
+      "label": "Radio Button 2",
+      "checked": false,
+      "name": "Radio-Button"
+    },
+    {
+      "id": 3,
+      "label": "Radio Button 3",
+      "checked": true,
+      "name": "Radio-Button"
+    }
+  ]
   constructor(
     public translate: TranslateService,
     private changeDetector: ChangeDetectorRef
@@ -89,6 +111,9 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
         }
       }
     }
+     for (let i = 0; i < this.tableData.length; i++) {
+      this.tableData[i].problemStatus.forEach(ele=> ele.disabled = this.isDisabled)
+     }
   }
 
   ngOnInit(): void {
@@ -417,6 +442,16 @@ export class RdsDataTableComponent implements OnInit, OnChanges, AfterContentChe
     data.checked = value;
     const allSelectedItems: any = this.tableData.filter((x: any) => x.checked);
     this.getAllCheckedItems.emit(allSelectedItems);
+  }
+
+  getRadioValue(event: any){
+    let radioValue = this.dataSource.find(x => event?.value?.name == x.problemName);
+    radioValue?.problemStatus.map(x => { 
+      if (x.id === event?.value?.id) {
+        x.checked = true;
+      } else { x.checked = false; }
+    })
+    this.radioEvent.emit(this.dataSource);
   }
 }
 
