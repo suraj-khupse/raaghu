@@ -17,8 +17,7 @@
         <ng-container *ngFor="let item of finalResourceData; index as i">
             <div class="col-md-12 mt-2" *ngIf="item.resourcesData.length > 0">
                 <div class="row">
-                    <div class="my-2">{{item.letterRange}}</div>
-                    <hr>
+                    <div class="my-2 p-0 mx-2 pb-2 border-bottom">{{item.letterRange}}</div>
                     <rds-checkbox [disabled]="false" [label]="translate.instant('Select all')"
                         [state]="item.state" (change)="selectAllSectionItems($event, i)"
                         [(ngModel)]="item.isAllRangeSelected" [checked]="item.isAllRangeSelected"

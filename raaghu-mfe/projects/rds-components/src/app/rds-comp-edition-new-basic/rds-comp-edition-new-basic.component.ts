@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-rds-comp-edition-new-basic',
@@ -15,12 +16,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./rds-comp-edition-new-basic.component.scss'],
 })
 export class RdsCompEditionNewBasicComponent implements OnInit {
-  @Input() public PlanList: any = [];
+  @Input() PlanList: any = [];
   @Output() editionBasicInfo = new EventEmitter<any>();
   @Input() editionData: any;
 
   @ViewChild('editionBasicForm') editionInfoForm: NgForm;
-  constructor() {}
+  constructor(public translate: TranslateService) {}
   ngOnInit(): void {
     if (!this.editionData) {
       this.editionData = {};

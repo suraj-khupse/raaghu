@@ -298,7 +298,9 @@ export class AppComponent implements OnInit {
     this.PropertyList = event.Property;
     this.save();
   }
-
+  onValidForm(event): void {
+    this.basicInfo = event;
+  }
   save(): void {
     if (this.scopeUniqueId) {
       const _data: any[] = [];

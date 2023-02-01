@@ -32,12 +32,12 @@
     <rds-nav-tab [navtabsItems]="navtabsItems" [activeTab]="activePage" [horizontalAlignment]="'start'"
       [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false" [justified]="false"  (onClicktab)="onTabClick($event)"  >
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Basics" role="tabpanel"
+        <div class="tab-pane fade px-2 mt-2" [ngClass]="{'show active': activePage === 0}" id="Basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <rds-comp-basic-resource [basicInfo]="basicInfo"   [isEdit]="isEdit" [isEditShimmer]="editShimmer"
             (onBasicInfoSave)="onBasicInfoSave($event)"></rds-comp-basic-resource>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Claim" role="tabpanel"
+        <div class="tab-pane fade px-2 mt-1" [ngClass]="{'show active': activePage === 1}" id="Claim" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <!-- <mfe-loader [config]="rdsClaimsMfeConfig"></mfe-loader> -->
           <rds-comp-client-resources [resourceData]="ResourceData"  (selectedData)="onClientResourceSave($event)"></rds-comp-client-resources>
@@ -49,8 +49,8 @@
             </rds-button>
         </div>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 2}" id="Properties" role="tabpanel"
-          aria-labelledby="nav-home-tab">
+        <div class="tab-pane fade px-2" [ngClass]="{'show active': activePage === 2}" id="Properties" role="tabpanel"
+          aria-labelledby="nav-home-tab" style="margin-top: -16px;">
           <!-- <mfe-loader [config]="rdsClaimsMfeConfig"></mfe-loader> -->
           <rds-comp-properties [propertyTableHeader]="propertyTableHeader" [propertyTableData]="propertyTableData"
           (onPropertyResourceSave)="onPropertiesSave($event)"  [propertyActions]="property_actions"></rds-comp-properties>

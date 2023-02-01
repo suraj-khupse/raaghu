@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 text-end pb-3 desktop-btn">
       <rds-button [label]="translate.instant('New User')" [size]="'medium'" [colorVariant]="'primary'"
-        [showLoadingSpinner]="buttonSpinnerForNewUser" [size]="'small'" (click)="newUser($event)" buttonType="iconLabel"
+        [showLoadingSpinner]="false" [size]="'small'" (click)="newUser($event)" buttonType="iconLabel"
         icon="plus" iconWidth="12px" iconHeight="12px">
       </rds-button>
     </div>
@@ -20,14 +20,14 @@
     <rds-nav-tab [navtabsItems]="navtabsItems" (onClicktab)="getSelectedNavTab($event)" [activeTab]="activePage"
       [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
       [justified]="false">
-      <div naveContent class="row tab-content py-4 navsm-p-0" id="nav-tabContent">
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
+      <div naveContent class="row tab-content navsm-p-0" id="nav-tabContent">
+        <div class="tab-pane fade px-3 mt-3" [ngClass]="{'show active': activePage === 0}" id="basics" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <rds-comp-user-basic-profile-right (userInfo)="getUserData($event)" [userData]="userinfo" [roleListItem]="roleListItem" [orgUnitListItem]="orgUnitListItem" (onCancel)="close()"
             >
           </rds-comp-user-basic-profile-right>
         </div>
-        <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="permissions" role="permissionspanel"
+        <div class="tab-pane fade px-3" [ngClass]="{'show active': activePage === 1}" id="permissions" role="permissionspanel"
           aria-labelledby="nav-home-tab">
           <div class="tab-content">
             <div class="row">
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane fade" [ngClass]="{ 'show active': activePage === 2 }" id="organizationUnits" role="tabpanel"
+        <div class="tab-pane fade px-3 mt-3" [ngClass]="{ 'show active': activePage === 2 }" id="organizationUnits" role="tabpanel"
           aria-labelledby="nav-home-tab">
           <div class="tab-content">
           <rds-comp-claim-type-role [claimValueData]="claimValueData" [claimDisplayArray]="claimDisplayArray" [claimsActions]="claims_actions" (addClaim)="addClaim($event)" (onCancel)="close()" (deleteClaim)="deleteClaim($event)"></rds-comp-claim-type-role>

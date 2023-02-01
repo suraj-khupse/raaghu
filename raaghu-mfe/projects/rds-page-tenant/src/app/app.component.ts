@@ -98,7 +98,7 @@ else {
     editionId: tenant.tenantInfo.editionId[0],
     activationState: tenant.tenantInfo.activationState,
   };
-  this.store.dispatch(saveTenant(tenant.tenantInfo, 30))
+  this.store.dispatch(saveTenant(data, 30))
 }
 }
 getHostFeatureEmitter(){
@@ -142,7 +142,6 @@ onSaveTenantHost(featureHost : any){
     this.store.dispatch(getTenants());
     this.store.select(selectAllTenants).subscribe((res: any) => {
       this.tenantTableData = [];
-      debugger
       if (res && res.items) {
         this.isAnimation = false;
         res.items.forEach((element: any) => {

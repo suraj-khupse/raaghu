@@ -23,7 +23,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   viewModal: boolean = false;
   selectedId: any = '';
   selectedOrganizationUnit: any = [];
-  buttonSpinnerForNewUser: boolean = false;
   public user: any = {
     userInfo: undefined,
     userSettings: undefined,
@@ -110,9 +109,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   @Output() addClaimEmmiter = new EventEmitter<any>();
   @Output() onClaimSaveEmmiter = new EventEmitter<any>();
   @Output() deleteClaimEmmiter = new EventEmitter<any>();
+  @Output() getClaimsforEdit = new EventEmitter<any>();
 
   constructor(public translate: TranslateService) { }
- // @Input() orgTreeData = [];
   nodeColors = ['#6E4D9F', '#0D79AE', '#14A94B', '#FBA919'];
   TreeType: TreeType = {
     IconLabel: false,
@@ -190,8 +189,14 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   }
 
   newUser(event): void {
+    setTimeout(() => {
+      var offcanvas = document.getElementById('userOffcanvas');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show();
+    }, 100);
+
+    this.activePage = 0;
     this.getPermissionEmitter.emit(true);
-    this.buttonSpinnerForNewUser = true;
     this.selectedId = '';
     this.viewCanvas = true;
     this.navtabsItems = [
@@ -219,13 +224,6 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
 
     } else {
     }
-    setTimeout(() => {
-      var offcanvas = document.getElementById('userOffcanvas');
-      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.show();
-    }, 100);
-
-    this.activePage = 0;
   }
 
   close(): void {
@@ -237,13 +235,14 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     };
     this.userinfo = undefined;
     this.onClose.emit();
-    this.buttonSpinnerForNewUser = false;
   }
 
   editTableRowData(event): void {
     this.canvasTitle = 'EDIT USER';
     this.selectedId = event.id;
     this.getPermissionEmitter.emit(this.selectedId);
+    this.getClaimsforEdit.emit(this.selectedId);
+    this.EditUserEmitter.emit(this.selectedId);
     this.viewCanvas = true;
     if (event) {
       this.canvasTitle = 'EDIT USER';
@@ -283,8 +282,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     }, 100);
 
     this.activePage = 0;
-    // this.newUser(undefined);
-    this.EditUserEmitter.emit(this.selectedId);
+    
 
   }
 

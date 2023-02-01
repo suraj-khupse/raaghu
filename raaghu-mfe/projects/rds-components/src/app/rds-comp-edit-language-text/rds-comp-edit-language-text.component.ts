@@ -7,7 +7,7 @@ import { getLanguageTexts } from 'projects/libs/state-management/src/lib/state/l
 
 
 @Component({
-  selector: 'app-rds-comp-edit-language-text',
+  selector: 'rds-comp-edit-language-text',
   templateUrl: './rds-comp-edit-language-text.component.html',
   styleUrls: ['./rds-comp-edit-language-text.component.scss']
 })

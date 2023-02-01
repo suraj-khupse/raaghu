@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsIconModule } from 'raaghu-themes/rds-icons';
+import { RdsCompOrganizationTreeModule } from 'projects/rds-components/src/app/rds-comp-organization-tree/rds-comp-organization-tree.module';
+import { RdsCompDataTableModule } from 'projects/rds-components/src/app/rds-comp-data-table/rds-comp-data-table.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { RdsIconModule } from 'raaghu-themes/rds-icons';
     RdsButtonModule,
     RdsOffcanvasModule,
     HttpClientModule,
-    NgxTranslateModule.forRoot(),
+    RdsCompOrganizationTreeModule,
+    RdsCompDataTableModule,
+    //NgxTranslateModule.forRoot(),
     RdsIconModule
 
   ],

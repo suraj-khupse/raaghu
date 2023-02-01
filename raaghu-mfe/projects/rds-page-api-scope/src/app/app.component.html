@@ -51,7 +51,7 @@
     >
       <div naveContent class="row tab-content m-2" id="nav-tabContent">
         <div
-          class="tab-pane fade"
+          class="tab-pane fade px-1 mt-2"
           [ngClass]="{ 'show active': activePage === 0 }"
           id="basics"
           role="tabpanel"
@@ -59,6 +59,7 @@
         >
           <rds-comp-basic-resource
             (onBasicInfoSave)="getScopeInfo($event)"
+            (onValidForm)="onValidForm($event)"
             [basicInfo]="apiScopeEdit"
             [isEdit]="isEdit"
             [isResources]="true"
@@ -66,7 +67,7 @@
           </rds-comp-basic-resource>
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade px-1 mt-2"
           [ngClass]="{ 'show active': activePage === 1 }"
           id="resources"
           role="tabpanel"
@@ -99,7 +100,7 @@
           </div>
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade px-1"
           [ngClass]="{ 'show active': activePage === 2 }"
           id="properties"
           role="tabpanel"
