@@ -236,8 +236,8 @@ export class SidenavComponent {
               parent: 53
             },
             {
-              label: 'subscription',
-              labelTranslationKey: 'subscription',
+              label: 'Subscription',
+              labelTranslationKey: 'Subscription',
               id: 536,
               permissionName: 'Pages.Administration.Tenant.SubscriptionManagement',
               icon: 'subscription',
