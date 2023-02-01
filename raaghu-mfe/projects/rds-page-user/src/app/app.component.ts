@@ -11,8 +11,11 @@ import {
   availbleOrganizationUnit,
   deleteUser,
   getAllClaimTypes,
+  getClaimTypes,
   getUserForEdit,
+  getUserOrgForEdit,
   getUserPermission,
+  getUserRolesForEdit,
   getUsers,
   saveClaims,
   saveUser,
@@ -25,11 +28,15 @@ import {
   selectAllUsers,
   selectAssignableRoles,
   selectAvailableOrgUnit,
+  selectClaimTypes,
   selectUserForEdit,
+  selectUserOrgForEdit,
+  selectUserRolesForEdit,
 } from 'projects/libs/state-management/src/lib/state/user/user.selector';
 import {
   AlertService,
   ComponentLoaderOptions,
+  UserAuthService,
 } from '../../../libs/shared/src/public-api';
 import {
   transition,
@@ -38,12 +45,8 @@ import {
   style,
   animate,
 } from '@angular/animations';
-import { getRoles } from 'projects/libs/state-management/src/lib/state/role/role.actions';
-import { selectAllRoles } from 'projects/libs/state-management/src/lib/state/role/role.selector';
-import { PermissionNode } from 'projects/rds-components/src/models/pemission.model';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
-import { getOrganizationUnitTree } from 'projects/libs/state-management/src/lib/state/organization-unit/organization-unit.actions';
-import { selectOrganizationUnitTree } from 'projects/libs/state-management/src/lib/state/organization-unit/organization-unit.selector';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -121,7 +124,7 @@ export class AppComponent {
     private alertService: AlertService,
     private _arrayToTreeConverterService: ArrayToTreeConverterService,
     public translate:TranslateService,
-    
+    public userAuthService:UserAuthService
   ) { }
   public rdsUserMfeConfig: ComponentLoaderOptions={ name:'RdsCompUserPermissionsNew'}
   UserPermissionFiltertreeData: any = [];
@@ -165,6 +168,14 @@ export class AppComponent {
   }
   
   ngOnInit(): void {
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    })
     this.store.dispatch(getUsers());
     this.store.select(selectAllUsers).subscribe((res: any) => {
       this.userList = [];
@@ -193,8 +204,7 @@ export class AppComponent {
         if(this.userNameToSearch)this.searchUserId();
       }
     });
- 
-    this.store.dispatch(assignableRoles());
+
     this.store.select(selectAssignableRoles).subscribe((res: any) => {
       if (res && res.items) {
         this.roleListItem =  [];
@@ -209,6 +219,18 @@ export class AppComponent {
         });
       }
     });
+
+    this.store.select(selectUserRolesForEdit).subscribe(res=>{
+     if(res){
+      res.items.forEach(el=>{
+        this.roleListItem.forEach(e=>{
+          if(e.id == el.id){
+            e.isSelected = true;
+          }
+        })
+      })
+     }
+   })  
     
     this.store.dispatch(availbleOrganizationUnit());
     this.store.select(selectAvailableOrgUnit).subscribe((res: any) => {
@@ -226,6 +248,39 @@ export class AppComponent {
       }
       
     });
+
+    this.store.select(selectUserOrgForEdit).subscribe(res=>{
+      if(res){
+        this.orgUnitListItem.forEach(ele=>{
+          res.forEach(el=>{
+            if(el.code == ele.value){
+              ele.isSelected = true;
+            }
+          })
+        })
+      }
+    })
+
+
+    this.store.select(selectUserOrgForEdit).subscribe(res=>{
+      if(res){
+        this.orgUnitListItem.forEach(ele=>{
+          res.forEach(el=>{
+            if(el.code == ele.value){
+              ele.isSelected = true;
+            }
+          })
+        })
+      }
+    })
+
+
+
+    this.store.select(selectClaimTypes).subscribe(res=>{
+      if(res){
+        
+      }
+    })
     
   }
 
@@ -233,7 +288,7 @@ export class AppComponent {
     if(id == this.adminId)
       this.store.dispatch(getAllClaimTypes());
     else
-      this.store.dispatch
+      this.store.dispatch(getAllClaimTypes())
     this.store
       .select(selectAllClaimTypes)
       .subscribe((res) => {
@@ -253,6 +308,10 @@ export class AppComponent {
 
   getPermissionEmitter(id=this.adminId){
     this.store.dispatch(getUserPermission(id));
+    if(id == this.adminId){
+      this.store.dispatch(assignableRoles());
+      this.store.dispatch(availbleOrganizationUnit());
+    }
     this.store.select(selectAllUserFilterPermissions).subscribe((res: any) => {
       if (res && res.groups) {
         this.permissionTreeData = res.groups;
@@ -291,18 +350,32 @@ export class AppComponent {
     this.savePermissionData = undefined;
     this.claimDisplayArray = [];
    }
-  if(user && user.userInfo.id){
-      this.store.dispatch(updateUser({id:user.userInfo.id,body:user.userInfo}));
-  }
-  else{
-      this.userNameToSearch = user.userInfo.userName;
-      this.store.dispatch(saveUser(user.userInfo));
-  }
-    
+    if(user && user.userInfo.id){
+        this.store.dispatch(updateUser({id:user.userInfo.id,body:user.userInfo}));
+    }
+    else{
+        this.userNameToSearch = user.userInfo.userName;
+        this.store.dispatch(saveUser(user.userInfo));
+    }
+    this.removeSelectedData();
   }   
+
+  removeSelectedData(){
+    this.orgUnitListItem.forEach(el=>{
+      el.isSelected = false;
+    });
+
+    this.roleListItem.forEach(e=>{
+      e.isSelected = false;
+    })
+
+  }
 
   getEditUser (user: any) {
     this.store.dispatch(getUserForEdit(user));
+    this.store.dispatch(getUserRolesForEdit(user));
+    this.store.dispatch(getUserOrgForEdit(user));
+    this.store.dispatch(getClaimTypes(user))
     this.store.select(selectUserForEdit).subscribe(res=>{
       const data: any = {
         email : user.userInfo.email,

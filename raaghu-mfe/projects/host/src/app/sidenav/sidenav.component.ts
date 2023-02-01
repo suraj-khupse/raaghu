@@ -28,7 +28,7 @@ declare var bootstrap: any;
     slideInAnimation
   ],
 })
-export class SidenavComponent extends MfeBaseComponent implements OnInit {
+export class SidenavComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
@@ -37,6 +37,8 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   profilePicId = {
     id: '6f9f495e-f308-9a83-e524-3a079ce6f2f5'
   }
+
+  tenantName = 'Admin';
 
   toggleSideNav: boolean = false;
   currentAlerts: any = [];
@@ -94,7 +96,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     { label: 'Tenants', labelTranslationKey: 'Tenants', id: 'tenants', permissionName: 'Saas.Tenants', icon: 'tenant', path: '/pages/tenant', description: 'Manage your tenants', descriptionTranslationKey: 'Manage your tenants' },
     { label: 'Editions', labelTranslationKey: 'Editions', id: '', permissionName: 'Saas.Editions', icon: 'editions', path: '/pages/edition', description: 'Manage editions and features of the application', descriptionTranslationKey: 'Manage editions and features of the application' },
     {
-      label: 'Identity Management', labelTranslationKey: 'Identity Management', id: 'admin', permissionName: '', icon: 'administration', path: '',
+      label: 'Identity Management', labelTranslationKey: 'Identity Management', id: 'admin', permissionName: '', icon: 'identity_management', path: '',
       children: [
         { label: 'Organization Units', labelTranslationKey: 'Organization Units', id: '', permissionName: 'AbpIdentity.OrganizationUnits', icon: 'organization', path: '/pages/organization-unit', description: 'Use organization units to organize users and entities', descriptionTranslationKey: 'Use organization units to organize users and entities' },
         { label: 'Roles', labelTranslationKey: 'Roles', id: '', permissionName: 'AbpIdentity.Roles', icon: 'roles', path: '/pages/role', description: 'Use roles to group permissions', descriptionTranslationKey: 'Use roles to group permissions' },
@@ -104,7 +106,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       ],
     },
     {
-      label: 'Identity Server', labelTranslationKey: 'Identity Server', id: 'admin', permissionName: '', icon: 'administration', path: '',
+      label: 'Identity Server', labelTranslationKey: 'Identity Server', id: 'admin', permissionName: '', icon: 'identity_server', path: '',
       children: [
         { label: 'Client', labelTranslationKey: 'Client', id: '', permissionName: 'IdentityServer.Client', icon: 'users', path: '/pages/client', description: 'Manage clients and permissions', descriptionTranslationKey: 'Manage users and permissions' },
         { label: 'Identity Resource', labelTranslationKey: 'Identity Resources', id: '', permissionName: 'IdentityServer.IdentityResource', icon: 'home', path: '/pages/identityResources', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
@@ -119,7 +121,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         { label: 'Language-Text', labelTranslationKey: 'Language-Text', id: '', permissionName: 'LanguageManagement.LanguageTexts', icon: 'languages', path: '/pages/languagetext', description: 'Manage user interface languagesText', descriptionTranslationKey: 'Statistics and reports' },
       ],
     },
-    { label: 'Text Template', labelTranslationKey: 'Text Template', id: '', permissionName: 'TextTemplateManagement.TextTemplates', icon: 'home', path: '/pages/text-template', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
+    { label: 'Text Template', labelTranslationKey: 'Text Template', id: '', permissionName: 'TextTemplateManagement.TextTemplates', icon: 'text_template', path: '/pages/text-template', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
     { label: 'Audit logs', labelTranslationKey: 'Audit logs', id: '', permissionName: 'AuditLogging.AuditLogs', icon: 'audit_logs', path: '/pages/audit-logs', descriptionTranslationKey: '' },
     // { label: 'UI Components', labelTranslationKey: 'UI Components', id: '', permissionName: '', icon: 'demo_ui', path: '/pages/demo-ui', description: '', descriptionTranslationKey: '' },
     { label: 'Settings', labelTranslationKey: 'Settings', id: '', permissionName: 'AbpIdentity.SettingManagement', icon: 'setting', path: '/pages/settings', description: 'Show and change application settings', descriptionTranslationKey: 'Show and change application settings' },
@@ -139,7 +141,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   selectedMenu: string = '';
   selectedMenuDescription: string = '';
   sub: Subscription
-  rdsTopNavigationMfeConfig: ComponentLoaderOptions;
   accountPage = true;
   activePage: any;
   activesubmenu: any;
@@ -177,16 +178,13 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
     private alertService: AlertService,
     public translate: TranslateService,
     private shared: SharedService,
-    private injector: Injector,
     private userAuthService: UserAuthService,
     private serviceProxies: ServiceProxy,
     @Inject(DOCUMENT) private document: Document
   ) {
-    super(injector);
   }
 
-  ngAfterViewInit() {
-  }
+  
   getdata() {
   }
   tenancyTableData = [];
@@ -195,26 +193,41 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
 
   permissions: any;
   onLanguageSelection(lan){
-    this.translate.use(lan.icon);
-    this.userAuthService.getApplicationConfiguration(lan.icon,false);
+    this.translate.use(lan);
+    this.userAuthService.getApplicationConfiguration(lan,false);
   }
+
   onDownloadLink (data: any){
     this.store.dispatch(PrepareCollectedData());
   }
 
   ngOnInit(): void {
-    const tenancy: any = JSON.parse(localStorage.getItem('tenantInfo'));
-    if (tenancy) {
-      this.tenancy = tenancy.name;
-    } else {
-      this.tenancy = 'Host Admin';
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
     }
-    this.store.dispatch(getLanguages());
+
+    
     this.store.dispatch(getProfilePictureData(this.profilePicId));
     this.store.select(selectProfilePictureData).subscribe(res => {
-      if (res) this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
+      if (res) {
+        this.profilePicUrl = 'data:image/jpeg;base64,' + res.fileContent;
+        this.profilePic = 'data:image/jpeg;base64,' + res.fileContent;
+      };
     });
-  
+    this.store.dispatch(getProfileSettings());
+    this.store.select(selectAllProfileSettings).subscribe((res: any) => {
+      if (res) {
+        [res].forEach(ele => {
+          this.tenantName = ele.name;
+          this.profileData.name = ele.name;
+          this.profileData.surname = ele.surname;
+          this.profileData.email = ele.email;
+          this.profileData.phoneNumber = ele.phoneNumber;
+          this.profileData.userName = ele.userName;
+          this.profileData.concurrencyStamp = ele.concurrencyStamp
+        });
+      }
+    });
 
     const storedPermission = localStorage.getItem('storedPermissions');
     const parsedPermission = JSON.parse(storedPermission);
@@ -222,31 +235,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       this.permissions = parsedPermission;
       this.filterNavItems(this.sidenavItemsOriginal, parsedPermission, this.sidenavItems);
     }
-    this.subscribeToAlerts();
-    this.rdsTopNavigationMfeConfig = {
-      name: 'RdsTopNavigation',
-      input: {
-        backgroundColor: this.backgroundColor,
-        LoginAttempts: this.LoginAttempts,
-        isPageWrapper: true,
-        profilePic: this.profilePic,
-        profileData: this.profileData,
-        rdsDeligateTableData: this.rdsDeligateTableData,
-        offCanvasId: this.offCanvasId,
-        
-        
-        notificationData: this.notifications,
-        unreadCount: this.unreadCount,
-        receiveNotifications: this.receiveNotifications,
-        notificationTypes: this.notificationTypes,
-        tenancy: this.tenancy,
-      },
-      output: {
-        
-      }
-    }
 
-  
     this.userAuthService.localization.subscribe((ele:any ) => {
       ele.forEach((element:any) => {
         const data :any = {
@@ -261,9 +250,7 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
       })
      
     })
-  
-    this.on('tenancyDataAgain').subscribe(res => {
-    })
+
     if (this.router.url) {
       let matchRoute: any;
       const index = this.getMatchedRoute(this.sidenavItems);
@@ -284,8 +271,6 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
           }
         })
       }
-      this.rdsTopNavigationMfeConfig.input.selectedMenu = this.selectedMenu;
-      this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = this.selectedMenuDescription;
     }
 
     this.sub = this.router.events.subscribe(event => {
@@ -293,27 +278,20 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
       }
     })
-    if (this.sidenavItems && this.sidenavItems.length > 0) {
-      if (this.sidenavItems[0].children && this.sidenavItems[0].children.length > 0) {
-        this.selectedMenu = this.sidenavItems[0].children[0].label;
-        this.selectedMenuDescription = this.sidenavItems[0].children[0].description;
-      } else {
-        this.selectedMenu = this.sidenavItems[0].label;
-        this.selectedMenuDescription = this.sidenavItems[0].description;
-      }
-    }
-    const UsernameFilter: any = {
-      excludeCurrentUser: true,
-      filter: '',
-      maxResultCount: 10,
-      skipCount: 0
-    }
+    // if (this.sidenavItems && this.sidenavItems.length > 0) {
+    //   if (this.sidenavItems[0].children && this.sidenavItems[0].children.length > 0) {
+    //     this.selectedMenu = this.sidenavItems[0].children[0].label;
+    //     this.selectedMenuDescription = this.sidenavItems[0].children[0].description;
+    //   } else {
+    //     this.selectedMenu = this.sidenavItems[0].label;
+    //     this.selectedMenuDescription = this.sidenavItems[0].description;
+    //   }
+    // }
     this.sub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.accountPage = ["/login", "/forgot-password"].includes(event.url)
       }
     })
-
   }
   toggleEvent() {
     var element = document.getElementById("sidebar");
@@ -365,18 +343,17 @@ export class SidenavComponent extends MfeBaseComponent implements OnInit {
   }
 
   redirectPath(event): void {
-    const rdsAlertMfeConfig = this.rdsAlertMfeConfig;
-    rdsAlertMfeConfig.input.currentAlerts = [];
-    this.rdsAlertMfeConfig = rdsAlertMfeConfig;
-    this.rdsTopNavigationMfeConfig.input.selectedMenu = event.label;
-    this.rdsTopNavigationMfeConfig.input.selectedMenuDescription = event.description;
+    console.log('event path', event);
+    localStorage.setItem('topnavTitle', event.label);
+    this.selectedMenu = event.label;
+    this.selectedMenuDescription = event.description;
     this.router.navigate([event.path]);
     var alertNode = document.querySelector('.alert');
     if (alertNode) {
       var alert = bootstrap.Alert.getInstance(alertNode);
       alert.close();
     }
-    this.shared.setTopNavTitle('');
+    this.shared.setTopNavTitle(event.label);
 
   }
 

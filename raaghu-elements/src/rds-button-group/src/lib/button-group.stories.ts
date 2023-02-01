@@ -1,6 +1,6 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsButtonGroupComponent } from './rds-button-group.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

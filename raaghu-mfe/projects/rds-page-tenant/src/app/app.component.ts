@@ -3,12 +3,13 @@ import { Store } from '@ngrx/store';
 import {
   ArrayToTreeConverterService,
   ComponentLoaderOptions,
+  UserAuthService
 } from '@libs/shared';
 import {} from '@libs/state-management';
+
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
-import { fadeAnimation } from '../../../libs/shared/src/lib/animation';
 import {
   transition,
   trigger,
@@ -121,6 +122,7 @@ export class AppComponent {
     public datepipe: DatePipe,
     private store: Store,
     private translate: TranslateService,
+    private: userAuthService: UserAuthService,
     private _arrayToTreeConverterService: ArrayToTreeConverterService
   ) {}
 
@@ -222,8 +224,19 @@ export class AppComponent {
     this.store.dispatch(updateTenantFeatureValues(_data));
   }
 
+
   ngOnInit(): void {
     this.isAnimation = true;
+    
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
+    
     this.store.dispatch(getTenants());
     this.store.select(selectAllTenants).subscribe((res: any) => {
       this.tenantTableData = [];

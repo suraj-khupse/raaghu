@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { ComponentLoaderOptions } from '@libs/shared';
+import { UserAuthService } from '@libs/shared';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { restoreToDefault, saveTextTemplateContent } from 'projects/libs/state-management/src/lib/state/text-template/text-template.actions';
 
 
@@ -33,17 +34,7 @@ export class AppComponent implements OnInit {
     cultureName:null
   };
   
-  public rdsAlertMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsCompAlert',
-    input: {
-      currentAlerts: this.currentAlerts
-    },
-    output: {
-      onAlertHide: (event: any) => {
-        this.currentAlerts = event;
-      }
-    }
-  }
+
   tableHeadersForTextTemplate: TableHeader[] = [
     { key: 'templateName', displayName: 'Template Name', dataType: 'text', filterable: true, sortable: true, required: false, },
     { key: 'inlineLocalized', displayName: 'Inline Localized', dataType: 'icon', filterable: true, sortable: true, required: false, },
@@ -54,10 +45,19 @@ export class AppComponent implements OnInit {
 
   actions = [{ id: 'edit', displayName: 'Edit' }];
   
-  constructor(private store: Store) { }
+  constructor(private store: Store,public translate:TranslateService, private userAuthService:UserAuthService) { }
   tableDataForTextTemplate = [];
  
   ngOnInit(): void {
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
+
     this.store.dispatch(getTemplateDefinition());
     this.store.select(selectAllTT).subscribe((res: any) => {
 

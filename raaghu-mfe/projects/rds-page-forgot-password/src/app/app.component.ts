@@ -3,7 +3,7 @@ import { ComponentLoaderOptions, MfeBaseComponent, ServiceProxy,SendPasswordRese
 import {  } from '@libs/state-management';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { setDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.actions';
+//import { setDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.actions';
 
 declare var bootstrap: any
 @Component({
@@ -22,7 +22,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   };
   loadingshimmer:boolean=true;
   constructor(private injector: Injector,
-    
+    public store:Store,
     private _accountService: ServiceProxy,
     private translate: TranslateService) {
     super(injector)
@@ -39,11 +39,11 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         }
       }
     }
-    this.store.select(setDefaultLanguage).subscribe((res: any) => {
-      if (res) {
-        this.translate.use(res);
-      }
-    })
+    // this.store.select(setDefaultLanguage).subscribe((res: any) => {
+    //   if (res) {
+    //     this.translate.use(res);
+    //   }
+    // })
     this.on('forgetpassword').subscribe(r => {
       this.model.email= r.emailAddress;
       // var email =r.emailAddress

@@ -322,7 +322,7 @@
       </table>
     </div>
     <ng-container *ngIf="pagination && tableData && tableData.length > 0">
-      <rds-pagination
+      <rds-pagination  
         (onPageChange)="onPagination($event)"
         [recordsPerPage]="+recordsPerPage"
         [totalRecords]="getTotalRecords()"

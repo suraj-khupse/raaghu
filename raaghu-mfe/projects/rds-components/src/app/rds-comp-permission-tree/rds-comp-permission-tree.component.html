@@ -1,5 +1,5 @@
 <div class="checkedstyle treeview-flush node dottedstyle pb-5 mb-4">
-    <div class="d-flex align-items-center checkedstyle mt-3 ms-1">
+    <div class="d-flex align-items-center checkedstyle ms-1">
         <div class="node-dot position-relative">
             <div class="vertical-dotted-line-select-all"></div>
             <!-- Select All Checkbox -->
@@ -9,7 +9,7 @@
         </div>
         <span class="node-label"><span class="mr-4">{{translate.instant(selectAllLabel)}}</span></span>
     </div>
-
+    
     <!-- Parent Child checkboxes -->
     <ng-container *ngTemplateOutlet="recursiveNodeTemplate; context: { list: modifiedtreeData }"></ng-container>
     <ng-template #recursiveNodeTemplate let-list="list">

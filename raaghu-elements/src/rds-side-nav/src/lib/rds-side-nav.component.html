@@ -3,7 +3,7 @@
   <ul class="list-unstyled mb-0 py-2 px-4 h-100">
     <li class="mb-2" *ngFor="let item of sidenavItems; let i=index">
       <a (click)="onClick($event,i,item)" *ngIf="!item.children" [ngClass]="{ 'active' : item.active }"
-        class="d-inline-flex align-items-center text-decoration-none text-uppercase" role="button"
+        class="d-inline-flex align-items-center text-decoration-none" role="button"
         aria-expanded="false">
         <rds-icon [name]="item.icon+''" [fill]="item.iconFill" [stroke]="item.iconStroke" [height]="iconHeight"
           [width]="iconWidth" [class.pe-3]="!collapsed"></rds-icon>
@@ -36,7 +36,7 @@
 <ng-template #childTemplate let-item="item" let-index="index">
   <a (click)="onMenuWithChildrenClick(index,item)" *ngIf="item.children&&!collapsed"
     [ngClass]="{ 'active' :item.active, 'child' :  !collapsed }"
-    class="d-inline-flex align-items-center text-decoration-none text-uppercase " type="button"
+    class="d-inline-flex align-items-center text-decoration-none " type="button"
     [attr.id]="item.label+index">
     <rds-icon [name]="item.icon" *ngIf="item.icon" [fill]="item.iconFill" [stroke]="item.iconStroke"
       [height]="iconHeight" [width]="iconWidth" [class.pe-3]="!collapsed" data-bs-toggle="tooltip"

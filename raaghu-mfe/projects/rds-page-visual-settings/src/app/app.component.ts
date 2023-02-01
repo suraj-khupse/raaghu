@@ -1,10 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AlertService, ComponentLoaderOptions } from '@libs/shared';
 import { Store } from '@ngrx/store';
-import { getVisualsettings, UpdateDefaultUiManagementSettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.actions';
-import { selectAllVisualsettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.selector';
+////import { selectAllVisualsettings } from 'projects/libs/state-management/src/lib/state/Visual-settings/visual-settings.selector';
 import { TranslateService } from '@ngx-translate/core';
-import { selectDefaultLanguage } from '@libs/state-management';
+//import { selectDefaultLanguage } from '@libs/state-management';
 import {
   transition,
   trigger,
@@ -12,6 +11,7 @@ import {
   style,
   animate,
 } from '@angular/animations';
+import { selectAllApiResource } from 'projects/libs/state-management/src/lib/state/api-resources/api-resources.selector';
 
 @Component({
   selector: 'app-root',
@@ -63,13 +63,13 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isAnimation = true;
-    this.store.select(selectDefaultLanguage).subscribe((res: any) => {
+    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
 
-      if (res) {
+    //   if (res) {
 
-        this.translate.use(res);
-      }
-     })
+    //     this.translate.use(res);
+    //   }
+    //  })
     this.subscribeToAlerts();
 
     this.rdsvisualsettingsMfeConfig = {
@@ -84,14 +84,14 @@ export class AppComponent implements OnInit {
       output: {
         onSaveVisualsettingsData: (visualsettingsItem: any) => {
           if (visualsettingsItem) {
-            this.store.dispatch(UpdateDefaultUiManagementSettings(visualsettingsItem));
+            //this.store.dispatch(UpdateDefaultUiManagementSettings(visualsettingsItem));
           }
           console.log(visualsettingsItem);
         }
       }
     }
-    this.store.dispatch(getVisualsettings());
-    this.store.select(selectAllVisualsettings).subscribe((res: any) => {
+    //this.store.dispatch(getVisualsettings());
+    this.store.select(selectAllApiResource).subscribe((res: any) => {
     this.visualsettingsData=[];
       if (res && res.visualsettings && res.status === 'success') {
         this.isAnimation = false;

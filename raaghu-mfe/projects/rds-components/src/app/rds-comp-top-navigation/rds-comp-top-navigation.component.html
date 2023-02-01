@@ -1,8 +1,9 @@
 <nav [class.fixed-top]="FixedHeader" class="navbar navbar-expand-sm p-0">
   <div class="container-fluid mobile-fluid">
-    <span class="navbar-brand p-0 m-0" href="#">
-      <img class="image" [src]="logo" width="70" /><span class="title fw-bold text-lowercase"><b>{{ projectName
-          }}</b></span>
+    <span class="navbar-brand p-0 m-0 mx-2" href="#">
+      <img class="image" [src]="'assets/raaghu_icon.png'" width="70" />
+      <span class="ms-1 pt-1"><img src="../assets/raaghu_text_logo.svg" class="img-fluid"></span>
+          
     </span>
     <button (click)="onToggleButton()" class="navbar-toggler px-2" id="humbreger-btn" type="button"
       data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -11,14 +12,11 @@
     </button>
     <div class="py-0 m-0 breadcrumbs">
       <div>
-        <a class="nav-link active p-0" aria-current="page" href="#">{{ selectedMenu | translate
-          }}<span *ngIf="tabName" class="mx-2"><b class="text-primary pt-1"></b> {{ tabName }}</span></a>
+        <a class="nav-link active p-0 fs-6" aria-current="page" href="#">
+          <h6 class="mt-1 mb-0"><b class="text-primary pt-1"></b>{{ tabName.toUpperCase() | translate}}</h6>
+        </a>
       </div>
-      <div class="mob-description">
-        <a class="nav-link text-muted p-0 fs-6" href="#">{{
-          selectedMenuDescription | translate
-          }}</a>
-      </div>
+     
     </div>
 
     <div class="collapse navbar-collapse ps-5 ms-4 py-0 m-0" id="navbarSupportedContent1" dropdownHeight>
@@ -30,43 +28,79 @@
         </rds-dropdownlist>
       </ul>
     </div>
-      <ul class="navbar-nav d-flex align-items-center flex-row gap-2">
-        <li class="nav-item cursor-pointer">
-          <div class="nav-link align-items-center">
-            <div class="dropdown ms-2">
-              <a class="btn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="d-flex">
-                  <div class="ps-2">
-                    <rds-avatar [withProfilePic]="true" [profilePic]="profilePic" [roundedPills]="true"
-                      [verticallyAlligned]="true" [roundedAvatar]="true" [size]="'small'" [width]="'32'"
-                      [height]="'32'">
-                    </rds-avatar>
-                  </div>
-                  <div class="pe-auto">
-                    <div class="text-decoration-none">
-                      <p class="mb-0 ps-2">
-                        Wai Technologies
-                      </p>
-                    </div>
-                  </div>
+    <ul class="navbar-nav mx-1 d-flex align-items-center flex-row gap-2">
+      <li class="nav-item cursor-pointer">
+        <div class="nav-link align-items-center">
+          <div class="dropdown ms-2">
+            <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="d-flex align-items-center">
+                <div class="ps-2">
+                  <rds-avatar [withProfilePic]="true" [profilePic]="profilePic" [roundedPills]="true"
+                    [verticallyAlligned]="true" [roundedAvatar]="true" [size]="'small'" [width]="'32'" [height]="'32'">
+                  </rds-avatar>
                 </div>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item bg-light border-bottom">
-                    <div class="py-2">
-                      <span class="fw-bold">Welcome</span><br>
-                      <span>Admin</span>
+                <!-- <div class="justify-content-center d-flex align-items-center">
+                    <div class="d-inline-block position-relative">
+                      <rds-avatar [withProfilePic]="true" [firstName]="tenantName"
+                        [profilePic]="profilePicUrl" [roundedPills]="true" [verticallyAlligned]="true" [roundedAvatar]="true"
+                        [profileContentAlign]="false" [width]="'130'" [height]="'120'"></rds-avatar>
                     </div>
-                  </a>
-                </li>
-                <ng-container *ngFor="let item of profileItems">
-                  <li class="dropdown-item"><a  [ngClass]="{'text-danger': item.value == 'Log out'}"
-                      (click)="onProfileSelect(item)">{{item.value}}</a></li>
-                </ng-container>
-              </ul>
-            </div>
+                  </div> -->
+
+                  <!-- <span
+                class="text-decoration-none d-flex"
+                (click)="redirect('profile')"
+              >
+                <div>
+                  <span>{{ tenancy }}</span>
+                  <p class="mb-0 text-muted user-role">
+                    {{ profileData.userName }}
+                  </p>
+                </div>
+                <rds-icon
+                  name="chevron_down"
+                  [height]="'11px'"
+                  [width]="'11px'"
+                  class="ms-3 mt-2"
+                ></rds-icon>
+              </span> -->
+                <div class="pe-auto">
+                  <span class="text-decoration-none d-flex text-start">
+                    <div>
+                    <p class="mb-0 ps-2">
+                      {{tenantName.charAt(0).toUpperCase() + tenantName.slice(1, tenantName.length).toLowerCase()}}
+                    </p>
+                  
+                    <span class="text-muted ps-2">
+                      {{UserName}}
+                    </span>
+                  </div>
+                    <rds-icon
+                      name="chevron_down"
+                      [height]="'11px'"
+                      [width]="'11px'"
+                      class="ms-3 mt-2"
+                    ></rds-icon>
+                  </span>
+                </div>
+              </div>
+            </a>
+            <ul class="dropdown-menu" style="margin-left: -30px;">
+              <li><a class="dropdown-item bg-light border-bottom">
+                  <div class="py-2">
+                    <span class="fw-bold">Welcome</span><br>
+                    <span>{{UserName.charAt(0).toUpperCase() + UserName.slice(1, UserName.length).toLowerCase()}}</span>
+                  </div>
+                </a>
+              </li>
+              <ng-container *ngFor="let item of profileItems">
+                <li class="dropdown-item"><a [ngClass]="{'text-danger': item.value == 'Log out'}"
+                    (click)="onProfileSelect(item)">{{item.value}}</a></li>
+              </ng-container>
+            </ul>
           </div>
-        </li>
-      </ul>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

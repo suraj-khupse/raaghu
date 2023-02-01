@@ -1,13 +1,13 @@
 <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
-  <div class="row mt-5" >
+  <div class="row mt-2">
     <div class="col-md-12">
       <div class="card p-2 h-100 border-0 rounded-0 card-full-stretch">
           <div class="card-header bg-transparent">
             <h5 class="card-title">{{'Roles Hierarchy'| translate}}</h5>
           </div>
-          <div class="card-body overflow-auto vh-75">
+          <div class="card-body overflow-auto vh-75 pt-0">
             <!-- <mfe-loader [config]="rdsOrganizationTreeConfig"></mfe-loader> -->
-            <rds-organization-tree
+            <rds-comp-organization-tree
                (onDeleteNode)="onDeleteNode($event)" 
                (getSelectedParent)="getSelectedParent($event)" 
                (onNodeEdit)="onNodeEdit($event)" 
@@ -15,7 +15,7 @@
                [nodeColor]="nodeColors" 
                [mutable]="true" 
                [isRoles]="false"
-               ></rds-organization-tree>
+               ></rds-comp-organization-tree>
           </div>
       </div>
     </div>
@@ -28,20 +28,20 @@
     [horizontalAlignment]="'start'" [verticalAlignment]="false" [pills]="false" [tabs]="true" [fill]="false"
     [justified]="false"   [activeTab]="activePage">
     <div naveContent class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade" [ngClass]="{'show active': activePage === 0}" id="Role" role="tabpanel"
+      <div class="tab-pane fade px-2" [ngClass]="{'show active': activePage === 0}" id="Role" role="tabpanel"
         aria-labelledby="nav-home-tab">
         <rds-comp-new-role [roleData]="Roledetails" [isReset]="isReset" [offCanvasId]="'#addNodeOffcanvas'" [EditShimmer]="EditShimmer"
          (onCancel)="close()" (RoleInfo)="RoleInfo($event)"> 
         </rds-comp-new-role>
       </div>
-      <div class="tab-pane fade" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
+      <div class="tab-pane fade pb-5 px-2 mt-2" [ngClass]="{'show active': activePage === 1}" id="Permission" role="tabpanel"
         aria-labelledby="nav-home-tab">
         <rds-comp-permission-tree [treeData]="permissionTreeData" [isEdit]="isEdit" [roleName]="entityDisplayName"
         (getAllselectedPermissions)="getAllselectedPermissions($event)">
       </rds-comp-permission-tree>
       </div>
 
-      <div class="tab-pane fade pb-5 mb-4" [ngClass]="{'show active': activePage === 2}" id="Claims" role="tabpanel"
+      <div class="tab-pane fade pb-5 mb-4 px-2" [ngClass]="{'show active': activePage === 2}" id="Claims" role="tabpanel"
         aria-labelledby="nav-home-tab">
         <rds-comp-claim-type-role [claimValueData]="claimValueData" [claimDisplayArray]="claimDisplayArray" [claimsActions]="claims_actions" (addClaim)="addClaim($event)" (onCancel)="close()" (onClaimSave)="onClaimSave()" (deleteClaim)="deleteClaim($event)"></rds-comp-claim-type-role>
       </div>

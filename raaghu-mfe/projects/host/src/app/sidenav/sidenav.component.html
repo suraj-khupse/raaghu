@@ -4,16 +4,16 @@
       <!-- <mfe-loader [config]="rdsTopNavigationMfeConfig"></mfe-loader> -->
       <rds-comp-top-navigation
         [projectName]= "'Raaghu'"
-        [selectedMenu]="this.selectedMenu"
-        [selectedMenuDescription]="this.selectedMenuDescription"
+        [selectedMenu]="selectedMenu"
+        [selectedMenuDescription]="selectedMenuDescription"
         [languageItems]="languageItems"
         [profilePic]="profilePic"
         [logo]="logo"
+        [tenantName]="tenantName"
         (viewProfileCanvas)="viewProfileCanvas($event)"
         (onLogout)="onLogout()"
-        (onLanguageSelection)="onLanguageSelection"
+        (onLanguageSelection)="onLanguageSelection($event)"
         (toggleEvent)="toggleEvent()"
-
       ></rds-comp-top-navigation>
     </div>
     <div class="

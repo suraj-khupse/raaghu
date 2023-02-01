@@ -13,6 +13,7 @@ export const getTemplateDefinitionFailure = createAction(
     '[TextTemplate Page] Get All TextTemplate Definition Failure',
     props<{ error: string }>()
 );
+
 export const getTemplateContent = createAction('[TextTemplate Page] Get Api-Resource',
 (data:any) => ( {data} ));
 
@@ -89,6 +90,30 @@ export const getUserForEditSuccess = createAction(
 );
 export const getUserEditFailure = createAction(
     '[User Page] get User Edit Failure',
+    props<{ error: string }>()
+);
+
+export const getUserRolesForEdit = createAction('[User Page] Get get user roles Edit',
+(id: any) => ({ id }));
+
+export const getUserRolesForEditSuccess = createAction(
+    '[User Page] Get user roles Edit Success',
+    props<{ rolesOfUser: any }>()
+);
+export const getUserRolesEditFailure = createAction(
+    '[User Page] get User roles Edit Failure',
+    props<{ error: string }>()
+);
+
+export const getUserOrgForEdit = createAction('[User Page] Get get user Organization unit Edit',
+(id: any) => ({ id }));
+
+export const getUserOrgForEditSuccess = createAction(
+    '[User Page] Get user Organization Unit Edit Success',
+    props<{ orgOfUser: any }>()
+);
+export const getUserOrgEditFailure = createAction(
+    '[User Page] get User Organization Unit Edit Failure',
     props<{ error: string }>()
 );
 

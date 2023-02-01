@@ -2,7 +2,7 @@
     <div class="tab-content py-4">
         <form #tenantFeatureForm="ngForm">
             <div class="row align-items-center">
-                <div class="col-md-12 border-bottom">
+                <div class="col-md-12 border-bottom pb-2 px-0 mx-2">
                     <rds-label [label]="'Identity'"></rds-label>
                 </div>
                 <div class="col-md-8 sm-p-0">
@@ -20,37 +20,49 @@
                             </rds-counter>
                         </div>
                     </div>
-                    <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Ldap Login')"
-                    (onChange)="getCheckboxValue($event,'identity 1')" [withLabel]="true"
-                    [checked]="tenantFeatures[2].value" [switch]="false" 
-                    [id]="'identity'" ></rds-checkbox>
+                    <div class="mb-3">
+                        <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Ldap Login')"
+                            (onChange)="getCheckboxValue($event,'identity 1')" [withLabel]="true"
+                            [checked]="tenantFeatures[2].value" [switch]="false" 
+                            [id]="'identity'" >
+                        </rds-checkbox>
+                    </div>
 
-                    <rds-checkbox [disabled]="false" [label]="translate.instant('Enable OAuth Login')"
-                    (onChange)="getCheckboxValue($event,'identity 2')" [withLabel]="true"
-                    [checked]="tenantFeatures[3].value" [switch]="false" 
-                    [id]="'identity'" ></rds-checkbox>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted">
-                    <rds-label [label]="'Settings Management'"></rds-label>
-                </div>
-                <div class="col-md-6 sm-p-0 mt-4">
-                    <div class="form-group mb-3">
-                            <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Settings Management')"
-                            (onChange)="getCheckboxValue($event,'settingManagment 1')" [withLabel]="true"
-                            [checked]="tenantFeatures[4].value" [switch]="false" 
-                            [id]="'settingManagment'" ></rds-checkbox>
-
-                            <rds-checkbox [disabled]="false" [label]="translate.instant('Allow tenants to change email settings.')"
-                            (onChange)="getCheckboxValue($event,'settingManagment 2')" [withLabel]="true"
-                            [checked]="tenantFeatures[5].value" [switch]="false" 
-                            [id]="'settingManagment'" ></rds-checkbox>
+                    <div>
+                        <rds-checkbox [disabled]="false" [label]="translate.instant('Enable OAuth Login')"
+                            (onChange)="getCheckboxValue($event,'identity 2')" [withLabel]="true"
+                            [checked]="tenantFeatures[3].value" [switch]="false" 
+                            [id]="'identity'" >
+                        </rds-checkbox>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted">
+                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted px-0 mx-2">
+                    <rds-label [label]="'Settings Management'"></rds-label>
+                </div>
+                <div class="col-md-6 sm-p-0 mt-4">
+                    <div class="form-group mb-3">
+                            <div class="mb-3">
+                                <rds-checkbox [disabled]="false" [label]="translate.instant('Enable Settings Management')"
+                                    (onChange)="getCheckboxValue($event,'settingManagment 1')" [withLabel]="true"
+                                    [checked]="tenantFeatures[4].value" [switch]="false" 
+                                    [id]="'settingManagment'" >
+                                </rds-checkbox>
+                            </div>
+
+                            <div>
+                                <rds-checkbox [disabled]="false" [label]="translate.instant('Allow tenants to change email settings.')"
+                                    (onChange)="getCheckboxValue($event,'settingManagment 2')" [withLabel]="true"
+                                    [checked]="tenantFeatures[5].value" [switch]="false" 
+                                    [id]="'settingManagment'" >
+                                </rds-checkbox>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted px-0 mx-2">
                     <rds-label [label]="'Language Management'"></rds-label>
                 </div>
                 <div class="col-md-6 sm-p-0 mt-4">
@@ -63,7 +75,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted">
+                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted px-0 mx-2">
                     <rds-label [label]="'Text Template Management'"></rds-label>
                 </div>
                 <div class="col-md-6 sm-p-0 mt-4">
@@ -76,7 +88,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted">
+                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted px-0 mx-2">
                     <rds-label [label]="'Theme Management'"></rds-label>
                 </div>
                 <div class="col-md-6 sm-p-0 mt-4">
@@ -89,7 +101,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted">
+                <div class="col-md-12 pb-2 mt-3 border-bottom text-muted px-0 mx-2">
                     <rds-label [label]="'Audit Logging'"></rds-label>
                 </div>
                 <div class="col-md-6 sm-p-0 mt-4">

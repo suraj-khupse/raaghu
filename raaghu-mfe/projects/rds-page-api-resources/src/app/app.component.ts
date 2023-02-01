@@ -13,7 +13,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { ApiResourceClaimDto } from '@libs/shared';
+import { ApiResourceClaimDto, UserAuthService } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -48,7 +48,7 @@ declare var bootstrap: any;
     ]),
   ],
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   isAnimation: boolean = true;
   isShimmer: boolean = true;
   public resourceTableData: any = [];
@@ -115,15 +115,21 @@ export class AppComponent implements OnInit, OnChanges {
   constructor(
     private store: Store,
     public translate: TranslateService,
-    private datepipe: DatePipe
+    private datepipe: DatePipe,
+    public userAuthService: UserAuthService
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
- 
-  }
 
   ngOnInit(): void {
     this.isAnimation = true;
     this.isShimmer = true;
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
     this.store.dispatch(getAllApiResources());
     this.store.select(selectAllApiResource).subscribe((res: any) => {
       this.resourceTableData = [];

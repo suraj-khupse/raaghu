@@ -23,6 +23,7 @@ export class RdsCompTenantBasicProfileRightComponent implements OnInit, OnChange
     { label: 'Separated Database', checked: false, name: "Radio-Button" , id:2},
 ];
 
+
 ActiveList = [
   { value: 0, some: 'Active' },
   { value: 1, some: 'Active with Limited Time' },

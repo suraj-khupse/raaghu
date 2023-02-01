@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { UserAuthService } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -115,13 +116,17 @@ export class AppComponent implements OnInit {
   PropertyTableData: any = [];
   apiScopeEdit: any;
 
-  constructor(public translate: TranslateService, private store: Store) {}
-  ngOnChanges(changes: SimpleChanges): void {
-   
-   
-  }
+  constructor(public translate: TranslateService, private store: Store, private userAuthService:UserAuthService) {}
   ngOnInit(): void {
     this.isAnimation = true;
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
     this.store.dispatch(getAllApiScope());
     this.store.select(selectAllScope).subscribe((res: any) => {
       if (res && res.items) {

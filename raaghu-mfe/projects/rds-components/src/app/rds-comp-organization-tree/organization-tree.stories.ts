@@ -5,9 +5,9 @@ import { RdsButtonModule, RdsCheckboxModule, RdsInputModule, RdsOffcanvasModule 
 import { RdsOrganizationTreeComponent } from './rds-comp-organization-tree.component';
 import { OrganizationTreeNode, OrganizationTreeLabeles, OrganizationTreeType } from '../../models/organization-tree.model';
 import { NgxTranslateModule, SharedModule } from '@libs/shared';
-import { RdsIconModule } from '@libs/rds-icon';
-import { RdsCompAlertPopupComponent } from '../rds-comp-alert-popup/rds-comp-alert-popup.component';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { NestGroupDirective } from '../rds-comp-hierarchy/node-label.directive';
+import { RdsCompAlertPopupComponent } from '../rds-comp-data-table/rds-comp-alert-popup/rds-comp-alert-popup.component';
 
 export default {
   title: 'Components/Organization Tree',

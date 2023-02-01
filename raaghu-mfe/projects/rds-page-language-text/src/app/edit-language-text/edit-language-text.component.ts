@@ -24,21 +24,14 @@ export class EditLanguageTextComponent implements OnInit, OnChanges {
     cultureName:''
   }
   ngOnInit(): void {
-    this.rdsEditLanguagetextMfeConfig = {
-      name: 'RdsCompEditLanguageText',
-      input: {
-        Languagetext: this.Languagetext
-      },
-      output: {
-        onLanguageTextSave: (languageTextData: any) => {
-          this.store.dispatch(updateLanguageText(languageTextData));
-          var offcanvas = document.getElementById('EditlanguageText');
-          let openedCanvas = bootstrap.Offcanvas.getInstance(offcanvas);
-          openedCanvas.hide();
-          this.onLanguageTextSave.emit()
-        }
-      }
-    };
+    
+  }
+  onLanguageTextsSave(languageTextData: any){
+    this.store.dispatch(updateLanguageText(languageTextData));
+    var offcanvas = document.getElementById('EditlanguageText');
+    let openedCanvas = bootstrap.Offcanvas.getInstance(offcanvas);
+    openedCanvas.hide();
+    this.onLanguageTextSave.emit()
   }
   ngOnChanges(changes: SimpleChanges): void {
     // const mfeConfig = this.rdsLanguagetextTableMfeConfig

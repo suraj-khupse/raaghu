@@ -94,6 +94,7 @@ export class AppComponent implements OnInit {
   public languageNames: Item[] = [];
   public flags: any = [];
   public viewCanvas: boolean = false;
+  editOffCanvas: boolean;
   constructor(public datepipe: DatePipe, public translate: TranslateService, private store: Store, private alertService: AlertService, private router: Router) { }
   
   onActionSelection(event: any){
@@ -129,43 +130,7 @@ export class AppComponent implements OnInit {
     };
     this.rdsNewLanguageMfeConfig = {
       name: 'RdsCompLanguageNew',
-      input: {
-        flags: this.flags,
-        languageNames: this.languageNames,
-        selectedLanguage: this.selectedLanguage, 
-        cultureList : this.cultureList,
-        uiCultureList : this.uiCultureList,
-        editOffCanvas: false
-        //  EditShimmer: true,
-      },
-      output: {
-        LanguageInfo: (data: any) => {        
-            const body: any = {
-              body:{
-              cultureName: data.cultureName,
-              uiCultureName: data.uiCultureName ,
-              displayName: data.displayName,
-              isEnabled: data.isEnabled
-              }
-            }
-            this.store.dispatch(saveLanguage(body));
-          this.closeCanvas();
-        },
-        LanguageInfoEdit: (data : any) =>{
-            const dataEdit : any = {
-                id : data.id,
-                body : {
-                  displayName: data.displayName,
-                  isEnabled: data.isEnabled
-                }
-              }
-              this.store.dispatch(updateLanguage(dataEdit));
-              this.closeCanvas();
-        },
-        onCloseCanvas: (event: any) => {
-          this.closeCanvas();
-        },
-      }
+      
     };
     this.store.dispatch(getLanguages());
     this.store.select(selectAllLanguages).subscribe((res: any) => {
@@ -207,10 +172,10 @@ export class AppComponent implements OnInit {
           }
           this.cultureList.push(item);
         });    
-        const mfeConfig = this.rdsNewLanguageMfeConfig
-        mfeConfig.input.cultureList = [... this.cultureList];
-        mfeConfig.input.uiCultureList = [... this.cultureList];
-        this.rdsNewLanguageMfeConfig = mfeConfig;
+        // const mfeConfig = this.rdsNewLanguageMfeConfig
+        // mfeConfig.input.cultureList = [... this.cultureList];
+        // mfeConfig.input.uiCultureList = [... this.cultureList];
+        // this.rdsNewLanguageMfeConfig = mfeConfig;
       }
     });
 
@@ -222,30 +187,52 @@ export class AppComponent implements OnInit {
           id:res.id
         }
 
-        const mfeConfig = this.rdsNewLanguageMfeConfig;
-        mfeConfig.input.selectedLanguageData = data;
+        this.selectedLanguage = data;
       }
     })
     this.subscribeToAlerts();
   }
+
+  LanguageInfo(data: any){        
+    const body: any = {
+      body:{
+      cultureName: data.cultureName,
+      uiCultureName: data.uiCultureName ,
+      displayName: data.displayName,
+      isEnabled: data.isEnabled
+      }
+    }
+    this.store.dispatch(saveLanguage(body));
+  this.closeCanvas();
+}
+LanguageInfoEdit(data : any){
+    const dataEdit : any = {
+        id : data.id,
+        body : {
+          displayName: data.displayName,
+          isEnabled: data.isEnabled
+        }
+      }
+      this.store.dispatch(updateLanguage(dataEdit));
+      this.closeCanvas();
+}
+
+onCloseCanvas(event: any){
+  this.closeCanvas();
+}
+
   openCanvas(edit: boolean = false): void {
     this.buttonSpinnerForNewLanguage = true;
     this.viewCanvas = true;
    
-    const mfeConfig = this.rdsNewLanguageMfeConfig;
     if (!edit) {
       this.languageCanvasTitle = 'NEW LANGUAGE';
-      mfeConfig.input.editOffCanvas = false;
-      this.rdsNewLanguageMfeConfig =mfeConfig
+      this.editOffCanvas = false;
     } else {
       this.languageCanvasTitle = 'Edit Language';
-      mfeConfig.input.editOffCanvas = true;
-      this.rdsNewLanguageMfeConfig =mfeConfig;
+      this.editOffCanvas = true;
     }
-    const rdsNewLanguageMfeConfig = this.rdsNewLanguageMfeConfig;
-    rdsNewLanguageMfeConfig.input.selectedLanguage = this.selectedLanguage;
-    mfeConfig.input.selectedLanguageData = []
-    this.rdsNewLanguageMfeConfig = rdsNewLanguageMfeConfig;
+    this.selectedLanguage = []
     setTimeout(() => {
       var offcanvas = document.getElementById('AddLanguage');
       var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);

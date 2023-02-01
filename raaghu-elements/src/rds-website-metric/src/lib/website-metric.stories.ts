@@ -1,7 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { RdsButtonModule } from '@libs/rds-button';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsLabelModule } from '@libs/rds-label';
 import { Story, Meta } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';

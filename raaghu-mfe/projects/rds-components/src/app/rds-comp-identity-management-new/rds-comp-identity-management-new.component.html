@@ -1,6 +1,6 @@
-<form #identityDataForm="ngForm">
+<form #identityDataForm="ngForm" class="pb-5">
     <!--Password Settings-->
-    <div class="border-bottom text-muted mt-3 fw-bold">
+    <div class="border-bottom text-muted mt-3 fw-bold pb-2">
         <rds-label [label]="'Password Settings'"></rds-label>
     </div>
     <div class="row mt-4">
@@ -52,7 +52,7 @@
         </div>
     </div>
     <!--Lockout Settings-->
-    <div class="border-bottom text-muted mt-4 fw-bold">
+    <div class="border-bottom text-muted mt-4 fw-bold pb-2">
         <rds-label [label]="'Lockout Settings'"></rds-label>
         </div>
         <div class="row">
@@ -83,7 +83,7 @@
             </div>
         </div>
         <!--Signin Settings-->
-        <div class="border-bottom text-muted mt-3 fw-bold">
+        <div class="border-bottom text-muted mt-3 fw-bold pb-2">
             <rds-label [label]="'Signin Settings'"></rds-label>
             </div>
             <div class="row">
@@ -108,7 +108,7 @@
                 </div>
             </div> 
            <!--User Settings-->
-           <div class="border-bottom text-muted mt-3 fw-bold">
+           <div class="border-bottom text-muted mt-3 fw-bold pb-2">
             <rds-label [label]="'User Settings'"></rds-label>
             </div>
            <div class="row">
@@ -118,14 +118,14 @@
                     #changeEmail="ngModel" [id]="'email'"></rds-checkbox>
             </div>
         </div> 
-        <div class="row">
+        <div class="row pb-2">
             <div class="col-md-12 mt-3">
                 <rds-checkbox [disabled]="false" [label]="'Allow users to change their usernames'" name="changeUserName" [withLabel]="true"
                     [switch]="false" [(ngModel)]="identityData.changeUserName"
                     #changeUserName="ngModel" [id]="'username'"></rds-checkbox>
             </div>
         </div> 
-        <div class="footer-buttons my-2 justify-content-end d-flex bottom-0 ">
+        <div class="footer-buttons justify-content-end d-flex bottom-0 ">
             <rds-button [label]="'Cancel'" [colorVariant]="'primary'" [size]="'small'" [isOutline]="true">
             </rds-button>
             <rds-button [label]="'Save'" (click)="onSaveIdentity()" [size]="'small'" class="ms-2" [colorVariant]="'primary'">

@@ -6,6 +6,7 @@ import {
   GetPermissionListResultDto,
   IdentityRoleClaimDto,
   IdentityRoleDto,
+  UserAuthService,
 } from '@libs/shared';
 // import { selectDefaultLanguage } from '@libs/state-management';
 import { Store } from '@ngrx/store';
@@ -131,12 +132,21 @@ export class AppComponent implements OnInit {
     private store: Store,
     private _arrayToTreeConverterService: ArrayToTreeConverterService,
     public datepipe: DatePipe,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public userAuthService: UserAuthService
   ) {}
 
   ngOnInit(): void {
     this.isAnimation = true;
 
+    if(this.userAuthService.currentLanguage){
+      this.translate.use(this.userAuthService.currentLanguage);
+    }
+    this.userAuthService.languageObservable$.subscribe((res: any) => {
+      if (res) {
+        this.translate.use(res);
+      }
+    }) 
     // Permissions
     this.store.dispatch(getPermission('admin'));
     this.store.select(selectAllPermissions).subscribe((res: any) => {

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RdsTopNavigationComponent } from './rds-comp-top-navigation.component';
-import { RdsAvatarModule, RdsDropdownlistModule } from '@libs/rds-elements';
+import { RdsAvatarModule, RdsBreadcrumbModule, RdsDropdownlistModule } from '@libs/rds-elements';
 import { NgxTranslateModule } from '@libs/shared';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 
 
 
@@ -13,7 +14,9 @@ import { NgxTranslateModule } from '@libs/shared';
     CommonModule,
     RdsDropdownlistModule,
     RdsAvatarModule,
-    NgxTranslateModule
+    RdsBreadcrumbModule,
+    NgxTranslateModule,
+    RdsIconModule
   ]
 })
 export class RdsCompTopNavigationModule { }

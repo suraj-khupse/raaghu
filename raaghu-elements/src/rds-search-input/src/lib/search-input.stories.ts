@@ -1,5 +1,5 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { RdsSearchInputComponent } from './rds-search-input.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

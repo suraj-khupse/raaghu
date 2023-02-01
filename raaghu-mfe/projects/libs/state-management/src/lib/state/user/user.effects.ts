@@ -35,8 +35,14 @@ import {
   getUserFailure,
   getUserForEdit,
   getUserForEditSuccess,
+  getUserOrgEditFailure,
+  getUserOrgForEdit,
+  getUserOrgForEditSuccess,
   getUserPermission,
   getUserPermissionSuccess,
+  getUserRolesEditFailure,
+  getUserRolesForEdit,
+  getUserRolesForEditSuccess,
   getUsers,
   getUserSuccess,
   saveClaims,
@@ -210,6 +216,42 @@ export class UserEffects {
         )
       )
     );
+
+    getUserRolesForEdit$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(getUserRolesForEdit),
+        switchMap(({ id }) =>
+          // Call the getTodos method, convert it to an observable
+          from(this.userService.rolesGET4(id)).pipe(
+            // Take the returned value and return a new success action containing the todos
+            map((rolesOfUser) => {
+              return getUserRolesForEditSuccess({ rolesOfUser })
+            }),
+            // Or... if it errors return a new failure action containing the error
+            catchError((error) => of(getUserRolesEditFailure({ error })))
+          )
+        )
+      )
+    );
+
+    getUserOrgForEdit$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(getUserOrgForEdit),
+        switchMap(({ id }) =>
+          // Call the getTodos method, convert it to an observable
+          from(this.userService.rolesGET4(id)).pipe(
+            // Take the returned value and return a new success action containing the todos
+            map((orgOfUser) => {
+              return getUserOrgForEditSuccess({ orgOfUser })
+            }),
+            // Or... if it errors return a new failure action containing the error
+            catchError((error) => of(getUserOrgEditFailure({ error })))
+          )
+        )
+      )
+    );
+
+
     getUserPermission$ = createEffect(() =>
       this.actions$.pipe(
         ofType(getUserPermission),
@@ -226,6 +268,7 @@ export class UserEffects {
         )
       )
     );
+
     UpdateUserPermission$ = createEffect(() =>
       this.actions$.pipe(
         ofType(UpdateUserPermission),
@@ -325,34 +368,4 @@ export class UserEffects {
       dispatch: false
     }
   );
-  //   getUserPermissionFilter$ = createEffect(() =>
-  //     this.actions$.pipe(
-  //       ofType(getUserPermissionFilterList),
-  //       switchMap(() =>
-  //         // Call the getTodos method, convert it to an observable
-  //         from(this.permissionService.getAllPermissions()).pipe(
-  //           // Take the returned value and return a new success action containing the todos
-  //           map((UserPermissionFilter) => {
-  //             return getUserPermissionListSuccess({ UserPermissionFilterI: UserPermissionFilter })
-  //           }),
-  //           // Or... if it errors return a new failure action containing the error
-  //           catchError((error) => of(getUsePermissionsFailure({ error })))
-  //         )
-  //       )
-  //     )
-  //   );
 }
-
-// export class TextTemplateEffects {
-//   constructor(
-//     private actions$: Actions,
-//     private textTemplateService: ServiceProxy,
-//     private alertService: AlertService,
-//     private store: Store
-//   ) { }
-  
-
-  
- 
-
-//         }

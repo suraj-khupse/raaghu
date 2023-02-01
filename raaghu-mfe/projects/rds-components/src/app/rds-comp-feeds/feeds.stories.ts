@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RdsAvatarModule, RdsLabelModule } from '@libs/rds-elements';
 
-import { RdsIconModule } from '@libs/rds-icon';
+import { RdsIconModule } from 'raaghu-themes/rds-icons';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { RdsFeedModule } from 'projects/libs/rds-elements/src/rds-feed/src/public-api';
 import { RdsLikeDislikeModule } from 'projects/libs/rds-elements/src/rds-like-dislike/src/public-api';

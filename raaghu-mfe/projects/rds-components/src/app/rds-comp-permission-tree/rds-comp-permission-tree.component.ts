@@ -25,13 +25,13 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
 
   // Properties
   modifiedtreeData: PermissionNode[] = [];
-  demoTreeData:PermissionNode[] = [];
+  demoTreeData: PermissionNode[] = [];
 
   constructor(public translate: TranslateService) { }
  
 
   ngOnChanges(changes: SimpleChanges): void { 
-   if (this.treeData && this.demoTreeData!= this.treeData) {
+    if (this.treeData && this.demoTreeData != this.treeData) {
     const resPermission: any[] = [];
     this.treeData.forEach(element => {
       const item = { 
@@ -170,7 +170,11 @@ export class RdsCompPermissionTreeComponent implements OnInit, OnChanges {
   // Get custom height for vertical dotted line at last checkbox
   customHeight(node: any): string {
     const lastElement = this.modifiedtreeData[this.modifiedtreeData.length - 1];
-    return lastElement.name == node.name ? (lastElement.permissions.length * 50).toString() + '%' : '100%';
+    if (lastElement.name == node.name) return (lastElement.permissions.length * 50).toString() + '%';
+    if (node.permissions == undefined) {
+      const getChildLength = this.modifiedtreeData[node.referParentIndex].permissions.filter(x => x.parentName == node.name).length;
+      return (getChildLength * 100).toString() + '%';
+    } else return '100%';
   }
 
   // Show-hide vertical dotted line

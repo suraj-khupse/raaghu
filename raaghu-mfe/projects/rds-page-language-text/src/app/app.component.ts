@@ -50,57 +50,21 @@ export class AppComponent implements OnInit, OnChanges {
     { value: 'ALL', displayText: 'All' },
     { value: 'EMPTY', displayText: 'Empty Ones' }
   ]
+  actions = [{ id: 'edit', displayName: 'Edit' }]
   constructor(private http: HttpClient,
     private store: Store,
     public translate: TranslateService,
     private userAuthService: UserAuthService,
     private languageService: ServiceProxy,
   ) { }
+  
   ngOnInit(): void {
-    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
-    //   if (res) {
-    //     this.translate.use(res);
-    //   }
-    // })
     this.getLanguageTextTable();
     this.getAllBaseLanguage();
     this.rdsLanguagetextTableMfeConfig = {
       name: 'RdsDataTable',
-      input: {
-        tableHeaders: this.languagetextTableHeader,
-        tableStyle: 'light',
-        width: '100%',
-        tableData: this.languagetextTableData,
-        recordsPerPage: 10,
-        pagination: true,
-        inlineEdit: false,
-        actions: [{ id: 'edit', displayName: 'Edit' }],
-        noDataTitle: 'Currently you do not have language text',
-        noDataSubTitle: ''
-      },
       output: {
-        onActionSelection: (event: any) => {
-          if (event.actionId === 'delete') {
-            const index = this.languagetextTableData.findIndex((x: any) => x.userId === event.selectedData.userId);
-            if (index !== -1) {
-              this.languagetextTableData.splice(index, 1);
-              const mfeConfig = this.languagetextTableData
-              mfeConfig.input.tableData = [... this.languagetextTableData];
-              this.rdsLanguagetextTableMfeConfig = mfeConfig;
-            }
-          } else if (event.actionId === 'edit') {
-            this.EditlanguageText(undefined);
-            if (event.selectedData) {
-              this.LanguageText.name = event.selectedData.baseValue;
-              this.LanguageText.value = event.selectedData.value;
-              this.LanguageText.key = event.selectedData.key;
-              this.LanguageText.baseLanguageName = this.baselanguage;
-              this.LanguageText.cultureName = 'fi';
-              this.LanguageText.resourceName = event.selectedData.resourceName;
-            }
-          }
-
-        }
+        
       }
     }
     this.store.select(selectAllLanguageTexts).subscribe((res: any) => {
@@ -122,6 +86,30 @@ export class AppComponent implements OnInit, OnChanges {
       }
     })
   
+  }
+
+
+  onActionSelection(event: any){
+    if (event.actionId === 'delete') {
+      const index = this.languagetextTableData.findIndex((x: any) => x.userId === event.selectedData.userId);
+      if (index !== -1) {
+        this.languagetextTableData.splice(index, 1);
+        const mfeConfig = this.languagetextTableData
+        mfeConfig.input.tableData = [... this.languagetextTableData];
+        this.rdsLanguagetextTableMfeConfig = mfeConfig;
+      }
+    } else if (event.actionId === 'edit') {
+      this.EditlanguageText(undefined);
+      if (event.selectedData) {
+        this.LanguageText.name = event.selectedData.baseValue;
+        this.LanguageText.value = event.selectedData.value;
+        this.LanguageText.key = event.selectedData.key;
+        this.LanguageText.baseLanguageName = this.baselanguage;
+        this.LanguageText.cultureName = 'fi';
+        this.LanguageText.resourceName = event.selectedData.resourceName;
+      }
+    }
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {

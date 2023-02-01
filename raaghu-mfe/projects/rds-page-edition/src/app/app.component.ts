@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
   editionDataInfo: any = [];
   emitEditionDataInfo: any[] = [];
   selectId: any;
-  planList: any = [];
+  planList: any[] = [];
   planValue = [29, 27, 19, 11, 20, 99, 98, 21, 45, 34, 67, 33];
   TwoFactorList = [
     { value: 'optional', some: 'Optinal' },
@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
           this.editionData.push(data);
         });
       }
-      this.onEditionSave();
+      //this.onEditionSave();
     });
 
     this.store.select(selectEditionInfo).subscribe((res: any) => {
