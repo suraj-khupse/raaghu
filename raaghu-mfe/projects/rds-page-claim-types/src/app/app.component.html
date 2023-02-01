@@ -7,11 +7,25 @@
             </rds-button>
         </div>
         <div class="row mx-3 mt-2">
-            <mfe-loader [config]="rdsclaimtypeTableMfeConfig"></mfe-loader>
+            <rds-data-table 
+                [tableData]="ClaimtypeTableData" 
+                [inlineEdit]="false" 
+                [pagination]="true"
+                [recordsPerPage]="10" 
+                [actions]="actions" 
+                (onActionSelection)="onActionSelection($event)"
+                noDataTitle="Currently you do not have claim type" 
+                [tableHeaders]="ClaimtypeTableHeader">
+            </rds-data-table>
+            <!-- <mfe-loader [config]="rdsclaimtypeTableMfeConfig"></mfe-loader> -->
         </div>
     </div>
     <rds-offcanvas [canvasTitle]="'NEW CLAIM TYPE'" [offId]="'addnewclaimtype'" [placement]="'end'"
         [offcanvaswidth]="600">
-        <mfe-loader [config]="rdsNewclaimtypeMfeConfig"></mfe-loader>
+        <rds-comp-new-claim-type
+        [valueTypeItems]="valueTypeItems"
+        (onClaimTypeSave)="onClaimTypeSave($event)"
+        ></rds-comp-new-claim-type>
+        <!-- <mfe-loader [config]="rdsNewclaimtypeMfeConfig"></mfe-loader> -->
     </rds-offcanvas>
 </div>

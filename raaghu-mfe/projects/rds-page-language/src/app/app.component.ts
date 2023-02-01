@@ -186,7 +186,6 @@ export class AppComponent implements OnInit {
           isEnabled:res.isEnabled,
           id:res.id
         }
-
         this.selectedLanguage = data;
       }
     })
