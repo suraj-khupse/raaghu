@@ -36,12 +36,12 @@
       [(ngModel)]="ClaimTypeData.description" [disabled]="false" [readonly]="false" name="description">
     </rds-input>
   </div>
-  <div class="col-md-12">
+  <div class="footer-buttons d-flex pb-3 my-2">
     <rds-button [label]="'Cancel'" type="button" class="me-2" [isOutline]="true" [colorVariant]="'primary'"
-      data-bs-dismiss="offcanvas" [size]="'small'" (click)="clearclaimtypeData()">
+      data-bs-dismiss="offcanvas" [size]="'small'" (onClick)="clearclaimtypeData()">
     </rds-button>
     <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-      data-bs-dismiss="offcanvas" [isDisabled]="!ClaimTypeForm.valid" [label]="'Save'" (click)="AddCliamtypeData()">
+     [isDisabled]="!ClaimTypeForm.valid" [label]="'Save'" (onClick)="AddCliamtypeData()">
     </rds-button>
   </div>
 </form>

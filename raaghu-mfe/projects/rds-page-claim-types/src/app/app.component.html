@@ -1,17 +1,24 @@
-<div class="container">
+<div>
     <div class="row">
-        <div class="d-flex justify-content-end mt-2">
+        <div class="col-md-12 text-end pb-3">
             <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-                [label]="'NEW CLAIM TYPES'" [attr.data-bs-toggle]="'offcanvas'"
+                [label]="'NEW CLAIM TYPES'" (onClick)="openCanvas()" [icon]="'plus'" [iconWidth]="'12px'" [iconHeight]="'12px'"
                 [attr.data-bs-target]="'#addnewclaimtype'" [attr.aria-controls]="'addnewclaimtype'">
             </rds-button>
         </div>
-        <div class="row mx-3 mt-2">
-            <mfe-loader [config]="rdsclaimtypeTableMfeConfig"></mfe-loader>
+        <div class="row card p-2 h-100 border-0 rounded-0 card-full-stretch">
+            <!-- <mfe-loader [config]="rdsclaimtypeTableMfeConfig"></mfe-loader> -->
+            <rds-data-table [tableHeaders]="ClaimtypeTableHeader" [tableStyle]="'light'" [tableData]="ClaimtypeTableData"
+            [recordsPerPage]="10" [pagination]="true" [actions]="actions" (onActionSelection)="onActionSelection($event)"
+            [noDataTitle]="translate.instant('Currently you do not have claim type')">
+        </rds-data-table>
         </div>
     </div>
     <rds-offcanvas [canvasTitle]="'NEW CLAIM TYPE'" [offId]="'addnewclaimtype'" [placement]="'end'"
-        [offcanvaswidth]="600">
-        <mfe-loader [config]="rdsNewclaimtypeMfeConfig"></mfe-loader>
+        [offcanvaswidth]="600" (onClose)="close()">
+        <div class="px-3">
+            <rds-comp-new-claim-type [valueTypeItems]="valueTypeItems" (onClaimTypeSave)="onClaimTypeSave($event)"></rds-comp-new-claim-type>
+        </div>
+        <!-- <mfe-loader [config]="rdsNewclaimtypeMfeConfig"></mfe-loader> -->
     </rds-offcanvas>
 </div>

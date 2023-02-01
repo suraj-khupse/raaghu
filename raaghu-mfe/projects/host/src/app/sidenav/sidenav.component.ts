@@ -19,6 +19,7 @@ import { selectProfilePictureData } from 'projects/libs/state-management/src/lib
 import { getLinkUserData, getPersonalData, getProfileSettings, getTwoFactor, saveChangedPassWord, saveProfile, saveProfilePicture, saveTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.actions';
 import { selectAllProfileSettings, selectlinkUser, selectPersonalData, selectTwoFactor } from 'projects/libs/state-management/src/lib/state/profile-settings/profile-settings.selectors';
 import { getLanguages } from 'projects/libs/state-management/src/lib/state/language/language.actions';
+import { RdsThemesService } from 'raaghu-themes/rds-themes';
 declare var bootstrap: any;
 @Component({
   selector: 'app-sidenav',
@@ -180,6 +181,7 @@ export class SidenavComponent implements OnInit {
     private shared: SharedService,
     private userAuthService: UserAuthService,
     private serviceProxies: ServiceProxy,
+    private theme: RdsThemesService ,
     @Inject(DOCUMENT) private document: Document
   ) {
   }
@@ -517,13 +519,30 @@ export class SidenavComponent implements OnInit {
   }
 
   toggleBetweenMode(event: any) {
+    // let checked = event;
+    // if (!checked) {
+    //   //this.theme.theme = 'dark';
+    // }
+    // else {
+    //   //this.theme.theme = 'light';
+    // }
+
     let checked = event;
+    let selectedTheme: string = 'default';
     if (!checked) {
-      //this.theme.theme = 'dark';
+      this.theme.setThemeMode('dark');
+      localStorage.setItem('THEME', 'dark');
+      selectedTheme = 'dark'
+      localStorage.setItem('themeIndex', '7');
+
+    } else {
+      this.theme.setThemeMode('light');
+      localStorage.setItem('THEME', 'light');
+      selectedTheme = 'default';
+      localStorage.setItem('themeIndex', '12');
+
     }
-    else {
-      //this.theme.theme = 'light';
-    }
+    this.alertService.setTheme(selectedTheme);
   }
 
   private filterNavItems(sidenavItemsOriginal, grantedPermissions: any, sidenavItems: any[]) {
