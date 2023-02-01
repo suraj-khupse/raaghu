@@ -48,7 +48,7 @@
     "bootstrap": "5.2.3",
     "bootstrap-icons": "1.10.2",
     "calendar-utils": "0.10.4",
-    "chart.js": "4.0.1",
+    "chart.js": "4.2.0",
     "cookieconsent": "3.1.1",
     "date-fns": "2.29.3",
     "fs-extra": "10.1.0",
