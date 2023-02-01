@@ -1,6 +1,6 @@
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { RdsButtonModule, RdsModalModule, RdsPaginationModule } from '@libs/rds-elements';
+import { RdsButtonModule, RdsModalModule, RdsPaginationModule, RdsRadioButtonModule } from '@libs/rds-elements';
 import { RdsDataTableComponent } from './rds-comp-data-table.component';
 import { NgxTranslateModule } from '@libs/shared';
 
@@ -10,7 +10,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, NgxTranslateModule
+        FormsModule, ReactiveFormsModule, RdsButtonModule, RdsModalModule, RdsPaginationModule, NgxTranslateModule, RdsRadioButtonModule
       ],
       providers: [
         FormBuilder
@@ -50,4 +50,78 @@ Default.args = {
   actions: [{ id: 'delete', displayName: 'Delete' }, { id: 'edit', displayName: 'Edit' }],
   pagination : true
 
+}
+
+export const RadioTable = Template.bind({});
+RadioTable.args = {
+  tableHeaders : [{ displayName: 'Problem Name', key: 'problemName', dataType: 'text', dataLength: 30, required: true, sortable: true }, 
+  { displayName: 'Problem Status', key: 'problemStatus', dataType: 'radio', required: false, sortable: true }, 
+ ],
+  tableData: [
+    { id: 1, problemName: 'Standard', problemStatus: [{
+      id: 1,
+      label: "Radio Button 1 ",
+      checked: false,
+      name: "Standard",
+      disabled: false
+    },
+    {
+      id: 2,
+      label: "Radio Button 2",
+      checked: false,
+      name: "Standard",
+      disabled: false
+    },
+    {
+      id: 3,
+      label: "Radio Button 3",
+      checked: false,
+      name: "Standard"
+    }]},
+    { id: 2, problemName: 'Basic',  problemStatus: [{
+      id: 4,
+      label: "Radio Button 1 ",
+      checked: false,
+      name: "Basic"
+    },
+    {
+      id: 5,
+      label: "Radio Button 2",
+      checked: false,
+      name: "Basic"
+    },
+    {
+      id: 6,
+      label: "Radio Button 3",
+      checked: false,
+      name: "Basic",
+      disabled: false
+    }] },
+    { id: 3, problemName: 'Premium',  problemStatus: [{
+      id: 7,
+      label: "Radio Button 1 ",
+      checked: false,
+      name: "Premium"
+    },
+    {
+      id: 8,
+      label: "Radio Button 2",
+      checked: false,
+      name: "Premium"
+    },
+    {
+      id: 9,
+      label: "Radio Button 3",
+      checked: false,
+      name: "Premium"
+    },
+    {
+      id: 10,
+      label: "Radio Button 4",
+      checked: false,
+      name: "Premium"
+    }]}
+  ],
+  pagination : true,
+  isDisabled : false
 }

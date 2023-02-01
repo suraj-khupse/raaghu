@@ -4,7 +4,7 @@ import { MfeBaseComponent } from '@libs/shared';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'rds-forgot-password',
+  selector: 'rds-comp-forgot-password',
   templateUrl: './rds-comp-forgot-password.component.html',
   styleUrls: ['./rds-comp-forgot-password.component.scss']
 })
@@ -19,7 +19,7 @@ export class RdsForgotPasswordComponent extends MfeBaseComponent implements OnIn
   @Input() buttonColorType: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'default' = 'primary';
   @Input() buttonLabel: string = 'Submit';
   @Input() loginRouterLink?: string;
-  @Input() resendLink?: string;
+  @Input() resendLink?: string ="/forgot-password";
   @Input() showMailSuccess = false;
   @Output() onClick = new EventEmitter<any>();
   @Output() onShimmerLoad = new EventEmitter<any>();
@@ -69,10 +69,11 @@ export class RdsForgotPasswordComponent extends MfeBaseComponent implements OnIn
 
         emailAddress: this.mailID
       });
-      // this.onClick.emit({emailID:this.mailID});
-      // this.showMailSuccess = true;
+      this.onClick.emit({emailID:this.mailID});
+      this.showMailSuccess = true;
     }
   }
+  
 }
 
 
