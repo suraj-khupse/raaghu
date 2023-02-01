@@ -8,16 +8,17 @@
                       <div *ngIf="child.name == 'Identity.TwoFactor'">
                         <rds-label [label]="child.displayName"></rds-label>
                         <rds-dropdownlist  
-                          [value]="child.value" [(ngModel)]="child.value" (onSelect)="getSelectedValue($event)" [listItems]="TwoFactorList"
+                          [value]="child.value" [(ngModel)]="child.value" (onSelect)="getSelectedValue($event)" [listItems]="TwoFactorList" [id]="'feature-Drop'" ngDefaultControl
                         ></rds-dropdownlist>
                       </div>
                       <div *ngIf="child.name == 'Identity.MaxUserCount'">
                         <rds-label [label]="child.displayName"></rds-label>
-                        <rds-counter [counterValue]="0" label="" name="MaxCount" [width]="124" colorVariant="primary" [(ngModel)]="child.value" #MaxCount="ngModel"></rds-counter>
+                        <rds-counter [counterValue]="0" label="" name="MaxCount" [width]="124" colorVariant="primary" [(ngModel)]="child.value" #MaxCount="ngModel" ngDefaultControl></rds-counter>
                       </div>
                       <div  *ngIf="child.name !== 'Identity.TwoFactor' && child.name !== 'Identity.MaxUserCount'">
                           <rds-checkbox [disabled]="false" [label]="child.displayName"  (change)="onSelectChild()" [(ngModel)]="child.value"  [withLabel]="true" [checked]="child.value"
-                            [id]="child.name" >
+                            [id]="child.id" ngDefaultControl>
+
                           </rds-checkbox>
                       </div>     
                    </div>

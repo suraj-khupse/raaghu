@@ -61,6 +61,16 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   //   });
   // }
   ngOnInit(): void {
+
+    // if (this.authenticateModal.rememberMe) {
+    //   const userLoginInfo = JSON.parse(localStorage.getItem('userInfo'));
+    //   this.userNameData = userLoginInfo.userName;
+    //   this.userPasswordData = userLoginInfo.password;
+    //   this.rememberMe = userLoginInfo.rememberMe;
+      
+    // }
+
+
     const userLoginInfo = JSON.parse(localStorage.getItem('userInfo'));
     this.userNameData = userLoginInfo?.userName;
     this.userPasswordData = userLoginInfo?.password;
@@ -170,6 +180,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
   }
   authenticate(redirectUrl?: string) {
     this.buttonSpinner = true;
+    debugger
     this.oauthService
       .fetchTokenUsingPasswordFlow(
         this.authenticateModal.userNameOrEmailAddress,
@@ -188,7 +199,7 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
         }
         // console.log("user name and passoword went through oauth and we got some result");
         //document.cookie = 'rememberMe=true; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-        //this._userAuthService.authenticateUser();
+        //this._userAuthService.authenticateUser();                                          
         this._userAuthService.getApplicationConfiguration();
       })
       .catch((error) => {
