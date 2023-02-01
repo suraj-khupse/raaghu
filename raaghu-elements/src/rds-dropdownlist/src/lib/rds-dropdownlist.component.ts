@@ -52,7 +52,7 @@ export class RdsDropdownlistComponent implements OnInit, OnChanges {
   badgeList: any[] = [];
   // @Input() height: string='250';
   @Input() iconshow: boolean = true;
-  @Input() hasErrors: boolean =true;
+  @Input() hasErrors: boolean =false;
   @Input() errors: any = "";
   constructor() {
     this.isMasterSel = false;
