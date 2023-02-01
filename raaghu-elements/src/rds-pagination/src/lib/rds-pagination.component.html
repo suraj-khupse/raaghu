@@ -23,7 +23,7 @@
   <!-- rounded option -->
   <div *ngSwitchCase="'Advanced'">
     <nav aria-label="page navigation">
-      <ul *ngIf="pager && pager.pages" class="pagination rounded mb-0 d-flex align-items-center" [class]="classes">
+      <ul *ngIf="pager && pager.pages && totalRecords >5" class="pagination rounded mb-0" [class]="classes">
         <li class="page-item" aria-hidden="true" *ngIf="pager && pager.pages&& pager.pages.length>1"
           [ngClass]="{disabled:pager.currentPage === 1}"><a class="page-link border-0" (click)="setPage(pager.currentPage - 1)"
             href="javascript:void(0);" aria-label="prev Page">
