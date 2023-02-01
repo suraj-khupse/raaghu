@@ -40,8 +40,8 @@
         aria-labelledby="nav-home-tab">
         <form #editionForm="ngForm">
           <div class="row py-2" *ngIf="!contentOnEdit">
-            <div class="col-md-6">
-              <div class="form-group mb-3">
+            <div class="col-md-6 ">
+              <div class="form-group ">
                 <rds-input size="medium" [inputType]="'text'" [label]="translate.instant('Edition Name')"
                   [labelPosition]="'top'" #edition_name="ngModel" [isRequired]=true
                   [placeholder]="translate.instant('Edition Name')" required [(ngModel)]="EditionName" name="edition"
