@@ -20,6 +20,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   canvasTitle: string = '';
   isReset: boolean = false;
   viewCanvas: boolean = false;
+  viewModal: boolean = false;
   selectedId: any = '';
   selectedOrganizationUnit: any = [];
   public user: any = {
@@ -46,6 +47,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   @Input() permissionTreeData:any;
   @Input() roleListItem: any;
   @Input() entityDisplayName:any
+  @Input() password:any
   @Input() listItemsm = [
     { value: 'New User', some: 'value', key: 'new', icon: 'plus', iconWidth: '20px', iconHeight: '20px' }
   ];
@@ -58,6 +60,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   @Output() searchItem = new EventEmitter<any>();
   @Output() deleteUser = new EventEmitter<{ item: any }>();
   @Output() onClose = new EventEmitter<any>();
+  @Output() savepassword = new EventEmitter<any>();
   @Input() Selectedata: any = [];
   Selecteorganizationdata: any = [];
   treeData: [] = [];
@@ -125,6 +128,12 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
   };
   ngOnInit(): void {
     this.activePage = 0;
+    if (!this.password) {
+
+      this.password={};
+      this.password['setpassword'] = '';
+    }
+  
   }
   getSelectedNavTab(event: any): void {
     this.activePage = event;
@@ -165,7 +174,7 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     if (event.next) {
       this.activePage = 1;
     }
-    debugger
+    
     this.user.userInfo = event.user;
   }
   getUserSettings(event: any): void {
@@ -312,6 +321,9 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
       id: this.selectedId,
     });
   }
+  changepassword(){
+    this.savepassword.emit({id:this.selectedId,body:{newPassword:this.password.setpassword} });
+  }
   search(event: any) {
     this.searchItem.emit(event.detail);
   }
@@ -330,8 +342,19 @@ export class RdsCompUserPermissionsNewComponent implements OnInit {
     } else if (event.actionId === 'delete') {
       this.deleteUser.emit(event.selectedData);
     }
+    else if(event.actionId === 'setpassword'){
+      this.selectedId = event.selectedData.id;
+      this.openModal()
+    }
   }
-
+  openModal(): void {
+    var myModalEl = document.getElementById('setpassword');
+    var modal = new bootstrap.Modal(myModalEl)
+    modal.show();
+    
+    
+    
+  }
 
   onSelectMenu(event: any) {
     if (event.key === 'new') {

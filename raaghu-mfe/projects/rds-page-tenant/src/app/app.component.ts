@@ -1,12 +1,7 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  ArrayToTreeConverterService,
-  ComponentLoaderOptions,
-  UserAuthService
-} from '@libs/shared';
-import {} from '@libs/state-management';
-
+import { ArrayToTreeConverterService, ComponentLoaderOptions, UserAuthService } from '@libs/shared';
+import { } from '@libs/state-management';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
@@ -16,218 +11,125 @@ import {
   query,
   style,
   animate,
-  state,
 } from '@angular/animations';
-import {
-  selectAllTenants,
-  selectEditionComboboxItems,
-  selectTenantFeature,
-  selectTenantInfo,
-} from 'projects/libs/state-management/src/lib/state/tenant/tenant.selector';
-import {
-  deleteTenant,
-  getEditionComboboxItems,
-  getTenantFeaturesForEdit,
-  getTenantForEdit,
-  getTenants,
-  saveTenant,
-  updateTenant,
-  updateTenantFeatureValues,
-} from 'projects/libs/state-management/src/lib/state/tenant/tenant.actions';
-import { DateTime } from 'luxon';
-import { parseDate } from 'ngx-bootstrap/chronos';
+import { selectAllTenants, selectEditionComboboxItems, selectTenantFeature, selectTenantInfo } from 'projects/libs/state-management/src/lib/state/tenant/tenant.selector';
+import { deleteTenant, getEditionComboboxItems, getTenantFeaturesForEdit, getTenantForEdit, getTenants, saveTenant, updateTenant, updateTenantFeatureValues } from 'projects/libs/state-management/src/lib/state/tenant/tenant.actions';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DatePipe],
+  providers: [
+    DatePipe
+  ],
   animations: [
     trigger('fadeAnimation', [
-      state(
-        'void',
-        style({
-          opacity: 0,
-        })
-      ),
-
-      transition('void <=> *', animate(1000)),
-    ]),
-  ],
+      transition('* <=> *', [
+        query(':enter',
+          [
+            style({ opacity: 0 })
+          ],
+          { optional: true }
+        ),
+        query(':leave',
+          [
+            style({ opacity: 1 }),
+            animate('0.4s', style({ opacity: 0 }))
+          ],
+          { optional: true }
+        ),
+        query(':enter',
+          [
+            style({ opacity: 0 }),
+            animate('0.4s', style({ opacity: 1 }))
+          ],
+          { optional: true }
+        )
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   title = 'tenant';
   tenantData: any = {};
-  tenantId = undefined;
+ tenantId = undefined
   editionList: any = [];
-  newTenantFeature: any = [];
   tenantFeatureValues: any;
   tenantTableHeader: TableHeader[] = [
-    {
-      displayName: 'Name',
-      key: 'tenantInfoTemplate',
-      dataType: 'html',
-      dataLength: 30,
-      sortable: true,
-      required: true,
-      filterable: true,
-    },
-    {
-      displayName: 'Role',
-      key: 'roleTemplate',
-      dataType: 'html',
-      dataLength: 30,
-      sortable: true,
-      required: true,
-      filterable: true,
-    },
-    {
-      displayName: 'Edition',
-      key: 'editionTemplate',
-      dataType: 'html',
-      dataLength: 30,
-      sortable: true,
-      required: true,
-      filterable: true,
-    },
-    {
-      displayName: 'Status',
-      key: 'statusTemplate',
-      dataType: 'html',
-      dataLength: 30,
-      sortable: true,
-      required: true,
-      filterable: true,
-    },
-  ];
+    { displayName: 'Name', key: 'tenantInfoTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
+    { displayName: 'Role', key: 'roleTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
+    { displayName: 'Edition', key: 'editionTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
+    { displayName: 'Status', key: 'statusTemplate', dataType: 'html', dataLength: 30, sortable: true, required: true, filterable: true },
+  ]
   isAnimation: boolean = true;
-  featuresData: any = {};
-  featuresHostData: any = {};
 
-  // featureData : any = [];
-  tenantTableData: any = [];
-  isShimmer: boolean = true;
-  editShimmer: boolean = false;
-  isSaved: boolean = false;
-  selectId: any;
-  newTenantName: string = '';
-  TwoFactorList = [
-    { value: 'optional', some: 'Optinal' },
-    { value: 'disabled', some: 'Disabled' },
-    { value: 'forced', some: 'Forced' },
-  ];
-
-  constructor(
-    public datepipe: DatePipe,
+  featureData : any = [];
+  tenantTableData: any = []
+  isShimmer: boolean= true;
+  editShimmer: boolean =false;
+  constructor(public datepipe: DatePipe, 
     private store: Store,
+    private userAuthService:UserAuthService, 
     private translate: TranslateService,
-    private: userAuthService: UserAuthService,
-    private _arrayToTreeConverterService: ArrayToTreeConverterService
-  ) {}
-
-  onSaveTenant(tenant?: any) {
-    if (tenant?.id) {
-      this.tenantId = tenant.id;
-      const data: any = {
-        name: tenant.tenantInfo.name,
-        editionId: tenant.tenantInfo.targetId,
-        activationState: tenant.tenantInfo.targetActiveId,
-        activationEndDate : tenant.tenantInfo.activationEndDate
-      };
-      let body = { body: data, id: this.tenantId };
-      this.store.dispatch(updateTenant(body));
-      const convertFearures = [];
-      tenant.featureValues.forEach((ele) => {
-        const _data: any = {
-          name: ele.name,
-          value: ele.value.toString(),
-        };
-        convertFearures.push(_data);
-      });
-      const _data: any = {
-        id: tenant?.id,
-        body: {
-          features: convertFearures,
-        },
-      };
-      this.store.dispatch(updateTenantFeatureValues(_data));
-    } else {
-      if (!this.isSaved) {
+    private _arrayToTreeConverterService: ArrayToTreeConverterService) { }
+  
+  onSaveTenant(tenant: any) {        
+    if (tenant.id) {
+         this.tenantId= tenant.id;
         const data: any = {
           name: tenant.tenantInfo.name,
-          adminEmailAddress: tenant.tenantInfo.adminEmailAddress,
-          adminPassword: tenant.tenantInfo.adminPassword,
-          editionId: tenant.tenantInfo.targetId,
-          activationState: tenant.tenantInfo.targetActiveId,
-          activationEndDate : tenant.tenantInfo.activationEndDate.toISOString()
-        };
-        this.newTenantName = tenant.tenantInfo.name;
-        this.newTenantFeature = tenant.featureValues;
-        this.store.dispatch(saveTenant(data, 30));
-        this.isSaved = true;
-      } else {
-        if (this.isSaved) {
-          this.isSaved = false;
-          this.tenantTableData.forEach((ele) => {
-            if (ele.name == this.newTenantName) {
-              this.selectId = ele.id;
-            }
-          });
-          const convertFearures = [];
-          this.newTenantFeature.forEach((ele) => {
-            const _data: any = {
-              name: ele.name,
-              value: ele.value.toString(),
-            };
-            convertFearures.push(_data);
-          });
-          const _data: any = {
-            id: this.selectId,
-            body: {
-              features: convertFearures,
-            },
-          };
-          this.store.dispatch(updateTenantFeatureValues(_data));
-          this.newTenantFeature = undefined;
+          editionId: tenant.tenantInfo.editionId[0],
+          activationState : tenant.tenantInfo.activationState
+        };      
+        const body = {body:data,id:this.tenantId};      
+        this.store.dispatch(updateTenant(body))
+        let body1 = {
+        feature : tenant.featureValues,
+        id : tenant.id
         }
-      }
+      this.store.dispatch(updateTenantFeatureValues(body1))
+  }
+else {
+  const data: any = {
+    name: tenant.tenantInfo.name,
+    adminEmailAddress: tenant.tenantInfo.adminEmailAddress,
+    adminPassword: tenant.tenantInfo.adminPassword,
+    editionId: tenant.tenantInfo.editionId[0],
+    activationState: tenant.tenantInfo.activationState,
+  };
+  this.store.dispatch(saveTenant(data, 30))
+}
+}
+getHostFeatureEmitter(){
+  this.store.dispatch(getTenantFeaturesForEdit(undefined));
+}
+  
+onEditTenant(selectedTenant: any){
+  this.store.dispatch(getTenantForEdit(selectedTenant));
+  this.store.select(selectTenantInfo).subscribe(res=>{
+    if(res){
+      this.tenantData = res;
     }
-  }
+  })  
+  this.store.dispatch(getTenantFeaturesForEdit(selectedTenant))
+}
 
-  getHostFeatureEmitter() {
-    this.store.dispatch(getTenantFeaturesForEdit(undefined));
-  }
-
-  onEditTenant(selectedTenant: any) {
-    this.store.dispatch(getTenantForEdit(selectedTenant));
-    this.store.dispatch(getTenantFeaturesForEdit(selectedTenant));
-  }
-
-  deleteEvent(event: any) {
-    this.store.dispatch(deleteTenant(event.id));
-  }
-  onSaveTenantHost(featureHost: any) {
-    const convertFearures = [];
-    featureHost.forEach((ele) => {
-      const _data: any = {
-        name: ele.name,
-        value: ele.value.toString(),
-      };
-      convertFearures.push(_data);
-    });
-    const _data: any = {
-      body: {
-        features: convertFearures,
-      },
-    };
-    this.store.dispatch(updateTenantFeatureValues(_data));
-  }
-
-
+deleteEvent(event: any){
+  this.store.dispatch(deleteTenant(event.id))
+}
+// onSaveFeatures: (feature: any) => {
+    // this.store.dispatch(updateTenantFeatureValues(feature))
+// }
+onSaveTenantHost(featureHost : any){
+  this.store.dispatch(updateTenantFeatureValues(featureHost))
+  console.log("Feature Host" ,featureHost)
+}
+  
+  
   ngOnInit(): void {
     this.isAnimation = true;
-    
+
     if(this.userAuthService.currentLanguage){
       this.translate.use(this.userAuthService.currentLanguage);
     }
@@ -236,74 +138,78 @@ export class AppComponent {
         this.translate.use(res);
       }
     }) 
-    
+
     this.store.dispatch(getTenants());
     this.store.select(selectAllTenants).subscribe((res: any) => {
       this.tenantTableData = [];
       if (res && res.items) {
-        this.isShimmer = false;
         this.isAnimation = false;
         res.items.forEach((element: any) => {
           let statusTemplate;
-          statusTemplate = element.activationState == 0 ? '<div> <span class="badge badge-success">Active</span></div>' 
-          : element.activationState == 1 ? `<div> <span class="badge badge-primary">Active with limited time ${element.activationEndDate}</span></div>` 
-          : '<div><span class="badge badge-secondary">Passive</span></div>' 
+          statusTemplate =  element.activationState ?'<div><span class="badge badge-secondary">Inactive</span></div>': '<div> <span class="badge badge-success">Active</span></div>'
+          const tenantInfoTemplate = `<div class=""><div><div><span>${element.name}</span></div><span class="text-muted">${element.adminEmailAddress} </span></div></div>`;
 
-          const tenantInfoTemplate = `<div class=""><div><div><span>${element.name}</span></div><span class="text-muted">${element.adminEmailAddress}</span></div></div>`;
           const item: any = {
             tenantInfoTemplate: tenantInfoTemplate,
             statusTemplate: statusTemplate,
             roleTemplate: 'Admin',
-            editionTemplate: element.editionName,
+            editionTemplate:element.editionName,
             id: element.id,
             name: element.name,
-            adminEmailAddress: element.adminEmailAddress,
-          };
+            adminEmailAddress : element.adminEmailAddress
+          }
           this.tenantTableData.push(item);
         });
+        this.isShimmer = false;
+        
       }
-      this.onSaveTenant();
     });
 
     this.store.select(selectTenantInfo).subscribe((res: any) => {
       if (res) {
         this.tenantData = {};
         this.tenantData['name'] = res.name;
-        this.tenantData['adminEmailAddress'] = res.adminEmailAddress;
-        this.tenantData['editionId'] = res.editionName;
-        this.tenantData['activationEndDate']=new Date(res.activationEndDate);
+        this.tenantData['adminEmailAddress'] =  res.adminEmailAddress;
+         this.tenantData['editionId'] = (res.editionId && res.editionId !== null) ? [res.editionId.toString()] : res.editionId;
         this.tenantData['adminPassword'] = res.adminPassword;
-        this.tenantData['targetActiveId'] = res.activationState;
+         this.tenantData['activationState'] = res.activationState;
         this.tenantData['id'] = res.id;
-        this.editShimmer = false;
+        this.editShimmer = false
       }
     });
 
-    this.store.dispatch(getEditionComboboxItems());
+    this.store.dispatch(getEditionComboboxItems())
     this.store.select(selectEditionComboboxItems).subscribe((res: any) => {
       if (res) {
         this.editionList = [];
-        res.items.forEach((element: any) => {
+          res.items.forEach((element: any) => {
           const item: any = {
             value: element.id,
-            some: element.displayName,
-          };
+            displayText: element.displayName,
+          }
           this.editionList.push(item);
         });
       }
-    });
-    this.store.dispatch(getTenantFeaturesForEdit('standard'));
-    this.store.select(selectTenantFeature).subscribe((res: any) => {
-      if (res && res.groups) {
-        this.newTenantFeature = [];
-        this.featuresData = res.groups;
-      }
-    });
+    })
 
+  
     this.store.select(selectTenantFeature).subscribe((res: any) => {
-      if (res && res.groups) {
-        this.featuresHostData = res.groups;
+      if (res) {
+        this.featureData = []
+       res.groups.forEach(elements =>{
+        elements.features.forEach(el =>{
+           const data ={
+            name:el.name,
+            value:el.value
+           }
+           this.featureData.push(data);
+        })
+        
+       })
+
       }
-    });
+    })
+
   }
+ 
 }
