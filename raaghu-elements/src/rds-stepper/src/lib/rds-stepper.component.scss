@@ -1,9 +1,9 @@
 
 .simple-complete {
-    border-top: 3px solid #336CFF;
+    border-top: 3px solid #7E2EEF;
 }
 .simple-active {
-    border-top: 3px solid #336CFF;
+    border-top: 3px solid #7E2EEF;
 }
 .simple-incomplete{
     border-top: 3px solid #626262;
@@ -51,12 +51,12 @@
   }
 
   .panel-active {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .panel-complete {
-    background-color: #EAF4FF;
-    color: #336CFF;
+    background-color: #F1E8FF;
+    color: #7E2EEF;
   }
 
   .panel-incomplete a {
@@ -115,11 +115,11 @@
   }
 
   .panel-complete .panel-item::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel-active .panel-item::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
 
@@ -128,15 +128,15 @@
   }
 
   .panel-complete .panel-item::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel-active .panel-item::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel-complete a > .circle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .panel-complete .number {
@@ -152,7 +152,7 @@
   }
 
   .panel > li::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel > li:last-child::after {
@@ -167,11 +167,11 @@
   }
 
   .bullet-complete > .bullet-circle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .bullet-active > .bullet-circle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .bullet-incomplete > .bullet-circle {
@@ -179,7 +179,7 @@
   }
 
   .bullet-active {
-    background-color: #DBECFF;
+    background-color: #F1E8FF;
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -203,11 +203,11 @@
   }
 
   .panel-simple-active {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel-simple-complete {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .panel-simple-incomplete {
@@ -215,7 +215,7 @@
   }
 
   .panel-simple-active > a {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .panel-simple-complete > a {
@@ -241,11 +241,11 @@
   }
 
   .panel-arrow-active {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel-arrow-complete {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .panel-arrow-incomplete {
@@ -253,7 +253,7 @@
   }
 
   .panel-arrow-active > a {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .panel-arrow-complete > a {
@@ -295,15 +295,15 @@
   }
 
   .panel-complete .panel-border-item::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   .panel-active .panel-border-item::after {
-    background-color: #EAF4FF;
+    background-color: #F1E8FF;
   }
 
   #panel-border .panel-active {
-    border-bottom: 4px solid #336CFF;
+    border-bottom: 4px solid #7E2EEF;
   }
 
   .line {
@@ -327,7 +327,7 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    border: 2px solid #336CFF;
+    border: 2px solid #7E2EEF;
     text-align: center;
     font-size: 12px;
     font-weight: 600;
@@ -336,13 +336,13 @@
   }
 
   .multi-circle-complete > .multi-circle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
     color: #fff;
   }
 
   .multi-circle-active > .multi-circle {
     background-color: #fff;
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .multi-circle-incomplete > .multi-circle {
@@ -355,7 +355,7 @@
   }
 
   .multi-circle-active {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .multi-circle-incomplete > .multi-circle {
@@ -364,18 +364,18 @@
   }
 
   .multi-circle-complete > .line {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .multi-circle-complete > .line-verticle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .multi-circle-active > .multi-circle > .inner-circle {
     width: 15px;
     height: 15px;
     border-radius: 100%;
-    background-color: #336CFF;
+    background-color: #7E2EEF;
     align-self: center;
     margin: auto;
   }
@@ -403,11 +403,11 @@
   }
 
   .multi-circle-complete > .step-name-small {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .multi-circle-active > .step-name-small {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .bullet-text-circle {
@@ -422,20 +422,20 @@
     height: 10px;
     border-radius: 50%;
     align-self: center;
-    background-color: #336CFF;
+    background-color: #7E2EEF;
     margin: auto;
   }
 
   .bullet-text-complete > .bullet-text-circle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .bullet-text-active > .bullet-text-circle {
-    background-color: #DBECFF;
+    background-color: #F1E8FF;
   }
 
   .bullet-text-active .bullet-inner-circle {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
   }
 
   .bullet-text-incomplete .bullet-inner-circle {
@@ -443,7 +443,7 @@
   }
 
   .bullet-text-complete > .step-name-small {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .bullet-text-complete svg {
@@ -460,7 +460,7 @@
   }
 
   .bullet-text-active > .step-name-small {
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   .bullet-text-incomplete > .step-name-small {
@@ -490,7 +490,7 @@
   }
 
   #bar > li {
-    background-color: #336CFF;
+    background-color: #7E2EEF;
     height: 10px;
   }
 
@@ -507,7 +507,7 @@
     position: relative;
     top: 20px;
     font-weight: 600;
-    color: #336CFF;
+    color: #7E2EEF;
   }
 
   svg {
