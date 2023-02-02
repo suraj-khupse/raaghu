@@ -13,19 +13,6 @@ import { TableHeader } from '../../models/table-header.model';
 })
 export class RdsCompClientAdvancedComponent implements OnInit, OnChanges {
 
-  @ViewChild('clientAdvancedForm') clientAdvancedForm: NgForm;
-  // Input Decorators
-  @Input() clientId: any;
-  @Input() clientAdvancedObj: any;
-
-  // Output Decorators
-  @Output() advancedData = new EventEmitter();
-
-  // Properties
-  rdsClaimsDataTableConfig: ComponentLoaderOptions;
-  rdsGrantTypesDataTableConfig: ComponentLoaderOptions;
-  rdsRestrictionsDataTableConfig: ComponentLoaderOptions;
-  rdsPropertiesDataTableConfig: ComponentLoaderOptions;
   claimsDataObj: any = {};
   grantTypesDataObj: any = {};
   grantTypeData: any[] = [
@@ -55,6 +42,14 @@ export class RdsCompClientAdvancedComponent implements OnInit, OnChanges {
     { displayName: 'Value', key: 'value', dataType: 'text', dataLength: 30, required: true, sortable: true }
   ];
 
+  @ViewChild('clientAdvancedForm') clientAdvancedForm: NgForm;
+  // Input Decorators
+  @Input() clientId: any;
+  @Input() clientAdvancedObj: any;
+
+  // Output Decorators
+  @Output() advancedData = new EventEmitter();
+
   constructor(public translate: TranslateService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -76,33 +71,28 @@ export class RdsCompClientAdvancedComponent implements OnInit, OnChanges {
     const deleteData = this.clientAdvancedObj.claims.find((x: any) => x.type == actionEvent.selectedData.type);
     const deleteDataIndex = this.clientAdvancedObj.claims.indexOf(deleteData, 0);
     if (deleteDataIndex != undefined) this.clientAdvancedObj.claims.splice(deleteDataIndex, 1);
-    this.rdsClaimsDataTableConfig.input.tableData = this.clientAdvancedObj.claims;
   }
 
   onActionSelectionGrants(actionEvent: any) {
     const deleteData = this.clientAdvancedObj.allowedGrantTypes.find((x: any) => x.grantType == actionEvent.selectedData.grantType);
     const deleteDataIndex = this.clientAdvancedObj.allowedGrantTypes.indexOf(deleteData, 0);
     if (deleteDataIndex != undefined) this.clientAdvancedObj.allowedGrantTypes.splice(deleteDataIndex, 1);
-    this.rdsGrantTypesDataTableConfig.input.tableData = this.clientAdvancedObj.allowedGrantTypes;
   }
 
   onActionSelectionRestrictions(actionEvent: any) {
     const deleteData = this.clientAdvancedObj.identityProviderRestrictions.find((x: any) => x.name == actionEvent.selectedData.name);
     const deleteDataIndex = this.clientAdvancedObj.identityProviderRestrictions.indexOf(deleteData, 0);
     if (deleteDataIndex != undefined) this.clientAdvancedObj.identityProviderRestrictions.splice(deleteDataIndex, 1);
-    this.rdsRestrictionsDataTableConfig.input.tableData = this.clientAdvancedObj.identityProviderRestrictions;
   }
 
   onActionSelectionProperties(actionEvent: any) {
     const deleteData = this.clientAdvancedObj.properties.find((x: any) => x.key == actionEvent.selectedData.key);
     const deleteDataIndex = this.clientAdvancedObj.properties.indexOf(deleteData, 0);
     if (deleteDataIndex != undefined) this.clientAdvancedObj.properties.splice(deleteDataIndex, 1);
-    this.rdsPropertiesDataTableConfig.input.tableData = this.clientAdvancedObj.properties;
   }
 
   addClaims(type: string, value: string) {
     this.clientAdvancedObj.claims.push({ clientId: this.clientId, type: type, value: value });
-    this.rdsClaimsDataTableConfig.input.tableData = [...this.clientAdvancedObj.claims];
     this.claimsDataObj = { type: '', value: '' };
   }
 
@@ -112,19 +102,16 @@ export class RdsCompClientAdvancedComponent implements OnInit, OnChanges {
 
   addGrantTypes() {
     this.clientAdvancedObj.allowedGrantTypes.push({ clientId: this.clientId, grantType: this.selectedGrant });
-    this.rdsGrantTypesDataTableConfig.input.tableData = [...this.clientAdvancedObj.allowedGrantTypes];
     this.grantTypesDataObj = { grantType: '' };
   }
 
   addRestrictions(provider: string) {
     this.clientAdvancedObj.identityProviderRestrictions.push({ clientId: this.clientId, provider: provider });
-    this.rdsRestrictionsDataTableConfig.input.tableData = [...this.clientAdvancedObj.identityProviderRestrictions];
     this.restrictionsDataObj = { provider: '' };
   }
 
   addProperties(key: string, value: string) {
     this.clientAdvancedObj.properties.push({ clientId: this.clientId, key: key, value: value });
-    this.rdsPropertiesDataTableConfig.input.tableData = [...this.clientAdvancedObj.properties];
     this.propertiesDataObj = { key: '', value: '' };
   }
 

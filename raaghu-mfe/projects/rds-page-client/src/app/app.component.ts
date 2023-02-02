@@ -129,10 +129,10 @@ export class AppComponent implements OnInit {
       if (res && res.items) {
         const data: any[] = [];
         res.items.forEach((element: any) => {
-          const item: any = { displayName: element.displayName, left: false, id: element.id, name: element.name };
+          const item: any = { displayName: element.displayName == null || element.displayName == '' ? element.name : element.displayName, left: false, id: element.id, name: element.name };
           data.push(item);
         });
-        this.identityResourcesData = [...data];
+        this.identityResourcesData = data;
       };
     });
   }
@@ -143,10 +143,10 @@ export class AppComponent implements OnInit {
       const data: any[] = [];
       if (res && res.items) {
         res.items.forEach((element: any) => {
-          const item: any = { displayName: element.displayName, left: false, id: element.id, name: element.name };
+          const item: any = { displayName: element.displayName == null || element.displayName == '' ? element.name : element.displayName, left: false, id: element.id, name: element.name };
           data.push(item);
         });
-        this.apiResourcesData = [...data];
+        this.apiResourcesData =data;
       }
     });
   }

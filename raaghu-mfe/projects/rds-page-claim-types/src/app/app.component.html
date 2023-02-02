@@ -22,11 +22,10 @@
         </div>
     </div>
     <rds-offcanvas [canvasTitle]="'NEW CLAIM TYPE'" [offId]="'addnewclaimtype'" [placement]="'end'"
-        [offcanvaswidth]="600">
-        <rds-comp-new-claim-type
-        [valueTypeItems]="valueTypeItems"
-        (onClaimTypeSave)="onClaimTypeSave($event)"
-        ></rds-comp-new-claim-type>
+        [offcanvaswidth]="600" (onClose)="close()">
+        <div class="px-2">
+            <rds-comp-new-claim-type [valueTypeItems]="valueTypeItems" (onClaimTypeSave)="onClaimTypeSave($event)"></rds-comp-new-claim-type>
+        </div>
         <!-- <mfe-loader [config]="rdsNewclaimtypeMfeConfig"></mfe-loader> -->
     </rds-offcanvas>
 </div>
