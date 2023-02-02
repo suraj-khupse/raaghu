@@ -62,6 +62,7 @@ export class TreeNode {
   ]
 })
 export class AppComponent implements OnInit {
+  title: string = "Dynamic Property";
   isAnimation: boolean = true;
   currentAlerts: any = [];
   // public rdsAlertMfeConfig: ComponentLoaderOptions = {
