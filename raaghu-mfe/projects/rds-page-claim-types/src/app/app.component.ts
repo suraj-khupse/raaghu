@@ -2,9 +2,11 @@ import { trigger, transition, query, style, animate } from '@angular/animations'
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AlertService, ComponentLoaderOptions, IdentityClaimValueType } from '@libs/shared';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { deleteClaims, getAllClaimTypes, saveClaimTypes } from 'projects/libs/state-management/src/lib/state/claim-types/claim-types.actions';
 import { selectAllClaimTypes } from 'projects/libs/state-management/src/lib/state/claim-types/claim-types.selector';
 import { TableHeader } from 'projects/rds-components/src/models/table-header.model';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-root',
@@ -39,7 +41,7 @@ import { TableHeader } from 'projects/rds-components/src/models/table-header.mod
 })
 export class AppComponent implements OnInit {
   currentAlerts: any = [];
-  rdsNewclaimtypeMfeConfig: ComponentLoaderOptions;
+
   valueTypeItems: any = [
     { value: 0, some: 'String', id: 1, href: '', icon: '', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
     { value: 1, some: 'Int', id: 2, href: '', icon: '', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
@@ -57,21 +59,12 @@ export class AppComponent implements OnInit {
   actions= [{ id: 'delete', displayName: 'Delete' }]
   ClaimtypeTableData: any = [] = [];
   isAnimation: boolean = true;
+  actions = [{ id: 'delete', displayName: 'Delete' }];
 
-  constructor(private store: Store, private alertService: AlertService) { }
+  constructor(private store: Store, private alertService: AlertService, public translate: TranslateService) { }
 
-  onClaimTypeSave (claimType: any){
-    const body: any = {
-      name: claimType.ClaimTypeData.name,
-      description: claimType.ClaimTypeData.description,
-      valueType: claimType.ClaimTypeData.valueType,
-      regex: claimType.ClaimTypeData.regex,
-      required: claimType.ClaimTypeData.required,
-      regexDescription: claimType.ClaimTypeData.regexDescription
-    };
-    this.store.dispatch(saveClaimTypes(body));
-  }
-  ngOnInit(){
+  ngOnInit(): void {
+
     this.isAnimation = true;
 
     // Get All
@@ -92,7 +85,7 @@ export class AppComponent implements OnInit {
           };
           this.ClaimtypeTableData.push(item);
         });
-        
+
       };
     });
   }
@@ -100,6 +93,41 @@ export class AppComponent implements OnInit {
     if (event.actionId === 'delete') {
       this.store.dispatch(deleteClaims(event.selectedData.id));
     }
+  }
+
+  openCanvas(): void {
+    setTimeout(() => {
+      var offcanvas = document.getElementById('addnewclaimtype');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.show()
+    }, 100);
+  };
+
+  close(): void {
+    setTimeout(() => {
+      var offcanvas = document.getElementById('addnewclaimtype');
+      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+      bsOffcanvas.hide()
+    }, 100);
+  };
+
+  onActionSelection(event: any) {
+    if (event.actionId === 'delete') {
+      this.store.dispatch(deleteClaims(event.selectedData.id));
+    }
+  }
+
+  onClaimTypeSave(claimType: any) {
+    const body: any = {
+      name: claimType.ClaimTypeData.name,
+      description: claimType.ClaimTypeData.description,
+      valueType: claimType.ClaimTypeData.valueType,
+      regex: claimType.ClaimTypeData.regex,
+      required: claimType.ClaimTypeData.required,
+      regexDescription: claimType.ClaimTypeData.regexDescription
+    };
+    this.store.dispatch(saveClaimTypes(body));
+    this.close();
   }
 
 }

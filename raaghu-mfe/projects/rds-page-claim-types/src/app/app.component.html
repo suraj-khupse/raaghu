@@ -1,11 +1,12 @@
-<div class="container">
+<div>
     <div class="row">
-        <div class="d-flex justify-content-end mt-2">
+        <div class="col-md-12 text-end pb-3">
             <rds-button [id]="'yes'" [size]="'small'" [tooltipPlacement]="'top'" [colorVariant]="'primary'"
-                [label]="'NEW CLAIM TYPES'" [attr.data-bs-toggle]="'offcanvas'"
+                [label]="'NEW CLAIM TYPES'" (onClick)="openCanvas()" [icon]="'plus'" [iconWidth]="'12px'" [iconHeight]="'12px'"
                 [attr.data-bs-target]="'#addnewclaimtype'" [attr.aria-controls]="'addnewclaimtype'">
             </rds-button>
         </div>
+
         <div class="row mx-3 mt-2">
             <rds-data-table 
                 [tableData]="ClaimtypeTableData" 

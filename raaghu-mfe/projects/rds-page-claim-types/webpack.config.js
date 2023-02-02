@@ -43,6 +43,8 @@ module.exports = {
                 "@angular/forms": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@ngrx/store": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@ngrx/store-devtools": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+                "@ngx-translate/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+                "@ngx-translate/http-loader": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "rxjs": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 ...sharedMappings.getDescriptors()
             })
