@@ -6,6 +6,7 @@ import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ForgotPasswordShimmerComponent } from './forgot-password-shimmer/forgot-password-shimmer.component';
+import { RdsCompForgotPasswordModule } from '../../../rds-components/src/app/rds-comp-forgot-password/rds-comp-forgot-password.module'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ForgotPasswordShimmerComponent } from './forgot-password-shimmer/forgot
     SharedModule,
     HttpClientModule,
     NgxTranslateModule.forRoot(),
-    NgxShimmerLoadingModule
+    NgxShimmerLoadingModule,
+    RdsCompForgotPasswordModule
   ],
   bootstrap: [AppComponent]
 })

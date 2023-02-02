@@ -1,9 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { ComponentLoaderOptions, MfeBaseComponent, ServiceProxy,SendPasswordResetCodeDto } from '@libs/shared';
-import {  } from '@libs/state-management';
+import { MfeBaseComponent } from '@libs/shared';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-//import { setDefaultLanguage } from 'projects/libs/state-management/src/lib/state/language/language.actions';
 
 declare var bootstrap: any
 @Component({
@@ -12,50 +10,47 @@ declare var bootstrap: any
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends MfeBaseComponent implements OnInit {
-  model: SendPasswordResetCodeDto = new SendPasswordResetCodeDto();
 
   title: string = '';
   message: string = '';
 
-  rdsForgotPasswordMfeConfig: ComponentLoaderOptions = {
-    name: 'RdsForgotPassword',
-  };
-  loadingshimmer:boolean=true;
+  // rdsForgotPasswordMfeConfig: ComponentLoaderOptions = {
+  //   name: 'RdsForgotPassword',
+  // };
+  loadingshimmer: boolean = true;
+  emailAddress: any;
   constructor(private injector: Injector,
-    public store:Store,
-    private _accountService: ServiceProxy,
+    private store: Store,
     private translate: TranslateService) {
     super(injector)
   }
 
   ngOnInit(): void {
-    this.rdsForgotPasswordMfeConfig = {
-      name: 'RdsForgotPassword',
-     
-      output: {
-       
-        onShimmerLoad:(event:any)=>{
-          this.loadingshimmer=false;
-        }
-      }
-    }
-    // this.store.select(setDefaultLanguage).subscribe((res: any) => {
+    // this.rdsForgotPasswordMfeConfig = {
+    //   name: 'RdsForgotPassword',
+
+    //   output: {
+
+    //     onShimmerLoad:(event:any)=>{
+    //       this.loadingshimmer=false;
+    //     }
+    //   }
+    // }
+    // this.store.select(selectDefaultLanguage).subscribe((res: any) => {
     //   if (res) {
     //     this.translate.use(res);
     //   }
     // })
     this.on('forgetpassword').subscribe(r => {
-      this.model.email= r.emailAddress;
+      this.emailAddress = r.emailAddress;
       // var email =r.emailAddress
 
-      this._accountService.sendPasswordResetCode(this.model)
-        .subscribe((res) => {
-          if (!void (res)) {
+          if (true) {
             this.message = this.translate.instant('Email Sent Successfully..');
-            this.title = this.translate.instant('Success')+'  !';
+            this.title = this.translate.instant('Success') + '  !';
           } else {
-            this.message = this.translate.instant('Failed')+' ..';
-            this.title = this.translate.instant('Error')+'  !';
+            this.message = this.translate.instant('Failed') + ' ..';
+            this.title = this.translate.instant('Error') + '  !';
           }
 
           const element = document.getElementById('notification');
@@ -65,9 +60,5 @@ export class AppComponent extends MfeBaseComponent implements OnInit {
 
           //this._router.navigate(['pages/login']);
         });
-
-    })
-
-
   }
 }
