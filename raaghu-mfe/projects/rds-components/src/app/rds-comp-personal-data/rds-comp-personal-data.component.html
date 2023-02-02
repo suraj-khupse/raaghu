@@ -1,23 +1,21 @@
-<div>
-    <div class="d-flex mb-3">
-        <div>
-            <rds-button [label]="translate.instant('Request Personal Data')" [size]="'small'" class="pe-2"
-                [isDisabled]="false" [colorVariant]="'primary'" (onClick)="requestData()">
-            </rds-button>
-        </div>
-        <div>
-            <rds-button [label]="translate.instant('Delete Personal Data')" [size]="'small'" class="ps-2"
-                [isDisabled]="false" [colorVariant]="'primary'" [isOutline]="true" (onClick)="deleteData()">
-            </rds-button>
-        </div>
+<div class="d-flex mb-3 px-2">
+    <div>
+        <rds-button [label]="translate.instant('Request Personal Data')" [size]="'small'" class="pe-2"
+            [isDisabled]="false" [colorVariant]="'primary'" (onClick)="requestData()">
+        </rds-button>
     </div>
-    <div class="mb-3">
-        <rds-banner [sticky]="false" [position]="'bottom'" [colorVariant]="'primary'"
-            [bannerText]="translate.instant('Your account contains the personal data that you have given us. This page allows you to download or delete that data.')">
-        </rds-banner>
+    <div>
+        <rds-button [label]="translate.instant('Delete Personal Data')" [size]="'small'" class="ps-2"
+            [isDisabled]="false" [colorVariant]="'primary'" [isOutline]="true" (onClick)="deleteData()">
+        </rds-button>
     </div>
-    <rds-data-table [tableHeaders]="personalDataHeaders" [actions]="personalDataActions" [tableStyle]="'light'"
-        [tableData]="personalData" [recordsPerPage]="5" [pagination]="true" (onActionSelection)="onDownload($event)"
-        [noDataTitle]="'Currently you do not have Personal Data'">
-    </rds-data-table>
 </div>
+<div class="mb-3">
+    <rds-banner [sticky]="false" [position]="'bottom'" [colorVariant]="'primary'"
+        [bannerText]="translate.instant('Your account contains the personal data that you have given us. This page allows you to download or delete that data.')">
+    </rds-banner>
+</div>
+<rds-data-table [tableHeaders]="personalDataHeaders" [actions]="personalDataActions" [tableStyle]="'light'"
+    [tableData]="personalData" [recordsPerPage]="5" [pagination]="true" (onActionSelection)="onDownload($event)"
+    [noDataTitle]="'Currently you do not have Personal Data'">
+</rds-data-table>

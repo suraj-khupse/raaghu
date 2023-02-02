@@ -1,69 +1,63 @@
 <form #linkedAccount="ngForm">
-  <div class="tab-content">
-    <div ria-labelledby="nav-LinkAccount" class="h-100">
-      <div class="card border-0 h-100">
-        <div class="card-header border-bottom border-dark border-opacity-10">
-          <h5 class="card-title">{{showNewLinkAccoutButton ? translate.instant("MANAGE LINKED ACCOUNTS") :
-            translate.instant("NEW LINK ACCOUNT")}}</h5>
-        </div>
+  <div class="card border-0 h-100 px-2">
+    <h5 class="mb-3">{{showNewLinkAccoutButton ? translate.instant("MANAGE LINKED ACCOUNTS") :
+      translate.instant("NEW LINK ACCOUNT")}}</h5>
 
-        <div class="card-body">
-          <ng-container *ngIf="showNewLinkAccoutButton">
-            <rds-button [label]="translate.instant('LINK NEW ACCOUNT')" type="button" [size]="'medium'"
-              [colorVariant]="'primary'" [icon]="'plus'" iconHeight="12px" iconWidth="12px"
-              (click)="hideandShowaccountform()">
-            </rds-button>
-          </ng-container>
-          <form #linkedAccountForm="ngForm">
-            <div class="row" *ngIf="!showNewLinkAccoutButton">
-              <div class="col-sm-12 col-md-12">
-                <div class="form-group mb-3">
-                  <rds-input size="medium" value="" [label]="translate.instant('Tenancy Name')"
-                    [placeholder]="translate.instant('Tenancy Name')" [labelPosition]="'top'" name="tenancy_name"
-                    #tenancy="ngModel" inputType="text" [(ngModel)]="tenancyName" ngDefaultControl></rds-input>
-                  <!-- <div class="form-control-feedback" *ngIf="tenancy.errors&&(tenancy.dirty||tenancy.touched)">
+    <ng-container *ngIf="showNewLinkAccoutButton">
+      <rds-button [label]="translate.instant('LINK NEW ACCOUNT')" type="button" [size]="'medium'"
+        [colorVariant]="'primary'" [icon]="'plus'" iconHeight="12px" iconWidth="12px"
+        (click)="hideandShowaccountform()">
+      </rds-button>
+    </ng-container>
+    <form #linkedAccountForm="ngForm">
+      <div class="row" *ngIf="!showNewLinkAccoutButton">
+        <div class="col-sm-12 col-md-12">
+          <div class="form-group mb-3">
+            <rds-input size="medium" value="" [label]="translate.instant('Tenancy Name')"
+              [placeholder]="translate.instant('Tenancy Name')" [labelPosition]="'top'" name="tenancy_name"
+              #tenancy="ngModel" inputType="text" [(ngModel)]="tenancyName" ngDefaultControl></rds-input>
+            <!-- <div class="form-control-feedback" *ngIf="tenancy.errors&&(tenancy.dirty||tenancy.touched)">
                     <span class="text-danger" *ngIf="tenancy.errors.required">{{"Tenancy name is
                       required"|translate}}</span>
                   </div> -->
-                </div>
-              </div>
-              <div class="col-md-12 col-sm-12">
-                <div class="form-group mb-3">
-                  <rds-input size="medium" value="" [label]="translate.instant('User Name')" [labelPosition]="'top'"
-                    #user="ngModel" inputType="text" [placeholder]="translate.instant('User Name')"
-                    [(ngModel)]="userName" name="user_name" [isRequired]=true ngDefaultControl>
-                  </rds-input>
-                  <div class="form-control-feedback" *ngIf="user.errors&&(user.dirty||user.touched)">
-                    <span class="text-danger" *ngIf="user.errors.required">{{"User name is required"|translate}}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12 col-sm-12">
-                <div class="form-group mb-3">
-                  <rds-input size="medium" value="" [label]="translate.instant('Password')"
-                    [placeholder]="translate.instant('Password')" [iconCursor]="'pointer'" [icon]="'eye'"
-                    [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'" name="linked_pswd"
-                    [labelPosition]="'top'" inputType="password" [(ngModel)]="password" [isRequired]=true
-                    #linkedPswd="ngModel" ngDefaultControl>
-                  </rds-input>
-                  <div class="form-control-feedback" *ngIf="linkedPswd.errors&&(linkedPswd.dirty||linkedPswd.touched)">
-                    <span class="text-danger" *ngIf="linkedPswd.errors.required">
-                      {{"Password is required"|translate}}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-
-          <div class="row" *ngIf="showNewLinkAccoutButton">
-            <div class="col-sm-12">
-              <!-- <rds-data-table [tableStyle]="'light'" [actions]="actions" [recordsPerPage]="5"
-                [noDataTitle]="'Currently you do not have linked accounts'" [pagination]="true" [width]="100"
-                [tableData]="linkedAccountData" [tableHeaders]="linkedAccountHeaders"></rds-data-table> -->
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="form-group mb-3">
+            <rds-input size="medium" value="" [label]="translate.instant('User Name')" [labelPosition]="'top'"
+              #user="ngModel" inputType="text" [placeholder]="translate.instant('User Name')" [(ngModel)]="userName"
+              name="user_name" [isRequired]=true ngDefaultControl>
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="user.errors&&(user.dirty||user.touched)">
+              <span class="text-danger" *ngIf="user.errors.required">{{"User name is required"|translate}}</span>
             </div>
           </div>
         </div>
+        <div class="col-md-12 col-sm-12">
+          <div class="form-group mb-3">
+            <rds-input size="medium" value="" [label]="translate.instant('Password')"
+              [placeholder]="translate.instant('Password')" [iconCursor]="'pointer'" [icon]="'eye'"
+              [iconOpacity]="'0.4'" [iconHeight]="'18px'" [iconWidth]="'18px'" name="linked_pswd"
+              [labelPosition]="'top'" inputType="password" [(ngModel)]="password" [isRequired]=true
+              #linkedPswd="ngModel" ngDefaultControl>
+            </rds-input>
+            <div class="form-control-feedback" *ngIf="linkedPswd.errors&&(linkedPswd.dirty||linkedPswd.touched)">
+              <span class="text-danger" *ngIf="linkedPswd.errors.required">
+                {{"Password is required"|translate}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- <rds-data-table [tableStyle]="'light'" [actions]="actions" [recordsPerPage]="5"
+                [noDataTitle]="'Currently you do not have linked accounts'" [pagination]="true" [width]="100"
+                [tableData]="linkedAccountData" [tableHeaders]="linkedAccountHeaders"></rds-data-table> -->
+        <rds-data-table [tableData]="linkedAccountData" [pagination]="true" [recordsPerPage]="5" [actions]="actions"
+          [tableHeaders]="linkUsersHeaders" noDataTitle="Currently you do not have linked Account">
+        </rds-data-table>
       </div>
     </div>
   </div>
@@ -77,13 +71,6 @@
           [size]="'small'" [colorVariant]="'primary'" (click)="saveAllLinkAccount(linkedAccountForm)" class="ms-2">
         </rds-button>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <rds-data-table [tableData]="linkedAccountData" [pagination]="true" [recordsPerPage]="5" [actions]="actions"
-        [tableHeaders]="linkUsersHeaders" noDataTitle="Currently you do not have linked Account">
-      </rds-data-table>
     </div>
   </div>
 
