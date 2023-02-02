@@ -21,6 +21,7 @@ export class RdsRadioButtonComponent implements OnInit, ControlValueAccessor {
   @Input() switch = false
   @Input() inline = false
   @Input() isInputGroup = false;
+  @Input() isDisabled = false;
   @Output() onClick = new EventEmitter<any>();
   @Input() itemList!:any;
   @Input() display_type?: string = 'Default';
@@ -73,13 +74,14 @@ export class RdsRadioButtonComponent implements OnInit, ControlValueAccessor {
     }
 
   }
-  getValue(event: any) {
-    this.itemList.forEach(element => {
-     if( element.name!==event.target.value){
+  getValue(event: any, value: any) {
+  // Old code commented
+  //   this.itemList.forEach(element => {
+  //    if( element.name!==event.target.value){
       
-     }
-    });
-    this.onClick.emit({ evnt: event, item: event.target.value });
+  //    }
+  // });
+    this.onClick.emit({ evnt: event, item: event.target.value, value: value });
     this.onChange(event.target.value)
     this.onTouched()
   }

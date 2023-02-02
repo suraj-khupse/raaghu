@@ -44,7 +44,7 @@ Default.parameters = { controls: { include: ['stepperType', 'readOnly', 'stepper
 
 Default.args = {
   stepperType: 'simple',
-  readOnly: true,
+  readOnly: false,
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
     { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },
@@ -57,7 +57,7 @@ Panel.parameters = { controls: { include: ['stepperType', 'readOnly', 'stepperLi
 
 Panel.args = {
   stepperType: 'panel-arrow',
-  readOnly: true,
+  readOnly: false,
   stepperList: [
     { stepname: "step1", steptabname: "Profile", tablink: '#nav-home', ariacontrols: 'nav-home' },
     { stepname: "step2", steptabname: "Positions", tablink: '#nav-profile', ariacontrols: 'nav-profile' },

@@ -421,6 +421,7 @@ buttonSpinner: boolean=false;
         type: alert.type,
         title: alert.title,
         message: alert.message,
+        
       };
       this.currentAlerts.push(currentAlert);
       // const rdsAlertMfeConfig = this.rdsAlertMfeConfig;

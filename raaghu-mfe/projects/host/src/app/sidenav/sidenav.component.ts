@@ -51,7 +51,7 @@ export class SidenavComponent {
   currentAlerts: any = [];
   selectedLanguage: any = { language: '', icon: '' };
   severity = ['info', 'error', 'success', 'warn', 'fatal'];
-  impersonateUserId:any
+  // impersonateUserId:any
   LoginAttempts: any = {
     TableHeader: [
       {
@@ -93,7 +93,7 @@ export class SidenavComponent {
   headerHeight: any = '110px';
   @Input() AccountLinkedTable: any = [];
   @Input() Profileurl: string = 'https://anzstageui.raaghu.io/assets/profile-picture-circle.svg';
-  @Input() impersonatorUserId : boolean = false;
+  @Input() impersonateUserId : boolean = false;
   receiveNotifications: any;
   notificationTypes: any = [];
   sidenavItemsOriginal: any = [
@@ -236,8 +236,8 @@ export class SidenavComponent {
               parent: 53
             },
             {
-              label: 'subscription',
-              labelTranslationKey: 'subscription',
+              label: 'Subscription',
+              labelTranslationKey: 'Subscription',
               id: 536,
               permissionName: 'Pages.Administration.Tenant.SubscriptionManagement',
               icon: 'subscription',
@@ -427,9 +427,13 @@ export class SidenavComponent {
       }
 
     });
-    this.appSessionService.impersonateId$.subscribe(res=>{
-      this.impersonateUserId = res;
-    })
+    if(this.appSessionService.impersonatorUserId > 0){
+      this.impersonateUserId=true;
+    }
+    // this.appSessionService.impersonatorUserId>0;
+    // this.appSessionService.impersonateId$.subscribe(res=>{
+    //   this.impersonateUserId = res;
+    // })
 
 
     // this.selectAllvisualSettings()

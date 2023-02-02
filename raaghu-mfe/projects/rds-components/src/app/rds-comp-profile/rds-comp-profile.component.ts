@@ -119,7 +119,7 @@ export class RdsCompProfileComponent extends MfeBaseComponent implements OnInit 
   navtabcontentClass: string = "d-none";
   firstcontent: boolean = false;
   cancelbutton: boolean = true;
-  @Input() impersonateUserId:any;
+  @Input() impersonateUserId:boolean=false;
   public classlists = [];
   @Input()
   listItemsResult: any[] = []
