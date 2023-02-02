@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   offcanvasId: string = 'org_canvas';
   canvasTitle: string = 'New Organization Unit';
   actions=[{ id: 'delete', displayName: 'Delete' }]
-  navtabsItems: any = [
+  navtabsItems: any = [ 
     {
       label: this.translate.instant('Members'),
       tablink: '#Members',
@@ -178,7 +178,6 @@ export class AppComponent implements OnInit {
   node: string = '';
   selectedParent: any = null;
   selectedNodeInfo: any;
-  actions=[{ id: 'delete', displayName: 'Delete' }]
   constructor(
     private store: Store,
     private _arrayToTreeConverterService: ArrayToTreeConverterService,
