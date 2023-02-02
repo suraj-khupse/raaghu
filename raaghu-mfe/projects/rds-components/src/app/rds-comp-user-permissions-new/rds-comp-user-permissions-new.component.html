@@ -91,4 +91,28 @@
       </div>
        </div>
     </rds-nav-tab>
-  </rds-offcanvas>   
+  </rds-offcanvas>  
+
+  
+  <rds-modal [modalId]="'setpassword'"  [modalBackdrop]="'static'">
+  <div modalheader class="d-flex w-100 border-0">
+    <h5 class="modal-title"></h5>
+    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div modalbody class="p-2">
+    <rds-input size="medium" [label]="'Set Password'" [labelPosition]="'top'"
+    inputType="password" name="setpassword" [isRequired]=true required [disabled]="false"
+    [readonly]="false"  [(ngModel)]="password.setpassword"
+    #setpassword="ngModel" ngDefaultControl>
+</rds-input>
+  </div>
+  <div modalfooter class="border-0">
+    <rds-button [tooltipPlacement]="'top'" [isOutline]="true" data-bs-dismiss="modal" [colorVariant]="'primary'"
+      [size]="'medium'"  [label]="translate.instant('Cancel')" class="px-2">
+    </rds-button>
+    <rds-button class="mr-1"  [size]="'medium'"
+      [tooltipPlacement]="'top'"  [colorVariant]="'primary'" data-bs-dismiss="modal" (click)="changepassword()" [label]="translate.instant('Save')"
+      >
+    </rds-button>
+  </div>
+</rds-modal>

@@ -1,11 +1,12 @@
 <!-- <rds-label [label]="'Edition List'"></rds-label> -->
 <div class="row mt-5 flex-row flex-code m-2">
-  <div class="col-md-3 navsm p-0 m-1 mb-3 featureList " *ngFor="let item of editionData">
+  <div class="col-md-3 navsm  mb-3 featureList " *ngFor="let item of editionData">
     <rds-card 
       [showHeader]="true"
       [showBody]="true"
       [showFooter]="true"
       [isBorder]="false"
+      
     >
 
       <div showHeader header class="p-3">
@@ -19,7 +20,7 @@
             {{ item.EditionTitle }} A simple start for a small business
           </p>
         </div>
-       
+      
       </div>
       <div body >
         <div class="pt-3">
@@ -74,15 +75,16 @@
 
 
   </div>
-  <div class="col-md-3 mb-3 p-0 m-1 featureList">
-      <rds-card
+  <div class="col-md-3 mb-3  d-flex featureList" style="height: 477px;">
+      <rds-card class="flex-grow-1 "
         [showHeader]="false"
         [showBody]=""
         [showFooter]="false"
         [isBorder]="false"
+      
       >
-        
-        <div body class="h-100 d-flex justify-content-center align-items-center  ">
+      
+        <div body class="h-100 d-flex justify-content-center align-items-center ">
             <rds-button 
               type="button"
               [colorVariant]="'primary'"

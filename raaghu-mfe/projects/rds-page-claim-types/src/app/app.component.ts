@@ -41,6 +41,7 @@ declare var bootstrap: any;
 })
 export class AppComponent implements OnInit {
   currentAlerts: any = [];
+
   valueTypeItems: any = [
     { value: 0, some: 'String', id: 1, href: '', icon: '', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
     { value: 1, some: 'Int', id: 2, href: '', icon: '', iconWidth: '', iconHeight: '', iconStroke: true, iconFill: false },
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit {
     { displayName: 'Regex', key: 'regex', dataType: 'text', dataLength: 30, required: true, sortable: true },
     { displayName: 'Required', key: 'required', dataType: 'text', dataLength: 30, required: true, sortable: true }
   ];
-
+  actions= [{ id: 'delete', displayName: 'Delete' }]
   ClaimtypeTableData: any = [] = [];
   isAnimation: boolean = true;
   actions = [{ id: 'delete', displayName: 'Delete' }];
@@ -63,6 +64,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store, private alertService: AlertService, public translate: TranslateService) { }
 
   ngOnInit(): void {
+
     this.isAnimation = true;
 
     // Get All
@@ -83,8 +85,14 @@ export class AppComponent implements OnInit {
           };
           this.ClaimtypeTableData.push(item);
         });
+
       };
     });
+  }
+  onActionSelection(event: any){
+    if (event.actionId === 'delete') {
+      this.store.dispatch(deleteClaims(event.selectedData.id));
+    }
   }
 
   openCanvas(): void {

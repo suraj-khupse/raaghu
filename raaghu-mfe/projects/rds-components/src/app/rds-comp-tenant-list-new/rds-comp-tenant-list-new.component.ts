@@ -37,7 +37,11 @@ export class RdsCompTenantListNewComponent implements OnInit {
   @Output() onSaveFeatures = new EventEmitter<any>();
   @Output() getHostFeatureEmitter = new EventEmitter<any>();
   @Output() onSaveTenantHost = new EventEmitter<any>();
-    tenantInfo: undefined;
+  @Input() TwoFactorList: any = [];
+  @Input() public featuresData: any = [];
+  @Input() TwoFactorHostList: any = [];
+  @Input() public featuresHostData: any = [];
+  tenantInfo: undefined;
    tenantFeaturesList : undefined;
    tenantFeaturesHostList : undefined;
   //   // featureList: [],
@@ -47,11 +51,6 @@ export class RdsCompTenantListNewComponent implements OnInit {
   @Input() public tenantList: any = [];
   public tableData: any = [];
   @Input() public editionList: any = [];
-  @Input() public twoFactorList: any = [
-    {displayText : 'Optional', value : 'Optional'},
-    {displayText : 'Disabled', value : 'Disabled'},
-    {displayText : 'Forced', value : 'Forced'}
-  ];
   buttonSpinnerForNewUser : boolean = false;
   buttonSpinnerForSave : boolean = false;
 
@@ -95,56 +94,39 @@ export class RdsCompTenantListNewComponent implements OnInit {
   saveTenantData(): void {
     this.buttonSpinnerForSave = true;
     this.buttonSpinnerForNewUser = false;
-    // if (!this.selectedFeatureList || this.selectedFeatureList.length === 0) {
-    //   return;
-    // }
     const data = {
       id: this.selectedId,
       featureValues: this.tenantFeaturesList,
       tenantInfo : this.tenantInfo
     };
      this.activePage = 0;
-    var offcanvas = document.getElementById('tenantOffcanvas');
-    var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-    bsOffcanvas.hide();
      this.viewCanvas = false;
-      // this.onSaveFeatures.emit(data)
       this.onSaveTenant.emit(data);
-      this.activePage = 0;
-      var offcanvas = document.getElementById('tenantOffcanvas');
-      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.hide();
-      this.viewCanvas = false;
-    
   }
-
+  getEditionFeatureInfo(event: any): void {
+    this.tenantFeaturesList = event;
+  }
+  getEditionFeatureHostInfo(event: any): void {
+    this.tenantFeaturesHostList = event;
+  }
   saveTenantHostFeature(): void {
-  
+    this.buttonSpinnerForSave = true;
     this.onSaveTenantHost.emit(this.tenantFeaturesHostList);
-     this.activePage = 0;
-    var offcanvas = document.getElementById('tenantOffcanvashost');
-    var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-    bsOffcanvas.hide();
+    //  this.activePage = 0;
+    // var offcanvas = document.getElementById('tenantOffcanvashost');
+    // var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
+    // bsOffcanvas.hide();
      this.viewCanvas = false;
       this.activePage = 0;
-      var offcanvas = document.getElementById('tenantOffcanvashost');
-      var bsOffcanvas = new bootstrap.Offcanvas(offcanvas);
-      bsOffcanvas.hide();
-      this.viewCanvas = false;
     
   }
 
   getTenantData(event: any): void {
-    if (event.next) {
-      this.activePage = 1;
-      // this.onSaveTenant.emit(this.tenant);
-    }
-    this.tenantInfo = event.tenant;
-    if (!event || !event.tenant) {
-      this.isTenantInfoValid = false;
-    } else {
-      this.isTenantInfoValid = true;
-    }
+    this.tenantInfo = event;
+    this.saveTenantData()
+  }
+  onValidForm(event: any):void {
+    this.tenantInfo = event;  
   }
   getTenantFeature(event : any) : void{
     this.tenantFeaturesList = event
@@ -193,6 +175,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
         },
       ];
     } else {
+      this.buttonSpinnerForNewUser = false;
       this.navtabsItems = [
         {
           label: this.translate.instant('Basics'),
@@ -225,6 +208,7 @@ export class RdsCompTenantListNewComponent implements OnInit {
     this.buttonSpinnerForNewUser = false;
   }
   editTableRowData(event): void {
+    this.buttonSpinnerForNewUser = false;
     this.canvasTitle = 'EDIT TENANT';
     this.newTenant(undefined);
     this.onEditTenant.emit(event.id);

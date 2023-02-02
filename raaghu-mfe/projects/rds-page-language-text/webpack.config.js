@@ -48,7 +48,6 @@ module.exports = {
                 "rxjs": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 ...sharedMappings.getDescriptors()
             })
-
         }),
         sharedMappings.getPlugin()
     ],

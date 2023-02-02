@@ -59,6 +59,7 @@
         >
           <rds-comp-basic-resource
             (onBasicInfoSave)="getScopeInfo($event)"
+            (onValidForm)="onValidForm($event)"
             [basicInfo]="apiScopeEdit"
             [isEdit]="isEdit"
             [isResources]="true"

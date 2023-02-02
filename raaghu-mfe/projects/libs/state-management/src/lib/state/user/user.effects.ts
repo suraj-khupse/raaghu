@@ -356,7 +356,7 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(changePasswordUser),
       switchMap(({data}) =>
-        this.userService.changePasswordPUT(data.id, data.newPassword).pipe(map((res: any) => {
+        this.userService.changePasswordPUT(data.id, data.body).pipe(map((res: any) => {
           this.alertService.showAlert('Success',  'Password Changed Successfully', 'success')
         }),
           catchError((error: any) => of(

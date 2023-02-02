@@ -6,10 +6,12 @@ import { RdsButtonModule, RdsCheckboxModule, RdsDropdownlistModule, RdsInputModu
 
 
 
+
 @NgModule({
   declarations: [
     RdsCompNewClaimTypeComponent
   ],
+
   imports: [
     CommonModule,
     FormsModule,
