@@ -19,7 +19,7 @@ import { RdsCompNewClaimTypeModule } from 'projects/rds-components/src/app/rds-c
     RdsInputModule,
     RdsOffcanvasModule,
     RdsCompNewClaimTypeModule,
-    RdsCompDataTableModule
+    RdsCompDataTableModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

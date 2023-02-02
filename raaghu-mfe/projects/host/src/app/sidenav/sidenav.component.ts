@@ -102,8 +102,8 @@ export class SidenavComponent implements OnInit {
         { label: 'Organization Units', labelTranslationKey: 'Organization Units', id: '', permissionName: 'AbpIdentity.OrganizationUnits', icon: 'organization', path: '/pages/organization-unit', description: 'Use organization units to organize users and entities', descriptionTranslationKey: 'Use organization units to organize users and entities' },
         { label: 'Roles', labelTranslationKey: 'Roles', id: '', permissionName: 'AbpIdentity.Roles', icon: 'roles', path: '/pages/role', description: 'Use roles to group permissions', descriptionTranslationKey: 'Use roles to group permissions' },
         { label: 'Users', labelTranslationKey: 'Users', id: '', permissionName: 'AbpIdentity.Users', icon: 'users', path: '/pages/user', description: 'Manage users and permissions', descriptionTranslationKey: 'Manage users and permissions' },
-        { label: 'Claim Types', labelTranslationKey: 'Claim Types', id: '', permissionName: 'AbpIdentity.ClaimTypes', icon: 'users', path: '/pages/user', description: 'Manage users and permissions', descriptionTranslationKey: 'Manage users and permissions' },
-        { label: 'Security-logs', labelTranslationKey: 'Security-logs', id: '', permissionName: 'AbpIdentity.SecurityLogs', icon: 'tenant', path: '/pages/security-logs', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
+        { label: 'Claim Types', labelTranslationKey: 'Claim Types', id: '', permissionName: 'AbpIdentity.ClaimTypes', icon: 'users', path: '/pages/claim-types', description: 'Manage claims and permissions', descriptionTranslationKey: 'Manage users and permissions' },
+        { label: 'Security-logs', labelTranslationKey: 'Security-logs', id: '', permissionName: 'AbpIdentity.SecurityLogs', icon: 'tenant', path: '/pages/securitylog', description: 'Manage your cart', descriptionTranslationKey: 'Manage your cart' },
       ],
     },
     {

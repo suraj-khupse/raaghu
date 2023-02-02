@@ -56,10 +56,10 @@ export const MfeConfig = {
   webhooksubscription: {
     url: 'http://localhost:5014/remoteEntry.js'
   },
-  Claimtype: {
+  claimtypes: {
     url: 'http://localhost:5016/remoteEntry.js'
   },
-  Securitylog: {
+  securitylog: {
     url: 'http://localhost:5018/remoteEntry.js'
   },
   settings: {

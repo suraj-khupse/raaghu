@@ -160,11 +160,11 @@ export const APP_ROUTES: Routes = [
         data: { permission: 'Pages.DemoUiComponents' },
       },
       {
-        path: 'ClaimType',
+        path: 'claim-types',
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',
-            remoteEntry: MfeConfig.Claimtype.url,
+            remoteEntry: MfeConfig.claimtypes.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
           data: { permission: 'AbpIdentity.ClaimTypes' },
@@ -202,11 +202,11 @@ export const APP_ROUTES: Routes = [
 
       },
       {
-        path: 'securitylogs',
+        path: 'securitylog',
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',
-            remoteEntry: MfeConfig.Securitylog.url,
+            remoteEntry: MfeConfig.securitylog.url,
             exposedModule: './AppModule',
           }).then((m) => m.AppModule),
           data: { permission: 'AbpIdentity.SecurityLogs' },

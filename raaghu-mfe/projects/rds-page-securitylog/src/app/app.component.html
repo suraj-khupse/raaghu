@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class="row">
-        <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''">
+        <!-- <div [@fadeAnimation]="isAnimation ? 'fadeAnimation' : ''"> -->
             <rds-data-table [tableHeaders]="securityLogsHeaders" [tableStyle]="'light'" [tableData]="securityLogs"
                 [recordsPerPage]="10" [pagination]="true" [noDataTitle]="'Currently you do not have security log'"
                 (onActionSelection)="onActionSelection($event)">
             </rds-data-table>
-        </div>
+        <!-- </div> -->
     </div>
 </div>

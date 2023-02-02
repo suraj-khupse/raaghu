@@ -12,32 +12,32 @@ declare var bootstrap: any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    trigger('fadeAnimation', [
-      transition('* <=> *', [
-        query(':enter',
-          [
-            style({ opacity: 0 })
-          ],
-          { optional: true }
-        ),
-        query(':leave',
-          [
-            style({ opacity: 1 }),
-            animate('0.4s', style({ opacity: 0 }))
-          ],
-          { optional: true }
-        ),
-        query(':enter',
-          [
-            style({ opacity: 0 }),
-            animate('0.4s', style({ opacity: 1 }))
-          ],
-          { optional: true }
-        )
-      ])
-    ])
-  ]
+  // animations: [
+  //   trigger('fadeAnimation', [
+  //     transition('* <=> *', [
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 })
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':leave',
+  //         [
+  //           style({ opacity: 1 }),
+  //           animate('0.4s', style({ opacity: 0 }))
+  //         ],
+  //         { optional: true }
+  //       ),
+  //       query(':enter',
+  //         [
+  //           style({ opacity: 0 }),
+  //           animate('0.4s', style({ opacity: 1 }))
+  //         ],
+  //         { optional: true }
+  //       )
+  //     ])
+  //   ])
+  // ]
 })
 export class AppComponent implements OnInit {
   currentAlerts: any = [];
@@ -59,7 +59,6 @@ export class AppComponent implements OnInit {
   actions= [{ id: 'delete', displayName: 'Delete' }]
   ClaimtypeTableData: any = [] = [];
   isAnimation: boolean = true;
-  actions = [{ id: 'delete', displayName: 'Delete' }];
 
   constructor(private store: Store, private alertService: AlertService, public translate: TranslateService) { }
 
@@ -88,11 +87,6 @@ export class AppComponent implements OnInit {
 
       };
     });
-  }
-  onActionSelection(event: any){
-    if (event.actionId === 'delete') {
-      this.store.dispatch(deleteClaims(event.selectedData.id));
-    }
   }
 
   openCanvas(): void {
